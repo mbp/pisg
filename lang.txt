@@ -157,6 +157,8 @@ hours = "hours"
 minutes = "minutes"
 seconds = "seconds"
 and = "and"
+names1 = "names"
+names2 = "name"
 
 # Mouse-over titles
 pisghomepage = "Go to the pisg homepage"
@@ -440,6 +442,8 @@ hours = "timer"
 minutes = "minutter"
 seconds = "sekunder"
 and = "og"
+names1 = "nicks"
+names2 = "nick"
 
 # Mouse-over titles
 pisghomepage = "Gå til pisg hjemmesiden"

@@ -1678,6 +1678,8 @@ sub _mostnicks
 
         $self->_headline($self->_template_text('mostnickstopic'));
 
+        my $names1 = $self->_template_text('names1');
+        my $names2 = $self->_template_text('names2');
         my $nick_txt = $self->_template_text('nick');
         my $names_txt = $self->_template_text('names');
         _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
@@ -1685,6 +1687,7 @@ sub _mostnicks
         _html("<td class=\"tdtop\"><b>$names_txt</b></td></tr>");
 
         for(my $i = 0; $i < $self->{cfg}->{mostnickshistory}; $i++) {
+            next if is_ignored($sortnicks[$i]);
             last unless $i < @sortnicks;
             my $nickcount = scalar(@{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
             my $nickused = join(", ", @{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
@@ -1693,11 +1696,11 @@ sub _mostnicks
             
             my $a = $i + 1;
             my $class = $a == 1 ? 'hirankc' : 'rankc';
-            my $n = $nickcount > 1 ? "names" : "name";
+            my $n = $nickcount > 1 ? $names1 : $names2;
 
             _html("<tr><td class=\"$class\">$a</td>");
-            _html("<td class=\"hicell\">$sortnicks[$i]<br><font size='1'>($nickcount $n)</font></td>");
-            _html("<td class=\"hicell\" valign='top'><font size='1'>$nickused</font></td>");
+            _html("<td class=\"hicell\" style=\"font-size: 10px\">$sortnicks[$i]<br />($nickcount $n)</td>");
+            _html("<td class=\"hicell\" style=\"font-size: 10px\" valign='top'>$nickused</td>");
             _html("</tr>");
         }
         _html("</table>");
