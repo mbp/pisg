@@ -458,7 +458,11 @@ sub _activenicks
         my $line = $self->{stats}->{lines}{$nick};
         my $w = $self->{stats}->{words}{$nick} ? $self->{stats}->{words}{$nick} : 0;
         my $ch   = $self->{stats}->{lengths}{$nick};
-        _html("<td style=\"background-color: $color\">$visiblenick</td>"
+       my $sex = $self->{users}->{sex}{$nick};
+       _html("<td style=\"background-color: $color\""
+       . ($sex ? ($sex eq 'm' ? " class=\"male\">"
+       : ($sex eq 'f' ? " class=\"female\">" : " class=\"bot\">")) : ">")
+       ."$visiblenick</td>"
         . ($self->{cfg}->{showlinetime} ?
         "<td style=\"background-color: $color\" nowrap=\"nowrap\">".$self->_user_linetimes($nick,$active[0])."</td>"
         : "<td style=\"background-color: $color\">$line</td>")
@@ -530,7 +534,13 @@ sub _activenicks
                 } else {
                     $items = $self->{stats}->{lines}{$active[$i]};
                 }
-                _html("<td class=\"rankc10\">$active[$i] ($items)</td>");
+               my $sex = $self->{users}->{sex}{$active[$i]};
+                _html("<td class=\"rankc10\">"
+                . ($sex ? ($sex eq 'm' ? "<span class=\"male\">"
+                : ($sex eq 'f' ? "<span class=\"female\">" : "<span class=\"bot\">")) : "")
+                ."$active[$i] ($items)"
+                . ($sex ? "</span>" : "")
+                ."</td>");
             }
             _html("</tr></table>");
         }

@@ -44,6 +44,18 @@ td {
     text-align: left;
 }
 
+.male {
+    color: #0000DD;
+}
+
+.female {
+    color: #DD3366;
+}
+
+.bot {
+    color: #00FFFF;
+}
+
 .title {
     font-family: Tahoma, Arial, sans-serif;
     font-size: 16px;
