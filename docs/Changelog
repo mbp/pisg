@@ -4,6 +4,7 @@ pisg (0.63) - ??
      lines in "Most Active Nicks" has been added.
    Christoph:
    * Updated the Swedish foul1 template (thanks, Torbjörn Svensson).
+   * Updated some German strings (thanks, Igge).
    * Inhibit warning in _mostreferencednicks when a nick is referenced
      before being used first.
 
