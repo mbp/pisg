@@ -24,6 +24,10 @@ it will add all Joe^'s to 'Joe' in the stats.
 Another thing you can do is to add a picture to a user:
     <user nick="Ben" pic="ben_holiday.jpg">
 
+If you have a larger picture of the user as well, you can make the picture
+on the stats page link to it:
+    <user nick="Ben" pic="ben_holiday.jpg" bigpic="ben-big.jpg">
+
 You can also set a user's sex:
     <user nick="Ben" sex="m">
 

@@ -278,6 +278,10 @@ sub init_config
                     $self->{users}->{userpics}{$nick} = $1;
                 }
 
+                if ($line =~ /bigpic="([^"]+)"/) {
+                    $self->{users}->{biguserpics}{$nick} = $1;
+                }
+
                 if ($line =~ /link="([^"]+)"/) {
                     $self->{users}->{userlinks}{$nick} = $1;
                 }

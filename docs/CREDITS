@@ -64,6 +64,7 @@ And all the other contributors:
  * Phil Gregory <phil_g@pobox.com>
    | Regex support in user aliases, grammar corrections, huge changes to
      modularize pisg into packages/objects.
+   | 'bigpic' user option
  * Patrick Aussems aka Zyk <zyk@bugfactory.org>
    | New options: show_mrn, show_mru, show_muw, show_randquote
  * David Leadbeater
