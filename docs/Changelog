@@ -7,8 +7,15 @@ pisg (0.23)
       - cleanups, don't use globals in modules, define these in the object.
       - add HTMLGenerator.pm, and move all HTML generation code from pisg.pl
         to this new module.
+      - New module Pisg.pm brings the rest of the main code into it's own
+        module, this means that Pisg is no longer dependent of pisg.pl.
+
+        Again, please report back if you find any trouble with any of these
+        changes.
+
    * Ship developer docs in docs/dev/ instead of just dumping it in docs/,
      docs/ should be for end users.
+   * Various updates to language templates
 
 pisg (0.22) - Sat, Sep 15th 2001
    * pisg.cfg now supports regexs in user.cfg when 'regexp_aliases' is
