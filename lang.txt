@@ -270,7 +270,7 @@ long2 = "Channel-Durchschnitt in [:channel] war [:avg] Buchstaben pro Zeile."
 short1 = "<b>[:nick]</b> ist nicht sehr Mitteilungsbedürftig. [:Er:Sie:] schrieb die kürzeste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile..."
 short2 = "<b>[:nick]</b> war auch sehr kurzfassend, durchschnittlich [:letters] Buchstaben pro Zeile."
 
-foul1 = "<b>[:nick]</b> hat in [:seiner:ihrer:] Jugend keine Erziehung genossen, [:per]% [:seiner:ihrer:] S&auml;tze enthielten Schimpfworte!"
+foul1 = "<b>[:nick]</b> hat in [:seiner:ihrer:] Jugend keine Erziehung genossen, [:per]% von dem was [:er:sie:] sagte waren Schimpfworte!"
 foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman noch kommt?)"
 foul3 = "Alle gut erzogen in [:channel], niemand hat Schimpfworte benutzt!"
 foultext = "<b>Zum Beispiel so:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
