@@ -26,9 +26,13 @@ sub normalline
 
     if ($line =~ /$self->{normalline}/o) {
 
+        print "hour: $1\n";
+        print "nick $2\n";
+        print "saying $3\n";
         $hash{hour}   = $1;
-        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
         $hash{saying} = $3;
+        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
+        print "saying.pm: $hash{saying}\n";
 
         return \%hash;
     } else {
@@ -44,8 +48,8 @@ sub actionline
     if ($line =~ /$self->{actionline}/o) {
 
         $hash{hour}   = $1;
-        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
         $hash{saying} = $3;
+        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
 
         return \%hash;
     } else {
