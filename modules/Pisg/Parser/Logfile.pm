@@ -93,16 +93,15 @@ sub analyze
     $stats{parsedlines} = 0;
     $stats{totallines} = 0;
 
-    if (scalar(@{$self->{cfg}->{logdir}}) > 0) {
-        $self->_parse_dir(); # get all files in dir
-    }
-
     my @logfiles = @{$self->{cfg}->{logfile}};
-
     # expand wildcards
     @logfiles = map { if(/[\[*?]/) { glob; } else { $_; } } @logfiles;
-    my $count = @logfiles;
 
+    if (scalar(@{$self->{cfg}->{logdir}}) > 0) {
+        push @logfiles, $self->_parse_dir(); # get all files in dir
+    }
+
+    my $count = @logfiles;
     my $shift = 0;
     if($self->{cfg}->{nfiles} > 0) { # chop list to maximal length
         $shift = @logfiles - $self->{cfg}->{nfiles};
@@ -234,7 +233,7 @@ sub _parse_dir
             @filesarray = sort {lc($a) cmp lc($b)} @filesarray;
         }
 
-        push @{$self->{cfg}->{logfile}}, map { "$logdir$_" } @filesarray;
+        return map { "$logdir$_" } @filesarray;
     }
 }
 
