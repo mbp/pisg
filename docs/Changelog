@@ -1,3 +1,20 @@
+pisg (0.32) - Sun, Dec 9th 2001
+   * infobot log support added by Nicholas Frampton <whyrl@avians.net>
+   * HTML changes:
+      - Convert stats page to use more CSS, never use 'bgcolor' HTML attribute.
+      - Make the page XHTML compatible, and use XHTML 1.0 Transititional doctype. 
+   * When a logfile had the same topic multiple times, all of the same topics
+     was being shown on the stats page, now duplicate topics is removed.
+   * The hour being highlighted in 'most active times' is now the hour with
+     most activity, if you want to highlight the hour which the stats are
+     being generated in, use 'use_activetime_alt'
+   * More improvements to pisg.cfg parsing
+   * irssi logfile fixes:
+     - Was interpreting nicks with '-' in it incorrectly.
+     - Topics wasn't being displayed correctly
+   * All configuration options in CONFIG-README can now be specified on
+     commandline, eg. 'pisg.pl --cfg show_wpl=1 --cfg show_cpl=1'
+
 pisg (0.31) - Mon, Dec 3rd 2001
    * Fix serious bug where pisg would end up in an endless loop when multiple
      URLs were on a line.

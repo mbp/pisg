@@ -81,6 +81,13 @@ And all the other contributors:
  * deadlock <deadlock@cheeseheadz.net>
    | addalias.pl version 2, handling of users already in config file,
      obsoletin of addalias.htm and more configurable script.
+ * Nicholas Frampton <whyrl@avians.net>
+   | infobot logfile support
+ * Mo-Ize <mo-ize@pas-tres.net>
+   | zcbot logfile support
+ * Azhrarn <diablo2@krock.com>
+   | winbot logfile support
+
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
