@@ -400,12 +400,12 @@ sub _activenicks
     }
     _html("</tr>");
 
-    my ($nick, $visiblenick, $randomline, %hash);
-    my $i = 1;
-    for (my $c = 0; $c < $self->{cfg}->{activenicks}; $c++) {
-        $nick = $active[$c];
-        $visiblenick = $active[$c];
+    for (my $i = 0; $i < $self->{cfg}->{activenicks}; $i++) {
+        my $c = $i + 1;
+        my $nick = $active[$i];
+        my $visiblenick = $active[$i];
 
+        my $randomline;
         if (not defined $self->{stats}->{sayings}{$nick}) {
             $randomline = "";
         } else {
@@ -422,7 +422,7 @@ sub _activenicks
 
         my $color = $self->generate_colors($c);
         my $class = 'rankc';
-        if ($i == 1) {
+        if ($c == 1) {
             $class = 'hirankc';
         } 
 
@@ -440,7 +440,7 @@ sub _activenicks
         my $line = $self->{stats}->{lines}{$nick};
         my $w    = $self->{stats}->{words}{$nick};
         my $ch   = $self->{stats}->{lengths}{$nick};
-        _html("$i</td><td style=\"background-color: $color\">$visiblenick</td>"
+        _html("$c</td><td style=\"background-color: $color\">$visiblenick</td>"
         . ($self->{cfg}->{show_linetime} ?
         "<td style=\"background-color: $color\">".$self->_user_linetimes($nick,$active[0])."</td>"
         : "<td style=\"background-color: $color\">$line</td>")
@@ -477,7 +477,6 @@ sub _activenicks
         }
 
         _html("</tr>");
-        $i++;
     }
 
     _html("</table><br />");
@@ -495,16 +494,16 @@ sub _activenicks
 
         if ($self->{cfg}->{activenicks} <  $remain) {
             _html("<br /><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
-            for (my $c = $self->{cfg}->{activenicks}; $c < $remain; $c++) {
-                unless ($c % 5) { if ($c != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
-                my $lines = $self->{stats}->{lines}{$nick};
-                _html("<td class=\"rankc\" style=\"font-size: 10px\">$active[$c] ($lines)</td>");
+            for (my $i = $self->{cfg}->{activenicks}; $i < $remain; $i++) {
+                unless ($i % 5) { if ($i != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
+                my $lines = $self->{stats}->{lines}{$active[$i]};
+                _html("<td class=\"rankc\" style=\"font-size: 10px\">$active[$i] ($lines)</td>");
             }
-
             _html("</tr></table>");
         }
     }
 
+    my %hash;
     $hash{totalnicks} = $nicks - $remain;
     if ($hash{totalnicks} > 0) {
         _html("<br /><b>" . $self->_template_text('totalnicks', %hash) . "</b><br />");
