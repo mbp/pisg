@@ -247,7 +247,7 @@ smiles1 = "<b>[:nick]</b> ist ein fröhlicher Mensch, [:per]% [:seiner:ihrer:] Ze
 smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. [:Er:Sie:] lächelte [:per]% der Zeit."
 smiles3 = "Niemand lächelt in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)"
 
-sad1 = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% seiner/ihrer Zeilen enthielten ein trauriges Smily :("
+sad1 = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% [seiner:ihrer] Zeilen enthielten ein trauriges Smily :("
 sad2 = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat."
 sad3 = "Niemand ist traurig in [:channel]! Was für ein fröhlicher Channel :)"
 
