@@ -708,9 +708,9 @@ sub parse_thirdline
                     $hash{nick} = $1;
                     $hash{newtopic} = $2;
 
-                } elsif ($4 =~ /^mode (\S+) \[([+-]o)\S* (\S+)[^\]]*\] by ([^!]+)!(\S+)$/) {
-                    $hash{newmode} = $2;
-                    $hash{nick} = $4;
+                } elsif ($4 =~ /^mode (\S+) \[([+-]o\S*) (\S+)[^\]]*\] by ([^!]+)!(\S+)$/) {
+					$hash{newmode} = $2;
+					$hash{nick} = $4;
                 }
 
             } elsif ($3 eq '!') {
