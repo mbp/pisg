@@ -846,9 +846,9 @@ mostop1 = "<b>[:nick]</b> deu [:ops] ops no canal..."
 mostop2 = "<b>[:nick]</b> também não fica atrás: [:ops] foram dados"
 mostop3 = "É raro, porém nenhúm op foi dado no [:channel]!"
 
-attacked1 = "Poor <b>[:nick]</b> não gosta de ninguém [:ele:ela:]. [:ELe:Ela:] atacou <b>[:attacks]</b> do tempo."
-attacked2 = "<b>[:nick]</b> tambem não gosta de ninguém. [:Ele:Ela:] atacou <b>[:attacks]</b> do tempo."
-attackedtext = "<b>Por exmplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+attacked1 = "Pobre <b>[:nick]</b> não gosta de ninguém. [:ELe:Ela:] atacou <b>[:attacks]%</b> do tempo."
+attacked2 = "Veja o <b>[:nick]</b> também não gosta de ninguém. [:He:She:] atacou <b>[:attacks]</b> do tempo."
+attackedtext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 mostdeop1 = "<b>[:nick]</b> é o malvado do canal, tirou op de [:deops] pessoas"
 mostdeop2 = "<b>[:nick]</b> tirou o op de [:deops] pessoas"
@@ -875,7 +875,7 @@ kick3 = "Bons ops aqui, ninguém foi chutado"
 allcaps1 = "Dá pra ver que a tecla shift de <b>[:nick]</b> está apertada: [:per]% do tempo [:ele:ela:] escreve em MAIUSCULO."
 allcaps2 = "<b>[:nick]</b> apenas esqueceu de desativar o Caps-Lock. [:Ele:Ela:] escreveu em MAIUSCULO [:per]% do tempo."
 allcaps3 = "Todos teve sua CAPS-LOCK sob o controle .  :)"
-allcapstext = "<b>Por exemplo isso:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+allcapstext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> é uma pessoa muito agressiva.  [:Ele:Ela:] atacou os outros <b>[:attacks]</b> do tempo."
 violent2 = "<b>[:nick]</b> nao se controla [:ele:ela:] ataca qualqer um. [:Ele:Ela:] atacou os outros <b>[:attacks]</b> do tempo."
@@ -883,7 +883,7 @@ violent3 = "Ninguem brigou com ninguem. Todo mundo foi amigo."
 violenttext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 words1 = "<b>[:nick]</b> escrevou um total de [:words] palavras!? "
-words2 = "<b>[:nick]</b> é fiel o seguidor de [:oldnick]. <b>[:nick]</b> falou apenas [:words] palavras."
+words2 = "O fiel de [:oldnick] é o <b>[:nick]</b> que falou apenas [:words] palavras."
 words3 = "Ninguem falou nada...  Canal estranho não¿¡¿¡"
 
 wpl1 = "<b>[:nick]</b> escreveu uma média de [:wpl] palavras por linhas."
@@ -910,6 +910,14 @@ sad1 = "<b>[:nick]</b> parece estar triste no momento, [:per]% linhas contém car
 sad2 = "<b>[:nick]</b> também está triste por [:per]% do tempo"
 sad3 = "Ninguém está triste no [:channel]! Aqui somos todos felizes :-)"
 
+mostvoice1 = "<b>[:nick]</b> deu [:voices] voices no [:channel]"
+mostvoice2 = "<b>[:nick]</b> também deu : [:voices] voices no canal."
+mostvoice3 = "Estranho nenhum voice foi dado no [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> tirou [:devoices] voices do canal."
+mostdevoice2 = "<b>[:nick]</b> tirou [:devoices] voices dos users."
+mostdevoice3 = "Ninguém perdeu seus voices no [:channel]!"
+
 ## Topics
 
 bignumtopic = "Sobre nossos usuarios"
@@ -924,7 +932,7 @@ notopic = "Nunca foi usado um topic neste canal"
 bylinetopic = "by [:nick] on [:time]"
 
 ## Other text
-totalnicks = "Fora os [:totalnicks] nicks que passaram pelo canal."
+totalnicks = "Também tiveram outros [:totalnicks] nicks que falaram pouco."
 totaltopic = "O topico foi setado [:total] vezes."
 totallines = "Número total de linhas: [:lines]"
 nick = "Nick"
@@ -933,6 +941,12 @@ numberlines = "Número de linhas"
 randquote = "Frases"
 userpic = "Foto"
 nottop = "Falta pouco para chegarem ao topo:"
+show_words = "Número de palavras"
+show_wpl = "Palavras por linha"
+show_cpl = "Letras por linha"
+show_lastseen = "Último uso"
+lastseen1 = "ontem"
+lastseen2 = "Dias átras"
 word = "Palavra"
 show_time = "Quando?"
 numberuses = "Número de usos"
