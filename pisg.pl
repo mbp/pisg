@@ -1331,7 +1331,7 @@ sub slap
                 slaps => $slap{$slaps[1]}
             );
 
-            my $text = template_text('slap1', %hash);
+            my $text = template_text('slap2', %hash);
             html("<br><span class=\"small\">$text</span>");
         }
    		html("</td></tr>");
