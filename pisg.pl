@@ -2241,7 +2241,7 @@ sub lasttopics
         html("<tr><td bgcolor=\"$conf->{hicell}\">" . template_text('notopic') ."</td></tr>");
     }
     if(@topics) {
-        html("<tr><td align=\"center\" colspan=\"2\" class=\"headline\">" . template_text('totaltopic', %hash) . "</td></tr>");
+        html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\">" . template_text('totaltopic', %hash) . "</td></tr>");
     }
 }
 
