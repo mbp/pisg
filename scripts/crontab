@@ -6,4 +6,4 @@
 # This will make pisg run every 10 minutes, or you could do it every hour
 # by doing this:
 
-* 0 * * * /path/to/pisg --silent
+0 * * * * /path/to/pisg --silent
