@@ -1,3 +1,6 @@
+pisg (0.21)
+   * Fix stupid legend bug; 0-6 should be 0-5, and 7-11 should be 6-11.
+
 pisg (0.20) - Tue, Aug 14th 2001
    * Add 'bgpic' config setting for the possibility to add a userdefined
      background picture to the page (Vetinari)
