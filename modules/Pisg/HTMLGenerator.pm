@@ -434,7 +434,11 @@ sub _activenicks
         my $height = $self->{cfg}->{pic_height};
         my $width = $self->{cfg}->{pic_width};
         if ($self->{users}->{userpics}{$nick}) {
-            _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\"></td>");
+            if ($width ne '') {
+                _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\"></td>");
+            } else {
+                _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\"></td>");
+            }
         }
 
         _html("</tr>");
