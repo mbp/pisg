@@ -387,10 +387,9 @@ sub _parse_file
                     $stats->{joins}{$nick}++;
 
                 } elsif (defined($newnick) and ($self->{cfg}->{nicktracking} == 1)) {
-                    # Don't add an alias if new nick belongs to someone else.
-                    if (lc($newnick) eq lc(find_alias($newnick))) {
-                        add_alias($nick, $newnick);
-                    }
+                    # Resolve new nick to the correct alias (this will create a hard-alias if it is using a regex)
+                    $newnick = find_alias($newnick);
+                    add_alias($nick, $newnick);
                     checkname($nick, $newnick, $stats) if ($self->{cfg}->{showmostnicks});
                 }
             }
