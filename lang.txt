@@ -604,7 +604,7 @@ dailyactivitytopic = "Activité journalière (des [:n] derniers jours)"
 
 totallines = "Nombre total de lignes: [:lines]"
 totalnicks = "Il y a également eu [:totalnicks] autres nicks sur le channel"
-totaltopic = "Il y a eu [:total] topics diférents sur le channel"
+totaltopic = "Il y a eu [:total] topics différents sur le channel"
 nick = "Nick"
 names = "Les différents nicks utilisés"
 url = "URL"
