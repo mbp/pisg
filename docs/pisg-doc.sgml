@@ -1789,6 +1789,40 @@
     </refsect1>
     </refentry>
 
+    <!-- *** MOSTNICKSHISTORY *** -->
+    <refentry id="mostnickshistory">
+
+    <refmeta> <refentrytitle>mostnickshistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>mostnickshistory</refname>
+    <refpurpose>maximum number of nicks to show in "most nicks"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         mostnickshistory = "2"
+        </channel>
+
+        <set mostnickshistory="10">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many nicks you want to appear in
+    the "Most used nicks" section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 5 </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** TOPICHISTORY *** -->
     <refentry id="topichistory">
 

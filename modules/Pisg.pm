@@ -173,6 +173,7 @@ sub get_default_config_settings
         urlhistory => 5,
         nickhistory => 5,
         wordhistory => 10,
+        mostnickshistory => 5,
         nicktracking => 0,
         charset => 'iso-8859-1',
 

@@ -1689,7 +1689,7 @@ sub _mostnicks
         _html("<td>&nbsp;</td><td class=\"tdtop\"><b>$nick_txt</b></td>");
         _html("<td class=\"tdtop\"><b>$names_txt</b></td></tr>");
 
-        for(my $i = 0; $i < 5; $i++) {
+        for(my $i = 0; $i < $self->{cfg}->{mostnickshistory}; $i++) {
             last unless $i < @sortnicks;
             my $nickcount = scalar(@{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
             my $nickused = join(", ", @{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
