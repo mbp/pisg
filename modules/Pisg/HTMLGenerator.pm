@@ -408,22 +408,7 @@ sub _activenicks
             $visiblenick = _replace_links($self->{users}->{userlinks}{$nick}, $nick);
         }
 
-        my $h = $self->{cfg}->{hicell};
-        $h =~ s/^#//;
-        $h = hex $h;
-        my $h2 = $self->{cfg}->{hicell2};
-        $h2 =~ s/^#//;
-        $h2 = hex $h2;
-        my $f_b = $h & 0xff;
-        my $f_g = ($h & 0xff00) >> 8;
-        my $f_r = ($h & 0xff0000) >> 16;
-        my $t_b = $h2 & 0xff;
-        my $t_g = ($h2 & 0xff00) >> 8;
-        my $t_r = ($h2 & 0xff0000) >> 16;
-        my $col_b  = sprintf "%0.2x", abs int(((($t_b - $f_b) / $self->{cfg}->{activenicks}) * +$c) + $f_b);
-        my $col_g  = sprintf "%0.2x", abs int(((($t_g - $f_g) / $self->{cfg}->{activenicks}) * +$c) + $f_g);
-        my $col_r  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $self->{cfg}->{activenicks}) * +$c) + $f_r);
-
+        my $color = $self->generate_colors($c);
         my $class = 'rankc';
         if ($i == 1) {
             $class = 'hirankc';
@@ -438,33 +423,32 @@ sub _activenicks
             $lastseen = "$lastseen " .$self->_template_text('lastseen2');
         }
         
-            
         _html("<tr><td class=\"$class\" align=\"left\">");
 
         my $line = $self->{stats}->{lines}{$nick};
         my $w    = $self->{stats}->{words}{$nick};
         my $ch   = $self->{stats}->{lengths}{$nick};
-        _html("$i</td><td style=\"background-color: #$col_r$col_g$col_b\">$visiblenick</td>"
+        _html("$i</td><td style=\"background-color: $color\">$visiblenick</td>"
         . ($self->{cfg}->{show_linetime} ?
-        "<td style=\"background-color:#$col_r$col_g$col_b\">".$self->_user_linetimes($nick,$active[0])."</td>"
-        : "<td style=\"background-color:#$col_r$col_g$col_b\">$line</td>")
+        "<td style=\"background-color: $color\">".$self->_user_linetimes($nick,$active[0])."</td>"
+        : "<td style=\"background-color: $color\">$line</td>")
         . ($self->{cfg}->{show_time} ?
-        "<td style=\"background-color:#$col_r$col_g$col_b\">".$self->_user_times($nick)."</td>"
+        "<td style=\"background-color: $color\">".$self->_user_times($nick)."</td>"
         : "")
         . ($self->{cfg}->{show_words} ?
-        "<td style=\"background-color:#$col_r$col_g$col_b\">$w</td>"
+        "<td style=\"background-color: $color\">$w</td>"
         : "")
         . ($self->{cfg}->{show_wpl} ?
-        "<td style=\"background-color:#$col_r$col_g$col_b\">".sprintf("%.1f",$w/$line)."</td>"
+        "<td style=\"background-color: $color\">".sprintf("%.1f",$w/$line)."</td>"
         : "")
         . ($self->{cfg}->{show_cpl} ?
-        "<td style=\"background-color:#$col_r$col_g$col_b\">".sprintf("%.1f",$ch/$line)."</td>"
+        "<td style=\"background-color: $color\">".sprintf("%.1f",$ch/$line)."</td>"
         : "")
         . ($self->{cfg}->{show_lastseen} ?
-        "<td style=\"background-color:#$col_r$col_g$col_b\">$lastseen</td>"
+        "<td style=\"background-color: $color\">$lastseen</td>"
         : "")
         . ($self->{cfg}->{show_randquote} ?
-        "<td style=\"background-color:#$col_r$col_g$col_b\">\"$randomline\"</td>"
+        "<td style=\"background-color: $color\">\"$randomline\"</td>"
         : "")
         );
 
@@ -472,12 +456,12 @@ sub _activenicks
         my $width = $self->{cfg}->{pic_width};
         if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
             if ($width ne '') {
-                _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" /></td>");
+                _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" /></td>");
             } else {
-                _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" /></td>");
+                _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" /></td>");
             }
         } elsif ($self->{cfg}->{default_pic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
-            _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{default_pic}\" /></td>");
+            _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{default_pic}\" /></td>");
         }
 
         _html("</tr>");
@@ -513,6 +497,31 @@ sub _activenicks
     if ($hash{totalnicks} > 0) {
         _html("<br /><b>" . $self->_template_text('totalnicks', %hash) . "</b><br />");
     }
+}
+
+sub generate_colors
+{
+    my $self = shift;
+    my $c = shift;
+
+    my $h = $self->{cfg}->{hicell};
+    $h =~ s/^#//;
+    $h = hex $h;
+    my $h2 = $self->{cfg}->{hicell2};
+    $h2 =~ s/^#//;
+    $h2 = hex $h2;
+    my $f_b = $h & 0xff;
+    my $f_g = ($h & 0xff00) >> 8;
+    my $f_r = ($h & 0xff0000) >> 16;
+    my $t_b = $h2 & 0xff;
+    my $t_g = ($h2 & 0xff00) >> 8;
+    my $t_r = ($h2 & 0xff0000) >> 16;
+    my $blue  = sprintf "%0.2x", abs int(((($t_b - $f_b) / $self->{cfg}->{activenicks}) * +$c) + $f_b);
+    my $green  = sprintf "%0.2x", abs int(((($t_g - $f_g) / $self->{cfg}->{activenicks}) * +$c) + $f_g);
+    my $red  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $self->{cfg}->{activenicks}) * +$c) + $f_r);
+
+    return "#$red$green$blue";
+
 }
 
 sub _html
