@@ -226,6 +226,7 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
+    $conf->{start} = time();   # set start time of file parse
 
     print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
 
@@ -632,7 +633,7 @@ sub parse_file
 
     close(LOGFILE);
 
-    my ($sec,$min,$hour) = gmtime(time - $^T);
+    my ($sec,$min,$hour) = gmtime(time - $conf->{start});
     $processtime = sprintf("%02d hours, %02d minutes and %02d seconds", $hour,  $min, $sec);
 
     $nicks = scalar keys %line;
