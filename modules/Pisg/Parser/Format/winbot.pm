@@ -66,23 +66,30 @@ sub thirdline
         $hash{min}  = $2;
         $hash{nick} = $3;
 
-        if ($3 =~ /^(\S+) was kicked from (\S+) by (\S+) .+/ && $2 eq $self->{cfg}->{channel}) {
-            #if ($2 eq $self->{cfg}->{channel}) {
+        #print STDERR " 1($1)\n2($2)\n3($3)\n4(" . $self->{cfg}->{channel} . ")\n";
+        if ($3 =~ /^(\S+) was kicked from (\S+) by (\S+) .+/) {
+            if ($2 eq $self->{cfg}->{channel}) {
                 $hash{nick} = $1;
                 $hash{kicker} = $3;
-            #}
+            }
 
-        } elsif ($3 =~ /^([^\/]+)\/(\S+) changes topic to \"(.+)\"[^\"]*$/ && $2 eq $self->{cfg}->{channel}) {
-            $hash{nick} = $1;
-            $hash{newtopic} = $3;
+        } elsif ($3 =~ /^([^\/]+)\/(\S+) changes topic to \"(.+)\"[^\"]*$/) {
+            if ($2 eq $self->{cfg}->{channel}) {
+                $hash{nick} = $1;
+                $hash{newtopic} = $3;
+            }
 
-        } elsif ($3 =~ /^([^\/]+)\/(\S+) sets mode: (\S+) [^\)]+/ && $2 eq $self->{cfg}->{channel}) {
-            $hash{nick} = $1;
-            $hash{newmode} = $3;
+        } elsif ($3 =~ /^([^\/]+)\/(\S+) sets mode: (\S+) [^\)]+/) {
+            if ($2 eq $self->{cfg}->{channel}) {
+                $hash{nick} = $1;
+                $hash{newmode} = $3;
+            }
 
-        } elsif ($3 =~ /^(\S+) has joined (\S+)/ && $2 eq $self->{cfg}->{channel}) {
-            $hash{nick} = $1;
-            $hash{newjoin} = $1;
+        } elsif ($3 =~ /^(\S+) has joined (\S+)/) {
+            if ($2 eq $self->{cfg}->{channel}) {
+                $hash{nick} = $1;
+                $hash{newjoin} = $1;
+            }
 
         } elsif ($3 =~ /^(\S+) is now known as (\S+)/) {
             $hash{nick} = $1;
