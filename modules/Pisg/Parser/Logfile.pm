@@ -515,7 +515,7 @@ sub _parse_file
                     }
 
                 } elsif (defined($newtopic) && $newtopic ne '') {
-                    _topic_change($stats, $newtopic, $nick, $hour, $min);
+                    _topic_change($stats, $newtopic, $nick, $hour, $min, $stats->{days});
 
                 } elsif (defined($newmode)) {
                     _modechanges($stats, $newmode, $nick);
@@ -559,6 +559,7 @@ sub _topic_change
     my $nick = shift;
     my $hour = shift;
     my $min = shift;
+    my $days = shift;
 
     my $tcount = 0;
     if (defined $stats->{topics}) {
@@ -568,6 +569,7 @@ sub _topic_change
     $stats->{topics}[$tcount]{nick}  = $nick;
     $stats->{topics}[$tcount]{hour}  = $hour;
     $stats->{topics}[$tcount]{min}   = $min;
+    $stats->{topics}[$tcount]{days}  = $days;
 }
 
 sub _modechanges

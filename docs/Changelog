@@ -19,6 +19,11 @@ pisg (0.64) - ??
      nick while parsing. Saves memory and is probably saner anyway (thanks!).
    * Add version number to documentation title (and let the release Makefile
      update it).
+   * The "Latest Topics" section now displays the day like the "Last seen"
+     column (introduce [:days] in the last seen templates, add [:date] in
+     bylinetopic, swich [:nick] and [:time] around in English and German,
+     lastseen1 is now "yesterday" in English/German/French - patches for other
+     languages welcome!) (thanks, Christian Garbs).
    * Make the ircII format use Maintainer instead of ircIINick.
    * Documentation:
      + Add note that Maintainer is used by some log formats.

@@ -578,12 +578,13 @@ sub _activenicks
 
         if ($self->{cfg}->{showlastseen}) {
             $lastseen = $self->{stats}->{days} - $self->{stats}->{lastvisited}{$nick};
+            my %hash = ( days => $lastseen );
             if ($lastseen == 0) {
                 $lastseen = $self->_template_text('today');
             } elsif ($lastseen == 1) {
-                $lastseen = "$lastseen " .$self->_template_text('lastseen1');
+                $lastseen = $self->_template_text('lastseen1', %hash);
             } else {
-                $lastseen = "$lastseen " .$self->_template_text('lastseen2');
+                $lastseen = $self->_template_text('lastseen2', %hash);
             }
         }
 
@@ -1576,6 +1577,15 @@ sub _lasttopics
 
             $hash{nick} = $nick;
             $hash{time} = "$hour:$min";
+            $hash{days} = $self->{stats}->{days} - $self->{stats}->{topics}[$i]{days};
+            if ($hash{days} == 0) {
+                $hash{date} = $self->_template_text('today');
+            } elsif ($hash{days} == 1) {
+                $hash{date} = $self->_template_text('lastseen1', %hash);
+            } else {
+                $hash{date} = $self->_template_text('lastseen2', %hash);
+            }
+
             _html('<tr><td class="hicell"><i>' . $self->_format_line($topic) . '</i></td>');
             _html('<td class="hicell"><b>' . $self->_template_text('bylinetopic', %hash) . '</b></td></tr>');
         }
