@@ -1160,6 +1160,44 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWWORDTIME *** -->
+    <refentry id="ShowWordTime">
+
+    <refmeta> <refentrytitle>ShowWordTime</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowWordTime</refname>
+    <refpurpose>ShowLineTime like behavior of words column</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "bobot"
+         ShowWordTime = "0"
+        </channel>
+
+        <set ShowWordTime="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The default behaviour is to add a column to the "Most Active Nicks"
+    section displaying a fancy linetimebar to show when a user was active. 
+    With this option it can be done similarly to mIRCStats does it and like
+    the ShowLineTime option, but using words instead of lines; that is, by
+    putting that timebar next to the number of words, in the same column.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWRANDQUOTE *** -->
     <refentry id="ShowRandQuote">
 

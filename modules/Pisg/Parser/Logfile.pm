@@ -297,7 +297,7 @@ sub _parse_file
                         }
                     }
 
-                    _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword});
+                    _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword}, $hour);
                 }
             }
             $lastnormal = $line;
@@ -342,7 +342,7 @@ sub _parse_file
                 my $len = length($saying);
                 $stats->{lengths}{$nick} += $len;
 
-                _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword});
+                _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword}, $hour);
             }
         }
 
@@ -449,10 +449,11 @@ sub _modechanges
 
 sub _parse_words
 {
-    my ($stats, $saying, $nick, $ignoreword) = @_;
+    my ($stats, $saying, $nick, $ignoreword, $hour) = @_;
 
     foreach my $word (split(/[\s,!?.:;)(\"]+/, $saying)) {
         $stats->{words}{$nick}++;
+        $stats->{word_times}{$nick}[int($hour/6)]++;
         # remove uninteresting words
         next if ($ignoreword->{$word});
 

@@ -43,6 +43,12 @@ sub create_html
     if ($self->{cfg}->{showtime}) {
         $self->{cfg}->{tablewidth} += 40;
     }
+    if ($self->{cfg}->{showlinetime}) {
+        $self->{cfg}->{tablewidth} += 100;
+    }
+    if ($self->{cfg}->{showwordtime}) {
+        $self->{cfg}->{tablewidth} += 100;
+    }
     if ($self->{cfg}->{showwords}) {
         $self->{cfg}->{tablewidth} += 40;
     }
@@ -278,6 +284,7 @@ sub _pageheader
     while (<PAGEHEAD>) {
         _html($_);
     }
+    close(PAGEHEAD);
 }
 
 sub _pagefooter
@@ -287,6 +294,7 @@ sub _pagefooter
     while (<PAGEFOOT>) {
         _html($_);
     }
+    close(PAGEFOOT);
 }
 
 sub _activetimes
@@ -379,12 +387,14 @@ sub _activenicks
     );
 
     my @active;
+    my $nicks;
     if ($self->{cfg}->{sortbywords}) {
         @active = sort { $self->{stats}->{words}{$b} <=> $self->{stats}->{words}{$a} } keys %{ $self->{stats}->{words} };
+        $nicks = scalar keys %{ $self->{stats}->{words} };
     } else {
         @active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} } keys %{ $self->{stats}->{lines} };
+        $nicks = scalar keys %{ $self->{stats}->{lines} };
     }
-    my $nicks = scalar keys %{ $self->{stats}->{lines} };
 
     if ($self->{cfg}->{activenicks} > $nicks) { $self->{cfg}->{activenicks} = $nicks; }
 
@@ -445,13 +455,15 @@ sub _activenicks
         my $ch   = $self->{stats}->{lengths}{$nick};
         _html("<td style=\"background-color: $color\">$visiblenick</td>"
         . ($self->{cfg}->{showlinetime} ?
-        "<td style=\"background-color: $color\">".$self->_user_linetimes($nick,$active[0])."</td>"
+        "<td style=\"background-color: $color\" nowrap=\"nowrap\">".$self->_user_linetimes($nick,$active[0])."</td>"
         : "<td style=\"background-color: $color\">$line</td>")
         . ($self->{cfg}->{showtime} ?
         "<td style=\"background-color: $color\">".$self->_user_times($nick)."</td>"
         : "")
         . ($self->{cfg}->{showwords} ?
-        "<td style=\"background-color: $color\">$w</td>"
+           ($self->{cfg}->{showwordtime} ?
+           "<td style=\"background-color: $color\" nowrap=\"nowrap\">".$self->_user_wordtimes($nick,$active[0])."</td>"
+           : "<td style=\"background-color: $color\">$w</td>")
         : "")
         . ($self->{cfg}->{showwpl} ?
         "<td style=\"background-color: $color\">".sprintf("%.1f",$w/$line)."</td>"
@@ -463,7 +475,7 @@ sub _activenicks
         "<td style=\"background-color: $color\">$lastseen</td>"
         : "")
         . ($self->{cfg}->{showrandquote} ?
-        "<td style=\"background-color: $color\" nowrap=\"nowrap\">\"$randomline\"</td>"
+        "<td style=\"background-color: $color\">\"$randomline\"</td>"
         : "")
         );
 
@@ -1619,16 +1631,39 @@ sub _user_linetimes
     return "$bar&nbsp;$self->{stats}->{lines}{$nick}";
 }
 
+sub _user_wordtimes
+{
+    my $self = shift;
+    my $nick  = shift;
+    my $top   = shift;
+
+    my $bar      = "";
+    my $len      = ($self->{stats}->{words}{$nick} / $self->{stats}->{words}{$top}) * 100;
+
+    for (my $i = 0; $i <= 3; $i++) {
+        next if not defined $self->{stats}->{word_times}{$nick}[$i];
+        my $w = int(($self->{stats}->{word_times}{$nick}[$i] / $self->{stats}->{words}{$nick}) * $len);
+        if ($w) {
+            my $pic = 'pic_h_'.(6*$i);
+            $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />";
+        }
+    }
+    return "$bar&nbsp;$self->{stats}->{words}{$nick}";
+}
+
 sub _user_times
 {
     my $self = shift;
     my ($nick) = @_;
 
     my $bar = "";
-
+    
+    my $itemstat = ($self->{cfg}->{sortbywords} ? 'words' : 'lines');
+    my $timestat = ($self->{cfg}->{sortbywords} ? 'word_times' : 'line_times');
+    
     for (my $i = 0; $i <= 3; $i++) {
-        next if not defined $self->{stats}->{line_times}{$nick}[$i];
-        my $w = int(($self->{stats}->{line_times}{$nick}[$i] / $self->{stats}->{lines}{$nick}) * 40);
+        next if not defined $self->{stats}->{$timestat}{$nick}[$i];
+        my $w = int(($self->{stats}->{$timestat}{$nick}[$i] / $self->{stats}->{$itemstat}{$nick}) * 40);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
             $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\" />";

@@ -132,6 +132,7 @@ sub get_default_config_settings
         showbignumbers => 1,
         showtopics => 1,
         showlinetime => 0,
+        showwordtime => 0,
         showtime => 1,
         showwords => 0,
         showwpl => 0,

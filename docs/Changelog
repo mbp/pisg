@@ -1,9 +1,4 @@
 pisg (x.xx)
-   * SortByWords option added (thanks, Matthew Cheetah Gabeler-Lee
-     <msg2@po.cwru.edu>)
-   * Foul-words matching is now more strict. It no longer matches inside a
-     word, but only in the end or at the start of a word (thanks, Matthew
-     Cheetah Gabeler-Lee <msg2@po.cwru.edu>)
    * ShowFoulLine option added (thanks, Adam Spiers <adam@spiers.net>).
    * The "foul-words" counting is now done word-wise instead of line-wise
      (thanks, Adam Spiers <adam@spiers.net>)
@@ -20,9 +15,18 @@ pisg (x.xx)
      Hanno Hecker <hanno-pisg@bee.de>)
    * A problem with multiple mode changes (+vv, +oo) in Trillian format has
      been fixed.
-   * --cchannels commandline option added, when a channel is specified here,
-     it will be the only channel to run stats for in pisg.cfg. (thanks,
-     "Matthew \"Cheetah\" Gabeler-Lee" <msg2@po.cwru.edu>)
+   * Changes thanks to Matthew "Cheetah" Gabeler-Lee (<msg2@po.cwru.edu>):
+    * A ShowWordTime option now exists that works the same as ShowLineTime,
+      but uses word stats
+    * SortByWords option added
+    * Foul-words matching is now more strict. It no longer matches inside a
+      word, but only in the end or at the start of a word
+    * --cchannels commandline option added, when a channel is specified here,
+      it will be the only channel to run stats for in pisg.cfg.
+    * A bug previously that could cause pisg to error out in channels with
+      untalkative users in the active list when sorting by words is fixed.
+    * Random quotes wrap in the output html now
+
 
 pisg (0.38) - Thu Apr, 25th 2002
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)
