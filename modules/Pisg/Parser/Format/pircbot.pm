@@ -37,7 +37,7 @@ sub normalline
     my %hash;
 
     if ($line =~ /$self->{normalline}/o) {
-print "$line\n";
+        return unless (lc($5) eq lc($self->{cfg}->{channel}));
 
         # Most log formats are regular enough that you can just match the
         # appropriate things with parentheses in the regular expression.
@@ -60,6 +60,7 @@ sub actionline
     my %hash;
 
     if ($line =~ /$self->{actionline}/o) {
+        return unless (lc($5) eq lc($self->{cfg}->{channel}));
 
         # Most log formats are regular enough that you can just match the
         # appropriate things with parentheses in the regular expression.
@@ -105,17 +106,21 @@ sub thirdline
         my @line = split(/\s+/, "$5");
 
         if ($line[0] eq 'KICK') {
+            return unless (lc($line[1]) eq lc($self->{cfg}->{channel}));
             $hash{kicker} = $hash{nick};
             $hash{nick} = $line[2];
 
         } elsif ($line[0] eq 'TOPIC') {
+            return unless (lc($line[1]) eq lc($self->{cfg}->{channel}));
             $hash{newtopic} = join(' ', @line[2..$#line]);
             $hash{newtopic} =~ s/^://;
 
         } elsif ($line[0] eq 'MODE') {
+            return unless (lc($line[1]) eq lc($self->{cfg}->{channel}));
             $hash{newmode} = join(' ', @line[2..$#line]);
 
         } elsif ($line[0] eq 'JOIN') {
+            return unless (lc($line[1]) eq ':' . lc($self->{cfg}->{channel}));
             $hash{newjoin} = $hash{nick};
 
         } elsif ($line[0] eq 'NICK') {
