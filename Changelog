@@ -1,8 +1,9 @@
-pisg (0.18)
+pisg (0.18) - Fri, Aug 3rd 2001
 
    * Added pisg.cfg support which now obsoletes user.cfg, in this file
      everything should be set, instead of in the script - this makes it easier
      upgrading pisg. Read CONFIG-README in order to "understand" it.
+   * Commandline option -c is now -ch
    * Uncompress files with *.gz and *.bz2 automatically (Sascha Lüdecke)
    * Add new feature --prefix, this works on commandline so you only get logs
      starting with what you specify, for example -p '#mychan' will only get

@@ -1926,7 +1926,7 @@ maintainer]  [-f format] [-n network] [-d logdir] [-a aliasfile]
 
 Example:
 
- \$ pisg.pl -n IRCnet -f xchat -o suid.html -c \\#channel -l logfile.log
+ \$ pisg.pl -n IRCnet -f xchat -o suid.html -ch \\#channel -l logfile.log
 
 As always, all options may also be defined by editing the source and calling
 pisg without arguments.

@@ -52,7 +52,7 @@ commandline, the syntax is explained when doing:
 
 For example the following would work:
 
-    $ ./pisg.pl -c \#channel -l logfile.log -f mIRC -o index.html
+    $ ./pisg.pl -ch \#channel -l logfile.log -f mIRC -o index.html
     
 Try it out.
 
