@@ -1,40 +1,3 @@
-# Config file for pisg
-#
-# This file is used for two things:
-# - Setting pisg config options
-# - Setting user options
-#
-# You can set all pisg config options from here, syntax is as follows:
-# <settings variable="value">
-#
-# For example:
-# <settings channel="#channel">
-#
-# You can also combine settings into one line such as:
-# <settings channel="#channel" logfile="/var/log/channel.log">
-#
-# User options allow you to:
-# - Setting aliases for nicks
-# - Setting nicks to be ignored
-# - Setting user pictures
-# - Setting links to users homepages/e-mails
-#
-# The format is quite simple.
-#
-# To add aliases to a user:
-# <user nick="Joe" alias="Joe^away Joe^work">
-#
-# To add a picture to a user:
-# <user nick="Joe" pic="joe.jpg">
-#
-# To ignore a nick:
-# <user nick="nameofbot" ignore="y">
-#
-# You don't have to make it over many lines, you could just as easily do:
-# <user nick="Joe" alias="Joe^away Joe^work" pic="joe.jpg" link="http://www.joe.com">
-#
-# Have fun.. :)
-
 #!/usr/bin/perl -w
 
 use strict;
@@ -291,7 +254,7 @@ sub init_config
 
         }
 
-        close(USERS);
+        close(CONFIG);
     }
 
 }
@@ -697,13 +660,8 @@ sub parse_thirdline
                 $hash{nick} = substr($5, 0, -1);
                 $hash{newtopic} = "$6 $7 $8 $9 $10";
 
-            } elsif ($5 eq '[+o') {
-                $hash{newmode} = '+o';
-                $hash{newmode} = substr($6, 0, -1);
-
-            } elsif ($5 eq '[-o') {
-                $hash{newmode} = '-o';
-                $hash{newmode} = substr($6, 0, -1);
+            } elsif ($5 =~ /^\[[+-]o$/) {
+                $hash{newmode} = substr($5, 0, -1);
 
             } elsif (($4.$5) eq 'hasjoined') {
                 $hash{newjoin} = $1;
