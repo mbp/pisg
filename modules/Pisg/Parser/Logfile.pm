@@ -97,8 +97,8 @@ sub analyze
     # expand wildcards
     @logfiles = map { if(/[\[*?]/) { glob; } else { $_; } } @logfiles;
 
-    if (scalar(@{$self->{cfg}->{logdir}}) > 0) {
-        push @logfiles, $self->_parse_dir(); # get all files in dir
+    foreach my $logdir (@{$self->{cfg}->{logdir}}) {
+        push @logfiles, $self->_parse_dir($logdir); # get all files in dir
     }
 
     my $count = @logfiles;
@@ -146,9 +146,8 @@ sub analyze
 sub _parse_dir
 {
     my $self = shift;
+    my $logdir = shift;
 
-    # Loop through each logdir we were given
-    foreach my $logdir (@{$self->{cfg}->{logdir}}) {
         # Add trailing slash when it's not there..
         $logdir =~ s/([^\/])$/$1\//;
 
@@ -234,7 +233,6 @@ sub _parse_dir
         }
 
         return map { "$logdir$_" } @filesarray;
-    }
 }
 
 # This parses the file...

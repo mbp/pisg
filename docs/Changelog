@@ -2,6 +2,8 @@ pisg (0.65) - ??
    Christoph:
    * Karma didn't work well with nick aliases. It's still far from perfect,
      though (thanks to Nico for the test log).
+   * Fixed breakage when multiple LogDirs were given (thanks to Toni Viemerö
+     for the report, SF tracker #1155433).
 
 pisg (0.64) - Thu Feb, 24th 2005
    Morten:
