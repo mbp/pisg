@@ -1,7 +1,7 @@
 pisg (0.22)
    * pisg.cfg now supports regexs in user.cfg when 'regexp_aliases' is
      enabled. (thanks, Phil Gregory)
-   * When using logdirs, files is now sorted properly, so files is read in the
+   * When using logdirs, files is now sorted properly, so files are read in the
      right order (thanks, Sascha Lüdecke)
    * A bunch of English grammar corrections (thanks, Phil Gregory)
    * Words like //www is now being ignored as they should.
