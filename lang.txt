@@ -1092,9 +1092,15 @@ show_lastseen = "Laatst gezien"
 lastseen1 = "dag geleden"
 lastseen2 = "dagen geleden"
 today = "Vandaag"
-
 month = "Januari Februari Maart April Mei Juni Juli Augustus September Oktober November December"
 day = "zondag maandag dinsdag woensdag donderdag vrijdag zaterdag"
+stats_gen_by = "Stats gegenereerd door [:pisg_url] v[:version]"
+author = "pisg wordt gemaakt door [:author_url] en anderen"
+stats_gen_in = "Stats gegenereerd in [:time]"
+hours = "uren"
+minutes = "minuten"
+seconds = "seconden"
+and = "en"
 
 # Mouse-over titles
 pisghomepage = "Ga naar de pisg homepage"
