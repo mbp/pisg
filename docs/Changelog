@@ -13,6 +13,9 @@ pisg (x.xx)
    * Only match emails if it begins at the beginning of a line or after
      something other than ':' URL on that line. Fixes BugID#618540
    * Strip DOS Formatting from files - Fixes space at end of line BugID#628580
+   * Fixed bug in hour tracking - Formats hours to 2 digits correctly now,
+     previously was only forcing to 2 digit times if there was a time offset
+     configured.  Fixes BugID#632883
 
 
 

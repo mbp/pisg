@@ -548,10 +548,9 @@ sub _adjusttimeoffset
         # Adjust time
         $hour += $self->{cfg}{timeoffset};
         $hour = $hour % 24;
-        $hour = sprintf('%02d', $hour);
     }
      
-    return $hour;
+    return sprintf('%02d', $hour);
 }
 
 1;
