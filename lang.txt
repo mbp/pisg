@@ -81,7 +81,7 @@ numberuses = "Number of Uses"
 lastused = "Last Used by"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
 pagetitle2 = "Statistics generated on [:time]"
-pagetitle3 = "During this [:days]\-days reporting period, a total number of <b>[:nicks]</b> different nicks were represented on [:channel]."
+pagetitle3 = "During this [:days]-days reporting period, a total number of <b>[:nicks]</b> different nicks were represented on [:channel]."
 </lang>
 
 ### German
@@ -234,7 +234,7 @@ numberuses = "Antal forbrug"
 lastused = "Sidst brugt af"
 pagetitle1 = "[:channel] @ [:network] statistikker af [:maintainer]"
 pagetitle2 = "Statistikker lavet d. [:time]"
-pagetitle3 = "Igennem denne [:days]\-dages periode, har der været <b>[:nicks]</b> forskellige nicks på [:channel]."
+pagetitle3 = "Igennem denne [:days]-dages periode, har der været <b>[:nicks]</b> forskellige nicks på [:channel]."
 </lang>
 
 ### French
@@ -463,5 +463,5 @@ numberuses = "Liczba uzyc"
 lastused = "Ostatnio uzywany przez"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
 pagetitle2 = "Statystyka wygenerowana [:time]"
-pagetitle3 = "W przedziale [:days]\-dni, <b>[:nicks]</b> roznych nickow odwiedzilo kanal [:channel]."
+pagetitle3 = "W przedziale [:days]-dni, <b>[:nicks]</b> roznych nickow odwiedzilo kanal [:channel]."
 </lang>
