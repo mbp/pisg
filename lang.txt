@@ -22,10 +22,10 @@
 <lang name="EN">
 ### English
 mostop1 = "<b>[:nick]</b> donated [:ops] ops in the channel..."
-mostop2 = "<b>[:nick]</b> was also very polite: [:ops] from her/him"
+mostop2 = "<b>[:nick]</b> was also very polite: [:ops] from [:subj]"
 mostop3 = "Strange, no op was given on [:channel]!"
 
-action1 = "<b>[:nick]</b> always lets us know what he/she is doing: [:actions] actions!"
+action1 = "<b>[:nick]</b> always lets us know what [:sex] is doing: [:actions] actions!"
 action2 = "Also <b>[:nick]</b> tells us what's up with [:actions]"
 action3 = "No actions in [:channel] !"
 actiontext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
@@ -35,26 +35,26 @@ mostdeop2 = "<b>[:nick]</b> deoped [:deops] users"
 mostdeop3 = "Wow, no op was taken on [:channel]!"
 
 question1 = "<b>[:nick]</b> is either stupid or just making many questions... [:per]% lines contained a question!"
-question2 = "<b>[:nick]</b> didn't know that much either, [:per]% of his lines were questions"
+question2 = "<b>[:nick]</b> didn't know that much either, [:per]% of [:posessive] lines were questions"
 question3 = "Nobody asked questions here, just geniuses at this channel?"
 
 loud1 = "Loudest one was <b>[:nick]</b> who yelled [:per]% of the time!"
 loud2 = "Another <i>old yeller</i> was <b>[:nick]</b> who shouted [:per]% of the time!"
 loud3 = "Nobody raised an exclamation mark, wow."
 
-shout1 = "It seem that <b>[:nick]</b>'s shift-key is hanging, [:per]% of the time he/she wrote UPPERCASE"
-shout2 = "<b>[:nick]</b> just forgot to deactivate his/her Caps-Lock, [:per]% of the time he/she wrote UPPERCASE"
+shout1 = "It seem that <b>[:nick]</b>'s shift-key is hanging, [:per]% of the time [:sex] wrote UPPERCASE"
+shout2 = "<b>[:nick]</b> just forgot to deactivate [:posessive] Caps-Lock, [:per]% of the time [:sex] wrote UPPERCASE"
 shout3 = "Everybody had their shift-key under control :)"
 shouttext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 
 slap1 = "<b>[:nick]</b> is a very aggresive person, who slapped around <b>[:slaps]</b> times."
-slap2 = "<b>[:nick]</b> can't control his aggressions. He/She slapped around <b>[:slaps]</b> times."
+slap2 = "<b>[:nick]</b> can't control [:posessive] aggressions. [:sex] slapped around <b>[:slaps]</b> times."
 slap3 = "Nobody slapped around anybody, everybody was friendly."
 slaptext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-slapped1 = "Poor <b>[:nick]</b>, nobody likes him/her. He/She got slapped <b>[:slaps]</b> times."
-slapped2 = "<b>[:nick]</b> seems to be unliked too, he/she got slapped <b>[:slaps]</b> times."
+slapped1 = "Poor <b>[:nick]</b>, nobody likes [:subj]. [:sex] got slapped <b>[:slaps]</b> times."
+slapped2 = "<b>[:nick]</b> seems to be unliked too, [:sex] got slapped <b>[:slaps]</b> times."
 slapped3 = "Nobody got slapped in Channel :)"
 slappedtext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -72,7 +72,7 @@ words1 = "<b>[:nick]</b> spoke a total of [:words] words!"
 words2 = "[:oldnick]'s faithfull follower, <b>[:nick]</b>, didn't speak so much: [:words] words."
 words3 = "Nobody said anything... what a strange channel..."
 
-mono1 = "<b>[:nick]</b> is talking to himself a lot, wrote over 5 lines in a row [:monos] times!"
+mono1 = "<b>[:nick]</b> is talking to [:subj]self a lot, wrote over 5 lines in a row [:monos] times!"
 mono2 = "Another lonely one was <b>[:nick]</b>, who managed to hit [:monos] times"
 
 wpl1 = "<b>[:nick]</b> wrote an average of [:wpl] words per line..."
@@ -133,6 +133,16 @@ lastused = "Last Used by"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
 pagetitle2 = "Statistics generated on "
 pagetitle3 = "During this [:days]-days reporting period, a total number of <b>[:nicks]</b> different nicks were represented on [:channel]."
+msex = "he"
+fsex = "she"
+usex = "he/she"
+mposessive = "his"
+fposessive = "her"
+uposessive = "his/her"
+msubj = "him"
+fsubj = "her"
+usubj = "him/her"
+
 </lang>
 
 ### German
