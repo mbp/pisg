@@ -297,7 +297,7 @@ sub init_config
                 }
 
                 if ($line =~ /alias="([^"]+)"/) {
-                    my @thisalias = split(/\s+/, $1);
+                    my @thisalias = split(/\s+/, lc($1));
                     foreach (@thisalias) {
                         $_ =~ s/\*/\.\*/g;
                         $alias{$_} = $nick;
@@ -333,7 +333,7 @@ sub init_config
                     $words->{$1} = $2;
                     debug("Words: $1 = $2");
                 }
-            } elsif ($line =~ /<channel(.*)>/i) {
+            } elsif ($line =~ /<(channel=.*)>/i) {
                 my $settings = $1;
                 while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
@@ -610,15 +610,17 @@ sub parse_file
                 } elsif (defined($newjoin)) {
                     $joins{$nick}++;
                 } elsif (defined($newnick) && ($conf->{nicktracking} == 1)) {
-                    unless (defined($alias{$newnick})) {
-                        if (defined($alias{$nick}) && !defined($alias{$newnick})) {
-                            $alias{$newnick} = $nick;
-                        } elsif (defined($alias{$newnick}) && !defined($alias{$nick})) {
-                            $alias{$nick} = $newnick;
+                    my $lcnewnick = lc($newnick);
+                    my $lcnick = lc($nick);
+                    unless (defined($alias{$lcnewnick})) {
+                        if (defined($alias{$lcnick}) && !defined($alias{$lcnewnick})) {
+                            $alias{$lcnewnick} = $nick;
+                        } elsif (defined($alias{$lcnewnick}) && !defined($alias{$lcnick})) {
+                            $alias{$lcnick} = $newnick;
                         } elsif ($nick =~ /Guest/) {
-                            $alias{$nick} = $newnick;
+                            $alias{$lcnick} = $newnick;
                         } else {
-                            $alias{$newnick} = $nick;
+                            $alias{$lcnewnick} = $nick;
                         }
                     }
                 }
@@ -1006,13 +1008,13 @@ sub debug
 
 sub find_alias
 {
-    my $nick = shift;
+    my $nick = lc(shift());
 
     if ($alias{$nick}) {
         return $alias{$nick};
     } else {
         foreach (keys %alias) {
-            if (($_ =~ /\.\*/) && ($nick =~ /^$_$/)) {
+            if (($_ =~ /\.\*/) && ($nick =~ /^$_$/i)) {
                 return $alias{$_};
             }
         }
