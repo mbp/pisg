@@ -103,7 +103,7 @@ sub main
     init_lineformats(); # Attempt to set line formats in compliance with user specification (--format)
 
     init_users_config();        # Init users config. (Aliases, ignores etc.)
-    init_debug();       # Init the debugging file
+    init_debug(); 	        # Init the debugging file
 
     if ($logdir) {
         parse_dir();            # Run through all logfiles in dir
@@ -1286,6 +1286,9 @@ sub mostmonologues
              );
 
              my $text = template_text('mono2', %hash);
+             if ($monologue{$monologue[1]} == 1 && $lang eq 'EN') {
+                $text = substr $text, 0, -1;
+             }
              html("<br><span class=\"small\">$text</span>");
          }
          html("</td></tr>");
