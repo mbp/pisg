@@ -242,11 +242,9 @@ sub init_config
 
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
-                    my $var = $1;
-                    my $value = $2;
-                    $var = tl($var); # Make the string lowercase
-                    $config->{$var} = $value;
-                    debug("Conf: $1 = $2");
+                    my $var = tl($1); # Make the string lowercase
+                    $config->{$var} = $2;
+                    debug("Conf: $var = $2");
                 }
 
             } elsif ($line =~ /<words(.*)>/) {
