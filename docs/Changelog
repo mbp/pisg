@@ -5,6 +5,8 @@ pisg (0.60) - ??
    * Added scripts/eggdrop-pisg.tcl for running pisg from eggdrop (Thanks,
    HM2K).
    * Add total number of lines to status output.
+   * Annotated all languages in lang.txt with charset; fixed some Russian and
+   German strings.
 
 pisg (0.59) - Sun Oct, 3rd 2004
    Changes by Morten Brix Pedersen:

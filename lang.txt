@@ -1,15 +1,14 @@
-# In order to use a specific translation, you must set 'lang' in the pisg
-# configuration file, e.g.:
+# To use a translation, set 'lang' in the pisg configuration file, e.g.:
 #
 # <set lang="DK">
 #
-# To get a Danish translated page.
+# to get a page in Danish.
 #
-# Translations in this file as of now:
+# Translations in this file:
 #
 # (EN) English
 # (DE) German - Winfried Nessen <doomshammer@doomshammer.yi.org>
-# (NO) Norweigan - Andreas Blaafladt <andreabl@login1.powertech.no>
+# (NO) Norwegian - Andreas Blaafladt <andreabl@login1.powertech.no>
 # (PT) Portuguese - MrWho <mrwho@softhome.net>
 # (PT-BR) Portuguese/BR(Brazil) - francisco lopes <falmp@terra.com.br>
 # (DK) Danish - Kim Ingemann <tuxi@tuxi.dk>
@@ -35,9 +34,11 @@
 # (BG) Bulgarian - m9ck <m9ck@abv.bg>
 # (YU) Serbian - Garp <garp@pixelsndots.com>
 # (SQ) Albanian - h3li0s <elbo_79@yahoo.it>
+#
+# A list of charsets is at http://www.w3.org/International/O-charset-list.html.
 
 ### English
-<lang name="EN">
+<lang name="EN" charset="us-ascii">
 mostop1 = "<b>[:nick]</b> donated [:ops] ops in the channel..."
 mostop2 = "<b>[:nick]</b> was also very polite: [:ops] ops from [:him:her:]."
 mostop3 = "Strange, no op was given on [:channel]!"
@@ -191,7 +192,7 @@ mailto = "Mail to"
 </lang>
 
 ### German
-<lang name="DE">
+<lang name="DE" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> vergab [:ops] Ops im Channel..."
 mostop2 = "<b>[:nick]</b> war auch sehr zuvorkommend: [:ops] von [:ihm:ihr:]."
 mostop3 = "Komisch, kein Op wurde in [:channel] vergeben!"
@@ -328,7 +329,7 @@ today = "heute"
 pagetitle1 = "[:channel] @ [:network] Stats erstellt von [:maintainer]"
 pagetitle2 = "Statistik erstellt am "
 pagetitle3 = "Wдhrend des Statistikzeitraums von [:days] Tage(n) wurden <b>[:nicks]</b> verschiedene Nicks in [:channel] gezдhlt."
-stats_gen_by = "Die Statistiken wurden erstellt mit [:pisg_url] v[:version]."
+stats_gen_by = "Die Statistik wurde mit [:pisg_url] v[:version] erstellt."
 author = "pisg von [:author_url] und anderen"
 stats_gen_in = "Die Statistik wurde in [:time] generiert."
 hours = "Stunden"
@@ -339,14 +340,14 @@ names1 = "Nicks"
 names2 = "Nick"
 
 # Mouse-over titles
-pisghomepage = "pisg Homepage цffnen"
+pisghomepage = "pisg-Homepage цffnen"
 authorhomepage = "Homepage des Autors цffnen"
 newwindow = "In einem neuen Fenster цffnen:"
 mailto = "Mail an"
 </lang>
 
 ### Danish
-<lang name="DK">
+<lang name="DK" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> gav [:ops] op status i kanalen..."
 mostop2 = "<b>[:nick]</b> var ogsе venlig at gi': [:ops] fra sig"
 mostop3 = "Underligt, ingen har fеet op pе [:channel] endnu!"
@@ -491,7 +492,7 @@ mailto = "Mail til"
 </lang>
 
 ### French
-<lang name="FR">
+<lang name="FR" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> a donnй [:ops] ops sur le canal..."
 mostop2 = "<b>[:nick]</b> est aussi trиs poli[::e:(e):] : [:ops] ops de sa part."
 mostop3 = "Etrange, aucun op n'a йtй donnй sur [:channel]!"
@@ -645,7 +646,7 @@ mailto = "Envoyer un mail"
 </lang>
 
 ### Spanish
-<lang name="ES">
+<lang name="ES" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> ha dado [:ops] ops en el canal..."
 mostop2 = "<b>[:nick]</b> tambiйn reparte ensaimadas: [:ops] nada menos"
 mostop3 = "Aъn no se han repartido arrobas en [:channel]!"
@@ -799,7 +800,7 @@ mailto = "Enviar a"
 </lang>
 
 ### Polish
-<lang name="PL">
+<lang name="PL" charset="iso-8859-2">
 mostop1 = "<b>[:nick]</b> lubi rozdawaж opy robi±c to [:ops] razy..."
 mostop2 = "Kolejnym dobroczyсc± jest <b>[:nick]</b> - zyskuje popularno¶ж nadaj±c [:ops] opуw."
 mostop3 = "Dziwne, nikt nie dostaі opa na [:channel]!"
@@ -952,8 +953,8 @@ newwindow = "Otwуrz w nowym oknie:"
 mailto = "Wy¶lij maila do:"
 </lang>
 
-### Portugese
-<lang name="PT">
+### Portuguese
+<lang name="PT" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> deu [:ops] ops no canal..."
 mostop2 = "<b>[:nick]</b> tambйm foi [:simpбtico:simpбtica:]: [:ops] ops [:dele:dela:]."
 mostop3 = "Estranho, nenhum op foi dado no [:channel]!"
@@ -1107,7 +1108,7 @@ mailto = "Enviar mail para"
 </lang>
 
 ### Dutch
-<lang name="NL">
+<lang name="NL" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> doneerde <b>[:ops]</b> ops in deze chatbox..."
 mostop2 = "<b>[:nick]</b> was ook erg beschaafd: <b>[:ops]</b> werden er uitgedeeld door [:hem:haar:]."
 mostop3 = "Wat raar, geen operator status gegeven op [:channel]!"
@@ -1119,11 +1120,11 @@ mostdeop3 = "Wow, geen ops afgepakt in [:channel]!"
 mostvoice1 = "<b>[:nick]</b> gaf [:voices] voicekes in het kanaal..."
 mostvoice2 = "<b>[:nick]</b> was ook erg beleefd: [:voices] voicekes van [:hem:haar:]."
 mostvoice3 = "Raar, geen voicekes gegeven op [:channel]!"
-                                                                                
+
 mostdevoice1 = "<b>[:nick]</b> neemt graag voickes af van mensen, [:hij:zij:] devoicede [:devoices] mensen."
 mostdevoice2 = "<b>[:nick]</b> neemt ook graag voickes af, [:hij:zij:] devoicede [:devoices] mensen."
 mostdevoice3 = "Er waren geen voicekes afgenomen op [:channel]!"
-                                                                                
+
 mosthalfop1 = "<b>[:nick]</b> gaf [:halfops] keer halfopstatus in het kanaal..."
 mosthalfop2 = "<b>[:nick]</b> was ook beleefd; [:hij:zij:] gaf [:halfops] keer halfop status."
 mosthalfop3 = "Raar, er zijn geen halfops gegeven in [:channel]!"
@@ -1258,7 +1259,7 @@ mailto = "Mail naar"
 </lang>
 
 ### Swedish
-<lang name="SE">
+<lang name="SE" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> gav [:ops] personer operatцrsstatus i kanalen..."
 mostop2 = "<b>[:nick]</b> var ocksе vдldigt vдnlig: [:ops] frеn [:honom:henne:]"
 mostop3 = "Underligt, inga personer fick operatцrsstatus i [:channel]!"
@@ -1415,7 +1416,7 @@ mailto = "Email till"
 </lang>
 
 ### Finnish (Suomi)
-<lang name="FI">
+<lang name="FI" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> jakeli kanavalla oppeja [:ops] kertaa..."
 mostop2 = "<b>[:nick]</b>kin oli tosi kohtelias: hдneltд tippui oppeja [:ops] kertaa!"
 mostop3 = "Kummaa kyllд, [:channel]:lla ei opitettu ketддn!"
@@ -1570,7 +1571,7 @@ mailto = "Lдhetд sдhkцpostia"
 
 
 ### Slovenian
-<lang name="SI">
+<lang name="SI" charset="us-ascii">
 mostop1 = "<b>[:nick]</b> je [:podaril:podarila:] [:ops] opov na kanalu..."
 mostop2 = "<b>[:nick]</b> je [:bil:bila:] tudi zelo [:radodaren:radodarna:]. [:ops] opov od [:njega:nje:]."
 mostop3 = "Cudno, nikomur ni bil dan op na [:channel]!"
@@ -1716,8 +1717,8 @@ mailto = "Poslji mail na:"
 
 </lang>
 
-### Magyar lengvidzsu szovegek
-<lang name="HU">
+### Hungarian (Magyar lengvidzsu szovegek)
+<lang name="HU" charset="us-ascii">
 mostop1 = "<b>[:nick]</b> [:ops] opot adott a csatin..."
 mostop2 = "<b>[:nick]</b> szinten nagylelku: [:ops] opot adomanyozott."
 mostop3 = "Erdekes, senki nem kapott opot a [:channel] csatin!"
@@ -1870,7 +1871,7 @@ mailto = "Level kuldese:"
 </lang>
 
 ### Estonian
-<lang name="EE">
+<lang name="EE" charset="iso-8859-1">
 mostop1 = "Kхige rohkem operaatori staatust jagas <b>[:nick]</b>, [:ops] korda."
 mostop2 = "<b>[:nick]</b> ei tahtnud sitem olla ja andis [:ops] op-i."
 mostop3 = "Imelik, aga kanalil [:channel] ei andnud keegi kellelegi op-i!"
@@ -2021,7 +2022,7 @@ mailto = "Postita kiri aadressile"
 </lang>
 
 ### Italian
-<lang name="IT">
+<lang name="IT" charset="iso-8859-1">
 names1 = "nomi"
 names2 = "nome"
 names = "Nick Usati"
@@ -2163,7 +2164,7 @@ newwindow = "Apri in un'altra finestra:"
 </lang>
 
 ### Catalan
-<lang name="CA">
+<lang name="CA" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> ha donat [:ops] ops al canal..."
 mostop2 = "<b>[:nick]</b> tambe reparteix ensiamades: [:ops] ni mйs ni menys"
 mostop3 = "Encara no s'han repartit les arrobes al canal [:channel]!"
@@ -2187,7 +2188,7 @@ allcapstext = "<b>Com per exemple, aixт:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 violent1 = "<b>[:nick]</b> йs el mйs agressiu del canal, ha repartit hтsties <b>[:attacks]</b> vegades."
 violent2 = "<b>[:nick]</b> tй la mа fluixa. Ha repartit pinyes <b>[:attacks]</b> vegades."
-violent3 = "Ningъ ha repartit pinyus en aquest canal, tothom -sembla- amigable >:)."
+violent3 = "Ningъ ha repartit pinyus en aquest canal, tothom -sembla- amigable :)."
 violenttext = "<b>Com йs mostra aqui:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Pobre <b>[:nick]</b>, A ningъ li cau bй. Li han donat <b>[:attacks]</b> bofetades."
@@ -2298,13 +2299,13 @@ and = "i"
 
 # Mouse-over titles
 pisghomepage = "Anar a la pаgina del pisg"
-authorhomepage = "Anar a la pаgina dels autors"                                   
+authorhomepage = "Anar a la pаgina dels autors"
 newwindow = "Obrir en la finestra:"
 mailto = "Escriure un email a"
 </lang>
 
 ### Norwegian
-<lang name="NO">
+<lang name="NO" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> donerte [:ops] ops i kanalen.."
 mostop2 = "<b>[:nick]</b> var ogsе veldig hyggelig: [:ops] ops fra [:ham:henne:]."
 mostop3 = "Merkelig, ingen op er delt ut pе  [:channel]!"
@@ -2452,8 +2453,8 @@ newwindow = "Еpne i et nytt vindu:"
 mailto = "Mail til"
 </lang>
 
-### Portugese/BR
-<lang name="PT-BR">
+### Portuguese/Brazil
+<lang name="PT-BR" charset="iso-8859-1">
 action1 = "<b>[:nick]</b> sempre nos deixou por dentro do que [:ele:ela:] estava fazendo: <b>[:actions]</b> actions!"
 action2 = "<b>[:nick]</b> tambйm nos contou sobre o que se passava com <b>[:actions]</b> actions."
 action3 = "Nгo houve actions no [:channel]!"
@@ -2567,7 +2568,8 @@ wpl1 = "<b>[:nick]</b> escreveu uma mйdia de <b>[:wpl]</b> palavras por linha."
 wpl2 = "A mйdia do canal foi de <b>[:avg]</b> palavras por linha."
 </lang>
 
-<lang name="TR">
+### Turkish
+<lang name="TR" charset="iso-8859-9">
 mostop1 = "<b>[:nick]</b> kanalda [:ops] defa op verdi..."
 mostop2 = "<b>[:nick]</b> TAM [:ops] defa baskasina op verdi ."
 mostop3 = "Ilginc... [:channel] kanalinda hic op verilmemis!"
@@ -2709,7 +2711,7 @@ mailto = "E-posta"
 </lang>
 
 ### Romanian
-<lang name="RO">
+<lang name="RO" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> a dat op de [:ops] ori..."
 mostop2 = "<b>[:nick]</b> a fost deasemenea politicos: [:ops] ops de la el."
 mostop3 = "Bizar, nu s-a dat nici un op pe [:channel]!"
@@ -2851,7 +2853,7 @@ mailto = "Mail to"
 </lang>
 
 ### Icelandic
-<lang name="IS">
+<lang name="IS" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> gaf [:ops] op б rбsinni..."
 mostop2 = "<b>[:nick]</b> var lнka mjцg kurteis: [:ops] op frб [:honum:henni:]."
 mostop3 = "Skrнtiр, engin op voru gefin б [:channel]!"
@@ -2991,8 +2993,8 @@ newwindow = "Opna nэjan glugga:"
 mailto = "Senda tцlvupуst til"
 </lang>
 
-# Czech
-<lang name="CZ">
+### Czech
+<lang name="CZ" charset="CP1250">
 mostop1 = "<b>[:nick]</b> dal [:ops] opщ na kanбle..."
 mostop2 = "<b>[:nick]</b> byl takй velice pozornэ. Rozdal [:ops]x op."
 mostop3 = "Divnй, nikdo nebyl opnut na [:channel]!"
@@ -3135,7 +3137,7 @@ mailto = "Mail to"
 </lang>
 
 ### Slovak
-<lang name="SK">
+<lang name="SK" charset="CP1250">
 mostop1 = "<b>[:nick]</b> @[:ol:la:] [:ops]x ."
 mostop2 = "<b>[:nick]</b> bol[::a:] tieћ veѕmi zdvoril[:э:б:]. Rozdal[::a:] @ [:ops]x ."
 mostop3 = "Zaujнmavй, nikto nebol opnutэ na [:channel] :)"
@@ -3278,7 +3280,7 @@ mailto = "Poљli mail pre"
 </lang>
 
 ### Russian
-<lang name="RU">
+<lang name="RU" charset="CP1251">
 mostop1 = "<b>[:nick]</b> раздал [:ops] опов на канале..."
 mostop2 = "<b>[:nick]</b> тоже очень добр: [:ops] опов."
 mostop3 = "Странно, никто опа не давал на [:channel]!"
@@ -3315,7 +3317,7 @@ allcapstext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:li
 
 violent1 = "<b>[:nick]</b> очень агрессивная личность. Он(а) атаковал(а) других <b>[:attacks]</b> раз."
 violent2 = "<b>[:nick]</b> тоже не может контролировать свою агрессию.  Наезжал(а) на других <b>[:attacks]</b> раз."
-violent3 = "Geen klappen uitgedeeld hier, wat een vriendelijk zooitje."
+violent3 = "Никто не наезжает, все ведут себя дружественно."
 violenttext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Бедный(ая) <b>[:nick]</b>, никто его(её) не любит.  Его/её атаковали  <b>[:attacks]</b> раз."
@@ -3370,13 +3372,14 @@ othernumtopic = "Другие интересные цифры"
 latesttopic = "Последние топики"
 activetimestopic = "Когда мы тут чаще болтаем"
 activenickstopic = "Самые активные пользователи"
-activenickbyhourtopic = "уБНЩЕ БЛФЙЧОЩЕ РПМШЪПЧБФЕМЙ РП ЮБУБН"
+activenickbyhourtopic = "Самые активные пользователи по часам"
 mostwordstopic = "Наиболее часто используемые слова"
 referencetopic = "Наиболее популярный ник"
 urlstopic = "Наиболее популярный URL"
 notopic = "На этом канале никогда не было топика."
 mostnickstopic = "Пользователи с наибольшим количеством ников"
 bylinetopic = "Автор - [:nick] от [:time]"
+dailyactivitytopic = "Активность за день (за последние [:n] дней)"
 
 ## Other text
 
@@ -3422,7 +3425,7 @@ mailto = "Мыльнуть"
 </lang>
 
 ### Greek
-<lang name="GR">
+<lang name="GR" charset="iso-8859-7">
 mostop1 = "П/з <b>[:nick]</b> Эдщуе [:ops] ops уфп кбнЬлй..."
 mostop2 = "П/з <b>[:nick]</b> бкплпэизуе ехгенйкЬ ме [:ops]."
 mostop3 = "РесЯесгп, кбнЭнб op ден дюизке уфп [:channel]!"
@@ -3575,7 +3578,7 @@ mailto = "БрпуфплЮ mail уе"
 </lang>
 
 ### Hebrew
-<lang name="HE">
+<lang name="HE" charset="CP1255">
 mostop1 = "<b>[:nick]</b> [:ръп:рърд:] [:ops] аефйн бтшех..."
 mostop2 = "<b>[:nick]</b> [:дйд:дййъд:] вн гй [:ореос:ореосъ:]: [:ops] аефйн о [:ооре:оорд:]."
 mostop3 = "оежш, ма ръре ау аеф б [:channel]!"
@@ -3727,8 +3730,8 @@ newwindow = "Open in new window:"
 mailto = "Mail to"
 </lang>
 
-### Bulgarian.
-<lang name="BG">
+### Bulgarian
+<lang name="BG" charset="CP1251">
 mostop1 = "<b>[:nick]</b> е дал [:ops] ops в канала..."
 mostop2 = "<b>[:nick]</b> също беше много учтив: [:ops] ops."
 mostop3 = "Странно, не е даван op в [:channel]!"
@@ -3880,8 +3883,8 @@ newwindow = "Отвори в нов прозорец"
 mailto = "Поща до"
 </lang>
 
-### Serbian (yugoslavian)
-<lang name="YU">
+### Serbian (Yugoslavian)
+<lang name="YU" charset="us-ascii">
 mostop1 = "<b>[:nick]</b> je OPovao [:ops] osoba na kanalu..."
 mostop2 = "<b>[:nick]</b> je takodje bio bas darezljiv i OPovao je [:ops] osoba na kanalu"
 mostop3 = "Cudno, nije bilo opovanja na kanalu [:channel]!"
@@ -4035,7 +4038,7 @@ mailto = "E-mail"
 </lang>
 
 ### Albanian
-<lang name="SQ">
+<lang name="SQ" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> dhuroi [:ops] OP nл kanal..."
 mostop2 = "<b>[:nick]</b> ishte gjithashtu i sjellshлm: [:ops] OP nga [:ai:ajo:]."
 mostop3 = "E зuditshme, asnjл OP nuk u dha nл [:channel]!"
