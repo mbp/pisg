@@ -1238,11 +1238,12 @@ bignumtopic = "Suuria lukuja"
 othernumtopic = "Muuta mielenkiintoista"
 latesttopic = "Viimeisimmät topikit"
 activetimestopic = "Vuorokauden aikajakauma"
-activenickstopic = "Suurimmat höpöttäjät"
+activenickstopic = "Ahkerimmat höpöttäjät"
 mostwordstopic = "Käytetyimpiä sanoja"
 referencetopic = "Kaivatuimpia irkkaajia"
 urlstopic = "Kuumia linkkejä"
 notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia..."
+mostnickstopic = "Eniten nikkiään vaihtavat irkkaajat"
 bylinetopic = "Asettanut <b>[:nick]</b> klo <b>[:time]</b>"
 
 ## Other text (Muuta sälää)
@@ -1270,6 +1271,12 @@ today = "Tänään"
 pagetitle1 = "[:channel] [:network]:ssä, tilastot laatinut: [:maintainer]"
 pagetitle2 = "Tilastoja päivitetty viimeksi "
 pagetitle3 = "Tällä [:days] päivän ajanjaksolla, [:channel]:lla kävi yhteensä <b>[:nicks]</b> eri tyyppiä."
+
+# Mouse-over titles
+pisghomepage = "Siirry pisg:in kotisivuille"
+authorhomepage = "Siirry pisg:in kehittäjän kotisivuille"
+newwindow = "Avaa uuteen ikkunaan:"
+mailto = "Lähetä sähköpostia"
 </lang>
 
 
