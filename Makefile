@@ -50,6 +50,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/bxlog.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/eggdrop.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/grufti.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircle.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/infobot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/irssi.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC.pm \
