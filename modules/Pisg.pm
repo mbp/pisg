@@ -141,6 +141,7 @@ sub get_default_config_settings
 
         show_activetimes => 1,
         show_bignumbers => 1,
+        show_topics => 1,
         show_linetime => 0,
         show_time => 1,
         show_words => 0,

@@ -105,7 +105,10 @@ sub create_html
 
     $self->_headline($self->_template_text('latesttopic'));
     _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
-    $self->_lasttopics();
+
+    $self->_lasttopics()
+        if ($self->{cfg}->{show_topics});
+
     _html("</table>"); # Needed for sections
 
     my %hash = ( lines => $self->{stats}->{totallines} );

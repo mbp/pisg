@@ -146,6 +146,9 @@ show_bignumbers     1 or 0, enable/disable 'Big Numbers' and 'Other
                     interesting numbers'.
                     (default: 1)
 
+show_topics         1 or 0, enable/disable 'Latest topics'.
+                    (default: 1)
+
 show_wpl            1 or 0, this enables pisg to show 'words per line' for
                     each person in 'most active nicks'
                     (default: 0)
