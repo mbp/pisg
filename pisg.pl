@@ -21,87 +21,71 @@ use Getopt::Long;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-my ($conf, $words, $chans, $users);
+my ($words, $chans, $users);
 
-# Values that _MUST_ be set below (unless you pass them on commandline)
-$conf->{channel} = "#channel";	# The name of your channel.
-$conf->{logfile} = "channel.log";	# The exact filename of the logfile
-$conf->{format} = "mIRC";		# logfile format. see FORMATS file
-$conf->{network} = "SomeIRCNet";	# Network the channels is using.
-$conf->{outputfile} = "index.html";	# The name of the html file to be generated
-$conf->{maintainer} = "MAINTAINER";	# The maintainer or bot which makes the logfile
-$conf->{pagehead} = "none";		# Some 'page header' file which you want to
-					# include in top of the stats
+# Default values for pisg. Their meanings are explained in CONFIG-README.
+#
+# If you are a user of pisg, you shouldn't change it here, but instead on
+# commandline or in pisg.cfg
 
-$conf->{configfile} = "pisg.cfg";	# Path to config file (aliases, ignores,
-					# pics and more, see pisg.cfg for examples)
+my $conf = {
+    channel => "#channel",
+    logfile => "channel.log",
+    format => "mIRC",
+    network => "SomeIRCNet",
+    outputfile => "index.html",
+    maintainer => "MAINTAINER",
+    pagehead => "none",
+    configfile => "pisg.cfg",
+    imagepath => "",
+    logdir => "",
+    lang => 'EN',
+    langfile => 'lang.txt',
+    prefix => "",
 
-$conf->{imagepath} = "";	# If your user pictures is located
-				# some special directory, set the path here.
+    # Colors
 
-$conf->{logdir} = "";		# If you specify a path to a dir here, then
-				# pisg will take that dir, and parse ALL
-				# logfiles in it, and create 1 HTML file
-				# from it
+    bgcolor => "#dedeee",
+    text => "black",
+    hbgcolor => "#666699",
+    hcolor => "white",
+    hicell => "#BABADD",
+    hicell2 => "#CCCCCC",
+    tdcolor => "black",
+    tdtop => "#C8C8DD",
+    link => "#0b407a",
+    vlink => "#0b407a",
+    hlink => "#0b407a",
+    headline => "#000000",
+    rankc => "#CCCCCC",  
+    pic1 => "pipe-blue.png",
+    pic2 => "pipe-purple.png",
 
-$conf->{lang} = 'EN';			# Language to use:
-			   	        # EN | DE | DK | FR | ES | PL
-$conf->{langfile} = 'lang.txt';	# Name of language file
+    # Less important things
 
-$conf->{prefix} = "";         # If you specify a string here and have $logdir
-                                # set, then only those files starting with
-                                # $prefix in $logdir will be read.
+    minquote => "25",
+    maxquote => "65",
+    wordlength => "5",
+    activenicks => "25",
+    activenicks2 => "30",
+    topichistory => "3",
+    nicktracking => 0,
+    timeoffset => "+0",
 
+    # Developer stuff
+    debug => 0,
+    debugfile => "debug.log",
+    version => "v0.18-cvs",
+};
 
-
-# Here you can set the colors for your stats page..
-$conf->{bgcolor} = "#dedeee";		# Background color of the page
-$conf->{text} = "black";		# Normal text color
-$conf->{hbgcolor} = "#666699";	# Background color in headlines
-$conf->{hcolor} = "white";		# Text color in headline
-$conf->{hicell} = "#BABADD";		# Background color in highlighted cells
-$conf->{hicell2} = "#CCCCCC";		# Background color in highlighted cells
-$conf->{tdcolor} = "black";		# Color of text in tables
-$conf->{tdtop} = "#C8C8DD";		# Top color in some tables.
-$conf->{link} = "#0b407a";		# Color of links
-$conf->{vlink} = "#0b407a";		# Color of visited links
-$conf->{hlink} = "#0b407a";		# Color of hovered links
-$conf->{headline} = "#000000";	# Border color of headlines
-$conf->{rankc} = "#CCCCCC";           # Colors of 'ranks' (1,2,3,4)
-$conf->{pic1} = "pipe-blue.png";	# Bar-graphic-file for normal times
-$conf->{pic2} = "pipe-purple.png";    # Bar-graphic-file for top-times
-
-# Other things that you might set, but not everyone cares about them
-$conf->{minquote} = "25";	# Minimal value of letters for a random quote
-$conf->{maxquote} = "65";	# Maximum value of letters for a random quote
-$conf->{wordlength} = "5";	# The minimum number of chars an interesting
-				# word may be (in 'most referenced words')
-$conf->{activenicks} = "25";	# Number of nicks to show in the 'top 25'
-$conf->{activenicks2} = "30";	# Nicks to show in 'these didnt make it...'
-$conf->{topichistory} = "3";	# How many topics to show in 'latest topics'
-$conf->{nicktracking} = 0;	# Track nickchanges and create aliases (can
-				# be slow, so it's disabled by default)
-
-$conf->{timeoffset} = "+0";	# A time offset on the stats page - if your
-				# country has a different timezone than the
-				# machine where the stats are being
-				# generated, then for example do +1
-				# to add 1 hour to the time
-$words->{foul} = "ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe"; # If not set in pisg.cfg set your Foulwords here.
-
-# You shouldn't care about anything below this point
-$conf->{debug} = 0;			# 0 = Debugging off, 1 = Debugging on
-$conf->{debugfile} = "debug.log";	# Path to debug file(must be set if $debug == 1)
-$conf->{version} = "v0.18-cvs";
+$words->{foul} = "ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe";
 
 my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
 $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %monologue, %kicked, %gotkick, %line, %length, %qpercent, %lpercent, %sadface,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
-%setban, %foul, $days, $oldtime, $lastline, $actions, $normals, 
- %T, $repeated, $lastnormal, $foulwords, %shout, %spercent,
-%slap, %slapped, $slaps, %words);
+%setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent, %slap, %slapped, $slaps, %words);
 
 sub main
 {
