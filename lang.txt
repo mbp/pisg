@@ -1131,7 +1131,7 @@ action3 = "Ei yht‰‰n toimintaa [:channel]:lla!"
 actiontext = "<b>Yksi esimerkki:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 question1 = "Onko <b>[:nick]</b> v‰h‰n tyhm‰ vai muuten kyselee liikaa?  [:per]% h‰nen kirjoittamista riveist‰‰n olivat kysymyksi‰!"
-question2 = "Ei tuo <b>[:nick]</b>:kaan mit‰‰n tied‰... [:per]% h‰nen sanomisistaan olivat kysymiksi‰..."
+question2 = "Ei tuo <b>[:nick]</b>:kaan mit‰‰n tied‰... [:per]% h‰nen sanomisistaan olivat kysymyksi‰..."
 question3 = "Kukaan ei kysellyt mit‰‰n! Onko t‰m‰ kanava t‰ynn‰ neroja?"
 
 shout1 = "Eniten meist‰ kirkui <b>[:nick]</b>, tarkemmin ottaen [:per]% ajasta!"
