@@ -1,4 +1,10 @@
+pisg (0.17) -
+
+   * Timezone offset now understands two digits as it should
+   * The 'time bars' were broken, fix them.
+
 pisg (0.16a) - Wed, July 25th 2001
+
    * Forgot to remove some debugging :(
 
 pisg (0.16) - Wed, July 25th 2001
