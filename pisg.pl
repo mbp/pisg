@@ -1993,6 +1993,10 @@ sub lasttopics
 # Some HTML subs
 sub htmlheader
 {
+my $bgpic = "";
+if ($conf->{bgpic}) {
+    $bgpic = " background=\"$conf->{bgpic}\"";
+}
 print OUTPUT <<HTML;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -2027,7 +2031,7 @@ td {
 .small { font-family: verdana, arial, sans-serif; font-size: 10px; }
 .asmall { font-family: arial narrow, sans-serif; font-size: 10px }
 </style></head>
-<body>
+<body$bgpic>
 <div align="center">
 HTML
 my %hash = (

@@ -15,13 +15,13 @@ always required.
 For example to add aliases to a nick, then you could do this:
     <user nick="Joe" alias="Joe^*">
 
-This will add alle Joe^'s to 'Joe' in the stats.
+This will add all Joe^'s to 'Joe' in the stats.
 
 Another thing you can do is to add a picture to a user:
     <user nick="Ben" pic="ben_holiday.jpg">
 
 Also you can add links to URLs and e-mails:
-    <user nick="Christine" link="http://www.christine.com>
+    <user nick="Christine" link="http://www.christine.com">
 
     or
 
@@ -107,6 +107,7 @@ langfile             Name of language file
   * Colors for your stats page *
 
 bgcolor              Background color of the page
+bgpic                Background picture of the page
 text                 Normal text color
 hbgcolor             Background color in headlines
 hcolor               Text color in headline

@@ -1,3 +1,7 @@
+pisg (0.20) 
+   * Add 'bgpic' config setting for the possibility to add a userdefined
+     background picture to the page (Vetinari)
+
 pisg (0.19) - Tue, Aug 7th 2001
    * Fix critical bug where <channel="#chan"> in pisg.cfg didn't work at all.
    * Warn the user when a translation template doesn't exist for a specific
