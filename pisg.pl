@@ -23,46 +23,7 @@ use lib $FindBin::Bin . "/modules";     # Module search path
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-
-# The log-parsing modules.  Add yours here.
-use Pisg::Parser::bxlog;
-use Pisg::Parser::eggdrop;
-use Pisg::Parser::grufti;
-use Pisg::Parser::mbot;
-use Pisg::Parser::mIRC;
-use Pisg::Parser::xchat;
-
 my ($debug);
-# The function to choose which module to use.  New parsing modules must also
-# be added here.  Should return a reference to an instance of the appropriate
-# class.
-sub choose_log_format {
-    my $format = shift;
-
-    if ($format eq "bxlog") {
-	return Pisg::Parser::bxlog->new($debug);
-
-    } elsif ($format eq "eggdrop") {
-	return Pisg::Parser::eggdrop->new($debug);
-
-    } elsif ($format eq "grufti") {
-	return Pisg::Parser::grufti->new($debug);
-
-    } elsif ($format eq "mbot") {
-	return Pisg::Parser::mbot->new($debug);
-
-    } elsif ($format eq "mIRC") {
-	return Pisg::Parser::mIRC->new($debug);
-
-    } elsif ($format eq "xchat") {
-	return Pisg::Parser::xchat->new($debug);
-
-    } else {
-	print STDERR "Log format \"$format\" is unknown.\n";
-	return undef;
-    }
-}
-
 # Default values for pisg. Their meanings are explained in CONFIG-README.
 #
 # If you are a user of pisg, you shouldn't change it here, but instead on
@@ -82,6 +43,7 @@ my $conf = {
     lang => 'EN',
     langfile => 'lang.txt',
     prefix => "",
+    modules_dir => $FindBin::Bin . "/modules",     # Module search path
 
     # Colors / Layout
 
@@ -198,6 +160,22 @@ sub do_channel
     } else {
 	print STDERR "Skipping channel $conf->{channel}\n";
     }
+}
+
+# The function to choose which module to use. 
+sub choose_log_format {
+    my $format = shift;
+    my $parser = undef;
+    eval <<_END;
+use lib '$conf->{modules_dir}';
+use Pisg::Parser::$format;
+\$parser = new Pisg::Parser::$format(\$debug);
+_END
+    if ($@) {
+        print STDERR "Could not load parser for '$format': $@\n";
+        return undef;
+    }
+    return $parser;
 }
 
 sub parse_channels
@@ -1453,7 +1431,7 @@ sub violent
         my %hash = (
             nick    => $agressors[0],
             attacks => $violence{$agressors[0]},
-            line    => $violenceline{$agressors[0]}
+            line    => htmlentities($violenceline{$agressors[0]})
         );
         my $text = template_text('violent1', %hash);
         if($conf->{show_violentlines}) {
@@ -1488,7 +1466,7 @@ sub violent
         my %hash = (
             nick    => $victims[0],
             attacks => $attacked{$victims[0]},
-            line    => $attackedline{$victims[0]}
+            line    => htmlentities($attackedline{$victims[0]})
         );
         my $text = template_text('attacked1', %hash);
         if($conf->{show_violentlines}) {
@@ -1892,9 +1870,8 @@ sub mostactions
         my %hash = (
             nick => $actions[0],
             actions => $actions{$actions[0]},
-            line => $actionline{$actions[0]}
+            line => htmlentities($actionline{$actions[0]})
         );
-
         my $text = template_text('action1', %hash);
         if($conf->{show_actionline}) {
             my $exttext = template_text('actiontext', %hash);
