@@ -186,3 +186,15 @@ link to the logfile)
 
   Example:
         13:22:57 <Sc00ter> bah, gotta run to the store
+
+* oer:
+  - Bot written in C (http://oer.equnet.org/)
+
+  - In order to use this, format must be set to 'oer'
+
+  - For a detailed description see:
+
+  http://faq.equnet.org/show.php?area=b2VyIGFuZCBvZXIrTXlTUUwgRkFR&id=35&lang=en
+
+  Example:
+  1010866756 :EQU!equ@mira.equnet.org PRIVMSG #oer :test for mbrix

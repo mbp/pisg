@@ -54,8 +54,10 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircle.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/infobot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/irssi.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/oer.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/perlbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/psybnc.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Trillian.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Template.pm \
