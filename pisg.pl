@@ -105,6 +105,7 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 
 sub main
 {
+    print "pisg $config->{version} - Perl IRC Statistics Generator\n\n";
     init_config();      # Init config. (Aliases, ignores, other options etc.)
     init_words();	# Init words. (Foulwords etc)
     init_pisg();        # Init commandline arguments and other things
@@ -129,7 +130,6 @@ sub main
 
 sub init_pisg
 {
-    print "pisg $config->{version} - Perl IRC Statistics Generator\n\n";
 
     get_language_templates();
 
@@ -203,6 +203,7 @@ sub init_config
     get_cmdlineoptions();
 
     if (open(CONFIG, $config->{configfile})) {
+        print "Using config file: $config->{configfile}\n";
 
         my $lineno = 0;
         while (<CONFIG>)
