@@ -79,6 +79,7 @@ my $conf = {
     show_legend => 1,
     show_kickline => 1,
     show_actionline => 1,
+	show_shoutline => 1,
 
     # Less important things
 
@@ -112,7 +113,7 @@ $thirdline, $processtime, @topics, %monologue, %kicked, %gotkick,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
 $normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
-%line_time, @urls, %urlnick, %kickline, %actionline);
+%line_time, @urls, %urlnick, %kickline, %actionline, %shoutline);
 
 
 sub main
@@ -482,8 +483,10 @@ sub parse_file
                     $loud{$nick}++
                         if ($saying =~ /!/);
 
-                    $shout{$nick}++
-                        if ($saying =~ /[A-Z]+/ and $saying !~ /[a-z0-9:]/);
+                    if ($saying =~ /[A-Z]+/ and $saying !~ /[a-z0-9:]/) {
+						$shout{$nick}++;
+						$shoutline{$nick} = $line;
+					}
 
                     $foul{$nick}++
                         if ($saying =~ /$foulwords/i);
@@ -1599,11 +1602,17 @@ sub shoutpeople
     if (@shout) {
         my %hash = (
             nick => $shout[0],
-            per => $spercent{$shout[0]}
+            per => $spercent{$shout[0]},
+			line => $shoutline{$shout[0]}
         );
 
         my $text = template_text('shout1', %hash);
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+		if($conf->{show_shoutline}) {
+			my $exttext = template_text('shouttext', %hash);
+			html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+		} else {
+	        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+		}
         if (@shout >= 2) {
             my %hash = (
                 nick => $shout[1],
