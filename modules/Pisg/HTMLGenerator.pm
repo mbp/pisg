@@ -111,7 +111,7 @@ sub create_html
         _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
         $self->_gotkicks();
         $self->_mostkicks();
-        $self->_mostop();
+        $self->_mostop() if $self->{cfg}->{showops};
         $self->_mosthalfop() if $self->{cfg}->{showhalfops};
         $self->_mostvoice() if $self->{cfg}->{showvoices};
         $self->_mostactions();

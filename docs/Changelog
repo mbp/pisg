@@ -21,6 +21,7 @@ pisg (x.xx)
      outputted that no lines were found in the logfile. This was confusing
      because files in the wrong format usually contained lines. Now be more
      verbose.
+   * ShowOps option added. Has similar effect as ShowVoices and ShowHalfops.
 
 pisg (0.46) - Tue Feb, 11th 2003
    * Fix serious bug which caused garbled output i "Latest topics" and other

@@ -1581,6 +1581,43 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWOPS *** -->
+    <refentry id="ShowOps">
+
+    <refmeta> <refentrytitle>ShowOps</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowOps</refname>
+    <refpurpose>enable or disable op statistics</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowOps = "0"
+        </channel>
+
+        <set ShowOps="0">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg has op statistics in the "Most interesting numbers"
+    section. Here you can disable the feature, it's useful if you don't feel
+    that the information is of any value, or your logformat doesn't support
+    ops/deops.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWVOICES *** -->
     <refentry id="ShowVoices">
 
@@ -1617,7 +1654,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOWVOICES *** -->
+    <!-- *** SHOWHALFOPS *** -->
     <refentry id="ShowHalfops">
 
     <refmeta> <refentrytitle>ShowHalfops</refentrytitle> </refmeta>

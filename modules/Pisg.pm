@@ -152,6 +152,7 @@ sub get_default_config_settings
         showmuw => 1,
         showmrn => 1,
         showmru => 1,
+        showops => 1,
         showvoices => 0,
         showhalfops => 0,
         showmostnicks => 0,
