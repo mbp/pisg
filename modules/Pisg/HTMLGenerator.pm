@@ -228,7 +228,7 @@ sub _htmlfooter
     $hash{pisg_url} = "<a href=\"http://pisg.sourceforge.net/\" title=\"$pisg_hp\" class=\"background\">pisg</a>";
 
     my $author_hp = $self->_template_text('authorhomepage');
-    $hash{author_url} = "<a href=\"http://wtf.dk/hp/\" title=\"$author_hp\" class=\"background\">Morten Brix Pedersen</a>";
+    $hash{author_url} = "<a href=\"http://mbrix.dk/\" title=\"$author_hp\" class=\"background\">Morten Brix Pedersen</a>";
 
     $hash{version} = $self->{cfg}->{version};
 

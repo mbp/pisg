@@ -1,5 +1,7 @@
 pisg (x.xx)
    * Be in-casesensitive on charsets.
+   * Fix serious bug which caused garbled output i "Latest topics" and other
+     places with URLs.
 
 pisg (0.45) - Wed Feb, 5th 2003
    * Fix 3 small gramattical errors in english language. (thanks Cheetah)
