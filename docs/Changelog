@@ -1,3 +1,16 @@
+pisg (0.36) - Fri Feb, 8th 2002
+   * Many translation updates (thanks all)
+   * Add new translation templates to translate the bottom of the stats page
+   * Add Portugese/Brazil translation(PT-BR) (thanks Peter <peter@brasnet.org>)
+   * addalias.pl script v2.2 by Jens Bergmann <gimmick@1cu.de>, see the
+     changes in the README in scripts/addalias/
+   * The lang option is no longer case sensitive
+   * "Most used nicks" no longer thinks that two differently cased nicks are
+     different nicks.
+   * Action lines fixed in axur format (thanks, Andrew <andy@lewman.com>)
+   * Fix serious bug in addalias.pl where a nick with a metacharacter in it
+     would wipe out whole config (thanks for the report, Jens Bergmann)
+
 pisg (0.35) - Sat Jan, 26th 2002
    * Translate mouse-over items (eg. "Open in new window: URL")
    * Support for oer bot logfiles (thanks to EQU <equ@equnet.org>)
