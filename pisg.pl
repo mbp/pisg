@@ -414,7 +414,7 @@ sub parse_file
 
                     foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
                         # remove uninteresting words
-                        next unless (length($word) > $conf->{wordlength});
+                        next unless (length($word) >= $conf->{wordlength});
                         # ignore contractions
                         next if ($word =~ m/'..?$/);
 
