@@ -62,9 +62,9 @@ sub get_cmdline_options
 {
     my $script_dir = shift;
 
-    my $cfg = {
+    my %cfg = (
         modules_dir => "$script_dir/modules/",     # Module search path
-    };
+    );
 
     # Commandline options
     my ($tmp, $help, $silent, $option);
@@ -96,16 +96,16 @@ calling pisg without arguments.
 
 END_USAGE
 
-    if (GetOptions('channel=s'    => \$cfg->{channel},
-                   'logfile=s'    => \$cfg->{logfile},
-                   'format=s'     => \$cfg->{format},
-                   'network=s'    => \$cfg->{network},
-                   'maintainer=s' => \$cfg->{maintainer},
-                   'outfile=s'    => \$cfg->{outputfile},
-                   'dir=s'        => \$cfg->{logdir},
-                   'prefix=s'     => \$cfg->{prefix},
-                   'moduledir=s'  => \$cfg->{moduledir},
-                   'configfile=s' => \$cfg->{configfile},
+    if (GetOptions('channel=s'    => \$cfg{channel},
+                   'logfile=s'    => \$cfg{logfile},
+                   'format=s'     => \$cfg{format},
+                   'network=s'    => \$cfg{network},
+                   'maintainer=s' => \$cfg{maintainer},
+                   'outfile=s'    => \$cfg{outputfile},
+                   'dir=s'        => \$cfg{logdir},
+                   'prefix=s'     => \$cfg{prefix},
+                   'moduledir=s'  => \$cfg{moduledir},
+                   'configfile=s' => \$cfg{configfile},
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
                    'silent'       => \$silent,
@@ -119,9 +119,9 @@ END_USAGE
         pisg.cfg, please use that instead [look in pisg.cfg]\n");
     }
 
-    if ($silent) { $cfg->{silent} = 1; }
+    if ($silent) { $cfg{silent} = 1; }
 
-    return $cfg;
+    return \%cfg;
 
 }
 
