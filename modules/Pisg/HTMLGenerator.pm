@@ -26,7 +26,7 @@ sub new
     return $self;
 }
 
-sub create_html
+sub create_output
 {
     # This subroutine calls all the subroutines which create their
     # individual stats. The name of the functions is somewhat saying - if

@@ -512,7 +512,7 @@ _END
 
         # Create our HTML page if the logfile has any data.
         if (defined $stats and $stats->{parsedlines} > 0) {
-            $generator->create_html();
+            $generator->create_output();
         } elsif ($stats->{parsedlines} == 0) {
             print STDERR "No parseable lines found in logfile ($stats->{totallines} total lines). Skipping.\nYou might be using the wrong format.\n";
         }
