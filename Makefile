@@ -24,6 +24,8 @@ GFX = gfx/green-h.png \
 	 gfx/blue-v.png \
 	 gfx/yellow-h.png \
 	 gfx/yellow-v.png \
+	 gfx/red-h.png \
+	 gfx/red-v.png \
 
 SCRIPTS = scripts/crontab \
 	   scripts/dropegg.pl \
