@@ -329,7 +329,7 @@ sub _activetimes
     _html("</tr><tr>");
 
     for ($b = 0; $b < 24; $b++) {
-        if ($now[2] == $b) { $tbgcolor = "\#AAAAAA"; } else { $tbgcolor = "\#CCCCCC"; }
+        if ($now[2] == $b) { $tbgcolor = $self->{cfg}->{hi_rankc}; } else { $tbgcolor = $self->{cfg}->{rankc}; }
         _html("<td bgcolor=\"$tbgcolor\" align=\"center\" class=\"small\">$b</td>");
 }
 

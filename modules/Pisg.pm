@@ -135,6 +135,7 @@ sub get_default_config_settings
         hlink => "#0b407a",
         headline => "#000000",
         rankc => "#CCCCCC",
+        hi_rankc => "#AAAAAA",
 
         pic_width => '',
         pic_height => '',

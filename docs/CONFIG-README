@@ -189,7 +189,8 @@ link                Color of links
 vlink               Color of visited links
 hlink               Color of hovered links
 headline            Border color of headlines
-rankc               Colors of 'ranks' (1,2,3,4)
+rankc               Colors of 'ranks' (1,2,3,4) and active times
+hi_rankc            Highlighted ranks
 
 pic_height          Hardcode user picture sizes on stats page. This is when
                     user has a pic, and you want to make it smaller.
