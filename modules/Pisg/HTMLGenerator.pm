@@ -220,7 +220,7 @@ sub _htmlfooter
     $hash{author_url} = "<a href=\"http://wtf.dk/hp/\" title=\"$author_hp\" class=\"background\">Morten Brix Pedersen</a>";
 
     $hash{version} = $self->{cfg}->{version};
-    
+
     my $hours = $self->_template_text('hours');
     my $mins = $self->_template_text('minutes');
     my $secs = $self->_template_text('seconds');
@@ -374,7 +374,12 @@ sub _activenicks
     . ($self->{cfg}->{showrandquote} ? "<td class=\"tdtop\"><b>".$self->_template_text('randquote')."</b></td>" : "")
     );
 
-    my @active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} } keys %{ $self->{stats}->{lines} };
+    my @active;
+    if ($self->{cfg}->{sortbywords}) {
+        @active = sort { $self->{stats}->{words}{$b} <=> $self->{stats}->{words}{$a} } keys %{ $self->{stats}->{words} };
+    } else {
+        @active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} } keys %{ $self->{stats}->{lines} };
+    }
     my $nicks = scalar keys %{ $self->{stats}->{lines} };
 
     if ($self->{cfg}->{activenicks} > $nicks) { $self->{cfg}->{activenicks} = $nicks; }
@@ -414,7 +419,7 @@ sub _activenicks
         my $class = 'rankc';
         if ($c == 1) {
             $class = 'hirankc';
-        } 
+        }
 
         my $lastseen;
 
@@ -428,7 +433,7 @@ sub _activenicks
                 $lastseen = "$lastseen " .$self->_template_text('lastseen2');
             }
         }
-        
+
         _html("<tr><td class=\"$class\" align=\"left\">$c</td>");
 
         my $line = $self->{stats}->{lines}{$nick};
@@ -461,19 +466,19 @@ sub _activenicks
         my $height = $self->{cfg}->{picheight};
         my $width = $self->{cfg}->{picwidth};
         if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
-	    _html("<td style=\"background-color: $color\" align=\"center\">");
-	    if (defined $self->{users}->{biguserpics}{$nick}) {
-		_html("<a href=\"$self->{cfg}->{imagepath}$self->{users}->{biguserpics}{$nick}\">");
-	    }
+            _html("<td style=\"background-color: $color\" align=\"center\">");
+            if (defined $self->{users}->{biguserpics}{$nick}) {
+                _html("<a href=\"$self->{cfg}->{imagepath}$self->{users}->{biguserpics}{$nick}\">");
+            }
             if ($width ne '') {
-		_html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
+                _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
             } else {
                 _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
             }
-	    if (defined $self->{users}->{biguserpics}{$nick}) {
-		_html("</a>");
-	    }
-	    _html("</td>");
+            if (defined $self->{users}->{biguserpics}{$nick}) {
+                _html("</a>");
+            }
+            _html("</td>");
         } elsif ($self->{cfg}->{defaultpic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
             _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
         }
@@ -498,8 +503,13 @@ sub _activenicks
             _html("<br /><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
             for (my $i = $self->{cfg}->{activenicks}; $i < $remain; $i++) {
                 unless ($i % 5) { if ($i != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
-                my $lines = $self->{stats}->{lines}{$active[$i]};
-                _html("<td class=\"rankc10\">$active[$i] ($lines)</td>");
+                my $items;
+                if ($self->{cfg}->{sortbywords}) {
+                    $items = $self->{stats}->{words}{$active[$i]};
+                } else {
+                    $items = $self->{stats}->{lines}{$active[$i]};
+                }
+                _html("<td class=\"rankc10\">$active[$i] ($items)</td>");
             }
             _html("</tr></table>");
         }
@@ -713,7 +723,7 @@ sub _violent
     # They got attacked
     my @victims;
     @victims = sort { $self->{stats}->{attacked}{$b} <=> $self->{stats}->{attacked}{$a} }
-		    keys %{ $self->{stats}->{attacked} };
+                    keys %{ $self->{stats}->{attacked} };
 
     if(@victims) {
         my %hash = (
@@ -1644,7 +1654,7 @@ sub _mostnicks
             my $nickused = join(", ", @{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
 
             next unless ($nickcount > 1);
-            
+
             my $a = $i + 1;
             my $class = $a == 1 ? 'hirankc' : 'rankc';
             my $n = $nickcount > 1 ? $names1 : $names2;

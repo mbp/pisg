@@ -1974,8 +1974,8 @@
     <refsynopsisdiv><programlisting>
       <![CDATA[
         <channel="#channel">
-         Logfile = "channel.log"
-         Format = "mIRC"
+         logfile = "channel.log"
+         format = "mIRC"
          NickHistory = "3"
         </channel>
 
@@ -2017,6 +2017,41 @@
     <para>
     Enabling this option will track nickchanges as well as it can. It will
     then automatically create aliases for these nicks.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SORTBYWORDS *** -->
+    <refentry id="SortByWords">
+
+    <refmeta> <refentrytitle>SortByWords</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>SortByWords</refname>
+    <refpurpose>Sort "most active nicks" by words</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         logfile = "channel.log"
+         format = "xchat"
+         SortByWords = "0"
+        </channel>
+
+        <set SortByWords="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The default for the "Most Active Nicks" section - is to sort users by
+    lines. Enabling this will sort it by words instead.
     </para>
     </refsect1>
     <refsect1>

@@ -165,6 +165,9 @@ sub get_default_config_settings
         nicktracking => 0,
         charset => 'iso-8859-1',
 
+        # sorting
+        sortbywords => 0,
+
         # Misc settings
 
         foulwords => 'ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe',
