@@ -478,7 +478,7 @@ sub updateinfo
     open(NEWFILE, ">$pisg_config") or die("Error updating configfile: $!");
     &lock_file(*NEWFILE);
     foreach $line (@lines) {
-       if ($line =~ /^<user.*nick=\"$frm_nick\"/i) {
+       if ($line =~ /^<user.*nick=\"\Q$frm_nick\E\"/i) {
          print NEWFILE "$line_to_add\n"
        } else {
          print NEWFILE $line;
