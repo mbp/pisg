@@ -1367,10 +1367,10 @@ sub _template_text
 
     my $text;
 
-    unless ($text = $self->{tmps}->{$self->{cfg}->{lang}}{$template}) {
+    unless ($text = $self->{tmps}->{lc($self->{cfg}->{lang})}{$template}) {
         # Fall back to English if the language template doesn't exist
 
-        if ($text = $self->{tmps}->{EN}{$template}) {
+        if ($text = $self->{tmps}->{en}{$template}) {
             print "Note: No translation in '$self->{cfg}->{lang}' for '$template' - falling back to English..\n"
                 unless ($self->{cfg}->{silent});
         } else {

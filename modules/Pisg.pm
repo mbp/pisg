@@ -97,7 +97,7 @@ sub get_default_config_settings
         imagepath => '',
         default_pic => '',
         logdir => '',
-        lang => 'EN',
+        lang => 'en',
         langfile => 'lang.txt',
         prefix => '',
         silent => 0,
@@ -207,9 +207,9 @@ sub get_language_templates
     {
         next if ($line =~ /^#/);
 
-        if ($line =~ /<lang name=\"([^"]+)\">/) {
+        if ($line =~ /<lang name=\"([^"]+)\">/i) {
             # Found start tag, setting the current language
-            my $current_lang = $1;
+            my $current_lang = lc($1);
 
             while (<FILE>) {
                 last if ($_ =~ /<\/lang>/i);
