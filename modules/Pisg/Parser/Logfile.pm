@@ -590,8 +590,14 @@ sub _parse_words
         # Also ignore stuff from URLs.
         next if ($word =~ m/^https?$|^\/\//o);
 
-        $stats->{wordcounts}{$word}++;
-        $stats->{wordnicks}{$word} = $nick;
+	# uniquify nicks
+	if (my $realnick = is_nick($word)) {
+		$stats->{wordcounts}{$realnick}++;
+		$stats->{wordnicks}{$realnick} = $nick;
+	} else {
+		$stats->{wordcounts}{$word}++;
+		$stats->{wordnicks}{$word} = $nick;
+	}
     }
 }
 
@@ -626,7 +632,6 @@ sub _uniquify_nicks {
 	    # The lc() is an attempt at being case insensitive.
 	    if (lc($realnick) ne lc($word)) {
 	        $stats->{wordcounts}{$realnick} += $stats->{wordcounts}{$word};
-	        $stats->{wordnicks}{$realnick}   = $stats->{wordnicks}{$word};
 	        delete $stats->{wordcounts}{$word};
 	        delete $stats->{wordnicks}{$word};
 	    }

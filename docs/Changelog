@@ -1,6 +1,7 @@
 pisg (x.xx)
    * Added new option, ShowFoulDecimals which configures the number of
    decimals used in statistics in foul numbers. (thanks, Thorbjörn Svensson)
+   * Fix wrong references of nicks (thanks, Sascha Wessel)
    * HTML documentation now has sane filenames.
    * Documentation has been cleaned up for typos/spelling errors.
 
