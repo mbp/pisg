@@ -1,3 +1,7 @@
+pisg (x.xx)
+   * Fix problem with number of rows shown when a nick has been ignored.
+   (thanks, Chris Thornhill)
+
 pisg (0.58) - Thu Sep, 9th 2004
    * Added new option, ShowFoulDecimals which configures the number of
    decimals used in statistics in foul numbers. (thanks, Thorbjörn Svensson)

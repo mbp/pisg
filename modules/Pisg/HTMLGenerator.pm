@@ -1981,7 +1981,7 @@ sub _mostnicks
         _html("<td>&nbsp;</td><td class=\"tdtop\"><b>$nick_txt</b></td>");
         _html("<td class=\"tdtop\"><b>$names_txt</b></td></tr>");
 
-        for(my $i = 0; $i < $self->{cfg}->{mostnickshistory}; $i++) {
+        for(my $i = 0, my $a = 0; $i < $self->{cfg}->{mostnickshistory}; $i++) {
             next if is_ignored($sortnicks[$i]);
             last unless $i < @sortnicks;
             my $nickcount = keys %{ $self->{stats}->{nicks}->{$sortnicks[$i]} };
@@ -1989,7 +1989,7 @@ sub _mostnicks
 
             next unless ($nickcount > 1);
 
-            my $a = $i + 1;
+            $a++;
             my $class = $a == 1 ? 'hirankc' : 'rankc';
             my $n = $nickcount > 1 ? $names1 : $names2;
 
