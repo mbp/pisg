@@ -1,3 +1,6 @@
+pisg (x.xx)
+   * ircII logfile support added (thanks, James Andrewartha)
+
 pisg (0.41) - Sun Aug, 11th 2002
    * Fix a bug in the winbot logfile format where lines containing the channel
      name in a wrong case wouldn't get counted.

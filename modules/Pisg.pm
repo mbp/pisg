@@ -174,6 +174,7 @@ sub get_default_config_settings
         mostnickshistory => 5,
         nicktracking => 0,
         charset => 'iso-8859-1',
+        irciinick => 'maintainer',
 
         # sorting
         sortbywords => 0,
@@ -186,7 +187,7 @@ sub get_default_config_settings
         tablewidth => 614,
         regexpaliases => 0,
 
-        version => "0.41",
+        version => "0.42-cvs",
     };
 
     # Backwards compatibility with old option names:

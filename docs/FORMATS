@@ -325,3 +325,24 @@ time"
       2002-07-04 17:34:01 :jeffcovey!~jeff@host MODE #space +o CowBot
       2002-07-04 12:02:42 :Leebert!~lsherida@host JOIN :#space
       2002-07-04 18:24:18 :mike_lap!~emag@host NICK :Cathy
+
+* ircII
+  - The original IRC client (http://www.eterna.com.au/ircii/)
+
+  - In order to use this, format must be set to 'ircII'
+
+  - You need to add a few on triggers to your .ircrc:
+    on #^timer 50 "*0" echo $0
+    on #^timer 50 "*5" echo $0
+    to mark the time. They can be adjusted to taste (the above lines mark every
+    5 minutes), with the main effect being the topic change times will only
+    accurate to how often the time is marked.
+
+  - The config option "ircIINick" needs to be set to the maintainer's nick
+
+  Example:
+    22:40
+    *** sonnlich (sonnloki@202.72.122.25348) has joined channel #unisfa
+    * sonnlich waves.
+    > evening rae
+    <sonnlich> Evening.
