@@ -10,6 +10,8 @@ pisg (0.20)
      disabled by default.
    * New option 'show_time', this will display a small bar in the 'most active
      nicks' of when the respective people actually speak. [enabled]
+   * Because of the above change, there is new png files for pisg, remember to
+     use the new ones and not the old ones! (thanks Christian Legler)
    * Remember to distribute the 'FORMATS' file (was missed in the last two
      releases)
    * Swedish translation (thanks to Andreas Henriksson)

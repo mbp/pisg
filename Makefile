@@ -14,8 +14,12 @@ FILES = pisg.pl \
 	 README \
 	 CONFIG-README \
 	 FORMATS \
-	 gfx/pipe-purple.png \
-	 gfx/pipe-blue.png \
+	 gfx/green-h.png \
+	 gfx/green-v.png \
+	 gfx/blue-h.png \
+	 gfx/blue-v.png \
+	 gfx/yellow-h.png \
+	 gfx/yellow-v.png \
 	 pisg.cfg \
 	 lang.txt
 

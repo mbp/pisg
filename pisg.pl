@@ -62,14 +62,15 @@ my $conf = {
     pic1 => "pipe-blue.png",
     pic2 => "pipe-purple.png",
 
-    pic_v_0 => "pipe-v-blue.png",
-    pic_v_6 => "pipe-v-green.png",
-    pic_v_12 => "pipe-v-yellow.png",
-    pic_v_18 => "pipe-v-red.png",
-    pic_h_0 => "pipe-h-blue.png",
-    pic_h_6 => "pipe-h-green.png",
-    pic_h_12 => "pipe-h-yellow.png",
-    pic_h_18 => "pipe-h-red.png",
+    pic_v_0 => "blue-v.png",
+    pic_v_6 => "green-v.png",
+    pic_v_12 => "yellow-v.png",
+    pic_v_18 => "red-v.png",
+    pic_h_0 => "blue-h.png",
+    pic_h_6 => "green-h.png",
+    pic_h_12 => "yellow-h.png",
+    pic_h_18 => "red-h.png",
+
 
     # Less important things
 
