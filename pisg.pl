@@ -1213,7 +1213,7 @@ sub activenicks
         print "Note: There was less nicks in the logfile than your specificied there to be in most active nicks...\n";
     }
 
-    my ($nick, $visiblenick, $randomline);
+    my ($nick, $visiblenick, $randomline, %hash);
     my $i = 1;
     for (my $c = 0; $c < $conf->{activenicks}; $c++) {
         $nick = $active[$c];
@@ -1287,6 +1287,7 @@ sub activenicks
     # Almost as active nicks ('These didn't make it to the top..')
 
     my $nickstoshow = $conf->{activenicks} + $conf->{activenicks2};
+	$hash{totalnicks} = ($nicks - $nickstoshow);
 
     unless ($nickstoshow > $nicks) {
 
@@ -1302,7 +1303,7 @@ sub activenicks
         html("</table>");
     }
 
-
+	html("<br><b>" . template_text('totalnicks', %hash) . "</b><br>");
 }
 
 sub user_linetimes {
