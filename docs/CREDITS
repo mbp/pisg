@@ -64,6 +64,8 @@ And all the other contributors:
  * Phil Gregory <phil_g@pobox.com>
    | Regex support in user aliases, grammar corrections, huge changes to
      modularize pisg into packages/objects.
+ * Patrick Aussems aka Zyk <zyk@bugfactory.org>
+   | New options: show_mrn, show_mru, show_muw, show_randquote
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)

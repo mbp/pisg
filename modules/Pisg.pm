@@ -94,7 +94,7 @@ sub get_default_config_settings
     my $self = shift;
 
     # This is all the default settings of pisg. They can be overriden by the
-    # pisg.cfg file, or by stating the override_cfg argument to the new
+    # pisg.cfg file, or by using the override_cfg argument to the new
     # constructor.
 
     $self->{cfg} = {
@@ -151,6 +151,10 @@ sub get_default_config_settings
         show_actionline => 1,
         show_shoutline => 1,
         show_violentlines => 1,
+        show_randquote => 1,
+        show_muw => 1,
+        show_mrn => 1,
+        show_mru => 1,
 
         # Less important things
 

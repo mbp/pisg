@@ -129,6 +129,9 @@ show_time           1 or 0, this will enable/disable the showing of the
 show_linetime       1 or 0, the same as above, except this will show the
                     bar next to the number of lines like in mIRCStats
 
+show_randquote      1 or 0, this wil enable or disable the random quote
+                    displayed in the "active nick list"
+
 show_legend         1 or 0, this will add a legend of the different time-
                     bars.
 
@@ -143,6 +146,15 @@ show_shoutline      1 or 0, this will add an example-shoutline to the
 
 show_violentlines   1 or 0, this will add an example-attack to the
                     "Most aggressive" and "Most attacked"-stats
+
+show_muw            1 or 0, this will enable or disable the "most used
+                    words" list
+
+show_mrn            1 or 0, this will enable or disable the "most
+                    referenced nicks" list
+
+show_mru            1 or 0, this will enable or disable the "most
+                    referenced urls" list
 
 ignorewords         A space seperated list of words to ignore in 'most
                     referenced words'

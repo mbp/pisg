@@ -32,7 +32,7 @@ sub create_html
     # individual stats. The name of the functions is somewhat saying - if
     # you don't understand it, most subs have a better explanation in the
     # sub itself.
-    
+
     my $self = shift;
 
     print "Now generating HTML($self->{cfg}->{outputfile})...\n";
@@ -71,11 +71,17 @@ sub create_html
     $self->_mostwordsperline($self->{stats});
     _html("</table>"); # Needed for sections
 
-    $self->_mostusedword($self->{stats});
+    if ($self->{cfg}->{show_muw}) {
+        $self->_mostusedword($self->{stats});
+    }
 
-    $self->_mostreferencednicks($self->{stats});
+    if ($self->{cfg}->{show_mrn}) {
+        $self->_mostreferencednicks($self->{stats});
+    }
 
-    $self->_mosturls($self->{stats});
+    if ($self->{cfg}->{show_mru}) {
+        $self->_mosturls($self->{stats});
+    }
 
     $self->_headline($self->_template_text('othernumtopic'));
     _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
@@ -339,15 +345,16 @@ sub _activenicks
     $self->_headline($self->_template_text('activenickstopic'));
 
     _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
-    _html("<td>&nbsp;</td><td bgcolor=\"$self->{cfg}->{tdtop}\"><b>"
-    . $self->_template_text('nick') . "</b></td><td bgcolor=\"$self->{cfg}->{tdtop}\"><b>"
-    . $self->_template_text('numberlines')
-    . "</b></td><td bgcolor=\"$self->{cfg}->{tdtop}\"><b>"
-    . ($self->{cfg}->{show_time} ? $self->_template_text('show_time')."</b></td><td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" : "")
-    . ($self->{cfg}->{show_words} ? $self->_template_text('show_words')."</b></td><td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" : "")
-    . ($self->{cfg}->{show_wpl} ? $self->_template_text('show_wpl')."</b></td><td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" : "")
-    . ($self->{cfg}->{show_cpl} ? $self->_template_text('show_cpl')."</b></td><td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" : "")
-    . $self->_template_text('randquote') ."</b></td>");
+    _html("<td>&nbsp;</td>"
+    . "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('nick') . "</b></td>"
+    . "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('numberlines') . "</b></td>"
+    . ($self->{cfg}->{show_time} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_time')."</b></td>" : "")
+    . ($self->{cfg}->{show_words} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_words')."</b></td>" : "")
+    . ($self->{cfg}->{show_wpl} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_wpl')."</b></td>" : "")
+    . ($self->{cfg}->{show_cpl} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_cpl')."</b></td>" : "")
+    . ($self->{cfg}->{show_randquote} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('randquote')."</b></td>" : "")
+    );
+
     if (scalar keys %{$self->{users}->{userpics}} > 0) {
         _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('userpic') ."</b></td>");
     }
@@ -419,8 +426,10 @@ sub _activenicks
         . ($self->{cfg}->{show_cpl} ?
         "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$ch/$line)."</td>"
         : "")
-        ."<td bgcolor=\"#$col_r$col_g$col_b\">");
-        _html("\"$randomline\"</td>");
+        . ($self->{cfg}->{show_randquote} ?
+        "<td bgcolor=\"#$col_r$col_g$col_b\">\"$randomline\"</td>"
+        : "")
+    );
 
         if ($self->{users}->{userpics}{$nick}) {
             _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\"></td>");

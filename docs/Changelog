@@ -1,3 +1,11 @@
+pisg (0.25)
+   * Fixed days counting wrong when using logdir option.
+   * New options by Patrick Assems:
+     - show_mrn, disable/enable most referenced nicks
+     - show_mru, disable/enable most referenced urls
+     - show_muw, disable/enable most used words
+     - show_randquote, disable/enable the showing of the random quotes
+
 pisg (0.24) - Mon, Sep 24th 2001
    * Logdirs not working, fixed.
    * Fix bug where it posted garbage on stats page where it should say
