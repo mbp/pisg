@@ -116,11 +116,11 @@ mostdeop1 = "<b>[:nick]</b> ist die Channel-Polizei. Er/Sie hat [:deops] Usern d
 mostdeop2 = "<b>[:nick]</b> nahm [:deops] Usern das @ wieder weg."
 mostdeop3 = "Wow, niemand wurde deopped in [:channel]!"
 
-question1 = "<b>[:nick]</b> hat wohl in der Schule nicht gut aufgepasst... [:per]% seiner Zeilen enthielten eine Frage!"
-question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% seiner Zeilen waren Fragen"
+question1 = "<b>[:nick]</b> hat wohl in der Schule nicht gut aufgepasst... [:per]% seiner/ihrer Zeilen enthielten eine Frage!"
+question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% seiner/ihrer Zeilen waren Fragen"
 question3 = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Genies sein? ;)"
 
-loud1 = "Am lautesten war <b>[:nick]</b> der [:per]% der Zeit geschrieen hat!"
+loud1 = "Am lautesten war <b>[:nick]</b> der/die [:per]% der Zeit geschrien hat!"
 loud2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> der/die [:per]% der Zeit rumgeschrieen hat!"
 loud3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
 
