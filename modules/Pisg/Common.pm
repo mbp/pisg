@@ -8,12 +8,12 @@ Pisg::Common - some common functions of pisg.
 
 use Exporter;
 @ISA = ('Exporter');
-@EXPORT = qw(add_alias add_aliaswild add_ignore is_ignored find_alias match_url match_email htmlentities);
+@EXPORT = qw(add_alias add_aliaswild add_ignore add_url_ignore is_ignored url_is_ignored find_alias match_url match_email htmlentities);
 
 use strict;
 $^W = 1;
 
-my (%aliases, %aliaswilds, %ignored, %aliasseen);
+my (%aliases, %aliaswilds, %ignored, %aliasseen, %ignored_urls);
 
 # add_alias assumes that the first argument is the true nick and the second is
 # the alias, but will accomidate other arrangements if necessary.
@@ -60,9 +60,23 @@ sub add_ignore
 sub is_ignored
 {
     my $nick = shift;
-    if ($ignored{$nick} || $ignored{find_alias($nick)}) {
+    if ($ignored{$nick} or $ignored{find_alias($nick)}) {
         return 1;
     }
+}
+
+sub url_is_ignored
+{
+    my $url = shift;
+    if ($ignored_urls{$url}) {
+        return 1;
+    }
+}
+
+sub add_url_ignore
+{
+    my $url = shift;
+    $ignored_urls{$url} = 1;
 }
 
 # For efficiency reasons, find_alias() caches aliases when it finds them,
@@ -78,7 +92,7 @@ sub find_alias
     if ($aliases{$lcnick}) {
         return $aliases{$lcnick};
     } elsif ($aliasseen{$lcnick}) {
-	return $aliasseen{$lcnick};
+        return $aliasseen{$lcnick};
     } else {
         foreach (keys %aliaswilds) {
             if ($nick =~ /^$_$/i) {
