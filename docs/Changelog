@@ -2,6 +2,11 @@ pisg (x.xx)
    * Fix bug where multiple URLs in same line would have save name as first URL
      (EG: <A HREF="http://www.google.com">http://www.yahoo.com</A> if yahoo
       was referenced first)
+   * Update config parser to match the same character and only the same
+     character (" or ') that started the quote to end the string.
+     (Will now accept <set foo="you're"> correctly, before it would have parsed
+     it as <set foo="you">. Will now NOT work with mis-matched quotes... which
+     it probably never should have. EG: <set foo="bar'>)
 
 
 pisg (0.46) - Tue Feb, 11th 2003

@@ -291,16 +291,16 @@ sub init_config
         if ($line =~ /<user.*>/) {
             my $nick;
 
-            if ($line =~ /nick="([^"]+)"/) {
-                $nick = $1;
+            if ($line =~ /nick=(["'])(.+?)\1/) {
+                $nick = $2;
                 add_alias($nick, $nick);
             } else {
                 print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No nick specified\n";
                 next;
             }
 
-            if ($line =~ /alias="([^"]+)"/) {
-                my @thisalias = split(/\s+/, lc($1));
+            if ($line =~ /alias=(["'])(.+?)\1/) {
+                my @thisalias = split(/\s+/, lc($2));
                 foreach (@thisalias) {
                     if ($self->{cfg}->{regexpaliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
                         add_aliaswild($nick, $_);
@@ -314,29 +314,29 @@ sub init_config
                 }
             }
 
-            if ($line =~ /pic="([^"]+)"/) {
-                $self->{users}->{userpics}{$nick} = $1;
+            if ($line =~ /pic=(["'])(.+?)\1/) {
+                $self->{users}->{userpics}{$nick} = $2;
             }
 
-            if ($line =~ /bigpic="([^"]+)"/) {
-                $self->{users}->{biguserpics}{$nick} = $1;
+            if ($line =~ /bigpic=(["'])(.+?)\1/) {
+                $self->{users}->{biguserpics}{$nick} = $2;
             }
 
-            if ($line =~ /link="([^"]+)"/) {
-                $self->{users}->{userlinks}{$nick} = $1;
+            if ($line =~ /link=(["'])(.+?)\1/) {
+                $self->{users}->{userlinks}{$nick} = $2;
             }
 
-            if ($line =~ /ignore="Y"/i) {
+            if ($line =~ /ignore=(["'])Y\1/i) {
                 add_ignore($nick);
             }
 
-            if ($line =~ /sex="([MmFf])"/i) {
-                $self->{users}->{sex}{$nick} = lc($1);
+            if ($line =~ /sex=(["'])([MmFf])\1/) {
+                $self->{users}->{sex}{$nick} = lc($2);
             }
         } elsif ($line =~ /<link(.*)>/) {
 
-            if ($line =~ /url="([^"]+)"/) {
-                my $url = $1;
+            if ($line =~ /url=(["'])(.+?)\1/) {
+                my $url = $2;
                 if ($line =~ /ignore="Y"/i) {
                     add_url_ignore($url);
                 }
@@ -352,14 +352,14 @@ sub init_config
                 print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing or wrong quotes near $1\n";
             }
 
-            while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
+            while ($settings =~ s/[ \t]([^=]+?)=(["'])(.*?)\2//) {
                 my $var = lc($1);
                 $var =~ s/ //; # Remove whitespace
                 if (!defined($self->{cfg}->{$var})) {
                     if (defined($self->{bwd}->{$var})) {
                         print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                        unless (($self->{cfg}->{lc($self->{bwd}->{$var})} eq $2) || $self->{override_cfg}->{lc($self->{bwd}->{$var})}) {
-                            $self->{cfg}->{$self->{bwd}->{$var}} = $2;
+                        unless (($self->{cfg}->{lc($self->{bwd}->{$var})} eq $3) || $self->{override_cfg}->{lc($self->{bwd}->{$var})}) {
+                            $self->{cfg}->{$self->{bwd}->{$var}} = $3;
                         }
                         next;
                     } else {
@@ -367,41 +367,41 @@ sub init_config
                         next;
                     }
                 }
-                unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
-                    $self->{cfg}->{$var} = $2;
+                unless (($self->{cfg}->{$var} eq $3) || $self->{override_cfg}->{$var}) {
+                    $self->{cfg}->{$var} = $3;
                 }
             }
 
-        } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
-            my ($channel, $settings) = ($1, $2);
+        } elsif ($line =~ /<channel=(['"])(.+?)\1(.*)>/i) {
+            my ($channel, $settings) = ($2, $3);
             $self->{chans}->{$channel}->{channel} = $channel;
             $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
-            while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
+            while ($settings =~ s/\s([^=]+)=(["'])(.+?)\2//) {
                 my $var = lc($1);
                 if (defined($self->{bwd}->{$var})) {
                     print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                    $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
+                    $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $3;
                 } else {
-                    $self->{chans}->{$channel}{$var} = $2;
+                    $self->{chans}->{$channel}{$var} = $3;
                 }
             }
             while (<$fh>) {
                 last if ($_ =~ /<\/*channel>/i);
-                if ($_ =~ /^\s*(\w+)\s*=\s*["']([^"']*)["']/) {
+                if ($_ =~ /^\s*(\w+)\s*=\s*(["'])(.+?)\2/) {
                     my $var = lc($1);
                     unless ($self->{override_cfg}->{$var}) {
                         if (defined($self->{bwd}->{$var})) {
                             print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                            $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
+                            $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $3;
                         } else {
-                            $self->{chans}->{$channel}{$var} = $2;
+                            $self->{chans}->{$channel}{$var} = $3;
                         }
                     }
                 } elsif ($_ !~ /^$/) {
                     print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
                 }
             }
-        } elsif ($line =~ /<include\s*=\s*(["'])(.*)\1\s*>/) {
+        } elsif ($line =~ /<include\s*=\s*(["'])(.+?)\1\s*>/) {
             my $include_cfg = $2;
             my $backup_cfg = $self->{cfg}->{configfile};
             $self->{cfg}->{configfile} = $include_cfg;
