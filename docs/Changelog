@@ -1,3 +1,6 @@
+pisg (x.xx)
+   * Be in-casesensitive on charsets.
+
 pisg (0.45) - Wed Feb, 5th 2003
    * Fix 3 small gramattical errors in english language. (thanks Cheetah)
    * Add half-op support to irssi format. (thanks, arsonist)

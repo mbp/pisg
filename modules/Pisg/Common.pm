@@ -186,7 +186,7 @@ sub htmlentities
     my $str = shift;
     my $charset = shift;
 
-    if ($charset eq "iso-8859-1" or $charset eq "iso-8859-15") {
+    if ($charset =~ /iso-8859-1/i) {
         $str =~ s/\&/\&amp;/go;
         $str =~ s/\</\&lt;/go;
         $str =~ s/\>/\&gt;/go;

@@ -1497,7 +1497,7 @@ sub _template_text
     foreach my $key (sort keys %hash) {
         $text =~ s/\[:$key\]/$hash{$key}/;
 
-        if ($self->{cfg}->{charset} eq "iso-8859-1" or $self->{cfg}->{charset} eq "iso-8859-15") {
+        if ($self->{cfg}->{charset} =~ /iso-8859-1/i) {
             $text =~ s/ü/&uuml;/go;
             $text =~ s/ö/&ouml;/go;
             $text =~ s/ä/&auml;/go;
