@@ -1551,12 +1551,6 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel">
-         Logfile = "channel.log"
-         Format = "xchat"
-         IgnoreWords = "foo bar"
-        </channel>
-
         <set IgnoreWords="you me">
       ]]>
     </programlisting></refsynopsisdiv>
@@ -1567,6 +1561,7 @@
     Sometimes words in the "most used words" appears which you don't want to
     see, with this option you can ignore these words. It also applies to the
     "most referenced nicks" section. It's a space seperated list of words.
+    Can not be used in a channel-only context.
     </para>
     </refsect1>
     <refsect1>
@@ -1587,13 +1582,7 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel">
-         Logfile = "channel.log"
-         Format = "xchat"
-         FoulWords = "ass bitch"
-        </channel>
-
-        <set FoulWords="slaps beats kick">
+        <set FoulWords="ass fuck bitch">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1603,11 +1592,43 @@
     There is a section in the "Most interesting numbers" which tells who had
     a "dirty mouth" - here you can define which words are considered being
     bad/foul. It is a space seperated list of words.
+    Can not be used in a channel-only context.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
     <para> ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** VIOLENTWORDS *** -->
+    <refentry id="ViolentWords">
+
+    <refmeta> <refentrytitle>ViolentWords</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ViolentWords</refname>
+    <refpurpose>specify words considered to be aggressive/violent</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set ViolentWords="slaps beats kick">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    There is a section in the "Most interesting numbers" which tells who had
+    is most "aggressive" - here you can define which words are considered
+    being "violent". It is a space seperated list of words.
+    Can not be used in a channel-only context.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> slaps beats smacks </para>
     </refsect1>
     </refentry>
 
