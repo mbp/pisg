@@ -17,7 +17,7 @@ SETTING UP PISG
 It's quite simple to set up pisg. You have 2 choices:
 
  * Set settings from commandline (try pisg.pl --help)
- * Set settings from the pisg.cfg config file (more flexible)
+ * Configure pisg from the pisg.cfg file (more flexible and configurable)
 
 The most important here is the name of the logfile, the maintainers name,
 and then the format of your logfile.
@@ -44,6 +44,8 @@ it. If you're on a Linux/Unix system, these steps should do the work:
 
     $ chmod +x pisg.pl
     $ ./pisg.pl
+
+Running pisg like this will just use the settings in pisg.cfg.
 
 If you have more than one channel, then you can also tell it to pisg on the
 commandline, the syntax is explained when doing:

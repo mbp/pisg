@@ -1,6 +1,15 @@
 CREDITS goes to...
 --
 
+The developers:
+--
+Winfried Nessen <doomy@doomshammer.yi.org>
+Jamie Cheetham <jamie@softham.co.uk>
+Morten Brix Pedersen <morten@wtf.dk>
+Sam Bingner <sam@dhs.org>
+
+And all the other contributors:
+
  * Stefan aka Flyghost <flyghost@ghosthouse.cx>
    | Code contribution and fixes
  * P. Gnodde aka Shogun <peter@pcswebdesign.nl>
@@ -23,22 +32,15 @@ CREDITS goes to...
    | Reported a very small, but stupid bug with the xchat fileformat :)
  * kiss dess <duvet@mail.com>
    | Found a few minor bugs. And added replace_links()
- * Sam Bingner <sam@dhs.org>
-   | Added mIRC color stripping, eggdrop log format and nick/alias tracking.
-   | Bunch of other patches
  * S. William Schulz <sws@astrum.com>
    | Better commandline arguments, --help and fixed indenting problems with
      xchat logs, also fixed a critical thing with --format
  * Tim Hunter <tim@quic.net>
    | 'shortest lines', 'most fouls', 'pageheader' and more. 
- * Winfried (Doomshammer) <doomy@doomshammer.yi.org>
-   | grufti log format help, German translation and a ton of other things.
  * Kim Ingemann (Tuxi) <tuxi@tuxi.dk>
    | Danish translation
  * Molator <molator@ifrance.com>
    | French translation
- * Jamie Cheetham <jamie@softham.co.uk>
-   | Eggdrop 'last messaged repeated x times' fix, and tons of bug reports
  * Sheuron Azxe <xeron@cfutura.com>
    | Spanish translation
  * Gandalf the Grey <gandalf@irc.pl>

@@ -2,6 +2,7 @@ README for pisg.cfg - the configuration file for pisg
 ------------------
 This file is used for two things:
  - Setting user options (for user aliases, pics, ignores and links)
+ - Setting up channel(s) to be parsed.
  - Setting pisg config options (for general things with pisg)
  - Word options (for adding words that are meant to be 'foul(bad) language')
  
@@ -35,22 +36,36 @@ You don't have to do all this in many lines, you could just as easily do:
 (Here the aliases is a space seperated list of nicks, that also works! But *
 as a wildcard is smarter, but also slower).
 
+CHANNELS SETUP
+------------------
+
+For each of your channels which you want to parse through, you make
+something like this:
+
+<channel="#channel" logfile="channel.log">
+ format = "mIRC"
+ maintainer = "NameOfMaintainer"
+</channel>
+
+Any options in the <channel *> section will be forced, even over commandline
+options... any options before </channel> can be overridden from command line
+
+There is a lot of variables which you can set between the <channel> and
+</channel> tags, these are listed in the next section.
 
 PISG OPTIONS
 ------------------
-This is a tougher part, a lot of things can be set here, simply the syntax
-is like this:
+If you have multiple channels, then you can set some defaults for them, for
+example you can do.
 
-<set variable="value">
+<set format="mIRC">
 
-For example:
-<set channel="#channel">
+And you won't have to worry about setting the format for every channel.
 
 You can also combine settings into one line such as:
 <set channel="#channel" logfile="/var/log/channel.log">
 
-A normal complete line for a channel would be:
-<set channel="#channel" logfile="channel2.log" format="mIRC" network="SomeIRCNet" outputfile="index.html">
+All the differents variables are listed below.
 
 Other examples:
 <set lang='EN' langfile='lang.txt'>
@@ -137,17 +152,4 @@ Or in German:
 <words foul="scheisse scheiße kacke">
 
 
-
 Have fun configuring pisg! :)
-
-
-MULTIPLE CHANNELS
-------------------
-***MUST begin with <channel="#channel"
-<channel="#channel" logfile="channel.log" format="mIRC" outputfile="channel.html">
-    network="EFNet"
-    maintainer="fubar"
-</channel>
-
-
-any options in the <channel *> section will be forced, even over commandline options... any options before </channel> can be overridden from command line
