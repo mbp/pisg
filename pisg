@@ -61,9 +61,6 @@ if (\$version) {
 }
 END
     if ($@) {
-        print $@;
-    }
-    if ($@) {
         print STDERR "Could not load pisg! Reason:\n$@\n";
         return undef;
     }
