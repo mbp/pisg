@@ -401,3 +401,17 @@ time"
         01:02.03 >>> join/#channel nick (~user@example.com)
         01:02.03 >>> kick/#channel [nick!~user@example.com] by nick (reason)
         01:02.03 >>> nick_ materializes into nick
+
+* HydraIRC (http://hydrairc.sourceforge.net/)
+  - HydraIRC is an open-source IRC client with an attractive and easy to use
+    interface
+    
+  - In order to use this, format must be set to 'hydra'
+  
+  Example:
+    [2003-02-22 16:49:18] *** Alexander changed topic to wibble
+		[2003-02-22 16:52:29] <Alexander> Sorry about the delay.
+		[2003-02-22 16:52:33] <Eien> Slow.  Waking.  Up.
+		[2003-02-22 16:52:34] *** Melody sets channel #ar-roleplay mode +v Alexander
+		[2003-02-22 16:58:57] *** Kemmy|ZZZ changed nick to Kemayo
+		[2003-02-22 17:03:34] * Alexander stirs Eien's brain.  "Cooooooool..."

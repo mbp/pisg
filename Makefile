@@ -60,6 +60,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/eggdrop.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/energymech.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/grufti.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/hydra.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircle.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/infobot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/irssi.pm \
