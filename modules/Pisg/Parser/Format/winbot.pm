@@ -66,7 +66,6 @@ sub thirdline
         $hash{min}  = $2;
         $hash{nick} = $3;
 
-        #print STDERR " 1($1)\n2($2)\n3($3)\n4(" . $self->{cfg}->{channel} . ")\n";
         if ($3 =~ /^(\S+) was kicked from (\S+) by (\S+) .+/) {
             if ($2 eq $self->{cfg}->{channel}) {
                 $hash{nick} = $1;
