@@ -1941,8 +1941,8 @@ sub _user_pic
     my $pic = $self->{users}->{userpics}{$nick} || $self->{cfg}->{defaultpic};
     $pic = $self->{cfg}->{imagepath} . randomglob($pic, $self->{cfg}->{imageglobpath})
         unless $pic =~ /^http:\/\//i;
-    my $height = $self->{cfg}->{picheight} ? " width=\"$self->{cfg}->{picheight}\"" : "";
-    my $width = $self->{cfg}->{picwidth} ? " height=\"$self->{cfg}->{picwidth}\"" : "";
+    my $height = $self->{cfg}->{picheight} ? " height=\"$self->{cfg}->{picheight}\"" : "";
+    my $width = $self->{cfg}->{picwidth} ? " width=\"$self->{cfg}->{picwidth}\"" : "";
     my $alt = $self->{users}->{userpics}{$nick} ? " alt=\"$nick\"" : "";
     _html("<img src=\"$pic\"$width$height$alt />");
 
