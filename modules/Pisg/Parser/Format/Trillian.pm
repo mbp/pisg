@@ -100,9 +100,9 @@ sub remove_prefix
 
     $str =~ s/^@//;
     $str =~ s/^\+//;
+    $str =~ s/^%//;
 
     return $str;
-
 }
 
 1;

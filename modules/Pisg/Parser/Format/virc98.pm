@@ -100,9 +100,9 @@ sub remove_prefix
     
     $str =~ s/^@//;
     $str =~ s/^\+//;
+    $str =~ s/^%//;
 
     return $str;
-
 }
 
 sub remove_braces
@@ -112,6 +112,5 @@ sub remove_braces
     $str =~ s/^\[//;
     
     return $str;
-
 }
 1;
