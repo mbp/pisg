@@ -92,7 +92,7 @@ sub thirdline
 	} elsif (($4.$5) eq 'setsmode:') {
 	    $hash{newmode} = $6;
 
-	} elsif (($4.$5) eq 'hasjoined') {
+	} elsif (($5.$6) eq 'hasjoined') {
 	    $hash{newjoin} = $3;
 
 	} elsif (($4.$5) eq 'nowknown') {
