@@ -1,9 +1,9 @@
-pisg (0.16) - 
+pisg (0.16) - Wed, July 25th 2001
 
    * Danish translation (thanks to Kim Ingemann aka Tuxi)
    * Fixed some unitialized values which came up in some situations
    * Eggdrop log had 'last message repeated x times' - pisg didn't understood
-     this before, not it does! :) (thanks to Jamie Cheetham).
+     this before, now it does! :) (thanks to Jamie Cheetham).
    * French translation (thanks Molator)
    * Also use the timeoffset in 'most active times'
    * Started to distribute various scripts with pisg:
