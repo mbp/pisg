@@ -200,6 +200,7 @@ sub htmlentities
         $str =~ s/Å/&Aring;/go;
         $str =~ s/Æ/&AElig;/go;
         $str =~ s/Ø/&Oslash;/go;
+        $str =~ s/\x95/\&bull;/go;
     } else {
         $str =~ s/\</\&lt;/go;
         $str =~ s/\>/\&gt;/go;

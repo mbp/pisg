@@ -1016,6 +1016,8 @@ sub _linelengths
 
             $text = $self->_template_text('long2', %hash);
             _html("<span class=\"small\">$text</span></td></tr>");
+        } else {
+            _html("</td></tr>");
         }
     }
 
@@ -1038,6 +1040,8 @@ sub _linelengths
 
             $text = $self->_template_text('short2', %hash);
             _html("<span class=\"small\">$text</span></td></tr>");
+        } else {
+            _html("</td></tr>");
         }
     }
 }
