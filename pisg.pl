@@ -90,7 +90,7 @@ my $conf = {
     activenicks => 25,
     activenicks2 => 30,
     topichistory => 3,
-    nicktracking => 0,
+    nicktracking => 1,
     timeoffset => "+0",
 
     # Misc settings
@@ -2418,13 +2418,6 @@ END_USAGE
                ) == 0 or $help) {
                    die($usage);
                }
-
-    if (@ARGV) {
-        if ($ARGV[0]) { $conf->{channel} = $ARGV[0]; }
-        if ($ARGV[1]) { $conf->{logfile} = $ARGV[1]; }
-        if ($ARGV[2]) { $conf->{outputfile} = $ARGV[2]; }
-        if ($ARGV[3]) { $conf->{maintainer} = $ARGV[3]; }
-    }
 
     if ($tmp) {
         die("The aliasfile and ignorefile has been obsoleted by the new

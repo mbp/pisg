@@ -16,6 +16,9 @@ pisg (0.21)
    * Some small HTML validation fixes
    * Fix: pisg didn't find the alias for the kicker.
    * Stop hardcoding filenames in 'legend'
+   * Removed support for unnamed arguments on commandline, everyone should now
+     use the named arguments. (For example you must do 'pisg.pl -l
+     logfile-name', and not just do 'pisg.pl chan logfile format maintainer')
    * Some nice speedup improvements
 
 pisg (0.20) - Tue, Aug 14th 2001
