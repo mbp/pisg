@@ -30,7 +30,7 @@ sub normalline
     if ($line =~ /$self->{normalline}/o) {
 
         $hash{hour}   = $1;
-        $hash{nick}   = remove_prefix($2);
+        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
         $hash{saying} = $3;
 
         return \%hash;
@@ -47,7 +47,7 @@ sub actionline
     if ($line =~ /$self->{actionline}/o) {
 
         $hash{hour}   = $1;
-        $hash{nick}   = remove_prefix($2);
+        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
         $hash{saying} = $3;
 
         return \%hash;
@@ -92,17 +92,6 @@ sub thirdline
     } else {
         return;
     }
-}
-
-sub remove_prefix
-{
-    my $str = shift;
-    
-    $str =~ s/^@//;
-    $str =~ s/^\+//;
-    $str =~ s/^%//;
-
-    return $str;
 }
 
 sub remove_braces

@@ -27,7 +27,7 @@ sub normalline
     if ($line =~ /$self->{normalline}/o) {
 
         $hash{hour}   = $1;
-        $hash{nick}   = remove_prefix($2);
+        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
         $hash{saying} = $3;
         $hash{saying} =~ s/\(Link: ((http|https|ftp|telnet|news):\/\/.*?)\)\1/$1/;
 
@@ -45,7 +45,7 @@ sub actionline
     if ($line =~ /$self->{actionline}/o) {
 
         $hash{hour}   = $1;
-        $hash{nick}   = remove_prefix($2);
+        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
         $hash{saying} = $3;
         $hash{saying} =~ s/\(Link: ((http|https|ftp|telnet|news):\/\/.*?)\)\1/$1/;
 
@@ -64,18 +64,18 @@ sub thirdline
 
         $hash{hour} = $1;
         $hash{min}  = $2;
-        $hash{nick} = remove_prefix($3);
+        ($hash{nick}  = $3) =~ s/^[@%\+]//o; # Remove prefix
 
         if ($3 =~ /^(\S+) has been kicked off channel (\S+) by (\S+) .+/) {
-            $hash{nick} = remove_prefix($1);
+            ($hash{nick}  = $1) =~ s/^[@%\+]//o; # Remove prefix
             $hash{kicker} = $3;
 
         } elsif ($3 =~ /^(\S+) has changed the topic on channel (\S+) to (.+)/) {
-             $hash{nick} = remove_prefix($1);
+            ($hash{nick}  = $1) =~ s/^[@%\+]//o; # Remove prefix
              $hash{newtopic} = $3;
 
         } elsif ($3 =~ /^Mode change \"(\S+)[^\"]+\".+ by (.+)$/) {
-             $hash{nick} = remove_prefix($2);
+            ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
              $hash{newmode} = $1;
 
         } elsif ($3 =~ /^(\S+) \S+ has joined channel \S+/) {
@@ -83,7 +83,7 @@ sub thirdline
             $hash{newjoin} = $1;
 
         } elsif ($3 =~ /^(\S+) is now known as (\S+)/) {
-            $hash{nick} = remove_prefix($1);
+            ($hash{nick}  = $1) =~ s/^[@%\+]//o; # Remove prefix
             $hash{newnick} = $2;
         }
 
@@ -92,17 +92,6 @@ sub thirdline
     } else {
         return;
     }
-}
-
-sub remove_prefix
-{
-    my $str = shift;
-
-    $str =~ s/^@//;
-    $str =~ s/^\+//;
-    $str =~ s/^%//;
-
-    return $str;
 }
 
 1;

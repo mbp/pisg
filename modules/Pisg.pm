@@ -92,7 +92,7 @@ sub get_default_config_settings
         channel => '',
         logtype => 'Logfile',
         logfile => [],
-        format => 'mIRC',
+        format => '',
         network => 'SomeIRCNet',
         outputfile => 'index.html',
         outputtag => '',
@@ -197,7 +197,7 @@ sub get_default_config_settings
         botnicks => '',            # Needed for DCpp format (non-irc)
 
         dailyactivity => 0,
-        version => "0.52",
+        version => "0.53-cvs",
     };
 
     # This enables us to use the search_path in other modules
@@ -434,6 +434,8 @@ sub do_channel
         print STDERR "No channels defined.\n";
     } elsif ((!@{$self->{cfg}->{logfile}}) && (!@{$self->{cfg}->{logdir}})) {
         print STDERR "No logfile or logdir defined for " . $self->{cfg}->{channel} . "\n";
+    } elsif (!$self->{cfg}->{format}) {
+        print STDERR "No format defined for $self->{cfg}->{channel}.\n";
     } else {
         $self->init_pisg();        # Init some general things
 
@@ -475,10 +477,12 @@ _END
         }
 
         # Create our HTML page if the logfile has any data.
-        if (defined $stats and $stats->{parsedlines} > 0) {
-            $generator->create_output();
-        } elsif ($stats->{parsedlines} == 0) {
-            print STDERR "No parseable lines found in logfile ($stats->{totallines} total lines). Skipping.\nYou might be using the wrong format.\n";
+        if (defined $stats) {
+            if ($stats->{parsedlines} > 0) {
+                $generator->create_output();
+            } elsif ($stats->{parsedlines} == 0) {
+                print STDERR "No parseable lines found in logfile ($stats->{totallines} total lines). Skipping.\nYou might be using the wrong format.\n";
+            }
         }
 
         restore_aliases();

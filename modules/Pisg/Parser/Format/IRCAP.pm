@@ -49,7 +49,7 @@ sub normalline
     if ($line =~ /$self->{normalline}/o) {
 
         $hash{hour}   = $1;
-        $hash{nick}   = remove_prefix($2);
+        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
         $hash{saying} = $3;
 
         return \%hash;
@@ -78,7 +78,7 @@ sub thirdline
         $hash{hour} = $1;
         $hash{min}  = $2;
         $hash{saying}  = $3;
-        $hash{nick} = remove_prefix($line[0]);
+        ($hash{nick}  = $line[0]) =~ s/^[@%\+]//o; # Remove prefix
 	if ($#linea >= 2 and $linea[2] eq 'topic:') {
 	#print $linea[2], "\n";
 	}
@@ -157,17 +157,6 @@ sub thirdline
 
     }
     return;
-}
-
-sub remove_prefix
-{
-    my $str = shift;
-
-    $str =~ s/^@//;
-    $str =~ s/^\+//;
-    $str =~ s/^%//;
-
-    return $str;
 }
 
 1;

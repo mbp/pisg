@@ -315,7 +315,7 @@ sub _parse_file
 
                     $stats->{shouts}{$nick}++
                         if (index($saying, '!') > -1);
-
+                    study $saying;
                     if ($saying !~ /[a-z]/o && $saying =~ /[A-Z]/o) {
                         # Ignore single smileys on a line. eg. '<user> :P'
                         if ($saying !~ /^[8;:=][ ^-o]?[)pPD}\]>]$/o) {
@@ -539,12 +539,18 @@ sub _parse_words
     my ($stats, $saying, $nick, $ignorewords, $hour) = @_;
     # Cache time of day
     my $tod = int($hour/6);
+    my $word;
 
-    foreach my $word (split(/[\s,!?.:;)(\"]+/o, $saying)) {
+    study $saying;
+    $saying =~ s/[\s,!?.:;)(\"]+//o;
+    while ($saying =~ s/([^\s,!?.:;)(\"]+)[\s,!?.:;)(\"]+//og) {
+        $word = $1;
         $stats->{words}{$nick}++;
         $stats->{word_times}{$nick}[$tod]++;
         # remove uninteresting words
-        next if $ignorewords and $word =~ m/$ignorewords/i;
+        next if $ignorewords and $word =~ m/$ignorewords/io;
+        # TODO: does the /o above provide the correct behaviour?
+        # next if $ignorewords and $word =~ m/$ignorewords/i;
 
         # ignore contractions
         next if ($word =~ m/'.{1,2}$/o);
