@@ -1,21 +1,20 @@
 package Pisg::Parser::Format::mbot;
 
 use strict;
-$^T = 1;
-
-
-my $normalline = '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> (?!\001ACTION)(.*)';
-my $actionline = '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> \001ACTION (.*)\001$';
-my $thirdline  = '^\S+ \S+ \d+ (\d+):(\d+):\d+ \d+ (\S+) (\S+) ?(\S*) ?(\S*) ?(.*)';
-
-my ($debug);
-
+$^W = 1;
 
 sub new
 {
-    my $self = shift;
-    $debug = shift;
-    return bless {};
+    my $type = shift;
+    my $self = {
+        debug => $_[0],
+        normalline => '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> (?!\001ACTION)(.*)',
+        actionline => '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> \001ACTION (.*)\001$',
+        thirdline  => '^\S+ \S+ \d+ (\d+):(\d+):\d+ \d+ (\S+) (\S+) ?(\S*) ?(\S*) ?(.*)',
+    };
+
+    bless($self, $type);
+    return $self;
 }
 
 sub normalline
@@ -24,8 +23,8 @@ sub normalline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$normalline/) {
-	$debug->("[$lines] Normal: $1 $2 $3");
+    if ($line =~ /$self->{normalline}/) {
+	$self->{debug}->("[$lines] Normal: $1 $2 $3");
 
 	$hash{hour}   = $1;
 	$hash{nick}   = $2;
@@ -43,8 +42,8 @@ sub actionline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$actionline/) {
-	$debug->("[$lines] Action: $1 $2 $3");
+    if ($line =~ /$self->{actionline}/) {
+	$self->{debug}->("[$lines] Action: $1 $2 $3");
 
 	$hash{hour}   = $1;
 	$hash{nick}   = $2;
@@ -73,12 +72,12 @@ sub thirdline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$thirdline/) {
+    if ($line =~ /$self->{thirdline}/) {
 	my $debugstring = "[$lines] ***: $1 $2 $3 $4";
 	$debugstring .= " $5" if (defined $5);
 	$debugstring .= " $6" if (defined $6);
 	$debugstring .= " $7" if (defined $7);
-	$debug->($debugstring);
+	$self->{debug}->($debugstring);
 
 	$hash{hour} = $1;
 	$hash{min}  = $2;

@@ -3,20 +3,18 @@ package Pisg::Parser::Format::xchat;
 use strict;
 $^W = 1;
 
-
-my $normalline = '^(\d+):\d+:\d+ <([^>]+)>\s+(.*)';
-my $actionline = '^(\d+):\d+:\d+ \*\s+(\S+) (.*)';
-my $thirdline  = '^(\d+):(\d+):\d+ .--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)';
-
-my ($debug);
-
-# Preloaded methods go here.
-
 sub new
 {
-    my $self = shift;
-    $debug = shift;
-    return bless {};
+    my $type = shift;
+    my $self = {
+        debug => $_[0],
+        normalline => '^(\d+):\d+:\d+ <([^>]+)>\s+(.*)',
+        actionline => '^(\d+):\d+:\d+ \*\s+(\S+) (.*)',
+        thirdline  => '^(\d+):(\d+):\d+ .--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)',
+    };
+
+    bless($self, $type);
+    return $self;
 }
 
 sub normalline
@@ -25,8 +23,8 @@ sub normalline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$normalline/) {
-	$debug->("[$lines] Normal: $1 $2 $3");
+    if ($line =~ /$self->{normalline}/) {
+	$self->{debug}->("[$lines] Normal: $1 $2 $3");
 
 	$hash{hour} = $1;
 	$hash{nick} = $2;
@@ -44,8 +42,8 @@ sub actionline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$actionline/) {
-	$debug->("[$lines] Action: $1 $2 $3");
+    if ($line =~ /$self->{actionline}/) {
+	$self->{debug}->("[$lines] Action: $1 $2 $3");
 
 	$hash{hour} = $1;
 	$hash{nick} = $2;
@@ -74,8 +72,8 @@ sub thirdline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$thirdline/) {
-	$debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
+    if ($line =~ /$self->{thirdline}/) {
+	$self->{debug}->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
 
 	$hash{hour} = $1;
 	$hash{min} = $2;

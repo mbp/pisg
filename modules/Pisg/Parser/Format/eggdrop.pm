@@ -3,19 +3,18 @@ package Pisg::Parser::Format::eggdrop;
 use strict;
 $^W = 1;
  
-
-my $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
-my $actionline = '^\[(\d+):\d+\] Action: (\S+) (.*)';
-my $thirdline  = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+)(.*)';
-
-my ($debug);
-
-
 sub new
 {
-    my $self = shift;
-    $debug = shift;
-    return bless {};
+    my $type = shift;
+    my $self = {
+        debug => $_[0],
+        normalline => '^\[(\d+):\d+\] <([^>]+)> (.*)',
+        actionline => '^\[(\d+):\d+\] Action: (\S+) (.*)',
+        thirdline  => '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+)(.*)',
+    };
+
+    bless($self, $type);
+    return $self;
 }
 
 sub normalline
@@ -24,8 +23,8 @@ sub normalline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$normalline/) {
-	$debug->("[$lines] Normal: $1 $2 $3");
+    if ($line =~ /$self->{normalline}/) {
+	$self->{debug}->("[$lines] Normal: $1 $2 $3");
 
 	$hash{hour}   = $1;
 	$hash{nick}   = $2;
@@ -43,8 +42,8 @@ sub actionline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$actionline/) {
-	$debug->("[$lines] Action: $1 $2 $3");
+    if ($line =~ /$self->{actionline}/) {
+	$self->{debug}->("[$lines] Action: $1 $2 $3");
 
 	$hash{hour}   = $1;
 	$hash{nick}   = $2;
@@ -76,11 +75,11 @@ sub thirdline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$thirdline/) {
+    if ($line =~ /$self->{thirdline}/) {
 	if (defined $7) {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
+	    $self->{debug}->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
 	} else {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6");
+	    $self->{debug}->("[$lines] ***: $1 $2 $3 $4 $5 $6");
 	}
 
 	$hash{hour} = $1;
