@@ -363,6 +363,7 @@ sub _activenicks
     . ($self->{cfg}->{show_words} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_words')."</b></td>" : "")
     . ($self->{cfg}->{show_wpl} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_wpl')."</b></td>" : "")
     . ($self->{cfg}->{show_cpl} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_cpl')."</b></td>" : "")
+    . ($self->{cfg}->{show_lastseen} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('show_lastseen')."</b></td>" : "")
     . ($self->{cfg}->{show_randquote} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('randquote')."</b></td>" : "")
     );
 
@@ -418,13 +419,20 @@ sub _activenicks
         my $col_g  = sprintf "%0.2x", abs int(((($t_g - $f_g) / $self->{cfg}->{activenicks}) * +$c) + $f_g);
         my $col_r  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $self->{cfg}->{activenicks}) * +$c) + $f_r);
 
-
-        my $bgcolor;
+        my $bgcolor = $self->{cfg}->{rankc};
         if ($i == 1) {
             $bgcolor = $self->{cfg}->{hi_rankc};
+        } 
+
+        my $lastseen = $self->{stats}->{days} - $self->{stats}->{lastvisited}{$nick};
+        if ($lastseen == 0) {
+            $lastseen = $self->_template_text('today');
+        } elsif ($lastseen == 1) {
+            $lastseen = "$lastseen " .$self->_template_text('lastseen1');
         } else {
-            $bgcolor = $self->{cfg}->{rankc};
+            $lastseen = "$lastseen " .$self->_template_text('lastseen2');
         }
+        
             
         _html("<tr><td bgcolor=\"$bgcolor\" align=\"left\">");
 
@@ -446,6 +454,9 @@ sub _activenicks
         : "")
         . ($self->{cfg}->{show_cpl} ?
         "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$ch/$line)."</td>"
+        : "")
+        . ($self->{cfg}->{show_lastseen} ?
+        "<td bgcolor=\"#$col_r$col_g$col_b\">$lastseen</td>"
         : "")
         . ($self->{cfg}->{show_randquote} ?
         "<td bgcolor=\"#$col_r$col_g$col_b\">\"$randomline\"</td>"
@@ -1479,7 +1490,7 @@ sub _mosturls
         _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('numberuses') . "</b></td>");
         _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('lastused') . "</b></td>");
 
-        for(my $i = 0; $i < 5; $i++) {
+        for(my $i = 0; $i < $self->{cfg}->{urlhistory}; $i++) {
             last unless $i < @sorturls;
             my $a = $i + 1;
             my $sorturl  = $sorturls[$i];

@@ -185,6 +185,7 @@ sub get_default_config_settings
         activenicks => 25,
         activenicks2 => 30,
         topichistory => 3,
+        urlhistory => 5,
         nicktracking => 0,
         charset => 'iso-8859-1',
 
