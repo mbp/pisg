@@ -342,9 +342,6 @@
          Format = "mIRC"
          Maintainer = "John"
         </channel>
-
-
-        <set channel="#channelname">
       ]]>
      </programlisting></refsynopsisdiv>
 
