@@ -17,7 +17,7 @@
 # (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
 # (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
 # (NL) Dutch - Pyrofikiemaan <gassman65@hotmail.com>
-# (SE) Swedish - Andreas Henriksson <andreas.henriksson@linux.se>
+# (SE) Swedish - Andreas Henriksson <andreas@fjortis.info>
 # (FI) Finnish - Kirler@paincreators <kirler@paincreators.net>
 # (SI) Slovenian - Ales Tepina <ales.tepina@guest.arnes.si>
 # (HU) Hungarian - Gyuri Horak <dyuri@dyuri.sch.bme.hu>
@@ -1260,8 +1260,16 @@ mostdevoice1 = "<b>[:nick]</b> gillar att ta voicestatus från folk, [:devoices] 
 mostdevoice2 = "<b>[:nick]</b> var inte heller snäll, tog bort voicestatus från [:devoices] användare."
 mostdevoice3 = "Ingen blev av med sin voicestatus i [:channel]!"
 
+mosthalfop1 = "<b>[:nick]</b> gav [:halfops] halvoperatörsstatus i kanalen..."
+mosthalfop2 = "<b>[:nick]</b> var också väldigt snäll: [:halfops] halvoperatörsstatus från [:him:her:]."
+mosthalfop3 = "Konstigt, inga halvoperatörer i [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> är kanalens sheriff och tog ifrån [:dehalfops] deras halvoperatörsstatus."
+mostdehalfop2 = "<b>[:nick]</b> tog ifrån [:dehalfops] användare deras halvoperatörsstatus."
+mostdehalfop3 = "Wow, inga förlorade sin halvoperatörsstatus i [:channel]!"
+
 action1 = "<b>[:nick]</b> berättar alltid för oss vad [:han:hon:] gör: [:actions] beskrivningar!"
-action2 = "Även <b>[:nick]</b> berättar vad som händer med [:actions] beskrivningar."
+action2 = "även <b>[:nick]</b> berättar vad som händer med [:actions] beskrivningar."
 action3 = "Inga beskrivningar i [:channel]!"
 actiontext = "<b>Till exempel, såhär:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -1316,6 +1324,7 @@ short2 = "[:nick] var också tystlåten, genomsnitt [:letters]"
 foul1 = "<b>[:nick]</b> borde tvätta munnen, [:per]% rader innehöll fula ord"
 foul2 = "<b>[:nick]</b> får också sjömännen att rodna, [:per]% av tiden svors det"
 foul3 = "Ingen svor i [:channel]! Ute mycket?"
+foultext = "<b>Till exempel, såhär:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> skänker lycka till världen, [:per]% av raderna innehöll glada miner :)"
 smiles2 = "<b>[:nick]</b> är inte heller en ledsen person, log [:per]% av tiden"
@@ -1324,6 +1333,9 @@ smiles3 = "Ingen i [:channel] är glad! Upp med humöret nu pojkar och flickor."
 sad1 = "<b>[:nick]</b> verkar vara ledsen för tillfället, [:per]% av raderna innehöll sura miner :("
 sad2 = "<b>[:nick]</b> är också en ledsen person, som grät [:per]% av tiden"
 sad3 = "Ingen i [:channel] är ledsen! Välkommen till den glada kanalen :-)"
+
+month = "Januari Februari Mars April Maj Juni Juli Augusti September Oktober November December"
+day = "Sönday Måndag Tisdag Onsdag Torsday Freday Lörday"
 
 ## Topics
 
