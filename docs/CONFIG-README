@@ -18,7 +18,8 @@ Remember, the nick is always required.
 For example to add aliases to a nick, then you could do this:
     <user nick="Joe" alias="Joe^*">
 
-This will add all Joe^'s to 'Joe' in the stats.
+The asterix (*) means that it will match all nicks starting with 'Joe^'. So
+it will add all Joe^'s to 'Joe' in the stats.
 
 Another thing you can do is to add a picture to a user:
     <user nick="Ben" pic="ben_holiday.jpg">
@@ -79,10 +80,10 @@ Other examples:
 <set show_voice="1" show_wpl="1">
 <set topichistory="3" timeoffset="+0">
 
-There is many options which can be set, here's a list of them all (not
+There is many options which can be set, here is a list of them all (not
 casesensitive):
 
- * The most useful ones *
+--- The most useful ones ---
 
 channel             The name of your channel. E.g. '#mychannel'
                     (default: unset)
@@ -220,10 +221,7 @@ silent              1 or 0.  Enabling this will suppress all standard output
                     from pisg.  Error messages will still be sent to STDOUT.
                     (default: 0)
 
-charset             Charset to use for stats page.
-                    (default: iso-8859-1)
-
- * Colors / layout for your stats page *
+--- Colors / layout for your stats page ---
 
 bgcolor             Background color of the page
 bgpic               Background picture of the page
@@ -263,18 +261,15 @@ pic_h_18
 pic_loc             Directory containing your png graphics files.
                     (default: current dir)
 
-  * Small things, useful for some people *
+--- Less important things, useful for some people ---
 
-logtype             The type of logs kept for your channel.  Currently only
-                    "Logfile" is supported.
+charset             Charset to use for stats page.
+                    (default: iso-8859-1)
 
-langfile            Filename of language file.
-                    (default: lang.txt)
-
-minquote            Minimal value of letters for a random quote
+minquote            Minimal number of letters for a random quote
                     (default: 25)
 
-maxquote            Maximum value of letters for a random quote
+maxquote            Maximum number of letters for a random quote
                     (default: 65)
 
 wordlength          The minimum number of chars an interesting word may be
@@ -292,8 +287,15 @@ topichistory        Maximum number of topics to show in 'latest topics'
 urlhistory          Maximum number of URLs to show in 'most referenced URLs'
                     (default: 5)
 
+langfile            Filename of language file.
+                    (default: lang.txt)
+
 nicktracking        1 or 0, track nickchanges and create aliases?
                     (default: 1)
+
+logtype             The type of logs kept for your channel.  Currently only
+                    "Logfile" is supported, so you don't need to change this
+                    option.
 
 
 WORD OPTIONS
