@@ -175,7 +175,7 @@ sub get_default_config_settings
 
         # Developer stuff
 
-        version => "0.37-cvs",
+        version => "0.38-cvs",
     };
 
     # Backwards compatibility with old option names:
