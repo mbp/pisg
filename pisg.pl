@@ -21,7 +21,8 @@ use Getopt::Long;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-my @options = ("channel", "logfile", "format", "network", "outputfile", "maintainer",
+my @options = ("channel", "logfile", "format", "network", "outputfile",
+"maintainer", "prefix", 
 "pagehead", "configfile", "imagepath", "logdir", "lang", "langfile", "bgcolor",
 "text", "hbgcolor", "hcolor", "hicell", "hicell2", "tdcolor", "tdtop", "link",
 "vlink", "hlink", "headline", "rankc", "minquote", "maxquote", "wordlength",
@@ -283,8 +284,10 @@ sub parse_dir
     }
 
     foreach my $file (@filesarray) {
-        $file = $logdir . $file;
-        parse_file($file);
+        if ($prefix eq "" || $file =~ /^$prefix/) {
+            $file = $logdir . $file;
+            parse_file($file);
+        }
     }
 
 }
@@ -1756,6 +1759,8 @@ maintainer]  [-f format] [-n network] [-d logdir] [-a aliasfile]
 -f --format=xxx        : Logfile format [see FORMATS file]
 -n --network=xxx       : IRC Network this channel is on.
 -d --dir=xxx           : Analyze all files in this dir. Ignores logfile.
+-p --prefix=xxx        : Analyse only files starting with xxx in dir.
+                         Only works with --dir
 -u --configfile=xxx    : Config file
 -h --help              : Output this message and exit (-? also works).
 
@@ -1775,6 +1780,7 @@ END_USAGE
                    'maintainer=s' => \$maintainer,
                    'outfile=s'    => \$outputfile,
                    'dir=s'        => \$logdir,
+                   'prefix=s'     => \$prefix,
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
                    'configfile=s'  => \$configfile,
