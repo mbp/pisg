@@ -55,7 +55,7 @@ slaptext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:lin
 
 slapped1 = "Poor <b>[:nick]</b>, nobody likes [:subj]. [:sex] got slapped <b>[:slaps]</b> times."
 slapped2 = "<b>[:nick]</b> seems to be unliked too, [:sex] got slapped <b>[:slaps]</b> times."
-slapped3 = "Nobody got slapped in Channel :)"
+slapped3 = "Nobody got slapped in this channel :)"
 slappedtext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> wasn't very popular, got kicked [:kicks] times!"
@@ -142,7 +142,6 @@ uposessive = "his/her"
 msubj = "him"
 fsubj = "her"
 usubj = "him/her"
-
 </lang>
 
 ### German
@@ -369,6 +368,15 @@ lastused = "Sidst brugt af"
 pagetitle1 = "[:channel] @ [:network] statistikker af [:maintainer]"
 pagetitle2 = "Statistikker genereret "
 pagetitle3 = "Igennem denne [:days]-dages periode, har der været <b>[:nicks]</b> forskellige nicks på [:channel]."
+msex = "ham"
+fsex = "hende"
+usex = "ham/hende"
+mposessive = "hans"
+fposessive = "hendes"
+uposessive = "hans/hendes"
+msubj = "ham"
+fsubj = "hende"
+usubj = "ham/hende"
 </lang>
 
 ### French
