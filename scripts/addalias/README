@@ -1,0 +1,19 @@
+This is a small Perl script/webinterface enabling users to add their own
+aliases/pictures/links to users.cfg
+
+It was made by Doomshammer <doomshammer@doomshammer.yi.org>, so any
+questions/suggestions etc. should go to him.
+
+Documentation:
+--
+The user just has to fill out the form "addalias.htm" and "submit" :) First of
+all the script searches the users.cfg if the nick allready exists in the
+users.cfg If thats not the point it adds the Aliases aso. in syntax-style of
+your users.cfg
+
+For the user it is possible to set "Nickname, Alias, Userpic-URL, Link (Mail or
+URL), and Ignore"
+
+I think this script makes it more easier to spent the users.cfg up-to-date,
+because YOU haven't to search the log for aliases and so on... it's time to
+make the users work :)
