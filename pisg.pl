@@ -1286,7 +1286,7 @@ sub activenicks
         "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$ch/$line)."</td>"
         : "")
         ."<td bgcolor=\"#$col_r$col_g$col_b\">");
-        html("\"" . htmlentities($randomline) . "\"</td>");
+        html("\"$randomline\"</td>");
 
         if ($users->{userpics}{$nick}) {
             html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$conf->{imagepath}$users->{userpics}{$nick}\"></td>");
