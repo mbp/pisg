@@ -9,6 +9,8 @@ pisg (x.xx)
    * New 'softgreen' colorscheme (thanks, Melody Mayberry)
    * Fixed wrong reference to PicHeight in docs which should be PicWidth.
      (thanks, J Lehto)
+   * The ocean colorscheme has been updated, the link-hover color is now
+     white.
 
 pisg (0.41) - Sun Aug, 11th 2002
    * Fix a bug in the winbot logfile format where lines containing the channel

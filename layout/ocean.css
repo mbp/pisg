@@ -1,6 +1,6 @@
 /*  Ocean colorscheme made by: Mikko Nissinen <Gwadj>
- *  To report bugs or suggestions please email to: 
- *  gwadj79@hotmail.com
+ *  To see it in action go to http://www.loiri.cjb.net
+ *  
  *  
  *  To obtain a better result, then set the these pisg options:
  *  <set hicell="#3399cc">
@@ -22,7 +22,7 @@ A:visited
 }
 A:hover
 {
-    COLOR: #66ccff;
+    COLOR: #ffffff;
     TEXT-DECORATION: underline
 }
 A.background
@@ -125,3 +125,4 @@ TD
     FONT-FAMILY: "Arial narrow", Arial, sans-serif
     TEXT-ALIGN: center
 }
+
