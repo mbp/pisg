@@ -33,7 +33,7 @@ sub main
 use Pisg;
 
 \$pisg = new Pisg(
-    use_configfile => '0',
+    use_configfile => '1',
     override_cfg => \$cfg
 );
 \$pisg->run();
