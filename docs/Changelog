@@ -6,6 +6,7 @@ pisg (x.xx)
    * mIRC6 format wasn't actually distributed with pisg, it is now.
    * mirc2egg.sed script added in the scripts/ folder, it's used to convert
      mIRC logs to eggdrop logs. (thanks, Geoff Simmons)
+   * Hopefully fix xchat logs interpreting asterixs as the nick.
 
 pisg (0.42) - Fri Nov, 1st 2002
    * ircII logfile support added (thanks, James Andrewartha)

@@ -13,7 +13,7 @@ sub new
     my $self = {
         cfg => $args{cfg},
         normalline => '(\d+):\d+:\d+ <([^>\s]+)>\s+(.*)',
-        actionline => '(\d+):\d+:\d+ (\*){1,}\s+(\S+) (.*)',
+        actionline => '(\d+):\d+:\d+ \*{1,}\s+(\S+) (.*)',
         thirdline  => '(\d+):(\d+):\d+ .{1,}--\s+(\S+) (\S+) (\S+) (\S+) (\S+) ?(\S+)? ?(.*)?',
     };
 
