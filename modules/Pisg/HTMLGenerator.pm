@@ -1765,9 +1765,9 @@ sub _mostreferencednicks
         for(my $i = 0; $i < $self->{cfg}->{nickhistory}; $i++) {
             last unless $i <= $#popular;
             my $a = $i + 1;
-            my $popular   = $popular[$i];
+            my $popular   = $self->_format_word($popular[$i]);
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
-            my $lastused  = $self->{stats}->{wordnicks}{$popular[$i]};
+            my $lastused  = $self->_format_word($self->{stats}->{wordnicks}{$popular[$i]});
 
             my $class;
             if ($a == 1) {
