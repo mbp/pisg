@@ -79,7 +79,7 @@ sub thirdline
             $hash{nick} = $1;
             $hash{kicker} = $2;
 
-        } elsif ($2 =~ /^([^(\[1m)]*)\[1m\S* (:?)(.*)\[1m\]\[0m set the topic: (.*)/) {
+        } elsif ($2 =~ /^([^(\[1m)]*)\[1m\[\[0m#[^\[ ]+( ?:?)(.*)\[1m\]\[0m set the topic: (.*)/) {
             $hash{nick} = $1;
             $hash{newtopic} = "$3$2$4";
         
