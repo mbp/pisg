@@ -36,7 +36,7 @@
      <listitem>
        <para>
         You run pisg, pisg runs the log through and create statistics, it
-        then creates an HTML page which you can upload to a server.
+        then creates an HTML page which you can upload to a webserver.
        </para>
       </listitem>
     </itemizedlist>
@@ -56,7 +56,7 @@
       </listitem>
      <listitem>
        <para>
-        Any operating system which Perl runs on, this includes popular OS'es
+        Any operating system which Perl runs on, this includes popular OSes
         such as Linux, FreeBSD, Windows and Mac. You will have a hard time
         finding an OS where Perl isn't supported. For Windows this means
         that you need to download <ulink
@@ -94,7 +94,7 @@
 
    <para>
    An element called <command>channel</command> is made for defining
-   channels, a quick example of a channel is this:
+   channels, a quick example of a channel is here:
 
    <programlisting>
    <![CDATA[
@@ -122,7 +122,7 @@
    <para>
    Also be-aware of the fact that pisg uses various images to show the
    time-related bars. These images are placed in the
-   <filename>gfx/</filename> folder and should be putted into the same
+   <filename>gfx/</filename> folder and should be placed into the same
    directory as your outputted HTML file.
    </para>
 
@@ -159,7 +159,8 @@
     </programlisting>
 
     You can include * or ? to enable filename globbing to randomly choose one
-    from several pictures: (see <command>ImageGlobPath</command> below)
+    from several pictures: (see documentation for the
+    <command>ImageGlobPath</command> option)
     <programlisting>
     <![CDATA[<user nick="Ben" pic="ben_*.jpg">]]>
     </programlisting>
@@ -277,7 +278,7 @@
     </para>
 
     <para>
-    There are a few predefined colorschemes for you to use, use the
+    There are a few predefined color schemes for you to use, use the
     ColorScheme option when using them. The available colorschemes are:
     'default', 'darkgalaxy', 'ocean', 'darkred'.
     </para>
@@ -544,7 +545,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    <command>OutputTag</command>specifies a string that will replace
+    <command>OutputTag</command> specifies a string that will replace
     occurrences of "%t" in <command>OutputFile</command>. This option is most
     useful when used as a command line switch (-t) to pisg in conjunction with
     <command>NFiles</command> (-nf). Example:
@@ -670,7 +671,7 @@
     process at most that much files from <command>LogDir</command>. Useful to
     create statistics that cover the last week or month. Note that if multiple
     <command>LogDir</command> options are provided, <command>NFiles</command>
-    referrs to the number of files which will be processed from each
+    refers to the number of files which will be processed from each
     <command>LogDir</command>
     </para>
     </refsect1>
@@ -706,7 +707,7 @@
     <title>Description</title>
     <para>
     <command>Maintainer</command> is used to define the name of the
-    maintaner of the statistics page, this can be either the person
+    maintainer of the statistics page, this can be either the person
     generating the stats or the bot/client doing the logging.
     The maintainer is displayed in the outputted stats page.
     </para>
@@ -724,7 +725,7 @@
 
     <refnamediv>
     <refname>ColorScheme</refname>
-    <refpurpose>use a different colorscheme for stats page</refpurpose>
+    <refpurpose>use a different color scheme for stats page</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -742,10 +743,10 @@
     <refsect1>
     <title>Description</title>
     <para>
-    <command>ColorScheme</command> is used to define the colorscheme used
+    <command>ColorScheme</command> is used to define the color scheme used
     for the statistics page. Actually it's the CSS file being included.
     Available options are: default, darkgalaxy, darkred, justgrey, ocean,
-    softgreen.
+    softgreen, orange_grey.
     </para>
     </refsect1>
     <refsect1>
@@ -880,7 +881,7 @@
 
     <refnamediv>
     <refname>LogPrefix</refname>
-    <refpurpose>only parse logs LogPrefixed with a userdefined string</refpurpose>
+    <refpurpose>only parse logs LogPrefixed with a user defined string</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -959,7 +960,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    This option is useful mainly from commandline when invoking pisg with
+    This option is useful mainly from command line when invoking pisg with
     <command>--silent 1</command>. But it can also used in the configuration
     file. It will suppress all standard output from pisg. Error messages
     will still be sent.
@@ -1105,7 +1106,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    With this option you can enable the "words per line" coloumn in the
+    With this option you can enable the "words per line" column in the
     "Most Active Nicks" section. It will add a column describing the average
     words per line for a person.
     </para>
@@ -1141,7 +1142,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    With this option you can enable the "characters per line" coloumn in the
+    With this option you can enable the "characters per line" column in the
     "Most Active Nicks" section. It will add a column describing the average
     number of characters per line for a person.
     </para>
@@ -1214,7 +1215,7 @@
     <title>Description</title>
     <para>
     With this option enabled, a column will be added to the "Most Active
-    Nicks" section to display when a user was last seen. Eg. "2 days ago".
+    Nicks" section to display when a user was last seen. E.g. "2 days ago".
     </para>
     </refsect1>
     <refsect1>
@@ -1606,7 +1607,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By default, pisg shows example violentlines in the "Most aggresive"
+    By default, pisg shows example violentlines in the "Most aggressive"
     and "Most attacked"-stats.  With this option it can be disabled.
     </para>
     </refsect1>
@@ -1748,7 +1749,7 @@
     <para>
     By default, pisg has op statistics in the "Most interesting numbers"
     section. Here you can disable the feature, it's useful if you don't feel
-    that the information is of any value, or your logformat doesn't support
+    that the information is of any value, or your log format doesn't support
     ops/deops.
     </para>
     </refsect1>
@@ -2129,7 +2130,7 @@
     The random quotes displayed in the "Most Active Nicks" section has a
     certain range specified. With this option you can change the minimum
     number of letters required for a random quote. Also see the
-    <command>maxquote</command> option.
+    <command>MaxQuote</command> option.
     </para>
     </refsect1>
     <refsect1>
@@ -2166,7 +2167,7 @@
     The random quotes displayed in the "Most Active Nicks" section has a
     certain range specified. With this option you can change the maximum
     number of letters required for a random quote. Also see the
-    <command>minquote</command> option.
+    <command>MinQuote</command> option.
     </para>
     </refsect1>
     <refsect1>
@@ -2218,7 +2219,7 @@
 
     <refnamediv>
     <refname>QuoteWidth</refname>
-    <refpurpose>Maximum allowed length of a "word" with no spaces</refpurpose>
+    <refpurpose>maximum allowed length of a "word" with no spaces</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2236,7 +2237,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    Pisg will automaticaly insert a space in words that have a length
+    Pisg will automatically insert a space in words that have a length
     over the amount quotewidth is set to.  When used in breaking up
     URL's it will insert a space in the displayed URL, but not in the
     actual URL referenced by the HREF.
@@ -2606,7 +2607,7 @@
 
     <refnamediv>
     <refname>NickTracking</refname>
-    <refpurpose>track nickchanges and create aliases</refpurpose>
+    <refpurpose>track nick changes and create aliases</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2635,7 +2636,7 @@
 
     <refnamediv>
     <refname>SortByWords</refname>
-    <refpurpose>Sort "most active nicks" by words</refpurpose>
+    <refpurpose>sort "most active nicks" by words</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2934,7 +2935,7 @@
 
     <refnamediv>
     <refname>Charset</refname>
-    <refpurpose>Charset to use for stats page</refpurpose>
+    <refpurpose>character set to use for stats page</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2952,12 +2953,13 @@
     <refsect1>
     <title>Description</title>
     <para>
-    The pisg stats page defines a charset in a meta tag, this can be used if
-    your country is using a different one than the default. Pisg will also use
-    this setting to convert the language templates from
+    The pisg stats page defines a character set in a meta tag, this can be
+    used if your country is using a different one than the default. Pisg
+    will also use this setting to convert the language templates from
     <command>LangFile</command> if the language defines a source charset.
-    Note: you also have to tell your webserver to transmit the charset to the
-    browser. With Apache, use "AddDefaultCharset off" in the server config.
+    Note: you also have to tell your webserver to transmit the charset to
+    the browser. With Apache, use "AddDefaultCharset off" in the server
+    config.
     </para>
     </refsect1>
     <refsect1>
@@ -2973,7 +2975,7 @@
 
     <refnamediv>
     <refname>LogCharset</refname>
-    <refpurpose>charset for logfiles</refpurpose>
+    <refpurpose>character set for logfiles</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -3011,7 +3013,7 @@
 
     <refnamediv>
     <refname>LogCharsetFallback</refname>
-    <refpurpose>fallback charset for logfiles</refpurpose>
+    <refpurpose>fallback character set for logfiles</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -3171,7 +3173,7 @@
     <title>Description</title>
     <para>
     <command>CssDir</command> is used to define the paths to the CSS files
-    (the colorschemes). Usually you don't need to change this.
+    (the color schemes). Usually you don't need to change this.
     </para>
     </refsect1>
     <refsect1>
