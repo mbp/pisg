@@ -69,7 +69,7 @@ sub thirdline
             $hash{nick} = $5;
 
         } elsif ($4 eq 'TOPIC') {
-            $hash{newtopic} = $5.$6.$7;
+            $hash{newtopic} = $5." ".$6." ".$7;
 
         } elsif ($4 eq 'MODE') {
             $hash{newmode} = $5;

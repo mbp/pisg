@@ -1,3 +1,7 @@
+pisg (x.xx)
+   * Revert most of the performance improvement changes, they caused bugs.
+   * Really fix topics with the mbot format.
+
 pisg (0.53) - Tue Mar, 23rd 2004
    * Several noticeable performance improvements (thanks, Hanno Hecker)
    * mIRC is no longer the default format. You have to always specify a format
