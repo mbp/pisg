@@ -149,7 +149,6 @@ sub init_pisg
     undef $lastnormal;
     undef $lines;
     undef $smile;
-    undef $time;
 
     undef $normalline;
     undef $actionline;
@@ -184,13 +183,7 @@ sub init_pisg
 
     undef %setban; 
     undef %foul; 
-    undef $days; 
-    undef $oldtime; 
-    undef $lastline; 
-    undef $actions; 
-    undef $normals; 
 
-    undef $repeated; 
     undef $lastnormal; 
     undef $foulwords; 
     undef %shout; 
@@ -198,7 +191,6 @@ sub init_pisg
     undef %slap; 
     undef %slapped; 
     undef %words; 
-    undef $timestamp;
 
     $timestamp = time;
 
