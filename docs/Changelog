@@ -1,3 +1,9 @@
+pisg (x.xx)
+   * Add new option, MostNicksVerbose (enabled by default). When this option
+     is disabled, instead of having a full list of nicknames in "most
+     referenced nicks", only the number of nicks used will be listed. (thanks,
+     David Lynch)
+
 pisg (0.47) - Wed Feb, 26th 2003
    * Fix bug where multiple URLs in same line would have save name as first URL
      (EG: <A HREF="http://www.google.com">http://www.yahoo.com</A> if yahoo

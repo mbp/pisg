@@ -235,7 +235,7 @@
    </sect1>
    <sect1 id="including-config">
     <title>Including common settings for various channels</title>
-    
+
     <para>
     If you have, for example, more than one channel, where the users are the
     same, or you don't want to maintain more than one user file, you can use
@@ -328,7 +328,7 @@
     The program will run and parse the logfiles you specified in the
     configuration file.
     </para>
-    
+
     <para>
     If you are using Linux and want run pisg
     automatically several times a day, then see the
@@ -361,7 +361,7 @@
     </para>
 
    </sect1>
-   
+
   </chapter>
   <chapter id="reference">
    <title>General pisg options</title>
@@ -640,7 +640,8 @@
     <para>
     <command>ColorScheme</command> is used to define the colorscheme used
     for the statistics page. Actually it's the CSS file being included.
-    Available options are: default, darkgalaxy.
+    Available options are: default, darkgalaxy, darkred, justgrey, ocean,
+    softgreen.
     </para>
     </refsect1>
     <refsect1>
@@ -1218,7 +1219,7 @@
     <title>Description</title>
     <para>
     The default behaviour is to add a column to the "Most Active Nicks"
-    section displaying a fancy linetimebar to show when a user was active. 
+    section displaying a fancy linetimebar to show when a user was active.
     With this option it can be done similarly to mIRCStats does it and like
     the ShowLineTime option, but using words instead of lines; that is, by
     putting that timebar next to the number of words, in the same column.
@@ -1754,7 +1755,7 @@
     By enabling this option, pisg will add a section to the stats showing
     "Most Active Nicks By Hour" - also look at the
     <command>ShowMostActiveByHourGraph</command> and
-    <command>ActiveNicksByHour</command> settings. 
+    <command>ActiveNicksByHour</command> settings.
     </para>
     </refsect1>
     <refsect1>
@@ -2243,6 +2244,41 @@
     <refsect1>
     <title>Default</title>
     <para> 5 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** MOSTNICKSVERBOSE *** -->
+    <refentry id="MostNicksVerbose">
+
+    <refmeta> <refentrytitle>MostNicksVerbose</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>MostNicksVerbose</refname>
+    <refpurpose>show nicks used in "most nicks"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         MostNicksVerbose = "0"
+        </channel>
+
+        <set MostNicksVerbose="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By disabling this option you can stop pisg from displaying all the nicks
+    a user has had in the "Most used nicks" section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 </para>
     </refsect1>
     </refentry>
 

@@ -175,6 +175,7 @@ sub get_default_config_settings
         nickhistory => 5,
         wordhistory => 10,
         mostnickshistory => 5,
+        mostnicksverbose => 1,
         nicktracking => 0,
         charset => 'iso-8859-1',
         irciinick => 'maintainer',

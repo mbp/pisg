@@ -1905,8 +1905,13 @@ sub _mostnicks
             my $n = $nickcount > 1 ? $names1 : $names2;
 
             _html("<tr><td class=\"$class\">$a</td>");
-            _html("<td class=\"hicell10\">$sortnicks[$i]<br />($nickcount $n)</td>");
-            _html("<td class=\"hicell10\" valign='top'>$nickused</td>");
+            if ($self->{cfg}->{mostnicksverbose}) { 
+                _html("<td class=\"hicell10\">$sortnicks[$i]<br />($nickcount $n)</td>");
+                _html("<td class=\"hicell10\" valign='top'>$nickused</td>");
+            } else {
+                _html("<td class=\"hicell10\">$sortnicks[$i]</td>");
+                _html("<td class=\"hicell10\" valign='top'>$nickcount $n</td>");
+            }
             _html("</tr>");
         }
         _html("</table>");
