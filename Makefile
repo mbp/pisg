@@ -55,6 +55,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/bxlog.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/psybnc.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/Trillian.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Template.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/xchat.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
