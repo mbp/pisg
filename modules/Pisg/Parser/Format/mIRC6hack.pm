@@ -4,11 +4,27 @@ package Pisg::Parser::Format::mIRC6hack;
 
 # To use this logging format, add the following to mIRC's remote script
 # section:
-#
-# on ^1:ACTION:*:*: {
-#   haltdef
-#   echo $chan ** $nick $1-
-# }
+
+=head1 mIRC script
+
+# 2004-11-21 by coaster
+
+alias me {
+  if ($1) {
+    .describe $active $1-
+    echo $color(own) -qt $active ** $me $1-
+  }
+  else {
+    echo $color(info) $active * /me: insufficient parameters
+  }
+}
+
+on ^*:ACTION:*:*:{
+  echo $color(action) -lt $iif($chan,$chan,$nick) ** $nick $1-
+  haltdef
+}
+
+=cut
 
 use strict;
 $^W = 1;
