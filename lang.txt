@@ -18,7 +18,7 @@
 # (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
 # (NL) Dutch - Pyrofikiemaan <gassman65@hotmail.com>
 # (SE) Swedish - Andreas Henriksson <andreas.henriksson@linux.se>
-# (FI) Finnish - Kirler@paincreators <kirler@letku.net>
+# (FI) Finnish - Kirler@paincreators <kirler@paincreators.net>
 # (SI) Slovenian - Ales Tepina <ales.tepina@guest.arnes.si>
 # (HU) Hungarian - Gyuri Horak <dyuri@dyuri.sch.bme.hu>
 # (EE) Estonian - comcute <comcute@surfdata.ee>
