@@ -24,29 +24,29 @@ use Getopt::Long;
 my $config;
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
-$config->{channel} = "#channel";		# The name of your channel.
+$config->{channel} = "#channel";	# The name of your channel.
 $config->{logfile} = "channel.log";	# The exact filename of the logfile
 $config->{format} = "mIRC";		# logfile format. see FORMATS file
 $config->{network} = "SomeIRCNet";	# Network the channels is using.
 $config->{outputfile} = "index.html";	# The name of the html file to be generated
 $config->{maintainer} = "MAINTAINER";	# The maintainer or bot which makes the logfile
 $config->{pagehead} = "none";		# Some 'page header' file which you want to
-				# include in top of the stats
+					# include in top of the stats
 
 $config->{configfile} = "pisg.cfg";	# Path to config file (aliases, ignores,
-				# pics and more, see pisg.cfg for examples)
+					# pics and more, see pisg.cfg for examples)
 
-$config->{imagepath} = "";		# If your user pictures is located
+$config->{imagepath} = "";	# If your user pictures is located
 				# some special directory, set the path here.
 
-$config->{logdir} = "";			# If you specify a path to a dir here, then
+$config->{logdir} = "";		# If you specify a path to a dir here, then
 				# pisg will take that dir, and parse ALL
 				# logfiles in it, and create 1 HTML file
 				# from it
 
 $config->{lang} = 'EN';			# Language to use:
 			   	        # EN | DE | DK | FR | ES | PL
-$config->{langfile} = 'lang.txt';		# Name of language file
+$config->{langfile} = 'lang.txt';	# Name of language file
 
 $config->{prefix} = "";         # If you specify a string here and have $logdir
                                 # set, then only those files starting with
@@ -57,7 +57,7 @@ $config->{prefix} = "";         # If you specify a string here and have $logdir
 # Here you can set the colors for your stats page..
 $config->{bgcolor} = "#dedeee";		# Background color of the page
 $config->{text} = "black";		# Normal text color
-$config->{hbgcolor} = "#666699";		# Background color in headlines
+$config->{hbgcolor} = "#666699";	# Background color in headlines
 $config->{hcolor} = "white";		# Text color in headline
 $config->{hicell} = "#BABADD";		# Background color in highlighted cells
 $config->{hicell2} = "#CCCCCC";		# Background color in highlighted cells
@@ -66,23 +66,23 @@ $config->{tdtop} = "#C8C8DD";		# Top color in some tables.
 $config->{link} = "#0b407a";		# Color of links
 $config->{vlink} = "#0b407a";		# Color of visited links
 $config->{hlink} = "#0b407a";		# Color of hovered links
-$config->{headline} = "#000000";		# Border color of headlines
-$config->{rankc} = "#CCCCCC";             # Colors of 'ranks' (1,2,3,4)
+$config->{headline} = "#000000";	# Border color of headlines
+$config->{rankc} = "#CCCCCC";           # Colors of 'ranks' (1,2,3,4)
 $config->{pic1} = "pipe-blue.png";	# Bar-graphic-file for normal times
-$config->{pic2} = "pipe-purple.png";      # Bar-graphic-file for top-times
+$config->{pic2} = "pipe-purple.png";    # Bar-graphic-file for top-times
 
 # Other things that you might set, but not everyone cares about them
-$config->{minquote} = "25";		# Minimal value of letters for a random quote
-$config->{maxquote} = "65";		# Maximum value of letters for a random quote
-$config->{wordlength} = "5";		# The minimum number of chars an interesting
+$config->{minquote} = "25";	# Minimal value of letters for a random quote
+$config->{maxquote} = "65";	# Maximum value of letters for a random quote
+$config->{wordlength} = "5";	# The minimum number of chars an interesting
 				# word may be (in 'most referenced words')
-$config->{activenicks} = "25";		# Number of nicks to show in the 'top 25'
-$config->{activenicks2} = "30";		# Nicks to show in 'these didnt make it...'
-$config->{topichistory} = "3";		# How many topics to show in 'latest topics'
-$config->{nicktracking} = 0;		# Track nickchanges and create aliases (can
+$config->{activenicks} = "25";	# Number of nicks to show in the 'top 25'
+$config->{activenicks2} = "30";	# Nicks to show in 'these didnt make it...'
+$config->{topichistory} = "3";	# How many topics to show in 'latest topics'
+$config->{nicktracking} = 0;	# Track nickchanges and create aliases (can
 				# be slow, so it's disabled by default)
 
-$config->{timeoffset} = "+0";		# A time offset on the stats page - if your
+$config->{timeoffset} = "+0";	# A time offset on the stats page - if your
 				# country has a different timezone than the
 				# machine where the stats are being
 				# generated, then for example do +1
