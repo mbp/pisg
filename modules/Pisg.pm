@@ -494,8 +494,20 @@ sub parse_channels
 {
     my $self = shift;
     my %origcfg = %{ $self->{cfg} };
+    
+    # make a list of channels to do
+    my @chanlist;
+    if (defined $self->{cfg}->{cchannels}) {
+        @chanlist = @{ $self->{cfg}->{cchannels} };
+    } else {
+        @chanlist = keys %{ $self->{chans} };
+    }
 
-    foreach my $channel (keys %{ $self->{chans} }) {
+    foreach my $channel (@chanlist) {
+        if (!defined $self->{chans}->{$channel}) {
+            print STDERR "Channel $channel not in config file, ignoring\n";
+            next;
+        }
         foreach (keys %{ $self->{chans}->{$channel} }) {
             $self->{cfg}->{$_} = $self->{chans}->{$channel}{$_};
         }

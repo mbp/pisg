@@ -82,6 +82,8 @@ Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 [-f format] [-n network] [-d logdir] [-mo moduledir] [-s] [-v] [-h]
 
 -ch --channel=xxx      : Set channel name
+-cc --cchannels=xxx    : Only do this channel from cfg file, give multiple
+                         times to do multiple channels
 -l  --logfile=xxx      : Log file to parse
 -o  --outfile=xxx      : Name of HTML file to create
 -ma --maintainer=xxx   : Channel/statistics maintainer
@@ -106,6 +108,7 @@ calling pisg without arguments.
 END_USAGE
 
     if (GetOptions('channel=s'    => \$cfg{channel},
+                   'cchannels=s@'  => \@{ $cfg{cchannels} },
                    'logfile=s'    => \$cfg{logfile},
                    'format=s'     => \$cfg{format},
                    'network=s'    => \$cfg{network},
