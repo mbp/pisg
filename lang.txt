@@ -35,6 +35,10 @@ loud1 = "Loudest one was <b>[:nick]</b> who yelled [:per]% of the time!"
 loud2 = "Another <i>old yeller</i> was <b>[:nick]</b> who shouted [:per]% of the time!"
 loud3 = "Nobody raised an exclamation mark, wow."
 
+shout1 = "It seem that <b>[:nick]</b>'s shift-key is hanging, [:per]% of the time he/she wrote UPPERCASE"
+shout2 = "<b>[:nick]</b> just forgot to deactivate his/her Caps-Lock, [:per]% of the time he/she wrote UPPERCASE"
+shout3 = "Everybody had their shift-key under control :)"
+
 gotkick1 = "<b>[:nick]</b> wasn't very popular, got kicked [:kicks] times!"
 gotkick2 = "<b>[:nick]</b> seemed to be hated too, [:kicks] kicks were received"
 
@@ -111,6 +115,10 @@ question3 = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Ge
 loud1 = "Am lautesten war <b>[:nick]</b> der [:per]% der Zeit geschrieen hat!"
 loud2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> der/die [:per]% der Zeit rumgeschrieen hat!"
 loud3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
+
+shout1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb er in GROSSBUCHSTABEN"
+shout2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von ihm/ihr kamen [:per]% der Zeit GROSSBUCHSTABEN"
+shout3 = "Alle hatten ihre Shift-Taste gut unter kontrolle :)"
 
 gotkick1 = "<b>[:nick]</b> war wohl der Channelclown, er/sie wurde [:kicks] mal gekickt!"
 gotkick2 = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für ihn/sie"
