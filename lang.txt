@@ -1076,6 +1076,7 @@ pagetitle2 = "Statistik genererad "
 pagetitle3 = "Under denna [:days]-dagars reporterings period, blev ett totalt antal av <b>[:nicks]</b> olika personer representerade på [:channel]."
 </lang>
 
+
 ### Finnish (Suomi)
 <lang name="FI">
 mostop1 = "<b>[:nick]</b> jakeli kanavalla oppeja [:ops] kertaa..."
@@ -1083,8 +1084,16 @@ mostop2 = "<b>[:nick]</b>kin oli tosi kohtelias: häneltä tippui oppeja [:ops] ke
 mostop3 = "Kummaa kyllä, [:channel]:lla ei opitettu ketään!"
 
 mostdeop1 = "<b>[:nick]</b> yritti olla pomo [:deops] deopilla..."
-mostdeop2 = "Pikkupomon tittelin saa <b>[:nick]</b>: deopittanut [:deops] kertaa..."
+mostdeop2 = "Pikkupomon tittelin saa <b>[:nick]</b>: alentanut muita [:deops] kertaa..."
 mostdeop3 = "Huh huh! Ketään ei rangaistu [:channel]:lla!"
+
+mostvoice1 = "<b>[:nick]</b> antoi pikkuoppeja(+v) [:voices]:lle henkilölle"
+mostvoice2 = "Myös <b>[:nick]</b> voicetti ahkeraan: [:voices] kertaa!"
+mostvoice3 = "Tällä kertaa [:channel]:lla ei tippunut voiceja kenellekään..."
+
+mostdevoice1 = "<b>[:nick]</b> riisti irkkaajilta voiceja [:devoices]:sti!!"
+mostdevoice2 = "Perässä seuraa <b>[:nick]</b>: hän otti [:channel]:lla voiceja pois [:devoices] kertaa..."
+mostdevoice3 = "Keneltäkään ei riistitty voiceja [:channel]:lla :)"
 
 action1 = "<b>[:nick]</b> halusi kaikkien tietävän mitä on tekemässä: [:actions] /me:tä!"
 action2 = "Myöskin <b>[:nick]</b>:ssa esiintyy itserakkautta: selitteli tekemisiään [:actions] kertaa..."
@@ -1099,8 +1108,8 @@ shout1 = "Eniten meistä kirkui <b>[:nick]</b>, tarkemmin ottaen [:per]% ajasta!"
 shout2 = "Toinen <i>temperamenttikko</i> oli <b>[:nick]</b>, joka huusi [:per]% ajasta..."
 shout3 = "Huh huh! Kukaan ei oo huudellut [:channel]:lla..."
 
-allcaps1 = "Näyttää siltä että <b>[:nick]</b>:n shift-näppäin on kokoajan pohjassa: [:per]% ajasta hän kirjoitti ISOILLA..."
-allcaps2 = "Toiseksi tässä "kisassa" tulee <b>[:nick]</b>: Caps Lock unohtunut pohjaan [:per]% ajasta!"
+allcaps1 = "Näyttää siltä että <b>[:nick]</b>:n shift-näppäin on kokoajan pohjassa: peräti [:per]% ajasta hän kirjoitti ISOILLA..."
+allcaps2 = "Toinen kanavan peelo on <b>[:nick]</b>: Caps Lock unohtunut pohjaan [:per]% ajasta!"
 allcaps3 = "Kummaa kyllä, kukaan ei riehunut capseilla..."
 allcapstext = "<b>Yksi esimerkki:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -1140,7 +1149,7 @@ long2 = "[:channel]:n keskiarvo on hieman alhaisempi: tarkalleen ottaen keskimää
 short1 = "<b>[:nick]</b> tykkää lyhennellä ajatuksiaan, kirjoittaen lyhyimpiä lauseita: [:letters] merkkiä rivillä."
 short2 = "[:nick] seuraa hyvänä kakkosena: [:letters] merkkiä rivillä."
 
-foul1 = "<b>[:nick]</b> on kanavan suurisuu! [:per]% hänen sanomisistaa sisälsivät kirosanoja!"
+foul1 = "<b>[:nick]</b> on kanavan suurisuu! [:per]% hänen sanomisistaan sisälsivät kirosanoja!"
 foul2 = "<b>[:nick]</b>:kin tykkää kiroilla: tuloksena vittuilua [:per]% ajasta..."
 foul3 = "Hmm, kukaan ei kiroile [:channel]:lla!  Mitä v*ttua? :)"
 
@@ -1160,13 +1169,13 @@ day = "sunnuntaina maanantaina tiistaina keskiviikkona torstaina perjantaina lau
 bignumtopic = "Suuria numeroita"
 othernumtopic = "Muuta mielenkiintoista"
 latesttopic = "Viimeisimmät topikit"
-activetimestopic = "Ruuhka-ajat"
+activetimestopic = "Vuorokauden aikajakauma"
 activenickstopic = "Suurimmat höpöttäjät"
-mostwordstopic = "Käytetyimpiä sanoja"
-referencetopic = "Kaivatuin irkkaaja"
+mostwordstopic = "Suisituimpia sanoja"
+referencetopic = "Kaivatuimpia irkkaajia"
 urlstopic = "Yleisimmät linkit"
 notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia..."
-bylinetopic = "Laittanut <b>[:nick]</b> klo <b>[:time]</b>"
+bylinetopic = "Asettanut <b>[:nick]</b> klo <b>[:time]</b>"
 
 ## Other text (Muuta sälää)
 
@@ -1174,11 +1183,11 @@ totallines = "Rivien yhteismäärä: [:lines]."
 totalnicks = "Tilastoihin eivät mahtuneet [:totalnicks] muuta irkkaajaa..."
 totaltopic = "Topikia asetettiin yhteensä [:total] kertaa."
 nick = "Nikki"
-url = "URL"
+url = "Linkki"
 numberlines = "Rivien määrä"
 randquote = "Satunnaislausahduksia"
 userpic = "Kuva"
-nottop = "Seuraavat henkilöt eivät olleet niin ahkeria:"
+nottop = "Seuraavat henkilöt eivät olleet niin ahkeria (rivien määrä):"
 word = "Sana"
 numberuses = "Käyttökertoja"
 show_words = "Sanojen määrä"
@@ -1190,10 +1199,12 @@ lastused = "Viimeksi sanonut"
 lastseen1 = "päivä sitten" 
 lastseen2 = "päivää sitten"
 today = "Tänään"
+lastused = "Viimeksi kaivanut"
 pagetitle1 = "[:channel] [:network]:ssä, tilastot laatinut: [:maintainer]"
 pagetitle2 = "Tilastoja päivitetty viimeksi "
 pagetitle3 = "Tällä [:days] päivän ajanjaksolla, [:channel]:lla kävi yhteensä <b>[:nicks]</b> eri tyyppiä."
 </lang>
+
 
 ### Slovenian
 <lang name="SI">
