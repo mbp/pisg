@@ -1808,7 +1808,7 @@ sub _replace_links
 sub _split_long_text
 {
     my ($self, $str) = @_;
-    $str =~ s/(\S{$self->{cfg}->{quotewidth}})(?!\s)/$1<WBR>/og;
+    $str =~ s/(\S{$self->{cfg}->{quotewidth}})(?!\s)/$1-<br />/og;
 
     return($str);
 }
