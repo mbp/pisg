@@ -90,6 +90,9 @@ sub thirdline
             $hash{nick} = $1;
             $hash{newnick} = $2;
 
+        } elsif ($3 =~ /^(\S+) /) {
+            $hash{nick} = $1;
+
         }
 
         return \%hash;

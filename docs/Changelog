@@ -11,6 +11,7 @@ pisg (0.62) - ??
    * CSS file can be linked to instead of being included statically;
      using "none" will make pisg omit the HTML header.
    * Documented HiCell and HiCell2 options.
+   * Fixed winbot parser (SF tracker #1082554 by Warmedal).
    Changes by Morten Brix Pedersen:
    * Fixed typo in French translation.
 
