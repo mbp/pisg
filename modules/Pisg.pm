@@ -243,6 +243,7 @@ sub init_config
         while (my $line = <CONFIG>)
         {
             next if ($line =~ /^#/);
+            chomp $line;
 
             if ($line =~ /<user.*>/) {
                 my $nick;
@@ -307,8 +308,9 @@ sub init_config
 
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
+                    $var =~ s/ //; # Remove whitespace
                     if (!defined($self->{cfg}->{$var})) {
-                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: $1\n";
+                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
                         next;
                     }
                     unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
