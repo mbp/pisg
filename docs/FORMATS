@@ -425,3 +425,19 @@ time"
 		[2003-02-22 16:52:34] *** Melody sets channel #ar-roleplay mode +v Alexander
 		[2003-02-22 16:58:57] *** Kemmy|ZZZ changed nick to Kemayo
 		[2003-02-22 17:03:34] * Alexander stirs Eien's brain.  "Cooooooool..."
+
+
+* rbot (http://linuxbrit.co.uk/rbot/)
+  - rbot is a ruby IRC bot. Think of him as a ruby
+    infobot, with more and different features, and a nicer plugin scheme.
+
+  - In order to use this, format must be set to 'rbot'
+
+  Example:
+  [2003/07/22 22:02:59] <Rathnor> well, i'm
+  considering setting up a cronjob or something to watch it
+  [2003/07/22 22:03:11] <ak|ra> hehe
+  [2003/07/22 22:03:24] @ Mode +o Rathnor by ChanServ
+  [2003/07/22 22:03:25] @ Quit: oddbudman: Remote
+  closed the connection
+  [2003/07/22 22:03:29] <FluxBot> Rathnor: :(
