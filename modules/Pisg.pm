@@ -481,8 +481,12 @@ _END
         if (defined $stats) {
             if ($stats->{parsedlines} > 0) {
                 $generator->create_output();
-            } elsif ($stats->{parsedlines} == 0) {
-                print STDERR "No parseable lines found in logfile ($stats->{totallines} total lines). Skipping.\nYou might be using the wrong format.\n";
+            } else {
+                print STDERR <<_END unless $self->{cfg}->{silent};
+No parseable lines found in logfile ($stats->{totallines} total lines). Skipping.
+-> You might be using the wrong format.
+-> A common error is that the logs do not contain timestamps for each line.
+_END
             }
         }
 
