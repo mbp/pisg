@@ -1447,9 +1447,7 @@ sub _mostwordsperline
         my $text = $self->_template_text('wpl1', %hash);
         _html("<tr><td class=\"hicell\">$text");
 
-        %hash = (
-            avg => $avg
-        );
+        $hash{avg} = $avg;
 
         $text = $self->_template_text('wpl2', %hash);
         _html("<br /><span class=\"small\">$text</span>");
@@ -1465,7 +1463,7 @@ sub _mostreferencednicks
     my %usages;
 
     foreach my $word (sort keys %{ $self->{stats}->{wordcounts} }) {
-        next unless exists $self->{stats}->{lines}{$word};
+        next if !exists $self->{stats}->{lines}{$word};
         next if is_ignored($word);
         $usages{$word} = $self->{stats}->{wordcounts}{$word};
     }
