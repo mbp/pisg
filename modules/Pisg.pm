@@ -1,5 +1,7 @@
 package Pisg;
 
+# POD for this module is found at the end of the file.
+
 # Copyright (C) 2001  <Morten Brix Pedersen> - morten@wtf.dk
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,12 +18,6 @@ package Pisg;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-=head1 NAME
-
-Pisg - Perl IRC Statistics Generator main module
-
-=cut
-
 use strict;
 $^W = 1;
 
@@ -31,26 +27,29 @@ sub new
     my $self = {
         chans => {},
         users => {},
-        conf => {},
+        cfg => {},
         tmps => {},
-        overriden_confs => $_[0],
     };
+    my %args = @_;
+
+    $self->{override_cfg} = $args{override_cfg};
+    $self->{use_configfile} = $args{use_configfile};
 
     # FIXME - ugly hack to get the anonymous sub working, looks stupid to
-    # put this in the new constructor
+    # put this in the new constructor:
     $self->{debug} = sub {
-        if ($self->{conf}->{debug} or not $self->{conf}->{debugstarted}) {
+        if ($self->{cfg}->{debug} or not $self->{cfg}->{debugstarted}) {
             my $debugline = $_[0] . "\n";
-            if ($self->{conf}->{debugstarted}) {
+            if ($self->{cfg}->{debugstarted}) {
                 print DEBUG $debugline;
             } else {
-                $self->{conf}->{debugqueue} .= $debugline;
+                $self->{cfg}->{debugqueue} .= $debugline;
             }
         }
     };
 
     # Load the Common module from wherever it's configured to be.
-    #push(@INC, $self->{conf}->{modules_dir});
+    #push(@INC, $self->{cfg}->{modules_dir});
     require Pisg::Common;
     Pisg::Common->import();
 
@@ -61,27 +60,52 @@ sub new
 sub run
 {
     my $self = shift;
-    $self->get_default_config_settings();
-    print "pisg $self->{conf}->{version} - Perl IRC Statistics Generator\n\n";
-    $self->init_config();      # Init config. (Aliases, ignores, other options etc.)
-    $self->init_debug()
-        unless ($self->{conf}->{debugstarted});       # Init the debugging file
-    $self->get_language_templates(); # Get translations from lang.txt
-    $self->parse_channels();   # parse any channels in <channel> statements
-    $self->do_channel()
-        unless ($self->{conf}->{chan_done}{$self->{conf}->{channel}});
 
-    $self->close_debug();      # Close the debugging file
+    # Set the default configuration settings.
+    $self->get_default_config_settings();
+
+    print "pisg $self->{cfg}->{version} - Perl IRC Statistics Generator\n\n";
+
+    # Init the configuration file (aliases, ignores, channels, etc)
+    $self->init_config()
+        if ($self->{use_configfile});
+
+    # Init the debugging file.
+    $self->init_debug()
+        unless ($self->{cfg}->{debugstarted});
+
+    # Get translations from langfile
+    $self->get_language_templates();
+
+    # Parse any channels in <channel> statements
+    $self->parse_channels();
+
+    # Optionaly parse the channel we were given in override_cfg.
+    if (!$self->{cfg}->{channel}) {
+        print "No channels defined.\n";
+    } elsif ($self->{cfg}->{channel} and !$self->{cfg}->{logfile}) {
+        print "No logfile defined for " . $self->{cfg}->{channel} . "\n";
+    } else {
+        $self->do_channel()
+            unless ($self->{cfg}->{chan_done}{$self->{cfg}->{channel}});
+    }
+
+    # Close the debugging file.
+    $self->close_debug();
 }
 
 sub get_default_config_settings
 {
     my $self = shift;
 
-    $self->{conf} = {
-        channel => "#channel",
+    # This is all the default settings of pisg. They can be overriden by the
+    # pisg.cfg file, or by stating the override_cfg argument to the new
+    # constructor.
+
+    $self->{cfg} = {
+        channel => "",
         logtype => "Logfile",
-        logfile => "channel.log",
+        logfile => "",
         format => "mIRC",
         network => "SomeIRCNet",
         outputfile => "index.html",
@@ -159,13 +183,18 @@ sub get_default_config_settings
         debugfile => "debug.log",
         version => "v0.23-cvs",
     };
+
+    # Parse the optional overriden configuration variables
+    foreach my $key (keys %{$self->{override_cfg}}) {
+        $self->{cfg}->{$key} = $self->{override_cfg}->{$key};
+    }
 }
 
 
 sub get_language_templates
 {
     my $self = shift;
-    open(FILE, $self->{conf}->{langfile}) or open (FILE, $FindBin::Bin . "/$self->{conf}->{langfile}") or die("$0: Unable to open language file($self->{conf}->{langfile}): $!\n");
+    open(FILE, $self->{cfg}->{langfile}) or open (FILE, $FindBin::Bin . "/$self->{cfg}->{langfile}") or die("$0: Unable to open language file($self->{cfg}->{langfile}): $!\n");
 
 
     while (my $line = <FILE>)
@@ -192,33 +221,18 @@ sub get_language_templates
     close(FILE);
 }
 
-
-sub get_subst
-{
-    my $self = shift;
-    my ($m,$f,$hash) = @_;
-    if ($hash->{nick} && $self->{users}->{sex}{$hash->{nick}}) {
-        if ($self->{users}->{sex}{$hash->{nick}} eq 'm') {
-            return $m;
-        } elsif ($self->{users}->{sex}{$hash->{nick}} eq 'f') {
-            return $f;
-        }
-    }
-    return "$m/$f";
-}
-
 sub init_debug
 {
     my $self = shift;
-    $self->{conf}->{debugstarted} = 1;
-    if ($self->{conf}->{debug}) {
-        print "[ Debugging => $self->{conf}->{debugfile} ]\n";
-        open(DEBUG,"> $self->{conf}->{debugfile}") or print STDERR "$0: Unable to open debug
-        file($self->{conf}->{debugfile}): $!\n";
-        $self->{debug}->("*** pisg debug file for $self->{conf}->{logfile}\n");
-        if ($self->{conf}->{debugqueue}) {
-            print DEBUG $self->{conf}->{debugqueue};
-            delete $self->{conf}->{debugqueue};
+    $self->{cfg}->{debugstarted} = 1;
+    if ($self->{cfg}->{debug}) {
+        print "[ Debugging => $self->{cfg}->{debugfile} ]\n";
+        open(DEBUG,"> $self->{cfg}->{debugfile}") or print STDERR "$0: Unable to open debug
+        file($self->{cfg}->{debugfile}): $!\n";
+        $self->{debug}->("*** pisg debug file for $self->{cfg}->{logfile}\n");
+        if ($self->{cfg}->{debugqueue}) {
+            print DEBUG $self->{cfg}->{debugqueue};
+            delete $self->{cfg}->{debugqueue};
         }
     } else {
         $self->{debug} = sub {};
@@ -228,32 +242,28 @@ sub init_debug
 sub close_debug
 {
     my $self = shift;
-    if ($self->{conf}->{debug}) {
-        close(DEBUG) or print STDERR "$0: Cannot close debugfile($self->{conf}->{debugfile}): $!\n";
+    if ($self->{cfg}->{debug}) {
+        close(DEBUG) or print STDERR "$0: Cannot close debugfile($self->{cfg}->{debugfile}): $!\n";
     }
 }
 
 sub init_words
 {
     my $self = shift;
-    $self->{conf}->{foul} =~ s/\s+/|/g;
-    foreach (split /\s+/, $self->{conf}->{ignorewords}) {
-        $self->{conf}->{ignoreword}{$_} = 1;
+    $self->{cfg}->{foul} =~ s/\s+/|/g;
+    foreach (split /\s+/, $self->{cfg}->{ignorewords}) {
+        $self->{cfg}->{ignoreword}{$_} = 1;
     }
-    $self->{conf}->{violent} =~ s/\s+/|/g;
+    $self->{cfg}->{violent} =~ s/\s+/|/g;
 }
 
 sub init_config
 {
     my $self = shift;
 
-    # Parse the optional overriden configuration variables
-    foreach my $key (keys %{$self->{overriden_confs}}) {
-        $self->{conf}->{$key} = $self->{overriden_confs}->{$key};
-    }
 
-    if ((open(CONFIG, $self->{conf}->{configfile}) or open(CONFIG, $FindBin::Bin . "/$self->{conf}->{configfile}"))) {
-        print "Using config file: $self->{conf}->{configfile}\n";
+    if ((open(CONFIG, $self->{cfg}->{configfile}) or open(CONFIG, $FindBin::Bin . "/$self->{cfg}->{configfile}"))) {
+        print "Using config file: $self->{cfg}->{configfile}\n";
 
         my $lineno = 0;
         while (my $line = <CONFIG>)
@@ -268,16 +278,16 @@ sub init_config
                     $nick = $1;
                     add_alias($nick, $nick);
                 } else {
-                    print STDERR "Warning: no nick specified in $self->{conf}->{configfile} on line $lineno\n";
+                    print STDERR "Warning: no nick specified in $self->{cfg}->{configfile} on line $lineno\n";
                     next;
                 }
 
                 if ($line =~ /alias="([^"]+)"/) {
                     my @thisalias = split(/\s+/, lc($1));
                     foreach (@thisalias) {
-                        if ($self->{conf}->{regexp_aliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
+                        if ($self->{cfg}->{regexp_aliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
                             add_aliaswild($nick, $_);
-                        } elsif (not $self->{conf}->{regexp_aliases} and s/\*/\.\*/g) {
+                        } elsif (not $self->{cfg}->{regexp_aliases} and s/\*/\.\*/g) {
                             # quote it if it is a wildcard
                             s/([\|\[\]\{\}\(\)\?\+\^\\])/\\$1/g;
                             add_aliaswild($nick, $_);
@@ -308,26 +318,26 @@ sub init_config
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1); # Make the string lowercase
-                    unless (($self->{conf}->{$var} eq $2) || $self->{overriden_confs}->{$var}) {
-                        $self->{conf}->{$var} = $2;
+                    unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
+                        $self->{cfg}->{$var} = $2;
                     }
-                    $self->{debug}->("Conf: $var = $2");
+                    $self->{debug}->("cfg: $var = $2");
                 }
 
             } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
                 my ($channel, $settings) = ($1, $2);
                 $self->{chans}->{$channel}->{channel} = $channel;
-                $self->{conf}->{chan_done}{$self->{conf}->{channel}} = 1; # don't parse channel in $self->{conf}->{channel} if a channel statement is present
+                $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
                 while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
                     $self->{chans}->{$channel}{$var} = $2;
-                    $self->{debug}->("Channel conf $channel: $var = $2");
+                    $self->{debug}->("Channel cfg $channel: $var = $2");
                 }
                 while (<CONFIG>) {
                     last if ($_ =~ /<\/*channel>/i);
                     while ($_ =~ s/^\s*(\w+)\s*=\s*["']([^"']*)["']//) {
                         my $var = lc($1);
-                        unless ($self->{overriden_confs}->{$var}) {
+                        unless ($self->{override_cfg}->{$var}) {
                             $self->{chans}->{$channel}{$var} = $2;
                         }
                         $self->{debug}->("Conf $channel: $var = $2");
@@ -346,24 +356,24 @@ sub init_pisg
     my $self = shift;
 
     my $timestamp = time();
-    $self->{conf}->{start} = time();
+    $self->{cfg}->{start} = time();
 
-    if ($self->{conf}->{timeoffset} =~ /\+(\d+)/) {
+    if ($self->{cfg}->{timeoffset} =~ /\+(\d+)/) {
         # We must plus some hours to the time
         $timestamp += 3600 * $1; # 3600 seconds per hour
 
-    } elsif ($self->{conf}->{timeoffset} =~ /-(\d+)/) {
+    } elsif ($self->{cfg}->{timeoffset} =~ /-(\d+)/) {
         # We must remove some hours from the time
         $timestamp -= 3600 * $1; # 3600 seconds per hour
     }
-    $self->{conf}->{timestamp} = $timestamp;
+    $self->{cfg}->{timestamp} = $timestamp;
 
     # Add trailing slash when it's not there..
-    $self->{conf}->{imagepath} =~ s/([^\/])$/$1\//;
+    $self->{cfg}->{imagepath} =~ s/([^\/])$/$1\//;
 
-    print "Using language template: $self->{conf}->{lang}\n\n" if ($self->{conf}->{lang} ne 'EN');
+    print "Using language template: $self->{cfg}->{lang}\n\n" if ($self->{cfg}->{lang} ne 'EN');
 
-    print "Statistics for channel $self->{conf}->{channel} \@ $self->{conf}->{network} by $self->{conf}->{maintainer}\n\n";
+    print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n";
 
 }
 
@@ -376,11 +386,11 @@ sub do_channel
     # Pick our stats generator.
     my $analyzer;
     eval <<_END;
-use Pisg::Parser::$self->{conf}->{logtype};
-\$analyzer = new Pisg::Parser::$self->{conf}->{logtype}(\$self->{conf}, \$self->{debug});
+use Pisg::Parser::$self->{cfg}->{logtype};
+\$analyzer = new Pisg::Parser::$self->{cfg}->{logtype}(\$self->{cfg}, \$self->{debug});
 _END
     if ($@) {
-        print STDERR "Could not load stats generator for '$self->{conf}->{logtype}': $@\n";
+        print STDERR "Could not load stats generator for '$self->{cfg}->{logtype}': $@\n";
         return undef;
     }
 
@@ -389,7 +399,7 @@ _END
     my $generator;
     eval <<_END;
 use Pisg::HTMLGenerator;
-\$generator = new Pisg::HTMLGenerator(\$self->{conf}, \$self->{debug}, \$stats, \$self->{users}, \$self->{tmps});
+\$generator = new Pisg::HTMLGenerator(\$self->{cfg}, \$self->{debug}, \$stats, \$self->{users}, \$self->{tmps});
 _END
 
     if ($@) {
@@ -404,22 +414,74 @@ _END
         print STDERR "No lines found in logfile.. skipping.\n";
     }
 
-    $self->{conf}->{chan_done}{$self->{conf}->{channel}} = 1;
+    $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1;
 }
 
 sub parse_channels
 {
     my $self = shift;
-    my %origconf = %{ $self->{conf} };
+    my %origcfg = %{ $self->{cfg} };
 
     foreach my $channel (keys %{ $self->{chans} }) {
         foreach (keys %{ $self->{chans}->{$channel} }) {
-            $self->{conf}->{$_} = $self->{chans}->{$channel}{$_};
+            $self->{cfg}->{$_} = $self->{chans}->{$channel}{$_};
         }
         $self->do_channel();
-        $origconf{chan_done} = $self->{conf}->{chan_done};
-        %{ $self->{conf} } = %origconf;
+        $origcfg{chan_done} = $self->{cfg}->{chan_done};
+        %{ $self->{cfg} } = %origcfg;
     }
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Pisg - Perl IRC Statistics Generator main module
+
+=head1 SYNOPSIS
+
+    use Pisg;
+
+    $pisg = new Pisg(
+        use_configfile => '1',
+        override_cfg => { network => 'MyNetwork', format => 'eggdrop' }
+    );
+
+=head1 DESCRIPTION
+
+C<Pisg> is a statistic generator for IRC logfiles or the like, delivering
+the results in a HTML page.
+
+=head1 CONSTRUCTOR
+
+=over 4
+
+=item new ( [ OPTIONS ] )
+
+This is the constructor for a new Pisg object. C<OPTIONS> are passed in a hash like fashion, using key and value pairs.
+
+Possible options are:
+
+B<use_configfile> - When set to 1, pisg will look up it's channels in it's
+configuration file, defined by the configuration option 'configfile'.
+
+B<override_cfg> - This defines whichever configuration variables you want to
+override from the configuration file. If you set use_configfile to 0, then
+you'll have to set at least channel and logfile here.
+
+=back
+
+=head1 AUTHOR
+
+Morten Brix Pedersen <morten@wtf.dk>
+
+=head1 COPYRIGHT
+
+Copyright (C) 2001 Morten Brix Pedersen. All rights resereved.
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GPL, license is included with the distribution of
+this file.
+
+=cut
