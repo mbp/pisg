@@ -1,4 +1,4 @@
-package Pisg::Parser::mbot;
+package Pisg::Parser::Format::mbot;
 
 use strict;
 $^T = 1;
