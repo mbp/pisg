@@ -585,9 +585,9 @@ sub parse_file
                     my $lcnick = lc($nick);
                     unless (defined($alias{$lcnewnick})) {
                         if (defined($alias{$lcnick}) && !defined($alias{$lcnewnick})) {
-                            $alias{$lcnewnick} = $nick;
+                            $alias{$lcnewnick} = $alias{$lcnick);
                         } elsif (defined($alias{$lcnewnick}) && !defined($alias{$lcnick})) {
-                            $alias{$lcnick} = $newnick;
+                            $alias{$lcnick} = $alias{$lcnewnick};
                         } elsif ($nick =~ /Guest/) {
                             $alias{$lcnick} = $newnick;
                         } else {
