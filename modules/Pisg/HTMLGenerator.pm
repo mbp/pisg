@@ -1432,15 +1432,12 @@ sub _mostreferencednicks
     my $self = shift;
 
     my %usages;
-    my %usagesnicks;
 
     foreach my $word (sort keys %{ $self->{stats}->{wordcounts} }) {
+        next unless exists $self->{stats}->{lines}{$word};
         next if is_ignored($word);
-        my $localnick = find_alias($word);
-        next unless exists $self->{stats}->{lines}{$localnick};
-        $usages{$localnick} += $self->{stats}->{wordcounts}{$word};
-        $usagesnicks{$localnick} = $self->{stats}->{wordnicks}{$word};
-      }
+        $usages{$word} = $self->{stats}->{wordcounts}{$word};
+    }
 
     my @popular = sort { $usages{$b} <=> $usages{$a} } keys %usages;
 
@@ -1457,8 +1454,8 @@ sub _mostreferencednicks
             last unless $i < $#popular;
             my $a = $i + 1;
             my $popular   = $popular[$i];
-            my $wordcount = $usages{$popular[$i]};
-            my $lastused  = $usagesnicks{$popular[$i]};
+            my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
+            my $lastused  = $self->{stats}->{wordnicks}{$popular[$i]};
 
             my $bgcolor;
             if ($a == 1) {
