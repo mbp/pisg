@@ -121,7 +121,10 @@ show_time            1 or 0, this will enable/disable the showing of the
 show_linetime        1 or 0, the same as above, except this will show the
                      bar next to the number of lines like in mIRCStats
 
-  * Colors for your stats page *
+show_legend          1 or 0, this will add a legend of the different time-
+                     bars.
+
+* Colors for your stats page *
 
 bgcolor              Background color of the page
 bgpic                Background picture of the page
