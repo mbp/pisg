@@ -2,7 +2,7 @@ package Pisg;
 
 # Documentation(POD) for this module is found at the end of the file.
 
-# Copyright (C) 2001  <Morten Brix Pedersen> - morten@wtf.dk
+# Copyright (C) 2001-2002  <Morten Brix Pedersen> - morten@wtf.dk
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,6 +35,9 @@ sub new
         tmps => {},
     };
 
+    # Set the default configuration settings.
+    get_default_config_settings($self);
+
     # Import common functions in Pisg::Common
     require Pisg::Common;
     Pisg::Common->import();
@@ -47,10 +50,7 @@ sub run
 {
     my $self = shift;
 
-    # Set the default configuration settings.
-    $self->get_default_config_settings();
-
-    print "pisg $self->{cfg}->{version} - Perl IRC Statistics Generator\n\n"
+    print "pisg v$self->{cfg}->{version} - Perl IRC Statistics Generator\n\n"
         unless ($self->{cfg}->{silent});
 
     # Init the configuration file (aliases, ignores, channels, etc)
@@ -185,7 +185,7 @@ sub get_default_config_settings
 
         # Developer stuff
 
-        version => "v0.34-cvs",
+        version => "0.35-cvs",
     };
 
     # Parse the optional overriden configuration variables
@@ -467,6 +467,8 @@ Pisg - Perl IRC Statistics Generator main module
         use_configfile => '1',
         override_cfg => { network => 'MyNetwork', format => 'eggdrop' }
     );
+
+    $pisg->run();
 
 =head1 DESCRIPTION
 
