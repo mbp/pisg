@@ -126,3 +126,12 @@ link to the logfile)
   - bot written in Perl (http://www.infobot.org)
 
   - In order to use this, format must be set to 'infobot'
+
+* Trillian:
+  - Trilian's IRC component. (http://www.trilian.cc)
+
+  Note: Your Logs must be timestamped in the format [%h:%m] or [%h:%m:%s]
+  This is set in Preferences -> General -> Windows -> Display in your Trillian Client
+  Tested with Trillian Version 0.70
+
+  - In order to use this, format must be set to 'Trillian'
