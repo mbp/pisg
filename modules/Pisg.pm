@@ -299,7 +299,7 @@ sub init_config
                     $nick = $1;
                     add_alias($nick, $nick);
                 } else {
-                    print STDERR "Warning: No nick specified in $self->{cfg}->{configfile} on line $.\n";
+                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No nick specified\n";
                     next;
                 }
 
@@ -342,17 +342,21 @@ sub init_config
                         add_url_ignore($url);
                     }
                 } else {
-                    print STDERR "Warning: no URL specified in $self->{cfg}->{configfile} on line $.\n";
+                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No URL specified\n";
                 }
 
 
             } elsif ($line =~ /<set(.*)>/) {
 
                 my $settings = $1;
+                if ($settings !~ /=["'](.*)["']/ || $settings =~ /(\w)>/ ) {
+                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing or wrong quotes near $1\n";
+                }
+
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
-                    my $var = lc($1); # Make the string lowercase
+                    my $var = lc($1);
                     if (!defined($self->{cfg}->{$var})) {
-                        print STDERR "Warning: no such configuration option: $1\n";
+                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: $1\n";
                         next;
                     }
                     unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
@@ -372,21 +376,21 @@ sub init_config
                 }
                 while (<CONFIG>) {
                     last if ($_ =~ /<\/*channel>/i);
-                    while ($_ =~ s/^\s*(\w+)\s*=\s*["']([^"']*)["']//) {
+                    if ($_ =~ /^\s*(\w+)\s*=\s*["']([^"']*)["']/) {
                         my $var = lc($1);
                         unless ($self->{override_cfg}->{$var}) {
                             $self->{chans}->{$channel}{$var} = $2;
                         }
                         $self->{debug}->("Conf $channel: $var = $2");
+                    } else {
+                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
                     }
                 }
-            } elsif ($line =~ /<set/) {
-                print STDERR "Warning: Malformed <set ..> line in $self->{cfg}->{configfile} on line $.\n";
-            } elsif ($line =~ /<channel/) {
-                print STDERR "Warning: Malformed <channel ..> line in $self->{cfg}->{configfile} on line $.\n";
+            } elsif ($line =~ /<(\w+)?.*[^>]$/) {
+                print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing end on element <$1 (probably multi-line?)\n";
             } elsif ($line =~ /\S/) {
                 $line =~ s/\n//;
-                print "Warning: Unrecognized line in $self->{cfg}->{configfile} on line $.: '$line'\n";
+                print "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
             }
         }
 
