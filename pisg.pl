@@ -883,7 +883,9 @@ sub parse_words
         $words{$nick}++;
         # remove uninteresting words
         next unless (length($word) >= $conf->{wordlength});
-        next if ($word =~ /$conf->{ignorewords}/);
+        if ($conf->{ignorewords}) {
+            next if ($word =~ /$conf->{ignorewords}/);
+        }
 
         # ignore contractions
         next if ($word =~ m/'..?$/);
