@@ -139,3 +139,14 @@ Or in German:
 
 
 Have fun configuring pisg! :)
+
+
+MULTIPLE CHANNELS
+------------------
+<channel channel="#channel" logfile="channel.log" format="mIRC" outputfile="channel.html">
+    network="EFNet"
+    maintainer="fubar"
+</channel>
+
+
+any options in the <channel *> section will be forced, even over commandline options... any options before </channel> can be overridden from command line
