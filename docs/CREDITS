@@ -14,7 +14,7 @@ Major contributors:
    | NFiles and UserPics options, wildcards for random user pictures,
      wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords,
      charset conversion support, BigNumbersThreshold option, karma, music
-     charts ...
+     charts, parser cache ...
 
 Other contributors:
 

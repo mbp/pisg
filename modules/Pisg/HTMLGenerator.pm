@@ -373,25 +373,21 @@ sub _pagefooter
 
 sub _activedays
 {
-    # The most actives times on the channel
+    # The most actives days on the channel
     my $self = shift;
     my $days = $self->{stats}->{days};
     my $ndays = $self->{cfg}->{dailyactivity};
-    my $image;
-    my $time;
-    my $day;
-
-    my (%output, $class);
 
     my $highest_value = 1;
-    for ($day = $days; $day > $days - $ndays ; $day--) {
-        if (defined($self->{stats}->{day_lines}{$day})) {
-            if ($self->{stats}->{day_lines}{$day} > $highest_value) {
-                $highest_value=$self->{stats}->{day_lines}{$day};
+    for (my $day = $days; $day > $days - $ndays ; $day--) {
+        if (defined($self->{stats}->{day_lines}->[$day])) {
+            if ($self->{stats}->{day_lines}->[$day] > $highest_value) {
+                $highest_value = $self->{stats}->{day_lines}->[$day];
             }
         } else {
             #there are only $days - $day days :)
             $ndays = $days - $day;
+            last;
         }
     }
 
@@ -402,22 +398,16 @@ sub _activedays
 
     _html("<table border=\"0\"><tr>\n");
 
-    for ($day = $days - $ndays +1; $day <= $days ; $day++) {
-        my $lines = $self->{stats}->{day_lines}{$day};
+    for (my $day = $days - $ndays + 1; $day <= $days ; $day++) {
+        my $lines = $self->{stats}->{day_lines}[$day];
         _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">$lines<br />");
-        for ($time = 4; $time >= 0; $time--) {
-            if (defined($self->{stats}->{day_times}{$day}[$time])) {
-                my $size = int(($self->{stats}->{day_times}{$day}[$time] / $highest_value) * 100);
+        for (my $time = 4; $time >= 0; $time--) {
+            if (defined($self->{stats}->{day_times}[$day][$time])) {
+                my $size = int(($self->{stats}->{day_times}[$day][$time] / $highest_value) * 100);
 
-                if ($size < 1) {
-                    # Opera doesn't understand '0.xxxx' in the height="xx" attr,
-                    # so we simply round up to 1 here.
-                    $size = 1;
-                }
-
-                $image = "pic_v_".$time*6;
+                my $image = "pic_v_".$time*6;
                 $image = $self->{cfg}->{$image};
-                _html("<img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines\" /><br />");
+                _html("<img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines\" title=\"$lines\" /><br />") if $size;
 
             }
         }
@@ -426,10 +416,9 @@ sub _activedays
 
     _html("</tr><tr>");
 
-    for ($b = $ndays-1; $b >= 0 ; $b--) {
-            $class = 'rankc10center';
-        _html("<td class=\"$class\" align=\"center\">$b</td>");
-}
+    for (my $day = $ndays - 1; $day >= 0 ; $day--) {
+        _html("<td class=\"rankc10center\" align=\"center\">$day</td>");
+    }
 
     _html("</tr></table>");
 

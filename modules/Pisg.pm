@@ -111,6 +111,7 @@ sub get_default_config_settings
         logprefix => '',
         logsuffix => '',
         silent => 0,
+        cachedir => '',
         userpics => 'y',
 
         # Colors / Layout
@@ -207,6 +208,8 @@ sub get_default_config_settings
         regexpaliases => 0,
 
         botnicks => '',            # Needed for DCpp format (non-irc)
+
+        statsdump => '',           # Debug option
 
         version => "0.64",
     };

@@ -7,6 +7,9 @@ pisg (0.65) - ??
    The "Christoph got bored in Ireland" changes:
    * Get channel music charts with ShowCharts and ChartsHistory (suggested by
      Sven in SF tracker #1164596).
+   * A CacheDir can now be used to dump the results of log parsing to files.
+     See the documentation for details.
+   * Debug option: StatsDump.
    * Made ShowLastSeen=1 and ShowMostActiveByHourGraph=1 default.
    * More verbose config parser error messages.
    * Most active nicks timebars have mouse-over titles.

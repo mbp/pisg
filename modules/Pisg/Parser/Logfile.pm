@@ -6,6 +6,11 @@ package Pisg::Parser::Logfile;
 use strict;
 $^W = 1;
 
+# the log cache
+use Data::Dumper;
+$Data::Dumper::Indent = 1;
+my $cache;
+
 # test for Text::Iconv
 my $have_iconv = 1;
 eval 'use Text::Iconv';
@@ -80,7 +85,6 @@ _END
 sub analyze
 {
     my $self = shift;
-    my (%stats, %lines);
 
     unless (defined $self->{parser}) {
         print STDERR "Skipping channel '$self->{cfg}->{channel}' due to lack of parser.\n";
@@ -88,11 +92,6 @@ sub analyze
     }
 
     my $starttime = time();
-
-    # Just initialize these to 0
-    $stats{days} = 0;
-    $stats{parsedlines} = 0;
-    $stats{totallines} = 0;
 
     my @logfiles = @{$self->{cfg}->{logfile}};
     # expand wildcards
@@ -115,16 +114,42 @@ sub analyze
         print "$count logfile(s) found$msg, using $self->{cfg}->{format} format...\n\n"
     }
 
-    my %state = (
-        lastnick   => '',
-        monocount  => 0,
-        lastnormal => '',
-        oldtime    => 24
+    my (%stats, %lines);
+    %stats = (
+        oldtime => 24,
+        days => 0,
+        day_lines => [ undef ],
+        day_times => [ undef ],
     );
 
     foreach my $logfile (@logfiles) {
         # Run through the logfile
-        $self->_parse_file(\%stats, \%lines, $logfile, \%state);
+        print "Analyzing log $logfile... " unless ($self->{cfg}->{silent});
+
+        my $s = {
+            days => 0,
+            parsedlines => 0,
+            totallines => 0,
+        };
+        my $l = {};
+
+        unless ($self->{cfg}->{cachedir} and $self->_read_cache(\$s, \$l, $logfile)) {
+            $self->_parse_file($s, $l, $logfile);
+            if ($self->{cfg}->{cachedir}) {
+                $self->_update_cache($s, $l, $logfile);
+            }
+        }
+        $self->_merge_stats(\%stats, $s); # merge per-file stats into global stats
+        $self->_merge_lines(\%lines, $l);
+
+        print "$stats{days} days, $stats{parsedlines} lines total\n"
+            unless ($self->{cfg}->{silent});
+    }
+
+    if ($self->{cfg}->{statsdump}) {
+        open C, "> $self->{cfg}->{statsdump}" or die "$self->{cfg}->{statsdump}: $!";
+        print C Data::Dumper->Dump([\%stats, \%lines], ["stats", "lines"]);
+        close C;
     }
 
     $self->_pick_random_lines(\%stats, \%lines);
@@ -240,10 +265,7 @@ sub _parse_dir
 sub _parse_file
 {
     my $self = shift;
-    my ($stats, $lines, $file, $state) = @_;
-
-    print "Analyzing log $file... "
-        unless ($self->{cfg}->{silent});
+    my ($stats, $lines, $file) = @_;
 
     if ($file =~ /.bz2?$/ && -f $file) {
         open (LOGFILE, "bunzip2 -c $file |") or
@@ -257,6 +279,11 @@ sub _parse_file
     }
 
     my $lastnormal = '';
+    my $state = { # we are not tracking these across logfiles (except oldtime)
+        lastnick   => '',
+        monocount  => 0,
+        oldtime    => 24
+    };
 
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
@@ -300,12 +327,10 @@ sub _parse_file
                 $saying = $hashref->{saying};
 
                 if ($hour < $state->{oldtime}) {
+                    $stats->{firsttime} = $hour if $state->{oldtime} == 24; # save stamp for merging
                     $stats->{days}++;
-                    $stats->{day_times}{$stats->{days}}[0] = 0;
-                    $stats->{day_times}{$stats->{days}}[1] = 0;
-                    $stats->{day_times}{$stats->{days}}[2] = 0;
-                    $stats->{day_times}{$stats->{days}}[3] = 0;
-                    $stats->{day_lines}{$stats->{days}} = 0;
+                    @{$stats->{day_times}[$stats->{days}]} = (0, 0, 0, 0);
+                    $stats->{day_lines}->[$stats->{days}] = 0;
                 }
                 $state->{oldtime} = $hour;
 
@@ -314,8 +339,8 @@ sub _parse_file
 
                     # Timestamp collecting
                     $stats->{times}{$hour}++;
-                    $stats->{day_times}{$stats->{days}}[int($hour/6)]++;
-                    $stats->{day_lines}{$stats->{days}}++;
+                    $stats->{day_times}[$stats->{days}][int($hour/6)]++;
+                    $stats->{day_lines}->[$stats->{days}]++;
 
                     $stats->{lines}{$nick}++;
                     $stats->{lastvisited}{$nick} = $stats->{days};
@@ -393,18 +418,8 @@ sub _parse_file
                         }
                     }
 
-                    if ($self->{cfg}->{showcharts}) {
-                        if ($saying =~ /$self->{chartsregexp}/i) {
-                            my $Song = $1;
-                            $Song =~ s/_/ /g;
-                            $Song =~ s/\d+ ?- ?//;
-                            $Song =~ s/\.mp3//g;
-                            $Song =~ s/ \.\.\.$//;
-                            my $song = lc $Song;
-                            $stats->{word_upcase}{$song} = $Song;
-                            $stats->{chartcounts}{$song}++;
-                            $stats->{chartnicks}{$song} = $nick;
-                        }
+                    if ($saying =~ /$self->{chartsregexp}/i) {
+                        $self->_charts($1, $nick);
                     }
 
                     if (my $s = $self->{users}->{sex}{$nick}) {
@@ -431,12 +446,10 @@ sub _parse_file
             $saying = $hashref->{saying};
 
             if ($hour < $state->{oldtime}) {
+                $stats->{firsttime} = $hour if $state->{oldtime} == 24; # save stamp for merging
                 $stats->{days}++;
-                $stats->{day_times}{$stats->{days}}[0] = 0;
-                $stats->{day_times}{$stats->{days}}[1] = 0;
-                $stats->{day_times}{$stats->{days}}[2] = 0;
-                $stats->{day_times}{$stats->{days}}[3] = 0;
-                $stats->{day_lines}{$stats->{days}} = 0;
+                @{$stats->{day_times}[$stats->{days}]} = (0, 0, 0, 0);
+                $stats->{day_lines}->[$stats->{days}] = 0;
             }
 
             $state->{oldtime} = $hour;
@@ -444,8 +457,8 @@ sub _parse_file
             if (!is_ignored($nick)) {
                 # Timestamp collecting
                 $stats->{times}{$hour}++;
-                $stats->{day_times}{$stats->{days}}[int($hour/6)]++;
-                $stats->{day_lines}{$stats->{days}}++;
+                $stats->{day_times}[$stats->{days}][int($hour/6)]++;
+                $stats->{day_lines}->[$stats->{days}]++;
 
                 $stats->{actions}{$nick}++;
                 push @{ $lines->{actionlines}{$nick} }, $line;
@@ -471,13 +484,8 @@ sub _parse_file
                     }
                 }
 
-                if ($self->{cfg}->{showcharts}) {
-                    if ($saying =~ /$self->{chartsregexp}/i) {
-                        my $song = lc $1;
-                        $stats->{word_upcase}{$song} = $1;
-                        $stats->{chartcounts}{$song}++;
-                        $stats->{chartnicks}{$song} = $nick;
-                    }
+                if ($saying =~ /$self->{chartsregexp}/i) {
+                    $self->_charts($1, $nick);
                 }
 
                 $stats->{lengths}{$nick} += length($saying);
@@ -510,12 +518,10 @@ sub _parse_file
             $newnick  = $hashref->{newnick};
 
             if ($hour < $state->{oldtime}) {
+                $stats->{firsttime} = $hour if $state->{oldtime} == 24; # save stamp for merging
                 $stats->{days}++;
-                $stats->{day_times}{$stats->{days}}[0]=0;
-                $stats->{day_times}{$stats->{days}}[1]=0;
-                $stats->{day_times}{$stats->{days}}[2]=0;
-                $stats->{day_times}{$stats->{days}}[3]=0;
-                $stats->{day_lines}{$stats->{days}}=0;
+                @{$stats->{day_times}[$stats->{days}]} = (0, 0, 0, 0);
+                $stats->{day_lines}->[$stats->{days}] = 0;
             }
 
             $state->{oldtime} = $hour;
@@ -523,8 +529,8 @@ sub _parse_file
             if (!is_ignored($nick)) {
                 # Timestamp collecting
                 $stats->{times}{$hour}++;
-                $stats->{day_times}{$stats->{days}}[int($hour/6)]++;
-                $stats->{day_lines}{$stats->{days}}++;
+                $stats->{day_times}[$stats->{days}][int($hour/6)]++;
+                $stats->{day_lines}->[$stats->{days}]++;
 
                 $stats->{lastvisited}{$nick} = $stats->{days};
 
@@ -536,7 +542,13 @@ sub _parse_file
                     }
 
                 } elsif (defined($newtopic) && $newtopic ne '') {
-                    _topic_change($stats, $newtopic, $nick, $hour, $min, $stats->{days});
+                    push @{$stats->{topics}}, {
+                        topic => $newtopic,
+                        nick  => $nick,
+                        hour  => $hour,
+                        min   => $min,
+                        days  => $stats->{days},
+                    };
 
                 } elsif (defined($newmode)) {
                     _modechanges($stats, $newmode, $nick);
@@ -553,44 +565,26 @@ sub _parse_file
             }
         } # *** lines
 
-        unless ($stats->{parsedlines} % 10000) { # keep only recent quotes to same mem
-            foreach my $n (keys %{$lines->{sayings}}) {
-                my $x = @{$lines->{sayings}->{$n}};
-                splice(@{$lines->{sayings}->{$n}}, 0, ($x - 50)) if ($x > 75);
-            }
-            foreach my $n (keys %{$lines->{actionlines}}) {
-                my $y = @{$lines->{actionlines}->{$n}};
-                splice(@{$lines->{actionlines}->{$n}}, 0, ($y - 50)) if ($y > 75);
-            }
+        unless ($stats->{parsedlines} % 10000) { # keep only recent quotes to save memory
+            $self->_trim_lines($lines);
         }
     } # while(my $line = <LOGFILE>)
 
+    $self->_trim_lines($lines);
+
+    my $wordcount = sqrt(sqrt(keys %{$stats->{wordcounts}})); # remove less frequent words
+    foreach my $word (keys %{$stats->{wordcounts}}) {
+        if ($stats->{wordcounts}->{$word} < $wordcount) {
+            delete $stats->{wordcounts}->{$word};
+            delete $stats->{wordnicks}->{$word};
+            delete $stats->{word_upcase}->{$word};
+        }
+    }
+
     $stats->{totallines} = $.;
+    $stats->{oldtime} = $state->{oldtime};
 
     close(LOGFILE);
-
-    print "$stats->{days} days, $stats->{parsedlines} lines total\n"
-        unless ($self->{cfg}->{silent});
-}
-
-sub _topic_change
-{
-    my $stats = shift;
-    my $newtopic = shift;
-    my $nick = shift;
-    my $hour = shift;
-    my $min = shift;
-    my $days = shift;
-
-    my $tcount = 0;
-    if (defined $stats->{topics}) {
-        $tcount = @{ $stats->{topics} };
-    }
-    $stats->{topics}[$tcount]{topic} = $newtopic;
-    $stats->{topics}[$tcount]{nick}  = $nick;
-    $stats->{topics}[$tcount]{hour}  = $hour;
-    $stats->{topics}[$tcount]{min}   = $min;
-    $stats->{topics}[$tcount]{days}  = $days;
 }
 
 sub _modechanges
@@ -646,27 +640,56 @@ sub _parse_words
     }
 }
 
+sub _charts
+{
+    my ($stats, $Song, $nick) = @_;
+    $Song =~ s/_/ /g;
+    $Song =~ s/\d+ ?- ?//;
+    $Song =~ s/\.mp3//g;
+    $Song =~ s/ \.\.\.$//;
+    $Song =~ s/ [^\w]+$//;
+    my $song = lc $Song;
+    $stats->{word_upcase}{$song} = $Song;
+    $stats->{chartcounts}{$song}++;
+    $stats->{chartnicks}{$song} = $nick;
+}
+
+sub _trim_lines
+{
+    my ($self, $lines) = @_;
+
+    foreach my $n (keys %{$lines->{sayings}}) {
+        my $x = @{$lines->{sayings}->{$n}};
+        splice(@{$lines->{sayings}->{$n}}, 0, ($x - 15)) if ($x > 30);
+    }
+    foreach my $n (keys %{$lines->{actionlines}}) {
+        my $x = @{$lines->{actionlines}->{$n}};
+        splice(@{$lines->{actionlines}->{$n}}, 0, ($x - 15)) if ($x > 30);
+    }
+}
+
 sub _pick_random_lines
 {
     my ($self, $stats, $lines) = @_;
 
     foreach my $key (keys %{ $lines }) {
         foreach my $nick (keys %{ $lines->{$key} }) {
-            $stats->{$key}{$nick} = $self->_random_line($stats, $lines, $key, $nick, 0);
+            $stats->{$key}{$nick} = $self->_random_line($lines, $key, $nick);
         }
     }
 }
 
 sub _random_line
 {
-    my ($self, $stats, $lines, $key, $nick, $count) = @_;
-    my $random = ${ $lines->{$key}{$nick} }[rand@{ $lines->{$key}{$nick} }];
-    if ($self->{cfg}->{noignoredquotes} and $self->{ignorewords_regexp} and $random =~ /$self->{ignorewords_regexp}/i) {
-        return '' if ($count > 20);
-        return $self->_random_line($stats, $lines, $key, $nick, ++$count);
-    } else {
-        return $random;
-    }
+    my ($self, $lines, $key, $nick) = @_;
+    my $count = 0;
+    my $random;
+    #warn "$nick did not say anything" unless @{ $lines->{$key}{$nick} };
+    do {
+        $random = ${ $lines->{$key}{$nick} }[rand @{ $lines->{$key}{$nick} }];
+        return '' if ++$count > 20;
+    } while ($self->{cfg}->{noignoredquotes} and $self->{ignorewords_regexp} and $random =~ /$self->{ignorewords_regexp}/i);
+    return $random;
 }
 
 sub _uniquify_nicks {
@@ -723,8 +746,140 @@ sub _adjusttimeoffset
         $hour += $self->{cfg}{timeoffset};
         $hour = $hour % 24;
     }
-     
+
     return sprintf('%02d', $hour);
+}
+
+sub _read_cache
+{
+    my ($self, $statsref, $linesref, $logfile) = @_;
+    my $mtime = (stat $logfile)[9];
+    my $cachefile = $logfile;
+    $cachefile =~ s/[^\w-]/_/g;
+    $cachefile = "$self->{cfg}->{cachedir}/$cachefile";
+
+    return undef unless -e $cachefile;
+    open C, $cachefile or die "$cachefile: $!";
+    local $/;
+    my $str = <C>;
+    close C;
+
+    my ($stats, $lines);
+    eval $str;
+
+    return undef if $stats->{version} and $stats->{version} ne $self->{cfg}->{version};
+    return undef unless $stats->{logfile} eq $logfile; # the name might be ambigous
+    return undef if $stats->{logfile_mtime} != $mtime; # file has changed
+
+    print "cached, " unless $self->{cfg}->{silent};
+    $$statsref = $stats;
+    $$linesref = $lines;
+
+    return 1;
+}
+
+sub _update_cache
+{
+    my ($self, $stats, $lines, $logfile) = @_;
+    my $mtime = (stat $logfile)[9];
+    my $cachefile = $logfile;
+    $cachefile =~ s/[^\w-]/_/g;
+    $cachefile = "$self->{cfg}->{cachedir}/$cachefile";
+
+    #print "Writing cache $cachefile...";
+
+    $stats->{logfile} = $logfile;
+    $stats->{logfile_mtime} = $mtime;
+
+    unless (open C, ">$cachefile") {
+            die "$cachefile: $!";
+    }
+    $stats->{version} = $self->{cfg}->{version};
+    print C Data::Dumper->Dump([$stats], ["stats"]);
+    print C Data::Dumper->Dump([$lines], ["lines"]);
+    close C;
+}
+
+sub _merge_stats
+{
+    my ($self, $stats, $s) = @_;
+
+    my $days_offset = $stats->{days};
+    my $days_rollover = $stats->{oldtime} > $s->{firsttime};
+    $stats->{days} += $s->{days} - 1 + $days_rollover;
+
+    foreach my $key (keys %$s) {
+        next if $key =~ /^(logfile|firsttime|oldtime|days|version)/; # don't merge these
+        #print "$key -> $s->{$key}\n";
+        if ($key =~ /^(parsedlines|totallines)$/) { # {key} = int: add
+            $stats->{$key} += $s->{$key};
+        } elsif ($key =~ /^(wordnicks|word_upcase|urlnicks|chartnicks)$/) { # {key}->{} = str: copy
+            foreach my $subkey (keys %{$s->{$key}}) {
+                $stats->{$key}->{$subkey} = $s->{$key}->{$subkey};
+            }
+        } elsif ($key =~ /^(nicks|karma)$/) { # {key}->{}->{} = str: copy
+            foreach my $subkey (keys %{$s->{$key}}) {
+                foreach my $value (keys %{$s->{$key}->{$subkey}}) {
+                    $stats->{$key}->{$subkey}->{$value} = $s->{$key}->{$subkey}->{$value};
+                }
+            }
+        } elsif ($key =~ /^(word|line|sex_line)_times$/) { # {key}->{}->[] = int: add
+            foreach my $subkey (keys %{$s->{$key}}) {
+                foreach my $pos (0 .. @{$s->{$key}->{$subkey}} - 1) {
+                    $stats->{$key}->{$subkey}->[$pos] += $s->{$key}->{$subkey}->[$pos]
+                        if $s->{$key}->{$subkey}->[$pos];
+                }
+            }
+        } elsif ($key eq 'lastvisited') { # {key}->{} = int: copy
+            foreach my $nick (keys %{$s->{lastvisited}}) {
+                $stats->{lastvisited}->{$nick} =
+                    $days_offset + $s->{lastvisited}->{$nick} - 1 + $days_rollover;
+            }
+        } elsif ($s->{$key} =~ /^HASH/) { # {key}->{} = int: add
+            foreach my $subkey (keys %{$s->{$key}}) {
+                die "$key -> $subkey" unless $s->{$key}->{$subkey} =~ /^\d+/; # assert
+                $stats->{$key}->{$subkey} += $s->{$key}->{$subkey};
+            }
+        } elsif ($key =~ /^topics$/) { # {key}->[] = topic hash: append
+            push @{$stats->{$key}}, map {
+                my %a = %$_; $a{days} += $days_offset; \%a; # make new hash
+            } @{$s->{$key}};
+        } elsif ($key =~ /^day_lines$/) { # {key}->[] = int: append
+            my @list = @{$s->{day_lines}};
+            die if splice @list, 0, 1; # first element is always undef
+            unless ($days_rollover) {
+                $stats->{day_lines}->[$days_offset] += splice @list, 0, 1;
+            }
+            push @{$stats->{day_lines}}, @list;
+        } elsif ($key =~ /^day_times$/) { # {key}->[]->[] = int: append outer list
+            my @list = @{$s->{day_times}};
+            die if splice @list, 0, 1;
+            if (not $days_rollover) {
+                my @first = @{splice @list, 0, 1};
+                foreach my $pos (0 .. @first - 1) {
+                    $stats->{day_times}[$days_offset][$pos] += $first[$pos];
+                }
+            }
+            push @{$stats->{day_times}}, map { my @a = @$_; \@a; } @list;
+        } else {
+            die "unknown key format $key -> $s->{$key}";
+        }
+    }
+
+    $stats->{oldtime} = $s->{oldtime};
+}
+
+sub _merge_lines
+{
+    my ($self, $lines, $l) = @_;
+
+    foreach my $key (keys %$l) { # sayings, actionlines, etc.
+        foreach my $subkey (keys %{$l->{$key}}) {
+            push @{$lines->{$key}->{$subkey}}, @{$l->{$key}->{$subkey}};
+            my $x = @{$lines->{$key}->{$subkey}};
+            splice(@{$lines->{$key}->{$subkey}}, 0, ($x - 15)) if ($x > 30);
+        }
+    }
 }
 
 1;

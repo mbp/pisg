@@ -1042,6 +1042,43 @@
     </refsect1>
     </refentry>
 
+    <!-- *** CACHEDIR *** -->
+    <refentry id="CacheDir">
+
+    <refmeta> <refentrytitle>CacheDir</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>CacheDir</refname>
+    <refpurpose>use a cache to speed up log parsing</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set Cache="pisg_cache">
+        <set Cache="/path/to/pisg_cache">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Setting this option makes pisg dump the results of log parsing into cache
+    files. The next time pisg is run, it compares the timestamp of the log(s)
+    with the timestamp stored in the cache file. When the log was not changed,
+    the cached data is used.
+
+    Note that the cache files should be deleted when the pisg config file is
+    changed since the cache data uses the old config settings.
+    <xref linkend="NickTracking" /> does not work especially well with the
+    cache when using different <xref linkend="NFiles" /> settings.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> Unset </para>
+    </refsect1>
+    </refentry>
+
   </chapter>
   <chapter id="reference-stats">
    <title>Options for various statistics features</title>
@@ -3646,6 +3683,36 @@
     <refsect1>
     <title>Default</title>
     <para> Logfile </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** STATSDUMP *** -->
+    <refentry id="StatsDump">
+
+    <refmeta> <refentrytitle>StatsDump</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>StatsDump</refname>
+    <refpurpose>dump raw statistics into file</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set StatsDump="statsdump">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    This option is intended for debugging pisg, but might be useful to process
+    the parsed logs with another program. The file contains the %stats and
+    %lines hashes in perl's Data::Dumper format.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> Unset </para>
     </refsect1>
     </refentry>
 
