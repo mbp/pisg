@@ -7,11 +7,15 @@ Morten Brix Pedersen <morten@wtf.dk>
 
 Major contributors:
 --
-Winfried Nessen <doomy@doomshammer.yi.org>
-Jamie Cheetham <jamie@softham.co.uk>
-Sam Bingner <sam@dhs.org>
+ * Winfried Nessen <doomy@doomshammer.yi.org>
+ * Jamie Cheetham <jamie@softham.co.uk>
+ * Sam Bingner <sam@dhs.org>
+ * Christoph Berg <cb@df7cb.de>
+   | NFiles and UserPics options, wildcards for random user pictures,
+     wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords,
+     Charset conversion support, BigNumbersThreshold option, ...
 
-And all the other contributors:
+Other contributors:
 
  * Stefan aka Flyghost <flyghost@ghosthouse.cx>
    | Code contribution and fixes
@@ -97,10 +101,6 @@ And all the other contributors:
    | oer logfile support
  * "Travis Roy" <travis@scootz.net>
    | perlbot logfile support
- * Christoph Berg <cb@df7cb.de>
-   | NFiles and UserPics options, wildcards for random user pictures,
-     wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords,
-     Charset conversion support, BigNumbersThreshold option, ...
  * Nathan Poznick
    | Ability to specify multiple LogFiles and LogDirs.
 
