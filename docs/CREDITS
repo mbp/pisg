@@ -103,6 +103,8 @@ Other contributors:
    | perlbot logfile support
  * Nathan Poznick
    | Ability to specify multiple LogFiles and LogDirs.
+ * HM 2K <nfhm2k@gmail.com>
+   | eggdrop-pisg.tcl for running pisg from eggdrop
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)

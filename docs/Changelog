@@ -2,6 +2,8 @@ pisg (0.60) - ??
    Changes by Christoph Berg:
    * Clean up loop code in _mostnicks() and fix warning about calls to
    is_ignored(undef).
+   * Added scripts/eggdrop-pisg.tcl for running pisg from eggdrop (Thanks,
+   HM2K).
 
 pisg (0.59) - Sun Oct, 3rd 2004
    Changes by Morten Brix Pedersen:
