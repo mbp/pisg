@@ -1334,7 +1334,7 @@ kicktext = "<b>Yksi esimerkki:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 joins = "<b>[:nick]</b> ei osannut päättää: lähteäkö vai jäädäkö. Tarkastellun ([:days] pv) ajanjakson aikana hän on joininut kanavalle [:joins] kertaa!"
 
-kick1 = "<b>[:nick]</b> luulee olevansa joku kingi, [:days] päivän aikana hän monotti [:kicked] irkkaajaa!"
+kick1 = "<b>[:nick]</b> luulee olevansa joku kingi, hän monotti peräti [:kicked] irkkaajaa!"
 kick2 = "Ei edes <b>[:nick]</b> meinaa pysyä [:oldnick]:n perässä, vaikka jakoikin potkua persiille [:kicked]:lle peelolle..."
 kick3 = "Kukaan ei lentänyt pihalle, minne ne @:t oikein katsoo?"
 
