@@ -21,7 +21,7 @@ use Getopt::Long;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-my ($conf, $words, $chans);
+my ($conf, $words, $chans, $users);
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
 $conf->{channel} = "#channel";	# The name of your channel.
@@ -99,8 +99,8 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %monologue, %kicked, %gotkick, %line, %length, %qpercent, %lpercent, %sadface,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
-%setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %userpics,
-%userlinks, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent,
+%setban, %foul, $days, $oldtime, $lastline, $actions, $normals, 
+ %T, $repeated, $lastnormal, $foulwords, %shout, %spercent,
 %slap, %slapped, $slaps, %words);
 
 sub main
@@ -205,9 +205,7 @@ sub init_pisg
     undef $lastline; 
     undef $actions; 
     undef $normals; 
-    undef %userpics; 
 
-    undef %userlinks; 
     undef %T; 
     undef $repeated; 
     undef $lastnormal; 
@@ -235,7 +233,9 @@ sub init_pisg
 
     # Add trailing slash when it's not there..
     if (substr($conf->{imagepath}, -1) ne '/') {
-        $conf->{imagepath} =~ s/(.*)/$1\//;
+        unless ($conf->{imagepath} eq '') {
+            $conf->{imagepath} =~ s/(.*)/$1\//;
+        }
     }
 
     # Set some values
@@ -319,11 +319,11 @@ sub init_config
                 }
 
                 if ($line =~ /pic="([^"]+)"/) {
-                    $userpics{$nick} = $1;
+                    $users->{userpics}{$nick} = $1;
                 }
 
                 if ($line =~ /link="([^"]+)"/) {
-                    $userlinks{$nick} = $1;
+                    $users->{userlinks}{$nick} = $1;
                 }
 
                 if ($line =~ /ignore="Y"/i) {
@@ -504,8 +504,8 @@ sub parse_file
                     $loud{$nick}++
                         if ($saying =~ /!/);
 
-					$shout{$nick}++
-						if ($saying =~ /[A-Z]+/ and $saying !~ /[a-z0-9:]/);
+                    $shout{$nick}++
+                        if ($saying =~ /[A-Z]+/ and $saying !~ /[a-z0-9:]/);
 
                     $foul{$nick}++
                         if ($saying =~ /$foulwords/);
@@ -1167,7 +1167,7 @@ sub activenicks
 
     html("<table border=\"0\" width=\"614\"><tr>");
     html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberlines') ."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>". template_text('randquote') ."</b></td>");
-    if (%userpics) {
+    if ($users->{userpics}) {
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('userpic') ."</b></td>");
     }
 
@@ -1197,8 +1197,8 @@ sub activenicks
         $randomline = replace_links($randomline);
 
         # Add a link to the nick if there is any
-        if ($userlinks{$nick}) {
-            $visiblenick = replace_links($userlinks{$nick}, $nick);
+        if ($users->{userlinks}{$nick}) {
+            $visiblenick = replace_links($users->{userlinks}{$nick}, $nick);
         }
 
         my $h = $conf->{hicell};
@@ -1223,8 +1223,8 @@ sub activenicks
         html("$i</td><td bgcolor=\"#$col_r$col_g$col_b\">$visiblenick</td><td bgcolor=\"#$col_r$col_g$col_b\">$line</td><td bgcolor=\"#$col_r$col_g$col_b\">");
         html("\"$randomline\"</td>");
 
-        if ($userpics{$nick}) {
-            html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$conf->{imagepath}$userpics{$nick}\"></td>");
+        if ($users->{userpics}{$nick}) {
+            html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$conf->{imagepath}$users->{userpics}{$nick}\"></td>");
         }
 
         html("</tr>");
