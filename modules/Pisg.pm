@@ -443,6 +443,10 @@ sub do_channel
     } else {
         $self->init_pisg();        # Init some general things
 
+        store_aliases();           # Save the aliases so we can restore them
+                                   # later, we don't want to add the aliases
+                                   # for this channel to the next channel
+
         # Pick our stats generator.
         my $analyzer;
         eval <<_END;
@@ -481,6 +485,7 @@ _END
         } elsif ($stats->{totallines} == 0) {
             print STDERR "No lines found in logfile.. skipping.\n";
         }
+        restore_aliases();
 
         $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1;
     }
