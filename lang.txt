@@ -1400,7 +1400,7 @@ short2 = "<b>[:nick]</b> hield ook de lippen op elkaar, gemiddeld [:letters] kar
 
 foul1 = "<b>[:nick]</b> heeft een behoorlijke brutale mond.  [:per]% van de woorden waren ongepast."
 foul2 = "<b>[:nick]</b>  laat zelfs zeelieden blozen, [:per]% van de tijd."
-foul3 = "Niemand heeft een grote mond in [:channel]!  Komt men wel eens buiten?
+foul3 = "Niemand heeft een grote mond in [:channel]!  Komt men wel eens buiten?"
 foultext = "<b>Zoals dit bijvoorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> brengt geluk in de wereld.  [:per]% regels bevatte lachende gezichten.  :)"
