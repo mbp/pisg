@@ -230,8 +230,8 @@ long2 = "Gennemsnittet på [:channel] er [:avg] bogstaver pr. linje"
 short1 = "<b>[:nick]</b> skrev de korteste linjer. Gennemsnittet er [:letters] bogstaver pr. linje..."
 short2 = "[:nick] skriver også korte linjer, med et gennesnit på [:letters]"
 
-foul1 = "<b>[:nick]</b> er lidt stor i munden, [:per]% af linjerne indholte uhøfligt sprog"
-foul2 = "<b>[:nick]</b> burde også vaske munden med sæbe med at det han fyrer af, [:per]% af tiden"
+foul1 = "<b>[:nick]</b> er lidt stor i munden, [:per]% af linjerne indeholdte uhøfligt sprog"
+foul2 = "<b>[:nick]</b> burde også vaske munden med sæbe med alt det han fyrer af, [:per]% af tiden"
 foul3 = "Ingen rapkæftede på [:channel]!"
 
 smiles1 = "<b>[:nick]</b> er altid glad, [:per]% af linjerne havde glade ansigter :)"
