@@ -22,6 +22,7 @@ use Getopt::Long;
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 my $config;
+my $words;
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
 $config->{channel} = "#channel";	# The name of your channel.
@@ -87,6 +88,7 @@ $config->{timeoffset} = "+0";	# A time offset on the stats page - if your
 				# machine where the stats are being
 				# generated, then for example do +1
 				# to add 1 hour to the time
+$words->{foul} = "ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe"; # If not set in pisg.cfg set your Foulwords here.
 
 # You shouldn't care about anything below this point
 $config->{debug} = 0;			# 0 = Debugging off, 1 = Debugging on
@@ -99,11 +101,12 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
 %setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %userpics,
-%userlinks, %T, $repeated, $lastnormal);
+%userlinks, %T, $repeated, $lastnormal, $foulwords);
 
 sub main
 {
     init_config();      # Init config. (Aliases, ignores, other options etc.)
+	init_words();		# Init words. (Foulwords etc)
     init_pisg();        # Init commandline arguments and other things
     init_lineformats(); # Attempt to set line formats in compliance with user specification (--format)
 
@@ -241,20 +244,41 @@ sub init_config
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
 					my $vars = $1;
 					my $keys = $2;
-					while ($vars =~ s/([A-Z])/\l$1/s) {
+					while ($vars =~ s/([A-Z])/\l$1/g) {
 						$config->{$vars} = $keys;
 					}
                     $config->{$1} = $2;
                     debug("Conf: $1 = $2");
                 }
 
-            }
-
+            } elsif ($line =~ /<words(.*)>/) {
+				my $settings = $1;
+				while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
+					$words->{$1} = $2;
+                    debug("Words: $1 = $2");
+				}
+			}
         }
 
         close(CONFIG);
     }
 
+}
+
+sub init_words {
+	my (@words, $i);
+	if($words->{foul}) {
+		@words = split(/\ /, $words->{foul});
+		$i = 0;
+		foreach (@words) {
+			if($foulwords) {
+				$foulwords = $foulwords . "\|" . $words[$i];
+			} else {
+				$foulwords = $foulwords . $words[$i];
+			}
+			$i++;
+		}
+	}
 }
 
 sub init_debug
@@ -365,7 +389,7 @@ sub parse_file
                         if ($saying =~ /!/);
 
                     $foul{$nick}++
-                        if ($saying =~ /ass|fuck|bitch|shit|scheisse|scheiﬂe|kacke|arsch|ficker|ficken|schlampe/);
+                        if ($saying =~ /$foulwords/);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
