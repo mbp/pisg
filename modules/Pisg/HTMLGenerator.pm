@@ -365,19 +365,15 @@ sub _activenicks
     . ($self->{cfg}->{show_randquote} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('randquote')."</b></td>" : "")
     );
 
-
-
     my @active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} } keys %{ $self->{stats}->{lines} };
     my $nicks = scalar keys %{ $self->{stats}->{lines} };
 
-    if ($self->{cfg}->{activenicks} > $nicks) {
-        $self->{cfg}->{activenicks} = $nicks;
-    }
+    if ($self->{cfg}->{activenicks} > $nicks) { $self->{cfg}->{activenicks} = $nicks; }
 
     my $have_userpics;
     for (my $c = 0; $c < $self->{cfg}->{activenicks}; $c++) {
         my $nick = $active[$c];
-        if ($self->{users}->{userpics}{$nick}) {
+        if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
             $have_userpics = 1;
             _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('userpic') ."</b></td>");
             last;
@@ -457,13 +453,13 @@ sub _activenicks
 
         my $height = $self->{cfg}->{pic_height};
         my $width = $self->{cfg}->{pic_width};
-        if ($self->{users}->{userpics}{$nick}) {
+        if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
             if ($width ne '') {
                 _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\"></td>");
             } else {
                 _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\"></td>");
             }
-        } elsif ($self->{cfg}->{default_pic} ne '')  {
+        } elsif ($self->{cfg}->{default_pic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
             _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{default_pic}\"></td>");
         }
 

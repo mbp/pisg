@@ -119,6 +119,7 @@ sub get_default_config_settings
         langfile => 'lang.txt',
         prefix => '',
         silent => 0,
+        userpics => 'y',
 
         # Colors / Layout
 
