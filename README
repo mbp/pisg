@@ -1,8 +1,8 @@
 README, pisg - by me and others (see CREDITS file)
 ------------------
 pisg - Perl IRC Statistics Generator, is a Perl script which takes IRC
-logfiles and makes nice looking stats of them, which can be amusing to show
-for the users of your channel.
+logfiles and turns them into nice looking stats, which can be amusing to
+show for the users of your channel.
 
 The supported logfile formats is explained in the FORMATS file included with
 this distribution in the 'docs' directory.
@@ -22,11 +22,11 @@ It's quite simple to set up pisg. You have 2 choices:
 The most important here is the name of the logfile, the maintainers name,
 and then the format of your logfile.
 
-You cannot set everything up on the commandline, only the important things.
+You cannot set up everything on the commandline, only the important things.
 
 The 'pisg.cfg' file controls a lot of things, you should read CONFIG-README.
 
-NOTE: The stats will look best with a logfile which is a least a day-long.
+NOTE: The stats will look best with a logfile which is at least one day long.
 Some stats (like smilies, exclamation marks etc) doesn't get counted before
 a special amount of time.
 
@@ -63,8 +63,8 @@ pisg.cfg.
 
 CONTACT INFORMATION
 -------------------
-If you have any problems with setting up or running this script. Then you
-can send a mail to the pisg mailing list:
+If you have any problems with setting up or running pisg. Then you can send
+a mail to the pisg mailing list:
 
 http://lists.sourceforge.net/mailman/listinfo/pisg-general
 
@@ -72,10 +72,10 @@ Or you can try contacting me personally via e-mail (morten@wtf.dk).
 
 The pisg homepage is located at http://pisg.sourceforge.net/.
 
-If you use this script, and have a permanent URL for the location of your
-generated stats, I would be delighted if you would send the url to me.  Just
-to see how many people uses it, and so I can link to it from the pisg page.
+If you use pisg, and have a permanent URL for the location of your generated
+stats, I'd be delighted if you'd send the URL to me.  Just to see how many
+people uses it, and so I can link to it from the pisg homepage.
 
 Have fun :)
 
- - Morten 'LostStar' Brix Pedersen <morten@wtf.dk>
+ - Morten Brix Pedersen <morten@wtf.dk>
