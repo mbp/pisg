@@ -81,7 +81,7 @@ sub thirdline
 
         if ($3 eq 'Joined') {
             $hash{newjoin} = $4;
-            $hash{nick} = $3;
+            $hash{nick} = $4;
         } elsif ($4 eq 'changed') {
             $5 =~ /^topic to (.*)$/;
             $hash{newtopic} = $1;
