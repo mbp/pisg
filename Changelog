@@ -4,6 +4,8 @@ pisg (0.20)
    * If pisg can't find the config file in the current directory (when running
      from crontab), then try opening the config file in which pisg.pl resides
      instead..
+   * <words foul="..."> is now known as <set words="...">
+   * Usual cleanups and improvements
 
 pisg (0.19) - Tue, Aug 7th 2001
    * Fix critical bug where <channel="#chan"> in pisg.cfg didn't work at all.
