@@ -1020,6 +1020,12 @@ today = "Vandaag"
 
 month = "Januari Februari Maart April Mei Juni Juli Augustus September Oktober November December"
 day = "zondag maandag dinsdag woensdag donderdag vrijdag zaterdag"
+
+# Mouse-over titles
+pisghomepage = "Ga naar de pisg homepage"
+authorhomepage = "Ga naar de homepage van de auteur"
+newwindow = "Open in nieuw scherm:"
+mailto = "Mail naar"
 </lang>
 
 ### Swedish
