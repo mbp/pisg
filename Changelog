@@ -1,3 +1,12 @@
+pisg (0.19) - Tue, Aug 7th 2001
+   * Fix critical bug where <channel="#chan"> in pisg.cfg didn't work at all.
+   * Warn the user when a translation template doesn't exist for a specific
+     language (so people know why some of the stats is in English, and
+     hopefully encourages people to send in the missing template(s))
+   * Don't try parsing . and .. 'files' in a directory when using logdir
+   * Small updates to Danish translation
+   * Small bug in documentation fixed
+
 pisg (0.18) - Mon, Aug 6th 2001
 
    * Added pisg.cfg support which now obsoletes user.cfg, in this file
