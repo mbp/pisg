@@ -28,12 +28,12 @@ sub new
 
 sub create_html
 {
-    my $self = shift;
-
-    # This subroutines calls all the subroutines which create their
-    # individual stats, the name of the functions is somewhat saying - if
+    # This subroutine calls all the subroutines which create their
+    # individual stats. The name of the functions is somewhat saying - if
     # you don't understand it, most subs have a better explanation in the
     # sub itself.
+    
+    my $self = shift;
 
     print "Now generating HTML($self->{cfg}->{outputfile})...\n";
 
@@ -125,7 +125,7 @@ body {
     font-family: verdana, arial, sans-serif;
     font-size: 13px;
     color: $self->{cfg}->{text};
-}
+
 
 td {
     font-family: verdana, arial, sans-serif;
@@ -168,8 +168,8 @@ sub timefix
     $month = $self->_template_text('month', %hash);
     $day = $self->_template_text('day', %hash);
 
-    @month=split / /, $month;
-    @day=split / /, $day;
+    @month = split(" ", $month);
+    @day = split(" ", $day);
 
     # Get the Date from the users computer
     $timezone = $self->{cfg}->{timeoffset} * 3600;
@@ -180,20 +180,18 @@ sub timefix
     $min =~ s/^(.)$/0$1/;             # Fixes the display of mins/secs below
     $sec =~ s/^(.)$/0$1/;             # it displays 03 instead of 3
 
-    if($hour > '23') {                 # Checks to see if it Midnight
+    if ($hour > '23') {               # Checks to see if it Midnight
         $hour = 12;                   # Makes it display the hour 12
         $tday = "AM";                 # Display AM
-    }
-    elsif($hour > '12') {              # Get rid of the Military time and
+    } elsif($hour > '12') {           # Get rid of the Military time and
         $hour -= 12;                  # put it into normal time
         $tday = "PM";                 # If past Noon and before Midnight set
-    }                                 # the time as PM
-    else {
+    } else {
         $tday = "AM";                 # If it's past Midnight and before Noon
     }                                 # set the time as AM
 
     # Use 24 hours pr. day
-    if($tday eq "PM" && $hour < '12') {
+    if ($tday eq "PM" && $hour < '12') {
         $hour += 12;
     }
 
@@ -507,7 +505,7 @@ sub _questions
 
 sub _shoutpeople
 {
-    # The ones who speak with exclamation points!
+    # The ones who speak with exclamation marks!
     my $self = shift;
     my ($stats) = @_;
 
@@ -598,8 +596,8 @@ sub _capspeople
 
 sub _violent
 {
+    # They attacked others (words defined by $self->{cfg}->{violent})
     my $self = shift;
-    # They attacked others
     my ($stats) = @_;
 
     my @aggressors;
@@ -762,12 +760,12 @@ sub _mostwords
 
 sub _mostkicks
 {
-    # The person who got kicked the most
+    # The person who kicked the most
     my $self = shift;
     my ($stats) = @_;
 
-     my @kicked = sort { $stats->{kicked}{$b} <=> $stats->{kicked}{$a} }
-                       keys %{ $stats->{kicked} };
+    my @kicked = sort { $stats->{kicked}{$b} <=> $stats->{kicked}{$a} }
+                        keys %{ $stats->{kicked} };
 
     if (@kicked) {
         my %hash = (
@@ -1282,7 +1280,7 @@ sub _mostusedword
 
 sub _mostwordsperline
 {
-    # The person who got words the most
+    # The person who got the most words per line
     my $self = shift;
     my ($stats) = @_;
 
@@ -1321,6 +1319,7 @@ sub _mostwordsperline
 
 sub _mostreferencednicks
 {
+    # List showing the most referenced nicks
     my $self = shift;
     my ($stats) = @_;
 
@@ -1361,6 +1360,7 @@ sub _mostreferencednicks
 
 sub _mosturls
 {
+    # List showing the most referenced URLs
     my $self = shift;
     my ($stats) = @_;
 
