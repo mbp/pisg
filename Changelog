@@ -1,19 +1,20 @@
 pisg (0.18)
 
-   * Norweigan translation (thanks to Andreas Blaafladt)
+   * Added pisg.cfg support which now obsoletes user.cfg, in this file
+     everything should be set, instead of in the script - this makes it easier
+     upgrading pisg. Read CONFIG-README in order to "understand" it.
    * Uncompress files with *.gz and *.bz2 automatically (Sascha Lüdecke)
    * Add new feature --prefix, this works on commandline so you only get logs
      starting with what you specify, for example -p '#mychan' will only get
      dir/#mychan* files. (Sascha Lüdecke)
-   * Fix op tracking with bx logs
+   * Fix op tracking with bxlog logs
    * Added Foulwords-Variable to pisg.cfg
    * Make pisg die when there is no files in logdir
    * Portugese translation (thanks to JaMiR0W <jamirow@ig.com.br>)
+   * Norweigan translation (thanks to Andreas Blaafladt)
    * Updated a lot of documentation (README and CONFIG-README), you should
      reread it ;)
-   * Added pisg.cfg support which now obsoletes user.cfg, in this file
-     everything should be set, instead of in the script - this makes it easier
-     upgrading pisg. Read CONFIG-README in order to "understand" it.
+   * The usual small improvements (and bug additions)
 
 pisg (0.17) - Sat, July 28th 2001
 
