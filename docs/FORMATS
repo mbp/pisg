@@ -79,6 +79,7 @@ link to the logfile)
 
 * mbot:
   - C-Based IRC Bot (http://darksun.com.pt/mbot/)
+  - In the configuration file, timemode must be set to '1'
 
   - In order to use this, format must be set to 'mbot'
 
