@@ -418,16 +418,27 @@ sub _activenicks
         my $randomline;
         if (not defined $self->{stats}->{sayings}{$nick}) {
             if ($self->{stats}->{actions}{$nick}) {
-                $randomline = htmlentities($self->_format_line($self->{stats}->{actionlines}{$nick}));
+                $randomline = $self->_format_line($self->{stats}->{actionlines}{$nick});
             } else {
                 $randomline = "";
             }
         } else {
-            $randomline = htmlentities($self->{stats}->{sayings}{$nick});
+            $randomline = $self->{stats}->{sayings}{$nick};
         }
 
-        # Convert URLs and e-mail addys to links
-        $randomline = $self->_replace_links($randomline);
+        if ($randomline) {
+            # Wrap longer than 40 chars words. It will break long HTML
+            # links.
+            # TODO: put <br> after 40 ! or ? marks - IE bug
+            # TODO: respect long URLs (like merge spaces back in url?)
+            # glen, 29/11/2002
+            1 while $randomline =~ s/(\S{40})(\S+)/$1 $2/m;
+
+            $randomline = htmlentities($randomline);
+
+            # Convert URLs and e-mail addys to links
+            $randomline = $self->_replace_links($randomline);
+        }
 
         # Add a link to the nick if there is any
         if ($self->{users}->{userlinks}{$nick}) {
