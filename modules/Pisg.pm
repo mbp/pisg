@@ -102,6 +102,7 @@ sub get_default_config_settings
         pagefoot => 'none',
         configfile => 'pisg.cfg',
         imagepath => '',
+        imageglobpath => '',
         defaultpic => '',
         logdir => '',
         nfiles => 0,
@@ -423,6 +424,8 @@ sub init_config
             if ((open(INCLUDE, $self->{cfg}->{configfile}) 
                 or open(INCLUDE, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
                 $r = $self->init_config(\*INCLUDE);
+            } else {
+                print STDERR "Warning: $backup_cfg, line $.: $self->{cfg}->{configfile}: $!\n";
             }
             print "Included config file: $self->{cfg}->{configfile}\n\n"
                 if ($r && !$self->{cfg}->{silent});
@@ -431,7 +434,7 @@ sub init_config
             print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing end on element <$1 (probably multi-line?)\n";
         } elsif ($line =~ /\S/) {
             $line =~ s/\n//;
-            print "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
+            print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
         }
     }
 
@@ -457,6 +460,18 @@ sub init_pisg
 
     # Add trailing slash when it's not there..
     $self->{cfg}->{imagepath} =~ s/([^\/])$/$1\//;
+    # Set ImageGlobPath default
+    $self->{cfg}->{imageglobpath} ||= $self->{cfg}->{imagepath};
+    $self->{cfg}->{imageglobpath} =~ s/([^\/])$/$1\//;
+
+    # Set number of picture columns to show
+    if ($self->{cfg}->{userpics} =~ /^n/i) {
+        $self->{cfg}->{userpics} = 0;
+    } elsif ($self->{cfg}->{userpics} =~ /^y/i) {
+        $self->{cfg}->{userpics} = 1;
+    } elsif ($self->{cfg}->{userpics} !~ /^\d+$/) {
+        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Invalid UserPics setting\n";
+    }
 
     print "Using language template: $self->{cfg}->{lang}\n\n" if ($self->{cfg}->{lang} ne 'EN' && !$self->{cfg}->{silent});
 

@@ -63,6 +63,9 @@ sub create_output
     if ($self->{cfg}->{showcpl}) {
         $self->{cfg}->{tablewidth} += 40;
     }
+    if ($self->{cfg}->{userpics}) {
+        $self->{cfg}->{tablewidth} += $self->{cfg}->{userpics} * ($self->{cfg}->{picwidth} || 60);
+    }
     $self->{cfg}->{headwidth} = $self->{cfg}->{tablewidth} - 4;
     $self->_htmlheader();
     $self->_pageheader()
@@ -337,13 +340,12 @@ sub _activedays
         _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">$lines<br>");
         for ($time = 4; $time >= 0; $time--) {
             if (defined($self->{stats}->{day_times}{$day}[$time])) {
-                my $size = ($self->{stats}->{day_times}{$day}[$time] / $highest_value) * 100;
+                my $size = int(($self->{stats}->{day_times}{$day}[$time] / $highest_value) * 100);
 
-                if ($size < 1 && $size != 0) {
+                if ($size < 1) {
                     # Opera doesn't understand '0.xxxx' in the height="xx" attr,
-                    # so we simply round up to 1.0 here.
-
-                    $size = 1.0;
+                    # so we simply round up to 1 here.
+                    $size = 1;
                 }
 
                 $image = "pic_v_".$time*6;
@@ -388,15 +390,14 @@ sub _activetimes
 
     for my $hour (sort keys %{ $self->{stats}->{times} }) {
 
-        my $size = ($self->{stats}->{times}{$hour} / $highest_value) * 100;
+        my $size = int(($self->{stats}->{times}{$hour} / $highest_value) * 100);
         my $percent = ($self->{stats}->{times}{$hour} / $self->{stats}->{parsedlines}) * 100;
         $percent =~ s/(\.\d)\d+/$1/;
 
-        if ($size < 1 && $size != 0) {
+        if ($size < 1) {
             # Opera doesn't understand '0.xxxx' in the height="xx" attr,
-            # so we simply round up to 1.0 here.
-
-            $size = 1.0;
+            # so we simply round up to 1 here.
+            $size = 1;
         }
 
         $image = "pic_v_".(int($hour/6)*6);
@@ -470,12 +471,13 @@ sub _activenicks
 
     if ($self->{cfg}->{activenicks} > $nicks) { $self->{cfg}->{activenicks} = $nicks; }
 
-    my $have_userpics;
     for (my $c = 0; $c < $self->{cfg}->{activenicks}; $c++) {
+        last unless $self->{cfg}->{userpics};
         my $nick = $active[$c];
-        if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
-            $have_userpics = 1;
-            _html("<td class=\"tdtop\"><b>" . $self->_template_text('userpic') ."</b></td>");
+        if ($self->{users}->{userpics}{$nick}) {
+            _html("<td class=\"tdtop\"" .
+                ($self->{cfg}->{userpics} > 1 ? " colspan=\"$self->{cfg}->{userpics}\"" : "") .
+                "><b>" . $self->_template_text('userpic') ."</b></td>");
             last;
         }
     }
@@ -559,41 +561,12 @@ sub _activenicks
         "<td style=\"background-color: $color\">\"$randomline\"</td>"
         : "")
         );
-
-        my $height = $self->{cfg}->{picheight};
-        my $width = $self->{cfg}->{picwidth};
-        if ($width ne '') {
-            $width = "width=\"$width\"";
-        }
-        if ($height ne '') {
-            $height = "height=\"$height\"";
-        }
-        if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
-            _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\">");
-            if (defined $self->{users}->{biguserpics}{$nick}) {
-                if ($self->{users}->{biguserpics}{$nick} =~ /^http:\/\//i) {
-                    _html("<a href=\"$self->{users}->{biguserpics}{$nick}\">");
-                } else {
-                    _html("<a href=\"$self->{cfg}->{imagepath}$self->{users}->{biguserpics}{$nick}\">");
-                }
+        if ($self->{cfg}->{userpics} && $i % $self->{cfg}->{userpics} == 0) {
+            for my $ii (0 .. $self->{cfg}->{userpics} - 1) {
+                last if $i + $ii >= $self->{cfg}->{activenicks};
+                $self->_user_pic($active[$i + $ii], $color);
             }
-            if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
-                _html("<img src=\"$self->{users}->{userpics}{$nick}\" $width $height alt=\"$nick\" />");
-            } else {
-                _html("<img src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" $width $height alt=\"$nick\" />");
-            }
-            if (defined $self->{users}->{biguserpics}{$nick}) {
-                _html("</a>");
-            }
-            _html("</td>");
-        } elsif ($self->{cfg}->{defaultpic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
-             if ($self->{cfg}->{defaultpic} =~ /^http:\/\//i) {
-                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{defaultpic}\" $width $height alt=\"\" /></td>");
-             } else {
-                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" $width $height alt=\"\" /></td>");
-             }
         }
-
         _html("</tr>");
     }
 
@@ -1943,6 +1916,35 @@ sub _user_times
         }
     }
     return $bar;
+}
+
+sub _user_pic
+{
+    my $self = shift;
+    my $nick  = shift;
+    my $color  = shift;
+
+    return unless $self->{users}->{userpics}{$nick} or $self->{cfg}->{defaultpic};
+
+    my $rowspan = $self->{cfg}->{userpics} ? " rowspan=\"$self->{cfg}->{userpics}\"" : "";
+    _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"$rowspan>");
+
+    my $biguserpic = $self->{users}->{biguserpics}{$nick};
+    $biguserpic = $self->{cfg}->{imagepath} . randomglob($biguserpic, $self->{cfg}->{imageglobpath})
+        if $biguserpic and $biguserpic !~ /^http:\/\//i;
+    $biguserpic = "<a href=\"$biguserpic\">" if $biguserpic;
+    _html($biguserpic) if $biguserpic;
+
+    my $pic = $self->{users}->{userpics}{$nick} || $self->{cfg}->{defaultpic};
+    $pic = $self->{cfg}->{imagepath} . randomglob($pic, $self->{cfg}->{imageglobpath})
+        unless $pic =~ /^http:\/\//i;
+    my $height = $self->{cfg}->{picheight} ? " width=\"$self->{cfg}->{picheight}\"" : "";
+    my $width = $self->{cfg}->{picwidth} ? " height=\"$self->{cfg}->{picwidth}\"" : "";
+    my $alt = $self->{users}->{userpics}{$nick} ? " alt=\"$nick\"" : "";
+    _html("<img src=\"$pic\"$width$height$alt />");
+
+    _html("</a>") if $biguserpic;
+    _html("</td>");
 }
 
 sub _mostnicks

@@ -458,3 +458,17 @@ time"
  [2:51] <Lawy> [BruJo] wenas
  [2:51] <Danaita> lawyyyy
 
+* Vision
+  - An irc client for BeOS ( http://vision.sourceforge.net and http://
+www.bebits.com/app/2623 )
+                                                                                
+ - Timestamping has to be enabled in the preferences
+                                                                                
+ - The messages Vision displays for joins/parts/topic changes etc, is
+fully user configurable,
+   this parses the default messages. If you have changed them in the
+preferences you
+   have to edit the parser to reflect the changes.
+                                                                                
+ - In order to use this, format must be set to 'Vision'
+

@@ -154,6 +154,12 @@
      <![CDATA[<user nick="Ben" pic="ben_holiday.jpg" bigpic="ben-big.jpg">]]>
     </programlisting>
 
+    You can include * or ? to enable filename globbing to randomly choose one
+    from several pictures: (see <command>ImageGlobPath</command> below)
+    <programlisting>
+    <![CDATA[<user nick="Ben" pic="ben_*.jpg">]]>
+    </programlisting>
+
     You can also set a user's sex:
     <programlisting>
     <![CDATA[<user nick="Ben" sex="m">]]>
@@ -2588,7 +2594,7 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set PicLocation="userpics/">
+        <set PicLocation="gfx/">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -2604,6 +2610,46 @@
     <para> Current directory </para>
     </refsect1>
 
+    <!-- *** USERPICS *** -->
+    <refentry id="UserPics">
+
+    <refmeta> <refentrytitle>UserPics</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>UserPics</refname>
+    <refpurpose>number of user pictures per row</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         UserPics = "no"
+        </channel>
+
+        <set UserPics="3">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>UserPics</command> allows you to configure the number of user
+    pictures per row. Per default, one picture will be shown. Since pictures
+    are usually higher than one line of text, this lets the table grow. With
+    settings greater than 1, several pictures will be placed next to each
+    other. A good setting would be <command>UserPics</command>=3 and pictures
+    of size 60x60. Set <command>UserPics</command> to no or 0 to disable user
+    pictures. The latter is useful if you share a user config file between
+    channels and want to disable user pictures for some channels.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> yes (1) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** IMAGEPATH *** -->
     <refentry id="ImagePath">
 
@@ -2611,7 +2657,7 @@
 
     <refnamediv>
     <refname>ImagePath</refname>
-    <refpurpose>path to user pictures</refpurpose>
+    <refpurpose>path to user pictures (HTML page)</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2622,16 +2668,16 @@
          ImagePath = "userpics/"
         </channel>
 
-        <set ImagePath="alt_users/">
+        <set ImagePath="users/">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>ImagePath</command> defines an alternative path to where user
-    pictures is located. The default is that user pictures is located in the
-    same directory as the HTML page.
+    <command>ImagePath</command> defines the path to where user
+    pictures are located, relative to the HTML page generated. The default is
+    that user pictures is located in the same directory as the HTML page.
     </para>
     </refsect1>
     <refsect1>
@@ -2668,11 +2714,54 @@
     <command>DefaultPic</command> defines a picture to be displayed for all
     users which have no other picture defined in the <command>user</command>
     element. This is good for showing "No picture available" or something.
+    May contain globbing patterns, see <command>ImageGlobPath</command> below.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
     <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** IMAGEGLOBPATH *** -->
+    <refentry id="ImageGlobPath">
+
+    <refmeta> <refentrytitle>ImageGlobPath</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ImageGlobPath</refname>
+    <refpurpose>path to user pictures (output generation)</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         ImageGlobPath = "users/"
+        </channel>
+
+        <set ImageGlobPath="/var/www/pisg/">
+        <set DefaultPic="default-??.gif">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>ImageGlobPath</command> defines the path to the directory where
+    user pictures are located, relative to the current directory. This setting
+    is used to choose random pictures if ? or * (globbing characters) are used
+    in the picture name. ? matches a single character, * matches a (possibly
+    empty) string. The default is the <command>ImagePath</command> setting.
+    (NB: This setting will be different from <command>ImagePath</command> if
+    the latter is not relative to the current directory, e.g. if you are
+    writing the HTML file outside of the current directory.)
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> current <command>ImagePath</command> setting </para>
     </refsect1>
     </refentry>
 

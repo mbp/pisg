@@ -39,7 +39,7 @@ And all the other contributors:
      --silent switch
  * Tim Hunter <tim@quic.net>
    | 'shortest lines', 'most fouls', 'pageheader' and more. 
- * Kim Ingemann (Tuxi) <tuxi@tuxi.dk>
+ * Kim Ingemann (KimI) <mail@pingvinland.dk>
    | Danish translation
  * Molator <molator@ifrance.com>
    | French translation
@@ -99,6 +99,8 @@ And all the other contributors:
    | oer logfile support
  * "Travis Roy" <travis@scootz.net>
    | perlbot logfile support
+ * Christoph Berg <cb@df7cb.de>
+   | NFiles and UserPics options, wildcards for random user pictures
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)

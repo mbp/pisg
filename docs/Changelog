@@ -4,7 +4,14 @@ pisg (x.xx)
    * Added a DailyActivity option, which shows the activity in the channel of
      the last N days. Disabled by default. (thanks, sektor).
    * Fixed wrong example documentation for PicWidth and PicHeight (thanks,
-   Dennis Prebendorf).
+     Dennis Prebendorf).
+   * (Previously undocumented) setting UserPics allows to turn on/off user
+     pictures per channel and to place more than one picture per row to avoid
+     blowing up the table's height. (Christoph Berg)
+   * User pictures and DefaultPic may now contain * and ? to choose a random
+     picture from ImageGlobPath. (Christoph Berg)
+   * Made all picture heights integer. (Christoph Berg)
+   * Add support for Vision logs (thanks, Vegard Wærp)
 
 pisg (0.50) - Mon Nov, 17th 2003
    * Added NFiles option, which can be used for LogDirs to only parse the last
