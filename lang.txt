@@ -51,10 +51,12 @@ shouttext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:li
 slap1 = "<b>[:nick]</b> is a very aggresive person, who slapped around <b>[:slaps]</b> times."
 slap2 = "<b>[:nick]</b> can't control his aggressions. He/She slapped around <b>[:slaps]</b> times."
 slap3 = "Nobody slapped around anybody, everybody was friendly."
+slaptext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 slapped1 = "Poor <b>[:nick]</b>, nobody likes him/her. He/She got slapped <b>[:slaps]</b> times."
 slapped2 = "<b>[:nick]</b> seems to be unliked too, he/she got slapped <b>[:slaps]</b> times."
 slapped3 = "Nobody got slapped in Channel :)"
+slappedtext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> wasn't very popular, got kicked [:kicks] times!"
 gotkick2 = "<b>[:nick]</b> seemed to be hated too, [:kicks] kicks were received"
@@ -165,10 +167,12 @@ shouttext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 slap1 = "<b>[:nick]</b> ist etwas agressiv. Er/Sie schlug <b>[:slaps]</b> mal wild um sich herum."
 slap2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halten, <b>[:slaps]</b> Schläge von ihm/ihr."
 slap3 = "Alle waren friedlich im Channel, niemand hat jemanden geschlagen."
+slaptext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 slapped1 = "<b>[:nick]</b> ist der Sündenbock im Channel, er/sie wurde <b>[:slaps]</b> mal geschlagen."
 slapped2 = "<b>[:nick]</b> hat auch sein/ihr Fett weg bekommen, er/sie hat <b>[:slaps]</b> mal Schläge bekommen."
 slapped3 = "Niemand wurde geschlagen."
+slappedtext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> war wohl der Channelclown, er/sie wurde [:kicks] mal gekickt!"
 gotkick2 = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für ihn/sie."
