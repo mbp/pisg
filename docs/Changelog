@@ -1,3 +1,18 @@
+pisg (0.33) - Tue, Dec 20th 2001
+   * The "Merry Christmas" release
+   * Internet Explorer 6 centered all table contents, fixed.
+   * Trillian logfile support added (thanks to Azhrarn <Azhrarn@winbot.co.uk>)
+   * Remove a lot of debugging code which was never really used, this should
+     give a small increase in performance
+   * 'show_voices' wasn't working, fixed (thanks, Stefan D.)
+   * Small bugfix to pisg.cfg parsing
+   * Add 'pagefoot' option, works like the 'pagehead function' (thanks Jean
+     Delvare)
+   * Filter URLs with ampersands, & -> &amp; (thanks Jean Delvare)
+   * Changed README a bit
+   * Add 'wordshistory' configuration option, to define how many words to be
+     in 'most used words'
+
 pisg (0.32) - Sun, Dec 9th 2001
    * infobot log support added by Nicholas Frampton <whyrl@avians.net>
    * HTML changes:
