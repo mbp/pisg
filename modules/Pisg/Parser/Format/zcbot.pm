@@ -10,7 +10,7 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^[^ ]+ (\d+):[^ ]+ :([^!]+)[^ ]+ PRIVMSG (\#[^ ]+) :[^\001](.*)',
+        normalline => '^[^ ]+ (\d+):[^ ]+ :([^!]+)[^ ]+ PRIVMSG (\#[^ ]+) :([^\001].*)',
         actionline => '^[^ ]+ (\d+):[^ ]+ :([^!]+)[^ ]+ PRIVMSG (\#[^ ]+) :\001ACTION (.*)',
         thirdline  => '^[^ ]+ (\d+):(\d+):\d+ :([^!]+)[^ ]+ ([A-Z]+) (.*)',
     };
