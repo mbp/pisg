@@ -132,8 +132,8 @@ show_actionline      1 or 0, this will add an example-actionline to the
 show_shoutline       1 or 0, this will add an example-shoutline to the
                      "Most shouting people"-stats
 
-show_slaplines       1 or 0, this will add an exaple-slap to the
-                     "Most slaping" and "Most slapped"-stats
+show_violentlines    1 or 0, this will add an example-attack to the
+                     "Most aggressive" and "Most attacked"-stats
 
 ignorewords          A space seperated list of words to ignore in 'most
                      referenced words'
@@ -196,5 +196,11 @@ So this option configures which words which are considered to be "foul":
 
 Or in German:
 <set foul="scheisse scheiße kacke">
+
+pisg also recognizes that people may attack others in a variety of ways.
+The words that pisg considers to be attacks may be set with the "violent"
+option:
+
+<set violent="slaps beats kicks">
 
 Have fun configuring pisg! :)

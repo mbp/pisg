@@ -120,7 +120,7 @@ my $conf = {
     show_kickline => 1,
     show_actionline => 1,
     show_shoutline => 1,
-    show_slaplines => 1,
+    show_violentlines => 1,
 
     # Less important things
 
@@ -136,6 +136,7 @@ my $conf = {
     # Misc settings
 
     foul => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
+    violent => 'slaps beats smacks',
     ignorewords => '',
     tablewidth => 614,
     regexp_aliases => 0,
@@ -154,9 +155,9 @@ $thirdline, $processtime, @topics, %monologue, %kicked, %gotkick,
 %line, %length, %sadface, %smile, $nicks, %longlines, %mono, %times, %question,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
-$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
-%line_time, @urls, %urlnick, %kickline, %actionline, %shoutline, %slapline,
-%slappedline);
+$normals, %T, $repeated, $lastnormal, %shout, %violence, %attacked, %words,
+%line_time, @urls, %urlnick, %kickline, %actionline, %shoutline, %violenceline,
+%attackedline);
 
 
 sub main
@@ -258,8 +259,8 @@ sub init_pisg
     undef $lastnormal;
     undef %shout;
 
-    undef %slap;
-    undef %slapped;
+    undef %violence;
+    undef %attacked;
     undef %words;
     undef %line_time;
 
@@ -391,6 +392,7 @@ sub init_words {
     foreach (split /\s+/, $conf->{ignorewords}) {
         $conf->{ignoreword}{$_} = 1;
     }
+    $conf->{violent} =~ s/\s+/|/g;
 }
 
 sub init_debug
@@ -561,12 +563,13 @@ sub parse_file
                 $line{$nick}++;
                 $line_time{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^slaps (\S+)/o) {
-                    $slap{$nick}++;
-                    $slapped{$1}++;
-                    $slapline{$nick} = $line;
-                    $slappedline{$1} = $line;
+                if ($saying =~ /^($conf->{violent}) (\S+)/) {
+                    $violence{$nick}++;
+                    $attacked{$2}++;
+                    $violenceline{$nick} = $line;
+                    $attackedline{$2} = $line;
                 }
+
 
                 my $len = length($saying);
                 $length{$nick} += $len;
@@ -874,7 +877,7 @@ sub create_html
     questions();
     loudpeople();
     shoutpeople();
-    slap();
+    violent();
     mostsmiles();
     mostsad();
     longlines();
@@ -1436,76 +1439,74 @@ sub shoutpeople
 
 }
 
-sub slap
+sub violent
 {
-    # They slapped around
+    # They attacked others
 
-    my @slaps;
+    my @agressors;
 
-    foreach my $nick (sort keys %slap) {
-        @slaps = sort { $slap{$b} <=> $slap{$a} } keys %slap;
+    foreach my $nick (sort keys %violence) {
+        @agressors = sort { $violence{$b} <=> $violence{$a} } keys %violence;
     }
 
-    if(@slaps) {
+    if(@agressors) {
         my %hash = (
-            nick => $slaps[0],
-            slaps => $slap{$slaps[0]},
-            line => $slapline{$slaps[0]}
+            nick    => $agressors[0],
+            attacks => $violence{$agressors[0]},
+            line    => $violenceline{$agressors[0]}
         );
-        my $text = template_text('slap1', %hash);
-        if($conf->{show_slaplines}) {
-            my $exttext = template_text('slaptext', %hash);
+        my $text = template_text('violent1', %hash);
+        if($conf->{show_violentlines}) {
+            my $exttext = template_text('violenttext', %hash);
             html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
         } else {
             html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
         }
-        if (@slaps >= 2) {
+        if (@agressors >= 2) {
             my %hash = (
-                nick => $slaps[1],
-                slaps => $slap{$slaps[1]}
+                nick    => $agressors[1],
+                attacks => $violence{$agressors[1]}
             );
 
-            my $text = template_text('slap2', %hash);
+            my $text = template_text('violent2', %hash);
             html("<br><span class=\"small\">$text</span>");
         }
         html("</td></tr>");
     } else {
-        my $text = template_text('slap3');
+        my $text = template_text('violent3');
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 
 
-    # They got slapped
-    foreach my $nick (sort keys %slapped) {
-        @slaps = sort { $slapped{$b} <=> $slapped{$a} } keys %slapped;
+    # They got attacked
+    my @victims;
+    foreach my $nick (sort keys %attacked) {
+        @victims = sort { $attacked{$b} <=> $attacked{$a} } keys %attacked;
     }
 
-    if(@slaps) {
+    if(@victims) {
         my %hash = (
-            nick => $slaps[0],
-            slaps => $slapped{$slaps[0]},
-            line => $slappedline{$slaps[0]}
+            nick    => $victims[0],
+            attacks => $attacked{$victims[0]},
+            line    => $attackedline{$victims[0]}
         );
-        my $text = template_text('slapped1', %hash);
-        if($conf->{show_slaplines}) {
-            my $exttext = template_text('slappedtext', %hash);
+        my $text = template_text('attacked1', %hash);
+        if($conf->{show_violentlines}) {
+            my $exttext = template_text('attackedtext', %hash);
             html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
         } else {
             html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
         }
-        if (@slaps >= 2) {
+        if (@victims >= 2) {
             my %hash = (
-                nick => $slaps[1],
-                slaps => $slapped{$slaps[1]}
+                nick    => $victims[1],
+                attacks => $attacked{$victims[1]}
             );
 
-            my $text = template_text('slapped2', %hash);
+            my $text = template_text('attacked2', %hash);
             html("<br><span class=\"small\">$text</span>");
         }
         html("</td></tr>");
-    } else {
-        my $text = template_text('slapped3');
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
 

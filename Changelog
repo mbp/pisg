@@ -4,6 +4,10 @@ pisg (0.22)
    * When using logdirs, files is now sorted properly, so files is read in the
      right order (thanks, Sascha Lüdecke)
    * A bunch of English grammar corrections (thanks, Phil Gregory)
+   * Words like //www is now being ignored as they should.
+   * Instead of 'slaps' we now have 'violence', so one can define their own
+     action lines to be counted. Like '/me hits nick on the forehead',
+     configured by the 'violent' variable.
 
 pisg (0.21) - Mon, Aug 27th 2001
    * Fix stupid legend bug; 0-6 should be 0-5, and 7-11 should be 6-11.
