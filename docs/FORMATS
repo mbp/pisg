@@ -386,3 +386,18 @@ time"
   
   - Currently does not recognize nick changes - apparently it logs nick changes
     to a separate file.  As a result, nick tracking will not work.
+
+ * blootbot (http://blootbot.sourceforge.net/)
+  - supports multiple channels, though the log will be parsed once for each
+    channel
+            
+  - In order to use this, format must be set to 'blootbot'
+        
+  Example: (also in the parser module)
+        01:02.03 <nick/#channel> normal
+        01:02.03 * nick/#channel action
+        01:02.03 >>> topic/#channel by nick -> topic...
+        01:02.03 >>> mode/#channel [+o nick] by ChanServ
+        01:02.03 >>> join/#channel nick (~user@example.com)
+        01:02.03 >>> kick/#channel [nick!~user@example.com] by nick (reason)
+        01:02.03 >>> nick_ materializes into nick
