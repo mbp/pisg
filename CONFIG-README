@@ -120,6 +120,9 @@ show_linetime        1 or 0, the same as above, except this will show the
 show_legend          1 or 0, this will add a legend of the different time-
                      bars.
 
+show_kickline        1 or 0, this will add an explample-kickline to the
+                     "Most kicked"-stats
+
 ignorewords          A space seperated list of words to ignore in 'most
                      referenced words'
 
