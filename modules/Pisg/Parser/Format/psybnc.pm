@@ -69,13 +69,15 @@ sub thirdline
 
         my @arr = split(" ", $5);
         if ($4 eq 'KICK') {
-            $hash{kicker} = $arr[1];
+            $hash{kicker} = $hash{nick};
+            $hash{nick} = $arr[1];
 
-        } elsif ($4 eq 'changes') {
-            $hash{newtopic} = "$7 $8";
+        } elsif ($4 eq 'TOPIC') {
+            $hash{newtopic} = join(" ", @arr[1..@arr]);
 
         } elsif ($4 eq 'MODE') {
             $hash{newmode} = $arr[1];
+            $hash{newtopic} =~ s/^://;
 
         } elsif ($4 eq 'JOIN') {
             $hash{newjoin} = $3;
