@@ -1,6 +1,8 @@
 pisg (x.xx)
    * Fix 3 small gramattical errors in english language. (thanks Cheetah)
    * Add half-op support to irssi format. (thanks, arsonist)
+   * Fix a bug/crash with the DCpp format when a nick contained special
+     characters.
 
 pisg (0.44) - Sun Dec, 15th 2002
    * Fixed an error in the mIRC6 format which caused pisg to abort on some

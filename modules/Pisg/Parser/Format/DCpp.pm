@@ -33,7 +33,7 @@ sub normalline
         $hash{nick}   = $2;
         $hash{saying} = $3;
 
-        if ($self->{cfg}->{botnicks} =~ /\b$hash{nick}\b/) {
+        if ($self->{cfg}->{botnicks} =~ /\b\Q$hash{nick}\E\b/) {
             return;
         }
         return \%hash;
@@ -99,7 +99,7 @@ sub thirdline
 
         # Format-specific stuff goes here.
 
-        if ($self->{cfg}->{botnicks} =~ /\b$hash{nick}\b/) {
+        if ($self->{cfg}->{botnicks} =~ /\b\Q$hash{nick}\E\b/) {
             
             if (lc($hash{nick}) eq 'hub-security') {
                 if (defined $line[3] && $line[1].$line[2] eq 'isin') {
