@@ -1,3 +1,7 @@
+pisg (0.18)
+
+   * Norweigan translation (thanks to Andreas Blaafladt)
+
 pisg (0.17) - Sat, July 28th 2001
 
    * Timezone offset now understands two digits as it should

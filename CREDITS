@@ -25,6 +25,7 @@ CREDITS goes to...
    | Found a few minor bugs. And added replace_links()
  * Sam Bingner <sam@dhs.org>
    | Added mIRC color stripping, eggdrop log format and nick/alias tracking.
+   | Bunch of other patches
  * S. William Schulz <sws@astrum.com>
    | Better commandline arguments, --help and fixed indenting problems with
      xchat logs, also fixed a critical thing with --format
@@ -42,6 +43,8 @@ CREDITS goes to...
    | Spanish translation
  * Gandalf the Grey <gandalf@irc.pl>
    | Polish translation and egg2mirc.awk script.
+ * Andreas Blaafladt <coronel@dalnet.no>
+   | Norweigan translation
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
