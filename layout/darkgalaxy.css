@@ -1,0 +1,123 @@
+A
+{
+    TEXT-DECORATION: none
+}
+A:link
+{
+    COLOR: #b5c6d5
+}
+A:visited
+{
+    COLOR: #b5c6d5
+}
+A:hover
+{
+    COLOR: #ffffff;
+    TEXT-DECORATION: underline
+}
+A.background
+{
+    TEXT-DECORATION: none
+}
+A.background:link
+{
+    COLOR: #b5c6d5
+}
+A.background:visited
+{
+    COLOR: #b5c6d5
+}
+A.background:hover
+{
+    COLOR: #ffffff;
+    TEXT-DECORATION: underline
+}
+BODY
+{
+    FONT-SIZE: 13px;
+    COLOR: #dedede;
+    FONT-FAMILY: verdana, arial, sans-serif;
+    BACKGROUND-COLOR: #000000
+}
+TD
+{
+    FONT-SIZE: 13px;
+    COLOR: #dedede;
+    FONT-FAMILY: verdana, arial, sans-serif;
+    TEXT-ALIGN: left
+}
+.title
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16px;
+    FONT-FAMILY: tahoma, arial, sans-serif
+}
+.headtext
+{
+    FONT-WEIGHT: bold;
+    COLOR: #dedede;
+    BACKGROUND-COLOR: #6d0d14;
+    TEXT-ALIGN: center
+}
+.headlinebg
+{
+    BACKGROUND-COLOR: #6d0d14
+}
+.tdtop
+{
+    BACKGROUND-COLOR: #718292
+}
+.hicell
+{
+    BACKGROUND-COLOR: #19354e
+}
+.hicell10
+{
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #444444
+}
+.rankc
+{
+    BACKGROUND-COLOR: #444444
+}
+.hirankc
+{
+    FONT-WEIGHT: bold;
+    BACKGROUND-COLOR: #545454
+}
+.rankc10
+{
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #444444
+}
+.rankc10center
+{
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #444444;
+    TEXT-ALIGN: center
+}
+.hirankc10center
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #545454;
+    TEXT-ALIGN: center
+}
+.small
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: verdana, arial, sans-serif
+}
+.asmall
+{
+    FONT-SIZE: 10px;
+    COLOR: #dedede;
+    FONT-FAMILY: arial narrow, sans-serif
+}
+.asmallcenter
+{
+    FONT-SIZE: 10px;
+    COLOR: #dedede;
+    FONT-FAMILY: arial narrow, sans-serif;
+    TEXT-ALIGN: center
+}
