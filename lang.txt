@@ -499,13 +499,16 @@ shout3 = "Nadie ha escrito frases con exclamaciones."
 allcaps1 = "A <b>[:nick]</b> se le ha atascado el bloqueo de mayusculas, el [:per]% del tiempo escribe CON ESTE ESTILO TAN PECULIAR"
 allcaps2 = "<b>[:nick]</b> debe tener vicio con la tecla shift, el [:per]% del tiempo hace lo mismo"
 allcaps3 = "Todo el mundo tiene su tecla shift bajo control :)"
+allcapstext = "<b>Como por ejemplo, esto:</b>"
 
 violent1 = "<b>[:nick]</b> es el más agresivo del canal, ha repartido tortas <b>[:attacks]</b> veces."
 violent2 = "<b>[:nick]</b> tiene la mano floja. Ha repartido tortas <b>[:attacks]</b> veces."
 violent3 = "Nadie ha repartido tortas en este canal, todo el mundo parece amigable."
+violenttext = "<b>Como muestra:</b>"
 
 attacked1 = "Pobre <b>[:nick]</b>, No le gusta a nadie. Ha sido abofeteado <b>[:attacks]</b> veces."
 attacked2 = "<b>[:nick]</b> tiene marcas de dedos en la cara. Ha sido abofeteado <b>[:attacks]</b> veces."
+attackedtext = "<b>Ejemplo:</b>"
 
 gotkick1 = "<b>[:nick]</b> ha sido algo capullo y por eso lo echamos [:kicks] veces!"
 gotkick2 = "<b>[:nick]</b> tambien nos toca bastante las narices, por eso lo echamos [:kicks] veces"
@@ -513,12 +516,14 @@ gotkick2 = "<b>[:nick]</b> tambien nos toca bastante las narices, por eso lo ech
 joins = "<b>[:nick]</b> no sabe si irse o quedarse, lo he visto [:joins] veces entrando en el canal!"
 
 kick1 = "<b>[:nick]</b> actua como operador con mano dura, ha echado a [:kicked] personas!"
-kick2 = "[:oldnick] tiene un seguidor aferrimo, <b>[:nick]</b> ha echado a [:kicked] personas"
+kick2 = "[:oldnick] tiene un seguidor acérrimo, <b>[:nick]</b> ha echado a [:kicked] personas"
 kick3 = "Es maja la gente de aquí, nadie ha sido kikeado!"
+kicktext = "<b>Aquí está la prueba:</b>"
 
 action1 = "<b>[:nick]</b> quiere mantenernos informados de lo que hace en todo momento. Ha escrito [:actions] acciones!"
 action2 = "Y por supuesto <b>[:nick]</b> tambien no los ha dicho [:actions] veces"
 action3 = "Ha se han mostrado acciones en [:channel] !"
+actiontext = "<b>Aquí va un ejemplo:</b>"
 
 words1 = "<b>[:nick]</b> ha dicho un total de [:words] palabras!"
 words2 = "El mayor fan de [:oldnick] es <b>[:nick]</b>, que ha escrito [:words] palabras."
@@ -560,12 +565,17 @@ activetimestopic = "Horas más frecuentadas"
 activenickstopic = "La gente que más habla"
 mostwordstopic = "Las palabras más utilizadas"
 referencetopic = "Las personas de las que más se habla"
+urlstopic = "URLs más frecuentemente mencionados"
 notopic = "Aún no se ha utilizado el topic del canal"
+bylinetopic = "por [:nick] a las [:time]"
 
 ## Other text
 
 totallines = "Número total de lineas: [:lines]"
+totalnicks = "Ha habido otros [:totalnicks] nicks que han pasado por el canal"
+totaltopic = "Ha habido [:total] cambios de topic"
 nick = "Nick"
+url = "URL"
 numberlines = "Lineas"
 randquote = "Frase al azar"
 userpic = "Foto"
