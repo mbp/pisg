@@ -9,6 +9,7 @@ pisg (0.60) - ??
    German strings.
    * Updated Norwegian translation (thanks, Andreas Blaafladt).
    * Updated Dutch translation (thanks, Tiniduske).
+   * Fixed xchat2 "Topic for #chan is" parsing and added logsample.
    Changes by Morten Brix Pedersen:
    * Renamed the Danish translation to its correct abbreviation, DA instead
    of DK.

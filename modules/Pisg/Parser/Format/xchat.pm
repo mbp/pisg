@@ -14,7 +14,7 @@ sub new
         cfg => $args{cfg},
         normalline => '(\d+):\d+:\d+ <([^>\s]+)>\s+(.*)',
         actionline => '(\d+):\d+:\d+ \*{1,}\s+(\S+) (.*)',
-        thirdline  => '(\d+):(\d+):\d+ [<-]-[->]\s+(\S+) (\S+) (\S+) (\S+) (\S+) ?(\S+)? ?(.*)?',
+        thirdline  => '(\d+):(\d+):\d+ [<-]-[->]\s+(\S+) (\S+) (\S+) (\S+) ((\S+)\s*(\S+)?\s*(.*)?)',
     };
 
     bless($self, $type);
@@ -71,7 +71,7 @@ sub thirdline
             $hash{nick} = $6;
 
         } elsif (($4.$5) eq 'haschanged') {
-            $hash{newtopic} = $9;
+            $hash{newtopic} = $10;
 
         } elsif (($4.$5.$6) eq 'giveschanneloperator') {
             $hash{newmode} = '+o';
@@ -95,14 +95,14 @@ sub thirdline
             $hash{newjoin} = $1;
 
         } elsif (($5.$6) eq 'nowknown') {
-            $hash{newnick} = $8;
+            $hash{newnick} = $9;
 
         } elsif (($3.$4.$6) eq 'Topicforis') {
-            $self->{topictemp} = $9;
-            $hash{newtopic} = $9;
+            $self->{topictemp} = $7;
+            $hash{newtopic} = $7;
 
         } elsif (($3.$4.$6) eq 'Topicforset') {
-            $hash{nick} = $8;
+            $hash{nick} = $9;
             $hash{newtopic} =  $self->{topictemp};
 
         }
