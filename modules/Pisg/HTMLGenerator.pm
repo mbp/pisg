@@ -1993,13 +1993,13 @@ sub _mostnicks
         _html("<td>&nbsp;</td><td class=\"tdtop\"><b>$nick_txt</b></td>");
         _html("<td class=\"tdtop\"><b>$names_txt</b></td></tr>");
 
-        for(my $i = 0, my $a = 0; $a < $self->{cfg}->{mostnickshistory}; $i++) {
-            next if is_ignored($sortnicks[$i]);
-            last unless $i < @sortnicks;
-            my $nickcount = keys %{ $self->{stats}->{nicks}->{$sortnicks[$i]} };
-            my $nickused = join(", ", values %{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
+        my $a = 0;
+        foreach my $nick (@sortnicks) {
+            next if is_ignored($nick);
+            my $nickcount = keys %{ $self->{stats}->{nicks}->{$nick} };
+            my $nickused = join(", ", values %{ $self->{stats}->{nicks}->{$nick} });
 
-            next unless ($nickcount > 1);
+            last unless ($nickcount > 1);
 
             $a++;
             my $class = $a == 1 ? 'hirankc' : 'rankc';
@@ -2007,13 +2007,14 @@ sub _mostnicks
 
             _html("<tr><td class=\"$class\">$a</td>");
             if ($self->{cfg}->{mostnicksverbose}) { 
-                _html("<td class=\"hicell\">$sortnicks[$i] ($nickcount $n)</td>");
+                _html("<td class=\"hicell\">$nick ($nickcount $n)</td>");
                 _html("<td class=\"hicell\" valign='top'>$nickused</td>");
             } else {
-                _html("<td class=\"hicell\">$sortnicks[$i]</td>");
+                _html("<td class=\"hicell\">$nick</td>");
                 _html("<td class=\"hicell\" valign='top'>$nickcount $n</td>");
             }
             _html("</tr>");
+            last if $a >= $self->{cfg}->{mostnickshistory};
         }
         _html("</table>");
     }
