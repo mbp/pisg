@@ -1,4 +1,4 @@
-pisg (0.35)
+pisg (0.35) - Sat Jan, 26th 2002
    * Translate mouse-over items (eg. "Open in new window: URL")
    * Support for oer bot logfiles (thanks to EQU <equ@equnet.org>)
    * Support for perlbot logfiles (thanks to Travis Roy <travis@scootz.net>)
@@ -14,6 +14,8 @@ pisg (0.35)
      people had
    * Fix bug in documentation, which said nicktracking was enabled by default,
      but it really isn't.
+   * The addalias.pl script is no longer case sensitive when updating nicks
+     already in the config file
 
 pisg (0.34) - Tue, Jan 8th 2002
    * New option 'show_topics', to enable/disable 'last topics'
