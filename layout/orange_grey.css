@@ -52,15 +52,15 @@ td {
     text-align: left;
 }
 
-.male {
+.male, .male a {
     color: #0000DD;
 }
 
-.female {
+.female, .female a {
     color: #DD3366;
 }
 
-.bot {
+.bot, .bot a {
     color: #00FFFF;
 }
 

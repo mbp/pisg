@@ -133,15 +133,15 @@ TD
     TEXT-ALIGN: center
 }
 
-.male {
+.male, .male a {
     color: #0000c7;
 }
 
-.female {
+.female, .female a {
     color: #93006a;
 }
 
-.bot {
+.bot, .bot a {
     color: black;
 }
 
