@@ -186,7 +186,7 @@ sub _htmlheader
     my $CSS;
     if($self->{cfg}->{colorscheme} =~ /[^\w]/) { # use external CSS file
         $CSS = "<link rel=\"stylesheet\" type=\"text/css\" href=\"$self->{cfg}->{colorscheme}\">";
-    } else { # read the chosen CSS file
+    } elsif($self->{cfg}->{colorscheme} ne "none") { # read the chosen CSS file
         my $css_file = $self->{cfg}->{cssdir} . $self->{cfg}->{colorscheme} . ".css";
         open(FILE, $css_file) or open (FILE, $self->{cfg}->{search_path} . "/$css_file") or die("$0: Unable to open stylesheet $css_file: $!\n");
         {
@@ -197,7 +197,8 @@ sub _htmlheader
     }
 
     my $title = $self->_template_text('pagetitle1', %hash);
-    print OUTPUT <<HTML;
+    if($self->{cfg}->{colorscheme} ne "none") {
+        print OUTPUT <<HTML;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -208,6 +209,7 @@ $CSS
 <body>
 <div align="center">
 HTML
+    }
     _html("<span class=\"title\">$title</span><br />");
     _html("<br />");
     _html($self->_template_text('pagetitle2', %hash) . " " . $self->get_time());
@@ -289,10 +291,15 @@ $stats_gen<br />
 $author_text<br />
 $stats_text
 </span>
+HTML
+
+    if($self->{cfg}->{colorscheme} ne "none") {
+        print OUTPUT <<HTML;
 </div>
 </body>
 </html>
 HTML
+    }
 }
 
 sub _headline

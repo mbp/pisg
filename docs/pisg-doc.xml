@@ -286,9 +286,6 @@
     When changing it, you need a fair knowledge of CSS (Cascading Style
     Sheets). CSS is what most of the web uses today to define styles and
     layout on HTML pages.
-    </para>
-
-    <para>
     With the pisg distribution, look in the <filename>layout</filename>
     directory. In it resides <filename>default.css</filename> which is the
     file being included onto the HTML page. Open it in a text editor like
@@ -297,11 +294,15 @@
     options through pisg.cfg for changing the last two colors.
     </para>
 
-
     <para>
     If you have created a nice stylesheet which other can take advantage of,
     you are encouraged to send it to the pisg mailing list so that it can be
     distributed with the next version of pisg.
+    </para>
+
+    <para>
+    If you want to embed the statistics into another page, use the "none" color scheme.
+    Pisg will then omit the HTML header and write only the body part.
     </para>
 
    </sect1>
@@ -741,7 +742,9 @@
     justgrey, ocean, orange_grey, pisg, softgreen (omit the .css). The file
     will be included statically in the generated HTML page. If you give a file
     name or URL (i.e. a color scheme name with .css or a path), the file will
-    be linked to instead. See also <link linkend="CssDir">CssDir</link>,
+    be linked to instead. Using "none" will cause pisg to write only the body
+    of the page; use this to include the statistics into a custom page. See
+    also <link linkend="CssDir">CssDir</link>,
     <link linkend="HiCell">HiCell/HiCell2</link>.
     </para>
     </refsect1>
