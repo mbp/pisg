@@ -2476,7 +2476,7 @@
     <para>
     <command>PicHeight</command> defines the standard height for user
     pictures. Setting the 'height' attribute of image-elements on the
-    outputted stats page. See also <command>PicHeight</command>
+    outputted stats page. See also <command>PicWidth</command>
     </para>
     </refsect1>
     <refsect1>

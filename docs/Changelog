@@ -7,6 +7,8 @@ pisg (x.xx)
    * A bug in the zcbot format where the first character would be truncated
      has been fixed (thanks, Guillaume Leclanche)
    * New 'softgreen' colorscheme (thanks, Melody Mayberry)
+   * Fixed wrong reference to PicHeight in docs which should be PicWidth.
+     (thanks, J Lehto)
 
 pisg (0.41) - Sun Aug, 11th 2002
    * Fix a bug in the winbot logfile format where lines containing the channel
