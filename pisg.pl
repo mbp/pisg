@@ -278,6 +278,10 @@ sub init_lineformats {
         $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
         $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
         $thirdline = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
+    } elsif ($conf->{format} eq 'mbot') {
+        $normalline = '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> (?!\001ACTION)(.*)';
+        $actionline = '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> \001ACTION (.*)\001$';
+        $thirdline = '^\S+ \S+ \d+ (\d+):(\d+):\d+ \d+ (\S+) (\S+) ?(\S*) ?(\S*) ?(.*)';
 
     } else {
         die("Logfile format not supported, check \$conf->{format} setting.\n");
@@ -649,7 +653,8 @@ sub parse_normalline
         $debug->("[$lines] Normal: $1 $2 $3");
 
         if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
-        'eggdrop') || ($conf->{format} eq 'bxlog') || ($conf->{format} eq 'grufti')) {
+            'eggdrop') || ($conf->{format} eq 'bxlog') || ($conf->{format} eq 'grufti') ||
+            ($conf->{format} eq 'mbot')) {
 
             $hash{hour} = $1;
             $hash{nick} = $2;
@@ -676,7 +681,8 @@ sub parse_actionline
         $debug->("[$lines] Action: $1 $2 $3");
 
         if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
-        'eggdrop') || $conf->{format} eq 'bxlog' || ($conf->{format} eq 'grufti')) {
+            'eggdrop') || $conf->{format} eq 'bxlog' || ($conf->{format} eq 'grufti') ||
+            ($conf->{format} eq 'mbot')) {
 
             $hash{hour} = $1;
             $hash{nick} = $2;
@@ -858,6 +864,29 @@ sub parse_thirdline
             } elsif (($3.$4) eq 'Nickchange') {
                 $hash{nick} = $7;
                 $hash{newnick} = $9;
+            }
+
+        } elsif ($conf->{format} eq 'mbot') {
+            $hash{hour} = $1;
+            $hash{min} = $2;
+            $hash{nick} = $3;
+
+            if ($4 eq 'KICK') {
+                $hash{kicker} = $3;
+                $hash{nick} = $5;
+
+            } elsif ($4 eq 'TOPIC') {
+                $hash{newtopic} = $5;
+                $hash{newtopic} =~ s/^.*://;
+
+            } elsif ($4 eq 'MODE') {
+                $hash{newmode} = $5;
+
+            } elsif ($4 eq 'JOIN') {
+                $hash{newjoin} = $1;
+
+            } elsif ($4 eq 'NICK') {
+                $hash{newnick} = $5;
             }
 
         } else {
