@@ -84,6 +84,15 @@ sub thirdline
 
         } elsif (($5.$6) eq 'nowknown') {
             $hash{newnick} = $8;
+
+        } elsif (($3.$4.$6) eq 'Topicforis') {
+            $self->{topictemp} = $9;
+            $hash{newtopic} = $9;
+
+        } elsif (($3.$4.$6) eq 'Topicforset') {
+            $hash{nick} = $8;
+            $hash{newtopic} =  $self->{topictemp};
+
         }
 
         return \%hash;
