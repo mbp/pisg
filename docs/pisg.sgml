@@ -1,0 +1,157 @@
+<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+
+<!-- Process this file with docbook-to-man to generate an nroff manual
+     page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+     the manual page with: `docbook-to-man manpage.sgml | nroff -man |
+     less'.  A typical entry in a Makefile or Makefile.am is:
+
+manpage.1: manpage.sgml
+	docbook-to-man $< > $@
+
+    
+	The docbook-to-man binary is found in the docbook-to-man package.
+	Please remember that if you create the nroff version in one of the
+	debian/rules file targets (such as build), you will need to include
+	docbook-to-man in your Build-Depends control field.
+
+  -->
+
+  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
+  <!ENTITY dhfirstname "<firstname>Julien</firstname>">
+  <!ENTITY dhsurname   "<surname>Danjou</surname>">
+  <!-- Please adjust the date whenever revising the manpage. -->
+  <!ENTITY dhdate      "<date>2002 april 22</date>">
+  <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
+       allowed: see man(7), man(1). -->
+  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
+  <!ENTITY dhemail     "<email>acid@debian.org</email>">
+  <!ENTITY dhusername  "Julien Danjou">
+  <!ENTITY dhucpackage "<refentrytitle>PISG</refentrytitle>">
+  <!ENTITY dhpackage   "pisg">
+
+  <!ENTITY debian      "<productname>Debian</productname>">
+  <!ENTITY gnu         "<acronym>GNU</acronym>">
+]>
+
+<refentry>
+  <refentryinfo>
+    <address>
+      &dhemail;
+    </address>
+    <author>
+      &dhfirstname;
+      &dhsurname;
+    </author>
+    <copyright>
+      <year>2001</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    &dhdate;
+  </refentryinfo>
+  <refmeta>
+    &dhucpackage;
+
+    &dhsection;
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+
+    <refpurpose>Perl IRC Statistics Generator</refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>DESCRIPTION</title>
+
+    <para>This manual page documents briefly <command>&dhpackage;</command></para>
+
+    <para>This manual page was written for the &debian; distribution
+      because the original program does not have a manual page.</para>
+
+    <para><command>&dhpackage;</command> is a program which takes IRC logiles and turns
+  the into nice looking stats, which can be amusing to show to the users
+  og your channel. It's quite simple to set up using command line or
+  configuration file (more flexible and configurable</para>
+
+  </refsect1>
+  <refsect1>
+    <title>OPTIONS</title>
+
+    <para>These programs follow the usual GNU command line syntax,
+      with long options starting with two dashes (`-').  A summary of
+      options is included below.</para>
+
+    <variablelist>
+
+      <varlistentry><term><option>-ch --channel=</option></term><listitem><para>Set channel name</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-cc --cchannels=</option></term><listitem><para>Only do this channel from cfg file, give multiple times to do multiple channels</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-l --logfile=</option></term><listitem><para>Log file to parse</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-o --outfile=</option></term><listitem><para>Name of HTML file to create</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-t --tag=</option></term><listitem><para>Replace %t in --outfile by argument</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-ma --maintainer=</option></term><listitem><para>Channel/stats maintainer</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-f --format=</option></term><listitem><para>Logfile format</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-n --network=</option></term><listitem><para>IRC network of the
+      channel</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-d --dir=</option></term><listitem><para>Analyse all files in this
+      directory. Ignores --logfile. Give multiple times to use multiple
+      directories.</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-nf --nfiles=</option></term><listitem><para>Analyze the last n files if used with --dir</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-p --prefix=</option></term><listitem><para>Analyse only files prefixed
+      by something in dir. Only works with
+      --dir</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-cf --cfg opt=value</option></term><listitem><para>Specify configuration options</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-co --configfile=</option></term><listitem><para>Configuration file</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-mo --moduledir=</option></term><listitem><para>Directory containing pisg modules</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-s --silent</option></term><listitem><para>Suppress output (except error
+      messages)</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-v --version</option></term><listitem><para>Show version</para></listitem></varlistentry>
+
+      <varlistentry><term><option>-h --help</option></term><listitem><para>Show help</para></listitem></varlistentry>
+
+    </variablelist>
+  </refsect1>
+  <refsect1>
+    <title>AUTHOR</title>
+
+    <para>This manual page was written by &dhusername; &dhemail; for
+      the &debian; system (but may be used by others).  Permission is
+      granted to copy, distribute and/or modify this document under
+      the terms of the <acronym>GNU</acronym> Free Documentation
+      License, Version 1.1 or any later version published by the Free
+      Software Foundation; with no Invariant Sections, no Front-Cover
+      Texts and no Back-Cover Texts.</para>
+
+  </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:2
+sgml-indent-data:t
+sgml-parent-document:nil
+sgml-default-dtd-file:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
+
+

@@ -6,6 +6,7 @@ pisg (0.61) - ??
      + Write a single HTML file.
      + Various crossrefs.
      + Updated list of languages.
+     + Grab pisg.sgml manpage from Debian package, update with new options.
 
 pisg (0.60) - Fri Oct, 15th 2004
    Changes by Christoph Berg:
