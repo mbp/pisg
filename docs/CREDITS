@@ -71,7 +71,7 @@ And all the other contributors:
  * Mouky <mouky@m6net.fr>
    | Updates to French template, grammar/gender/spelling corrections.
  * Kirler@paincreators <kirler@letku.net>
-   | Finish translation.
+   | Finnish translation.
  * Ales Tepina <ales.tepina@guest.arnes.si>
    | Slovenian translation
  * Gyuri Horak <dyuri@dyuri.sch.bme.hu>
@@ -81,7 +81,6 @@ And all the other contributors:
  * deadlock <deadlock@cheeseheadz.net>
    | addalias.pl version 2, handling of users already in config file,
      obsoletin of addalias.htm and more configurable script.
-
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
