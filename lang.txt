@@ -35,7 +35,7 @@
 # (GR) Greek - Konstantinos Tzanidis <erebus@irc.gr>
 # (HE) Hebrew - Shimi <shimi@shimi.net>
 # (BG) Bulgarian - Dimitar <m9ck@sofiaclub.com> (2005-01-24)
-#      last update: 2003-02-03 by elseif <elseif@mail.bg>
+#      last update: elseif <elseif@mail.bg> (2005-02-19)
 # (YU) Serbian - Garp <garp@pixelsndots.com>
 # (SQ) Albanian - h3li0s <elbo_79@yahoo.it>
 #
@@ -4092,9 +4092,10 @@ karmatopic = "[:channel] карма"
 urlstopic = "Най-спомеменавани web-адреси"
 notopic = "Никога не е имало тема в канала"
 mostnickstopic = "Хора с най-много никове"
-bylinetopic = "[:date] от [:nick] в [:time]"
+bylinetopic = "от [:nick] на [:date] в [:time]"
 dailyactivitytopic = "Активност по дни (последните [:n])"
-activegendertopic = "По-активен пол"
+activegenderstopic = "По-активен пол"
+acrivegenderstopic = "Най-активен пол"
 
 ## Other text
 
@@ -4119,7 +4120,7 @@ karma = "Карма"
 goodkarma = "Добра карма от"
 badkarma = "Лоша карма от"
 lastused = "Последно използван от"
-lastseen1 = "[:days] ден "
+lastseen1 = "вчера"
 lastseen2 = "[:days] дена"
 today = "Днес"
 pagetitle1 = "[:channel] @ [:network] статистика от [:maintainer]"
