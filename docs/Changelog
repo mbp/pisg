@@ -4,6 +4,8 @@ pisg (0.65) - ??
      though (thanks to Nico for the test log).
    * Fixed breakage when multiple LogDirs were given (thanks to Toni Viemerö
      for the report, SF tracker #1155433).
+   * Add channel owner (~) and admin (&) chars in irssi.pm (reported by Scelt
+     in SF tracker #1170470).
    The "Christoph got bored in Ireland" changes:
    * Get channel music charts with ShowCharts and ChartsHistory (suggested by
      Sven in SF tracker #1164596).
