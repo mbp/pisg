@@ -296,7 +296,7 @@ latesttopic = "Les derniers topics"
 activetimestopic = "Les périodes d'intense activité"
 activenickstopic = "Les nicks les plus actifs"
 mostwordstopic = "Les mots les plus utilisés"
-referencetopic = "Les mots les plus utilisés dans la conversation"
+referencetopic = "Les nicks les plus utilisés dans la conversation"
 
 ## Other text
 
