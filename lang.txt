@@ -371,6 +371,7 @@ short2 = "<b>[:nick]</b> skriver også korte linjer, med et gennesnit på [:letter
 foul1 = "<b>[:nick]</b> er lidt stor i munden, [:per]% af linjerne indeholdte uhøfligt sprog"
 foul2 = "<b>[:nick]</b> burde også vaske munden med sæbe med alt det han fyrer af, [:per]% af tiden"
 foul3 = "Ingen rapkæftede på [:channel]!"
+foultext = "<b>For eksempel sådan her:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> er altid glad, [:per]% af linjerne havde glade ansigter :)"
 smiles2 = "<b>[:nick]</b> er heller ikke en trist person, som smilede [:per]% af tiden"
