@@ -308,14 +308,15 @@ sub parse_dir
     if (substr($conf->{logdir}, -1) ne '/') {
         $conf->{logdir} =~ s/(.*)/$1\//;
     }
-
-    foreach my $file (@filesarray) {
-        if (grep /^$conf->{prefix}/, $file) {
-            $file = $conf->{logdir} . $file;
-            parse_file($file);
-        }
+    
+    my $parsed = 0;
+    foreach my $file (grep /^$conf->{prefix}/, @filesarray) {
+        $file = $conf->{logdir} . $file;
+        parse_file($file);
+        $parsed = 1;
     }
 
+    die "No files matched prefix $conf->{prefix} in directory $conf->{logdir}" unless ($parsed);
 }
 
 sub parse_file
