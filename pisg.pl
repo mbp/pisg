@@ -1291,11 +1291,11 @@ sub user_linetimes {
 	$debuglen += $w;
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\">";
+            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\">";
         }
     }
     debug("Length='$len', Sum='$debuglen'");
-    return "$bar$line{$nick}";
+    return "$bar$&nbsp;line{$nick}";
 }
 
 sub user_times {
