@@ -216,6 +216,11 @@ show_voices         1 or 0, this will enable or disable the voice statistics
                     (those who got voice and those who voiced).
                     (default: 0)
 
+show_mostnicks      1 or 0, this will enable or disble a list with "users
+                    who had most nicks" (those who changed nicks often),
+                    only works properly when nicktracking is set to 1
+                    (default: 0)
+
 ignorewords         A space separated list of words to ignore in 'most
                     referenced words'
                     (default: "")
@@ -314,7 +319,7 @@ langfile            Filename of language file.
                     (default: lang.txt)
 
 nicktracking        1 or 0, track nickchanges and create aliases?
-                    (default: 1)
+                    (default: 0)
 
 logtype             The type of logs kept for your channel.  Currently only
                     "Logfile" is supported, so you don't need to change this
