@@ -257,7 +257,16 @@ sub _htmlfooter
     $hash{author_url} = "<a href=\"http://www.wtf.dk/hp/\" title=\"$author_hp\" class=\"background\">Morten Brix Pedersen</a>";
 
     $hash{version} = $self->{cfg}->{version};
-    $hash{time} = $self->{stats}->{processtime};
+    
+    my $hours = $self->_template_text('hours');
+    my $mins = $self->_template_text('minutes');
+    my $secs = $self->_template_text('seconds');
+    my $and = $self->_template_text('and');
+
+    my $h = $self->{stats}->{processtime}{hours};
+    my $m = $self->{stats}->{processtime}{mins};
+    my $s = $self->{stats}->{processtime}{secs};
+    $hash{time} = "$h $hours $m $mins $and $s $secs";
 
     my $stats_gen = $self->_template_text('stats_gen_by', %hash);
     my $author_text = $self->_template_text('author', %hash);
@@ -1673,8 +1682,8 @@ sub _mostnicks
         my $nick_txt = $self->_template_text('nick');
         my $names_txt = $self->_template_text('names');
         _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
-        _html("<td>&nbsp;</td><td class=\"tdtop\"><b>$names_txt</b></td>");
-        _html("<td class=\"tdtop\"><b>Names Used</b></td></tr>");
+        _html("<td>&nbsp;</td><td class=\"tdtop\"><b>$nick_txt</b></td>");
+        _html("<td class=\"tdtop\"><b>$names_txt</b></td></tr>");
 
         for(my $i = 0; $i < 5; $i++) {
             last unless $i < @sortnicks;

@@ -78,8 +78,12 @@ sub analyze
 	_uniquify_nicks(\%stats);
 
         my ($sec,$min,$hour) = gmtime(time() - $starttime);
-        $stats{processtime} =
-        sprintf("%02d hours, %02d minutes and %02d seconds", $hour, $min, $sec);
+        my $processtime = sprintf("%02d hours, %02d minutes and %02d seconds", $hour, $min, $sec);
+
+        $stats{processtime}{hours} = sprintf("%02d", $hour);
+        $stats{processtime}{mins} = sprintf("%02d", $min);
+        $stats{processtime}{secs} = sprintf("%02d", $sec);
+
         print "Channel analyzed succesfully in $stats{processtime} on ",
         scalar localtime(time()), "\n"
             unless ($self->{cfg}->{silent});
