@@ -330,7 +330,7 @@ words3 = "Hmmm ingen har sagt noget endnu... underlig kanal..."
 month = "Januar Februar Marts April Maj Juni Juli August September Oktober November December"
 day = "Søndag Mandag Tirsdag Onsdag Torsdag Fredag Lørdag"
 
-notopic = "A topic was never set on this channel"
+notopic = "Et topic blev aldrig sat på denne kanal.";
 
 ## Topics
 
