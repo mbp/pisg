@@ -72,7 +72,7 @@ sub thirdline
                 $hash{kicker} = $3;
             #}
 
-        } elsif ($3 =~ /^([^\/]+)\/(\S+) changes topic to \"([^\"]+)\"/ && $2 eq $self->{cfg}->{channel}) {
+        } elsif ($3 =~ /^([^\/]+)\/(\S+) changes topic to \"(.+)\"[^\"]*$/ && $2 eq $self->{cfg}->{channel}) {
             $hash{nick} = $1;
             $hash{newtopic} = $3;
 
