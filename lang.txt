@@ -256,7 +256,7 @@ mostop2 = "<b>[:nick]</b> var også venlig at gi': [:ops] fra sig"
 mostop3 = "Underligt, ingen har fået op på [:channel] endnu!"
 
 action1 = "<b>[:nick]</b> bruger /me meget tit, ialt [:actions] gange!"
-action2 = "<b>[:nick]</b> fortæller os også hvad han laver.. [:actions] /me's"
+action2 = "<b>[:nick]</b> fortæller os også hvad [:han:hun:] laver.. [:actions] /me's"
 action3 = "Ingen /me's i [:channel] !"
 actiontext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -264,8 +264,8 @@ mostdeop1 = "<b>[:nick]</b> holder orden på [:channel] med [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> deoppede [:deops] brugere"
 mostdeop3 = "Hmm, der var ingen som blev deopped på [:channel]!"
 
-question1 = "<b>[:nick]</b> må være rimelig dum eller efterligner bare Spørge-Jørgen... [:per]% af hans linjer var spørgsmål!"
-question2 = "<b>[:nick]</b> var heller ingen Einstein, [:per]% af hans linjer var også spørgsmål"
+question1 = "<b>[:nick]</b> må være rimelig dum eller efterligner bare Spørge-Jørgen... [:per]% af [:hans:hendes:] linjer var spørgsmål!"
+question2 = "<b>[:nick]</b> var heller ingen Einstein, [:per]% af [:hans:hendes:] linjer var også spørgsmål"
 question3 = "Ingen spørgsmål på denne kanal. De må sørme være kloge!"
 
 shout1 = "Den mest larmende var <b>[:nick]</b>, som råbte [:per]% af tiden!"
@@ -273,16 +273,16 @@ shout2 = "En anden skrigehals var <b>[:nick]</b>, som råbte [:per]% af tiden!"
 shout3 = "Der er ingen som råber. Leger de stilleleg?"
 
 gotkick1 = "<b>[:nick]</b> er ret upopulær, blev sparket ud [:kicks] gange!"
-gotkick2 = "<b>[:nick]</b> er heller ikke nogen Elvis, [:kicks] gange fik han sparket"
+gotkick2 = "<b>[:nick]</b> er heller ikke nogen Elvis, [:kicks] gange fik [:han:hun:] sparket"
 kicktext = "<b>F.eks. sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-joins = "<b>[:nick]</b> er lidt forvirret. Han har været inde og ude af kanalen [:joins] gange!"
+joins = "<b>[:nick]</b> er lidt forvirret. [:Han:Hun:] har været inde og ude af kanalen [:joins] gange!"
 
-kick1 = "<b>[:nick]</b> er magtsygt eller ved hvordan [:han:hun:] skal kontrollere sine fjender. Han har sparket [:kicked] folk ud af kanalen!"
+kick1 = "<b>[:nick]</b> er magtsygt eller ved hvordan [:han:hun:] skal kontrollere sine fjender. [:Han:Hun:] har sparket [:kicked] folk ud af kanalen!"
 kick2 = "[:oldnick] har en efterfølger. <b>[:nick]</b> sparkede [:kicked] folk ud af kanalen"
 kick3 = "Venlige operatører må man sige. Ingen har fået sparket!"
 
-mono1 = "<b>[:nick]</b> snakker meget med sig selv. Han har skrevet over 5 linjer på en gang, [:monos] gange!"
+mono1 = "<b>[:nick]</b> snakker meget med sig selv. [:Han:Hun:] har skrevet over 5 linjer på en gang, [:monos] gange!"
 mono2 = "En anden ensom person var <b>[:nick]</b>, som snakkede til sig selv [:monos] gange"
 
 wpl1 = "<b>[:nick]</b> skrev i gennemsnit [:wpl] ord pr. linje.."
@@ -361,15 +361,6 @@ lastused = "Sidst brugt af"
 pagetitle1 = "[:channel] @ [:network] statistikker af [:maintainer]"
 pagetitle2 = "Statistikker genereret "
 pagetitle3 = "Igennem denne [:days]-dages periode, har der været <b>[:nicks]</b> forskellige nicks på [:channel]."
-msex = "ham"
-fsex = "hende"
-usex = "ham/hende"
-mposessive = "hans"
-fposessive = "hendes"
-uposessive = "hans/hendes"
-msubj = "ham"
-fsubj = "hende"
-usubj = "ham/hende"
 </lang>
 
 ### French
@@ -670,15 +661,15 @@ pagetitle3 = "W przedziale [:days]-dni, <b>[:nicks]</b> roznych nickow odwiedzil
 
 <lang name="NO">
 mostop1 = "<b>[:nick]</b> delte ut [:ops] smultringer."
-mostop2 = "<b>[:nick]</b> var også veldig raus: [:ops] smultringer fra ham/henne."
+mostop2 = "<b>[:nick]</b> var også veldig raus: [:ops] smultringer fra [:ham:henne:]."
 mostop3 = "Merkelig, ingen smultringer ble delt ut på [:channel]!"
 
 mostdeop1 = "<b>[:nick]</b> er kanalens sheriff med [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> deopet [:deops] brukere."
 mostdeop3 = "Villt! Ingen har blitt deopet på [:channel]!"
 
-question1 = "<b>[:nick]</b> er sikkert dum, hvis ikke bare litt nysgjerrig. [:per]% av linjene hans/hennes inneholdt et spørsmål!"
-question2 = "<b>[:nick]</b> skjønner heller ikke mye, [:per]% av hans/hennes linjer ser mistenkelig ut som spørsmål."
+question1 = "<b>[:nick]</b> er sikkert dum, hvis ikke bare litt nysgjerrig. [:per]% av linjene [:hans:hennes:] inneholdt et spørsmål!"
+question2 = "<b>[:nick]</b> skjønner heller ikke mye, [:per]% av [:hans:hennes:] linjer ser mistenkelig ut som spørsmål."
 question3 = "Ingen stilte noen spørsmål, er det bare glupinger her?"
 
 shout1 = "Den mest bråkete var såklart <b>[:nick]</b> som ropte [:per]% av tiden."
@@ -703,16 +694,16 @@ long2 = "Gjennomsnittet på [:channel] var [:avg] bokstaver pr linje"
 short1 = "<b>[:nick]</b> skrev de korteste (og beste?) linjene, med gjennomsnittlig [:letters] bokstaver pr linje."
 short2 = "[:nick] var også rimelig kort, med sine gjennomsnittlige [:letters] bokstaver pr linje."
 
-foul1 = "<b>[:nick]</b> er ganske stor i kjeften, [:per]% av hans linjer inneholdt et uhøflig språk."
-foul2 = "<b>[:nick]</b> er heller ikke svigemors drøm, [:per]% av hans linjer må kategoriseres som uhøffelig språk."
+foul1 = "<b>[:nick]</b> er ganske stor i kjeften, [:per]% av [:hans:hennes:] linjer inneholdt et uhøflig språk."
+foul2 = "<b>[:nick]</b> er heller ikke svigemors drøm, [:per]% av [:hans:hennes:] linjer må kategoriseres som uhøffelig språk."
 foul3 = "Ingen rappkjeftede på [:channel]? Tvilsomt.";
 
-smiles1 = "<b>[:nick]</b> er en gledespike, [:per]% av linjene hennes inneholdt smileansikt. :)"
-smiles2 = "<b>[:nick]</b> er heller ikke sur, [:per]% av linjene hans/hennes inneholdt et smil."
+smiles1 = "<b>[:nick]</b> er en gledespike, [:per]% av linjene [:hans:hennes:] inneholdt smileansikt. :)"
+smiles2 = "<b>[:nick]</b> er heller ikke sur, [:per]% av linjene [:hans:hennes:] inneholdt et smil."
 smiles3 = "Ingen smiler på [:channel]. Smil!";
 
 sad1 = "Blid kan man ikke kalle<b> [:nick]</b> som surmuler [:per]% av tiden."
-sad2 = "<b>[:nick]</b> er nok også ganske trist, [:per]% av hans/hennes linjer inneholdt :-(-er."
+sad2 = "<b>[:nick]</b> er nok også ganske trist, [:per]% av [:hans:hennes:] linjer inneholdt :-(-er."
 sad3 = "Ingen triste ansikt på [:channel]! :-)"
 
 notopic = "Det er ikke satt noe topic på denne kanalen."
@@ -939,7 +930,7 @@ day = "zondag maandag dinsdag woensdag donderdag vrijdag zaterdag"
 <lang name="SE">
 ### Swedish
 mostop1 = "<b>[:nick]</b> gav [:ops] personer operatörsstatus i kanalen..."
-mostop2 = "<b>[:nick]</b> var också väldigt vänlig: [:ops] från honom/henne"
+mostop2 = "<b>[:nick]</b> var också väldigt vänlig: [:ops] från [:honom:henne:]"
 mostop3 = "Underligt, inga personer fick operatörsstatus i [:channel]!"
 
 mostdeop1 = "<b>[:nick]</b> var kanalens sheriff och tog ifrån [:deops] personer deras operatörsstatus..."
@@ -947,23 +938,23 @@ mostdeop2 = "<b>[:nick]</b> tog ifrån [:deops] användare sin operatörsstatus"
 mostdeop3 = "Wow, inga personer blev av med sin operatörsstatus i [:channel]!"
 
 question1 = "<b>[:nick]</b> är antingen dum eller ställer bara många frågor... [:per]% rader innehöll en fråga!"
-question2 = "<b>[:nick]</b> visste heller inte mycket, [:per]% av hans/hennes rader innehöll en fråga"
+question2 = "<b>[:nick]</b> visste heller inte mycket, [:per]% av [:hans:hennes:] rader innehöll en fråga"
 question3 = "Ingen frågade någonting, bara genier i denna kanalen?"
 
 shout1 = "Skrikigast var <b>[:nick]</b> som skrek [:per]% av tiden!"
 shout2 = "En annan <i>skrikhals</i> var <b>[:nick]</b> som skrek [:per]% av tiden!"
 shout3 = "Ingen använde utropstecknet, wow."
 
-allcaps1 = "Det verkar som <b>[:nick]</b> har en hängande shift-tangent, [:per]% av tiden skrev han/hon i VERSALER"
-allcaps2 = "<b>[:nick]</b> glömde att deaktivera sin CapsLock-tangent, [:per]% av det han/hon skrev var VERSALER"
+allcaps1 = "Det verkar som <b>[:nick]</b> har en hängande shift-tangent, [:per]% av tiden skrev [:han:hon:] i VERSALER"
+allcaps2 = "<b>[:nick]</b> glömde att deaktivera sin CapsLock-tangent, [:per]% av det [:han:hon:] skrev var VERSALER"
 allcaps3 = "Alla hade sin shift-tangent under kontroll :)"
 
 violent1 = "<b>[:nick]</b> är en väldigt aggressiv person, som använde handflatan <b>[:attacks]</b> gånger."
 violent2 = "<b>[:nick]</b> kunde inte kontrollera sina aggressioner. [:Han:Hon:] slogs <b>[:attacks]</b> gånger med sin handflata."
 violent3 = "Ingen slog ingen, alla var vänner."
 
-attacked1 = "Stackars <b>[:nick]</b>, ingen gillade honom/henne. [:Han:Hon:] blev slagen <b>[:attacks]</b> gånger med handflatan."
-attacked2 = "<b>[:nick]</b> var inte heller speciellt omtyckt, han/hon blev slagen <b>[:attacks]</b> gånger."
+attacked1 = "Stackars <b>[:nick]</b>, ingen gillade [:honom:henne:]. [:Han:Hon:] blev slagen <b>[:attacks]</b> gånger med handflatan."
+attacked2 = "<b>[:nick]</b> var inte heller speciellt omtyckt, [:han:hon:] blev slagen <b>[:attacks]</b> gånger."
 
 gotkick1 = "<b>[:nick]</b> var inte speciellt populär, och blev utsparkad [:kicks] gånger!"
 gotkick2 = "<b>[:nick]</b> verkar också vara hatad, [:kicks] utsparkningar"
