@@ -179,6 +179,7 @@ sub get_default_config_settings
         # Less important things
 
         timeoffset => '+0',
+        use_activetime_alt => 0,
         minquote => 25,
         maxquote => 65,
         wordlength => 5,

@@ -266,6 +266,11 @@ pic_loc             Directory containing your png graphics files.
 charset             Charset to use for stats page.
                     (default: iso-8859-1)
 
+use_activetime_alt  Use an alternative way to highlight the number under the
+                    time bars, if set to 1, will highlight the hour in which
+                    the stats were generated.
+                    (default: 0)
+
 minquote            Minimal number of letters for a random quote
                     (default: 25)
 

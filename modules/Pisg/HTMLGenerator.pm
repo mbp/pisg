@@ -341,8 +341,20 @@ sub _activetimes
 
     _html("</tr><tr>");
 
+    # Remove leading zero
+    $toptime[0] =~ s/0(\d)/$1/;
+
     for ($b = 0; $b < 24; $b++) {
-        if ($now[2] == $b) { $class = 'hirankc'; } else { $class = 'rankc'; }
+        if ($toptime[0] == $b && !$self->{cfg}->{use_activetime_alt}) {
+            # Highlight the top time
+            $class = 'hirankc';
+        } elsif ($now[2] == $b && $self->{cfg}->{use_activetime_alt}) {
+            # Highlight the hour the stats is being generated in
+            $class = 'hirankc';
+
+        } else {
+            $class = 'rankc';
+        }
         _html("<td class=\"$class\" style=\"font-size: 10px\" align=\"center\">$b</td>");
 }
 
@@ -521,7 +533,6 @@ sub generate_colors
     my $red  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $self->{cfg}->{activenicks}) * +$c) + $f_r);
 
     return "#$red$green$blue";
-
 }
 
 sub _html
