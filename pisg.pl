@@ -159,7 +159,7 @@ _END
     my $generator;
     eval <<_END;
 use Pisg::HTMLGenerator;
-\$generator = new Pisg::HTMLGenerator(\$conf, \$debug, \$stats, \$users, \%T);
+\$generator = new Pisg::HTMLGenerator(\$conf, \$debug, \$stats, \$users, \\%T);
 _END
 
     if ($@) {
