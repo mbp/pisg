@@ -1222,7 +1222,7 @@ sub _mostvoice
         _html("</td></tr>");
     } else {
         my $text = $self->_template_text('mostdevoice3');
-        _html("<tr><td class=\"hicell\">$text");
+        _html("<tr><td class=\"hicell\">$text</td></tr>");
     }
 
 }
