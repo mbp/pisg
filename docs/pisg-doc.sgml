@@ -702,7 +702,7 @@
     <refsynopsisdiv><programlisting>
       <![CDATA[
         <channel="#channel">
-         Logfile = "chaNnel.log"
+         Logfile = "channel.log"
          Format = "mIRC"
          OutputFile = "stats.html"
          PageHead = "myheader.txt"
