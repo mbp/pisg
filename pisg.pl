@@ -329,7 +329,11 @@ sub init_config
                 }
 
                 if ($line =~ /ignore="Y"/i) {
-                    $conf->{ignores}{$nick} = 1;
+                    $users->{ignores}{$nick} = 1;
+                }
+
+                if ($line =~ /sex="([MmFf])"/i) {
+                    $users->{sex}{$nick} = lc($1);
                 }
 
             } elsif ($line =~ /<set(.*)>/) {
@@ -450,7 +454,7 @@ sub parse_file
                 # Timestamp collecting
                 $times{$hour}++;
 
-                unless ($conf->{ignores}{$nick}) {
+                unless ($users->{ignores}{$nick}) {
                     $normals++;
                     $line{$nick}++;
                     $line_time{$nick}[int($hour/6)]++;
@@ -530,7 +534,7 @@ sub parse_file
             $times{$hour}++;
             $line = strip_mirccodes($line);
 
-            unless ($conf->{ignores}{$nick}) {
+            unless ($users->{ignores}{$nick}) {
                 $actions++;
                 $actions{$nick}++;
                 $actionline{$nick} = $line;
@@ -571,10 +575,10 @@ sub parse_file
             $times{$hour}++;
             $line = strip_mirccodes($line);
 
-            unless ($conf->{ignores}{$nick}) {
+            unless ($users->{ignores}{$nick}) {
 
                 if (defined($kicker)) {
-                    unless ($conf->{ignores}{$kicker}) {
+                    unless ($users->{ignores}{$kicker}) {
                         $gotkick{$nick}++;
                         $kicked{$kicker}++;
                         $kickline{$nick} = $line;
@@ -897,7 +901,7 @@ sub parse_words
         # ignore contractions
         next if ($word =~ m/'..?$/);
 
-        $wordcount{$word}++ unless ($conf->{ignores}{$word});
+        $wordcount{$word}++ unless ($users->{ignores}{$word});
         $lastused{$word} = $nick;
     }
 
@@ -956,18 +960,27 @@ sub template_text
 
     my $text;
 
-    $text = $T{$conf->{lang}}{$template};
-
-    if (!$T{$conf->{lang}}{$template}) {
+    unless ($text = $T{$conf->{lang}}{$template}) {
         # Fall back to English if the language template doesn't exist
 
-        if ($T{EN}{$template}) {
+        if ($text = $T{EN}{$template}) {
             print "Note: There was no translation in $conf->{lang} for '$template' - falling back to English..\n";
-            $text = $T{EN}{$template};
         } else {
             die("No such template '$template' in language file.\n");
         }
 
+    }
+
+    if ($hash{nick}) {
+        if ($users->{sex}{$hash{nick}}) {
+            $hash{posessive} = template_text($users->{sex}{$hash{nick}} . "posessive");
+            $hash{subj} = template_text($users->{sex}{$hash{nick}} . "subj");
+            $hash{sex} = template_text($users->{sex}{$hash{nick}} . "sex");
+        } else {
+            $hash{posessive} = template_text("uposessive");
+            $hash{subj} = template_text("usubj");
+            $hash{sex} = template_text("usex");
+        }
     }
 
     foreach my $key (sort keys %hash) {
