@@ -16,19 +16,15 @@ sub add_alias {
     my $lcnick  = lc($nick);
     my $lcalias = lc($alias);
 
-    if (not defined $aliases{$lcnick} and not defined $aliases{$lcalias}) {
-        $aliases{$lcnick}  = $nick;
-        $aliases{$lcalias} = $nick;
-    } elsif (defined $aliases{$lcnick} and not defined $aliases{$lcalias}) {
-        $aliases{$lcalias} = $aliases{$lcnick};
-    } elsif (not defined $aliases{$lcnick} and defined $aliases{$lcalias}) {
-        $aliases{$lcnick} = $aliases{$lcalias};
-    } else { # Both are defined.
-        # If both point to the same nick, all is well.  Otherwise, redefine
-        # the alias's alias.
-        if ($aliases{$lcnick} ne $aliases{$lcalias}) {
-            $aliases{$lcalias} = $aliases{$lcnick};
+    if (not defined $aliases{$lcnick}) {
+        if (not defined $aliases{$lcalias}) {
+            $aliases{$lcnick}  = $nick;
+            $aliases{$lcalias} = $nick;
+        } elsif (defined $aliases{$lcalias}) {
+            $aliases{$lcnick} = $aliases{$lcalias};
         }
+    } elsif (not defined $aliases{$lcalias}) {
+        $aliases{$lcalias} = $aliases{$lcnick};
     }
     #$debug->("Alias added: $alias -> $aliases{$lcalias}");
 }
@@ -52,7 +48,7 @@ sub add_ignore {
 
 sub is_ignored {
     my $nick = shift;
-    if ($ignored{$nick}) {
+    if ($ignored{$nick} || $ignored{find_alias($nick)}) {
         return 1;
     }
 }
