@@ -20,7 +20,7 @@ sub add_alias {
         if (not defined $aliases{$lcalias}) {
             $aliases{$lcnick}  = $nick;
             $aliases{$lcalias} = $nick;
-        } elsif (defined $aliases{$lcalias}) {
+        } else {
             $aliases{$lcnick} = $aliases{$lcalias};
         }
     } elsif (not defined $aliases{$lcalias}) {
