@@ -1,6 +1,7 @@
 pisg (x.xx)
    * Fixed an error in the mIRC6 format which caused pisg to abort on some
      lines.
+   * mirc2egg script updated.
 
 pisg (0.43) - Fri Nov, 22th 2002
    * Add "ShowOnlyTop" option which can be used if you only want to have stats
