@@ -16,6 +16,7 @@ pisg (0.64) - ??
      LogDirs.
    * No "Userpic" headline was shown when there were only DefaultPics.
    * Make "most used words" case-insensitive.
+   * Make failure to read PageHead/PageFoot files non-fatal.
    * Applied patch by Hanno Hecker to keep only the last 50 quotes for each
      nick while parsing. Saves memory and is probably saner anyway (thanks!).
    * Add version number to documentation title (and let the release Makefile

@@ -344,7 +344,10 @@ HTML
 sub _pageheader
 {
     my $self = shift;
-    open(PAGEHEAD, $self->{cfg}->{pagehead}) or die("$0: Unable to open $self->{cfg}->{pagehead} for reading: $!\n");
+    unless(open(PAGEHEAD, $self->{cfg}->{pagehead})) {
+        warn("$0: Unable to open $self->{cfg}->{pagehead} for reading: $!\n");
+        return;
+    }
     while (<PAGEHEAD>) {
         _html($_);
     }
@@ -354,7 +357,10 @@ sub _pageheader
 sub _pagefooter
 {
     my $self = shift;
-    open(PAGEFOOT, $self->{cfg}->{pagefoot}) or die("$0: Unable to open $self->{cfg}->{pagefoot} for reading: $!\n");
+    unless(open(PAGEFOOT, $self->{cfg}->{pagefoot})) {
+        warn("$0: Unable to open $self->{cfg}->{pagefoot} for reading: $!\n");
+        return;
+    }
     while (<PAGEFOOT>) {
         _html($_);
     }
