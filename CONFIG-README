@@ -24,7 +24,7 @@ Also you can add links to URLs and e-mails:
 
     or
 
-    <user nic="Chris" link="chris@host.com">
+    <user nick="Chris" link="chris@host.com">
 
 The last thing you can do is to ignore nicks (for example bots):
     <user nick="nameofbot" ignore="y">
