@@ -10,6 +10,8 @@ pisg (x.xx)
      in the line fall back to using word following attack word
    * Chop lines added to sayings to the length of maxquote (so we don't have
      super long quotes showing up - BugID#594618)
+   * Only match emails if it begins at the beginning of a line or after
+     something other than ':' URL on that line. Fixes BugID#618540
 
 
 

@@ -1784,11 +1784,11 @@ sub _replace_links
     my $textmail = $self->_template_text("mailto");
 
     if ($nick) {
-        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="$texturl $1$2">$nick<\/a>/g;
-        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="$textmail $nick">$nick<\/a>/g;
+        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~:@]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="$texturl $1$2">$nick<\/a>/g;
+        $str =~ s/(^|[^:])\b([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/$1<a href="mailto:$2" title="$textmail $nick">$nick<\/a>/g;
     } else {
-        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="$texturl $1$2">$1$2<\/a>/g;
-        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="$textmail $1">$1<\/a>/g;
+        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~:@]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="$texturl $1$2">$1$2<\/a>/g;
+        $str =~ s/(^|[^:])\b([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/$1<a href="mailto:$2" title="$textmail $2">$2<\/a>/g;
     }
     return $str;
 }
