@@ -192,9 +192,17 @@ mostdeop1 = "<b>[:nick]</b> ist die Channel-Polizei. [:Er:Sie:] hat [:deops] Use
 mostdeop2 = "<b>[:nick]</b> nahm [:deops] Usern das @ wieder weg."
 mostdeop3 = "Wow, niemand wurde deopped in [:channel]!"
 
+mosthalfop1 = "<b>[:nick]</b> empfand sehr viele Leute als hilfreich. [:Er:Sie:] hat [:halfops] Usern ein % verpasst..."
+mosthalfop2 = "<b>[:nick]</b> verteilte [:halfops] mal Halfop."
+mosthalfop3 = "Keiner hat in [:channel] bis jetzt ein % bekommen!"
+
+mostdehalfop1 = "<b>[:nick]</b> hat am meisten User dehalfopped: genau [:dehalfops] Stueck an der Zahl."
+mostdehalfop2 = "<b>[:nick]</b> hat immerhin schon [:dehalfops] Usern das % wieder geklaut."
+mostdehalfop3 = "Bis jetzt wurde in [:channel] keinem das % weggenommen!"
+
 mostvoice1 = "<b>[:nick]</b> hat [:voices] voices im Channel vergeben..."
 mostvoice2 = "<b>[:nick]</b> war auch sehr höflich: [:voices] voices von [:ihm:ihr:]."
-mostvoice3 = "Seltsam, keine voices in [:channel] vergeben!"
+mostvoice3 = "Seltsam, bisher wurden keine Voices in [:channel] vergeben!"
 
 mostdevoice1 = "<b>[:nick]</b> ist der Wachtmeister des Channels mit  [:devoices] devoices."
 mostdevoice2 = "<b>[:nick]</b> hat [:devoices] Nutzer devoiced."
@@ -276,6 +284,7 @@ othernumtopic = "Andere interessante Zahlen"
 latesttopic = "Letzte Topics"
 activetimestopic = "Wann war am meisten los?"
 activenickstopic = "Wer quatscht am meisten?"
+activenickbyhourtopic = "Wer war wann am aktivsten?"
 mostwordstopic = "Am meisten benutzte Wörter"
 referencetopic = "Begehrte Nicks :)"
 urlstopic = "Am meisten benutzte URLs"
@@ -316,6 +325,8 @@ hours = "Stunden"
 minutes = "Minuten"
 seconds = "Sekunden"
 and = "und"
+names1 = "Nicks"
+names2 = "Nick"
 
 # Mouse-over titles
 pisghomepage = "pisg Homepage öffnen"
