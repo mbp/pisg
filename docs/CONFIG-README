@@ -219,6 +219,8 @@ pic_h_6
 pic_h_12
 pic_h_18
 
+pic_loc             Directory containing your png graphics files.
+
   * Small things, useful for some people *
 
 logtype             The type of logs kept for your channel.  Currently only
