@@ -232,11 +232,7 @@ sub init_pisg
     }
 
     # Add trailing slash when it's not there..
-    if (substr($conf->{imagepath}, -1) ne '/') {
-        unless ($conf->{imagepath} eq '') {
-            $conf->{imagepath} =~ s/(.*)/$1\//;
-        }
-    }
+    $conf->{imagepath} =~ s/([^\/])$/$1\//;
 
     # Set some values
     $days = 1;
@@ -376,7 +372,9 @@ sub init_config
 
 sub init_words {
     $conf->{foul} =~ s/\s+/|/g;
-    $conf->{ignorewords} =~ s/\s+/|/g;
+    foreach (split /\s+/, $conf->{ignorewords}) {
+        $conf->{ignoreword}{$_} = 1;
+    }
 }
 
 sub init_debug
@@ -485,7 +483,7 @@ sub parse_file
                     $loud{$nick}++
                         if ($saying =~ /!/);
 
-                    if ($saying =~ /[A-Z]+/ and $saying !~ /[a-z0-9:]/) {
+                    if ($saying !~ /[a-z0-9:]/ && $saying =~ /[A-Z]+/) {
 						$shout{$nick}++;
 						$shoutline{$nick} = $line;
 					}
@@ -500,10 +498,10 @@ sub parse_file
                         if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/);
 
                     if (($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/) && !($saying =~ /\w+:\/\//)) {
-                        $sadface{$nick}++
+                        $sadface{$nick}++;
                     }
 
-                    if ($saying =~ /(\w+):+\/\/(\S+).*/) {
+                    if ($saying =~ /(\w+):\/\/(\S+)/) {
                         $urls[$urlcount] = $1 . "://" . $2;
                         $urlnick{$urls[$urlcount]} = $nick;
                         $urlcount++;
@@ -542,8 +540,8 @@ sub parse_file
                 if ($saying =~ /^slaps (\S+)/) {
                     $slap{$nick}++;
                     $slapped{$1}++;
-					$slapline{$nick} = $line;
-					$slappedline{$1} = $line;
+                    $slapline{$nick} = $line;
+                    $slappedline{$1} = $line;
                 }
 
                 my $len = length($saying);
@@ -603,7 +601,7 @@ sub parse_file
                         if (!defined($alias{$lcnick})) {
                             if (defined($alias{$lcnewnick})) {
                                 $alias{$lcnick} = $alias{$lcnewnick};
-                            } elsif ($nick =~ /Guest/) {
+                            } elsif ($nick =~ /^Guest/) {
                                 $alias{$lcnick} = $newnick;
                                 $alias{$lcnewnick} = $newnick;
                             } else {
@@ -873,12 +871,12 @@ sub opchanges
 {
     my (@ops, $plus);
     while ($_[0] =~ s/^(.)//) {
-        if ($1 eq "+") {
+        if ($1 eq "o") {
+            $ops[$plus]++;
+        } elsif ($1 eq "+") {
             $plus = 0;
         } elsif ($1 eq "-") {
             $plus = 1;
-        } elsif ($1 eq "o") {
-            $ops[$plus]++;
         }
     }
 
@@ -894,9 +892,7 @@ sub parse_words
         $words{$nick}++;
         # remove uninteresting words
         next unless (length($word) >= $conf->{wordlength});
-        if ($conf->{ignorewords}) {
-            next if ($word =~ /$conf->{ignorewords}/);
-        }
+        next if ($conf->{ignoreword}{$word});
 
         # ignore contractions
         next if ($word =~ m/'..?$/);
