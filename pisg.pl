@@ -80,6 +80,7 @@ my $conf = {
     show_kickline => 1,
     show_actionline => 1,
 	show_shoutline => 1,
+	show_slaplines => 1,
 
     # Less important things
 
@@ -113,7 +114,8 @@ $thirdline, $processtime, @topics, %monologue, %kicked, %gotkick,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
 $normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
-%line_time, @urls, %urlnick, %kickline, %actionline, %shoutline);
+%line_time, @urls, %urlnick, %kickline, %actionline, %shoutline, %slapline,
+%slappedline);
 
 
 sub main
@@ -540,6 +542,8 @@ sub parse_file
                 if ($saying =~ /^slaps (\S+)/) {
                     $slap{$nick}++;
                     $slapped{$1}++;
+					$slapline{$nick} = $line;
+					$slappedline{$1} = $line;
                 }
 
                 my $len = length($saying);
@@ -1644,10 +1648,16 @@ sub slap
     if(@slaps) {
         my %hash = (
             nick => $slaps[0],
-            slaps => $slap{$slaps[0]}
+            slaps => $slap{$slaps[0]},
+			line => $slapline{$slaps[0]}
         );
         my $text = template_text('slap1', %hash);
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+		if($conf->{show_slaplines}) {
+			my $exttext = template_text('slaptext', %hash);
+			html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+		} else {
+        	html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+		}
         if (@slaps >= 2) {
             my %hash = (
                 nick => $slaps[1],
@@ -1672,10 +1682,16 @@ sub slap
     if(@slaps) {
         my %hash = (
             nick => $slaps[0],
-            slaps => $slapped{$slaps[0]}
+            slaps => $slapped{$slaps[0]},
+			line => $slappedline{$slaps[0]}
         );
         my $text = template_text('slapped1', %hash);
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        if($conf->{show_slaplines}) {
+	        my $exttext = template_text('slappedtext', %hash);
+			html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+		} else {
+	        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+		}
         if (@slaps >= 2) {
             my %hash = (
                 nick => $slaps[1],
@@ -1683,7 +1699,7 @@ sub slap
             );
 
             my $text = template_text('slapped2', %hash);
-            html("<br><span class=\"small\">$text</span>");
+	        html("<br><span class=\"small\">$text</span>");
         }
         html("</td></tr>");
     } else {
