@@ -101,7 +101,7 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
 %setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %userpics,
-%userlinks, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent);
+%userlinks, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent, %slap, %slapped, $slaps);
 
 sub main
 {
@@ -446,6 +446,11 @@ sub parse_file
             unless (grep /^\Q$nick\E$/i, @ignore) {
                 $actions++;
                 $line{$nick}++;
+
+				if($saying =~ /^slaps (\S+) .*/) {
+					$slap{$nick}++;
+					$slapped{$1}++;
+				}
 
                 my $len = length($saying);
                 $length{$nick} += $len;
@@ -915,6 +920,7 @@ sub create_html
     questions();
     loudpeople();
 	shoutpeople();
+	slap();
     mostsmiles();
     mostsad();
     longlines();
@@ -1302,6 +1308,64 @@ sub shoutpeople
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 
+}
+
+sub slap
+{
+	my @slaps;
+
+	# They slapped around
+    foreach my $nick (sort keys %slap) {
+		@slaps = sort { $slap{$b} <=> $slap{$a} } keys %slap;
+    }
+	if(@slaps) {
+		my %hash = (
+			nick => $slaps[0],
+			slaps => $slap{$slaps[0]}
+		);
+        my $text = template_text('slap1', %hash);
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        if (@slaps >= 2) {
+            my %hash = (
+                nick => $slaps[1],
+                slaps => $slap{$slaps[1]}
+            );
+
+            my $text = template_text('slap1', %hash);
+            html("<br><span class=\"small\">$text</span>");
+        }
+   		html("</td></tr>");
+    } else {
+       	my $text = template_text('slap3');
+       	html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
+    }
+
+
+	# They got slapped
+    foreach my $nick (sort keys %slapped) {
+        @slaps = sort { $slapped{$b} <=> $slapped{$a} } keys %slapped;
+    }
+    if(@slaps) {
+        my %hash = (
+            nick => $slaps[0],
+            slaps => $slapped{$slaps[0]}
+        );
+        my $text = template_text('slapped1', %hash);
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        if (@slaps >= 2) {
+            my %hash = (
+                nick => $slaps[1],
+                slaps => $slapped{$slaps[1]}
+            );
+
+            my $text = template_text('slapped2', %hash);
+            html("<br><span class=\"small\">$text</span>");
+        }
+    	html("</td></tr>");
+    } else {
+        my $text = template_text('slapped3');
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
+    }
 }
 
 sub gotkicks
