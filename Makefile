@@ -1,6 +1,6 @@
 # Simple Makefile to make new releases of pisg (newreleases dir must exist)
 
-VERSION = 0.16a
+VERSION = 0.17
 
 DIRNAME = pisg-$(VERSION)
 
@@ -18,6 +18,7 @@ pisg:
 	cp README $(DIRNAME)
 	cp FORMATS $(DIRNAME)
 	cp Changelog $(DIRNAME)
+	cp lang.txt $(DIRNAME)
 	cp -r scripts $(DIRNAME)
 	tar zcfv newrelease/pisg-$(VERSION).tar.gz $(DIRNAME)
 	zip -r pisg $(DIRNAME)
