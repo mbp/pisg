@@ -5,7 +5,7 @@ logfiles and makes nice looking stats of them, which can be amusing to show
 for the users of your channel.
 
 The supported logfile formats is explained in the FORMATS file included with
-this distribution.
+this distribution in the 'docs' directory.
 
 If you don't have access to any of the clients/bots or you use some other
 IRC client/bot which isn't supported, then it's fairly easy to add support

@@ -8,16 +8,15 @@ TARFILE = pisg-$(VERSION).tar.gz
 ZIPFILE = pisg-$(VERSION).zip
 
 FILES = pisg.pl \
-	 Changelog \
 	 COPYING \
-	 CREDITS \
 	 README \
-	 CONFIG-README \
-	 FORMATS \
 	 pisg.cfg \
 	 lang.txt
 
-MODULES = 
+DOCS = docs/CONFIG-README \
+	 docs/FORMATS \
+	 docs/Changelog \
+	 docs/CREDITS \
 
 GFX = gfx/green-h.png \
 	 gfx/green-v.png \
@@ -61,6 +60,9 @@ pisg:
 
 	mkdir $(DIRNAME)/gfx
 	cp $(GFX) $(DIRNAME)/gfx
+
+	mkdir $(DIRNAME)/docs
+	cp $(DOCS) $(DIRNAME)/docs
 
 	mkdir $(DIRNAME)/scripts/addalias
 	cp $(ADDALIAS) $(DIRNAME)/scripts/addalias
