@@ -492,7 +492,7 @@ sub parse_file
                         if ($saying =~ /[A-Z]+/ and $saying !~ /[a-z0-9:]/);
 
                     $foul{$nick}++
-                        if ($saying =~ /$foulwords/);
+                        if ($saying =~ /$foulwords/i);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
