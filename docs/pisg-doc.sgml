@@ -386,7 +386,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** FORMAT *** -->
+    <!-- *** COLORSCHEME *** -->
     <refentry id="ColorScheme">
 
     <refmeta> <refentrytitle>ColorScheme</refentrytitle> </refmeta>
@@ -419,6 +419,35 @@
     <refsect1>
     <title>Default</title>
     <para> default </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** CSSDIR *** -->
+    <refentry id="CssDir">
+
+    <refmeta> <refentrytitle>CssDir</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>CssDir</refname>
+    <refpurpose>path to directory with css files</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set CssDir="/usr/share/pisg/layout/">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>CssDir</command> is used to define the paths to the CSS files
+    (the colorschemes). Usually you don't need to change this.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> layout/ (in current directory) </para>
     </refsect1>
     </refentry>
 
