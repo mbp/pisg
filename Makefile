@@ -13,6 +13,7 @@ FILES = pisg.pl \
 	 CREDITS \
 	 README \
 	 CONFIG-README \
+	 FORMATS \
 	 gfx/pipe-purple.png \
 	 gfx/pipe-blue.png \
 	 pisg.cfg \
