@@ -1,0 +1,120 @@
+a {
+    text-decoration: none;
+}
+a:link {
+    color: #0b407a;
+}
+a:visited {
+    color: #0b407a;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0b407a;
+}
+
+a.background {
+    text-decoration: none;
+}
+
+a.background:link {
+    color: #0b407a;
+}
+
+a.background:visited {
+    color: #0b407a;
+}
+
+a.background:hover {
+    text-decoration: underline;
+    color: #0b407a;
+}
+
+body {
+    background-color: #dedeee;
+    font-family: verdana, arial, sans-serif;
+    font-size: 13px;
+    color: black;
+}
+
+td {
+    font-family: verdana, arial, sans-serif;
+    font-size: 13px;
+    color: black;
+    text-align: left;
+}
+
+.title {
+    font-family: tahoma, arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.headtext {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: #666699;
+}
+
+.headlinebg {
+    background-color: #000000;
+}
+
+.tdtop {
+    background-color: #C8C8DD;
+}
+
+.hicell {
+    background-color: #BABADD;
+}
+
+.hicell10 {
+    background-color: #BABADD;
+    font-size: 10px;
+}
+
+.rankc {
+    background-color: #CCCCCC;
+}
+
+.hirankc {
+    background-color: #AAAAAA;
+    font-weight: bold;
+}
+
+.rankc10 {
+    background-color: #CCCCCC;
+    font-size: 10px;
+}
+
+.rankc10center {
+    background-color: #CCCCCC;
+    font-size: 10px;
+    text-align: center;
+}
+
+.hirankc10center {
+    background-color: #AAAAAA;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+}
+
+.small {
+    font-family: verdana, arial, sans-serif;
+    font-size: 10px;
+}
+
+.asmall {
+      font-family: arial narrow, sans-serif;
+      font-size: 10px;
+      color: black;
+}
+
+.asmallcenter {
+      font-family: arial narrow, sans-serif;
+      font-size: 10px;
+      color: black;
+      text-align: center;
+}
