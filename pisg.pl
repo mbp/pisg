@@ -64,8 +64,8 @@ $vlink = "#0b407a";		# Color of visited links
 $hlink = "#0b407a";		# Color of hovered links
 $headline = "#000000";		# Border color of headlines
 $rankc = "#CCCCCC";             # Colors of 'ranks' (1,2,3,4)
-$pic1 = "pipe-blue.png"		# Bar-graphic-file for normal times
-$pic2 = "pipe-purple.png"   # Bar-graphic-file for top-times
+$pic1 = "pipe-blue.png";	# Bar-graphic-file for normal times
+$pic2 = "pipe-purple.png";      # Bar-graphic-file for top-times
 
 # Other things that you might set, but not everyone cares about them
 $minquote = "25";		# Minimal value of letters for a random quote
@@ -85,7 +85,7 @@ $timeoffset = "+0";		# A time offset on the stats page - if your
 # You shouldn't care about anything below this point
 $debug = 0;			# 0 = Debugging off, 1 = Debugging on
 $debugfile = "debug.log";	# Path to debug file(must be set if $debug == 1)
-$version = "v0.17-cvs-dh1";
+$version = "v0.17-cvs";
 
 my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
 $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
@@ -759,8 +759,7 @@ sub template_text
         $text =~ s/ü/&uuml;/g;
         $text =~ s/ö/&ouml;/g;
         $text =~ s/ä/&auml;/g;
-        $text =~ s/ß/&szlig/g;
-        $text =~ s/&/&amp;/g;
+        $text =~ s/ß/&szlig;/g;
         $text =~ s/å/&aring;/g;
         $text =~ s/æ/&aelig;/g;
         $text =~ s/ø/&oslash;/g;
