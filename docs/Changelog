@@ -1,3 +1,15 @@
+pisg (0.26) - Mon, Oct 1st 2001
+   * Internet Explorer interpreted width="" and height="" as a picture of 0x0
+     pictures, fix so we dont set empty values.
+   * Updates to French template by Mouky <mouky@m6net.fr> and aNa|0Gue
+     <analogue@glop.org>
+   * Add --silent switch to pisg; makes pisg quiet, and only display error
+     messages. (thanks, S. William Schulz)
+   * Added Finish translation by Kirler@paincreators <kirler@letku.net>
+   * Added missing template, 'bylinetopic', to translate "by <nick> on <time>"
+     in lang.txt
+   * Hopefully fix a lot of problems with FindBin permission problems.
+
 pisg (0.25) - Wed, Sep 26th 2001
    * Fixed days counting wrong when using logdir option.
    * New options by Patrick Aussems:
