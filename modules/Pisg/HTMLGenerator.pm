@@ -996,7 +996,7 @@ sub _mostfoul
         my %hash = (
             nick => $foul[0],
             per  => $spercent{$foul[0]},
-            line => $self->{stats}{foullines}{$foul[0]},
+            line => htmlentities($self->{stats}{foullines}{$foul[0]}),
         );
 
         my $text = $self->_template_text('foul1', %hash);

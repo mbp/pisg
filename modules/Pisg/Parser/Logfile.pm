@@ -162,7 +162,7 @@ sub _parse_dir
                                  } 0..$#filesarray ];
         @filesarray = @newarray;
     } else {
-        @filesarray = sort @filesarray;
+        @filesarray = sort {lc($a) cmp lc($b)} @filesarray;
     }
 
     foreach my $file (@filesarray) {
@@ -272,7 +272,7 @@ sub _parse_file
 
                     if (my @foul = $saying =~ /(\b$self->{cfg}->{foulwords}|$self->{cfg}->{foulwords}\b)/io) {
                         $stats->{foul}{$nick} += scalar @foul;
-                        push @{ $lines->{foullines}{$nick} }, $saying;
+                        push @{ $lines->{foullines}{$nick} }, $line;
                     }
 
 
