@@ -43,7 +43,7 @@ my $conf = {
     langfile => 'lang.txt',
     prefix => "",
 
-    # Colors
+    # Colors / Layout
 
     bgcolor => "#dedeee",
     bgpic => '',
@@ -68,7 +68,6 @@ my $conf = {
     pic_h_6 => "green-h.png",
     pic_h_12 => "yellow-h.png",
     pic_h_18 => "red-h.png",
-
 
     # Less important things
 
@@ -216,6 +215,7 @@ sub init_pisg
 
 
     $timestamp = time();
+    $conf->{start} = time();
 
     if ($conf->{timeoffset} =~ /\+(\d+)/) {
         # We must plus some hours to the time
@@ -241,7 +241,6 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
-    $conf->{start} = $timestamp;   # set start time of file parse
 
     print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
 
@@ -629,7 +628,7 @@ sub parse_file
 
     close(LOGFILE);
 
-    my ($sec,$min,$hour) = localtime(time - $conf->{start});
+    my ($sec,$min,$hour) = gmtime(time() - $conf->{start});
     $processtime = sprintf("%02d hours, %02d minutes and %02d seconds", $hour,  $min, $sec);
 
     $nicks = scalar keys %line;
