@@ -109,7 +109,7 @@ pagetitle3 = "During this [:days]-days reporting period, a total number of <b>[:
 
 <lang name="DE">
 mostop1 = "<b>[:nick]</b> vergab [:ops] ops im Channel..."
-mostop2 = "<b>[:nick]</b> war auch sehr zuvorkommend: [:ops] von ihm/ihr"
+mostop2 = "<b>[:nick]</b> war auch sehr zuvorkommend: [:ops] von ihm/ihr."
 mostop3 = "Komisch, kein op wurde in [:channel] vergeben!"
 
 mostdeop1 = "<b>[:nick]</b> ist die Channel-Polizei. Er/Sie hat [:deops] Usern das @ wieder weggenommen..."
@@ -117,56 +117,56 @@ mostdeop2 = "<b>[:nick]</b> nahm [:deops] Usern das @ wieder weg."
 mostdeop3 = "Wow, niemand wurde deopped in [:channel]!"
 
 question1 = "<b>[:nick]</b> hat wohl in der Schule nicht gut aufgepasst... [:per]% seiner/ihrer Zeilen enthielten eine Frage!"
-question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% seiner/ihrer Zeilen waren Fragen"
+question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% seiner/ihrer Zeilen waren Fragen."
 question3 = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Genies sein? ;)"
 
 loud1 = "Am lautesten war <b>[:nick]</b> der/die [:per]% der Zeit geschrien hat!"
 loud2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> der/die [:per]% der Zeit rumgeschrieen hat!"
 loud3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
 
-shout1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb er in GROSSBUCHSTABEN"
-shout2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von ihm/ihr kamen [:per]% der Zeit GROSSBUCHSTABEN"
+shout1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb er in GROSSBUCHSTABEN."
+shout2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von ihm/ihr kamen [:per]% der Zeit GROSSBUCHSTABEN."
 shout3 = "Alle hatten ihre Shift-Taste gut unter kontrolle :)"
 
 slap1 = "<b>[:nick]</b> ist etwas agressiv. Er/Sie schlug <b>[:slaps]</b> mal wild um sich herum."
 slap2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halen, <b>[:slaps]</b> Schläge von ihm/ihr."
-slap3 = "Alle waren friedlich im Channel, niemand hat jemanden geschlagen"
+slap3 = "Alle waren friedlich im Channel, niemand hat jemanden geschlagen."
 
-slapped1 = "<b>[:nick]</b> ist der Sündenbock im Channel, er/sie wurde <b>[:slaps]</b> mal geschlagen"
-slapped2 = "<b>[:nick]</b> hat auch sein/ihr Fett weg bekommen, er/sie hat <b>[:slaps]</b> mal Schläge bekommen"
-slapped3 = "Niemand wurde geschlagen"
+slapped1 = "<b>[:nick]</b> ist der Sündenbock im Channel, er/sie wurde <b>[:slaps]</b> mal geschlagen."
+slapped2 = "<b>[:nick]</b> hat auch sein/ihr Fett weg bekommen, er/sie hat <b>[:slaps]</b> mal Schläge bekommen."
+slapped3 = "Niemand wurde geschlagen."
 
 gotkick1 = "<b>[:nick]</b> war wohl der Channelclown, er/sie wurde [:kicks] mal gekickt!"
-gotkick2 = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für ihn/sie"
+gotkick2 = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für ihn/sie."
 
 joins = "<b>[:nick]</b> konnte sich nicht entscheiden im Channel zu bleiben oder zu gehen, [:joins] joins während des Statistik-Zeitraums!"
 
 kick1 = "Ist <b>[:nick]</b> jetzt einfach nur ein fairer Op oder macht ihm/ihr das Spass? Er/Sie kickte [:kicked] User!"
-kick2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, er/sie kickte [:kicked] User"
+kick2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, er/sie kickte [:kicked] User."
 kick3 = "Nette Opper hier, niemand wurde gekickt!"
 
 mono1 = "<b>[:nick]</b> spricht viel mit sich selbst, er/sie schrieb über 5 Zeilen in einer Reihe und das [:monos] mal!"
-mono2 = "Ein anderes einsames Herz ist <b>[:nick]</b>, der/die [:monos] mal mit sich selbst redete"
+mono2 = "Ein anderes einsames Herz ist <b>[:nick]</b>, der/die [:monos] mal mit sich selbst redete."
 
 long1 = "<b>[:nick]</b> ist die Labertasche im Channel Er/Sie schrieb die längste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile..."
-long2 = "Channel-Durchschnitt in [:channel] war [:avg] Buchstaben pro Zeile"
+long2 = "Channel-Durchschnitt in [:channel] war [:avg] Buchstaben pro Zeile."
 
 short1 = "<b>[:nick]</b> ist nicht sehr Mitteilungsbedürftig. Er/Sie schrieb die kürzeste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile..."
-short2 = "[:nick] war auch sehr kurzfassend, durchschnittlich [:letters] Buchstaben pro Zeile"
+short2 = "[:nick] war auch sehr kurzfassend, durchschnittlich [:letters] Buchstaben pro Zeile."
 
 foul1 = "<b>[:nick]</b> hat in seiner/ihrer Jugend keine Erziehung genossen, [:per]% seiner/ihrer S&auml;tze enthielten Schimpfworte!"
 foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman noch kommt?)"
 foul3 = "Alle gut erzogen in [:channel], niemand hat Schimpfworte benutzt!"
 
 smiles1 = "<b>[:nick]</b> ist ein fröhlicher Mensch, [:per]% seiner/ihrer Zeilen enthielt ein fröhliches Smily :)"
-smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. Er/Sie "smilte" [:per]% der Zeit"
+smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. Er/Sie "smilte" [:per]% der Zeit."
 smiles3 = "Niemand "smilte" in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)"
 
 sad1 = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% seiner/ihrer Zeilen enthielten ein trauriges Smily :("
-sad2 = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat"
+sad2 = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat."
 sad3 = "Niemand ist traurig in [:channel]! Was für ein fröhlicher Channel :)"
 
-notopic = "In diesem Channel wurde kein Topic gesetzt"
+notopic = "In diesem Channel wurde kein Topic gesetzt."
 
 ## Topics
 
