@@ -33,8 +33,8 @@ Some stats (like smilies, exclamation marks etc) doesn't get counted before
 a special amount of time.
 
 Also, pisg supports multiple languages so you're text will be in your own
-language; English, German, Danish and French is supported at the moment and
-can be set with the $lang variable in the script.
+language; English, German, Danish, French, Spanish and Polish is supported
+at the moment and can be set with the $lang variable in the script.
 
 You're welcome to translate pisg to your own language, it's not very hard,
 look in the lang.txt file!
