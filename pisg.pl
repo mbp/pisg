@@ -85,7 +85,7 @@ $timeoffset = "+0";		# A time offset on the stats page - if your
 # You shouldn't care about anything below this point
 $debug = 0;			# 0 = Debugging off, 1 = Debugging on
 $debugfile = "debug.log";	# Path to debug file(must be set if $debug == 1)
-$version = "v0.16-cvs-dh1";
+$version = "v0.17-cvs-dh1";
 
 my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
 $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
