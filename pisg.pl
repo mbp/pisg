@@ -106,7 +106,7 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 sub main
 {
     init_config();      # Init config. (Aliases, ignores, other options etc.)
-	init_words();		# Init words. (Foulwords etc)
+    init_words();	# Init words. (Foulwords etc)
     init_pisg();        # Init commandline arguments and other things
     init_lineformats(); # Attempt to set line formats in compliance with user specification (--format)
 
@@ -242,22 +242,20 @@ sub init_config
 
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
-					my $vars = $1;
-					my $keys = $2;
-					while ($vars =~ s/([A-Z])/\l$1/g) {
-						$config->{$vars} = $keys;
-					}
-                    $config->{$1} = $2;
+                    my $var = $1;
+                    my $value = $2;
+                    $var = tl($var); # Make the string lowercase
+                    $config->{$var} = $value;
                     debug("Conf: $1 = $2");
                 }
 
             } elsif ($line =~ /<words(.*)>/) {
-				my $settings = $1;
-				while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
-					$words->{$1} = $2;
+                my $settings = $1;
+                while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
+                    $words->{$1} = $2;
                     debug("Words: $1 = $2");
-				}
-			}
+                }
+            }
         }
 
         close(CONFIG);
@@ -266,19 +264,19 @@ sub init_config
 }
 
 sub init_words {
-	my (@words, $i);
-	if($words->{foul}) {
-		@words = split(/\ /, $words->{foul});
-		$i = 0;
-		foreach (@words) {
-			if($foulwords) {
-				$foulwords = $foulwords . "\|" . $words[$i];
-			} else {
-				$foulwords = $foulwords . $words[$i];
-			}
-			$i++;
-		}
-	}
+    my (@words, $i);
+    if($words->{foul}) {
+        @words = split(/\ /, $words->{foul});
+        $i = 0;
+        foreach (@words) {
+            if($foulwords) {
+                $foulwords = $foulwords . "\|" . $words[$i];
+            } else {
+                $foulwords = $foulwords . $words[$i];
+            }
+            $i++;
+        }
+    }
 }
 
 sub init_debug
@@ -1815,7 +1813,7 @@ END_USAGE
                    'prefix=s'     => \$config->{prefix},
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
-                   'configfile=s'  => \$config->{configfile},
+                   'configfile=s' => \$config->{configfile},
                    'help|?'       => \$help
                ) == 0 or $help) {
                    die($usage);
