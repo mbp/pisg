@@ -197,7 +197,7 @@ sub get_default_config_settings
         botnicks => '',            # Needed for DCpp format (non-irc)
 
         dailyactivity => 0,
-        version => "0.54-cvs",
+        version => "0.54",
     };
 
     # This enables us to use the search_path in other modules

@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.54) - Thu Apr, 1st 2004
    * Revert most of the performance improvement changes, they caused bugs.
    * Really fix topics with the mbot format.
    * Fix wrong recognizing of www URLs where "ewww" would be recognized as an
