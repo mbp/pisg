@@ -125,6 +125,7 @@ sub _htmlheader
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=$self->{cfg}->{charset}">
 <title>$self->{cfg}->{channel} @ $self->{cfg}->{network} channel statistics</title>
 <style type="text/css">
 a { text-decoration: none }
@@ -1180,7 +1181,7 @@ sub _lasttopics
             $hash{nick} = $nick;
             $hash{time} = "$hour:$min";
             _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\"><i>$topic</i></td>");
-            _html("<td bgcolor=\"$self->{cfg}->{hicell}\">" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
+            _html("<td bgcolor=\"$self->{cfg}->{hicell}\"><b>" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
         }
         _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
     } else {
@@ -1222,6 +1223,9 @@ sub _template_text
         $text =~ s/å/&aring;/go;
         $text =~ s/æ/&aelig;/go;
         $text =~ s/ø/&oslash;/go;
+        $text =~ s/Å/&Aring;/go;
+        $text =~ s/Æ/&AElig;/go;
+        $text =~ s/Ø/&Oslash;/go;
     }
 
     if ($text =~ /\[:.*?:.*?:\]/o) {

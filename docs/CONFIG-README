@@ -76,8 +76,7 @@ All the different options are listed below.
 Other examples:
 <set lang='EN' langfile='lang.txt'>
 <set bgcolor="#dedeee" text="black" hbgcolor="#666699" hcolor="white" hicell="#BABADD" hicell2="#CCCCCC">
-<set activenicks="25" activenicks2="30" topichistory="3" nicktracking="0" timeoffset="+0">
-
+<set topichistory="3" timeoffset="+0">
 
 There is many options which can be set, here's a list of them all (not
 casesensitive):
@@ -173,6 +172,8 @@ regexp_alises       1 or 0, enabling this will make aliases in <user> tags
 
 silent              1 or 0.  Enabling this will suppress all standard output
                     from pisg.  Error messages will still be sent to STDOUT.
+
+charset             Charset to use for stats page, default is 'iso-8859-1'.
 
  * Colors / layout for your stats page *
 

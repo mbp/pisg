@@ -103,51 +103,51 @@ sub get_default_config_settings
     # constructor.
 
     $self->{cfg} = {
-        channel => "",
-        logtype => "Logfile",
-        logfile => "",
-        format => "mIRC",
-        network => "SomeIRCNet",
-        outputfile => "index.html",
-        maintainer => "MAINTAINER",
-        pagehead => "none",
-        configfile => "pisg.cfg",
-        imagepath => "",
-        logdir => "",
+        channel => '',
+        logtype => 'Logfile',
+        logfile => '',
+        format => 'mIRC',
+        network => 'SomeIRCNet',
+        outputfile => 'index.html',
+        maintainer => 'MAINTAINER',
+        pagehead => 'none',
+        configfile => 'pisg.cfg',
+        imagepath => '',
+        logdir => '',
         lang => 'EN',
         langfile => 'lang.txt',
-        prefix => "",
+        prefix => '',
         silent => 0,
 
         # Colors / Layout
 
-        bgcolor => "#dedeee",
+        bgcolor => '#dedeee',
         bgpic => '',
-        text => "black",
-        hbgcolor => "#666699",
-        hcolor => "white",
-        hicell => "#BABADD",
-        hicell2 => "#CCCCCC",
-        tdcolor => "black",
-        tdtop => "#C8C8DD",
-        link => "#0b407a",
-        vlink => "#0b407a",
-        hlink => "#0b407a",
-        headline => "#000000",
-        rankc => "#CCCCCC",
-        hi_rankc => "#AAAAAA",
+        text => 'black',
+        hbgcolor => '#666699',
+        hcolor => 'white',
+        hicell => '#BABADD',
+        hicell2 => '#CCCCCC',
+        tdcolor => 'black',
+        tdtop => '#C8C8DD',
+        link => '#0b407a',
+        vlink => '#0b407a',
+        hlink => '#0b407a',
+        headline => '#000000',
+        rankc => '#CCCCCC',
+        hi_rankc => '#AAAAAA',
 
         pic_width => '',
         pic_height => '',
 
-        pic_v_0 => "blue-v.png",
-        pic_v_6 => "green-v.png",
-        pic_v_12 => "yellow-v.png",
-        pic_v_18 => "red-v.png",
-        pic_h_0 => "blue-h.png",
-        pic_h_6 => "green-h.png",
-        pic_h_12 => "yellow-h.png",
-        pic_h_18 => "red-h.png",
+        pic_v_0 => 'blue-v.png',
+        pic_v_6 => 'green-v.png',
+        pic_v_12 => 'yellow-v.png',
+        pic_v_18 => 'red-v.png',
+        pic_h_0 => 'blue-h.png',
+        pic_h_6 => 'green-h.png',
+        pic_h_12 => 'yellow-h.png',
+        pic_h_18 => 'red-h.png',
 
         # Stats settings
 
@@ -170,6 +170,7 @@ sub get_default_config_settings
 
         # Less important things
 
+        timeoffset => '+0',
         minquote => 25,
         maxquote => 65,
         wordlength => 5,
@@ -177,7 +178,7 @@ sub get_default_config_settings
         activenicks2 => 30,
         topichistory => 3,
         nicktracking => 0,
-        timeoffset => "+0",
+        charset => 'iso-8859-1',
 
         # Misc settings
 
@@ -190,8 +191,8 @@ sub get_default_config_settings
         # Developer stuff
 
         debug => 0,
-        debugfile => "debug.log",
-        version => "v0.28-cvs",
+        debugfile => 'debug.log',
+        version => 'v0.28-cvs',
     };
 
     # Parse the optional overriden configuration variables
