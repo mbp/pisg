@@ -427,10 +427,10 @@ sub init_pisg
         print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Invalid UserPics setting\n";
     }
 
-    print "Using language template: $self->{cfg}->{lang}\n\n" if ($self->{cfg}->{lang} ne 'EN' && !$self->{cfg}->{silent});
-
-    print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n"
-        unless ($self->{cfg}->{silent});
+    unless ($self->{cfg}->{silent}) {
+        print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n";
+        print "Using language template: $self->{cfg}->{lang}\n\n" if $self->{cfg}->{lang} ne 'EN';
+    }
 }
 
 sub do_channel

@@ -81,60 +81,72 @@ sub analyze
     my $self = shift;
     my (%stats, %lines);
 
-    if (defined $self->{parser}) {
-        my $starttime = time();
-
-        # Just initialize these to 0
-        $stats{days} = 0;
-        $stats{parsedlines} = 0;
-        $stats{totallines} = 0;
-
-        if (scalar(@{$self->{cfg}->{logdir}}) > 0) {
-            # Run through all files in dir
-            $self->_parse_dir(\%stats, \%lines);
-        } else {
-            my %state = (
-                linecount  => 0,
-                lastnick   => '',
-                monocount  => 0,
-                lastnormal => '',
-                oldtime    => 24
-            );
-            foreach my $logfile (@{$self->{cfg}->{logfile}}) {
-                # Run through the whole logfile
-                $self->_parse_file(\%stats, \%lines, $logfile, \%state);
-            }
-        }
-
-        $self->_pick_random_lines(\%stats, \%lines);
-        _uniquify_nicks(\%stats);
-
-        my ($sec,$min,$hour) = gmtime(time() - $starttime);
-        my $processtime = sprintf('%02d hours, %02d minutes and %02d seconds', $hour, $min, $sec);
-
-        $stats{processtime}{hours} = sprintf('%02d', $hour);
-        $stats{processtime}{mins} = sprintf('%02d', $min);
-        $stats{processtime}{secs} = sprintf('%02d', $sec);
-
-        print "Channel analyzed successfully in $processtime on ",
-        scalar localtime(time()), "\n"
-            unless ($self->{cfg}->{silent});
-
-        return \%stats;
-
-    } else {
+    unless (defined $self->{parser}) {
         print STDERR "Skipping channel '$self->{cfg}->{channel}' due to lack of parser.\n";
         return undef
     }
 
-    # Shouldn't get here.
-    return undef;
+    my $starttime = time();
+
+    # Just initialize these to 0
+    $stats{days} = 0;
+    $stats{parsedlines} = 0;
+    $stats{totallines} = 0;
+
+    if (scalar(@{$self->{cfg}->{logdir}}) > 0) {
+        $self->_parse_dir(); # get all files in dir
+    }
+
+    my @logfiles = @{$self->{cfg}->{logfile}};
+
+    # expand wildcards
+    @logfiles = map { if(/[\[*?]/) { glob; } else { $_; } } @logfiles;
+    my $count = @logfiles;
+
+    my $shift = 0;
+    if($self->{cfg}->{nfiles} > 0) { # chop list to maximal length
+        $shift = @logfiles - $self->{cfg}->{nfiles};
+        splice(@logfiles, 0, $shift) if $shift > 0;
+    }
+
+    unless ($self->{cfg}->{silent}) {
+        my $msg = "";
+        $msg = ", parsing the last $self->{cfg}->{nfiles}" if ($shift > 0);
+        print "$count logfile(s) found$msg, using $self->{cfg}->{format} format...\n\n"
+    }
+
+    my %state = (
+        lastnick   => '',
+        monocount  => 0,
+        lastnormal => '',
+        oldtime    => 24
+    );
+
+    foreach my $logfile (@logfiles) {
+        # Run through the logfile
+        $self->_parse_file(\%stats, \%lines, $logfile, \%state);
+    }
+
+    $self->_pick_random_lines(\%stats, \%lines);
+    _uniquify_nicks(\%stats);
+
+    my ($sec,$min,$hour) = gmtime(time() - $starttime);
+    my $processtime = sprintf('%02d hours, %02d minutes and %02d seconds', $hour, $min, $sec);
+
+    $stats{processtime}{hours} = sprintf('%02d', $hour);
+    $stats{processtime}{mins} = sprintf('%02d', $min);
+    $stats{processtime}{secs} = sprintf('%02d', $sec);
+
+    print "Channel analyzed successfully in $processtime on ",
+    scalar localtime(time()), "\n\n"
+        unless ($self->{cfg}->{silent});
+
+    return \%stats;
 }
 
 sub _parse_dir
 {
     my $self = shift;
-    my ($stats, $lines) = @_;
 
     # Loop through each logdir we were given
     foreach my $logdir (@{$self->{cfg}->{logdir}}) {
@@ -142,11 +154,7 @@ sub _parse_dir
         $logdir =~ s/([^\/])$/$1\//;
 
         unless ($self->{cfg}->{silent}) {
-            unless ($self->{cfg}->{nfiles} > 0) {
-                print "Going into $logdir and parsing all files there...\n\n"
-            } else {
-                print "Going into $logdir and parsing the last $self->{cfg}->{nfiles} file(s) there...\n\n"
-            }
+            print "Looking for logfiles in $logdir...\n\n"
         }
         my @filesarray;
         opendir(LOGDIR, $logdir) or
@@ -157,11 +165,6 @@ sub _parse_dir
         die("No files in \"$logdir\" matched prefix \"$self->{cfg}->{logprefix}\"");
         closedir(LOGDIR);
 
-        my %state = (
-            lastnick   => '',
-            monocount  => 0,
-            oldtime    => 24
-        );
         if ($self->{cfg}->{logsuffix} ne '') {
             my @temparray;
             my %months = (
@@ -220,27 +223,18 @@ sub _parse_dir
                     }
                 }
             }
-            my @newarray = @filesarray[ sort {
+            @filesarray = @filesarray[ sort {
                                         $year[$a] <=> $year[$b]
                                                 ||
                                         $month[$a] <=> $month[$b]
                                                 ||
                                         $day[$a] <=> $day[$b]
                                     } 0..$#filesarray ];
-            @filesarray = @newarray;
         } else {
             @filesarray = sort {lc($a) cmp lc($b)} @filesarray;
         }
 
-        if($self->{cfg}->{nfiles} > 0) {
-            my $shift = @filesarray - $self->{cfg}->{nfiles};
-            splice(@filesarray, 0, $shift) if $shift > 0;
-        }
-
-        foreach my $file (@filesarray) {
-            $file = $logdir . $file;
-            $self->_parse_file($stats, $lines, $file, \%state);
-        }
+        push @{$self->{cfg}->{logfile}}, map { "$logdir$_" } @filesarray;
     }
 }
 
@@ -250,7 +244,7 @@ sub _parse_file
     my $self = shift;
     my ($stats, $lines, $file, $state) = @_;
 
-    print "Analyzing log $file in '$self->{cfg}->{format}' format...\n"
+    print "Analyzing log $file... "
         unless ($self->{cfg}->{silent});
 
     if ($file =~ /.bz2?$/ && -f $file) {
@@ -544,7 +538,7 @@ sub _parse_file
 
     close(LOGFILE);
 
-    print "Finished analyzing log, $stats->{days} days, $stats->{parsedlines} lines total\n"
+    print "$stats->{days} days, $stats->{parsedlines} lines total\n"
         unless ($self->{cfg}->{silent});
 }
 

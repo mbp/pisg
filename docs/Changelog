@@ -10,6 +10,8 @@ pisg (0.64) - ??
      also for <a href>s (SF tracker #1088382 by Jeroen - tux2020).
    * Applied patch by Torbjörn Svensson for using alternate CSS files - thanks
      (AltColorScheme option).
+   * Made Logfile accept wildcards, sanitized NFiles behaviour on multiple
+     LogDirs.
 
 pisg (0.63) - Wed Jan, 12th 2005
    Morten:
