@@ -34,8 +34,7 @@ SCRIPTS = scripts/crontab \
 	   scripts/dropegg.pl \
 	   scripts/egg2mirc.awk
 
-ADDALIAS = scripts/addalias/addalias.htm \
-	    scripts/addalias/addalias.pl \
+ADDALIAS = scripts/addalias/addalias.pl \
 	    scripts/addalias/README
 
 MODULESDIR = modules
@@ -56,6 +55,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/bxlog.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/psybnc.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Template.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/xchat.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
 
 pisg:
 	mkdir -p newrelease
