@@ -130,7 +130,7 @@ sub thirdline
             return unless (lc($line[1]) eq ':' . lc($self->{cfg}->{channel}));
             $hash{newjoin} = $hash{nick};
 
-        } elsif ($line[0] eq 'NICK') {
+        } elsif (defined($line[1]) && $line[0] eq 'NICK') {
             $hash{newnick} = $line[1];
             $hash{newnick} =~ s/^://;
         }
