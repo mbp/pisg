@@ -673,10 +673,12 @@ sub parse_thirdline
                 $hash{newtopic} = $2;
 
             } elsif (($4.$5) eq 'modechange') {
-                $hash{newmode} = $6;
-                $7 =~ /^ .+ by ([\S]+)!.*/;
-                $hash{nick} = $1;
-                $hash{newmode} =~ s/^\'//;
+                my $newmode = $6;
+                if ($7 =~ /^ .+ by ([\S]+)!.*/) {
+                    $hash{nick} = $1;
+                    $newmode =~ s/^\'//;
+                    $hash{newmode} = $newmode;
+                } 
 
             } elsif ($5 eq 'joined') {
                 $hash{newjoin} = $3;
