@@ -1,6 +1,7 @@
 pisg (x.xx)
    * Make the HTML output XHTML compliant again (thanks, Stian Jordet)
    * Add a bullet conversion character to Common.pm (thanks, Stian Jordet)
+   * Add hebrew language translation (thanks, shimi)
 
 pisg (0.48) - Wed Apr, 29th 2003
    * Add new option, MostNicksVerbose (enabled by default). When this option
