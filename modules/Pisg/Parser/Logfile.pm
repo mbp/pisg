@@ -269,10 +269,12 @@ sub _parse_file
 
                 if ($saying =~ /^($self->{cfg}->{violent}) (\S+)/) {
                     my $victim = find_alias($2);
-                    $stats->{violence}{$nick}++;
-                    $stats->{attacked}{$victim}++;
-                    push @{ $lines->{violencelines}{$nick} }, $line;
-                    push @{ $lines->{attackedlines}{$victim} }, $line;
+                    unless (is_ignored($victim)) {
+                        $stats->{violence}{$nick}++;
+                        $stats->{attacked}{$victim}++;
+                        push @{ $lines->{violencelines}{$nick} }, $line;
+                        push @{ $lines->{attackedlines}{$victim} }, $line;
+                    }
                 }
 
 
@@ -295,7 +297,7 @@ sub _parse_file
             $min      = $hashref->{min};
             $nick     = find_alias($hashref->{nick});
             $kicker   = find_alias($hashref->{kicker})
-            if ($hashref->{kicker});
+                if ($hashref->{kicker});
             $newtopic = $hashref->{newtopic};
             $newmode  = $hashref->{newmode};
             $newjoin  = $hashref->{newjoin};
@@ -309,9 +311,11 @@ sub _parse_file
                 $stats->{times}{$hour}++;
 
                 if (defined($kicker)) {
-                    $stats->{kicked}{$kicker}++;
-                    $stats->{gotkicked}{$nick}++;
-                    push @{ $lines->{kicklines}{$nick} }, $line;
+                    unless (is_ignored($kicker) {
+                        $stats->{kicked}{$kicker}++;
+                        $stats->{gotkicked}{$nick}++;
+                        push @{ $lines->{kicklines}{$nick} }, $line;
+                    }
 
                 } elsif (defined($newtopic)) {
                     unless ($newtopic eq '') {
