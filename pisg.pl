@@ -83,12 +83,13 @@ my ($words, $chans, $users);
 
 $words->{foul} = "ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe";
 
-my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
-$normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
-%monologue, %kicked, %gotkick, %line, %length, %qpercent, %lpercent, %sadface,
-%smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
-%gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
-%setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent, %slap, %slapped, $slaps, %words);
+my ($lines, $smile, $time, $timestamp, %alias, $normalline, $actionline,
+$thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
+%line, %length, %sadface, %smile, $nicks, %longlines, %mono, %times, %question,
+%loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
+%lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
+$normals, %T, $repeated, $lastnormal, $foulwords, %shout, %slap, %slapped,
+%words);
 
 
 sub main
@@ -147,16 +148,12 @@ sub init_pisg
 
     undef $lastnormal;
     undef $lines;
-    undef $kicked;
-    undef $gotkicked;
     undef $smile;
-    undef $longlines;
     undef $time;
 
     undef $normalline;
     undef $actionline;
     undef $thirdline;
-    undef $line;
     undef $processtime;
     undef @topics;
 
@@ -165,8 +162,6 @@ sub init_pisg
     undef %gotkick;
     undef %line;
     undef %length;
-    undef %qpercent;
-    undef %lpercent;
     undef %sadface;
 
     undef %smile;
@@ -199,11 +194,9 @@ sub init_pisg
     undef $lastnormal; 
     undef $foulwords; 
     undef %shout; 
-    undef %spercent; 
 
     undef %slap; 
     undef %slapped; 
-    undef $slaps; 
     undef %words; 
     undef $timestamp;
 
@@ -436,7 +429,7 @@ sub parse_file
         open (LOGFILE, $file) or die("$0: Unable to open logfile($file): $!\n");
     }
 
-    while($line = <LOGFILE>) {
+    while(my $line = <LOGFILE>) {
         $lines++; # Increment number of lines.
 
         $line = strip_mirccodes($line);
@@ -550,10 +543,10 @@ sub parse_file
                 $actions++;
                 $line{$nick}++;
 
-				if($saying =~ /^slaps (\S+) .*/) {
-					$slap{$nick}++;
-					$slapped{$1}++;
-				}
+                if($saying =~ /^slaps (\S+)/) {
+                    $slap{$nick}++;
+                    $slapped{$1}++;
+                }
 
                 my $len = length($saying);
                 $length{$nick} += $len;
@@ -1374,6 +1367,7 @@ sub mostreferenced
 sub questions
 {
     # Persons who asked the most questions
+    my %qpercent;
 
     foreach my $nick (sort keys %question) {
         if ($line{$nick} > 100) {
@@ -1411,6 +1405,7 @@ sub questions
 sub loudpeople
 {
     # The ones who speak LOUDLY!
+    my %lpercent;
 
     foreach my $nick (sort keys %loud) {
         if ($line{$nick} > 100) {
@@ -1451,6 +1446,8 @@ sub shoutpeople
 {
     # The ones who speak SHOUTED!
 
+    my %spercent;
+
     foreach my $nick (sort keys %shout) {
         if ($line{$nick} > 100) {
             $spercent{$nick} = ($shout{$nick} / $line{$nick}) * 100;
@@ -1488,17 +1485,19 @@ sub shoutpeople
 
 sub slap
 {
-	my @slaps;
+    # They slapped around
 
-	# They slapped around
+    my @slaps;
+
     foreach my $nick (sort keys %slap) {
-		@slaps = sort { $slap{$b} <=> $slap{$a} } keys %slap;
+        @slaps = sort { $slap{$b} <=> $slap{$a} } keys %slap;
     }
-	if(@slaps) {
-		my %hash = (
-			nick => $slaps[0],
-			slaps => $slap{$slaps[0]}
-		);
+
+    if(@slaps) {
+        my %hash = (
+            nick => $slaps[0],
+            slaps => $slap{$slaps[0]}
+        );
         my $text = template_text('slap1', %hash);
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
         if (@slaps >= 2) {
@@ -1510,17 +1509,18 @@ sub slap
             my $text = template_text('slap2', %hash);
             html("<br><span class=\"small\">$text</span>");
         }
-   		html("</td></tr>");
+        html("</td></tr>");
     } else {
-       	my $text = template_text('slap3');
-       	html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
+        my $text = template_text('slap3');
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 
 
-	# They got slapped
+    # They got slapped
     foreach my $nick (sort keys %slapped) {
         @slaps = sort { $slapped{$b} <=> $slapped{$a} } keys %slapped;
     }
+
     if(@slaps) {
         my %hash = (
             nick => $slaps[0],
@@ -1537,7 +1537,7 @@ sub slap
             my $text = template_text('slapped2', %hash);
             html("<br><span class=\"small\">$text</span>");
         }
-    	html("</td></tr>");
+        html("</td></tr>");
     } else {
         my $text = template_text('slapped3');
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
@@ -1688,10 +1688,9 @@ sub mostmonologues
 
 sub longlines
 {
+    # The person(s) who wrote the longest lines
 
     my %len;
-
-    # The person(s) who wrote the longest lines
 
     foreach my $nick (sort keys %length) {
         if ($line{$nick} > 100) {
