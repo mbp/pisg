@@ -1,3 +1,12 @@
+pisg (0.27) - Sun, Oct 7th 2001
+   * Stats page was showing [:total] instead of the actual number, fixed.
+   * Added Slovenian translation by Ales Tepina <ales.tepina@guest.arnes.si>
+   * Updates to various language templates
+   * Cleaned up addalias script (scripts/addalias/), it now shows a prettier
+     page, and it's now possible to add the sex of a user as well.
+   * It's now possible to ignore unwanted URLs in 'most referenced urls':
+     <link url="http://www.mydomain.com" ignore="y">
+
 pisg (0.26) - Mon, Oct 1st 2001
    * Internet Explorer interpreted width="" and height="" as a picture of 0x0
      pictures, fix so we dont set empty values.
