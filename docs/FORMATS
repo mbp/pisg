@@ -109,3 +109,12 @@ link to the logfile)
 
   Example:
   12/11/01 22:05:42 :Keitaro!KOala_v5@EVYRV4A4.ipt.aol.com PRIVMSG #alsa-station :Re all :-)
+* ircle:
+  - IRC client for Mac OS X
+
+  - Support for this format is not completely done yet.
+
+  - In order to use this, format must be set to 'ircle'
+
+  Example:
+  6:35 PM:   Sinnikal: thats gross
