@@ -63,12 +63,12 @@ sub run
     # Set the default configuration settings.
     $self->get_default_config_settings();
 
+    print "pisg $self->{cfg}->{version} - Perl IRC Statistics Generator\n\n"
+        unless ($self->{cfg}->{silent});
+
     # Init the configuration file (aliases, ignores, channels, etc)
     my $r = $self->init_config()
         if ($self->{use_configfile});
-
-    print "pisg $self->{cfg}->{version} - Perl IRC Statistics Generator\n\n"
-        unless ($self->{cfg}->{silent});
 
     print "Using config file: $self->{cfg}->{configfile}\n\n"
         if ($r && !$self->{cfg}->{silent});
@@ -317,6 +317,18 @@ sub init_config
                 if ($line =~ /sex="([MmFf])"/i) {
                     $self->{users}->{sex}{$nick} = lc($1);
                 }
+            } elsif ($line =~ /<link(.*)>/) {
+                my $url;
+
+                if ($line =~ /url="([^"]+)"/) {
+                    $url = $1;
+                    if ($line =~ /ignore="Y"/i) {
+                        add_url_ignore($url);
+                    }
+                } else {
+                    print STDERR "Warning: no URL specified in $self->{cfg}->{configfile} on line $lineno\n";
+                }
+
 
             } elsif ($line =~ /<set(.*)>/) {
 

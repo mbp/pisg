@@ -242,3 +242,9 @@ option:
 <set violent="slaps beats kicks">
 
 Have fun configuring pisg! :)
+
+
+LINKS
+------------------
+It's possible to ignore links in the 'most referenced URLs' section:
+<link url="http://www.slashdot.org" ignore="y">
