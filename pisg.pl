@@ -22,10 +22,11 @@ use Getopt::Long;
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 my ($channel, $logfile, $format, $network, $outputfile, $maintainer,
-$pagehead, $usersfile, $imagepath, $logdir, $lang, $bgcolor, $text, $hbgcolor,
-$hcolor, $hicell, $hicell2, $tdcolor, $tdtop, $link, $vlink, $hlink, $headline,
-$rankc, $minquote, $maxquote, $activenicks, $activenicks2, $topichistory,
-$pic1, $pic2, $nicktracking, $timeoffset, $version, $debug, $debugfile);
+$pagehead, $usersfile, $imagepath, $logdir, $lang, $langfile, $bgcolor,
+$text, $hbgcolor, $hcolor, $hicell, $hicell2, $tdcolor, $tdtop, $link,
+$vlink, $hlink, $headline, $rankc, $minquote, $maxquote, $activenicks,
+$activenicks2, $topichistory, $pic1, $pic2, $nicktracking, $timeoffset,
+$version, $debug, $debugfile);
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
 $channel = "#channel";		# The name of your channel.
@@ -50,6 +51,7 @@ $logdir = "";			# If you specify a path to a dir here, then
 
 $lang = 'EN';			# Language to use:
 				# EN | DE | DK | FR | ES | PL
+$langfile = 'lang.txt';		# Name of language file
 
 # Here you can set the colors for your stats page..
 $bgcolor = "#dedeee";		# Background color of the page
@@ -125,6 +127,7 @@ sub init_pisg
     print "pisg $version - Perl IRC Statistics Generator\n\n";
 
     get_cmdlineoptions();
+    get_language_templates();
 
     $timestamp = time;
 
@@ -158,7 +161,6 @@ sub init_pisg
     }
 
     print "Statistics for channel $channel \@ $network by $maintainer\n\n";
-    print "Using language template: $lang\n\n" if ($lang ne 'EN');
 
 }
 
@@ -1775,453 +1777,39 @@ END_USAGE
 
 }
 
-### English
-$T{EN}{mostop1} = "<b>[:nick]</b> donated [:ops] ops in the channel...";
-$T{EN}{mostop2} = "<b>[:nick]</b> was also very polite: [:ops] from her/him";
-$T{EN}{mostop3} = "Strange, no op was given on [:channel]!";
-
-$T{EN}{mostdeop1} = "<b>[:nick]</b> is the channel sheriff with [:deops] deops...";
-$T{EN}{mostdeop2} = "<b>[:nick]</b> deoped [:deops] users";
-$T{EN}{mostdeop3} = "Wow, no op was taken on [:channel]!";
-
-$T{EN}{question1} = "<b>[:nick]</b> is either stupid or just making many questions... [:per]% lines contained a question!";
-$T{EN}{question2} = "<b>[:nick]</b> didn't know that much either, [:per]% of his lines were questions";
-$T{EN}{question3} = "Nobody asked questions here, just geniuses at this channel?";
-
-$T{EN}{loud1} = "Loudest one was <b>[:nick]</b> who yelled [:per]% of the time!";
-$T{EN}{loud2} = "Another <i>old yeller</i> was <b>[:nick]</b> who shouted [:per]% of the time!";
-$T{EN}{loud3} = "Nobody raised an exclamation mark, wow.";
-
-$T{EN}{gotkick1} = "<b>[:nick]</b> wasn't very popular, got kicked [:kicks] times!";
-$T{EN}{gotkick2} = "<b>[:nick]</b> seemed to be hated too, [:kicks] kicks were received";
-
-$T{EN}{joins} = "<b>[:nick]</b> couldn't decide to stay or to go, [:joins] joins during this reporting period!";
-
-$T{EN}{kick1} = "<b>[:nick]</b> is insane or just a fair op, kicked a total of [:kicked] people!";
-$T{EN}{kick2} = "[:oldnick]'s faithfull follower, <b>[:nick]</b>, kicked about [:kicked] people";
-$T{EN}{kick3} = "Nice oppers here, no one got kicked!";
-
-$T{EN}{mono1} = "<b>[:nick]</b> is talking to himself a lot, wrote over 5 lines in a row [:monos] times!";
-$T{EN}{mono2} = "Another lonely one was <b>[:nick]</b>, who managed to hit [:monos] times";
-
-$T{EN}{long1} = "<b>[:nick]</b> wrote longest lines, average of [:letters] per line...";
-$T{EN}{long2} = "Channel average on [:channel] was [:avg] letters per line";
-
-$T{EN}{short1} = "<b>[:nick]</b> wrote shortest lines, average of [:letters] per line...";
-$T{EN}{short2} = "[:nick] was tight-lipped, too, averaging [:letters]";
-
-$T{EN}{foul1} = "<b>[:nick]</b> has quite a potty mouth, [:per]% lines contained foul language";
-$T{EN}{foul2} = "<b>[:nick]</b> also makes sailors blush, [:per]% of the time";
-$T{EN}{foul3} = "Nobody is foul-mouthed at [:channel]! Get out much?";
-
-$T{EN}{smiles1} = "<b>[:nick]</b> brings happiness to the world, [:per]% lines contained smiling faces :)";
-$T{EN}{smiles2} = "<b>[:nick]</b> isn't a sad person either, who smiled [:per]% of the time";
-$T{EN}{smiles3} = "Nobody smiles at [:channel]! Cheer up guys and girls.";
-
-$T{EN}{sad1} = "<b>[:nick]</b> seems to be sad at the moment, [:per]% lines contained sad faces :(";
-$T{EN}{sad2} = "<b>[:nick]</b> is also a sad person, who cried [:per]% of the time";
-$T{EN}{sad3} = "Nobody is sad at [:channel]! What a happy channel :-)";
-
-$T{EN}{notopic} = "A topic was never set on this channel";
-
-## Topics
-
-$T{EN}{bignumtopic} = "Big numbers";
-$T{EN}{othernumtopic} = "Other interesting numbers";
-$T{EN}{latesttopic} = "Latest Topics";
-$T{EN}{activetimestopic} = "Most active times";
-$T{EN}{activenickstopic} = "Most active nicks";
-$T{EN}{mostwordstopic} = "Most used words";
-$T{EN}{referencetopic} = "Most referenced nick";
-
-## Other text
-
-$T{EN}{totallines} = "Total number of lines: [:lines]";
-$T{EN}{nick} = "Nick";
-$T{EN}{numberlines} = "Number of lines";
-$T{EN}{randquote} = "Random quote";
-$T{EN}{userpic} = "Userpic";
-$T{EN}{nottop} = "These didn't make it to the top:";
-$T{EN}{word} = "Word";
-$T{EN}{numberuses} = "Number of Uses";
-$T{EN}{lastused} = "Last Used by";
-$T{EN}{pagetitle1} = "[:channel] @ [:network] stats by [:maintainer]";
-$T{EN}{pagetitle2} = "Statistics generated on [:time]";
-$T{EN}{pagetitle3} = "During this [:days]\-days reporting period, a total number of <b>[:nicks]</b> different nicks were represented on [:channel].";
-
-### German
-
-$T{DE}{mostop1} = "<b>[:nick]</b> vergab [:ops] ops im Channel...";
-$T{DE}{mostop2} = "<b>[:nick]</b> war auch sehr zuvorkommend: [:ops] von ihm/ihr";
-$T{DE}{mostop3} = "Komisch, kein op wurde in [:channel] vergeben!";
-
-$T{DE}{mostdeop1} = "<b>[:nick]</b> ist die Channel-Polizei. Er/Sie hat [:deops] Usern das @ wieder weggenommen...";
-$T{DE}{mostdeop2} = "<b>[:nick]</b> nahm [:deops] Usern das @ wieder weg.";
-$T{DE}{mostdeop3} = "Wow, niemand wurde deopped in [:channel]!";
-
-$T{DE}{question1} = "<b>[:nick]</b> hat wohl in der Schule nicht gut aufgepasst... [:per]% seiner Zeilen enthielten eine Frage!";
-$T{DE}{question2} = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% seiner Zeilen waren Fragen";
-$T{DE}{question3} = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Genies sein? ;)";
-
-$T{DE}{loud1} = "Am lautesten war <b>[:nick]</b> der [:per]% der Zeit geschrieen hat!";
-$T{DE}{loud2} = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> der/die [:per]% der Zeit rumgeschrieen hat!";
-$T{DE}{loud3} = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)";
-
-$T{DE}{gotkick1} = "<b>[:nick]</b> war wohl der Channelclown, er/sie wurde [:kicks] mal gekickt!";
-$T{DE}{gotkick2} = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für ihn/sie";
-
-$T{DE}{joins} = "<b>[:nick]</b> konnte sich nicht entscheiden im Channel zu bleiben oder zu gehen, [:joins] joins während des Statistik-Zeitraums!";
-
-$T{DE}{kick1} = "Ist <b>[:nick]</b> jetzt einfach nur ein fairer Op oder macht ihm/ihr das Spass? Er/Sie kickte [:kicked] User!";
-$T{DE}{kick2} = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, er/sie kickte [:kicked] User";
-$T{DE}{kick3} = "Nette Opper hier, niemand wurde gekickt!";
-
-$T{DE}{mono1} = "<b>[:nick]</b> spricht viel mit sich selbst, er/sie schrieb über 5 Zeilen in einer Reihe und das [:monos] mal!";
-$T{DE}{mono2} = "Ein anderes einsames Herz ist <b>[:nick]</b>, der/die [:monos] mal mit sich selbst redete";
-
-$T{DE}{long1} = "<b>[:nick]</b> ist die Labertasche im Channel Er/Sie schrieb die längste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile...";
-$T{DE}{long2} = "Channel-Durchschnitt in [:channel] war [:avg] Buchstaben pro Zeile";
-
-$T{DE}{short1} = "<b>[:nick]</b> ist nicht sehr Mitteilungsbedürftig. Er/Sie schrieb die kürzeste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile...";
-$T{DE}{short2} = "[:nick] war auch sehr kurzfassend, durchschnittlich [:letters] Buchstaben pro Zeile";
-
-$T{DE}{foul1} = "<b>[:nick]</b> hat in seiner/ihrer Jugend keine Erziehung genossen, [:per]% seiner/ihrer S&auml;tze enthielten Schimpfworte!";
-$T{DE}{foul2} = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman noch kommt?)";
-$T{DE}{foul3} = "Alle gut erzogen in [:channel], niemand hat Schimpfworte benutzt!";
-
-$T{DE}{smiles1} = "<b>[:nick]</b> ist ein fröhlicher Mensch, [:per]% seiner/ihrer Zeilen enthielt ein fröhliches Smily :)";
-$T{DE}{smiles2} = "<b>[:nick]</b> scheint auch glücklich zu sein. Er/Sie \"smilte\" [:per]% der Zeit";
-$T{DE}{smiles3} = "Niemand \"smilte\" in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)";
-
-$T{DE}{sad1} = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% seiner/ihrer Zeilen enthielten ein trauriges Smily :(";
-$T{DE}{sad2} = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat";
-$T{DE}{sad3} = "Niemand ist traurig in [:channel]! Was für ein fröhlicher Channel :)";
-
-$T{DE}{notopic} = "In diesem Channel wurde kein Topic gesetzt";
-
-## Topics
-
-$T{DE}{bignumtopic} = "Die Zahlen sprechen für sich :)";
-$T{DE}{othernumtopic} = "Andere interessante Zahlen";
-$T{DE}{latesttopic} = "Letzte Topics";
-$T{DE}{activetimestopic} = "Wann war am meisten los?";
-$T{DE}{activenickstopic} = "Wer quatscht am meisten?";
-$T{DE}{mostwordstopic} = "Am meisten benutzte Wörter";
-$T{DE}{referencetopic} = "Begehrte Nicks :)";
-
-## Other text
-
-$T{DE}{totallines} = "Gesamtanzahl der Zeilen: [:lines]";
-$T{DE}{nick} = "Nick";
-$T{DE}{numberlines} = "Anzahl der Zeilen";
-$T{DE}{randquote} = "Zufalls quote";
-$T{DE}{userpic} = "Userbild";
-$T{DE}{nottop} = "Sie haben es nicht an die Spitze geschafft:";
-$T{DE}{word} = "Wort";
-$T{DE}{numberuses} = "Wie oft benutzt";
-$T{DE}{lastused} = "Zuletzt benutzt von";
-$T{DE}{pagetitle1} = "[:channel] @ [:network] stats erstellt von [:maintainer]";
-$T{DE}{pagetitle2} = "Statistik erstellt am [:time]";
-$T{DE}{pagetitle3} = "Während des Statistikzeitraums von [:days] Tage(n) wurden <b>[:nicks]</b> verschiedene Nicks in [:channel] gezählt.";
-
-### Danish
-$T{DK}{mostop1} = "<b>[:nick]</b> gav [:ops] op status i kanalen...";
-$T{DK}{mostop2} = "<b>[:nick]</b> var også venlig at gi': [:ops] fra sig";
-$T{DK}{mostop3} = "Underligt, ingen har fået op på [:channel] endnu!";
-
-$T{DK}{mostdeop1} = "<b>[:nick]</b> holder orden på [:channel] med [:deops] deops...";
-$T{DK}{mostdeop2} = "<b>[:nick]</b> deoppede [:deops] brugere";
-$T{DK}{mostdeop3} = "Hmm, der var ingen som fik op på [:channel]!";
-
-$T{DK}{question1} = "<b>[:nick]</b> må være rimelig dum eller efterligner bare Spørge-Jørgen... [:per]% af hans linjer var spørgsmål!";
-$T{DK}{question2} = "<b>[:nick]</b> var heller ingen Einstein, [:per]% af hans linjer var også spørgsmål";
-$T{DK}{question3} = "Ingen spørgsmål på denne kanal. De må sørme være kloge!";
-
-$T{DK}{loud1} = "Den mest larmende var <b>[:nick]</b>, som råbte [:per]% af tiden!";
-$T{DK}{loud2} = "En anden skrigehals var <b>[:nick]</b>, som råbte [:per]% af tiden!";
-$T{DK}{loud3} = "Der er ingen som råber. Leger de stilleleg?";
-
-$T{DK}{gotkick1} = "<b>[:nick]</b> er ret upopulær, blev sparket ud [:kicks] gange!";
-$T{DK}{gotkick2} = "<b>[:nick]</b> er heller ikke nogen Elvis, [:kicks] gange fik han sparket";
-
-$T{DK}{joins} = "<b>[:nick]</b> er lidt forvirret. Han har været inde og ude af kanalen [:joins] gange!";
-
-$T{DK}{kick1} = "<b>[:nick]</b> er magtsygt eller ved hvordan han/hun skal kontrollere sine fjender. Han har sparket [:kicked] folk ud af kanalen!";
-$T{DK}{kick2} = "[:oldnick] har en efterfølger. <b>[:nick]</b> sparkede [:kicked] folk ud af kanalen";
-$T{DK}{kick3} = "Venlige operatører må man sige. Ingen har fået sparket!";
-
-$T{DK}{mono1} = "<b>[:nick]</b> snakker meget med sig selv. Han har skrevet over 5 linjer på en gang, [:monos] gange!";
-$T{DK}{mono2} = "En anden ensom person var <b>[:nick]</b>, som snakkede til sig selv [:monos] gange";
-
-$T{DK}{long1} = "<b>[:nick]</b> skriver meget lange sætninger. Gennemsnittet er [:letters] bogstaver pr. linje...";
-$T{DK}{long2} = "Gennemsnittet på [:channel] er [:avg] bogstaver pr. linje";
-
-$T{DK}{short1} = "<b>[:nick]</b> skrev de korteste linjer. Gennemsnittet er [:letters] bogstaver pr. linje...";
-$T{DK}{short2} = "[:nick] skriver også korte linjer, med et gennesnit på [:letters]";
-
-$T{DK}{foul1} = "<b>[:nick]</b> er lidt stor i munden, [:per]% af linjerne indholte uhøfligt sprog";
-$T{DK}{foul2} = "<b>[:nick]</b> burde også vaske munden med sæbe med at det han fyrer af, [:per]% af tiden";
-$T{DK}{foul3} = "Ingen rapkæftede på [:channel]!";
-
-$T{DK}{smiles1} = "<b>[:nick]</b> er altid glad, [:per]% af linjerne havde glade ansigter :)";
-$T{DK}{smiles2} = "<b>[:nick]</b> er heller ikke en trist person, som smilede [:per]% af tiden";
-$T{DK}{smiles3} = "Ingen smiler på [:channel]! Op med humøret drenge og piger.";
-
-$T{DK}{sad1} = "<b>[:nick]</b> er meget ked af det for tiden, [:per]% af linjerne havde sørgelige ansigter :(";
-$T{DK}{sad2} = "<b>[:nick]</b> er også en trist person, som græd [:per]% af tiden";
-$T{DK}{sad3} = "Ingen er kede af det på [:channel]! Sikke en glad kanal :-)";
-
-$T{DK}{notopic} = "A topic was never set on this channel";
-
-## Topics
-
-$T{DK}{bignumtopic} = "Store numre";
-$T{DK}{othernumtopic} = "Andre interessante numre";
-$T{DK}{latesttopic} = "Sidst nyeste topics";
-$T{DK}{activetimestopic} = "Mest aktive tider";
-$T{DK}{activenickstopic} = "Mest aktive nicks";
-$T{DK}{mostwordstopic} = "Mest brugte ord";
-$T{DK}{referencetopic} = "Mest tiltalte nicks";
-
-## Other text
-
-$T{DK}{totallines} = "Hele antal linjer: [:lines]";
-$T{DK}{nick} = "Nick";
-$T{DK}{numberlines} = "Antal linjer";
-$T{DK}{randquote} = "Tilfældig sætning";
-$T{DK}{userpic} = "Brugerbillede";
-$T{DK}{nottop} = "Disse nåede ikke til tops:";
-$T{DK}{word} = "Ord";
-$T{DK}{numberuses} = "Antal forbrug";
-$T{DK}{lastused} = "Sidst brugt af";
-$T{DK}{pagetitle1} = "[:channel] @ [:network] statistikker af [:maintainer]";
-$T{DK}{pagetitle2} = "Statistikker lavet d. [:time]";
-$T{DK}{pagetitle3} = "Igennem denne [:days]\-dages periode, har der været <b>[:nicks]</b> forskellige nicks på [:channel].";
-
-### French
-
-# Not exactly the translation but something fun
-# Time translation needs more update
-
-$T{FR}{mostop1} = "<b>[:nick]</b> a donné [:ops] ops sur le channel...";
-$T{FR}{mostop2} = "<b>[:nick]</b> est aussi très poli : [:ops] ops de sa part";
-$T{FR}{mostop3} = "Etrange, aucun op n'a été donné sur [:channel]!";
-
-$T{FR}{mostdeop1} = "<b>[:nick]</b> est le shérif avec [:deops] deops...";
-$T{FR}{mostdeop2} = "<b>[:nick]</b> a deopé [:deops] utilisateurs";
-$T{FR}{mostdeop3} = "Wow, aucun op n'a été retiré sur [:channel]!";
-
-$T{FR}{question1} = "<b>[:nick]</b> est soit stupide soit trop curieux... [:per]% de ses lignes contiennent une question!";
-$T{FR}{question2} = "<b>[:nick]</b> n'en connait pas davantage, [:per]% de ses lignes étaient des questions";
-$T{FR}{question3} = "Personne ne pose de question ici, tous des génies sur ce channel?";
-
-$T{FR}{loud1} = "Le plus bruyant est <b>[:nick]</b> qui gueule [:per]% du temps!";
-$T{FR}{loud2} = "Un autre <i>vieux raleur</i> est <b>[:nick]</b> qui braille [:per]% du temps!";
-$T{FR}{loud3} = "Personne ne s'exclame ici, wow.";
-
-$T{FR}{gotkick1} = "<b>[:nick]</b> n'est pas trés populaire, kické [:kicks] fois!";
-$T{FR}{gotkick2} = "<b>[:nick]</b> n'a pas d'ami non plus, [:kicks] kicks reçus";
-
-$T{FR}{joins} = "<b>[:nick]</b> ne sait pas s'il doit rester ou partir, [:joins] visites durant cette période!";
-
-$T{FR}{kick1} = "<b>[:nick]</b> est malade ou alors aime bien jouer, son kick a sévi [:kicked] fois!";
-$T{FR}{kick2} = "Un disciple de [:oldnick], <b>[:nick]</b>, a kické [:kicked] personnes";
-$T{FR}{kick3} = "Les ops sont sympas ici, personne n'a été kické!";
-
-$T{FR}{mono1} = "<b>[:nick]</b> se parle à lui-meme trés souvent, il a écrit plus de 5 lignes d'un coup à [:monos] reprises!";
-$T{FR}{mono2} = "Un autre incompris est <b>[:nick]</b>, qui a tenté de le dépasser à [:monos] reprises";
-
-$T{FR}{long1} = "<b>[:nick]</b> a écrit les lignes les plus longues, avec en moyenne [:letters] lettres par ligne...";
-$T{FR}{long2} = "La moyenne sur [:channel] est de [:avg] lettres par ligne";
-
-$T{FR}{short1} = "<b>[:nick]</b> a écrit les lignes les plus courtes, avec en moyenne [:letters] lettres par ligne...";
-$T{FR}{short2} = "[:nick] n'a pas grand chose a dire non plus, en moyenne [:letters]";
-
-$T{FR}{foul1} = "<b>[:nick]</b> a du mal a s'exprimer, [:per]% de ses lignes contiennent des mots incompréhensibles";
-$T{FR}{foul2} = "<b>[:nick]</b> parle aussi comme un chartier, [:per]% du temps";
-$T{FR}{foul3} = "Personne n'a de problème pour parler sur [:channel]! Pendant combien de temps encore?";
-
-$T{FR}{smiles1} = "<b>[:nick]</b> apporte un peu de gaiété dans le monde, [:per]% de ses lignes contiennent un smiley :)";
-$T{FR}{smiles2} = "<b>[:nick]</b> n'est pas triste non plus, il sourit [:per]% du temps";
-$T{FR}{smiles3} = "Personne ne sourit sur [:channel]! Allez faites un effort quoi!";
-
-$T{FR}{sad1} = "<b>[:nick]</b> semble un peu triste en ce moment, [:per]% de ses lignes contiennent un smiley :(";
-$T{FR}{sad2} = "<b>[:nick]</b> est aussi bien triste, il pleure [:per]% du temps";
-$T{FR}{sad3} = "Personne n'est triste sur [:channel]! Quel channel merveilleux :-)";
-
-$T{FR}{notopic} = "Il n'y a jamais eu de topic sur ce channel";
-
-## Topics
-
-$T{FR}{bignumtopic} = "Les gros chiffres";
-$T{FR}{othernumtopic} = "D'autres chiffres intéressants";
-$T{FR}{latesttopic} = "Les derniers topics";
-$T{FR}{activetimestopic} = "Les périodes d'intense activité";
-$T{FR}{activenickstopic} = "Les nicks les plus actifs";
-$T{FR}{mostwordstopic} = "Les mots les plus utilisés";
-$T{FR}{referencetopic} = "Les mots les plus utilisés dans la conversation";
-
-## Other text
-
-$T{FR}{totallines} = "Nombre total de lignes: [:lines]";
-$T{FR}{nick} = "Nick";
-$T{FR}{numberlines} = "Nombre de lignes";
-$T{FR}{randquote} = "Citation typique";
-$T{FR}{userpic} = "Image";
-$T{FR}{nottop} = "Ne sont pas dans le classement";
-$T{FR}{word} = "Mot";
-$T{FR}{numberuses} = "Nombre d'occurences";
-$T{FR}{lastused} = "Dernière utilisation par";
-$T{FR}{pagetitle1} = "[:channel] @ [:network] stats par [:maintainer]";
-$T{FR}{pagetitle2} = "Statistiques générées le [:time]";
-$T{FR}{pagetitle3} = "Durant cette periode de [:days] jours, <b>[:nicks]</b> nicks différents sont apparus sur [:channel].";
-
-### Spanish
-$T{ES}{mostop1} = "<b>[:nick]</b> ha dado [:ops] ops en el canal...";
-$T{ES}{mostop2} = "<b>[:nick]</b> también reparte ensaimadas: [:ops] nada menos";
-$T{ES}{mostop3} = "Es raro, pero ningún op ha sido dado en [:channel]!";
-
-$T{ES}{mostdeop1} = "<b>[:nick]</b> es el malo del canal, le ha quitado la @ a [:deops] personas";
-$T{ES}{mostdeop2} = "<b>[:nick]</b> le ha quitado la @ a [:deops] personas";
-$T{ES}{mostdeop3} = "Increible, pero nadie ha tenido @ en el canal [:channel]!";
-
-$T{ES}{question1} = "<b>[:nick]</b> necesitaba más horas de guardería cuando era pequeño, el [:per]% de sus lineas contienen una pregunta!";
-$T{ES}{question2} = "<b>[:nick]</b> tampoco se entera de mucho, el [:per]% de sus lineas son preguntas";
-$T{ES}{question3} = "Nadie hace preguntas aquí, esto parece un canal de genios";
-
-$T{ES}{loud1} = "La persona que grita más es <b>[:nick]</b> que escribe con exclamaciones el [:per]% del tiempo!";
-$T{ES}{loud2} = "Quien no se queda atrás gritando es <b>[:nick]</b> lo hace el [:per]% del tiempo!";
-$T{ES}{loud3} = "Nadie ha escrito frases con exclamaciones.";
-
-$T{ES}{gotkick1} = "<b>[:nick]</b> ha sido algo capullo y por eso lo echamos [:kicks] veces!";
-$T{ES}{gotkick2} = "<b>[:nick]</b> tambien nos toca bastante las narices, por eso lo echamos [:kicks] veces";
-
-$T{ES}{joins} = "<b>[:nick]</b> no sabe si irse o quedarse, lo he visto [:joins] veces entrando en el canal!";
-
-$T{ES}{kick1} = "<b>[:nick]</b> actua como operador con mano dura, ha echado a [:kicked] personas!";
-$T{ES}{kick2} = "[:oldnick] tiene un seguidor aferrimo, <b>[:nick]</b>, ha echado a [:kicked] personas";
-$T{ES}{kick3} = "Es maja la gente de aquí, nadie ha sido kikeado!";
-
-$T{ES}{mono1} = "<b>[:nick]</b> no tiene amigos, ha escrito más de 5 lineas seguidas en [:monos] ocasiones!";
-$T{ES}{mono2} = "Otra persona solitaria es <b>[:nick]</b>, que ha echo lo mismo [:monos] veces";
-
-$T{ES}{long1} = "<b>[:nick]</b> escribe más que Cervantes con unas [:letters] letras por linea...";
-$T{ES}{long2} = "La media de [:channel] es de [:avg] letras por linea";
-
-$T{ES}{short1} = "<b>[:nick]</b> es la persona más vaga escribiendo, con una media de [:letters] letras por linea...";
-$T{ES}{short2} = "[:nick] no se queda atrás, con una media de [:letters]";
-
-$T{ES}{foul1} = "<b>[:nick]</b> necesita que le laven la boca con jabón lagarto, un [:per]% de sus lineas contienen palabrotas y tacos";
-$T{ES}{foul2} = "<b>[:nick]</b> tambien es algo bestia, dice tacos el [:per]% del tiempo";
-$T{ES}{foul3} = "Parece que todo el mundo habla correctamente en [:channel]! Se desahogan fuera?";
-
-$T{ES}{smiles1} = "<b>[:nick]</b> parece que se hubiera fumado una compresa usada, el [:per]% de sus lineas contienen caritas sonrientes :)";
-$T{ES}{smiles2} = "<b>[:nick]</b> habrá fumado otra cosa, está sonriendo el [:per]% del tiempo";
-$T{ES}{smiles3} = "Nadie ha sonrreido en [:channel]! Arriba esos animos!!.";
-
-$T{ES}{sad1} = "<b>[:nick]</b> parece disgustado, el [:per]% de sus lineas contienen caras tristes :(";
-$T{ES}{sad2} = "<b>[:nick]</b> tambien está triste el [:per]% del tiempo";
-$T{ES}{sad3} = "Nadie está triste en [:channel]! Aquí somos todos felices :-)";
-
-$T{ES}{notopic} = "Nunca se ha utilizado el topic en el canal";
-
-## Topics
-
-$T{ES}{bignumtopic} = "Acerca de nuestra gente";
-$T{ES}{othernumtopic} = "Otras cosas interesantes";
-$T{ES}{latesttopic} = "Últimos Topics";
-$T{ES}{activetimestopic} = "Horas más frecuentadas";
-$T{ES}{activenickstopic} = "La gente que más habla";
-$T{ES}{mostwordstopic} = "Las palabras más utilizadas";
-$T{ES}{referencetopic} = "Las personas de las que más se habla";
-
-## Other text
-
-$T{ES}{totallines} = "Número total de lineas: [:lines]";
-$T{ES}{nick} = "Nick";
-$T{ES}{numberlines} = "Número de lineas";
-$T{ES}{randquote} = "Frase al azar";
-$T{ES}{userpic} = "Foto";
-$T{ES}{nottop} = "Ellos tambien están, aunque hablan menos:";
-$T{ES}{word} = "Palabra";
-$T{ES}{numberuses} = "Número de usos";
-$T{ES}{lastused} = "Usada por última vez";
-$T{ES}{pagetitle1} = "[:channel] @ [:network] estadisticas por [:maintainer]";
-$T{ES}{pagetitle2} = "Estadisticas generadas en [:time]";
-$T{ES}{pagetitle3} = "Durante los [:days] dias de estadisticas, [:nicks] nicks distintos han pasado por[:channel].";
-
-### Polish
-$T{PL}{mostop1} = "<b>[:nick]</b> lubi rozdawac opy, robiac to [:ops] razy...";
-$T{PL}{mostop2} = "Milo ze strony <b>[:nick]</b> - zyskuje popularnosc nadajac [:ops] opow.";
-$T{PL}{mostop3} = "Dziwne, nie dano zadnego opa na [:channel]!";
-
-$T{PL}{mostdeop1} = "<b>[:nick]</b> jest kanalowym szeryfem odbierajac [:deops] opow...";
-$T{PL}{mostdeop2} = "<b>[:nick]</b> zdeopowal [:deops] uzytkownikow";
-$T{PL}{mostdeop3} = "Wow, zaden op nie zostal odebrany na [:channel]!";
-
-$T{PL}{question1} = "<b>[:nick]</b> jest glupi albo zadaje wiele pytan... [:per]% linii zawieralo pytania!";
-$T{PL}{question2} = "<b>[:nick]</b> rowniez nie wie zbyt wiele, [:per]% linii bylo pytaniami";
-$T{PL}{question3} = "Nikt o nic nie pyta na kanale - czyzby sami geniusze?";
-
-$T{PL}{loud1} = "Najglosniejszym okazal/a sie <b>[:nick]</b> krzyczac przez [:per]% czasu!";
-$T{PL}{loud2} = "Kolejnym krzykaczem byl <b>[:nick]</b> ktory wrzeszczal przez [:per]% czasu!";
-$T{PL}{loud3} = "Nikt nic nie wykrzykiwal na kanale, wow.";
-
-$T{PL}{gotkick1} = "<b>[:nick]</b> nie zalapal o co chodzilo operatorom za pierwszym razem i zostal wykopany [:kicks] razy!";
-$T{PL}{gotkick2} = "<b>[:nick]</b> nie jest tu chyba zbyt lubiany - wylatywal [:kicks] razy";
-
-$T{PL}{joins} = "<b>[:nick]</b> zastanawial sie nad \"byc albo nie byc\", [:joins] razy wchodzil na kanal!";
-
-$T{PL}{kick1} = "<b>[:nick]</b> jest szalony lub stara sie byc konsekwentny, wykopal [:kicked] osob";
-$T{PL}{kick2} = "<b>[:nick]</b> idac w slad za [:oldnick] wykopal [:kicked] osob";
-$T{PL}{kick3} = "Mamy tutaj milych operatorow, nikt nie zostal wykopany!";
-
-$T{PL}{mono1} = "<b>[:nick]</b> uwielbia mowic sam do siebie, albo inni za nim nie nadazaja, pisal monologi [:monos] razy!";
-$T{PL}{mono2} = "Kolejnym samotnikiem okazal sie <b>[:nick]</b>, ktory pisal bez towarzystwa [:monos] razy";
-
-$T{PL}{long1} = "<b>[:nick]</b> pisal najdluzsze linie, o sredniej dlugosci [:letters] liter...";
-$T{PL}{long2} = "Srednia dla kanalu [:channel] to [:avg] liter w linii";
-
-$T{PL}{short1} = "<b>[:nick]</b> staral sie pisac zwiezle, srednio [:letters] liter w linii...";
-$T{PL}{short2} = "[:nick] wybakiwal krotkie wypowiedzi srednio po [:letters] liter";
-
-$T{PL}{foul1} = "<b>[:nick]</b> ma niewyparzona gebe, [:per]% linii zawieralo bluzgi";
-$T{PL}{foul2} = "<b>[:nick]</b> klnie jak szefc (albo i gorzej), przez [:per]% czasu";
-$T{PL}{foul3} = "Nikt nie jest klnie na [:channel]! Czesto wychodza?";
-
-$T{PL}{smiles1} = "<b>[:nick]</b> usmiechal sie glupawo, albo byl bardzo szczeliwy bo [:per]% linii zawieralo usmiechniete miny :)";
-$T{PL}{smiles2} = "<b>[:nick]</b> mial powody do radosci smiejac sie przez [:per]% czasu spedzonego na kanale";
-$T{PL}{smiles3} = "Nikt sie nie usmiechal na [:channel]! Prosze o usmiech panie i panowie.";
-
-$T{PL}{sad1} = "<b>[:nick]</b> wyglada na smutna osobe, [:per]% linii zawieralo smutne miny :(";
-$T{PL}{sad2} = "<b>[:nick]</b> nie czuje sie najlepiej na kanale smucac sie przez [:per]% czasu";
-$T{PL}{sad3} = "Nikt nie jest smutny na [:channel]! Coz za szczesliwy kanal :-)";
-
-$T{PL}{notopic} = "Czyzby nigdy nie ustawiono tematu na tym kanale?";
-
-## Topics
-
-$T{PL}{bignumtopic} = "Wielkie liczby";
-$T{PL}{othernumtopic} = "Inne interesujace liczby";
-$T{PL}{latesttopic} = "Ostatnie tematy";
-$T{PL}{activetimestopic} = "Najaktywniejsze pory";
-$T{PL}{activenickstopic} = "Najaktywniejsze nicki";
-$T{PL}{mostwordstopic} = "Najczesciej uzywane slowa";
-$T{PL}{referencetopic} = "Najczesciej wywolywany nick";
-
-## Other text
-
-$T{PL}{totallines} = "Calkowita liczba linii: [:lines]";
-$T{PL}{nick} = "Nick";
-$T{PL}{numberlines} = "Liczba linii";
-$T{PL}{randquote} = "Losowy cytat";
-$T{PL}{userpic} = "Obrazek";
-$T{PL}{nottop} = "Oni nie dostali sie do czolowki:";
-$T{PL}{word} = "Wyraz";
-$T{PL}{numberuses} = "Liczba uzyc";
-$T{PL}{lastused} = "Ostatnio uzywany przez";
-$T{PL}{pagetitle1} = "[:channel] @ [:network] stats by [:maintainer]";
-$T{PL}{pagetitle2} = "Statystyka wygenerowana [:time]";
-$T{PL}{pagetitle3} = "W przedziale [:days]\-dni, <b>[:nicks]</b> roznych nickow odwiedzilo kanal [:channel].";
+sub get_language_templates
+{
+    use FindBin;
+
+    open(FILE, $langfile) or open (FILE, $FindBin::Bin . "/$langfile") or die("$0: Unable to open language file($langfile): $!\n");
+
+    my $current_lang;
+
+    while (<FILE>)
+    {
+        my $line = $_;
+        next if /^#/;
+
+        if ($line =~ /<lang name=\"([^"]+)\">/) {
+            # Found start tag, setting the current language
+            $current_lang = "$1";
+        }
+
+        elsif ($line =~ /<\/lang>/) {
+            # Found end tag, resetting the current language
+            $current_lang = '';
+        }
+        
+        elsif ($line =~ /(\w+) = "(.*)"$/ && $current_lang ne '') {
+            $T{$current_lang}{$1} = $2;
+        }
+    }
+
+    close(FILE);
+
+    print "Using language template: $lang\n\n" if ($lang ne 'EN');
+
+}
+    
 
 &main();        # Run the script
