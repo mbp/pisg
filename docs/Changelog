@@ -8,6 +8,16 @@ pisg (0.22)
    * Instead of 'slaps' we now have 'violence', so one can define their own
      action lines to be counted. Like '/me hits nick on the forehead',
      configured by the 'violent' variable.
+   * pisg is undergoing a large change of it's code structure, meaning that
+     things will be built with modules instead of one giant Perl script,
+     making it easier to maintain and read, and it will enable us to make pisg
+     get data, or parse data from another source than a logfile; for example
+     an SQL database, *sometime*. This means that pisg is now coming with a
+     new subdir 'modules/' containing all the modules pisg need.  (thanks to
+     Phil Gregory)
+   * Moved some documentation to a new 'docs/' folder.
+   * Joins wasn't working in mIRC format, fixed.
+   * Usual minor optimizations and fixes
 
 pisg (0.21) - Mon, Aug 27th 2001
    * Fix stupid legend bug; 0-6 should be 0-5, and 7-11 should be 6-11.
