@@ -66,6 +66,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/infobot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/irssi.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircII.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/javabot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/kvirc.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/oer.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mbot.pm \

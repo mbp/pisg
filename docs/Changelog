@@ -1,3 +1,6 @@
+pisg (x.xx)
+   * Added javabot support (thanks, Tobias Larsson)
+
 pisg (0.54) - Thu Apr, 1st 2004
    * Revert most of the performance improvement changes, they caused bugs.
    * Really fix topics with the mbot format.
