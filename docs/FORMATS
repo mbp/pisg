@@ -28,12 +28,24 @@ link to the logfile)
   - Same as mIRC6 except it uses '**' for actions
 
   - In order to use this, format must be set to 'mIRC6hack', and the following
-    be added to the remote script section: (thanks to virtuall)
+    be added to mIRC's remote script section: (thanks to virtuall and coaster)
 
-    on ^1:ACTION:*:*: {
-      haltdef
-      echo $chan ** $nick $1-
-    }
+------------------------------8<------------------------------
+alias me {
+  if ($1) {
+    .describe $active $1-
+    echo $color(own) -qt $active ** $me $1-
+  }
+  else {
+    echo $color(info) $active * /me: insufficient parameters
+  }
+}
+
+on ^*:ACTION:*:*:{
+  echo $color(action) -lt $iif($chan,$chan,$nick) ** $nick $1-
+  haltdef
+}
+------------------------------>8------------------------------
 
 * mIRC:
   - A client for Windows (www.mirc.com)
