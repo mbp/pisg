@@ -2243,6 +2243,7 @@ short2 = "<b>[:nick]</b> er også en person av få ord - [:letters] bokstaver."
 foul1 = "<b>[:nick]</b> må snart vaske munnen sin.  [:per]% av linjene inneholdt stygt språk."
 foul2 = "<b>[:nick]</b> er heller ikke svigermors drøm, [:per]% av tiden."
 foul3 = "Ingen prater stygt på [:channel]!  Villt!"
+foultext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> bringer lykke til verden.  [:per]% av linjene inneholdt smileansikt. :)"
 smiles2 = "<b>[:nick]</b> er heller ikke særlig sur.  [:per]% av linjene inneholdt smileys."
@@ -2255,8 +2256,12 @@ sad3 = "Ingen er triste på [:channel]!  For en koselig kanal.  :-)"
 month = "Januar Februar Mars April May Juni Juli August September Oktober November Desember"
 day = "Søndag Mandag Tirsdag Onsdag Torsdag Fredag Lørdag"
 
+names1 = "nicks"
+names2 = "nick" 
+
 ## Topics
 
+mostnickstopic = "Brukere med flest nicks" 
 bignumtopic = "Store tall"
 othernumtopic = "Andre interessante tall"
 latesttopic = "Siste topics"
