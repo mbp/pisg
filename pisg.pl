@@ -167,11 +167,13 @@ _END
         return undef;
     }
 
-    $generator->create_html()
-        if (defined $stats and $stats->{lines} > 0);# Create the HTML
-                                 # (look here if you want to remove some of the
-                                 # stats which you don't care about)
-
+    # Create our HTML page if the logfile has any data.
+    if (defined $stats and $stats->{totallines} > 0) {
+        $generator->create_html();
+    } elsif ($stats->{totallines} == 0) {
+        print STDERR "No lines found in logfile.. skipping.\n";
+    }
+    
     $conf->{chan_done}{$conf->{channel}} = 1;
 }
 
