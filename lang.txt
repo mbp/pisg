@@ -1887,6 +1887,7 @@ referencetopic = "Les persones de les que més es parla"
 urlstopic = "URLs més freqüentment mencionades"
 notopic = "Encara no s'ha utilitzat el topic del canal"
 bylinetopic = "per [:nick] a les [:time]"
+mostnickstopic = "Usuaris i nicks usats"
 
 ## Other text
 
@@ -1894,6 +1895,7 @@ totallines = "Nombre total de linies: [:lines]"
 totalnicks = "Hi ha hagut altres [:totalnicks] nicks que han passat pel canal"
 totaltopic = "Hi ha hagut [:total] canvis de topic"
 nick = "Nick"
+names = "Noms utilitzats"
 url = "URL"
 numberlines = "Linies"
 randquote = "Frase a l'atzar"
@@ -1903,9 +1905,24 @@ word = "Paraula"
 show_time = "Hora"
 numberuses = "Nombre d'usos"
 lastused = "Utilitzada per última vegada"
+lastseen1 = "dia fa"
+lastseen2 = "dies fa"
 pagetitle1 = "[:channel] @ [:network] estadístiques per [:maintainer]"
 pagetitle2 = "Estadístiques generades el "
 pagetitle3 = "Durant els [:days] dies d'estadístiques, [:nicks] nicks diferents han passat per [:channel]."
+stats_gen_by = "Stats generades per [:pisg_url] v[:version]"
+author = "pisg per [:author_url] i altres"
+stats_gen_in = "Stats generats en [:time]"
+hours = "hores"
+minutes = "minuts"
+seconds = "segons"
+and = "i"
+
+# Mouse-over titles
+pisghomepage = "Anar a la pàgina del pisg"
+authorhomepage = "Anar a la pàgina dels autors"                                   
+newwindow = "Obrir en la finestra:"
+mailto = "Escriure un email a"
 </lang>
 
 ### Norwegian
