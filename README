@@ -35,7 +35,8 @@ be in your own language; look in lang.txt to see the supported languages.
 The language can be changed from within the pisg.cfg file.
 
 You're welcome to translate pisg to your own language, it's not very hard,
-look in the lang.txt file!
+look in the lang.txt file! If you have any corrections to the language
+file, then please send a patch.
 
 And a last note: there is some graphics in the gfx/ folder which pisg uses,
 you should put these in the same directory as your stats file(s).
