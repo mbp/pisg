@@ -2,6 +2,14 @@ package Pisg::Parser::Format::mIRC6hack;
 
 # Documentation for the Pisg::Parser::Format modules is found in Template.pm
 
+# To use this logging format, add the following to mIRC's remote script
+# section:
+#
+# on ^1:ACTION:*:*: {
+#   haltdef
+#   echo $chan ** $nick $1-
+# }
+
 use strict;
 $^W = 1;
 

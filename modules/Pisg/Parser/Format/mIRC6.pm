@@ -2,6 +2,9 @@ package Pisg::Parser::Format::mIRC6;
 
 # Documentation for the Pisg::Parser::Format modules is found in Template.pm
 
+# NOTE: mIRC6's logging format is severly damaged by design. Try to use the
+# "mIRC6hack" format instead.
+
 use strict;
 $^W = 1;
 
