@@ -496,7 +496,7 @@ mostop1 = "<b>[:nick]</b> a donné [:ops] ops sur le canal..."
 mostop2 = "<b>[:nick]</b> est aussi très poli[::e:(e):] : [:ops] ops de sa part."
 mostop3 = "Etrange, aucun op n'a été donné sur [:channel]!"
 
-mostdeop1 = "<b>[:nick]</b> est l[:e:a:e:] shériff du canal avec [:deops] deops..."
+mostdeop1 = "<b>[:nick]</b> est l[:e:a:e:] sherif du canal avec [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs."
 mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
 
@@ -504,7 +504,7 @@ mosthalfop1 = "<b>[:nick]</b> a donné [:halfops] halfops sur le canal..."
 mosthalfop2 = "<b>[:nick]</b> est aussi très poli[::e:(e):] : [:halfops] halfops de sa part."
 mosthalfop3 = "Etrange, aucun halfop n'a été donné sur [:channel]!"
 
-mostdehalfop1 = "<b>[:nick]</b> est l[:e:a:] shériff du canal avec [:dehalfops] dehalfops..."
+mostdehalfop1 = "<b>[:nick]</b> est l[:e:a:] sherif du canal avec [:dehalfops] dehalfops..."
 mostdehalfop2 = "<b>[:nick]</b> a dehalfopé [:dehalfops] utilisateurs."
 mostdehalfop3 = "Wow, aucun halfop n'a été retiré sur [:channel]!"
 
@@ -512,14 +512,14 @@ mostvoice1 = "<b>[:nick]</b> a donné [:voices] fois le +v sur le canal..."
 mostvoice2 = "<b>[:nick]</b> est aussi très poli[::e:(e):]: [:voices] +v de sa part."
 mostvoice3 = "C'est curieux, on n'a jamais donné un seul +v sur [:channel]!"
 
-mostdevoice1 = "<b>[:nick]</b> est l[:e:a:] shériff du canal avec [:devoices] -v."
+mostdevoice1 = "<b>[:nick]</b> est l[:e:a:] sherif du canal avec [:devoices] -v."
 mostdevoice2 = "<b>[:nick]</b> a dévoicé [:devoices] personnes."
 mostdevoice3 = "Wow, aucun +v n'a été retiré sur [:channel]!"
 
 action1 = "<b>[:nick]</b> aime bien faire savoir ce qu'[:il:elle:] fait, avec [:actions] actions !"
 action2 = "Egalement <b>[:nick]</b> qui n'est pas en reste avec [:actions] actions !"
 action3 = "Aucune action sur [:channel] !"
-actiontext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+actiontext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 question1 = "<b>[:nick]</b> est soit stupide soit trop curieu[:x:se:x(se):]... [:per]% de ses lignes contiennent une question !"
 question2 = "<b>[:nick]</b> n'en connait pas davantage, [:per]% de ses lignes étaient des questions."
@@ -531,23 +531,23 @@ shout3 = "Personne ne s'exclame ici, wow."
 
 allcaps1 = "Il semblerait que le CAPS-LOCK soit bloqué chez <b>[:nick]</b>, qui écrit en majuscule [:per]% du temps."
 allcaps2 = "<b>[:nick]</b> a oublié de désactiver son CAPS-LOCK, qui écrit en majuscule [:per]% du temps."
-allcaps3 = "Tous les CAPS-LOCK sont sous controle :)"
-allcapstext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+allcaps3 = "Tous les CAPS-LOCK sont sous contrôle :)"
+allcapstext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> est une personne agressive, qui a déja slappé <b>[:attacks]</b> fois quelqu'un."
 violent2 = "<b>[:nick]</b> ne peut controller son agressivité, en slappant <b>[:attacks]</b> fois quelqu'un."
 violent3 = "Personne ne slappe, tout le monde est sympa."
-violenttext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+violenttext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Pôvre <b>[:nick]</b>, personne ne l'aime, en étant slappé[::e:(e):] <b>[:attacks]</b> fois."
-attacked2 = "<b>[:nick]</b> n'as pas l'air aprécié[::e:(e):] non plus, qui a déjà été slappé[::e:(e):] <b>[:attacks]</b> fois."
-attackedtext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+attacked2 = "<b>[:nick]</b> n'as pas l'air apprécié[::e:(e):] non plus, qui a déjà été slappé[::e:(e):] <b>[:attacks]</b> fois."
+attackedtext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> n'est pas très populaire, kické[::e:(e):] [:kicks] fois !"
 gotkick2 = "<b>[:nick]</b> n'a pas d'ami non plus, [:kicks] kicks reçus."
-kicktext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+kicktext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-joins = "Rester ou partir est un choix difficile: <b>[:nick]</b> a fait [:joins] visites durant cette période !"
+joins = "Rester ou partir est un choix difficile : <b>[:nick]</b> a fait [:joins] visites durant cette période !"
 
 kick1 = "<b>[:nick]</b> est malade ou alors aime bien jouer, son kick a sévi [:kicked] fois !"
 kick2 = "Un[::e:] disciple de [:oldnick], <b>[:nick]</b> a kické [:kicked] personnes."
@@ -571,8 +571,8 @@ short2 = "<b>[:nick]</b> n'a pas grand chose à dire non plus, en moyenne [:lette
 
 foul1 = "<b>[:nick]</b> est bien vulgaire, [:per]% de ses lignes contiennent des gros mots."
 foul2 = "<b>[:nick]</b> parle aussi comme un chartier, [:per]% du temps."
-foul3 = "Personne n'est grossier sur [:channel] ! Pendant combien de temps encore?"
-foultext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+foul3 = "Personne n'est grossier sur [:channel] ! Pendant combien de temps encore ?"
+foultext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> apporte un peu de gaieté dans le monde, [:per]% de ses lignes contiennent un smiley :)"
 smiles2 = "<b>[:nick]</b> n'est pas triste non plus, qui sourit [:per]% du temps."
@@ -616,9 +616,9 @@ nottop = "Ne sont pas dans le classement"
 word = "Mot"
 numberuses = "Nb d'occurences"
 show_words = "Nb de Mots"
-show_time = "Quand?"
+show_time = "Quand ?"
 show_wpl = "Mots par ligne"
-show_cpl = "Chars par ligne"
+show_cpl = "Lettres par ligne"
 show_lastseen = "Dernière venue"
 lastused = "Dernière utilisation par"
 lastseen1 = "jour"
@@ -640,7 +640,7 @@ names2 = "nom"
 # Mouse-over titles
 pisghomepage = "Aller sur le site de pisg"
 authorhomepage = "Aller sur le site de l'auteur"
-newwindow = "Ouvrir dans une nouvelle fenêtre:"
+newwindow = "Ouvrir dans une nouvelle fenêtre :"
 mailto = "Envoyer un mail"
 </lang>
 
