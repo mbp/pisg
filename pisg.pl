@@ -1542,7 +1542,7 @@ sub mostsad
             channel => $conf->{channel}
         );
         my $text = template_text('sad3', %hash);
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$conf->text</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
 
