@@ -84,7 +84,7 @@ sub analyze
         $stats{processtime}{mins} = sprintf("%02d", $min);
         $stats{processtime}{secs} = sprintf("%02d", $sec);
 
-        print "Channel analyzed succesfully in $stats{processtime} on ",
+        print "Channel analyzed succesfully in $processtime on ",
         scalar localtime(time()), "\n"
             unless ($self->{cfg}->{silent});
 
