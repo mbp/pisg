@@ -1531,7 +1531,7 @@ sub _lasttopics
             my $hour = $self->{stats}->{topics}[$i]{hour};
             my $min  = $self->{stats}->{topics}[$i]{min};
 
-            $hash{nick} = $self->_format_word($nick);
+            $hash{nick} = $nick;
             $hash{time} = "$hour:$min";
             _html('<tr><td class="hicell"><i>' . $self->_format_line($topic) . '</i></td>');
             _html('<td class="hicell"><b>' . $self->_template_text('bylinetopic', %hash) . '</b></td></tr>');
@@ -1569,6 +1569,8 @@ sub _template_text
     }
 
     $hash{channel} = $self->{cfg}->{channel};
+    # the nick is sanitized here, everything else outside of _template_text
+    $hash{nick} = $self->_format_word($hash{nick}) if $hash{nick};
 
     foreach my $key (sort keys %hash) {
         $text =~ s/\[:$key\]/$hash{$key}/;
@@ -2086,7 +2088,7 @@ sub _mostactivebyhour
                             my $w = int(($count / $maxlines) * 100) || 1;
                             _html("<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />");
                         }
-                        _html($nick." - ".$count);
+                        _html($self->_format_word($nick)." - ".$count);
                         _html("</td>");
                     } else {
                         _html("<td class=\"hicell\">&nbsp;</td>");
