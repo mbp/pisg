@@ -3,7 +3,6 @@
 use strict;
 use Getopt::Long;
 use FindBin;
-use lib $FindBin::Bin . "/modules";     # Module search path
 
 # pisg - Perl IRC Statistics Generator
 #
