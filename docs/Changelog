@@ -1,10 +1,10 @@
-pisg (x.xx)
+pisg (0.38) - Thu Apr, 25th 2002
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)
    * Added support for pircbot (http://www.jibble.org/pircbot.php)
    * Note added to docs/FORMATS file about oer format limitations (thanks, EQU
      <equ@equnet.org>)
    * Icelandic translation added (thanks, Birkir <dkf@visir.is>)
-   * scripts/windows-ftp-upload.txt has been added, a sample script and
+   * scripts/windows-ftp-upload.txt has been added; a sample script and
      description on how to upload files automatically on Windows. (thanks,
      Azhrarn)
    * A old configuration option appeared on commandline when doing pisg --help
@@ -12,11 +12,12 @@ pisg (x.xx)
      PicHeight, pic_loc => PicLocation. Documentation also added.
    * Split up the documentation of options into different categories, for
      better overview.
-   * Fix minor typo in bxlog formats which causes joins to a channel not being
+   * Fix minor typo in bxlog formats which caused joins to a channel not being
      registered properly (thanks, comcute <comcute@blastnet.ee>)
    * A dutch translation appeared in the English version of pisg; fixed.
    * Nicktracking wasn't working with the irssi logfile format, fixed (thanks,
      Matthäus Wander <jonny_b.good@gmx.de>)
+   * Time-bars are now centered properly
    * Czech translation added (thanks, Jaroslav Ostadal <s98704@tacheon.dkm.cz>)
 
 pisg (0.37) - Mon Apr, 8th 2002
