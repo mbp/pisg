@@ -79,8 +79,8 @@ my $conf = {
     show_legend => 1,
     show_kickline => 1,
     show_actionline => 1,
-	show_shoutline => 1,
-	show_slaplines => 1,
+    show_shoutline => 1,
+    show_slaplines => 1,
 
     # Less important things
 
@@ -484,9 +484,9 @@ sub parse_file
                         if ($saying =~ /!/);
 
                     if ($saying !~ /[a-z0-9:]/ && $saying =~ /[A-Z]+/) {
-						$shout{$nick}++;
-						$shoutline{$nick} = $line;
-					}
+                        $shout{$nick}++;
+                        $shoutline{$nick} = $line;
+                    }
 
                     $foul{$nick}++
                         if ($saying =~ /$foulwords/i);
@@ -533,7 +533,7 @@ sub parse_file
             unless ($conf->{ignores}{$nick}) {
                 $actions++;
                 $actions{$nick}++;
-				$actionline{$nick} = $line;
+                $actionline{$nick} = $line;
                 $line{$nick}++;
                 $line_time{$nick}[int($hour/6)]++;
 
@@ -1189,10 +1189,10 @@ sub activetimes
 sub legend
 {
     html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
-    html("<td align=\"center\"><img src=\"$conf->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
-    html("<td align=\"center\"><img src=\"$conf->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
-    html("<td align=\"center\"><img src=\"$conf->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
-    html("<td align=\"center\"><img src=\"$conf->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
+    html("<td align=\"center\" class=\"asmall\"><img src=\"$conf->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
+    html("<td align=\"center\" class=\"asmall\"><img src=\"$conf->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
+    html("<td align=\"center\" class=\"asmall\"><img src=\"$conf->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
+    html("<td align=\"center\" class=\"asmall\"><img src=\"$conf->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
     html("</tr></table>\n");
 }
 
@@ -1494,9 +1494,9 @@ sub mosturls
            my $sorturl = $sorturls[$i];
            my $urlcount = $toll{$sorturls[$i]};
            my $lastused = $urlnick{$sorturls[$i]};
-	   if (length($sorturl) > 60) {
-		   $sorturl = substr($sorturl, 0, 60);
-	   }
+           if (length($sorturl) > 60) {
+               $sorturl = substr($sorturl, 0, 60);
+           }
            html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
            html("<td bgcolor=\"$conf->{hicell}\"><a href=\"$sorturls[$i]\">$sorturl</a></td>");
            html("<td bgcolor=\"$conf->{hicell}\">$urlcount</td>");
@@ -1605,16 +1605,16 @@ sub shoutpeople
         my %hash = (
             nick => $shout[0],
             per => $spercent{$shout[0]},
-			line => htmlentities($shoutline{$shout[0]})
+            line => htmlentities($shoutline{$shout[0]})
         );
 
         my $text = template_text('shout1', %hash);
-		if($conf->{show_shoutline}) {
-			my $exttext = template_text('shouttext', %hash);
-			html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
-		} else {
-	        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
-		}
+        if($conf->{show_shoutline}) {
+            my $exttext = template_text('shouttext', %hash);
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+        } else {
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        }
         if (@shout >= 2) {
             my %hash = (
                 nick => $shout[1],
@@ -1647,15 +1647,15 @@ sub slap
         my %hash = (
             nick => $slaps[0],
             slaps => $slap{$slaps[0]},
-			line => $slapline{$slaps[0]}
+            line => $slapline{$slaps[0]}
         );
         my $text = template_text('slap1', %hash);
-		if($conf->{show_slaplines}) {
-			my $exttext = template_text('slaptext', %hash);
-			html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
-		} else {
-        	html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
-		}
+        if($conf->{show_slaplines}) {
+            my $exttext = template_text('slaptext', %hash);
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+        } else {
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        }
         if (@slaps >= 2) {
             my %hash = (
                 nick => $slaps[1],
@@ -1681,15 +1681,15 @@ sub slap
         my %hash = (
             nick => $slaps[0],
             slaps => $slapped{$slaps[0]},
-			line => $slappedline{$slaps[0]}
+            line => $slappedline{$slaps[0]}
         );
         my $text = template_text('slapped1', %hash);
         if($conf->{show_slaplines}) {
-	        my $exttext = template_text('slappedtext', %hash);
-			html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
-		} else {
-	        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
-		}
+            my $exttext = template_text('slappedtext', %hash);
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+        } else {
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        }
         if (@slaps >= 2) {
             my %hash = (
                 nick => $slaps[1],
@@ -1697,7 +1697,7 @@ sub slap
             );
 
             my $text = template_text('slapped2', %hash);
-	        html("<br><span class=\"small\">$text</span>");
+            html("<br><span class=\"small\">$text</span>");
         }
         html("</td></tr>");
     } else {
@@ -2099,16 +2099,16 @@ sub mostactions
         my %hash = (
             nick => $actions[0],
             actions => $actions{$actions[0]},
-			line => $actionline{$actions[0]}
+            line => $actionline{$actions[0]}
         );
 
-		my $text = template_text('action1', %hash);
-		if($conf->{show_actionline}) {
-			my $exttext = template_text('actiontext', %hash);
-    	    html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");  
-		} else {
-			html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
-		}
+        my $text = template_text('action1', %hash);
+        if($conf->{show_actionline}) {
+            my $exttext = template_text('actiontext', %hash);
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");  
+        } else {
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        }
 
         if (@actions >= 2) {
             my %hash = (
@@ -2179,7 +2179,7 @@ sub lasttopics
     $debug->("Total number of topics: ". scalar @topics);
 
     my %hash = (
-	    total => scalar @topics
+        total => scalar @topics
     );
 
     if (@topics) {
@@ -2203,12 +2203,12 @@ sub lasttopics
             html("<tr><td bgcolor=\"$conf->{hicell}\"><i>$topic</i></td>");
             html("<td bgcolor=\"$conf->{hicell}\">By <b>$nick</b> at <b>$hour:$min</b></td></tr>");
         }
-       } else {
-            html("<tr><td bgcolor=\"$conf->{hicell}\">" . template_text('notopic') ."</td></tr>");
-       }
-	   if(@topics) {
-		html("<tr><td align=\"center\" colspan=\"2\">" . template_text('totaltopic', %hash) . "</td></tr>");
-	   }
+    } else {
+        html("<tr><td bgcolor=\"$conf->{hicell}\">" . template_text('notopic') ."</td></tr>");
+    }
+    if(@topics) {
+        html("<tr><td align=\"center\" colspan=\"2\" class=\"headline\">" . template_text('totaltopic', %hash) . "</td></tr>");
+    }
 }
 
 
@@ -2251,7 +2251,11 @@ td {
 
 .headline { color: $conf->{hcolor}; }
 .small { font-family: verdana, arial, sans-serif; font-size: 10px; }
-.asmall { font-family: arial narrow, sans-serif; font-size: 10px }
+.asmall { 
+      font-family: arial narrow, sans-serif; 
+      font-size: 10px;
+      color: $conf->{text};
+}
 </style></head>
 <body$bgpic>
 <div align="center">
