@@ -1,7 +1,9 @@
-pisg (x.xx)
-   * Be in-casesensitive on charsets.
+pisg (0.46) - Tue Feb, 11th 2003
    * Fix serious bug which caused garbled output i "Latest topics" and other
      places with URLs.
+   * The default for the QuoteWidth option has been changed to 80.
+   * Be in-casesensitive on charsets.
+   * Small translations update to lang.txt
 
 pisg (0.45) - Wed Feb, 5th 2003
    * Fix 3 small gramattical errors in english language. (thanks Cheetah)
