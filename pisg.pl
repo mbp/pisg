@@ -131,7 +131,6 @@ sub init_pisg
 {
     print "pisg $config->{version} - Perl IRC Statistics Generator\n\n";
 
-    get_cmdlineoptions();
     get_language_templates();
 
     $timestamp = time;
@@ -201,6 +200,7 @@ sub init_lineformats {
 
 sub init_config
 {
+    get_cmdlineoptions();
 
     if (open(CONFIG, $config->{configfile})) {
 
@@ -242,8 +242,10 @@ sub init_config
 
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
-                    my $var = tl($1); # Make the string lowercase
-                    $config->{$var} = $2;
+                    my $var = lc($1); # Make the string lowercase
+                    unless ($config->{$var}) {
+                        $config->{$var} = $2;
+                    }
                     debug("Conf: $var = $2");
                 }
 
@@ -257,7 +259,7 @@ sub init_config
         }
 
         close(CONFIG);
-    }
+    } 
 
 }
 
