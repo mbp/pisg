@@ -28,6 +28,7 @@ sub normalline
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
+               return unless index($hash{nick}, ' ') == -1;
         $hash{saying} = $3;
 
         return \%hash;
@@ -74,9 +75,9 @@ sub thirdline
             $hash{newtopic} =~ m/to:(.*)/;
             $hash{newtopic} = $1;
 
-        } elsif (substr($3, 0, 4) eq 'mode') {
+        } elsif (substr($3, 0, 5) eq 'mode/') {
             $hash{newmode} = substr($4, 1);
-            $hash{nick} = $8;
+            $hash{nick} = $8 || $7;
             $hash{nick} =~ s/.* (\S+)$/$1/; # Get the last word of the string
 
         } elsif (($5.$6) eq 'hasjoined') {
