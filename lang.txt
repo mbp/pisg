@@ -894,6 +894,7 @@ mostwordstopic = "Meest genoemde woorden"
 referencetopic = "Meest genoemde nicks"
 urlstopic = "Meest genoemde URLs"
 notopic = "De mensen hiero weten nog steeds niet hoe ze +t moeten gebruiken."
+bylinetopic = "door [:nick] op [:time]"
 
 ## Other text
 
