@@ -378,3 +378,11 @@ time"
 
   - You must also load the sirc-timestamp.pl script in the scripts subdirectory
     into sirc (/load sirc-timestamp.pl after copying to appropriate location)
+
+* dircproxy
+  - Detachable IRC Proxy Server (http://www.dircproxy.net/)
+
+  - In order to use this, format must be set to 'dircproxy'
+  
+  - Currently does not recognize nick changes - apparently it logs nick changes
+    to a separate file.  As a result, nick tracking will not work.
