@@ -3553,6 +3553,7 @@ urlstopic = "Οι πιο δημοφιλείς διευθύνσεις"
 notopic = "Δεν δηλώθηκε κάποιο topic στο κανάλι."
 mostnickstopic = "Χρήστες με τα περισσότερα ψευδώνυμα"
 bylinetopic = "από [:nick] στις [:time]"
+dailyactivitytopic = "Ημερήσια δραστηριότητα (τις τελευταίες [:n] ημέρες)"
 
 ## Other text
 
