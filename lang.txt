@@ -1278,10 +1278,10 @@ allcapstext = "<b>Yksi esimerkki:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]
 
 violent1 = "<b>[:nick]</b> on tosi hyökkäävä persoona! Hän pieksi muita irkkaajia peräti <b>[:attacks]</b> kertaa!"
 violent2 = "<b>[:nick]</b>:ltakaan ei itsehillintä onnistu. Hän hakkasi muita <b>[:attacks]</b> kertaa..."
-violent3 = "Kukaan ei tällä kertaa hakanut ketään, olemmeko saavuttaneet rauhan?"
+violent3 = "Kukaan ei tällä kertaa hakannut ketään, olemmeko saavuttaneet rauhan?"
 violenttext = "<b>Yksi esimerkki:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-attacked1 = "Sääli <b>[:nick]</b>:ta, kukaan ei tykkää hänestä. Häntä läpsittiin peräti <b>[:attacks]</b> kertaa..."
+attacked1 = "Sääli <b>[:nick]</b>:a, kukaan ei tykkää hänestä. Häntä läpsittiin peräti <b>[:attacks]</b> kertaa..."
 attacked2 = "<b>[:nick]</b> näyttää olevan myös epäsuosiossa. Häntä hakattiin toiseksi eniten - <b>[:attacks]</b> kertaa!"
 attackedtext = "<b>Yksi esimerkki:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -1289,7 +1289,7 @@ gotkick1 = "<b>[:nick]</b> sai monoa ennätykselliset [:kicks] kertaa!"
 gotkick2 = "<b>[:nick]</b> seuraa perässä: saanut persiilleen [:kicks]:sti..."
 kicktext = "<b>Yksi esimerkki:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-joins = "<b>[:nick]</b> ei osanut päättää: lähteäkö vai jäädäkö. Tarkastellun ajanjakson aikana hän on joininut kanavalle [:joins] kertaa!"
+joins = "<b>[:nick]</b> ei osannut päättää: lähteäkö vai jäädäkö. Tarkastellun ajanjakson aikana hän on joininut kanavalle [:joins] kertaa!"
 
 kick1 = "<b>[:nick]</b>:n touhuissa on vähän väärinkäyttämisen makua hänen monotettuaan [:kicked] irkkaajaa!"
 kick2 = "<b>[:nick]</b>, [:oldnick]:n uskollisimpia seuraajia, jakoi potkua persiille [:kicked] ihmiselle..."
@@ -1359,7 +1359,7 @@ show_time = "Milloin?"
 show_wpl = "Sanaa lauseessa"
 show_cpl = "Merkkiä lauseessa"
 show_lastseen = "Viimeksi nähty"
-lastused = "Viimeksi maininut"
+lastused = "Viimeksi maininnut"
 lastseen1 = "päivä sitten" 
 lastseen2 = "päivää sitten"
 today = "Tänään"
