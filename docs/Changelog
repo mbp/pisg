@@ -1,6 +1,6 @@
-pisg (0.25)
+pisg (0.25) - Wed, Sep 26th 2001
    * Fixed days counting wrong when using logdir option.
-   * New options by Patrick Assems:
+   * New options by Patrick Aussems:
      - show_mrn, disable/enable most referenced nicks
      - show_mru, disable/enable most referenced urls
      - show_muw, disable/enable most used words
@@ -9,6 +9,8 @@ pisg (0.25)
      logfile configurations. (David Leadbeater)
    * Some fixes for eggdrop format where the nick was in nick!user@host
      format.
+   * Added new options 'pic_width' and 'pic_height', enables people to specify
+     the sizes of userpictures.
 
 pisg (0.24) - Mon, Sep 24th 2001
    * Logdirs not working, fixed.
