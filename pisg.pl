@@ -950,9 +950,7 @@ sub activenicks
 {
     # The most active nicks (those who wrote most lines)
 
-    my $randomline;
-
-    &headline(template_text('activenickstopic'));
+    headline(template_text('activenickstopic'));
 
     html("<table border=\"0\" width=\"614\"><tr>");
     html("<td>&nbsp;</td><td bgcolor=\"$tdtop\"><b>" . template_text('nick') . "</b></td><td bgcolor=\"$tdtop\"><b>" . template_text('numberlines') ."</b></td><td bgcolor=\"$tdtop\"><b>". template_text('randquote') ."</b></td>");
@@ -969,7 +967,7 @@ sub activenicks
         print "Note: There was less nicks in the logfile than your specificied there to be in most active nicks...\n";
     }
 
-    my ($nick, $visiblenick);
+    my ($nick, $visiblenick, $randomline);
     my $i = 1;
     for (my $c = 0; $c < $activenicks; $c++) {
         $nick = $active[$c];
@@ -981,7 +979,6 @@ sub activenicks
             my $rand = rand($longlines{$nick});
             $randomline = $sayings{$nick}[$rand];
         }
-
 
         # Convert URLs and e-mail addys to links
         $randomline = replace_links($randomline);
@@ -1023,9 +1020,7 @@ sub activenicks
 
     html("</table><br>");
 
-    # ALMOST AS ACTIVE NICKS
-
-    @active = sort { $line{$b} <=> $line{$a} } keys %line;
+    # Almost as active nicks ('These didn't make it to the top..')
 
     my $nickstoshow = $activenicks + $activenicks2;
 
