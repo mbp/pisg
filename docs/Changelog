@@ -15,6 +15,7 @@ pisg (x.xx)
      Hanno Hecker <hanno-pisg@bee.de>)
    * A problem with multiple mode changes (+vv, +oo) in Trillian format has
      been fixed.
+   * README has been polished/modified
    * Changes thanks to Matthew "Cheetah" Gabeler-Lee (<msg2@po.cwru.edu>):
     * A ShowWordTime option now exists that works the same as ShowLineTime,
       but uses word stats

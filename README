@@ -9,8 +9,10 @@ this distribution in the 'docs' directory.
 
 SETTING UP PISG
 ---------------
-Full documentation located in docs/pisg-doc.txt or docs/html/index.html for
-a HTML version. Quick explanation below:
+Full documentation for pisg is located in 'docs/pisg-doc.txt' and
+'docs/html/index.html' for a HTML version.
+
+Quick usage instructions below:
 
 It's quite simple to set up pisg. You have 2 choices:
 
@@ -22,21 +24,6 @@ where you can insert your own data.
 
 The commandline version has the disadvantage that you can only set up one
 channel to be run.
-
-NOTE: The stats will look best with a logfile which is at least one day
-long.  Some stats (like smilies, exclamation marks, etc) doesn't get counted
-before a special amount of time.
-
-Also, pisg supports multiple languages so the texts on the stats page will
-be in your own language; look in lang.txt to see the supported languages.
-The language can be changed from within the pisg.cfg file.
-
-If you have any corrections to the language file, or you want to add a new
-translation, then send it to the mailing list.
-
-And a last note: there is some graphics in the gfx/ folder which pisg uses,
-you should put these in the same directory as your stats file(s) or use the
-'pic_loc' configuration variable.
 
 RUNNING PISG
 ------------
@@ -58,6 +45,23 @@ The syntax and options is explained when doing:
 
 Setting settings on commandline, will override the relevant settings in
 pisg.cfg.
+
+NOTES
+-----
+There is some graphics in the gfx/ folder which pisg uses, you should put
+these in the same directory as your stats file(s) or use the 'PicLocation'
+configuration option.
+
+The stats will look best with a logfile which is at least one day long.
+Some stats (like smilies, exclamation marks, etc) doesn't get counted before
+a special amount of time.
+
+pisg supports multiple languages so the texts on the stats page will
+be in your own language; look in lang.txt to see the supported languages.
+The language can be changed from within the pisg.cfg file.
+
+If you have any corrections to the language file, or you want to add a new
+translation, then send it to the mailing list.
 
 CONTACT INFORMATION
 -------------------
