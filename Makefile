@@ -1,6 +1,7 @@
-# Simple Makefile to make new releases of pisg
+# Bloated Makefile to make new releases of pisg
 
-VERSION = 0.26
+# Ugly hack to get the version number from Pisg.pm
+VERSION = `grep "version =>" modules/Pisg.pm | mawk '{ gsub(/.*"v/, ""); gsub(/".*/, ""); print}'`
 
 DIRNAME = pisg-$(VERSION)
 
@@ -93,3 +94,4 @@ pisg:
 	mv $(DIRNAME) newrelease
 clean:
 	rm -rf newrelease/
+	rm -rf $(DIRNAME)
