@@ -494,8 +494,10 @@ sub parse_file
                     my $l = length($saying);
 
                     if ($l > $conf->{minquote} && $l < $conf->{maxquote}) {
-                        # Creates $hash{nick}[n] - a hash of an array.
-                        push (@{ $sayings{$nick} }, $saying);
+                        # Creates $hash{nick}
+                        if (!(defined $sayings{$nick}) || (rand($longlines{$nick} + 50) < 15)) {
+                            $sayings{$nick} = $saying;
+                        }
                         $longlines{$nick}++;
                     }
 
@@ -1033,8 +1035,7 @@ sub activenicks
         if (!$longlines{$nick}) {
             $randomline = "";
         } else {
-            my $rand = rand($longlines{$nick});
-            $randomline = htmlentities($sayings{$nick}[$rand]);
+            $randomline = htmlentities($sayings{$nick});
         }
 
         # Convert URLs and e-mail addys to links
