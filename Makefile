@@ -18,6 +18,8 @@ DOCS = docs/CONFIG-README \
 	 docs/FORMATS \
 	 docs/Changelog \
 	 docs/CREDITS \
+	 docs/html/ \
+	 docs/pisg-doc.txt \
 
 DEVDOCS = docs/dev/API
 
@@ -77,8 +79,9 @@ pisg:
 	mkdir $(DIRNAME)/gfx
 	cp $(GFX) $(DIRNAME)/gfx
 
+	cd docs && make
 	mkdir $(DIRNAME)/docs
-	cp $(DOCS) $(DIRNAME)/docs
+	cp -r $(DOCS) $(DIRNAME)/docs
 
 	mkdir $(DIRNAME)/docs/dev
 	cp $(DEVDOCS) $(DIRNAME)/docs/dev
@@ -101,5 +104,6 @@ pisg:
 	mv pisg.zip newrelease/$(ZIPFILE)
 	mv $(DIRNAME) newrelease
 clean:
+	cd docs && make clean
 	rm -rf newrelease/
 	rm -rf $(DIRNAME)
