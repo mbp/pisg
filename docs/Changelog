@@ -11,6 +11,7 @@ pisg (x.xx)
    * The irssi logformat now also works when the timestamping includes
      seconds.
    * Added orange_grey colorscheme (thanks, maggic).
+   * PicWidth and PicHeight settings now also works for DefaultPic option.
 
 pisg (0.47) - Wed Feb, 26th 2003
    * Fix bug where multiple URLs in same line would have save name as first URL

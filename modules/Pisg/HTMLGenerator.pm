@@ -517,9 +517,9 @@ sub _activenicks
             _html("</td>");
         } elsif ($self->{cfg}->{defaultpic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
              if ($self->{cfg}->{defaultpic} =~ /^http:\/\//i) {
-                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
+                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{defaultpic}\" $width $height alt=\"\" /></td>");
              } else {
-                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
+                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" $width $height alt=\"\" /></td>");
              }
         }
 
