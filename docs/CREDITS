@@ -108,6 +108,8 @@ Other contributors:
    | updated Dutch translation
  * Julien Danjou <acid@debian.org>
    | pisg(1) manpage
+ * Torbjörn Svensson <azoff@se.linux.org>
+   | ShowFoulDecimals option
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
