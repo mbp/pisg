@@ -379,6 +379,9 @@ sub init_config
                 print STDERR "Warning: Malformed <set ..> line in $self->{cfg}->{configfile} on line $lineno\n";
             } elsif ($line =~ /<channel/) {
                 print STDERR "Warning: Malformed <channel ..> line in $self->{cfg}->{configfile} on line $lineno\n";
+            } elsif ($line =~ /\S/) {
+                $line =~ s/\n//;
+                print "Warning: Unrecognized line in $self->{cfg}->{configfile} on line $lineno: '$line'\n";
             }
         }
 
