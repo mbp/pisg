@@ -59,10 +59,9 @@ allcaps2 = "<b>[:nick]</b> just forgot to deactivate [:his:her:] Caps-Lock.  [:H
 allcaps3 = "Everybody had their shift-key under control.  :)"
 allcapstext = "<b>For example, like this:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-
 violent1 = "<b>[:nick]</b> is a very aggresive person.  [:He:She:] attacked others <b>[:attacks]</b> times."
 violent2 = "<b>[:nick]</b> can't control [:his:her:] aggressions, either.  [:He:She:] picked on others <b>[:attacks]</b> times."
-violent3 = "Nobody beat anyone up.  Everybody was friendly."
+violent3 = "Geen klappen uitgedeeld hiero, wat een vriendelijk zooitje."
 violenttext = "<b>For example, like this:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Poor <b>[:nick]</b>, nobody likes [:him:her:].  [:He:She:] was attacked <b>[:attacks]</b> times."
@@ -477,7 +476,7 @@ actiontext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 question1 = "<b>[:nick]</b> est soit stupide soit trop curieux... [:per]% de ses lignes contiennent une question !"
 question2 = "<b>[:nick]</b> n'en connait pas davantage, [:per]% de ses lignes étaient des questions."
-question3 = "Personne ne pose de question ici, tous des génies sur ce channel ?"
+question3 = "Personne ne pose de question ici, tous des génies sur ce channel?"
 
 shout1 = "[:Le:La:] plus bruyant(e) est <b>[:nick]</b> qui gueule [:per]% du temps !"
 shout2 = "<b>[:nick]</b> est aussi un(e) <i>[:vieux raleur:mégère:]</i> qui braille [:per]% du temps !"
@@ -528,7 +527,7 @@ short2 = "<b>[:nick]</b> n'a pas grand chose à dire non plus, en moyenne [:lette
 
 foul1 = "<b>[:nick]</b> a du mal à s'exprimer, [:per]% de ses lignes contiennent des mots incompréhensibles."
 foul2 = "<b>[:nick]</b> parle aussi comme un chartier, [:per]% du temps."
-foul3 = "Personne n'a de problème pour parler sur [:channel] ! Pendant combien de temps encore ?"
+foul3 = "Personne n'a de problème pour parler sur [:channel] ! Pendant combien de temps encore?"
 
 smiles1 = "<b>[:nick]</b> apporte un peu de gaiété dans le monde, [:per]% de ses lignes contiennent un smiley :)"
 smiles2 = "<b>[:nick]</b> n'est pas triste non plus, qui sourit [:per]% du temps."
@@ -570,7 +569,7 @@ nottop = "Ne sont pas dans le classement"
 word = "Mot"
 numberuses = "Nb d'occurences"
 show_words = "Nb de Mots"
-show_time = "Quand ?"
+show_time = "Quand?"
 show_wpl = "Mots par ligne"
 show_cpl = "Chars par ligne"
 show_lastseen = "Dernière venue"
@@ -984,14 +983,14 @@ mailto = "Email para"
 <lang name="NL">
 mostop1 = "<b>[:nick]</b> doneerde <b>[:ops]</b> ops in deze chatbox..."
 mostop2 = "<b>[:nick]</b> was ook erg beschaafd: <b>[:ops]</b> werden er uitgedeeld door [:hem:haar:]."
-mostop3 = "Totaal vreemd, Geen operator status gegeven op [:channel]!"
+mostop3 = "Wat raar, geen operator status gegeven op [:channel]!"
 
 mostdeop1 = "<b>[:nick]</b> is de chatbox agent met <b>[:deops]</b> deops..."
 mostdeop2 = "<b>[:nick]</b> deopte <b>[:deops]</b> chatters."
-mostdeop3 = "Wow, geen op afgenomen op [:channel]!"
+mostdeop3 = "Wow, geen ops afgepakt in [:channel]!"
 
 question1 = "<b>[:nick]</b> is gewoon stom of verzint de vragen waar je bijstaat... <b>[:per]%</b> bevatte een vraag!"
-question2 = "<b>[:nick]</b> is bijna net zo stom/blond, <b>[:per]%</b> van [:zijn:haar:] regels eindigde ook met een ?."
+question2 = "<b>[:nick]</b> is bijna net zo stom/blond, <b>[:per]%</b> van [:zijn:haar:] regels eindigde ook met een?."
 question3 = "Niemand vroeg wat hiero, ze denken zeker allemaal dat ze slim zijn .... ~NOT?"
 
 action1 = "<b>[:nick]</b> laat ook weten wat [:hij:ze:] doet: <b>[:actions]</b> actie's!"
@@ -999,7 +998,7 @@ action2 = "Ook <b>[:nick]</b> vertelt ons wat [:hij:zij:] doet met <b>[:actions]
 action3 = "Er was niet zoveel actie in [:channel]!"
 actiontext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-shout1 = "Lelijk Schreeuwmonster was <b>[:nick]</b>, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid!"
+shout1 = "Degene die het meest schreeuwde was <B>[:nick]</B>, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid!"
 shout2 = "Ook had <b>[:nick]</b> een grote smoel, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid."
 shout3 = "Hmm niet veel geschreeuw hiero, stil zooitje zeg."
 
@@ -1013,7 +1012,7 @@ violent2 = "<b>[:nick]</b> [:zijn:haar:] pilletjes helpen niet. [:Hij:Zij:] sloe
 violent3 = "Geen slaps uitgedeeld hiero, wat een vriendelijk ongeregeld zooitje."
 violenttext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-attacked1 = "Zielige <b>[:nick]</b>, niemand mag [:hem:haar:]. [:Hij:Zij:] werd <b>[:attacks]</b> keer geslapped."
+attacked1 = "Zielige <b>[:nick]</b>, niemand mag [:hem:haar:]. [:Hij:Zij:] werd <b>[:attacks]</b> keer aangevallen."
 attacked2 = "<b>[:nick]</b> is nog zo'n ongewenst zieltje, [:hij:zij:] werd <b>[:attacks]</b> keer gepijnigt."
 attackedtext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -1043,9 +1042,9 @@ long2 = "<b>[:channel]</b> gemiddelde was <b>[:avg]</b> letters per regel."
 short1 = "<b>[:nick]</b> schreef de kortste regels, gemiddelde van maar <b>[:letters]</b> letters per regel..."
 short2 = "<b>[:nick]</b> had ook [:zijn:haar:] typgeit-dag niet, gemiddeld maar <b>[:letters]</b> letters per regel."
 
-foul1 = "<b>[:nick]</b> is een ASO, <b>[:per]%</b> regels bevatte *boefjes* woorden."
+foul1 = "<b>[:nick]</b> is een ASO, <b>[:per]%</b> regels bevatte lelijke woorden."
 foul2 = "<b>[:nick]</b> kan er ook wat van, en scheld <b>[:per]%</b> van de tijd."
-foul3 = "Iedereen is vriendelijk op  [:channel]! Leven ze zich veel uit op hun werk ofzow ?"
+foul3 = "Iedereen is vriendelijk in [:channel]! Leven ze zich veel uit op hun werk ofzow?"
 
 smiles1 = "<b>[:nick]</b> maakt de wereld weer vrolijk , <b>[:per]%</b> regels bevatte een smiley :o)"
 smiles2 = "<b>[:nick]</b> heeft het ook wel naar [:zijn:haar:] zin, en lachte <b>[:per]%</b> van de tijd."
@@ -2258,7 +2257,7 @@ actiontext = "<b>Mesela:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 question1 = "<b>[:nick]</b> aptalmi yoksa cokmu soru soruyor? Yazdiklarinin [:per]% gibi bir bölümünde soru soruyor."
 question2 = "<b>[:nick]</b> fazla bir sey bilmiyor. Yazdiklarinin [:per]%'si soru iceriyor."
-question3 = "Bu kanalda kimse birsey sormuyor. Bütün zekiler burada sanirim ?"
+question3 = "Bu kanalda kimse birsey sormuyor. Bütün zekiler burada sanirim?"
 
 shout1 = "En cok bagiran<b>[:nick]</b>, Yazdiklarinin [:per]% gibi bir kisminda bagiriyor!"
 shout2 = "Bagirmada <i>eski rekortmen</i> <b>[:nick]</b>,[:per]% gibi bir kisimda bagiriyor!"
