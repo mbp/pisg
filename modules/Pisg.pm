@@ -91,7 +91,7 @@ sub get_default_config_settings
     $self->{cfg} = {
         channel => '',
         logtype => 'Logfile',
-        logfile => '',
+        logfile => [],
         format => 'mIRC',
         network => 'SomeIRCNet',
         outputfile => 'index.html',
@@ -103,7 +103,7 @@ sub get_default_config_settings
         imagepath => '',
         imageglobpath => '',
         defaultpic => '',
-        logdir => '',
+        logdir => [],
         nfiles => 0,
         lang => 'en',
         langfile => 'lang.txt',
@@ -352,14 +352,24 @@ sub init_config
             $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
             while ($settings =~ s/\s([^=]+)=(["'])(.+?)\2//) {
                 my $var = lc($1);
-                $self->{chans}->{$channel}{$var} = $3;
+                if ($var eq "logdir" || $var eq "logfile") {
+                    push(@{$self->{chans}->{$channel}{$var}}, $3);
+                } else {
+                    $self->{chans}->{$channel}{$var} = $3;
+                }
             }
             while (<$fh>) {
                 last if ($_ =~ /<\/*channel>/i);
                 if ($_ =~ /^\s*(\w+)\s*=\s*(["'])(.+?)\2/) {
                     my $var = lc($1);
-                    unless ($self->{override_cfg}->{$var}) {
-                        $self->{chans}->{$channel}{$var} = $3;
+                    unless ((($var eq "logdir" || $var eq "logfile") && scalar(@{$self->{override_cfg}->{$var}}) > 0) || (($var ne "logdir" && $var ne "logfile") && $self->{override_cfg}->{$var})) {
+
+                        if($var eq "logdir" || $var eq "logfile") {
+                            push @{$self->{chans}->{$channel}{$var}}, $3;
+                        } else {
+                            $self->{chans}->{$channel}{$var} = $3;
+                        }
+
                     }
                 } elsif ($_ !~ /^$/) {
                     print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
@@ -433,7 +443,7 @@ sub do_channel
     my $self = shift;
     if (!$self->{cfg}->{channel}) {
         print STDERR "No channels defined.\n";
-    } elsif ((!$self->{cfg}->{logfile}) && (!$self->{cfg}->{logdir})) {
+    } elsif ((!@{$self->{cfg}->{logfile}}) && (!@{$self->{cfg}->{logdir}})) {
         print STDERR "No logfile or logdir defined for " . $self->{cfg}->{channel} . "\n";
     } else {
         $self->init_pisg();        # Init some general things

@@ -589,7 +589,8 @@
     <para>
     This defines the filename of the logfile to parse for the channel. If
     you want to parse a directory full of logfiles, you should use the
-    <command>LogDir</command> option instead.
+    <command>LogDir</command> option instead. Providing this option multiple
+    times will parse multiple files in the order the statements appear.
     </para>
     </refsect1>
     <refsect1>
@@ -624,7 +625,9 @@
     <para>
     When <command>LogDir</command> is defined to valid path to a directory,
     then pisg will run through that directory, parse all logfiles in it and
-    create 1 HTML from it. Useful with for example eggdrop logs.
+    create 1 HTML from it. Useful with for example eggdrop logs. Providing
+    this option multiple times will parse all the files in multiple
+    directories in the order the statements appear.
     </para>
     </refsect1>
     <refsect1>
@@ -660,7 +663,10 @@
     <para>
     When <command>NFiles</command> is set to a positive integer, pisg will
     process at most that much files from <command>LogDir</command>. Useful to
-    create statistics that cover the last week or month.
+    create statistics that cover the last week or month. Note that if multiple
+    <command>LogDir</command> options are provided, <command>NFiles</command>
+    referrs to the number of files which will be processed from each
+    <command>LogDir</command>
     </para>
     </refsect1>
     <refsect1>

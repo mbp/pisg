@@ -5,6 +5,8 @@ pisg (x.xx)
      0.37) has been removed.
    * PicWidth and PicHeight apparently got mixed up in the last version,
    fixed.
+   * Multiple LogDirs and LogFiles can now be specified (thanks, Nathan
+   Poznick)
 
 pisg (0.51) - Wed Jan, 21st 2004
    * Fixed a bug in the irssi format where an action could be recognized as a

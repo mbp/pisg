@@ -72,6 +72,8 @@ sub get_cmdline_options
 
     my %cfg = (
         modules_dir => "$script_dir/modules/",     # Module search path
+        logfile => [],
+        logdir => [],
     );
 
     # Commandline options
@@ -84,13 +86,15 @@ Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 -ch --channel=xxx      : Set channel name
 -cc --cchannels=xxx    : Only do this channel from cfg file, give multiple
                          times to do multiple channels
--l  --logfile=xxx      : Log file to parse
+-l  --logfile=xxx      : Log file to parse, give multiple times to use
+                         multiple log files.
 -o  --outfile=xxx      : Name of HTML file to create
 -t  --tag=xxx          : Replace \%t in --outfile by xxx
 -ma --maintainer=xxx   : Channel/statistics maintainer
 -f  --format=xxx       : Logfile format [see FORMATS file]
 -n  --network=xxx      : IRC network for the channel
--d  --dir=xxx          : Analyze all files in this dir. Ignores logfile
+-d  --dir=xxx          : Analyze all files in this dir. Ignores logfile.
+                         Give multiple times to use multiple directories.
 -nf --nfiles=xxx       : Analyze the last xxx files if used with --dir
 -p  --prefix=xxx       : Analyse only files prefixed by xxx in dir
                          Only works with --dir
@@ -111,13 +115,13 @@ END_USAGE
 
     if (GetOptions('channel=s'    => \$cfg{channel},
                    'cchannels=s@'  => \@{ $cfg{cchannels} },
-                   'logfile=s'    => \$cfg{logfile},
+                   'logfile=s'    => \@{ $cfg{logfile} },
                    'format=s'     => \$cfg{format},
                    'network=s'    => \$cfg{network},
                    'maintainer=s' => \$cfg{maintainer},
                    'outfile=s'    => \$cfg{outputfile},
                    'tag=s'        => \$cfg{outputtag},
-                   'dir=s'        => \$cfg{logdir},
+                   'dir=s'        => \@{ $cfg{logdir} },
                    'nfiles=i'     => \$cfg{nfiles},
                    'prefix=s'     => \$cfg{logprefix},
                    'moduledir=s'  => \$cfg{moduledir},

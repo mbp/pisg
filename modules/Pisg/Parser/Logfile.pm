@@ -60,11 +60,10 @@ sub analyze
         $stats{parsedlines} = 0;
         $stats{totallines} = 0;
 
-        if ($self->{cfg}->{logdir}) {
+        if (scalar(@{$self->{cfg}->{logdir}}) > 0) {
             # Run through all files in dir
             $self->_parse_dir(\%stats, \%lines);
         } else {
-            # Run through the whole logfile
             my %state = (
                 linecount  => 0,
                 lastnick   => '',
@@ -72,7 +71,10 @@ sub analyze
                 lastnormal => '',
                 oldtime    => 24
             );
-            $self->_parse_file(\%stats, \%lines, $self->{cfg}->{logfile}, \%state);
+            foreach my $logfile (@{$self->{cfg}->{logfile}}) {
+                # Run through the whole logfile
+                $self->_parse_file(\%stats, \%lines, $logfile, \%state);
+            }
         }
 
         $self->_pick_random_lines(\%stats, \%lines);
@@ -105,108 +107,111 @@ sub _parse_dir
     my $self = shift;
     my ($stats, $lines) = @_;
 
-    # Add trailing slash when it's not there..
-    $self->{cfg}->{logdir} =~ s/([^\/])$/$1\//;
+    # Loop through each logdir we were given
+    foreach my $logdir (@{$self->{cfg}->{logdir}}) {
+        # Add trailing slash when it's not there..
+        $logdir =~ s/([^\/])$/$1\//;
 
-    unless ($self->{cfg}->{silent}) {
-        unless ($self->{cfg}->{nfiles} > 0) {
-            print "Going into $self->{cfg}->{logdir} and parsing all files there...\n\n"
-        } else {
-            print "Going into $self->{cfg}->{logdir} and parsing the last $self->{cfg}->{nfiles} file(s) there...\n\n"
+        unless ($self->{cfg}->{silent}) {
+            unless ($self->{cfg}->{nfiles} > 0) {
+                print "Going into $logdir and parsing all files there...\n\n"
+            } else {
+                print "Going into $logdir and parsing the last $self->{cfg}->{nfiles} file(s) there...\n\n"
+            }
         }
-    }
-    my @filesarray;
-    opendir(LOGDIR, $self->{cfg}->{logdir}) or
-    die("Can't opendir $self->{cfg}->{logdir}: $!");
-    @filesarray = grep {
-        /^[^\.]/ && /^$self->{cfg}->{logprefix}/ && -f "$self->{cfg}->{logdir}/$_"
-    } readdir(LOGDIR) or
-    die("No files in \"$self->{cfg}->{logdir}\" matched prefix \"$self->{cfg}->{logprefix}\"");
-    closedir(LOGDIR);
+        my @filesarray;
+        opendir(LOGDIR, $logdir) or
+        die("Can't opendir ${logdir}: $!");
+        @filesarray = grep {
+            /^[^\.]/ && /^$self->{cfg}->{logprefix}/ && -f "$logdir/$_"
+        } readdir(LOGDIR) or
+        die("No files in \"$logdir\" matched prefix \"$self->{cfg}->{logprefix}\"");
+        closedir(LOGDIR);
 
-    my %state = (
-        lastnick   => '',
-        monocount  => 0,
-        oldtime    => 24
-    );
-    if ($self->{cfg}->{logsuffix} ne '') {
-        my @temparray;
-        my %months = (
-            'jan' => '0',
-            'feb' => '1',
-            'mar' => '2',
-            'apr' => '3',
-            'may' => '4',
-            'jun' => '5',
-            'jul' => '6',
-            'aug' => '7',
-            'sep' => '8',
-            'oct' => '9',
-            'nov' => '10',
-            'dec' => '11',
+        my %state = (
+            lastnick   => '',
+            monocount  => 0,
+            oldtime    => 24
         );
-        my ($mreg, $dreg, $yreg) = split(/\|\|/, $self->{cfg}->{logsuffix});
-        my (@month, @day, @year);
-        for my $file (@filesarray) {
-            LOOPSTART:
-            if ($file =~ /$mreg/) {
-                my $month = $1;
-                $month = lc $month;
-                $month = $months{$month}
-                    if (defined $months{$month});
-                push @month, $month;
-            } else {
-                splice(@filesarray,$#month + 1, 1);
-                if ($file = $filesarray[$#month + 1]) {
-                    goto LOOPSTART;
+        if ($self->{cfg}->{logsuffix} ne '') {
+            my @temparray;
+            my %months = (
+                'jan' => '0',
+                'feb' => '1',
+                'mar' => '2',
+                'apr' => '3',
+                'may' => '4',
+                'jun' => '5',
+                'jul' => '6',
+                'aug' => '7',
+                'sep' => '8',
+                'oct' => '9',
+                'nov' => '10',
+                'dec' => '11',
+            );
+            my ($mreg, $dreg, $yreg) = split(/\|\|/, $self->{cfg}->{logsuffix});
+            my (@month, @day, @year);
+            for my $file (@filesarray) {
+                LOOPSTART:
+                if ($file =~ /$mreg/) {
+                    my $month = $1;
+                    $month = lc $month;
+                    $month = $months{$month}
+                        if (defined $months{$month});
+                    push @month, $month;
                 } else {
-                    last;
+                    splice(@filesarray,$#month + 1, 1);
+                    if ($file = $filesarray[$#month + 1]) {
+                        goto LOOPSTART;
+                    } else {
+                        last;
+                    }
+                }
+                if ($file =~ /$dreg/) {
+                    push @day, $1;
+                } else {
+                    splice(@filesarray,$#day + 1, 1);
+                    splice(@month,$#day + 1);
+                    if ($file = $filesarray[$#day + 1]) {
+                        goto LOOPSTART;
+                    } else {
+                        last;
+                    }
+                }
+                if ($file =~ /$yreg/) {
+                    push @year, $1;
+                } else {
+                    splice(@filesarray,$#year + 1, 1);
+                    splice(@month,$#year + 1);
+                    splice(@day,$#year + 1);
+                    if ($file = $filesarray[$#year + 1]) {
+                        goto LOOPSTART;
+                    } else {
+                        last;
+                    }
                 }
             }
-            if ($file =~ /$dreg/) {
-                push @day, $1;
-            } else {
-                splice(@filesarray,$#day + 1, 1);
-                splice(@month,$#day + 1);
-                if ($file = $filesarray[$#day + 1]) {
-                    goto LOOPSTART;
-                } else {
-                    last;
-                }
-            }
-            if ($file =~ /$yreg/) {
-                push @year, $1;
-            } else {
-                splice(@filesarray,$#year + 1, 1);
-                splice(@month,$#year + 1);
-                splice(@day,$#year + 1);
-                if ($file = $filesarray[$#year + 1]) {
-                    goto LOOPSTART;
-                } else {
-                    last;
-                }
-            }
+            my @newarray = @filesarray[ sort {
+                                        $year[$a] <=> $year[$b]
+                                                ||
+                                        $month[$a] <=> $month[$b]
+                                                ||
+                                        $day[$a] <=> $day[$b]
+                                    } 0..$#filesarray ];
+            @filesarray = @newarray;
+        } else {
+            @filesarray = sort {lc($a) cmp lc($b)} @filesarray;
         }
-        my @newarray = @filesarray[ sort {
-                                    $year[$a] <=> $year[$b]
-                                               ||
-                                    $month[$a] <=> $month[$b]
-                                               ||
-                                    $day[$a] <=> $day[$b]
-                                 } 0..$#filesarray ];
-        @filesarray = @newarray;
-    } else {
-        @filesarray = sort {lc($a) cmp lc($b)} @filesarray;
-    }
 
-    if($self->{cfg}->{nfiles} > 0) {
-        my $shift = @filesarray - $self->{cfg}->{nfiles};
-        splice(@filesarray, 0, $shift);
-    }
+        if($self->{cfg}->{nfiles} > 0) {
+            my $shift = @filesarray - $self->{cfg}->{nfiles};
+            splice(@filesarray, 0, $shift);
+        }
 
-    foreach my $file (@filesarray) {
-        $file = $self->{cfg}->{logdir} . $file;
-        $self->_parse_file($stats, $lines, $file, \%state);
+        foreach my $file (@filesarray) {
+            $file = $logdir . $file;
+            $self->_parse_file($stats, $lines, $file, \%state);
+        }
     }
 }
 
