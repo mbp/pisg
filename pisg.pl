@@ -83,7 +83,7 @@ $timeoffset = "+0";		# A time offset on the stats page - if your
 # You shouldn't care about anything below this point
 $debug = 0;			# 0 = Debugging off, 1 = Debugging on
 $debugfile = "debug.log";	# Path to debug file(must be set if $debug == 1)
-$version = "v0.16";
+$version = "v0.16a";
 
 my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
 $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
@@ -883,12 +883,10 @@ sub activetimes
         my $percent = ($times{$hour} / $lines) * 100;
         $percent =~ s/(\.\d)\d+/$1/;
 
-        print STDERR "before: $hour\n";
         if ($timeoffset =~ /\+(\d)/) {
             # We must plus some hours to the time
             $hour += $1;
             $hour = $hour % 24;
-            print STDERR "hour: $hour\n";
             if ($hour < 10) { $hour = "0" . $hour; }
 
         } elsif ($timeoffset =~ /-(\d)/) {
