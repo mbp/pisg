@@ -75,7 +75,7 @@ sub thirdline
             $hash{newtopic} =~ s/'$//;
 
         } elsif ($#line >= 3 && ($line[1].$line[2]) eq 'setsmode:') {
-            $hash{newmode} = join(' ', @line[3..$#line]);
+            $hash{newmode} = $line[3];
 
         } elsif ($#line >= 3 && ($line[2].$line[3]) eq 'hasjoined') {
             $hash{newjoin} = $line[0];
