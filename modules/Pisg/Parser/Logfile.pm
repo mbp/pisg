@@ -526,9 +526,7 @@ sub _uniquify_nicks {
     my ($stats) = @_;
 
     foreach my $word (keys %{ $stats->{wordcounts} }) {
-        if (is_nick($word)) {
-	    my $realnick = find_alias($word);
-
+        if (my $realnick = is_nick($word)) {
 	    # The lc() is an attempt at being case insensitive.
 	    if (lc($realnick) ne lc($word)) {
 	        $stats->{wordcounts}{$realnick} += $stats->{wordcounts}{$word};
