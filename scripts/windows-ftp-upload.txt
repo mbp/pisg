@@ -1,0 +1,27 @@
+AUTOMATIC FTP UPLOAD SCRIPT FOR WINDOWS
+-----------------------------
+
+Change the paths and such so they make sense with your config and have fun all
+you poor m$ users. ;)  (NOTE:  You may need to change the last line to 'ftp
+-s:%f0' on some old NT systems.)  Basically just put all your ftp commands
+between the 'goto skip' and ':skip', and put any commands you want executed
+BEFORE IT (like pisg) at the end.  The batch file will ignore the ftp stuff
+because of the goto, and the ftp script will ignore the one command it doesnt
+recognize(goto) with a small complaint and no error.
+                                                                                               
+-----------------------pisg.bat----------------------------                                    
+                                                                                               
+goto skip                                                                                      
+                                                                                               
+OPEN your.ftp.server.com                                                                       
+username                                                                                       
+password                                                                                       
+CD /yourdir                                                                                    
+PUT "C:\Program Files\WinBot\Logs\pisg-0.28\index.html"                                        
+QUIT                                                                                           
+                                                                                               
+:skip                                                                                          
+                                                                                               
+cd "C:\Program Files\WinBot\Logs\pisg-0.28\"                                                   
+perl "C:\Program Files\WinBot\Logs\pisg-0.28\pisg"                                             
+ftp -s:%0   
