@@ -33,7 +33,6 @@ sub add_alias
         }
     } elsif (not defined $aliases{$lcalias}) {
         $aliases{$lcalias} = $aliases{$lcnick};
-    } elsif ($aliases{$lcnick} ne $aliases{$lcalias}) {
     }
 }
 
