@@ -10,7 +10,7 @@ sub new
     my $type = shift;
     my $self = {
         debug => $_[0],
-        normalline => '^(\d+):\d+ <.([^>]+)> (.*)',
+        normalline => '^(\d+):\d+ <[@+ ]?([^>]+)> (.*)',
         actionline => '^(\d+):\d+  \* (\S+) (.*)',
         thirdline  => '^(\d+):(\d+) -\!- (\S+) (\S+) (\S+) (\S+) (\S+)(.*)',
     };

@@ -66,6 +66,8 @@ And all the other contributors:
      modularize pisg into packages/objects.
  * Patrick Aussems aka Zyk <zyk@bugfactory.org>
    | New options: show_mrn, show_mru, show_muw, show_randquote
+ * David Leadbeater
+   | Flexibility to irssi logfiles.
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
