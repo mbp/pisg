@@ -1,9 +1,11 @@
-pisg (x.xx)
+pisg (0.59) - Sun Oct, 3rd 2004
    Changes by Morten Brix Pedersen:
    * Fix problem with number of rows shown when a nick has been ignored.
    (thanks, Chris Thornhill)
    * Update Windows documentation. Hopefully people will have less problems
    now.
+   * alternative and title text in "active times" graphics are now the
+   number of lines instead of percentage.
    Changes by Christoph Berg:
    * Make BigNumbersThreshold a perl expression; defaults to sqrt($lines).
 

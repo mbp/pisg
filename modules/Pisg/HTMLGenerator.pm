@@ -65,7 +65,7 @@ sub create_output
 
     my $fname = $self->{cfg}->{outputfile};
     $fname =~ s/\%t/$self->{cfg}->{outputtag}/g;
-    print "Now generating HTML in $fname with BigNumbersThreshold $self->{cfg}->{bignumbersthreshold}...\n"
+    print "Now generating HTML in $fname...\n"
         unless ($self->{cfg}->{silent});
 
     open (OUTPUT, "> $fname") or
@@ -421,6 +421,7 @@ sub _activetimes
 
         my $size = int(($self->{stats}->{times}{$hour} / $highest_value) * 100);
         my $percent = ($self->{stats}->{times}{$hour} / $self->{stats}->{parsedlines}) * 100;
+        my $lines_per_hour = $self->{stats}->{times}{$hour};
         $percent =~ s/(\.\d)\d+/$1/;
 
         if ($size < 1) {
@@ -432,7 +433,7 @@ sub _activetimes
         $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines_per_hour\" title=\"$lines_per_hour\"/></td>\n";
     }
 
     _html("<table border=\"0\"><tr>\n");
