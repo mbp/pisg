@@ -68,6 +68,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/virc98.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Trillian.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Template.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/RacBot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/xchat.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \

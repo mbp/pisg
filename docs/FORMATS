@@ -275,3 +275,13 @@ time"
   Example:
     1013630386748 :nick!ident@hostname PRIVMSG #channel :Hello world.
 
+
+* Eggdrop RacBot
+  - the Eggdrop RacBot is an IRC bot, which dreived from the original eggdrop
+    sources (see http://www.eggheads.org)
+
+  - Homepage: http://www.racbot.org/
+
+  - In order to use this, format must be set to 'RacBot'.
+
+
