@@ -192,7 +192,7 @@ question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% [:seiner:ihrer:]
 question3 = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Genies sein? ;)"
 
 shout1 = "Am lautesten war <b>[:nick]</b> der/die [:per]% der Zeit geschrien hat!"
-shout2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> [:der:die:] [:per]% der Zeit rumgeschrieen hat!"
+shout2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> [:der:die:] [:per]% der Zeit rumgeschrien hat!"
 shout3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
 
 allcaps1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb [:er:sie:] in GROSSBUCHSTABEN."
@@ -220,7 +220,7 @@ kick2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, [:er:sie:] kickte [:k
 kick3 = "Nette Opper hier, niemand wurde gekickt!"
 
 words1 = "<b>[:nick]</b> war mit [:words] Worten sehr mitteilungsbedürftig!"
-words2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, schaffte es auf immerhin [:words] Worte"
+words2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, schaffte es auf immerhin [:words] Worte."
 words3 = "Niemand hat etwas gesagt? Seltsamer Channel..."
 
 mono1 = "<b>[:nick]</b> spricht viel mit sich selbst, [:er:sie:] schrieb über 5 Zeilen in einer Reihe und das [:monos] mal!"
@@ -240,8 +240,8 @@ foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman no
 foul3 = "Alle gut erzogen in [:channel], niemand hat Schimpfworte benutzt!"
 
 smiles1 = "<b>[:nick]</b> ist ein fröhlicher Mensch, [:per]% [:seiner:ihrer:] Zeilen enthielt ein fröhliches Smily :)"
-smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. [:Er:Sie:] "smilte" [:per]% der Zeit."
-smiles3 = "Niemand "smilte" in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)"
+smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. [:Er:Sie:] lächelte [:per]% der Zeit."
+smiles3 = "Niemand lächelt in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)"
 
 sad1 = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% seiner/ihrer Zeilen enthielten ein trauriges Smily :("
 sad2 = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat."
@@ -285,9 +285,12 @@ lastused = "Zuletzt benutzt von"
 lastseen1 = "Tag"
 lastseen2 = "Tagen"
 today = "heute"
-pagetitle1 = "[:channel] @ [:network] stats erstellt von [:maintainer]"
+pagetitle1 = "[:channel] @ [:network] Stats erstellt von [:maintainer]"
 pagetitle2 = "Statistik erstellt am "
 pagetitle3 = "Während des Statistikzeitraums von [:days] Tage(n) wurden <b>[:nicks]</b> verschiedene Nicks in [:channel] gezählt."
+stats_gen_by = "Die Statistiken wurden erstellt mit [:pisg_url] v[:version]"
+author = "pisg von [:author_url] und anderen"
+stats_gen_in = "Die Statistik wurde in [:time] generiert."
 
 # Mouse-over titles
 pisghomepage = "pisg Homepage öffnen"
