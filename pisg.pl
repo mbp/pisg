@@ -1161,8 +1161,8 @@ sub mostusedword
         for(my $i = 0; $i < 10; $i++) {
             last unless $i < $#popular;
             my $a = $i + 1;
-            my $popular = $popular[$i];
-            my $wordcount = htmlentities($wordcount{$popular[$i]});
+            my $popular = htmlentities($popular[$i]);
+            my $wordcount = $wordcount{$popular[$i]};
             my $lastused = htmlentities($lastused{$popular[$i]});
             html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
             html("<td bgcolor=\"$conf->{hicell}\">$popular</td>");
