@@ -217,7 +217,7 @@ sub _htmlfooter
     $hash{pisg_url} = "<a href=\"http://pisg.sourceforge.net/\" title=\"$pisg_hp\" class=\"background\">pisg</a>";
 
     my $author_hp = $self->_template_text('authorhomepage');
-    $hash{author_url} = "<a href=\"http://www.wtf.dk/hp/\" title=\"$author_hp\" class=\"background\">Morten Brix Pedersen</a>";
+    $hash{author_url} = "<a href=\"http://wtf.dk/hp/\" title=\"$author_hp\" class=\"background\">Morten Brix Pedersen</a>";
 
     $hash{version} = $self->{cfg}->{version};
     
@@ -454,7 +454,7 @@ sub _activenicks
         "<td style=\"background-color: $color\">$lastseen</td>"
         : "")
         . ($self->{cfg}->{showrandquote} ?
-        "<td style=\"background-color: $color\">\"$randomline\"</td>"
+        "<td style=\"background-color: $color\" nowrap=\"nowrap\">\"$randomline\"</td>"
         : "")
         );
 
