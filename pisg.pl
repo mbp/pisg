@@ -96,8 +96,7 @@ my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
 $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %monologue, %kicked, %gotkick, %line, %length, %qpercent, %lpercent, %sadface,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
-%gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused,
-$colorcode, $boldcode, $underlinecode, $reversecode, $plaincode, %gotban,
+%gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
 %setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %userpics,
 %userlinks, %T, $repeated, $lastnormal);
 
@@ -148,11 +147,6 @@ sub init_pisg
     $lastline = "";
     $actions = "0";
     $normals = "0";
-    $boldcode = chr(2);
-    $colorcode = chr(3);
-    $plaincode = chr(15);
-    $reversecode = chr(22);
-    $underlinecode = chr(31);
     $time = localtime($timestamp);
     $repeated = 0;
     $lastnormal = "";
@@ -291,11 +285,7 @@ sub parse_file
     while($line = <LOGFILE>) {
         $lines++; # Increment number of lines.
 
-        # Strip mIRC color codes
-        $line =~ s/$colorcode\d{1,2},\d{1,2}//g;
-        $line =~ s/$colorcode\d{0,2}//g;
-        # Strip mIRC bold, plain, reverse and underline codes
-        $line =~ s/[$boldcode$underlinecode$reversecode$plaincode]//g;
+        $line = strip_mirccodes($line);
 
         my $hashref;
 
@@ -727,6 +717,24 @@ sub opchanges
     return @out;
 }
 
+sub strip_mirccodes
+{
+    my $line = shift;
+
+    my $boldcode = chr(2);
+    my $colorcode = chr(3);
+    my $plaincode = chr(15);
+    my $reversecode = chr(22);
+    my $underlinecode = chr(31);
+
+    # Strip mIRC color codes
+    $line =~ s/$colorcode\d{1,2},\d{1,2}//g;
+    $line =~ s/$colorcode\d{0,2}//g;
+    # Strip mIRC bold, plain, reverse and underline codes
+    $line =~ s/[$boldcode$underlinecode$reversecode$plaincode]//g;
+
+    return $line;
+}
 
 sub htmlentities
 {
