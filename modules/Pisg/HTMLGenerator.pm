@@ -418,7 +418,7 @@ sub _activenicks
         my $randomline;
         if (not defined $self->{stats}->{sayings}{$nick}) {
             if ($self->{stats}->{actions}{$nick}) {
-                $randomline = $self->_format_line($self->{stats}->{actionlines}{$nick});
+                $randomline = $self->{stats}->{actionlines}{$nick};
             } else {
                 $randomline = "";
             }
@@ -427,17 +427,7 @@ sub _activenicks
         }
 
         if ($randomline) {
-            # Wrap longer than 40 chars words. It will break long HTML
-            # links.
-            # TODO: put <br> after 40 ! or ? marks - IE bug
-            # TODO: respect long URLs (like merge spaces back in url?)
-            # glen, 29/11/2002
-            1 while $randomline =~ s/(\S{40})(\S+)/$1 $2/m;
-
-            $randomline = htmlentities($randomline);
-
-            # Convert URLs and e-mail addys to links
-            $randomline = $self->_replace_links($randomline);
+            $randomline = $self->_format_line($randomline);
         }
 
         # Add a link to the nick if there is any
@@ -718,7 +708,7 @@ sub _capspeople
         my %hash = (
             nick => $caps[0],
             per  => $cpercent{$caps[0]},
-            line => htmlentities($self->_format_line($self->{stats}->{allcaplines}{$caps[0]}))
+            line => $self->_format_line($self->{stats}->{allcaplines}{$caps[0]})
         );
 
         my $text = $self->_template_text('allcaps1', %hash);
@@ -759,7 +749,7 @@ sub _violent
         my %hash = (
             nick    => $aggressors[0],
             attacks => $self->{stats}->{violence}{$aggressors[0]},
-            line    => htmlentities($self->_format_line($self->{stats}->{violencelines}{$aggressors[0]}))
+            line    => $self->_format_line($self->{stats}->{violencelines}{$aggressors[0]})
         );
         my $text = $self->_template_text('violent1', %hash);
         if($self->{cfg}->{showviolentlines}) {
@@ -794,7 +784,7 @@ sub _violent
         my %hash = (
             nick    => $victims[0],
             attacks => $self->{stats}->{attacked}{$victims[0]},
-            line    => htmlentities($self->_format_line($self->{stats}->{attackedlines}{$victims[0]}))
+            line    => $self->_format_line($self->{stats}->{attackedlines}{$victims[0]})
         );
         my $text = $self->_template_text('attacked1', %hash);
         if($self->{cfg}->{showviolentlines}) {
@@ -1076,7 +1066,7 @@ sub _mostfoul
         my %hash = (
             nick => $foul[0],
             per  => $spercent{$foul[0]},
-            line => htmlentities($self->_format_line($self->{stats}{foullines}{$foul[0]})),
+            line => $self->_format_line($self->{stats}{foullines}{$foul[0]}),
         );
 
         my $text = $self->_template_text('foul1', %hash);
@@ -1360,7 +1350,7 @@ sub _mostactions
         my %hash = (
             nick    => $actions[0],
             actions => $self->{stats}->{actions}{$actions[0]},
-            line    => htmlentities($self->_format_line($self->{stats}->{actionlines}{$actions[0]}))
+            line    => $self->_format_line($self->{stats}->{actionlines}{$actions[0]})
         );
         my $text = $self->_template_text('action1', %hash);
         if($self->{cfg}->{showactionline}) {
@@ -1455,7 +1445,7 @@ sub _lasttopics
         }
 
         for (my $i = $ltopic; $i >= $tlimit; $i--) {
-            my $topic = htmlentities($self->{stats}->{topics}[$i]{topic});
+            my $topic = $self->_format_line($self->{stats}->{topics}[$i]{topic});
             # This code makes sure that we don't see the same topic twice
             next if ($topic_seen{$topic});
             $topic_seen{$topic} = 1;
@@ -1468,10 +1458,10 @@ sub _lasttopics
             my $hour = $self->{stats}->{topics}[$i]{hour};
             my $min  = $self->{stats}->{topics}[$i]{min};
 
-            $hash{nick} = $nick;
+            $hash{nick} = $self->_format_word($nick);
             $hash{time} = "$hour:$min";
-            _html("<tr><td class=\"hicell\"><i>$topic</i></td>");
-            _html("<td class=\"hicell\"><b>" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
+            _html('<tr><td class="hicell"><i>' . $self->_format_line($topic) . '</i></td>');
+            _html('<td class="hicell"><b>' . $self->_template_text('bylinetopic', %hash) . '</b></td></tr>');
         }
         _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
     } else {
@@ -1528,15 +1518,26 @@ sub _template_text
     return $text;
 }
 
+sub _format_word
+{
+    # This function formats a word -- should ONLY be called on words used alone (EG: not whole line printed)
+    my ($self, $word) = @_;
+
+    $word = htmlentities($word);
+    $word = $self->_replace_links($word);
+    return $word;
+}
+
 sub _format_line
 {
-    # This function formats a action/normal line to be more readable
-    my ($self,$line) = @_;
+    # This function formats a action/normal line to be more readable, and calls any other function
+    # that should be executed on every line.
+    my ($self, $line) = @_;
     my $hashref;
     if ($hashref = $self->{cfg}->{analyzer}->{parser}->normalline($line)) {
-        return '<' . $hashref->{nick} . '> ' . $hashref->{saying};
+        $line = '<' . $hashref->{nick} . '> ' . $hashref->{saying};
     } elsif ($hashref = $self->{cfg}->{analyzer}->{parser}->actionline($line)) {
-        return '* ' . $hashref->{nick} . ' ' . $hashref->{saying};
+        $line = '* ' . $hashref->{nick} . ' ' . $hashref->{saying};
     } elsif ($hashref = $self->{cfg}->{analyzer}->{parser}->thirdline($line)) {
         if (defined($hashref->{kicker})) {
             $line = '*** ' . $hashref->{nick} . ' was kicked by ' . $hashref->{kicker};
@@ -1552,11 +1553,13 @@ sub _format_line
             $line = '*** Joins: ' . $hashref->{nick};
         } elsif (defined($hashref->{newnick})) {
             $line = '*** ' . $hashref->{nick} . ' is now known as ' . $hashref->{newnick};
+        } elsif (defined($hashref->{newtopic})) {
+            $line = '*** ' . $hashref->{nick} . ' changes topic to: ' . $hashref->{newtopic};
         }
-        return $line;
-    } else {
-        return $line;
     }
+    $line = htmlentities($line);
+    $line = $self->_replace_links($line);
+    return $line;
 }
 
 sub _get_subst
@@ -1610,9 +1613,9 @@ sub _mostusedword
             next if is_ignored($popular[$i]);
 
             my $a = $count + 1;
-            my $popular = htmlentities($popular[$i]);
+            my $popular = $self->_format_word($popular[$i]);
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
-            my $lastused = htmlentities($self->{stats}->{wordnicks}{$popular[$i]});
+            my $lastused = $self->_format_word($self->{stats}->{wordnicks}{$popular[$i]});
             my $class;
             if ($a == 1) {
                 $class = 'hirankc';
@@ -1770,12 +1773,11 @@ sub _legend
     _html("</tr></table>\n");
 }
 
+
 sub _replace_links
 {
     # Sub to replace urls and e-mail addys to links
-    my $self = shift;
-    my $str = shift;
-    my $nick = shift;
+    my ($self, $str, $nick) = @_;
 
     # Regular expressions are taken from match_urls() and match_email() in
     # Common.pm
@@ -1783,14 +1785,29 @@ sub _replace_links
     my $texturl = $self->_template_text("newwindow");
     my $textmail = $self->_template_text("mailto");
 
-    if ($nick) {
-        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~:@]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="$texturl $1$2">$nick<\/a>/g;
-        $str =~ s/(^|[^:])\b([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/$1<a href="mailto:$2" title="$textmail $nick">$nick<\/a>/g;
-    } else {
-        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~:@]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="$texturl $1$2">$1$2<\/a>/g;
-        $str =~ s/(^|[^:])\b([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/$1<a href="mailto:$2" title="$textmail $2">$2<\/a>/g;
-    }
-    return $str;
+    my (@str) = split(/ /,$str);
+
+    foreach (@str) {
+        if (m/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~:@]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/o) {
+            $nick = $1 . $2 unless ($nick);
+            $_ = "<a href=\"$1$2\" target=\"_blank\" title=\"$texturl $1$2\">" . $self->_split_long_text($nick) . '</a>';
+        } elsif (m/(^|[^:])\b([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/o) {
+            $nick = $2 unless ($nick);
+            $_ = "$1<a href=\"mailto:$2\" title=\"$textmail $nick\">" . $self->_split_long_text($nick) . "<\/a>";
+        } else {
+            $_ = $self->_split_long_text($_);
+        }
+     }
+
+    return join(' ', @str);
+}
+
+sub _split_long_text
+{
+    my ($self, $str) = @_;
+    $str =~ s/(\S{$self->{cfg}->{quotewidth}})(?!\s)/$1<WBR>/og;
+
+    return($str);
 }
 
 sub _user_linetimes

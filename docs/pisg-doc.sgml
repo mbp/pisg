@@ -2003,6 +2003,43 @@
     </refsect1>
     </refentry>
 
+    <!-- *** QUOTEWIDTH *** -->
+    <refentry id="QuoteWidth">
+
+    <refmeta> <refentrytitle>QuoteWidth</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>QuoteWidth</refname>
+    <refpurpose>Maximum allowed length of a "word" with no spaces</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         QuoteWidth = "48"
+        </channel>
+
+        <set QuoteWidth="48">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Pisg will automaticaly insert a space in words that have a length
+    over the amount quotewidth is set to.  When used in breaking up
+    URL's it will insert a space in the displayed URL, but not in the
+    actual URL referenced by the HREF.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 48</para>
+    </refsect1>
+    </refentry>
+
     <!-- *** ACTIVENICKS *** -->
     <refentry id="ActiveNicks">
 
