@@ -164,7 +164,7 @@ sub get_default_config_settings
         timeoffset => '+0',
         minquote => 25,
         maxquote => 65,
-        quotewidth => 48,
+        quotewidth => 80,
         wordlength => 5,
         activenicks => 25,
         activenicks2 => 30,
