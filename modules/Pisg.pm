@@ -172,6 +172,7 @@ sub get_default_config_settings
         show_muw => 1,
         show_mrn => 1,
         show_mru => 1,
+        show_voices => 0,
 
         # Less important things
 

@@ -339,9 +339,7 @@ sub _parse_file
                     }
 
                 } elsif (defined($newmode)) {
-                    my @opchange = _opchanges($newmode);
-                    $stats->{gaveops}{$nick} += $opchange[0] if $opchange[0];
-                    $stats->{tookops}{$nick} += $opchange[1] if $opchange[1];
+                    _modechanges($stats, $newmode, $nick);
 
                 } elsif (defined($newjoin)) {
                     $stats->{joins}{$nick}++;
@@ -359,20 +357,29 @@ sub _parse_file
         unless ($self->{cfg}->{silent});
 }
 
-sub _opchanges
+sub _modechanges
 {
-    my (@ops, $plus);
-    foreach (split(//, $_[0])) {
+    my $stats = shift;
+    my $newmode = shift;
+    my $nick = shift;
+
+    my (@voice, @ops, $plus);
+    foreach (split(//, $newmode)) {
         if ($_ eq "o") {
             $ops[$plus]++;
+        } elsif ($_ eq "v") {
+            $voice[$plus]++;
         } elsif ($_ eq "+") {
             $plus = 0;
         } elsif ($_ eq "-") {
             $plus = 1;
         }
     }
+    $stats->{gaveops}{$nick} += $ops[0] if $ops[0];
+    $stats->{tookops}{$nick} += $ops[1] if $ops[1];
+    $stats->{gavevoice}{$nick} += $voice[0] if $voice[0];
+    $stats->{tookvoice}{$nick} += $voice[1] if $voice[1];
 
-    return @ops;
 }
 
 sub _parse_words

@@ -30,14 +30,22 @@ mostop1 = "<b>[:nick]</b> donated [:ops] ops in the channel..."
 mostop2 = "<b>[:nick]</b> was also very polite: [:ops] ops from [:him:her:]."
 mostop3 = "Strange, no op was given on [:channel]!"
 
+mostdeop1 = "<b>[:nick]</b> is the channel sheriff with [:deops] deops."
+mostdeop2 = "<b>[:nick]</b> deoped [:deops] users."
+mostdeop3 = "Wow, no op was taken on [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> donated [:voices] voices in the channel..."
+mostvoice2 = "<b>[:nick]</b> was also very polite: [:voices] voices from [:him:her:]."
+mostvoice3 = "Strange, no voices was given on [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> is the channel sheriff with [:devoices] devoices."
+mostdevoice2 = "<b>[:nick]</b> devoiced [:devoices] users."
+mostdevoice3 = "Wow, no devoices was taken on [:channel]!"
+
 action1 = "<b>[:nick]</b> always lets us know what [:he:she:]'s doing: [:actions] actions!"
 action2 = "Also, <b>[:nick]</b> tells us what's up with [:actions] actions."
 action3 = "No actions in [:channel]!"
 actiontext = "<b>For example, like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> is the channel sheriff with [:deops] deops."
-mostdeop2 = "<b>[:nick]</b> deoped [:deops] users."
-mostdeop3 = "Wow, no op was taken on [:channel]!"
 
 question1 = "Is <b>[:nick]</b> stupid or just asking too many questions?  [:per]% lines contained a question!"
 question2 = "<b>[:nick]</b> didn't know that much either.  [:per]% of [:his:her:] lines were questions."
@@ -141,11 +149,6 @@ pagetitle3 = "During this [:days]-day reporting period, a total of <b>[:nicks]</
 
 ### German
 <lang name="DE">
-action1 = "<b>[:nick]</b> hält uns immer auf dem Laufenden was [:er:sie:] gerade macht: [:actions] Actions!"
-action2 = "Auch <b>[:nick]</b> verät uns was los ist: [:actions] Actions von [:ihm:ihr:]."
-action3 = "Keine Actions in [:channel] !"
-actiontext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
 mostop1 = "<b>[:nick]</b> vergab [:ops] ops im Channel..."
 mostop2 = "<b>[:nick]</b> war auch sehr zuvorkommend: [:ops] von [:ihm:ihr:]."
 mostop3 = "Komisch, kein op wurde in [:channel] vergeben!"
@@ -153,6 +156,11 @@ mostop3 = "Komisch, kein op wurde in [:channel] vergeben!"
 mostdeop1 = "<b>[:nick]</b> ist die Channel-Polizei. [:Er:Sie:] hat [:deops] Usern das @ wieder weggenommen..."
 mostdeop2 = "<b>[:nick]</b> nahm [:deops] Usern das @ wieder weg."
 mostdeop3 = "Wow, niemand wurde deopped in [:channel]!"
+
+action1 = "<b>[:nick]</b> hält uns immer auf dem Laufenden was [:er:sie:] gerade macht: [:actions] Actions!"
+action2 = "Auch <b>[:nick]</b> verät uns was los ist: [:actions] Actions von [:ihm:ihr:]."
+action3 = "Keine Actions in [:channel] !"
+actiontext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 question1 = "<b>[:nick]</b> hat wohl in der Schule nicht gut aufgepasst... [:per]% [:seiner:ihrer:] Zeilen enthielten eine Frage!"
 question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% [:seiner:ihrer:] Zeilen waren Fragen."
@@ -259,14 +267,22 @@ mostop1 = "<b>[:nick]</b> gav [:ops] op status i kanalen..."
 mostop2 = "<b>[:nick]</b> var også venlig at gi': [:ops] fra sig"
 mostop3 = "Underligt, ingen har fået op på [:channel] endnu!"
 
+mostdeop1 = "<b>[:nick]</b> holder orden på [:channel] med [:deops] deops..."
+mostdeop2 = "<b>[:nick]</b> deoppede [:deops] brugere"
+mostdeop3 = "Hmm, der var ingen som blev deopped på [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> gav [:voices] voice i kanalen..."
+mostvoice2 = "<b>[:nick]</b> var også venlig at gi': [:voices] fra sig"
+mostvoice3 = "Underligt, ingen har fået voice på [:channel] endnu!"
+
+mostdevoice1 = "<b>[:nick]</b> holder orden på [:channel] med [:devoices] -v's"
+mostdevoice2 = "<b>[:nick]</b> devoicede [:devoices] brugere"
+mostdevoice3 = "Hmm, der var ingen som blev devoiced på [:channel]!"
+
 action1 = "<b>[:nick]</b> bruger /me meget tit, ialt [:actions] gange!"
 action2 = "<b>[:nick]</b> fortæller os også hvad [:han:hun:] laver.. [:actions] /me's"
 action3 = "Ingen /me's i [:channel] !"
 actiontext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> holder orden på [:channel] med [:deops] deops..."
-mostdeop2 = "<b>[:nick]</b> deoppede [:deops] brugere"
-mostdeop3 = "Hmm, der var ingen som blev deopped på [:channel]!"
 
 question1 = "<b>[:nick]</b> må være rimelig dum eller efterligner bare Spørge-Jørgen... [:per]% af [:hans:hendes:] linjer var spørgsmål!"
 question2 = "<b>[:nick]</b> var heller ingen Einstein, [:per]% af [:hans:hendes:] linjer var også spørgsmål"
@@ -373,14 +389,14 @@ mostop1 = "<b>[:nick]</b> a donné [:ops] ops sur le channel..."
 mostop2 = "<b>[:nick]</b> est aussi très poli : [:ops] ops de sa part"
 mostop3 = "Etrange, aucun op n'a été donné sur [:channel]!"
 
+mostdeop1 = "<b>[:nick]</b> est le shérif avec [:deops] deops..."
+mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs"
+mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
+
 action1 = "<b>[:nick]</b> aime bien faire savoir ce qu'[:il:elle:]fait, avec [:actions] actions!"
 action2 = "Egalement <b>[:nick]</b> qui n'est pas en reste avec [:actions] actions!"
 action3 = "Aucune action sur [:channel] !"
 actiontext = "<b>Exemple:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> est le shérif avec [:deops] deops..."
-mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs"
-mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
 
 question1 = "<b>[:nick]</b> est soit stupide soit trop curieux... [:per]% de ses lignes contiennent une question!"
 question2 = "<b>[:nick]</b> n'en connait pas davantage, [:per]% de ses lignes étaient des questions"
@@ -939,14 +955,14 @@ mostop1 = "<b>[:nick]</b> gav [:ops] personer operatörsstatus i kanalen..."
 mostop2 = "<b>[:nick]</b> var också väldigt vänlig: [:ops] från [:honom:henne:]"
 mostop3 = "Underligt, inga personer fick operatörsstatus i [:channel]!"
 
+mostdeop1 = "<b>[:nick]</b> var kanalens sheriff och tog ifrån [:deops] personer deras operatörsstatus..."
+mostdeop2 = "<b>[:nick]</b> tog ifrån [:deops] användare sin operatörsstatus"
+mostdeop3 = "Wow, inga personer blev av med sin operatörsstatus i [:channel]!"
+
 action1 = "<b>[:nick]</b> berättar alltid för oss vad [:han:hon:] gör: [:actions] beskrivningar!"
 action2 = "Även <b>[:nick]</b> berättar vad som händer med [:actions] beskrivningar."
 action3 = "Inga beskrivningar i [:channel]!"
 actiontext = "<b>Till exempel, såhär:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> var kanalens sheriff och tog ifrån [:deops] personer deras operatörsstatus..."
-mostdeop2 = "<b>[:nick]</b> tog ifrån [:deops] användare sin operatörsstatus"
-mostdeop3 = "Wow, inga personer blev av med sin operatörsstatus i [:channel]!"
 
 question1 = "<b>[:nick]</b> är antingen dum eller ställer bara många frågor... [:per]% rader innehöll en fråga!"
 question2 = "<b>[:nick]</b> visste heller inte mycket, [:per]% av [:hans:hennes:] rader innehöll en fråga"
@@ -1041,14 +1057,14 @@ mostop1 = "<b>[:nick]</b> jakeli kanavalla oppeja [:ops] kertaa..."
 mostop2 = "<b>[:nick]</b>kin oli tosi kohtelias: häneltä tippui oppeja [:ops] kertaa!"
 mostop3 = "Kummaa kyllä, [:channel]:lla ei opitettu ketään!"
 
+mostdeop1 = "<b>[:nick]</b> yritti olla pomo [:deops] deopilla..."
+mostdeop2 = "Pikkupomon tittelin saa <b>[:nick]</b>: deopittanut [:deops] kertaa..."
+mostdeop3 = "Huh huh! Ketään ei rangaistu [:channel]:lla!"
+
 action1 = "<b>[:nick]</b> halusi kaikkien tietävän mitä on tekemässä: [:actions] /me:tä!"
 action2 = "Myöskin <b>[:nick]</b>:ssa esiintyy itserakkautta: selitteli tekemisiään [:actions] kertaa..."
 action3 = "Ei yhtään toimintaa [:channel]:lla!"
 actiontext = "<b>Yksi esimerkki:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> yritti olla pomo [:deops] deopilla..."
-mostdeop2 = "Pikkupomon tittelin saa <b>[:nick]</b>: deopittanut [:deops] kertaa..."
-mostdeop3 = "Huh huh! Ketään ei rangaistu [:channel]:lla!"
 
 question1 = "Onko <b>[:nick]</b> vähän tyhmä vai muuten kyselee liikaa?  [:per]% hänen kirjoittamista riveistään olivat kysymyksiä!"
 question2 = "Ei tuo <b>[:nick]</b>:kaan mitään tiedä... [:per]% hänen sanomisistaan olivat kysymiksiä..."
@@ -1156,14 +1172,14 @@ mostop1 = "<b>[:nick]</b> je [:podaril:podarila:] [:ops] opov na kanalu..."
 mostop2 = "<b>[:nick]</b> je [:bil:bila:] tudi zelo [:radodaren:radodarna:]. [:ops] opov od [:njega:nje:]."
 mostop3 = "Cudno, nikomur ni bil dan op na [:channel]!"
 
+mostdeop1 = "<b>[:nick]</b> je [:bil:bila:] serif tega kanala z [:deops] deopi."
+mostdeop2 = "<b>[:nick]</b> je [:odvzel:odvzela:] op [:deops] uporabnikom kanala."
+mostdeop3 = "Wooo...nikomu ni bil odvzet op na kanalu [:channel]!"
+
 action1 = "<b>[:nick]</b> nam je vedno [:povedal:povedala:] kaj pocne: [:actions] dejanj!"
 action2 = "Tudi <b>[:nick]</b> nam je vedno [:povedal:povedala:] kaj se je dogajalo z [:njim:njo:], [:actions] dejanj."
 action3 = "Nobenih dejanj na kanalu [:channel]!"
 actiontext = "<b>Najbolj izstopa primer:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> je [:bil:bila:] serif tega kanala z [:deops] deopi."
-mostdeop2 = "<b>[:nick]</b> je [:odvzel:odvzela:] op [:deops] uporabnikom kanala."
-mostdeop3 = "Wooo...nikomu ni bil odvzet op na kanalu [:channel]!"
 
 question1 = "Je <b>[:nick]</b> res najbolj [:neumen:neumna:] na tem kanalu ali samo sprasuje veliko vprasanj? [:per]% [:njegovih:njenih:] vrstic so bila vprasanja!"
 question2 = "<b>[:nick]</b> ni [:imel:imela:] pojma o nicemer.  [:per]% [:njegovih:njenih:] vrstic so bila vprasanja."
@@ -1272,14 +1288,14 @@ mostop1 = "<b>[:nick]</b> [:ops] opot adott a csatin..."
 mostop2 = "<b>[:nick]</b> szinten nagylelku: [:ops] opot adomanyozott."
 mostop3 = "Erdekes, senki nem kapott opot a [:channel] csatin!"
 
+mostdeop1 = "<b>[:nick]</b> volt a csati rendore, [:deops] alkalommal deopolt."
+mostdeop2 = "<b>[:nick]</b> deopolt [:deops] emberket."
+mostdeop3 = "Hu, nem vettek el egy opot sem a [:channel]-n!"
+
 action1 = "<b>[:nick]</b> mindig tudatja velunk mit csinal: [:actions] akciot nyomott!"
 action2 = "A masodik <b>[:nick]</b>, aki [:actions] alkalommal mondta el, mi a helyzet vele."
 action3 = "Semmi ekson nem volt a [:channel]-n!"
 actiontext = "<b>Peldaul:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> volt a csati rendore, [:deops] alkalommal deopolt."
-mostdeop2 = "<b>[:nick]</b> deopolt [:deops] emberket."
-mostdeop3 = "Hu, nem vettek el egy opot sem a [:channel]-n!"
 
 question1 = "<b>[:nick]</b> kerdez a legtobbet, a sorainak a [:per]%-a tartalmazott kerdest."
 question2 = "<b>[:nick]</b> se tud sokkal tobbet. O [:per]%-ban tett fel kerdeseket."
@@ -1387,14 +1403,14 @@ mostop1 = "Kõige rohkem op staatust jagas <b>[:nick]</b>, [:ops] opi kanalil..."
 mostop2 = "<b>[:nick]</b> ei tahtnud sitem olla ja andis [:ops] opi."
 mostop3 = "Imelik, aga kanalil [:channel] ei andnud keegi kellegile opi!"
 
+mostdeop1 = "<b>[:nick]</b> mõtles, et on kõva kutt ja võttis [:deops]-lt kasutajalt op staatuse ära."
+mostdeop2 = "<b>[:nick]</b> deopis [:deops] kasutajat."
+mostdeop3 = "Ohoh, päris karm kanal see [:channel], keegi ei võtnud kelleltki opi ära!"
+
 action1 = "<b>[:nick]</b> tahtis, et kõik teaksid, mida ta teeb: kokku [:actions] tegevust!"
 action2 = "Kusjuures, <b>[:nick]</b> tahtis ka, et kõik teaksid tema tegevusest: kokku [:actions] tegevust."
 action3 = "Mitte yhtegi tegevuse kirjeldus selle perioodi jooksul!"
 actiontext = "<b>Näiteks:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> mõtles, et on kõva kutt ja võttis [:deops]-lt kasutajalt op staatuse ära."
-mostdeop2 = "<b>[:nick]</b> deopis [:deops] kasutajat."
-mostdeop3 = "Ohoh, päris karm kanal see [:channel], keegi ei võtnud kelleltki opi ära!"
 
 question1 = "Tundub, et <b>[:nick]</b> on mingi eriti loll tegelane või esitab ta lihtsalt liiga palju küsimusi?: [:per]% tema kirjutatud ridadest olid küsimused"
 question2 = "<b>[:nick]</b> ei teadnud ka kuigi palju: [:per]% tema kirjutatud ridadest olid küsimused."
@@ -1500,14 +1516,14 @@ mostop1 = "<b>[:nick]</b> ha oppato [:ops] persone..."
 mostop2 = "Anche <b>[:nick]</b> e' stato gentile: [:ops] persone sono state oppate da [:him:her:]."
 mostop3 = "Strano, nessuno e' stato oppato su [:channel]!"
 
+mostdeop1 = "<b>[:nick]</b> e' lo sceriffo del canale con [:deops] deop."
+mostdeop2 = "<b>[:nick]</b> ha deoppato [:deops] persone."
+mostdeop3 = "Wow, nessuno e' stato deoppato su [:channel]!"
+
 action1 = "<b>[:nick]</b> vuole sempre farci sapere cosa sta facendo: [:actions] actions!"
 action2 = "Inoltre, <b>[:nick]</b> ci spiffera [:actions] actions."
 action3 = "No actions in [:channel]!"
 actiontext = "<b>Ad esempio:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
-mostdeop1 = "<b>[:nick]</b> e' lo sceriffo del canale con [:deops] deop."
-mostdeop2 = "<b>[:nick]</b> ha deoppato [:deops] persone."
-mostdeop3 = "Wow, nessuno e' stato deoppato su [:channel]!"
 
 question1 = "Ma <b>[:nick]</b> e' stupido o semplicemente fa troppe domande?  [:per]% linee contengono una domanda!"
 question2 = "<b>[:nick]</b> non era meglio.  [:per]% di linee erano domande."

@@ -94,6 +94,7 @@ sub create_html
         $self->_gotkicks();
         $self->_mostkicks();
         $self->_mostop();
+        $self->_mostvoice() if $self->{cfg}->{show_voice};
         $self->_mostactions();
         $self->_mostmonologues();
         $self->_mostjoins();
@@ -1074,6 +1075,66 @@ sub _mostop
         my $text = $self->_template_text('mostdeop3');
         _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\">$text");
     }
+}
+
+sub _mostvoice
+{
+    my $self = shift;
+
+    my @voice   = sort { $self->{stats}->{gavevoice}{$b} <=> $self->{stats}->{gavevoice}{$a} }
+                     keys %{ $self->{stats}->{gavevoice} };
+    my @devoice = sort { $self->{stats}->{tookvoice}{$b} <=> $self->{stats}->{tookvoice}{$a} }
+                     keys %{ $self->{stats}->{tookvoice} };
+
+    if (@voice) {
+        my %hash = (
+            nick => $voice[0],
+            voices  => $self->{stats}->{gavevoice}{$voice[0]}
+        );
+
+        my $text = $self->_template_text('mostvoice1', %hash);
+
+        _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\">$text");
+
+        if (@voice >= 2) {
+            my %hash = (
+                nick => $voice[1],
+                voices  => $self->{stats}->{gavevoice}{$voice[1]}
+            );
+
+            my $text = $self->_template_text('mostvoice2', %hash);
+            _html("<br><span class=\"small\">$text</span>");
+        }
+        _html("</td></tr>");
+    } else {
+        my $text = $self->_template_text('mostvoice3');
+        _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\">$text</td></tr>");
+    }
+
+    if (@devoice) {
+        my %hash = (
+            nick  => $devoice[0],
+            devoices => $self->{stats}->{tookvoice}{$devoice[0]}
+        );
+        my $text = $self->_template_text('mostdevoice1', %hash);
+
+        _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\">$text");
+
+        if (@devoice >= 2) {
+            my %hash = (
+                nick  => $devoice[1],
+                devoices => $self->{stats}->{tookvoice}{$devoice[1]}
+            );
+            my $text = $self->_template_text('mostdevoice2', %hash);
+
+            _html("<br><span class=\"small\">$text</span>");
+        }
+        _html("</td></tr>");
+    } else {
+        my $text = $self->_template_text('mostdevoice3');
+        _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\">$text");
+    }
+
 }
 
 sub _mostactions

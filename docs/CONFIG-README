@@ -74,8 +74,9 @@ You can also combine settings into one line such as:
 All the different options are listed below.
 
 Other examples:
-<set lang='EN' langfile='lang.txt'>
+<set lang='EN'>
 <set bgcolor="#dedeee" text="black" hbgcolor="#666699" hcolor="white" hicell="#BABADD" hicell2="#CCCCCC">
+<set show_voice="1" show_wpl="1">
 <set topichistory="3" timeoffset="+0">
 
 There is many options which can be set, here's a list of them all (not
@@ -96,7 +97,8 @@ outputfile          Outputted stats goes to this HTML file. Default 'index.html'
 maintainer          The maintainer or bot which makes the logfile.
 
 lang                Language to use (see lang.txt)
-                    EN | DE | DK | FR | ES | PL | PT | NO | NL | SE
+                    EN | DE | DK | FR | ES | PL | PT | NO | NL | SE | EE | IT
+                    HU | SI | FI 
 
 pagehead            Some 'page header' file which you want to include in top
                     of the output file.
@@ -164,6 +166,10 @@ show_mrn            1 or 0, this will enable or disable the "most
 
 show_mru            1 or 0, this will enable or disable the "most
                     referenced urls" list
+
+show_voices         1 or 0, this will enable or disable the voice statistics
+                    (those who got voice and those who voiced). Disabled by
+                    default.
 
 ignorewords         A space seperated list of words to ignore in 'most
                     referenced words'
