@@ -63,6 +63,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/oer.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/mIRC6.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/muh.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/moobot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/perlbot.pm \
