@@ -6,7 +6,4 @@
 #
 # I hope someone will use this and hopefully make pisg a bit faster :)
 
-perl -d:DProf pisg.pl
-
-dprofpp -u
-
+dprofpp -u -p pisg.pl
