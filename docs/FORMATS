@@ -251,3 +251,17 @@ time"
     00.55.38 <@jax1n0^O>   this is a normal line writen by another                                
     22.24.27 * Fender says an action                                                  
 
+* pircbot
+  - PircBot is a framework for an IRC Bot written in Java.  It allows you to
+      create your own custom IRC Bots using Java by building on the framework
+      that is already provided by the PircBot. 
+
+  - Homepage: http://www.jibble.org/pircbot.php
+
+  - In order to use this, format must be set to 'pircbot'.
+
+  - Logs are timestamped with MILISECONDS since the epoch
+
+  Example:
+    1013630386748 :nick!ident@hostname PRIVMSG #channel :Hello world.
+

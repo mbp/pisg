@@ -1,5 +1,6 @@
 pisg (x.xx)
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)
+   * Added support for pircbot (http://www.jibble.org/pircbot.php)
 
 pisg (0.37) - Mon Apr, 8th 2002
    * The "lets clean up and move things around"-release
