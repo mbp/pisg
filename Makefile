@@ -1,7 +1,7 @@
 # Bloated Makefile to make new releases of pisg
 
 # Ugly hack to get the version number from Pisg.pm
-VERSION = `grep "version =>" modules/Pisg.pm | mawk '{ gsub(/.*"v/, ""); gsub(/".*/, ""); print}'`
+VERSION = `grep "version =>" modules/Pisg.pm | sed 's/.*\"\(.*\)\".*/\1/'`
 
 DIRNAME = pisg-$(VERSION)
 
@@ -96,7 +96,7 @@ pisg:
 	cp $(PARSER_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/Parser
 	cp $(FORMAT_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/Parser/Format
 
-	tar zcfv newrelease/pisg-$(VERSION).tar.gz $(DIRNAME)
+	tar zcfv newrelease/$(TARFILE) $(DIRNAME)
 	zip -r pisg $(DIRNAME)
 	mv pisg.zip newrelease/$(ZIPFILE)
 	mv $(DIRNAME) newrelease
