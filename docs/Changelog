@@ -1,3 +1,29 @@
+pisg (0.29)
+   * When using multiple channels, and not all channels have user pics, it was
+     showing a big empty coloumn with no userpics. Now it checks whether any
+     users in top xx has a userpic, and if yes, add the coloumn.
+   * Additionaly, users can force pictures of a channel with the new
+     'userpics="n"' option. (This could be useful if a nick appears on many
+     channels, but you only want the userpics on one..)
+   * New version of addalias.pl by deadlock <deadlock@cheeseheadz.net>
+     New features:
+       - Doesn't need addalias.htm anymore, addalias.pl takes care of everything
+       - Can dynamically change user data when a nick is already added in the
+         config file
+       - Improved error handling
+       - Improved code
+   * Can now show voices/devoices like the showing of ops/deops, disabled by
+     default. Can be enabled with <set show_voice="1">
+   * A relative URL to the pisg image bars can now be defined with 'pic_loc',
+     defaults to current dir.
+   * Counted 'http://name.com/' differently from 'http://name.com' - fixed.
+   * Add support for winbot logfiles (www.winbot.co.uk) by Azhrarn
+     <diablo2@krock.com>
+   * Updates to Swedish translation (thanks to Andreas Henriksson
+     <andreas.henriksson@linux.se>)
+   * Added Estonian translation by comcute <comcute@surfdata.ee>
+   * Added Italian translation by Pascal Brax <god@pascalbrax.com>
+
 pisg (0.28) - Sun, Oct 21th 2001
    * Added Hungarian translation by Gyuri Horak <dyuri@dyuri.org>
    * Performance improvements in HTML generation
