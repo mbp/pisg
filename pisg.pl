@@ -244,7 +244,7 @@ sub init_config
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1); # Make the string lowercase
-                    unless ($config->{$var}) {
+                    unless ($config->{$var} eq $2) {
                         $config->{$var} = $2;
                     }
                     debug("Conf: $var = $2");
