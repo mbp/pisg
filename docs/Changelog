@@ -4,6 +4,9 @@ pisg (x.xx)
    * Note added to docs/FORMATS file about oer format limitations (thanks, EQU
      <equ@equnet.org>)
    * Icelandic translation added (thanks, Birkir <dkf@visir.is>)
+   * scripts/windows-ftp-upload.txt has been added, a sample script and
+     description on how to upload files automatically on Windows. (thanks,
+     Azhrarn)
 
 pisg (0.37) - Mon Apr, 8th 2002
    * The "lets clean up and move things around"-release
