@@ -2129,11 +2129,7 @@ sub _topactive {
     }
             
     (@top_active) = @top_active[0..($self->{cfg}->{activenicks}+$self->{cfg}->{activenicks2}-1)];
-    if(@top_active) {
-        $self->{stats}->{topactive_lines} = $self->{stats}->{lines}{$top_active[0]};
-    } else {
-        $self->{stats}->{topactive_lines} = 1;
-    }
+    $self->{stats}->{topactive_lines} = @top_active ? $self->{stats}->{lines}{$top_active[0]} : 1;
             
     foreach (@top_active) {
         $self->{topactive}{$_} = 1;
