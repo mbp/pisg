@@ -1,56 +1,66 @@
 package Pisg::Parser::Logfile;
 
+=head1 NAME
+
+Pisg::Parser::Logfile - class to parse a normal logfile
+
+=cut
+
 use strict;
 $^W = 1;
 
-my ($conf, $debug, $parser);
-
 sub new
 {
-    # The sole argument is the config hash
-    my $self = shift;
-    $conf = shift;
-    $debug = shift;
+    my $type = shift;
+    my $self = {
+        conf => $_[0],
+        debug => $_[1],
+        parser => undef,
+    };
 
     # Load the Common module from wherever it's configured to be.
-    push(@INC, $conf->{modules_dir});
+    push(@INC, $self->{conf}->{modules_dir});
     require Pisg::Common;
     Pisg::Common->import();
 
-    # Pick our parser.
-    $parser = choose_log_format($conf->{format});
+    bless($self, $type);
 
-    return bless {};
+    # Pick our parser.
+    $self->{parser} = $self->choose_log_format($self->{conf}->{format});
+
+    return $self;
 }
 
 # The function to choose which module to use.
 sub choose_log_format
 {
+    my $self = shift;
     my $format = shift;
-    my $parser = undef;
-    $debug->("Loading module for log format $format");
+    $self->{parser} = undef;
+    $self->{debug}->("Loading module for log format $format");
     eval <<_END;
-use lib '$conf->{modules_dir}';
+use lib '$self->{conf}->{modules_dir}';
 use Pisg::Parser::Format::$format;
-\$parser = new Pisg::Parser::Format::$format(\$debug);
+\$self->{parser} = new Pisg::Parser::Format::$format(\$self->{debug});
 _END
     if ($@) {
         print STDERR "Could not load parser for '$format': $@\n";
         return undef;
     }
-    return $parser;
+    return $self->{parser};
 }
 
 sub analyze
 {
+    my $self = shift;
     my (%stats, %lines);
 
-    if (defined $parser) {
+    if (defined $self->{parser}) {
         my $starttime = time();
 
-        if ($conf->{logdir}) {
+        if ($self->{conf}->{logdir}) {
             # Run through all files in dir
-            parse_dir(\%stats, \%lines);
+            $self->parse_dir(\%stats, \%lines);
         } else {
             # Run through the whole logfile
             my %state = (
@@ -60,7 +70,7 @@ sub analyze
                 lastnormal => "",
                 oldtime    => 24
             );
-            parse_file(\%stats, \%lines, $conf->{logfile}, \%state);
+            $self->parse_file(\%stats, \%lines, $self->{conf}->{logfile}, \%state);
         }
 
         pick_random_lines(\%stats, \%lines);
@@ -75,7 +85,7 @@ sub analyze
         return \%stats;
 
     } else {
-        print STDERR "Skipping channel '$conf->{channel}' due to lack of parser.\n";
+        print STDERR "Skipping channel '$self->{conf}->{channel}' due to lack of parser.\n";
         return undef
     }
 
@@ -85,19 +95,20 @@ sub analyze
 
 sub parse_dir
 {
+    my $self = shift;
     my ($stats, $lines) = @_;
 
     # Add trailing slash when it's not there..
-    $conf->{logdir} =~ s/([^\/])$/$1\//;
+    $self->{conf}->{logdir} =~ s/([^\/])$/$1\//;
 
-    print "Going into $conf->{logdir} and parsing all files there...\n\n";
+    print "Going into $self->{conf}->{logdir} and parsing all files there...\n\n";
     my @filesarray;
-    opendir(LOGDIR, $conf->{logdir}) or
-    die("Can't opendir $conf->{logdir}: $!");
+    opendir(LOGDIR, $self->{conf}->{logdir}) or
+    die("Can't opendir $self->{conf}->{logdir}: $!");
     @filesarray = grep {
-        /^[^\.]/ && /^$conf->{prefix}/ && -f "$conf->{logdir}/$_"
+        /^[^\.]/ && /^$self->{conf}->{prefix}/ && -f "$self->{conf}->{logdir}/$_"
     } readdir(LOGDIR) or
-    die("No files in \"$conf->{logdir}\" matched prefix \"$conf->{prefix}\"");
+    die("No files in \"$self->{conf}->{logdir}\" matched prefix \"$self->{conf}->{prefix}\"");
     closedir(LOGDIR);
 
     my %state = (
@@ -106,7 +117,7 @@ sub parse_dir
         oldtime    => 24
     );
     foreach my $file (sort @filesarray) {
-        $file = $conf->{logdir} . $file;
+        $file = $self->{conf}->{logdir} . $file;
         parse_file($stats, $lines, $file, \%state);
     }
 }
@@ -114,9 +125,10 @@ sub parse_dir
 # This parses the file...
 sub parse_file
 {
+    my $self = shift;
     my ($stats, $lines, $file, $state) = @_;
 
-    print "Analyzing log($file) in '$conf->{format}' format...\n";
+    print "Analyzing log($file) in '$self->{conf}->{format}' format...\n";
 
     if ($file =~ /.bz2?$/ && -f $file) {
         open (LOGFILE, "bunzip2 -c $file |") or
@@ -143,7 +155,7 @@ sub parse_file
         my $hashref;
 
         # Match normal lines.
-        if ($hashref = $parser->normalline($line, $linecount)) {
+        if ($hashref = $self->{parser}->normalline($line, $linecount)) {
 
             if (defined $hashref->{repeated}) {
                 $repeated = $hashref->{repeated};
@@ -156,7 +168,7 @@ sub parse_file
             for ($i = 0; $i <= $repeated; $i++) {
 
                 if ($i > 0) {
-                    $hashref = $parser->normalline($lastnormal, $linecount);
+                    $hashref = $self->{parser}->normalline($lastnormal, $linecount);
                     #Increment number of lines for repeated lines
                     $linecount++;
                 }
@@ -190,7 +202,7 @@ sub parse_file
                     $state->{lastnick} = $nick;
 
                     my $len = length($saying);
-                    if ($len > $conf->{minquote} && $len < $conf->{maxquote}) {
+                    if ($len > $self->{conf}->{minquote} && $len < $self->{conf}->{maxquote}) {
                         push @{ $lines->{sayings}{$nick} }, $saying;
                     }
                     $stats->{lengths}{$nick} += $len;
@@ -207,7 +219,7 @@ sub parse_file
                     }
 
                     $stats->{foul}{$nick}++
-                    if ($saying =~ /$conf->{foul}/i);
+                    if ($saying =~ /$self->{conf}->{foul}/i);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
@@ -224,7 +236,7 @@ sub parse_file
                         $stats->{urlnicks}{$url} = $nick;
                     }
 
-                    parse_words($stats, $saying, $nick);
+                    $self->parse_words($stats, $saying, $nick);
                 }
             }
             $lastnormal = $line;
@@ -232,7 +244,7 @@ sub parse_file
         }
 
         # Match action lines.
-        elsif ($hashref = $parser->actionline($line, $linecount)) {
+        elsif ($hashref = $self->{parser}->actionline($line, $linecount)) {
             $stats->{totallines}++;
 
             my ($hour, $nick, $saying);
@@ -253,7 +265,7 @@ sub parse_file
                 $stats->{lines}{$nick}++;
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^($conf->{violent}) (\S+)/) {
+                if ($saying =~ /^($self->{conf}->{violent}) (\S+)/) {
                     my $victim = find_alias($2);
                     $stats->{violence}{$nick}++;
                     $stats->{attacked}{$victim}++;
@@ -265,12 +277,12 @@ sub parse_file
                 my $len = length($saying);
                 $stats->{lengths}{$nick} += $len;
 
-                parse_words($stats, $saying, $nick);
+                $self->parse_words($stats, $saying, $nick);
             }
         }
 
         # Match *** lines.
-        elsif (($hashref = $parser->thirdline($line, $linecount)) and
+        elsif (($hashref = $self->{parser}->thirdline($line, $linecount)) and
         $hashref->{nick}) {
             $stats->{totallines}++;
 
@@ -321,7 +333,7 @@ sub parse_file
                 } elsif (defined($newjoin)) {
                     $stats->{joins}{$nick}++;
 
-                } elsif (defined($newnick) and ($conf->{nicktracking} == 1)) {
+                } elsif (defined($newnick) and ($self->{conf}->{nicktracking} == 1)) {
                     add_alias($nick, $newnick);
                 }
             }
@@ -351,13 +363,14 @@ sub opchanges
 
 sub parse_words
 {
+    my $self = shift;
     my ($stats, $saying, $nick) = @_;
 
     foreach my $word (split(/[\s,!?.:;)(\"]+/, $saying)) {
         $stats->{words}{$nick}++;
         # remove uninteresting words
-        next unless (length($word) >= $conf->{wordlength});
-        next if ($conf->{ignoreword}{$word});
+        next unless (length($word) >= $self->{conf}->{wordlength});
+        next if ($self->{conf}->{ignoreword}{$word});
 
         # ignore contractions
         next if ($word =~ m/'..?$/);#'
