@@ -1121,7 +1121,7 @@ action2 = "Ook <b>[:nick]</b> vertelt ons wat [:hij:zij:] doet met <b>[:actions]
 action3 = "Er was niet zoveel actie in [:channel]!"
 actiontext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-shout1 = "Degene die het meest schreeuwde was <B>[:nick]</B>, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid!"
+shout1 = "Degene die het meest schreeuwde was <b>[:nick]</b>, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid!"
 shout2 = "Ook had <b>[:nick]</b> een grote smoel, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid."
 shout3 = "Hmm niet veel geschreeuw hier, wat een zelfbeheersing :)."
 
