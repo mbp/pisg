@@ -1,4 +1,4 @@
-pisg (0.60) - ??
+pisg (0.60) - Fri Oct, 15th 2004
    Changes by Christoph Berg:
    * Clean up loop code in _mostnicks() and fix warning about calls to
    is_ignored(undef).
