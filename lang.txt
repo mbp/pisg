@@ -256,7 +256,7 @@ mostop2 = "<b>[:nick]</b> var også venlig at gi': [:ops] fra sig"
 mostop3 = "Underligt, ingen har fået op på [:channel] endnu!"
 
 action1 = "<b>[:nick]</b> bruger /me meget tit, ialt [:actions] gange!"
-action2 = "Also <b>[:nick]</b> fortæller os også hvad han laver.. [:actions] /me's"
+action2 = "<b>[:nick]</b> fortæller os også hvad han laver.. [:actions] /me's"
 action3 = "Ingen /me's i [:channel] !"
 actiontext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
