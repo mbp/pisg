@@ -188,6 +188,8 @@ sub get_default_config_settings
         tablewidth => 614,
         regexpaliases => 0,
 
+        botnicks => '',            # Needed for DCpp format (non-irc)
+
         version => "0.43",
     };
 

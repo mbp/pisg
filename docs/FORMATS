@@ -356,3 +356,16 @@ time"
     * sonnlich waves.
     > evening rae
     <sonnlich> Evening.
+
+
+* DC++
+  - Direct Connect Hub
+
+  - In order to use this, format must be set to 'DCpp'
+
+  - Not an IRC logger, rather a shared network botnet log
+
+  - You MUST put botnicks into botnicks variable if you want to see kicks
+
+  Example:
+    <set botnicks="bot1 bot2 MainBot">

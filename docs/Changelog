@@ -19,6 +19,7 @@ pisg (x.xx)
    * Fixed bug - shouldn't have been grabbing 2 parts of the pircbot string
      to variables, was part of Rev 1.3 but apparently I forgot to actually put
      in that part.  Thanks Marc Roberts for pointing this out. BugID#651485
+   * Added support for 'DC++' format, used by Direct Connect hub chat
 
 
 
