@@ -1,3 +1,16 @@
+pisg (0.34) - Tue, Jan 8th 2002
+   * New option 'show_topics', to enable/disable 'last topics'
+   * New feature 'bigpic' for users, see CONFIG-README. 'bigpic' will link to
+     a bigger picture (thanks, Phil Gregory)
+   * axur logfile support (thanks to Andrew <andy@lewman.com>)
+   * Nicks in 'most referenced nicks' is now being aliased properly, the
+     "number of uses" wasn't being incremented for the aliases (thanks to Phil
+     Gregory and The Paladin)
+   * bobot++ logfile support added (thanks to Oct@zoy.org)
+   * New option 'nickhistory' to define the maximum number of nicks in 'most
+     referenced nicks' (as suggested by Zapp <box@uni.de>)
+   * The usual slew of translation updates
+
 pisg (0.33) - Tue, Dec 20th 2001
    * The "Merry Christmas" release
    * Internet Explorer 6 centered all table contents, fixed.
