@@ -8,7 +8,7 @@
 #
 # (EN) English
 # (DE) German - Christoph Berg <cb@df7cb.de>
-# (NO) Norwegian - Andreas Blaafladt <andreabl@login1.powertech.no>
+# (NO) Norwegian - Andreas Blaafladt <andreas@blaafladt.no>
 # (PT) Portuguese - MrWho <mrwho@softhome.net>
 # (PT_BR) Portuguese/BR(Brazil) - francisco lopes <falmp@terra.com.br>
 # (DA) Danish - Morten Brix Pedersen <morten at wtf dot dk>
@@ -2645,6 +2645,10 @@ day = "søndag mandag tirsdag onsdag torsdag fredag lørdag"
 
 names1 = "nicks"
 names2 = "nick" 
+gender = "kjønn"
+gender_f = "hun"
+gender_m = "han"
+gender_b = "bot"
 
 ## Topics
 
@@ -2657,11 +2661,12 @@ activenickstopic = "Mest aktive nicks"
 activenickbyhourtopic = "Mest aktive nicks i tidsperioder"
 mostwordstopic = "Mest brukte ord"
 referencetopic = "Mest refererte nick"
+karmatopic = "[:channel] karma"
 urlstopic = "Mest refererte URLer"
 notopic = "Det har ikke  vært satt noen topic på denne kanalen."
 bylinetopic = "[:date] av [:nick] klokken [:time]"
 dailyactivitytopic = "Daglig aktivitet (siste [:n] dager)"
-
+activegenderstopic = "Mest aktive kjønn"
 
 ## Other text
 
@@ -2683,6 +2688,9 @@ show_wpl = "Ord pr. linje"
 show_cpl = "Tegn pr. linje"
 show_lastseen = "Sist sett"
 lastused = "Sist brukt av"
+karma = "Karma"
+goodkarma = "God karma av"
+badkarma = "Dårlig karma av"
 lastseen1 = "[:days] dag siden"
 lastseen2 = "[:days] dager siden"
 today = "I dag"

@@ -11,6 +11,7 @@ pisg (0.64) - ??
      + Spanish (thanks, Anonymous).
      + Dutch (thanks, Jeroen van Nimwegen).
      + New translation: Flemish (copied from Dutch before the last update).
+     + Norwegian (thanks, Andreas Blaafladt).
    * Modified the CSS files containing .male/.female classes to show sex color
      also for <a href>s (SF tracker #1088382 by Jeroen - tux2020).
    * Applied patch by Torbjörn Svensson for using alternate CSS files - thanks
