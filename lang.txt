@@ -262,6 +262,7 @@ referencetopic = "Begehrte Nicks :)"
 urlstopic = "Am meisten benutzte URLs"
 notopic = "In diesem Channel wurde kein Topic gesetzt."
 bylinetopic = "von [:nick] um [:time]"
+mostnickstopic = "Chatter mit den meisten Nicks"
 
 ## Other text
 
@@ -269,6 +270,7 @@ totallines = "Gesamtanzahl der Zeilen: [:lines]"
 totalnicks = "Ach ja, da waren noch [:totalnicks] andere, die nicht erwähnenswert sind."
 totaltopic = "Ingesamt wurde das Topic [:total] mal gesetzt"
 nick = "Nick"
+names = "Benutze Namen"
 url = "URL"
 numberlines = "Anzahl der Zeilen"
 randquote = "Zufalls quote"
@@ -290,7 +292,11 @@ pagetitle2 = "Statistik erstellt am "
 pagetitle3 = "Während des Statistikzeitraums von [:days] Tage(n) wurden <b>[:nicks]</b> verschiedene Nicks in [:channel] gezählt."
 stats_gen_by = "Die Statistiken wurden erstellt mit [:pisg_url] v[:version]"
 author = "pisg von [:author_url] und anderen"
-stats_gen_in = "Die Statistik wurde in [:time] generiert."
+stats_gen_in = "Die Statistik wurde in [:time] generiert"
+hours = "Stunden"
+minutes = "Minuten"
+seconds = "Sekunden"
+and = "und"
 
 # Mouse-over titles
 pisghomepage = "pisg Homepage öffnen"
