@@ -1,6 +1,10 @@
-AUTOMATIC FTP UPLOAD SCRIPT FOR WINDOWS
+AUTOMATIC FTP UPLOAD BATCH FILE FOR WINDOWS
 -----------------------------
 
+Batch file located in the bottom of this file.
+
+pisg.bat notes:
+---------------
 Change the paths and such so they make sense with your config and have fun all
 you poor m$ users. ;)  (NOTE:  You may need to change the last line to 'ftp
 -s:%f0' on some old NT systems.)  Basically just put all your ftp commands
@@ -8,20 +12,55 @@ between the 'goto skip' and ':skip', and put any commands you want executed
 BEFORE IT (like pisg) at the end.  The batch file will ignore the ftp stuff
 because of the goto, and the ftp script will ignore the one command it doesnt
 recognize(goto) with a small complaint and no error.
-                                                                                               
------------------------pisg.bat----------------------------                                    
-                                                                                               
-goto skip                                                                                      
-                                                                                               
-OPEN your.ftp.server.com                                                                       
-username                                                                                       
-password                                                                                       
-CD /yourdir                                                                                    
-PUT "C:\Program Files\WinBot\Logs\pisg-0.28\index.html"                                        
-QUIT                                                                                           
-                                                                                               
-:skip                                                                                          
-                                                                                               
-cd "C:\Program Files\WinBot\Logs\pisg-0.28\"                                                   
-perl "C:\Program Files\WinBot\Logs\pisg-0.28\pisg"                                             
-ftp -s:%0   
+
+Installation of .bat file:
+--------------------------
+(described with Windows 2000 in mind)
+
+Go to Start->Settings->Control Panel->Scheduled Tasks
+
+Select "Add Scheduled Task.
+
+On the screen where it asks, browse to your batch file and hit next.
+
+Give the task a name (doesn't matter)
+
+Select "Perform this Task Daily".
+
+Start Time:  12:00 AM / Every Day / Start Date - default
+
+Enter in the account you want it to run as w/ the password.  (I recomend an
+admin account, but it shouldn't matter)
+
+Check the []Open advanced properties box and hit Finish
+
+Go to the Schedule Tab.
+
+Click Advanced.
+
+Clear the End Date if it's checked.  Check Repeat Task, put in every X hours (I
+have 6), and put duration to 24 hours.  This should repeat the task in whatever
+increment you selected throught the day.  Then it restarts the task on the next
+day.
+
+That should do it, play around with the settings until you think you have what
+you want.  The way tasks are implemented are very wierd, but it works.  ALso
+look into the 'at' command in the windows help for a command line version which
+may be easier to set up.
+
+-----------------------pisg.bat----------------------------
+
+goto skip
+
+OPEN your.ftp.server.com
+username
+password
+CD /yourdir
+PUT "C:\Program Files\WinBot\Logs\pisg-0.37\index.html"
+QUIT
+
+:skip
+
+cd "C:\Program Files\WinBot\Logs\pisg-0.37\"
+perl "C:\Program Files\WinBot\Logs\pisg-0.37\pisg"
+ftp -s:%0
