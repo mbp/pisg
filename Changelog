@@ -1,6 +1,10 @@
 pisg (0.18)
 
    * Norweigan translation (thanks to Andreas Blaafladt)
+   * Uncompress files with *.gz and *.bz2 automatically (Sascha Lüdecke)
+   * Add new feature --prefix, this works on commandline so you only get logs
+     starting with what you specify, for example -p '#mychan' will only get
+     dir/#mychan* files. (Sascha Lüdecke)
 
 pisg (0.17) - Sat, July 28th 2001
 
