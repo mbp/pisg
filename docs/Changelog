@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.47) - Wed Feb, 26th 2003
    * Fix bug where multiple URLs in same line would have save name as first URL
      (EG: <A HREF="http://www.google.com">http://www.yahoo.com</A> if yahoo
       was referenced first)
@@ -11,7 +11,7 @@ pisg (x.xx)
    * Fix really old bug with foulwords - was only applying the wordbreak settings
      to the first and last words in the list of foulwords.  Now applies it to
      each word.
-   * Add note to lang.txt that the <set lang=""> line should be inserted into
+   * Add note to lang.txt that the <set lang="XX"> line should be inserted into
      the configuration file. Some users were confused about this.
    * Add config option "NoIgnoredQuotes" - will not output quotes containing
      ignored words if this is set.  Will output a blank line after trying 20
