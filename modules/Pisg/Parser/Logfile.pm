@@ -108,8 +108,13 @@ sub _parse_dir
     # Add trailing slash when it's not there..
     $self->{cfg}->{logdir} =~ s/([^\/])$/$1\//;
 
-    print "Going into $self->{cfg}->{logdir} and parsing all files there...\n\n"
-        unless ($self->{cfg}->{silent});
+    unless ($self->{cfg}->{silent}) {
+        unless ($self->{cfg}->{nfiles} > 0) {
+            print "Going into $self->{cfg}->{logdir} and parsing all files there...\n\n"
+        } else {
+            print "Going into $self->{cfg}->{logdir} and parsing the last $self->{cfg}->{nfiles} file(s) there...\n\n"
+        }
+    }
     my @filesarray;
     opendir(LOGDIR, $self->{cfg}->{logdir}) or
     die("Can't opendir $self->{cfg}->{logdir}: $!");
@@ -192,6 +197,11 @@ sub _parse_dir
         @filesarray = @newarray;
     } else {
         @filesarray = sort {lc($a) cmp lc($b)} @filesarray;
+    }
+
+    if($self->{cfg}->{nfiles} > 0) {
+        my $shift = @filesarray - $self->{cfg}->{nfiles};
+        splice(@filesarray, 0, $shift);
     }
 
     foreach my $file (@filesarray) {

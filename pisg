@@ -86,10 +86,12 @@ Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
                          times to do multiple channels
 -l  --logfile=xxx      : Log file to parse
 -o  --outfile=xxx      : Name of HTML file to create
+-t  --tag=xxx          : Replace \%t in --outfile by xxx
 -ma --maintainer=xxx   : Channel/statistics maintainer
 -f  --format=xxx       : Logfile format [see FORMATS file]
 -n  --network=xxx      : IRC network for the channel
 -d  --dir=xxx          : Analyze all files in this dir. Ignores logfile
+-nf --nfiles=xxx       : Analyze the last xxx files if used with --dir
 -p  --prefix=xxx       : Analyse only files prefixed by xxx in dir
                          Only works with --dir
 -cf --cfg opt=value    : Specify configuration options, eg. -cf ShowWpl=1
@@ -114,7 +116,9 @@ END_USAGE
                    'network=s'    => \$cfg{network},
                    'maintainer=s' => \$cfg{maintainer},
                    'outfile=s'    => \$cfg{outputfile},
+                   'tag=s'        => \$cfg{outputtag},
                    'dir=s'        => \$cfg{logdir},
+                   'nfiles=i'     => \$cfg{nfiles},
                    'prefix=s'     => \$cfg{logprefix},
                    'moduledir=s'  => \$cfg{moduledir},
                    'configfile=s' => \$cfg{configfile},

@@ -506,6 +506,56 @@
     </refsect1>
     </refentry>
 
+    <!-- *** OUTPUTTAG *** -->
+    <refentry id="OutputTag">
+
+    <refmeta> <refentrytitle>OutputTag</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>OutputTag</refname>
+    <refpurpose>tag to insert into OutputFile</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         LogDir = "logs/"
+         Format = "eggdrop"
+         OutputFile = "mychan%t.html"
+         OutputTag = "-week"
+        </channel>
+
+        <set OutputTag="-week">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>OutputTag</command>specifies a string that will replace
+    occurrences of "%t" in <command>OutputFile</command>. This option is most
+    useful when used as a command line switch (-t) to pisg in conjunction with
+    <command>NFiles</command> (-nf). Example:
+
+    <programlisting>
+      <![CDATA[
+      $ pisg -co pisg.conf
+      $ pisg -co pisg.conf -nf 8 -t -week
+      ]]>
+    </programlisting>
+
+    Leaving out the <command>OutputTag</command> settings from the above
+    pisg.conf snippet, this writes both the full statistics (mychan.html) and
+    statistics for the last week (mychan-week.html) using the same pisg config
+    file. (Assuming that there are separate logfiles for each day.)
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** LOGFILE *** -->
     <refentry id="Logfile">
 
@@ -573,6 +623,42 @@
     <refsect1>
     <title>Default</title>
     <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** NFILES *** -->
+    <refentry id="NFiles">
+
+    <refmeta> <refentrytitle>NFiles</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>NFiles</refname>
+    <refpurpose>parse only the last files in <command>LogDir</command></refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         LogDir="/home/foo/eggdrop/logs/"
+         NFiles="8"
+         Format="eggdrop"
+        </channel>
+
+        <set NFiles="8">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    When <command>NFiles</command> is set to a positive integer, pisg will
+    process at most that much files from <command>LogDir</command>. Useful to
+    create statistics that cover the last week or month.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (process all files) </para>
     </refsect1>
     </refentry>
 

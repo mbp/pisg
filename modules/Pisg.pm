@@ -96,6 +96,7 @@ sub get_default_config_settings
         format => 'mIRC',
         network => 'SomeIRCNet',
         outputfile => 'index.html',
+        outputtag => '',
         maintainer => 'MAINTAINER',
         pagehead => 'none',
         pagefoot => 'none',
@@ -103,6 +104,7 @@ sub get_default_config_settings
         imagepath => '',
         defaultpic => '',
         logdir => '',
+        nfiles => 0,
         lang => 'en',
         langfile => 'lang.txt',
         cssdir => 'layout/',
@@ -194,7 +196,7 @@ sub get_default_config_settings
 
         botnicks => '',            # Needed for DCpp format (non-irc)
 
-        version => "0.49",
+        version => "0.50-cvs",
     };
 
     # Backwards compatibility with old option names:

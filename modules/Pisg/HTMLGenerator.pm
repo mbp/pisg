@@ -37,11 +37,13 @@ sub create_html
 
     $self->_topactive();
 
-    print "Now generating HTML($self->{cfg}->{outputfile})...\n"
+    my $fname = $self->{cfg}->{outputfile};
+    $fname =~ s/\%t/$self->{cfg}->{outputtag}/g;
+    print "Now generating HTML($fname)...\n"
         unless ($self->{cfg}->{silent});
 
-    open (OUTPUT, "> $self->{cfg}->{outputfile}") or
-        die("$0: Unable to open outputfile($self->{cfg}->{outputfile}): $!\n");
+    open (OUTPUT, "> $fname") or
+        die("$0: Unable to open outputfile($fname): $!\n");
 
     if ($self->{cfg}->{showtime}) {
         $self->{cfg}->{tablewidth} += 40;
