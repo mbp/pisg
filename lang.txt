@@ -18,6 +18,7 @@
 # (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
 # (NL) Dutch - Pyrofikiemaan <gassman65@hotmail.com>
 # (SE) Swedish - Andreas Henriksson <andreas.henriksson@linux.se>
+# (FI) Finnish - Kirler@paincreators <kirler@letku.net>
 
 <lang name="EN">
 ### English
@@ -1020,4 +1021,119 @@ lastused = "Sist använt av"
 pagetitle1 = "[:channel] @ [:network] statistik av [:maintainer]"
 pagetitle2 = "Statistik genererad på "
 pagetitle3 = "Under denna [:days]-dagars reporterings period, blev ett totalt antal av <b>[:nicks]</b> olika personer representerade på [:channel]."
+</lang>
+
+<lang name="FI">
+### Finnish (Suomi)
+mostop1 = "<b>[:nick]</b> jakeli kanavalla oppeja [:ops] kertaa..."
+mostop2 = "<b>[:nick]</b>kin oli tosi kohtelias: häneltä tippui oppeja [:ops] kertaa!"
+mostop3 = "Kummaa kyllä, [:channel]:lla ei opitettu ketään!"
+
+action1 = "<b>[:nick]</b> halusi kaikkien tietävän mitä on tekemässä: [:actions] /me:tä!"
+action2 = "Myöskin <b>[:nick]</b>:ssa esiintyy itserakkautta: selitteli tekemisiään [:actions] kertaa..."
+action3 = "Ei yhtään toimintaa [:channel]:lla!"
+actiontext = "<b>Yksi esimerkki:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+mostdeop1 = "<b>[:nick]</b> yritti olla pomo [:deops] deopilla..."
+mostdeop2 = "Pikkupomon tittelin saa <b>[:nick]</b>: deopittanut [:deops] kertaa..."
+mostdeop3 = "Huh huh! Ketään ei rangaistu [:channel]:lla!"
+
+question1 = "Onko <b>[:nick]</b> vähän tyhmä vai muuten kyselee liikaa?  [:per]% hänen kirjoittamista riveistään olivat kysymyksiä!"
+question2 = "Ei tuo <b>[:nick]</b>:kaan mitään tiedä... [:per]% hänen sanomisistaan olivat kysymiksiä..."
+question3 = "Kukaan ei kysellyt mitään! Onko tämä kanava täynnä neroja?"
+
+shout1 = "Eniten meistä kirkui <b>[:nick]</b>, tarkemmin ottaen [:per]% ajasta!"
+shout2 = "Toinen <i>temperamenttikko</i> oli <b>[:nick]</b>, joka huusi [:per]% ajasta..."
+shout3 = "Huh huh! Kukaan ei oo huudellut [:channel]:lla..."
+
+allcaps1 = "Näyttää siltä että <b>[:nick]</b>:n shift-näppäin on kokoajan pohjassa: [:per]% ajasta hän kirjoitti ISOILLA..."
+allcaps2 = "Toiseksi tässä "kisassa" tulee <b>[:nick]</b>: Caps Lock unohtunut pohjaan [:per]% ajasta!"
+allcaps3 = "Kummaa kyllä, kukaan ei riehunut capseilla..."
+allcapstext = "<b>Yksi esimerkki:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+
+violent1 = "<b>[:nick]</b> on tosi hyökkäävä persoona! Hän pieksi muita irkkaajia peräti <b>[:attacks]</b> kertaa!"
+violent2 = "<b>[:nick]</b>:ltakaan ei itsehillintä onnistu. Hän hakkasi muita <b>[:attacks]</b> kertaa..."
+violent3 = "Kukaan ei tällä kertaa hakanut ketään, olemmeko saavuttaneet rauhan?"
+violenttext = "<b>Yksi esimerkki:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Sääli <b>[:nick]</b>:ta, kukaan ei tykkää hänestä. Häntä läpsittiin peräti <b>[:attacks]</b> kertaa..."
+attacked2 = "<b>[:nick]</b> näyttää olevan myös epäsuosiossa. Häntä hakattiin toiseksi eniten - <b>[:attacks]</b> kertaa!"
+attackedtext = "<b>Yksi esimerkki:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> sai monoa ennätykselliset [:kicks] kertaa!"
+gotkick2 = "<b>[:nick]</b> seuraa perässä: saanut persiilleen [:kicks]:sti..."
+kicktext = "<b>Yksi esimerkki:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> ei osanut päättää: lähteäkö vai jäädäkö. Tarkastellun ajanjakson aikana hän on joininut kanavalle [:joins] kertaa!"
+
+kick1 = "<b>[:nick]</b>:n touhuissa on vähän väärinkäyttämisen makua hänen monotettuaan [:kicked] irkkaajaa!"
+kick2 = "<b>[:nick]</b>, [:oldnick]:n uskollisimpia seuraajia, jakoi potkua persiille [:kicked] ihmiselle..."
+kick3 = "Kukaan ei lentänyt pihalle, minne ne @:t oikein katsoo?"
+
+words1 = "<b>[:nick]</b>:n suusta tuli yhteensä [:words] sanaa!"
+words2 = "[:oldnick]:n perässäjuoksija, <b>[:nick]</b>, ei ollut aivan NÄIN aktiivinen: [:words] sanaa yhteensä."
+words3 = "Kukaan ei puhunut yhtään mitään, mitä v*ttua?!"
+
+mono1 = "<b>[:nick]</b> on puhunut paljon itsekseen. Hän on vetänyt 5:n rivin monologeja [:monos] kertaa!"
+mono2 = "Toinen yksinäinen sielu on <b>[:nick]</b>. Hän onnistui avautumaan 5:n rivin putkessa [:monos] kertaa..."
+
+wpl1 = "<b>[:nick]</b> kirjoitti keskimäärin [:wpl]:n sanan lauseita."
+wpl2 = "Kanavan keskiarvo on [:avg] sanaa lausetta kohti."
+
+long1 = "<b>[:nick]</b>:n rivit olivat ennätyksellisen pitkiä, keskimäärin [:letters] merkkiä rivillä."
+long2 = "[:channel]:n keskiarvo on hieman alhaisempi: tarkalleen ottaen keskimäärin [:avg] merkkiä rivillä."
+
+short1 = "<b>[:nick]</b> tykkää lyhennellä ajatuksiaan, kirjoittaen lyhyimpiä lauseita: [:letters] merkkiä rivillä."
+short2 = "[:nick] seuraa hyvänä kakkosena: [:letters] merkkiä rivillä."
+
+foul1 = "<b>[:nick]</b> on kanavan suurisuu! [:per]% hänen sanomisistaa sisälsivät kirosanoja!"
+foul2 = "<b>[:nick]</b>:kin tykkää kiroilla: tuloksena vittuilua [:per]% ajasta..."
+foul3 = "Hmm, kukaan ei kiroile [:channel]:lla!  Mitä v*ttua? :)"
+
+smiles1 = "<b>[:nick]</b> kirkastaa päiväsi: [:per]% hänen lauseistaan sisälsivät hymiön :)"
+smiles2 = "Ei tuo <b>[:nick]</b>:kaan turhia surkuttele: hymiöitä piisaa [:per]% ajasta..."
+smiles3 = "Tällä kanavalla ei hymyile kukaan! Yritetäänhän nostaa tasoa!"
+
+sad1 = "<b>[:nick]</b> näyttää olevan vähän alamaissa:  [:per]% hänen lauseistaan sisälsivät surullisia kasvoja :("
+sad2 = "<b>[:nick]</b> on myös nössö itkien [:per]% ajasta"
+sad3 = "Kukaan ei surkuttele tällä kanavalla! Hyvä [:channel]!  :-)"
+
+month = "tammikuuta helmikuuta maaliskuuta huhtikuuta toukokuuta kesäkuuta heinäkuuta elokuuta syyskuuta lokakuuta marraskuuta joulukuuta"
+day = "sunnuntaina maanantaina tiistaina keskiviikkona torstaina perjantaina lauantaina"
+
+notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia."
+
+## Topics (Topikit)
+
+bignumtopic = "Suuria numeroita"
+othernumtopic = "Muuta mielenkiintoista"
+latesttopic = "Viimeisimmät topikit"
+activetimestopic = "Ruuhka-ajat"
+activenickstopic = "Suurimmat höpöttäjät"
+mostwordstopic = "Käytetyimpiä sanoja"
+referencetopic = "Kaivatuin irkkaaja"
+urlstopic = "Yleisimmät linkit"
+
+## Other text (Muuta sälää)
+
+totallines = "Rivien yhteismäärä: [:lines]."
+totalnicks = "Tilastoihin eivät mahtuneet [:totalnicks] muuta irkkaajaa..."
+totaltopic = "Topikia asetettiin yhteensä [:total] kertaa."
+nick = "Nikki"
+url = "URL"
+numberlines = "Rivien määrä"
+randquote = "Satunnaislausahduksia"
+userpic = "Kuva"
+nottop = "Seuraavat henkilöt eivät olleet niin ahkeria:"
+word = "Sana"
+numberuses = "Käyttökertoja"
+show_words = "Sanojen määrä"
+show_time = "Milloin?"
+show_wpl = "Sanaa lauseessa"
+show_cpl = "Merkkiä lauseessa"
+lastused = "Viimeksi sanonut"
+pagetitle1 = "[:channel] [:network]:ssä, tilastot laatinut: [:maintainer]"
+pagetitle2 = "Tilastoja päivitetty viimeksi "
+pagetitle3 = "Tällä [:days] päivän ajanjaksolla, [:channel]:lla kävi yhteensä <b>[:nicks]</b> eri tyyppiä."
 </lang>
