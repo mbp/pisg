@@ -10,6 +10,7 @@ pisg (x.xx)
    * mIRC, Trillian, perlbot and virc98 formats now strips half-op prefixes
      from nicks as well.
    * moobot logfile support added (thanks, Phil Gregory)
+   * Greek language support added (thanks, Konstantinos Tzanidis)
 
 pisg (0.40) - Thu Jul, 4th 2002
    * The "It's Summer And The Sun Is Shining"-release.
