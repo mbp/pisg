@@ -415,7 +415,7 @@ sub _activenicks
         my $randomline;
         if (not defined $self->{stats}->{sayings}{$nick}) {
             if ($self->{stats}->{actions}{$nick}) {
-                $randomline = htmlentities($self->{stats}->{actionlines}{$nick});
+                $randomline = htmlentities($self->_format_line($self->{stats}->{actionlines}{$nick}));
             } else {
                 $randomline = "";
             }
@@ -672,7 +672,7 @@ sub _capspeople
         my %hash = (
             nick => $caps[0],
             per  => $cpercent{$caps[0]},
-            line => htmlentities($self->{stats}->{allcaplines}{$caps[0]})
+            line => htmlentities($self->_format_line($self->{stats}->{allcaplines}{$caps[0]}))
         );
 
         my $text = $self->_template_text('allcaps1', %hash);
@@ -713,7 +713,7 @@ sub _violent
         my %hash = (
             nick    => $aggressors[0],
             attacks => $self->{stats}->{violence}{$aggressors[0]},
-            line    => htmlentities($self->{stats}->{violencelines}{$aggressors[0]})
+            line    => htmlentities($self->_format_line($self->{stats}->{violencelines}{$aggressors[0]}))
         );
         my $text = $self->_template_text('violent1', %hash);
         if($self->{cfg}->{showviolentlines}) {
@@ -747,7 +747,7 @@ sub _violent
         my %hash = (
             nick    => $victims[0],
             attacks => $self->{stats}->{attacked}{$victims[0]},
-            line    => htmlentities($self->{stats}->{attackedlines}{$victims[0]})
+            line    => htmlentities($self->_format_line($self->{stats}->{attackedlines}{$victims[0]}))
         );
         my $text = $self->_template_text('attacked1', %hash);
         if($self->{cfg}->{showviolentlines}) {
@@ -781,7 +781,7 @@ sub _gotkicks
         my %hash = (
             nick  => $gotkick[0],
             kicks => $self->{stats}->{gotkicked}{$gotkick[0]},
-            line  => $self->{stats}->{kicklines}{$gotkick[0]}
+            line  => $self->_format_line($self->{stats}->{kicklines}{$gotkick[0]})
         );
 
         my $text = $self->_template_text('gotkick1', %hash);
@@ -1014,7 +1014,7 @@ sub _mostfoul
         my %hash = (
             nick => $foul[0],
             per  => $spercent{$foul[0]},
-            line => htmlentities($self->{stats}{foullines}{$foul[0]}),
+            line => htmlentities($self->_format_line($self->{stats}{foullines}{$foul[0]})),
         );
 
         my $text = $self->_template_text('foul1', %hash);
@@ -1275,10 +1275,11 @@ sub _mostactions
                         keys %{ $self->{stats}->{actions} };
 
     if (@actions) {
+        my %linehash =
         my %hash = (
             nick    => $actions[0],
             actions => $self->{stats}->{actions}{$actions[0]},
-            line    => htmlentities($self->{stats}->{actionlines}{$actions[0]})
+            line    => htmlentities($self->_format_line($self->{stats}->{actionlines}{$actions[0]}))
         );
         my $text = $self->_template_text('action1', %hash);
         if($self->{cfg}->{showactionline}) {
@@ -1438,6 +1439,37 @@ sub _template_text
         $text =~ s/\[:(.*?):(.*?):\]/$self->_get_subst($1,$2,\%hash)/geo;
     }
     return $text;
+}
+
+sub _format_line
+{
+    # This function formats a action/normal line to be more readable
+    my ($self,$line) = @_;
+    my $hashref;
+    if ($hashref = $self->{cfg}->{analyzer}->{parser}->normalline($line)) {
+        return '<' . $hashref->{nick} . '> ' . $hashref->{saying};
+    } elsif ($hashref = $self->{cfg}->{analyzer}->{parser}->actionline($line)) {
+        return '* ' . $hashref->{nick} . ' ' . $hashref->{saying};
+    } elsif ($hashref = $self->{cfg}->{analyzer}->{parser}->thirdline($line)) {
+        if (defined($hashref->{kicker})) {
+            $line = '*** ' . $hashref->{nick} . ' was kicked by ' . $hashref->{kicker};
+            $line .= ' (' . $hashref->{kicktext} . ')' 
+                if (defined($hashref->{kicktext}));
+        } elsif (defined($hashref->{newtopic})) {
+            $line = '*** ' . $hashref->{nick} . ' changes topic to \'' . $hashref->{newtopic} . '\'';
+        } elsif (defined($hashref->{newmode})) {
+            $line = '*** ' . $hashref->{nick} . ' sets mode ' . $hashref->{newmode};
+            $line .= ' ' . $hashref->{modechanges}
+                if (defined($hashref->{kicktext}));
+        } elsif (defined($hashref->{newjoin})) {
+            $line = '*** Joins: ' . $hashref->{nick};
+        } elsif (defined($hashref->{newnick})) {
+            $line = '*** ' . $hashref->{nick} . ' is now known as ' . $hashref->{newnick};
+        }
+        return $line;
+    } else {
+        return $line;
+    }
 }
 
 sub _get_subst

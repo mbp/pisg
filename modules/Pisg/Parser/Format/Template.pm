@@ -82,6 +82,11 @@ sub actionline
 #   newmode         - deops or ops, must be '+o' or '-o', or '+ooo'
 #   newjoin         - a new nick which has joined the channel
 #   newnick         - a person has changed nick and this is the new nick
+# 
+# It should return a hash with the following (for formatting lines in html)
+#
+#   kicktext        - the kick reason (if any)
+#   modechanges     - data of the mode change ('Nick' in '+o Nick')
 #
 # The hash may also have a "repeated" key indicating the number of times
 # the line was repeated. (Used by eggdrops log for example.)

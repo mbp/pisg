@@ -2,6 +2,7 @@ pisg (x.xx)
    * ircII logfile support added (thanks, James Andrewartha)
    * Changed behavior of most active nicks to print an action line if no
      normal line is available for that nick
+   * Added support for formatting of "for example" lines to standard format
 
 pisg (0.41) - Sun Aug, 11th 2002
    * Fix a bug in the winbot logfile format where lines containing the channel

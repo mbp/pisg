@@ -474,6 +474,7 @@ _END
         }
 
         my $stats = $analyzer->analyze();
+        $self->{cfg}->{analyzer} = $analyzer;
 
         # Initialize HTMLGenerator object
         my $generator;

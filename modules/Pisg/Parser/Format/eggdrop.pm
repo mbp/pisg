@@ -65,7 +65,8 @@ sub thirdline
         $hash{nick} = $3;
 
         if (($4.$5) eq 'kickedfrom') {
-            $7 =~ /^ by ([\S]+):.*/;
+            $7 =~ /^ by ([\S]+):\s*(.*)/;
+            $hash{kicktext} = $2;
             $1 =~ /([^!]+)/;    # Remove anything after the !
             $hash{kicker} = $1;
 
@@ -76,8 +77,9 @@ sub thirdline
 
         } elsif (($4.$5) eq 'modechange') {
             my $newmode = $6;
-            if ($7 =~ /^ .+ by ([\S]+)!.*/) {
-                $hash{nick} = $1;
+            if ($7 =~ /^ (.+) by ([\S]+)!.*/) {
+                $hash{modechanges} = $2;
+                $hash{nick} = $2;
                 $newmode =~ s/^\'//;
                 $hash{newmode} = $newmode;
             }
