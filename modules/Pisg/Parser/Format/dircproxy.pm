@@ -11,9 +11,9 @@ sub new
 
     my $self = {
         cfg => $args{cfg},
-        normalline => '@^(\d+)\s<([^!]+)![^>]+>\s(.+)$',
-        actionline => '@^(\d+)\s\[([^!]+)![^\]]+\]\sACTION\s(.+)$',
-	thirdline  => '@^(\d+)\s\-\S+\-\s(.+)
+        normalline => '^@(\d+)\s<([^!]+)![^>]+>\s(.+)$',
+        actionline => '^@(\d+)\s\[([^!]+)![^\]]+\]\sACTION\s(.+)$',
+	thirdline  => '^@(\d+)\s\-(\S+)\-\s(.+)$'
     };
 
     bless($self, $type);
@@ -61,7 +61,11 @@ sub thirdline
 
     if ($line =~ /$self->{thirdline}/o) {
         my ($time, @line);
-        @line = split(/\s+/, $2);
+
+        return
+            if ($2 eq 'dircproxy');
+
+        @line = split(/\s+/, $3);
 
         my @time = localtime($1);
         $hash{hour} = $time[2];
