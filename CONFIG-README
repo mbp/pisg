@@ -77,65 +77,67 @@ There is many variables which can be set, here's a list of them all:
 
  * The most useful ones *
 
-channel                The name of your channel.
-logfile                The exact filename of the logfile
-format                 logfile format. see FORMATS file
-network                Network the channels is using.
-outputfile             The name of the html file to be generated
-maintainer             The maintainer or bot which makes the logfile
-pagehead               Some 'page header' file which you want to
-                       include in top of the stats
+(The variables are not case sensitive)
 
-configfile             Path to config file (aliases, ignores,
-                       pics and more, see pisg.cfg for examples)
+channel              The name of your channel.
+logfile              The exact filename of the logfile
+format               logfile format. see FORMATS file
+network              Network the channels is using.
+outputfile           The name of the html file to be generated
+maintainer           The maintainer or bot which makes the logfile
+pagehead             Some 'page header' file which you want to
+                     include in top of the stats
 
-imagepath              If your user pictures is located
-                       some special directory, set the path here.
+configfile           Path to config file (aliases, ignores,
+                     pics and more, see pisg.cfg for examples)
 
-logdir                 If you specify a path to a dir here, then
-                       pisg will take that dir, and parse ALL
-                       logfiles in it, and create 1 HTML file
-                       from it
+imagepath            If your user pictures is located
+                     some special directory, set the path here.
 
-lang                   Language to use:
-                       EN | DE | DK | FR | ES | PL
+logdir               If you specify a path to a dir here, then
+                     pisg will take that dir, and parse ALL
+                     logfiles in it, and create 1 HTML file
+                     from it
 
-langfile               Name of language file
+lang                 Language to use:
+                     EN | DE | DK | FR | ES | PL | NO | NL
+
+langfile             Name of language file
 
   * Colors for your stats page *
 
-bgcolor                Background color of the page
-text                   Normal text color
-hbgcolor               Background color in headlines
-hcolor                 Text color in headline
-hicell                 Background color in highlighted cells
-hicell2                Background color in highlighted cells
-tdcolor                Color of text in tables
-tdtop                  Top color in some tables.
-link                   Color of links
-vlink                  Color of visited links
-hlink                  Color of hovered links
-headline               Border color of headlines
-rankc                  Colors of 'ranks' (1,2,3,4)
-pic1                   Bar-graphic-file for normal times
-pic2                   Bar-graphic-file for top-times
+bgcolor              Background color of the page
+text                 Normal text color
+hbgcolor             Background color in headlines
+hcolor               Text color in headline
+hicell               Background color in highlighted cells
+hicell2              Background color in highlighted cells
+tdcolor              Color of text in tables
+tdtop                Top color in some tables.
+link                 Color of links
+vlink                Color of visited links
+hlink                Color of hovered links
+headline             Border color of headlines
+rankc                Colors of 'ranks' (1,2,3,4)
+pic1                 Bar-graphic-file for normal times
+pic2                 Bar-graphic-file for top-times
 
   * Small things, useful for some people *
 
-minquote               Minimal value of letters for a random quote
-maxquote               Maximum value of letters for a random quote
-wordlength             The minimum number of chars an interesting
-                       word may be (in 'most referenced words')
-activenicks            Number of nicks to show in the 'top 25'
-activenicks2           Nicks to show in 'these didnt make it...'
-topichistory           How many topics to show in 'latest topics'
-nicktracking           Track nickchanges and create aliases (can
-                       be slow, so it's disabled by default)
+minquote             Minimal value of letters for a random quote
+maxquote             Maximum value of letters for a random quote
+wordlength           The minimum number of chars an interesting
+                     word may be (in 'most referenced words')
+activenicks          Number of nicks to show in the 'top 25'
+activenicks2         Nicks to show in 'these didnt make it...'
+topichistory         How many topics to show in 'latest topics'
+nicktracking         Track nickchanges and create aliases (can
+                     be slow, so it's disabled by default)
 
-timeoffset             A time offset on the stats page - if your
-                       country has a different timezone than the
-                       machine where the stats are being
-                       generated, then for example do +1
+timeoffset           A time offset on the stats page - if your
+                     country has a different timezone than the
+                     machine where the stats are being
+                     generated, then for example do +1
 
 
 WORD OPTIONS

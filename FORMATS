@@ -12,6 +12,9 @@ pisg supports a variety of logfile formats, these are:
     MEL (mIRCStats Eggdrop Logger) can be downloaded from the following URL:
 
     http://mel.angelbears.org/
+
+    Remember to timestap your logs, or it wont work, the timestamp must be
+    in [HH:MM] format.
     
   - In order to use this, format must be set to 'mIRC'.
 
