@@ -13,7 +13,7 @@ sub new
         cfg => $args{cfg},
         normalline => '@^(\d+)\s<([^!]+)![^>]+>\s(.+)$',
         actionline => '@^(\d+)\s\[([^!]+)![^\]]+\]\sACTION\s(.+)$',
-	thirdline  => '@^(\d+)\s\S+\s(\S+)\s\(\S+\)\s(.+)
+	thirdline  => '@^(\d+)\s\-\S+\-\s(.+)
     };
 
     bless($self, $type);
@@ -61,26 +61,29 @@ sub thirdline
 
     if ($line =~ /$self->{thirdline}/o) {
         my ($time, @line);
+        @line = split(/\s+/, $2);
 
         my @time = localtime($1);
         $hash{hour} = $time[2];
         $hash{min} = $time[1];
-        $hash{nick} = $2;
+        $hash{nick} = $line[0];
 
-        @line = split(/\s+/, $3);
 
-        #if ($line[?] eq 'kicked?') {
-        #    $hash{kicker} = $hash{nick};
-        #    $hash{nick} = $line[2];
+        if ($line[0] eq 'Kicked') {
+            $hash{kicker} = $line[3];
+            $hash{nick} = $self->{cfg}->{maintainer};
 
-        #if ($line[0] eq 'TOPIC') {
-        #    $hash{newtopic} = join(' ', @line[2..$#line]);
-        #    $hash{newtopic} =~ s/^://;
+        } elsif ($line[1] eq 'kicked') {
+            $hash{kicker} = $line[4];
 
-        if ($line[0] eq 'changed' && $line[1] eq 'mode:') {
-            $hash{newmode} = join(' ', @line[2..$#line]);
+        } elsif ($line[2] eq 'changed') {
+            if ($line[3] eq 'mode:') {
+                $hash{newmode} = join(' ', @line[4..$#line]);
+            } elsif ($line[3] eq 'topic:') {
+                $hash{newtopic} = join(' ', @line[4..$#line]);
+            }
 
-        } elsif ($line[0] eq 'joined') {
+        } elsif ($line[2] eq 'joined') {
             $hash{newjoin} = $hash{nick};
 
         }
