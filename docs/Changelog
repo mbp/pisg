@@ -4,6 +4,8 @@ pisg (x.xx)
      section. (thanks, mincus)
    * Fix voice/devoice detection with xchat format.
    * mIRC6 format wasn't actually distributed with pisg, it is now.
+   * mirc2egg.sed script added in the scripts/ folder, it's used to convert
+     mIRC logs to eggdrop logs. (thanks, Geoff Simmons)
 
 pisg (0.42) - Fri Nov, 1st 2002
    * ircII logfile support added (thanks, James Andrewartha)
