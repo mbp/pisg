@@ -2,6 +2,7 @@ pisg (x.xx)
    * When ShowMostAtiveByHour was enabled, unitialized values could appear
      which caused the HTML file not to be created. (thanks, Gissehel)
    * RacBot logfile support added (thanks, Hanno Hecker)
+   * kvirc logfile support added (thanks, wwp)
 
 pisg (0.39) - Tue May, 14th 2002
    * ShowFoulLine option added (thanks, Adam Spiers <adam@spiers.net>).
