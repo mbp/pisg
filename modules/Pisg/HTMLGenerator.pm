@@ -1791,10 +1791,10 @@ sub _replace_links
 
     foreach (@str) {
         if (m/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~:@]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/o) {
-            $nick = $1 . $2 unless ($nick);
+            my $nick = $1 . $2 unless ($nick);
             $_ = "<a href=\"$1$2\" target=\"_blank\" title=\"$texturl $1$2\">" . $self->_split_long_text($nick) . '</a>';
         } elsif (m/(^|[^:])\b([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/o) {
-            $nick = $2 unless ($nick);
+            my $nick = $2 unless ($nick);
             $_ = "$1<a href=\"mailto:$2\" title=\"$textmail $nick\">" . $self->_split_long_text($nick) . "<\/a>";
         } else {
             $_ = $self->_split_long_text($_);
