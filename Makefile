@@ -8,7 +8,7 @@ DIRNAME = pisg-$(VERSION)
 TARFILE = pisg-$(VERSION).tar.gz
 ZIPFILE = pisg-$(VERSION).zip
 
-FILES = pisg.pl \
+FILES = pisg \
 	 COPYING \
 	 README \
 	 pisg.cfg \
