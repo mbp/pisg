@@ -9,7 +9,10 @@ pisg (x.xx)
    * Hopefully fix xchat logs interpreting asterixs as the nick.
    * If a sex has been specified for a user in pisg.cfg, that user will now
      have a sex-dependent color in the stats page. (E.g. one color for males,
-     another for females etc.)
+     another for females etc.) (thanks, Olivier 'Babar' Raginel)
+   * For languages which have a general unknown-sex verb, this can now be
+     specified. E.g. French has 'un' for male, 'une' for females and 'un(e)'
+     as a general unknown-sex verb. (thanks, Gaël Roualland)
 
 pisg (0.42) - Fri Nov, 1st 2002
    * ircII logfile support added (thanks, James Andrewartha)

@@ -472,26 +472,26 @@ mailto = "Mail til"
 ### French
 <lang name="FR">
 mostop1 = "<b>[:nick]</b> a donné [:ops] ops sur le canal..."
-mostop2 = "<b>[:nick]</b> est aussi très poli : [:ops] ops de sa part."
+mostop2 = "<b>[:nick]</b> est aussi très poli[::e:(e):] : [:ops] ops de sa part."
 mostop3 = "Etrange, aucun op n'a été donné sur [:channel]!"
 
-mostdeop1 = "<b>[:nick]</b> est le shériff du canal avec [:deops] deops..."
+mostdeop1 = "<b>[:nick]</b> est l[:e:a:e:] shériff du canal avec [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs."
 mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
 
 mosthalfop1 = "<b>[:nick]</b> a donné [:halfops] halfops sur le canal..."
-mosthalfop2 = "<b>[:nick]</b> est aussi très poli : [:halfops] halfops de sa part."
+mosthalfop2 = "<b>[:nick]</b> est aussi très poli[::e:(e):] : [:halfops] halfops de sa part."
 mosthalfop3 = "Etrange, aucun halfop n'a été donné sur [:channel]!"
 
-mostdehalfop1 = "<b>[:nick]</b> est le shériff du canal avec [:dehalfops] dehalfops..."
+mostdehalfop1 = "<b>[:nick]</b> est l[:e:a:] shériff du canal avec [:dehalfops] dehalfops..."
 mostdehalfop2 = "<b>[:nick]</b> a dehalfopé [:dehalfops] utilisateurs."
 mostdehalfop3 = "Wow, aucun halfop n'a été retiré sur [:channel]!"
 
 mostvoice1 = "<b>[:nick]</b> a donné [:voices] fois le +v sur le canal..."
-mostvoice2 = "<b>[:nick]</b> est aussi très poli: [:voices] +v de sa part."
+mostvoice2 = "<b>[:nick]</b> est aussi très poli[::e:(e):]: [:voices] +v de sa part."
 mostvoice3 = "C'est curieux, on n'a jamais donné un seul +v sur [:channel]!"
 
-mostdevoice1 = "<b>[:nick]</b> est le shériff du canal avec [:devoices] -v."
+mostdevoice1 = "<b>[:nick]</b> est l[:e:a:] shériff du canal avec [:devoices] -v."
 mostdevoice2 = "<b>[:nick]</b> a dévoicé [:devoices] personnes."
 mostdevoice3 = "Wow, aucun +v n'a été retiré sur [:channel]!"
 
@@ -500,12 +500,12 @@ action2 = "Egalement <b>[:nick]</b> qui n'est pas en reste avec [:actions] actio
 action3 = "Aucune action sur [:channel] !"
 actiontext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-question1 = "<b>[:nick]</b> est soit stupide soit trop curieux... [:per]% de ses lignes contiennent une question !"
+question1 = "<b>[:nick]</b> est soit stupide soit trop curieu[:x:se:x(se):]... [:per]% de ses lignes contiennent une question !"
 question2 = "<b>[:nick]</b> n'en connait pas davantage, [:per]% de ses lignes étaient des questions."
 question3 = "Personne ne pose de question ici, tous des génies sur ce channel?"
 
-shout1 = "[:Le:La:] plus bruyant(e) est <b>[:nick]</b> qui gueule [:per]% du temps !"
-shout2 = "<b>[:nick]</b> est aussi un(e) <i>[:vieux raleur:mégère:]</i> qui braille [:per]% du temps !"
+shout1 = "[:Le:La:] plus bruyant[::e:(e):] est <b>[:nick]</b> qui gueule [:per]% du temps !"
+shout2 = "<b>[:nick]</b> est aussi un[::e:(e):] <i>[:vieux raleur:mégère:]</i> qui braille [:per]% du temps !"
 shout3 = "Personne ne s'exclame ici, wow."
 
 allcaps1 = "Il semblerait que le CAPS-LOCK soit bloqué chez <b>[:nick]</b>, qui écrit en majuscule [:per]% du temps."
@@ -518,26 +518,26 @@ violent2 = "<b>[:nick]</b> ne peut controller son agressivité, en slappant <b>[:
 violent3 = "Personne ne slappe, tout le monde est sympa."
 violenttext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-attacked1 = "Pôvre <b>[:nick]</b>, personne ne l'aime, en étant slappé <b>[:attacks]</b> fois."
-attacked2 = "<b>[:nick]</b> n'as pas l'air aprécié(e) non plus, qui a déjà été slappé(e) <b>[:attacks]</b> fois."
+attacked1 = "Pôvre <b>[:nick]</b>, personne ne l'aime, en étant slappé[::e:(e):] <b>[:attacks]</b> fois."
+attacked2 = "<b>[:nick]</b> n'as pas l'air aprécié[::e:(e):] non plus, qui a déjà été slappé[::e:(e):] <b>[:attacks]</b> fois."
 attackedtext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-gotkick1 = "<b>[:nick]</b> n'est pas trés populaire, kické(e) [:kicks] fois !"
+gotkick1 = "<b>[:nick]</b> n'est pas très populaire, kické[::e:(e):] [:kicks] fois !"
 gotkick2 = "<b>[:nick]</b> n'a pas d'ami non plus, [:kicks] kicks reçus."
 kicktext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 joins = "Rester ou partir est un choix difficile: <b>[:nick]</b> a fait [:joins] visites durant cette période !"
 
 kick1 = "<b>[:nick]</b> est malade ou alors aime bien jouer, son kick a sévi [:kicked] fois !"
-kick2 = "Un(e) disciple de [:oldnick], <b>[:nick]</b> a kické [:kicked] personnes."
+kick2 = "Un[::e:] disciple de [:oldnick], <b>[:nick]</b> a kické [:kicked] personnes."
 kick3 = "Les ops sont sympas ici, personne n'a été kické !"
 
 words1 = "<b>[:nick]</b> a dit un total de [:words] mots !"
 words2 = "Et juste derrière [:oldnick], <b>[:nick]</b>, avec quand même : [:words] mots à son actif."
 words3 = "Personne ne dit rien... quel channel étrange..."
 
-mono1 = "<b>[:nick]</b> se parle tout seul trés souvent, en écrivant plus de 5 lignes d'un coup à [:monos] reprises !"
-mono2 = "Un(e) autre incompris(e) est <b>[:nick]</b>, qui a tenté de se prendre la tête à [:monos] reprises."
+mono1 = "<b>[:nick]</b> se parle tout[::e:(e):] seul[::e:(e):] très souvent, en écrivant plus de 5 lignes d'un coup à [:monos] reprises !"
+mono2 = "Un[::e:(e):] autre incompris[::e:(e):] est <b>[:nick]</b>, qui a tenté de se prendre la tête à [:monos] reprises."
 
 long1 = "<b>[:nick]</b> a écrit des lignes bien longues ! [:letters] lettres par ligne !"
 long2 = "La moyenne sur [:channel] est de [:avg] lettres par ligne."
@@ -545,22 +545,19 @@ long2 = "La moyenne sur [:channel] est de [:avg] lettres par ligne."
 wpl1 = "<b>[:nick]</b> écrit en moyenne [:wpl] mots par ligne..."
 wpl2 = "La moyenne du channel est de [:avg] mots par ligne."
 
-long1 = "<b>[:nick]</b> a écrit des lignes bien longues! [:letters] lettres par ligne!"
-long2 = "La moyenne de [:channel] est de [:avg] lettres par ligne."
-
 short1 = "<b>[:nick]</b> a écrit les lignes les plus courtes, avec en moyenne [:letters] lettres par ligne..."
 short2 = "<b>[:nick]</b> n'a pas grand chose à dire non plus, en moyenne [:letters]."
 
-foul1 = "<b>[:nick]</b> a du mal à s'exprimer, [:per]% de ses lignes contiennent des mots incompréhensibles."
+foul1 = "<b>[:nick]</b> est bien vulgaire, [:per]% de ses lignes contiennent des gros mots."
 foul2 = "<b>[:nick]</b> parle aussi comme un chartier, [:per]% du temps."
-foul3 = "Personne n'a de problème pour parler sur [:channel] ! Pendant combien de temps encore?"
+foul3 = "Personne n'est grossier sur [:channel] ! Pendant combien de temps encore?"
 foultext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-smiles1 = "<b>[:nick]</b> apporte un peu de gaiété dans le monde, [:per]% de ses lignes contiennent un smiley :)"
+smiles1 = "<b>[:nick]</b> apporte un peu de gaieté dans le monde, [:per]% de ses lignes contiennent un smiley :)"
 smiles2 = "<b>[:nick]</b> n'est pas triste non plus, qui sourit [:per]% du temps."
 smiles3 = "Personne ne sourit sur [:channel] ! Allez faites un effort quoi !"
 
-sad1 = "<b>[:nick]</b> semble un peu déprimé(e) en ce moment, [:per]% de ses lignes contiennent un smiley :("
+sad1 = "<b>[:nick]</b> semble un peu déprimé[::e:(e):] en ce moment, [:per]% de ses lignes contiennent un smiley :("
 sad2 = "<b>[:nick]</b> est aussi bien triste, en pleurant [:per]% du temps."
 sad3 = "Personne n'est triste sur [:channel] ! Quel channel merveilleux :-)"
 

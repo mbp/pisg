@@ -1491,9 +1491,13 @@ sub _template_text
         $text =~ s/Ø/&Oslash;/go;
     }
 
-    if ($text =~ /\[:.*?:.*?:\]/o) {
-        $text =~ s/\[:(.*?):(.*?):\]/$self->_get_subst($1,$2,\%hash)/geo;
+    if ($text =~ /\[:[^:]*?:[^:]*?:[^:]*?:\]/o) {
+        $text =~ s/\[:([^:]*?):([^:]*?):([^:]*?):\]/$self->_get_subst($1,$2,$3,\%hash)/geo;
     }
+    if ($text =~ /\[:[^:]*?:[^:]*?:]/o) {
+        $text =~ s/\[:([^:]*?):([^:]*?):]/$self->_get_subst($1,$2,undef,\%hash)/geo;
+    }
+
     return $text;
 }
 
@@ -1534,7 +1538,7 @@ sub _get_subst
     # defined. If yes, return the appropriate value. If no, just return the
     # default he/she value.
     my $self = shift;
-    my ($m,$f,$hash) = @_;
+    my ($m,$f,$d,$hash) = @_;
     if ($hash->{nick} && $self->{users}->{sex}{$hash->{nick}}) {
         if ($self->{users}->{sex}{$hash->{nick}} eq 'm') {
             return $m;
@@ -1542,7 +1546,7 @@ sub _get_subst
             return $f;
         }
     }
-    return "$m/$f";
+    return defined($d) ? $d : "$m/$f";
 }
 
 sub _mostusedword
