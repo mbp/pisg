@@ -522,7 +522,7 @@ sub _parse_file
 
     close(LOGFILE);
 
-    print "Finished analyzing log, $stats->{days} days total\n"
+    print "Finished analyzing log, $stats->{days} days, $stats->{parsedlines} lines total\n"
         unless ($self->{cfg}->{silent});
 }
 
