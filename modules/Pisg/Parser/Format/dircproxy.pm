@@ -11,9 +11,9 @@ sub new
 
     my $self = {
         cfg => $args{cfg},
-        normalline => '^@(\d+)\s<([^!]+)![^>]+>\s(.+)$',
-        actionline => '^@(\d+)\s\[([^!]+)![^\]]+\]\sACTION\s(.+)$',
-	thirdline  => '^@(\d+)\s\-(\S+)\-\s(.+)$'
+	normalline => '^<([^!]+)![^>]+>\s\[(\d{2}):\d{2}\]\s(.+)$',
+        actionline => '^\[([^!]+)![^\]]+\]\s\[(\d{2}):\d{2}\]\sACTION\s(.+)$',
+	thirdline  => '^\-(\S+)\-\s\[(\d{2}:\d{2})\]\s(.+)$'
     };
 
     bless($self, $type);
@@ -26,9 +26,8 @@ sub normalline
     my %hash;
 
     if ($line =~ /$self->{normalline}/o) {
-        my @time = localtime($1);
-        $hash{hour}   = $time[2];
-        $hash{nick}   = $2;
+        $hash{hour}   = $2;
+        $hash{nick}   = $1;
         $hash{saying} = $3;
 
         return \%hash;
@@ -43,9 +42,8 @@ sub actionline
     my %hash;
 
     if ($line =~ /$self->{actionline}/o) {
-        my @time = localtime($1);
-        $hash{hour}   = $time[2];
-        $hash{nick}   = $2;
+        $hash{hour}   = $2;
+        $hash{nick}   = $1;
         $hash{saying} = $3;
 
         return \%hash;
@@ -63,31 +61,30 @@ sub thirdline
         my ($time, @line);
 
         return
-            if ($2 eq 'dircproxy');
+            if ($1 eq 'dircproxy');
 
         @line = split(/\s+/, $3);
 
-        my @time = localtime($1);
-        $hash{hour} = $time[2];
+        my @time = split(/:/, $2);
+        $hash{hour} = $time[0];
         $hash{min} = $time[1];
         $hash{nick} = $line[0];
 
-
-        if ($line[0] eq 'Kicked') {
+        if (defined($line[3]) && $line[0] eq 'Kicked') {
             $hash{kicker} = $line[3];
             $hash{nick} = $self->{cfg}->{maintainer};
 
-        } elsif ($line[1] eq 'kicked') {
+        } elsif (defined($line[4]) && $line[1] eq 'kicked') {
             $hash{kicker} = $line[4];
 
-        } elsif ($line[2] eq 'changed') {
+        } elsif (defined($line[3]) && $line[2] eq 'changed') {
             if ($line[3] eq 'mode:') {
                 $hash{newmode} = join(' ', @line[4..$#line]);
             } elsif ($line[3] eq 'topic:') {
                 $hash{newtopic} = join(' ', @line[4..$#line]);
             }
 
-        } elsif ($line[2] eq 'joined') {
+        } elsif (defined($line[2]) && $line[2] eq 'joined') {
             $hash{newjoin} = $hash{nick};
 
         }

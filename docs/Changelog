@@ -13,6 +13,7 @@ pisg (x.xx)
    * Fix a problem with irssi logs, where a topic was understood as a saying.
    (thanks, jikuja)
    * Add support for IRCAP logs (thanks, ArCePi)
+   * Fix parsing of dircproxy logs (thanks, s-schwardt)
 
 pisg (0.49) - Sun Sep, 14th 2003
    * Make the HTML output XHTML compliant again (thanks, Stian Jordet)
