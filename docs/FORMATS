@@ -72,3 +72,12 @@ also includes a sample line for these formats.
 
   Example:
         17:40 <@John> Hello world
+        
+* psybnc:
+  - IRC bouncer (http://www.psychoid.lam3rz.de/)
+
+  - In order to use this, format must be set to 'psybnc'
+
+  Example:
+  2001-08-19-23-14-06:#LINUX.DE::stelb!user@host.org PRIVMSG #linux.de :hi!
+    

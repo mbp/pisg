@@ -1,5 +1,6 @@
 pisg (0.23)
    * Support irssi logfiles
+   * Support psybnc logfiles
    * Topics in mIRC format wasn't being recognized. Fixed.
    * Don't go beserk when the logfile doesn't contain any data; just tell it
      to the user.
