@@ -13,6 +13,7 @@ sub new
         thirdline  => '^\[\d+\-\d+\-\d+\s(\d+):(\d+)\]\s+\<([^>]+)\> (.+)',
     };
 
+    $self->{cfg}->{botnicks} .= ' Hub-Security';
     bless($self, $type);
     return $self;
 }
