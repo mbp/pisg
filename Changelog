@@ -6,6 +6,7 @@ pisg (0.17) - Sat, July 28th 2001
    * Polish translation (thanks to Gandalf the Grey)
    * Moved translations over to new file -> lang.txt, to remove bloat in
      pisg.pl
+   * Fixed a few minor bugs
 
 pisg (0.16a) - Wed, July 25th 2001
 
