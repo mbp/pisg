@@ -1120,7 +1120,10 @@ sub _mostfoul
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
           if ($self->{stats}->{lines}{$nick} > 15) {
               $spercent{$nick} = $self->{stats}->{foul}{$nick} / $self->{stats}->{words}{$nick} * 100;
-              $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+	      
+              my $dec = $self->{cfg}->{showfouldecimals};
+              $dec = 1 if($dec < 0); # default to 1
+              $spercent{$nick} =~ s/(\.\d{$dec})\d+/$1/;
           }
         }
     }

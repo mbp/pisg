@@ -1506,6 +1506,41 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWFOULDECIMALS *** -->
+    <refentry id="ShowFoulDecimals">
+
+    <refmeta> <refentrytitle>ShowFoulDecimals</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowFoulDecimals</refname>
+    <refpurpose>set how many decimals to show</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "bobot"
+         ShowFoulDecimals = "2"
+        </channel>
+
+        <set ShowFoulDecimals="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg uses 1 decimal. With this option you could change 
+    it to whatever you like. Negative is treated as the default value.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 decimal </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWFOULLINE *** -->
     <refentry id="ShowFoulLine">
 

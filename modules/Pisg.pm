@@ -148,6 +148,7 @@ sub get_default_config_settings
         showkickline => 1,
         showactionline => 1,
         showfoulline => 0,
+        showfouldecimals => 1,
         showshoutline => 1,
         showviolentlines => 1,
         showrandquote => 1,
