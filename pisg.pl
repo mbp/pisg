@@ -388,9 +388,9 @@ sub parse_file
     # This parses the file..
     print "Analyzing log($file) in '$conf->{format}' format...\n";
 
-    if ($file =~ /.bz$/ || $file =~ /.bz2$/) {
+    if ($file =~ /.bz2{0,1}$/ && -f $file) {
         open (LOGFILE, "bunzip2 -c $file |") or die("$0: Unable to open logfile($file): $!\n");
-    } elsif ($file =~ /.gz$/) {
+    } elsif ($file =~ /.gz$/ && -f $file) {
         open (LOGFILE, "gunzip -c $file |") or die("$0: Unable to open logfile($file): $!\n");
     } else {
         open (LOGFILE, $file) or die("$0: Unable to open logfile($file): $!\n");
