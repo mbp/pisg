@@ -112,7 +112,7 @@ END_USAGE
                    'maintainer=s' => \$cfg{maintainer},
                    'outfile=s'    => \$cfg{outputfile},
                    'dir=s'        => \$cfg{logdir},
-                   'prefix=s'     => \$cfg{prefix},
+                   'prefix=s'     => \$cfg{logprefix},
                    'moduledir=s'  => \$cfg{moduledir},
                    'configfile=s' => \$cfg{configfile},
                    'ignorefile=s' => \$tmp,

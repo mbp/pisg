@@ -7,6 +7,9 @@ pisg (x.xx)
    * ShowFoulLine option added (thanks, Adam Spiers <adam@spiers.net>).
    * The "foul-words" counting is now done word-wise instead of line-wise
      (thanks, Adam Spiers <adam@spiers.net>)
+   * Files in a LogDir is now run through alphabetically incase-sensitive
+     (thanks, Gissehel <gissehel-pisggene@giss.mine.nu>)
+   * --prefix commandline option wasn't working, fixed.
 
 pisg (0.38) - Thu Apr, 25th 2002
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)
