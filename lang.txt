@@ -16,6 +16,7 @@
 # (FR) French - Molator <molator@ifrance.com>
 # (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
 # (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
+# (NL) Dutch - Pyrofikiemaan <gassman65@hotmail.com>
 
 <lang name="EN">
 ### English
@@ -686,4 +687,99 @@ lastused = "Último uso por"
 pagetitle1 = "[:channel] @ [:network] estatísticas por [:maintainer]"
 pagetitle2 = "Estatísticas geradas em [:time]"
 pagetitle3 = "Durante os [:days] dias de estatísticas, [:nicks] nicks distintos passaram por [:channel]."
+</lang>
+
+<lang name="NL">
+### Dutch
+mostop1 = "<b>[:nick]</b> doneerde [:ops] ops in deze chatbox..."
+mostop2 = "<b>[:nick]</b> was ook erg beschaafd: [:ops] werden er uitgedeeld door haar/hem"
+mostop3 = "Totaal vreemd, Geen operator status gegeven op [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> is de chatbox agent met [:deops] deops..."
+mostdeop2 = "<b>[:nick]</b> deoped [:deops] chatters"
+mostdeop3 = "Wow, geen op afgenomen op [:channel]!"
+
+question1 = "<b>[:nick]</b> is gewoon stom of verzint de vragen waar hij/zij bijstaat... [:per]% bevatte een vraag!"
+question2 = "<b>[:nick]</b> is bijna net zo stom/blond en weet ook weinig, [:per]% van zijn/haar regels eindigde ook met ?"
+question3 = "Niemand vroeg wat hiero denken zeker allemaal dat ze slim zijn ~NOT?"
+
+loud1 = "Lelijk Schreeuwmonster was <b>[:nick]</b>, en schreeuwde [:per]% tijdens zijn/haar aanwezigheid!"
+loud2 = "Ook een <i>grote smoel </i> heeft <b>[:nick]</b> die schreeuwde  [:per]% tijdens het tijdbestek van zijn/haar aanwezigheid!"
+loud3 = "Hmm niet veel geschreeuw hiero, stil zooitje zeg."
+
+shout1 = "Het lijkt dat  <b>[:nick]</b>'s zijn/haar shift-key kapot is,met een cabs percentage van [:per]% "
+shout2 = "<b>[:nick]</b> is ff vergetuh ze Caps-Lock uit te zettuh, [:per]% CAPS"
+shout3 = "Iedereen had het hoofdletter gebruik onder de knie :)"
+
+slap1 = "<b>[:nick]</b> is een agressief persoon, die veel in het rond slaat wel <b>[:slaps]</b> keer."
+slap2 = "<b>[:nick]</b> ze pilltjes helpen niet. Hij/zij sloeg <b>[:slaps]</b> keer."
+slap3 = "Geen slaps uitgedeeld hiero, wat een vriendelijk ongeregeld zooitje."
+
+slapped1 = "Zielige <b>[:nick]</b>, niemand mag haar/hem. Hij/zij werdt <b>[:slaps]</b> x geslapped."
+slapped2 = "<b>[:nick]</b> nog zo'n ongewenst zieltjes, hij/zij werd <b>[:slaps]</b> gepijnigt."
+slapped3 = "Niemand irriteerde mensen en er werdt dus ook niemand geslapt :)"
+
+gotkick1 = "<b>[:nick]</b> was gewoon niet populair genoeg, en werdt [:kicks] x gekickt !"
+gotkick2 = "<b>[:nick]</b> werd ook niet echt gemogen met, [:kicks] ontvangen kicks"
+
+joins = "<b>[:nick]</b> wist niet of ie nou moest komen of gaan en kwam, [:joins] x binnen in deze periode!"
+
+kick1 = "<b>[:nick]</b> is vreemd in het hoofd of is gewoon eerlijk en, kickte een totaal aantal chatters [:kicked]!"
+kick2 = "[:oldnick]'s wannabe , <b>[:nick]</b>, kickte [:kicked] mensjes"
+kick3 = "Vriendelijke Ops hiero totaal geen kicks!"
+
+words1 = "<b>[:nick]</b> sprak [:words] woorden in totaal!"
+words2 = "[:oldnick]'s lul wannabe, <b>[:nick]</b>, sprak gelukkig iets minder wel : [:words] woorden."
+words3 = "Stilte wat een rust zeg :)"
+
+mono1 = "<b>[:nick]</b> praat veel in zichzelf, schreef over 5 regels in een rij [:monos] x!"
+mono2 = "Nog zo'n simpel eenzaam zieltje was <b>[:nick]</b>, die het voor elkaar kreeg [:monos] in ze eentje te lullen"
+
+wpl1 = "<b>[:nick]</b> schreef een gemiddelde van [:wpl] woorden per regel..."
+wpl2 = "Chatbox gemiddelde was [:avg] woordens per regel."
+
+long1 = "<b>[:nick]</b> schreef de langste regels, gemiddelde van [:letters] per regel..."
+long2 = "Chatbox gemiddelde [:channel] was [:avg] letters per regel"
+
+short1 = "<b>[:nick]</b> schreef de kortste regels, gemiddelde van [:letters] letters per regel..."
+short2 = "[:nick] had ook zijn/haar typgeit dag niet, gemiddeld [:letters] letters/pr"
+
+foul1 = "<b>[:nick]</b> Is een ASO, [:per]% regels bevatte *boefjes* woorden"
+foul2 = "<b>[:nick]</b> kan er ook wat van, en scheld [:per]% van de tijd"
+foul3 = "Iedereen is vriendelijk op  [:channel]! Leven zich veel uit op hun werk ofzow ?"
+
+smiles1 = "<b>[:nick]</b> maakt de wereld weer vrolijk , [:per]% regels bevatte een smiley :)"
+smiles2 = "<b>[:nick]</b> heeft het ook wel naar zijn/haar zin, en lachte [:per]% van de tijd"
+smiles3 = "Niemand lachte op [:channel]! Doe maar ff lachen."
+
+sad1 = "<b>[:nick]</b> is ook niet echt vrolijk , [:per]% regels bevatte een sad face :("
+sad2 = "<b>[:nick]</b> is ook niet al te vrolijk met een sad percentage van [:per]% "
+sad3 = "Niemand is "Bedroeft" [:channel]! What a happy channel :-)"
+
+notopic = "De mensen hiero weten nog steeds niet hoe ze +t moeten gebruiken "
+
+## Topics
+
+bignumtopic = "Grote Getallen"
+othernumtopic = "Andere interresante getallen"
+latesttopic = "Laatste Topics"
+activetimestopic = "Meest actieve tijden"
+activenickstopic = "Meest actieve nicks"
+mostwordstopic = "Meest gebruikte woorden"
+referencetopic = "Meest genoemde nick"
+
+## Other text
+
+totallines = "Totaal aantal regels: [:lines]"
+nick = "Nick"
+numberlines = "Aantal Regels"
+randquote = "Random Quote"
+userpic = "Plaatje"
+nottop = "Deze behoorden gewoon niet tot "The Elite":"
+word = "Woord"
+numberuses = "Aantal gebruik"
+lastused = "Laatst gebruikt door"
+pagetitle1 = "[:channel] @ [:network] statistieken door [:maintainer]"
+pagetitle2 = "Statistics gegenereerd op [:time]"
+pagetitle3 = "Tijdens deze [:days]-daagse periode, waren er in totaal <b>[:nicks]</b> verschillende nicks te vinden op [:channel]."
 </lang>

@@ -1,4 +1,4 @@
-pisg (0.18)
+pisg (0.18) - Mon, Aug 6th 2001
 
    * Added pisg.cfg support which now obsoletes user.cfg, in this file
      everything should be set, instead of in the script - this makes it easier
@@ -13,6 +13,7 @@ pisg (0.18)
    * Make pisg die when there is no files in logdir
    * Portugese translation (thanks to JaMiR0W <jamirow@ig.com.br>)
    * Norweigan translation (thanks to Andreas Blaafladt)
+   * Dutch translation (thanks to Pyrofikiemaan)
    * New feature: 'Those who couldnt control the shift key and wrote UPPERCASE'
    * New feature: 'Who got slapped the most'
    * New feature; 'Average words per line'
