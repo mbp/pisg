@@ -1,0 +1,146 @@
+/*
+   CSS pour pisg
+   maggic 2003/02/23 & 2003/04/26
+
+   http://maggic.org
+*/
+
+/* Liens */
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+a:link {
+    color: #002597;
+}
+a:visited {
+    color: #002597;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #002597;
+}
+
+/* Autres liens (bas de page) */
+a.background {
+    text-decoration: none;
+}
+
+a.background:link {
+    color: #002597;
+}
+
+a.background:visited {
+    color: #002597;
+}
+
+a.background:hover {
+    text-decoration: underline;
+    color: #002597;
+}
+
+body {
+    background-color: #ededed;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+}
+
+td {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    text-align: left;
+}
+
+.male {
+    color: #0000DD;
+}
+
+.female {
+    color: #DD3366;
+}
+
+.bot {
+    color: #00FFFF;
+}
+
+.title {
+    font-family: verdana, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Les titres des rubriques */
+.headtext {
+    color: #000000;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    background-color: #faa602;
+}
+
+/* Bords des titres */
+.headlinebg {
+    background-color: #000000;
+}
+
+/* Les sous-titres des rubriques */
+.tdtop {
+    background-color: #bbbbbb;
+    color: #000000;
+}
+
+/* Cellules "Big Numbers" */
+.hicell {
+    background-color: #dddddd;
+}
+
+/* Cellules "Users with most nicknames" */
+.hicell10 {
+    background-color: #dddddd;
+    font-size: 10px;
+}
+
+/* Nombres des listes (2+) */
+.rankc {
+    background-color: #bbbbbb;
+}
+
+/* Nombres des listes (1) */
+.hirankc {
+    background-color: #999999;
+    font-weight: bold;
+}
+
+
+.rankc10 {
+    background-color: #cccccc;
+    font-size: 10px;
+}
+
+/* heure autre que la plus frequentee */
+.rankc10center {
+    background-color: #dddddd;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* heure la plus frequentee */
+.hirankc10center {
+    background-color: #999999;
+    color: #000000;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+}
+
+.small {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 10px;
+}
+
+.asmall {
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 10px;
+      text-align: center;
+}

@@ -10,6 +10,7 @@ pisg (x.xx)
    * Fix problem with muh format and action lines (thanks, Kevin Bralten)
    * The irssi logformat now also works when the timestamping includes
      seconds.
+   * Added orange_grey colorscheme (thanks, maggic).
 
 pisg (0.47) - Wed Feb, 26th 2003
    * Fix bug where multiple URLs in same line would have save name as first URL
