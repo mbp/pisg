@@ -28,6 +28,7 @@ mostop3 = "Strange, no op was given on [:channel]!"
 action1 = "<b>[:nick]</b> always lets us know what he/she is doing: [:actions] actions!"
 action2 = "Also <b>[:nick]</b> tells us what's up with [:actions]"
 action3 = "No actions in [:channel] !"
+actiontext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 mostdeop1 = "<b>[:nick]</b> is the channel sheriff with [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> deoped [:deops] users"
@@ -136,6 +137,7 @@ pagetitle3 = "During this [:days]-days reporting period, a total number of <b>[:
 action1 = "<b>[:nick]</b> hält uns immer auf dem Laufenden was er/sie gerade macht: [:actions] Actions!"
 action2 = "Auch <b>[:nick]</b> verät uns was los ist: [:actions] Actions von ihm/ihr"
 action3 = "Keine Actions in [:channel] !"
+actiontext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 mostop1 = "<b>[:nick]</b> vergab [:ops] ops im Channel..."
 mostop2 = "<b>[:nick]</b> war auch sehr zuvorkommend: [:ops] von ihm/ihr."
@@ -174,6 +176,7 @@ joins = "<b>[:nick]</b> konnte sich nicht entscheiden im Channel zu bleiben oder
 kick1 = "Ist <b>[:nick]</b> jetzt einfach nur ein fairer Op oder macht ihm/ihr das Spass? Er/Sie kickte [:kicked] User!"
 kick2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, er/sie kickte [:kicked] User."
 kick3 = "Nette Opper hier, niemand wurde gekickt!"
+
 words1 = "<b>[:nick]</b> war mit [:words] Worten sehr mitteilungsbedürftig!"
 words2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, schaffte es auf immerhin [:words] Worte"
 words3 = "Niemand hat etwas gesagt? Seltsamer Channel..."
