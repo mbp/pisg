@@ -1180,10 +1180,10 @@ sub activetimes
 sub legend
 {
     html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
-    html("<td align=\"center\"><img src=\"blue-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
-    html("<td align=\"center\"><img src=\"green-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
-    html("<td align=\"center\"><img src=\"yellow-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
-    html("<td align=\"center\"><img src=\"red-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
+    html("<td align=\"center\"><img src=\"$conf->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
+    html("<td align=\"center\"><img src=\"$conf->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
+    html("<td align=\"center\"><img src=\"$conf->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
+    html("<td align=\"center\"><img src=\"$conf->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
     html("</tr></table>\n");
 }
 
@@ -1290,7 +1290,7 @@ sub activenicks
     # Almost as active nicks ('These didn't make it to the top..')
 
     my $nickstoshow = $conf->{activenicks} + $conf->{activenicks2};
-	$hash{totalnicks} = ($nicks - $nickstoshow);
+    $hash{totalnicks} = $nicks - $nickstoshow;
 
     unless ($nickstoshow > $nicks) {
 
@@ -1306,7 +1306,9 @@ sub activenicks
         html("</table>");
     }
 
-	html("<br><b>" . template_text('totalnicks', %hash) . "</b><br>");
+    if($hash{totalnicks} > 0) {
+        html("<br><b>" . template_text('totalnicks', %hash) . "</b><br>");
+    }
 }
 
 sub user_linetimes {
