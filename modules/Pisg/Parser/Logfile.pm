@@ -38,7 +38,10 @@ sub _choose_format
     eval <<_END;
 use lib '$self->{cfg}->{modules_dir}';
 use Pisg::Parser::Format::$format;
-\$self->{parser} = new Pisg::Parser::Format::$format(\$self->{debug});
+\$self->{parser} = new Pisg::Parser::Format::$format(
+    debug => \$self->{debug},
+    cfg => \$self->{cfg},
+);
 _END
     if ($@) {
         print STDERR "Could not load parser for '$format': $@\n";

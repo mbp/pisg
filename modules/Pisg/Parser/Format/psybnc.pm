@@ -7,9 +7,10 @@ $^W = 1;
 
 sub new
 {
-    my $type = shift;
+    my ($type, %args) = @_;
     my $self = {
-        debug => $_[0],
+        cfg => $args{cfg},
+        debug => $args{debug},
         normalline => '^\d+-\d+-\d+-(\d+)-\d+-\d+:[^:]+::([^!]+)[^:]+:(.*)',
         actionline => '^\d+-\d+-\d+-(\d+)-\d+-\d+:[^:]+::([^!]+)[^:]+:\001ACTION (.*)',
         thirdline  => '^\d+-\d+-\d+-(\d+)-(\d+)-\d+:[^:]+::([^!]+)[^ ]+ (\w+) (.*)',
