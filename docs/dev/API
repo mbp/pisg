@@ -44,6 +44,8 @@ attackedlines hash   <nick>  Ramdom example of the given nick being
                              attacked.
 gaveops       hash   <nick>  Number of times the given nick granted ops.
 tookops       hash   <nick>  Number of times the given nick removed ops.
+gavevoice     hash   <nick>  Number of times the given nick granted voice.
+tookvoice     hash   <nick>  Number of times the given nick removed voice.
 kicked        hash   <nick>  Number of times the given nick kicked
                              someone.
 gotkicked     hash   <nick>  Number of times the give nick was kicked.
