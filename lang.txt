@@ -40,10 +40,10 @@ shout2 = "<b>[:nick]</b> just forgot to deactivate his/her Caps-Lock, [:per]% of
 shout3 = "Everybody had their shift-key under control :)"
 
 slap1 = "<b>[:nick]</b> is a very aggresive person, who slapped around <b>[:slaps]</b> times."
-slap2 = "<b>[:nick]</b> can't control their aggressions. He/She slapped around <b>[:slaps]</b> times."
+slap2 = "<b>[:nick]</b> can't control his aggressions. He/She slapped around <b>[:slaps]</b> times."
 slap3 = "Nobody slapped around anybody, everybody was friendly."
 
-slapped1 = "Poor <b>[:nick]</b>, nobody likes him/her. They got slapped <b>[:slaps]</b> times."
+slapped1 = "Poor <b>[:nick]</b>, nobody likes him/her. He/She got slapped <b>[:slaps]</b> times."
 slapped2 = "<b>[:nick]</b> seems to be unliked too, he/she got slapped <b>[:slaps]</b> times."
 slapped3 = "Nobody got slapped in Channel :)"
 
@@ -248,6 +248,22 @@ smiles3 = "Ingen smiler på [:channel]! Op med humøret drenge og piger."
 sad1 = "<b>[:nick]</b> er meget ked af det for tiden, [:per]% af linjerne havde sørgelige ansigter :("
 sad2 = "<b>[:nick]</b> er også en trist person, som græd [:per]% af tiden"
 sad3 = "Ingen er kede af det på [:channel]! Sikke en glad kanal :-)"
+
+shout1 = "Ser ud til at <b>[:nick]</b> har en voldsom trang til at råbe konstant, [:per]% af de gange han skrev var med stort" 
+shout2 = "<b>[:nick]</b> glemte vidst at Caps-Lock var slået til, [:per]% af de gange han skrev var med stort"
+shout3 = "Ser ud til at alle har deres shift under kontrol :)"
+
+slap1 = "<b>[:nick]</b> er en meget aggresiv person, han delte <b>[:slaps]</b> slaps ud."
+slap2 = "<b>[:nick]</b> er ude af kontrol. Han/Hun slog andre folk <b>[:slaps]</b> gang(e)."
+slap3 = "Alle er glade ... endnu 8)"
+
+slapped1 = "Ærgeligt. Ingen kan li' <b>[:nick]</b>. Han/Hun blev banket <b>[:slaps]</b> gange."
+slapped2 = "<b>[:nick]</b> er vidst heller ikke for polulær, han/hun fik tæsk <b>[:slaps]</b> gang(e)."
+slapped3 = "Ingen er blevet banket i denne kanal :)"
+
+words1 = "<b>[:nick]</b> er meget aktiv med [:words] skrevne ord!"
+words2 = "[:oldnick] blev tæt forfulgt af <b>[:nick]</b>, med [:words] ord."
+words3 = "Hmmm ingen har sagt noget endnu... underlig kanal..."
 
 notopic = "A topic was never set on this channel"
 
