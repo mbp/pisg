@@ -109,6 +109,7 @@ urlstopic = "Most referenced URLs"
 ## Other text
 
 totallines = "Total number of lines: [:lines]"
+totalnicks = "By the way, there were [:totalnicks] other nicks"
 nick = "Nick"
 url = "URL"
 numberlines = "Number of lines"
@@ -217,6 +218,7 @@ urlstopic = "Am meisten benutzte URLs"
 ## Other text
 
 totallines = "Gesamtanzahl der Zeilen: [:lines]"
+totalnicks = "Ach ja, da waren noch [:totalnicks] andere, die nicht erwähnenswert sind."
 nick = "Nick"
 url = "URL"
 numberlines = "Anzahl der Zeilen"
