@@ -37,7 +37,7 @@ language; English, German, Danish and French is supported at the moment and
 can be set with the $lang variable in the script.
 
 You're welcome to translate pisg to your own language, it's not very hard,
-look in the bottom of pisg.pl!
+look in the lang.txt file!
 
 RUNNING PISG
 ------------
