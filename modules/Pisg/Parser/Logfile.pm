@@ -251,7 +251,7 @@ sub _parse_file
                     } elsif (!$lines->{sayings}{$nick}) {
                         # Just fill the users first saying in if he hasn't
                         # said anything yet, to get rid of empty quotes.
-                        push @{ $lines->{sayings}{$nick} }, $saying;
+                        push @{ $lines->{sayings}{$nick} }, substr($saying, 0, $self->{cfg}->{maxquote});
                     }
 
                     $stats->{lengths}{$nick} += $len;
