@@ -25,7 +25,7 @@ sub normalline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{normalline}/ && $3 eq $self->{cfg}->{channel}) {
+    if ($line =~ /$self->{normalline}/o && $3 eq $self->{cfg}->{channel}) {
         $self->{debug}->("[$lines] Normal: $1 $2 $3 $4");
 
         $hash{hour}   = $1;
@@ -42,7 +42,7 @@ sub actionline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{actionline}/ && $3 eq $self->{cfg}->{channel}) {
+    if ($line =~ /$self->{actionline}/o && $3 eq $self->{cfg}->{channel}) {
         $self->{debug}->("[$lines] Action: $1 $2 $3 $4");
 
         $hash{hour}   = $1;
@@ -59,7 +59,7 @@ sub thirdline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{thirdline}/) {
+    if ($line =~ /$self->{thirdline}/o) {
         $self->{debug}->("[$lines] ***: $1 $2 $3");
 
         $hash{hour} = $1;

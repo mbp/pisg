@@ -35,7 +35,7 @@ sub normalline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{normalline}/) {
+    if ($line =~ /$self->{normalline}/o) {
         $self->{debug}->("[$lines] Normal: $1 $2 $3");
 
         # Most log formats are regular enough that you can just match the
@@ -57,7 +57,7 @@ sub actionline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{actionline}/) {
+    if ($line =~ /$self->{actionline}/o) {
         $self->{debug}->("[$lines] Action: $1 $2 $3");
 
         # Most log formats are regular enough that you can just match the
@@ -93,7 +93,7 @@ sub thirdline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{thirdline}/) {
+    if ($line =~ /$self->{thirdline}/o) {
         $self->{debug}->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
 
         $hash{hour} = $1;
