@@ -1243,6 +1243,8 @@ sub _lasttopics
     if ($self->{stats}->{topics}) {
         $self->{debug}->("Total number of topics: " . scalar @{ $self->{stats}->{topics} });
 
+        my %topic_seen;
+
         my %hash = (
             total => scalar @{ $self->{stats}->{topics} }
         );
@@ -1258,6 +1260,10 @@ sub _lasttopics
 
         for (my $i = $ltopic; $i >= $tlimit; $i--) {
             my $topic = htmlentities($self->{stats}->{topics}[$i]{topic});
+            # This code makes sure that we don't see the same topic twice
+            next if ($topic_seen{$topic});
+            $topic_seen{$topic} = 1;
+
             $topic = _replace_links($topic);
             # Strip off the quotes (')
             $topic =~ s/^\'(.*)\'$/$1/;
