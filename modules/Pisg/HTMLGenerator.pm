@@ -472,7 +472,7 @@ sub _activenicks
         my $lastseen;
 
         if ($self->{cfg}->{show_lastseen}) {
-            my $lastseen = $self->{stats}->{days} - $self->{stats}->{lastvisited}{$nick};
+            $lastseen = $self->{stats}->{days} - $self->{stats}->{lastvisited}{$nick};
             if ($lastseen == 0) {
                 $lastseen = $self->_template_text('today');
             } elsif ($lastseen == 1) {
