@@ -139,6 +139,9 @@ sub htmlentities
     $str =~ s/å/&aring;/go;
     $str =~ s/æ/&aelig;/go;
     $str =~ s/ø/&oslash;/go;
+    $str =~ s/Å/&Aring;/go;
+    $str =~ s/Æ/&AElig;/go;
+    $str =~ s/Ø/&Oslash;/go;
 
     return $str;
 }
