@@ -441,3 +441,20 @@ time"
   [2003/07/22 22:03:25] @ Quit: oddbudman: Remote
   closed the connection
   [2003/07/22 22:03:29] <FluxBot> Rathnor: :(
+ 
+* IRCAP
+                                                                                
+ - Version 7.5 or 7.51 of IRCAP (www.ircap.com or www.ircap.net).
+                                                                                
+ - mIRC version 6.03 or 6.12 (this are the mIRC versions required by IRCAP, so not really a parser requirement).
+                                                                                
+ - Timestamp logs activated in mIRC:
+   Enter Options (inside File -mIRC6.03- or Tools -mIRC6.12-), IRC->Logging and check Timestamp Logs.
+                                                                                
+ - To use this, format must be set to 'IRCAP'.
+ Example:
+ [2:51] <Lawy> a las wenassssssssss
+ [2:51] <Lawy> [ArCePi] nas nas
+ [2:51] <Lawy> [BruJo] wenas
+ [2:51] <Danaita> lawyyyy
+
