@@ -81,14 +81,8 @@ sub run
     $self->parse_channels();
 
     # Optionaly parse the channel we were given in override_cfg.
-    if (!$self->{cfg}->{channel}) {
-        print "No channels defined.\n";
-    } elsif ($self->{cfg}->{channel} and !$self->{cfg}->{logfile}) {
-        print "No logfile defined for " . $self->{cfg}->{channel} . "\n";
-    } else {
-        $self->do_channel()
-            unless ($self->{cfg}->{chan_done}{$self->{cfg}->{channel}});
-    }
+    $self->do_channel()
+        unless ($self->{cfg}->{chan_done}{$self->{cfg}->{channel}});
 
     # Close the debugging file.
     $self->close_debug();
@@ -380,41 +374,50 @@ sub init_pisg
 sub do_channel
 {
     my $self = shift;
-    $self->init_pisg();        # Init commandline arguments and other things
-    $self->init_words();       # Init words. (Foulwords etc)
+    if (!$self->{cfg}->{channel}) {
+        print "No channels defined.\n";
+    } elsif ($self->{cfg}->{channel} and !$self->{cfg}->{logfile}) {
+        print "No logfile defined for " . $self->{cfg}->{channel} . "\n";
+    } else {
 
-    # Pick our stats generator.
-    my $analyzer;
-    eval <<_END;
+        $self->init_pisg();        # Init some general things
+        $self->init_words();       # Init words. (Foulwords, ignorewords, etc.)
+
+
+        # Pick our stats generator.
+        my $analyzer;
+        eval <<_END;
 use Pisg::Parser::$self->{cfg}->{logtype};
 \$analyzer = new Pisg::Parser::$self->{cfg}->{logtype}(\$self->{cfg}, \$self->{debug});
 _END
-    if ($@) {
-        print STDERR "Could not load stats generator for '$self->{cfg}->{logtype}': $@\n";
-        return undef;
-    }
+        if ($@) {
+            print STDERR "Could not load stats generator for '$self->{cfg}->{logtype}': $@\n";
+            return undef;
+        }
 
-    my $stats = $analyzer->analyze();
+        my $stats = $analyzer->analyze();
 
-    my $generator;
-    eval <<_END;
+        # Initialize HTMLGenerator object
+        my $generator;
+        eval <<_END;
 use Pisg::HTMLGenerator;
 \$generator = new Pisg::HTMLGenerator(\$self->{cfg}, \$self->{debug}, \$stats, \$self->{users}, \$self->{tmps});
 _END
 
-    if ($@) {
-        print STDERR "Could not load stats html generator (Pisg::HTMLGenerator): $@\n";
-        return undef;
-    }
+        if ($@) {
+            print STDERR "Could not load stats html generator (Pisg::HTMLGenerator): $@\n";
+            return undef;
+        }
 
-    # Create our HTML page if the logfile has any data.
-    if (defined $stats and $stats->{totallines} > 0) {
-        $generator->create_html();
-    } elsif ($stats->{totallines} == 0) {
-        print STDERR "No lines found in logfile.. skipping.\n";
-    }
+        # Create our HTML page if the logfile has any data.
+        if (defined $stats and $stats->{totallines} > 0) {
+            $generator->create_html();
+        } elsif ($stats->{totallines} == 0) {
+            print STDERR "No lines found in logfile.. skipping.\n";
+        }
 
-    $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1;
+        $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1;
+    }
 }
 
 sub parse_channels
