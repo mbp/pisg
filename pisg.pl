@@ -101,7 +101,7 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
 %setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %userpics,
-%userlinks, %T, $repeated, $lastnormal, $foulwords);
+%userlinks, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent);
 
 sub main
 {
@@ -393,6 +393,9 @@ sub parse_file
 
                     $loud{$nick}++
                         if ($saying =~ /!/);
+
+					$shout{$nick}++
+						if ($saying =~ /[A-Z]+/ and $saying !~ /[a-z0-9:]/);
 
                     $foul{$nick}++
                         if ($saying =~ /$foulwords/);
@@ -909,6 +912,7 @@ sub create_html
     html("<table width=\"614\">\n"); # Needed for sections
     questions();
     loudpeople();
+	shoutpeople();
     mostsmiles();
     mostsad();
     longlines();
@@ -1254,6 +1258,45 @@ sub loudpeople
 
     } else {
         my $text = template_text('loud3');
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
+    }
+
+}
+
+sub shoutpeople
+{
+    # The ones who speak SHOUTED!
+
+    foreach my $nick (sort keys %shout) {
+        if ($line{$nick} > 100) {
+            $spercent{$nick} = ($shout{$nick} / $line{$nick}) * 100;
+            $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+        }
+    }
+
+    my @shout = sort { $spercent{$b} <=> $spercent{$a} } keys %spercent;
+
+    if (@shout) {
+        my %hash = (
+            nick => $shout[0],
+            per => $spercent{$shout[0]}
+        );
+
+        my $text = template_text('shout1', %hash);
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        if (@shout >= 2) {
+            my %hash = (
+                nick => $shout[1],
+                per => $spercent{$shout[1]}
+            );
+
+            my $text = template_text('shout2', %hash);
+            html("<br><span class=\"small\">$text</span>");
+        }
+        html("</td></tr>");
+
+    } else {
+        my $text = template_text('shout3');
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 
