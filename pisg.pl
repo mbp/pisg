@@ -687,6 +687,9 @@ sub parse_words
         # ignore contractions
         next if ($word =~ m/'..?$/o);
 
+	# Also ignore stuff from URLs.
+	next if ($word =~ m{https?|^//});
+
         $wordcount{$word}++ unless ($users->{ignores}{$word});
         $lastused{$word} = $nick;
     }
