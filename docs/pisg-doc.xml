@@ -755,6 +755,44 @@
     </refsect1>
     </refentry>
 
+    <!-- *** ALTCOLORSCHEME *** -->
+    <refentry id="AltColorScheme">
+
+    <refmeta> <refentrytitle>AltColorScheme</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>AltColorScheme</refname>
+    <refpurpose>alternate stylesheets for stats page</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         ColorScheme = "darkgalaxy"
+         AltColorScheme = "layout/ocean.css"
+         Maintainer = "John"
+        </channel>
+
+        <set AltColorScheme="layout/darkgalaxy.css layout/justgrey.css">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>AltColorScheme</command> defines an alternate CSS file to
+    be used for the statistics page. Multiple files can be given (space
+    separated.) Note that this is not supported by all browsers.
+    See also <xref linkend="ColorScheme" /> and <xref linkend="CssDir" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> default </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** LANG *** -->
     <refentry id="Lang">
 

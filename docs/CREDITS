@@ -109,7 +109,7 @@ Other contributors:
  * Julien Danjou <acid@debian.org>
    | pisg(1) manpage
  * Torbjörn Svensson <azoff@se.linux.org>
-   | ShowFoulDecimals option
+   | ShowFoulDecimals and AltColorScheme options
  * coaster
    | improved mirc6hack.mrc
  * Vianney Lecroart <acemtp@free.fr>

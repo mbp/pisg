@@ -195,16 +195,24 @@ sub _htmlheader
     );
 
     my $CSS;
-    if($self->{cfg}->{colorscheme} =~ /[^\w]/) { # use external CSS file
-        $CSS = "<link rel=\"stylesheet\" type=\"text/css\" href=\"$self->{cfg}->{colorscheme}\">";
+    if($self->{cfg}->{colorscheme} =~ /([^\/.]+)\.[^\/]+$/) { # use external CSS file
+        $CSS = "<link rel=\"stylesheet\" type=\"text/css\" title=\"$1\" href=\"$self->{cfg}->{colorscheme}\">";
     } elsif($self->{cfg}->{colorscheme} ne "none") { # read the chosen CSS file
         my $css_file = $self->{cfg}->{cssdir} . $self->{cfg}->{colorscheme} . ".css";
         open(FILE, $css_file) or open (FILE, $self->{cfg}->{search_path} . "/$css_file") or die("$0: Unable to open stylesheet $css_file: $!\n");
         {
             local $/; # enable "slurp" mode
-            $CSS = "<style type=\"text/css\">\n". <FILE>. "</style>";
+            $CSS = "<style type=\"text/css\" title=\"$self->{cfg}->{colorscheme}\">\n". <FILE>. "</style>";
         }
         close FILE;
+    }
+
+    # use alternate CSS file
+    if($self->{cfg}->{altcolorscheme} ne "none" and $self->{cfg}->{altcolorscheme} =~ /[^\w]/) {
+        foreach (split /\s+/, $self->{cfg}->{altcolorscheme}) {
+            /([^\/.]+)\.[^\/]+$/;
+            $CSS .= "\n<link rel=\"alternate stylesheet\" type=\"text/css\" title=\"$1\" href=\"$_\">";
+        }
     }
 
     my $title = $self->_template_text('pagetitle1', %hash);

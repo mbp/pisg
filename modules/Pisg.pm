@@ -106,6 +106,7 @@ sub get_default_config_settings
         langfile => 'lang.txt',
         cssdir => 'layout/',
         colorscheme => 'default',
+        altcolorscheme => 'none',
         logprefix => '',
         logsuffix => '',
         silent => 0,
