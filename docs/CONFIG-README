@@ -213,7 +213,7 @@ ignorewords         A space seperated list of words to ignore in 'most
 foul                Space seperated list of words considered to be 'foul'
                     language, look in the bottom for a better explanation.
 
-regexp_alises       1 or 0, enabling this will make aliases in <user> tags
+regexp_aliases      1 or 0, enabling this will make aliases in <user> tags
                     regex-able.
                     (default: 0)
 
