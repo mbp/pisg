@@ -2255,6 +2255,7 @@ action2 = "<b>[:nick]</b> também nos contou sobre o que se passava com <b>[:acti
 action3 = "Não houve actions no [:channel]!"
 actiontext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 activenickstopic = "Pessoas que mais falam"
+activenickbyhourtopic = "Pessoal que mais falam por hora"
 activetimestopic = "Horas mais frequentadas"
 allcaps1 = "Aparentemente a tecla shift do <b>[:nick]</b> está presa: <b>[:per]%</b> do tempo [:ele:ela:] escreveu com CAPS."
 allcaps2 = "<b>[:nick]</b> se esqueceu de desativar seu Caps-Lock. [:Ele:Ela:] escreveu com CAPS <b>[:per]%</b> do tempo."
