@@ -11,6 +11,11 @@ pisg (x.xx)
      (thanks, Gissehel <gissehel-pisggene@giss.mine.nu>)
    * --prefix commandline option wasn't working, fixed.
    * Slovak translation added (thanks, Gabriel Svajko <snowman@ew.sk>)
+   * "Most Active Nicks By Hour" added, new options:
+     - ShowMostActiveByHour
+     - ShowMostActiveByHourGraph
+     - ActiveNicksByHour
+     (thanks, Gissehel <gissehel-pisggene@giss.mine.nu>)
 
 pisg (0.38) - Thu Apr, 25th 2002
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)

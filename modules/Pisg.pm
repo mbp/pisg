@@ -149,6 +149,8 @@ sub get_default_config_settings
         showmru => 1,
         showvoices => 0,
         showmostnicks => 0,
+        showmostactivebyhour => 0,
+        showmostactivebyhourgraph => 0,
 
         # Less important things
 
@@ -158,6 +160,7 @@ sub get_default_config_settings
         wordlength => 5,
         activenicks => 25,
         activenicks2 => 30,
+        activenicksbyhour => 10,
         topichistory => 3,
         urlhistory => 5,
         nickhistory => 5,

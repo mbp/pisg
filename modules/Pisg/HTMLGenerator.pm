@@ -62,6 +62,10 @@ sub create_html
     }
     $self->_activenicks();
 
+    if ($self->{cfg}->{showmostactivebyhour}) {
+        $self->_mostactivebyhour();
+    }
+
     if ($self->{cfg}->{showbignumbers}) {
         $self->_headline($self->_template_text('bignumtopic'));
         _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
@@ -1668,6 +1672,93 @@ sub _mostnicks
             _html("<tr><td class=\"$class\">$a</td>");
             _html("<td class=\"hicell10\">$sortnicks[$i]<br />($nickcount $n)</td>");
             _html("<td class=\"hicell10\" valign='top'>$nickused</td>");
+            _html("</tr>");
+        }
+        _html("</table>");
+    }
+}
+
+sub _mostactivebyhour
+{
+    # List showing the user with most used nicks
+    my $self = shift;
+
+    my $sortnicks;
+
+    my $lastline=-1;
+    my $maxlines=0;
+
+    foreach my $period (0,1,2,3) {
+        my @sortnicks =
+        sort
+        {
+              (defined $self->{stats}->{line_times}{$b}[$period]?$self->{stats}->{line_times}{$b}[$period]:0)
+              <=>
+              (defined $self->{stats}->{line_times}{$a}[$period]?$self->{stats}->{line_times}{$a}[$period]:0)
+        }
+        keys %{ $self->{stats}->{nicks} } ;
+
+        for(my $i = 0; $i < $self->{cfg}->{activenicksbyhour}; $i++) {
+            next if is_ignored($sortnicks[$i]);
+            last unless $i < @sortnicks;
+
+            my $nick=$sortnicks[$i];
+            my $count=$self->{stats}->{line_times}{$nick}[$period] || 0;
+
+            last unless $nick;
+            last unless $count;
+
+            $sortnicks->[$period][$i]=$nick;
+
+            if ($lastline<$i) {
+              $lastline=$i;
+            }
+
+
+            if ($maxlines<$count) {
+              $maxlines=$count;
+            }
+        }
+    }
+
+    if ($lastline>=0) {
+
+        $self->_headline($self->_template_text('activenickbyhourtopic'));
+
+        _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
+        _html("<td>&nbsp;</td>");
+        _html("<td class=\"tdtop\"><b>0-5</b></td>");
+        _html("<td class=\"tdtop\"><b>6-11</b></td>");
+        _html("<td class=\"tdtop\"><b>12-17</b></td>");
+        _html("<td class=\"tdtop\"><b>18-23</b></td>");
+        _html("</tr>");
+
+        for(my $i = 0; $i <= $lastline; $i++) {
+
+            my $a = $i + 1;
+            my $class = $a == 1 ? 'hirankc' : 'rankc';
+
+            _html("<tr><td class=\"$class\">$a</td>");
+            foreach my $period (0,1,2,3) {
+                my $nick=$sortnicks->[$period][$i];
+                if ($nick) {
+                    my $count=$self->{stats}->{line_times}{$nick}[$period];
+                    if ($count) {
+                        _html("<td class=\"hicell\">".$nick." - ".$count);
+
+                        if ($self->{cfg}->{showmostactivebyhourgraph}) {
+                            my $pic = 'pic_h_'.(6*$period);
+                            my $w = int(($count / $maxlines) * 100);
+                            _html("<br><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />");
+                        }
+                        _html("</td>");
+                    } else {
+                        _html("<td class=\"hicell\">&nbsp;</td>");
+                    }
+                } else {
+                  _html("<td class=\"hicell\">&nbsp;</td>");
+                }
+            }
             _html("</tr>");
         }
         _html("</table>");

@@ -1583,6 +1583,80 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWMOSTACTIVEBYHOUR *** -->
+    <refentry id="ShowMostActiveByHour">
+
+    <refmeta> <refentrytitle>ShowMostActiveByHour</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowMostActiveByHour</refname>
+    <refpurpose>show most active nicks by hour</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowMostActiveByHour = "0"
+        </channel>
+
+        <set ShowMostActiveByHour="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By enabling this option, pisg will add a section to the stats showing
+    "Most Active Nicks By Hour" - also look at the
+    <command>ShowMostActiveByHourGraph</command> and
+    <command>ActiveNicksByHour</command> settings. 
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOWMOSTACTIVEBYHOURGRAPH *** -->
+    <refentry id="ShowMostActiveByHourGraph">
+
+    <refmeta> <refentrytitle>ShowMostActiveByHourGraph</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowMostActiveByHourGraph</refname>
+    <refpurpose>show graphs in most active nicks by hour</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowMostActiveByHourGraph = "0"
+        </channel>
+
+        <set ShowMostActiveByHour="1">
+        <set ShowMostActiveByHourGraph="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By enabling this option and the <command>ShowMostActiveByHour</command>
+    option, pisg will show graphs in the "Most Active Nicks By Hour"
+    section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** IGNOREWORDS *** -->
     <refentry id="IgnoreWords">
 
@@ -1853,6 +1927,41 @@
     <refsect1>
     <title>Default</title>
     <para> 30 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** ACTIVENICKSBYHOUR *** -->
+    <refentry id="ActiveNicksByHour">
+
+    <refmeta> <refentrytitle>ActiveNicksByHour</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ActiveNicksByHour</refname>
+    <refpurpose>number of nicks to show in "Most Active Nicks By Hour"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         ActiveNicksByHour = "25"
+        </channel>
+
+        <set ActiveNicksByHour="10">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many nicks you want to appear in the
+    "Most Active Nicks By Hour" section on the stats page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 10 </para>
     </refsect1>
     </refentry>
 
