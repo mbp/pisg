@@ -193,6 +193,14 @@ link to the logfile)
 
   - In order to use this, format must be set to 'oer'
 
+    oer support isn't finished, the example lines won't work so I suggest you                   
+    set the following options in your config:                                                   
+                                                                                                
+    <set show_kickline="0">                                                                     
+    <set show_actionline="0">                                                                   
+    <set show_shoutline="0">                                                                    
+    <set show_violentlines="0">   
+
   - For a detailed description see:
 
   http://faq.equnet.org/show.php?area=b2VyIGFuZCBvZXIrTXlTUUwgRkFR&id=35&lang=en
