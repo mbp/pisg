@@ -17,6 +17,7 @@
 # (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
 # (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
 # (NL) Dutch - Pyrofikiemaan <gassman65@hotmail.com>
+# (SE) Swedish - Andreas Henriksson <andreas.henriksson@linux.se>
 
 <lang name="EN">
 ### English
@@ -789,4 +790,99 @@ lastused = "Laatst gebruikt door"
 pagetitle1 = "[:channel] @ [:network] statistieken door [:maintainer]"
 pagetitle2 = "Statistics gegenereerd op [:time]"
 pagetitle3 = "Tijdens deze [:days]-daagse periode, waren er in totaal <b>[:nicks]</b> verschillende nicks te vinden op [:channel]."
+</lang>
+
+<lang name="SE">
+### Swedish
+mostop1 = "<b>[:nick]</b> gav [:ops] personer operatörsstatus i kanalen..."
+mostop2 = "<b>[:nick]</b> var också väldigt vänlig: [:ops] från honom/henne"
+mostop3 = "Underligt, inga personer fick operatörsstatus i [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> var kanalens sheriff och tog ifrån [:deops] personer deras operatörsstatus..."
+mostdeop2 = "<b>[:nick]</b> tog ifrån [:deops] användare sin operatörsstatus"
+mostdeop3 = "Wow, inga personer blev av med sin operatörsstatus i [:channel]!"
+
+question1 = "<b>[:nick]</b> är antingen dum eller ställer bara många frågor... [:per]% rader innehöll en fråga!"
+question2 = "<b>[:nick]</b> visste heller inte mycket, [:per]% av hans/hennes rader innehöll en fråga"
+question3 = "Ingen frågade någonting, bara genier i denna kanalen?"
+
+loud1 = "Skrikigast var <b>[:nick]</b> som skrek [:per]% av tiden!"
+loud2 = "En annan <i>skrikhals</i> var <b>[:nick]</b> som skrek [:per]% av tiden!"
+loud3 = "Ingen använde utropstecknet, wow."
+
+shout1 = "Det verkar som <b>[:nick]</b> har en hängande shift-tangent, [:per]% av tiden skrev han/hon i VERSALER"
+shout2 = "<b>[:nick]</b> glömde att deaktivera sin CapsLock-tangent, [:per]% av det han/hon skrev var VERSALER"
+shout3 = "Alla hade sin shift-tangent under kontroll :)"
+
+slap1 = "<b>[:nick]</b> är en väldigt aggressiv person, som använde handflatan <b>[:slaps]</b> gånger."
+slap2 = "<b>[:nick]</b> kunde inte kontrollera sina aggressioner. Han/Hon slogs <b>[:slaps]</b> gånger med sin handflata."
+slap3 = "Ingen slog ingen, alla var vänner."
+
+slapped1 = "Stackars <b>[:nick]</b>, ingen gillade honom/henne. Han/Hon blev slagen <b>[:slaps]</b> gånger med handflatan."
+slapped2 = "<b>[:nick]</b> var inte heller speciellt omtyckt, han/hon blev slagen <b>[:slaps]</b> gånger."
+slapped3 = "Ingen i kanalen fick en svidande handflata över nosen :)"
+
+gotkick1 = "<b>[:nick]</b> var inte speciellt populär, och blev utsparkad [:kicks] gånger!"
+gotkick2 = "<b>[:nick]</b> verkar också vara hatad, [:kicks] utsparkningar"
+
+joins = "<b>[:nick]</b> kunde inte bestämma sig för att stanna eller gå, och gjorde entré [:joins] gånger under den rapporterade perioden!"
+
+kick1 = "<b>[:nick]</b> är galen eller bara en rättvis operatör, sparkade ut totalt [:kicked] personer!"
+kick2 = "[:oldnick] har en efterföljare: <b>[:nick]</b>, som sparkade ut [:kicked] personer"
+kick3 = "Trevliga operatörer här, ingen blev utsparkad!"
+
+words1 = "<b>[:nick]</b> är mycket aktiv och skrev totalt [:words] ord!"
+words2 = "Pratkvarnen [:oldnick] blev tätt följd av <b>[:nick]</b>, som inte pratade riktigt lika mycket: [:words] ord."
+words3 = "Ingen sa något... Vilken konstig kanal..."
+
+mono1 = "<b>[:nick]</b> pratar mycket med sigsjälv, och skrev över 5 rader i följd [:monos] gånger!"
+mono2 = "En annan ensam person var <b>[:nick]</b>, som lyckades med [:monos] monologer"
+
+wpl1 = "<b>[:nick]</b> skrev ett genomsnitt av [:wpl] ord per rad..."
+wpl2 = "Kanalens genomsnitt var [:avg] ord per rad."
+
+long1 = "<b>[:nick]</b> skrev längst rader, genomsnittet var [:letters] tecken per rad..."
+long2 = "Kanalgenomsnittet i [:channel] var [:avg] tecken per rad"
+
+short1 = "<b>[:nick]</b> skrev kortast rader, med ett genomsnitt av [:letters] tecken per rad..."
+short2 = "[:nick] var också tystlåten, genomsnitt [:letters]"
+
+foul1 = "<b>[:nick]</b> borde tvätta munnen, [:per]% rader innehöll fula ord"
+foul2 = "<b>[:nick]</b> får också sjömännen att rodna, [:per]% av tiden svors det"
+foul3 = "Ingen svor i [:channel]! Ute mycket?"
+
+smiles1 = "<b>[:nick]</b> skänker lycka till världen, [:per]% av raderna innehöll glada miner :)"
+smiles2 = "<b>[:nick]</b> är inte heller en ledsen person, log [:per]% av tiden"
+smiles3 = "Ingen i [:channel] är glad! Upp med humöret nu pojkar och flickor."
+
+sad1 = "<b>[:nick]</b> verkar vara ledsen för tillfället, [:per]% av raderna innehöll sura miner :("
+sad2 = "<b>[:nick]</b> är också en ledsen person, som grät [:per]% av tiden"
+sad3 = "Ingen i [:channel] är ledsen! Välkommen till den glada kanalen :-)"
+
+notopic = "Ingen rubrik blev nånsin satt på denna kanal"
+
+## Topics
+
+bignumtopic = "Stora nummer"
+othernumtopic = "Andra intressanta nummer"
+latesttopic = "Senaste rubrikerna"
+activetimestopic = "Mest aktiva tider"
+activenickstopic = "Mest aktiva personer"
+mostwordstopic = "Mest använda ord"
+referencetopic = "Mest tilltalade personer"
+
+## Other text
+
+totallines = "Totalt antal rader: [:lines]"
+nick = "Namn/Alias"
+numberlines = "Antal rader"
+randquote = "Slumpmässigt citat"
+userpic = "Användarbild"
+nottop = "Dessa personer kom inte med i toppen:"
+word = "Ord"
+numberuses = "Antal gånger"
+lastused = "Sist använt av"
+pagetitle1 = "[:channel] @ [:network] statistik av [:maintainer]"
+pagetitle2 = "Statistik genererad på [:time]"
+pagetitle3 = "Under denna [:days]-dagars reporterings period, blev ett totalt antal av <b>[:nicks]</b> olika personer representerade på [:channel]."
 </lang>

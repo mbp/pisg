@@ -8,6 +8,9 @@ pisg (0.20)
    * Add new options 'show_wpl' and 'show_cpl', this enables user to view the
      'chars per line' and 'words per line' in the 'most active nicks',
      disabled by default.
+   * Remember to distribute the 'FORMATS' file (was missed in the last two
+     releases)
+   * Swedish translation (thanks to Andreas Henriksson)
    * Usual cleanups and improvements
 
 pisg (0.19) - Tue, Aug 7th 2001
