@@ -1,3 +1,8 @@
+pisg (0.64) - ??
+   Christoph:
+   * Updated translations:
+     + Finnish (thanks, Sami Karuaho).
+
 pisg (0.63) - Wed Jan, 12th 2005
    Morten:
    * A new option, ShowLines, for disabling the column with the number of
