@@ -34,7 +34,7 @@ sub normalline
     if ($line =~ /$self->{normalline}/o) {
 
         $hash{hour}   = $1;
-        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
+        ($hash{nick}  = $2) =~ s/^[@%\+~&]//o; # Remove prefix
         $hash{saying} = $3;
 
         return \%hash;
@@ -51,7 +51,7 @@ sub actionline
     if ($line =~ /$self->{actionline}/o) {
 
         $hash{hour}   = $1;
-        ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
+        ($hash{nick}  = $2) =~ s/^[@%\+~&]//o; # Remove prefix
         $hash{saying} = $3;
 
         return \%hash;
@@ -71,7 +71,7 @@ sub thirdline
 
         $hash{hour} = $1;
         $hash{min}  = $2;
-        ($hash{nick}  = $line[0]) =~ s/^[@%\+]//o; # Remove prefix
+        ($hash{nick}  = $line[0]) =~ s/^[@%\+~&]//o; # Remove prefix
 
         if ($#line >= 4 && ($line[1].$line[2]) eq 'waskicked') {
             $hash{kicker} = $line[4];
