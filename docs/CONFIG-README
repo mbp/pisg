@@ -182,8 +182,12 @@ hlink               Color of hovered links
 headline            Border color of headlines
 rankc               Colors of 'ranks' (1,2,3,4)
 
+pic_height          Hardcode user picture sizes on stats page. This is when
+                    user has a pic, and you want to make it smaller.
+pic_width
+
 pic_v_0             Below settings are the filenames of the images to be
-pic_v_6             shown on thepage on timebars, the names should be 
+pic_v_6             shown on the page on timebars, the names should be 
 pic_v_12            self-explainable.
 pic_v_18
 pic_h_0
