@@ -1180,10 +1180,10 @@ sub activetimes
 sub legend
 {
     html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
-    html("<td align=\"center\"><img src=\"blue-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 0-5</td>");
-    html("<td align=\"center\"><img src=\"green-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 6-11</td>");
-    html("<td align=\"center\"><img src=\"yellow-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 12-17</td>");
-    html("<td align=\"center\"><img src=\"red-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 18-23</td>");
+    html("<td align=\"center\"><img src=\"blue-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
+    html("<td align=\"center\"><img src=\"green-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
+    html("<td align=\"center\"><img src=\"yellow-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
+    html("<td align=\"center\"><img src=\"red-h.png\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
     html("</tr></table>\n");
 }
 
@@ -1321,7 +1321,7 @@ sub user_linetimes {
 	$debuglen += $w;
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\">";
+            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\">";
         }
     }
     debug("Length='$len', Sum='$debuglen'");
@@ -1336,7 +1336,7 @@ sub user_times {
         my $w = int(($line_time{$nick}[$i] / $line{$nick}) * 40);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\">";
+            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\">";
         }
     }
     return $bar;
