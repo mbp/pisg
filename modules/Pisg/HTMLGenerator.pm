@@ -491,6 +491,12 @@ sub _activenicks
 
         my $height = $self->{cfg}->{picheight};
         my $width = $self->{cfg}->{picwidth};
+        if ($width ne '') {
+            $width = "width=\"$width\"";
+        }
+        if ($height ne '') {
+            $height = "height=\"$height\"";
+        }
         if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
             _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\">");
             if (defined $self->{users}->{biguserpics}{$nick}) {
@@ -500,18 +506,10 @@ sub _activenicks
                     _html("<a href=\"$self->{cfg}->{imagepath}$self->{users}->{biguserpics}{$nick}\">");
                 }
             }
-            if ($width ne '') {
-                if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
-                    _html("<img src=\"$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
-                } else {
-                    _html("<img src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
-                }
+            if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
+                _html("<img src=\"$self->{users}->{userpics}{$nick}\" $width $height alt=\"$nick\" />");
             } else {
-                if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
-                    _html("<img src=\"$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
-                } else {
-                    _html("<img src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
-                }
+                _html("<img src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" $width $height alt=\"$nick\" />");
             }
             if (defined $self->{users}->{biguserpics}{$nick}) {
                 _html("</a>");

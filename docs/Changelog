@@ -3,6 +3,8 @@ pisg (x.xx)
      is disabled, instead of having a full list of nicknames in "most
      referenced nicks", only the number of nicks used will be listed. (thanks,
      David Lynch)
+   * When no PicHeight is set, don't set the height attribute on images.
+     Likewise with PicWidth.
 
 pisg (0.47) - Wed Feb, 26th 2003
    * Fix bug where multiple URLs in same line would have save name as first URL
