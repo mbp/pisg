@@ -492,7 +492,7 @@ sub _activenicks
         my $height = $self->{cfg}->{picheight};
         my $width = $self->{cfg}->{picwidth};
         if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
-            _html("<td style=\"background-color: $color\" align=\"center\">");
+            _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\">");
             if (defined $self->{users}->{biguserpics}{$nick}) {
                 if ($self->{users}->{biguserpics}{$nick} =~ /^http:\/\//i) {
                     _html("<a href=\"$self->{users}->{biguserpics}{$nick}\">");
@@ -502,15 +502,15 @@ sub _activenicks
             }
             if ($width ne '') {
                 if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
-                    _html("<img valign=\"middle\" src=\"$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
+                    _html("<img src=\"$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
                 } else {
-                    _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
+                    _html("<img src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
                 }
             } else {
                 if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
-                    _html("<img valign=\"middle\" src=\"$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
+                    _html("<img src=\"$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
                 } else {
-                    _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
+                    _html("<img src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
                 }
             }
             if (defined $self->{users}->{biguserpics}{$nick}) {
@@ -519,9 +519,9 @@ sub _activenicks
             _html("</td>");
         } elsif ($self->{cfg}->{defaultpic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
              if ($self->{cfg}->{defaultpic} =~ /^http:\/\//i) {
-                _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
+                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
              } else {
-                _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
+                _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"><img src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
              }
         }
 
