@@ -224,3 +224,11 @@ link to the logfile)
   Example:
         [00:02] <Jenny> Hello world
 	[00:04] Joins: vjaway (vector@p5086F6EF.dip.t-dialin.net)
+
+* Dancer:
+  - Bot written in C (http://dancer.sourceforge.net/)
+
+  - In order to use this, format must be set to 'dancer'
+
+  Example:
+  15.57.40 # <elho> hello world! 
