@@ -28,7 +28,6 @@ sub normalline
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
-               return unless index($hash{nick}, ' ') == -1;
         $hash{saying} = $3;
 
         return \%hash;
