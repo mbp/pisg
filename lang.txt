@@ -902,6 +902,12 @@ lastseen1 = "Dia atras"
 lastseen2 = "Dias atras"
 month = "Janeiro Fevereiro Marco Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro"
 day = "Domingo Segunda-Feira Terca-feira Quarta-Feira Quinta-Feira Sexta-Feira Sabado"
+
+# Mouse-over titles
+pisghomepage =  "Ir para o site do pisg"
+authorhomepage = "Ir para o site do autor"
+newwindow = "Abrir em uma nova janela:"
+mailto = "Email para"
 </lang>
 
 ### Dutch
