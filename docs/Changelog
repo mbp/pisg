@@ -1,7 +1,12 @@
 pisg (0.63) - ??
+   Morten:
    * A new option, ShowLines, for disabling the column with the number of
      lines in "Most Active Nicks" has been added.
+   Christoph:
    * Updated the Swedish foul1 template (thanks, Torbjörn Svensson).
+   * Inhibit warning in _mostreferencednicks when a nick is referenced
+     before being used first.
+   * Added a test suite to CVS at /test.
 
 pisg (0.62) - Sat Dec, 11th 2004
    Changes by Christoph Berg:

@@ -1785,11 +1785,13 @@ sub _mostreferencednicks
         _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td></tr>");
 
         for(my $i = 0; $i < $self->{cfg}->{nickhistory}; $i++) {
-            last unless $i <= $#popular;
+            last if $i >= @popular;
             my $a = $i + 1;
             my $popular   = $self->_format_word($popular[$i]);
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
-            my $lastused  = $self->_format_word($self->{stats}->{wordnicks}{$popular[$i]});
+            my $lastused  = $self->_format_word($self->{stats}->{wordnicks}{$popular[$i]} || "");
+            # this is undefined when a nick is referenced before being used
+            # first (this is a minor bug we ignore here, see test/01.cfg)
 
             my $class;
             if ($a == 1) {
