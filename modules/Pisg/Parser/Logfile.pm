@@ -75,6 +75,7 @@ sub analyze
         }
 
         _pick_random_lines(\%stats, \%lines);
+	_uniquify_nicks(\%stats);
 
         my ($sec,$min,$hour) = gmtime(time() - $starttime);
         $stats{processtime} =
@@ -462,6 +463,22 @@ sub _pick_random_lines
             $stats->{$key}{$nick} = 
             @{ $lines->{$key}{$nick} }[rand@{ $lines->{$key}{$nick} }];
         }
+    }
+}
+
+sub _uniquify_nicks {
+    my ($stats) = @_;
+
+    foreach my $word (keys %{ $stats->{wordcounts} }) {
+	my $realnick = find_alias($word);
+
+	# The lc() is an attempt at being case insensitive.
+	if (lc($realnick) ne lc($word)) {
+	    $stats->{wordcounts}{$realnick} += $stats->{wordcounts}{$word};
+	    $stats->{wordnicks}{$realnick}   = $stats->{wordnicks}{$word};
+	    delete $stats->{wordcounts}{$word};
+	    delete $stats->{wordnicks}{$word};
+	}
     }
 }
 
