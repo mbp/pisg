@@ -4,6 +4,7 @@ pisg (x.xx)
    * Fix a bug/crash with the DCpp format when a nick contained special
      characters.
    * Added justgrey colorscheme (thanks, Jens Bergmann)
+   * Update URL for oer format in docs/FORMATS (thanks, EQU)
 
 pisg (0.44) - Sun Dec, 15th 2002
    * Fixed an error in the mIRC6 format which caused pisg to abort on some
