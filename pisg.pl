@@ -224,6 +224,9 @@ sub init_config
 
                 if ($line =~ /alias="([^"]+)"/) {
                     my @thisalias = split(/\s+/, $1);
+                    foreach (@thisalias) {
+                        $_ =~ s/\*/\.\*/g;
+                    }
                     push(@{ $alias{$nick} }, @thisalias);
                 }
 
@@ -884,6 +887,11 @@ sub find_alias
 
     foreach (keys %alias) {
         return $_ if (grep /^\Q$nick\E$/i, @{$alias{$_}});
+        if (grep /\*/, @{$alias{$_}}) {
+            foreach my $alias (@{$alias{$_}}) {
+                return $_ if ($nick =~ /^$alias$/);
+            }
+        }
     }
 
     return $nick;
