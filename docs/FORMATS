@@ -45,3 +45,8 @@ pisg supports a variety of logfile formats, these are:
   - C-Based IRC Bot (http://darksun.com.pt/mbot/)
 
   - In order to use this, format must be set to 'mbot'
+
+* irssi:
+  - console IRC client (www.irssi.org)
+
+  - In order to use this, format must be set to 'irssi'
