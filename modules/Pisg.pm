@@ -180,6 +180,8 @@ sub get_default_config_settings
         mostnicksverbose => 1,
         nicktracking => 0,
         charset => 'iso-8859-1',
+        logcharset => '',
+        logcharsetfallback => '',
         irciinick => 'maintainer',
 
         # sorting
@@ -221,9 +223,10 @@ sub get_language_templates
     {
         next if ($line =~ /^#/);
 
-        if ($line =~ /<lang name=\"([^"]+)\">/i) {
+        if ($line =~ /<lang name=\"([^"]+)\"(?: charset=\"(.*)\")?>/i) {
             # Found start tag, setting the current language
             my $current_lang = lc($1);
+            $self->{tmps}->{$current_lang}{lang_charset} = lc($2);
 
             while (<FILE>) {
                 last if ($_ =~ /<\/lang>/i);

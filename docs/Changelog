@@ -4,6 +4,9 @@ pisg (x.xx)
      outputted.
    * Distribute rbot.pm with release tarball, apparently it was lost at
    some stage.
+   * Add LogCharset and LogCharsetFallback options. These can be used if
+   your log file is in a encoding which isn't equal to your Charset
+   variable. (thanks, Christoph Berg)
 
 pisg (0.54) - Thu Apr, 1st 2004
    * Revert most of the performance improvement changes, they caused bugs.

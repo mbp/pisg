@@ -6,6 +6,11 @@ package Pisg::HTMLGenerator;
 use strict;
 $^W = 1;
 
+# test for Text::Iconv
+my $have_iconv = 1;
+eval 'use Text::Iconv';
+$have_iconv = 0 if $@;
+
 sub new
 {
     my $type = shift;
@@ -21,6 +26,16 @@ sub new
     # Import common functions in Pisg::Common
     require Pisg::Common;
     Pisg::Common->import();
+
+    my $lang_charset = $self->{tmps}->{lc($self->{cfg}->{lang})}{lang_charset};
+    if($lang_charset and $lang_charset ne $self->{cfg}->{charset}) {
+        if($have_iconv) {
+            # convert from template charset to our
+            $self->{iconv} = Text::Iconv->new($lang_charset, $self->{cfg}->{charset});
+        } else {
+            print STDERR "Text::Iconv is not available, skipping charset conversion for language templates\n";
+        }
+    }
 
     bless($self, $type);
     return $self;
@@ -1537,26 +1552,16 @@ sub _template_text
         } else {
             die("No such template '$template' in language file.\n");
         }
-
+    }
+    if($self->{iconv}) {
+        $text = $self->{iconv}->convert($text);
+        die("Could not convert charset for template '$template'.\n") unless $text;
     }
 
     $hash{channel} = $self->{cfg}->{channel};
 
     foreach my $key (sort keys %hash) {
         $text =~ s/\[:$key\]/$hash{$key}/;
-
-        if ($self->{cfg}->{charset} =~ /iso-8859-1/i) {
-            $text =~ s/ü/&uuml;/go;
-            $text =~ s/ö/&ouml;/go;
-            $text =~ s/ä/&auml;/go;
-            $text =~ s/ß/&szlig;/go;
-            $text =~ s/å/&aring;/go;
-            $text =~ s/æ/&aelig;/go;
-            $text =~ s/ø/&oslash;/go;
-            $text =~ s/Å/&Aring;/go;
-            $text =~ s/Æ/&AElig;/go;
-            $text =~ s/Ø/&Oslash;/go;
-        }
     }
 
     if ($text =~ /\[:[^:]*?:[^:]*?:[^:]*?:\]/o) {

@@ -6,6 +6,11 @@ package Pisg::Parser::Logfile;
 use strict;
 $^W = 1;
 
+# test for Text::Iconv
+my $have_iconv = 1;
+eval 'use Text::Iconv';
+$have_iconv = 0 if $@;
+
 sub new
 {
     my $type = shift;
@@ -23,6 +28,27 @@ sub new
 
     # Pick our parser.
     $self->{parser} = $self->_choose_format($self->{cfg}->{format});
+
+    if($self->{cfg}->{logcharsetfallback} and not $self->{cfg}->{logcharset}) {
+        print STDERR "Warning: LogCharset undefined, assuming LogCharset = LogCharsetFallback.\n";
+        $self->{cfg}->{logcharset} = $self->{cfg}->{logcharsetfallback};
+    }
+
+    if($self->{cfg}->{logcharset}) {
+        if($have_iconv) {
+            # use converter if charsets differ or there is a fallback charset
+            # (in the latter case the converter is also used to test if the
+            # line is in the proper charset)
+            if(($self->{cfg}->{logcharset} ne $self->{cfg}->{charset}) or $self->{cfg}->{logcharsetfallback}) {
+                $self->{iconv} = Text::Iconv->new($self->{cfg}->{logcharset}, $self->{cfg}->{charset});
+            }
+            if($self->{cfg}->{logcharsetfallback}) {
+                $self->{iconvfallback} = Text::Iconv->new($self->{cfg}->{logcharsetfallback}, $self->{cfg}->{charset});
+            }
+        } else {
+            print STDERR "Text::Iconv is not available, skipping charset conversion of logfiles\n";
+        }
+    }
 
     return $self;
 }
@@ -240,6 +266,18 @@ sub _parse_file
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
         $line =~ s/\r+$//;       # Strip DOS Formatting
+
+        if($self->{iconv}) { # iconv is defined only if LogCharset is set
+            my $line2 = $self->{iconv}->convert($line);
+            if(not $line2 and $self->{iconvfallback}) {
+                $line2 = $self->{iconvfallback}->convert($line);
+            }
+            if($line2) {
+                $line = $line2;
+            } else {
+                print STDERR "Charset conversion failed for '$line'\n";
+            }
+        }
 
         my $hashref;
 

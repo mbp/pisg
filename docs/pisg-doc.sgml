@@ -778,7 +778,7 @@
     use, if the language support is there, the text on the stats page will
     be outputted in that language. All supported languages is mentioned in
     the lang.txt file with the pisg distribution. Some of the languages
-    supported is: EN | DE | DK | FR | ES | PL | PT | NO | NL | SE | EE | IT
+    supported are: EN | DE | DK | FR | ES | PL | PT | NO | NL | SE | EE | IT
     | HU | SI | FI
     </para>
     </refsect1>
@@ -2875,12 +2875,100 @@
     <title>Description</title>
     <para>
     The pisg stats page defines a charset in a meta tag, this can be used if
-    your country is using a different one than the default.
+    your country is using a different one than the default. Pisg will also use
+    this setting to convert the language templates from
+    <command>LangFile</command> if the language defines a source charset.
+    Note: you also have to tell your webserver to transmit the charset to the
+    browser. With Apache, use "AddDefaultCharset off" in the server config.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
     <para> iso-8859-1 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LOGCHARSET *** -->
+    <refentry id="LogCharset">
+
+    <refmeta> <refentrytitle>LogCharset</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>LogCharset</refname>
+    <refpurpose>charset for logfiles</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         Charset = "iso-8859-1"
+         LogCharset = "utf-8"
+        </channel>
+
+        <set Charset="iso-8859-15">
+        <set LogCharset="iso-8859-15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    If <command>LogCharset</command> is set and different from
+    <command>Charset</command>, pisg will convert the charset using
+    Text::Iconv. Using this option slows down log processing.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> empty (no conversion) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LOGCHARSET *** -->
+    <refentry id="LogCharsetFallback">
+
+    <refmeta> <refentrytitle>LogCharsetFallback</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>LogCharsetFallback</refname>
+    <refpurpose>fallback charset for logfiles</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         Charset = "utf-8"
+         LogCharset = "utf-8"
+         LogCharsetFallback = "iso-8859-1"
+        </channel>
+
+        <set Charset="utf-8">
+        <set LogCharset="utf-8">
+        <set LogCharsetFallback="iso-8859-15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>LogCharsetFallback</command> defines a fallback charset for
+    the <command>LogCharset</command> conversion. This is useful if you
+    have mixed unicode/iso-8859-* logs. Pisg will first try the conversion
+    from <command>LogCharset</command>. If that fails,
+    <command>LogCharsetFallback</command> is used. Note that this only works
+    for charsets where certain byte sequences are illegal, like UTF-8. (In
+    short: <command>LogCharset</command> = utf-8,
+    <command>LogCharsetFallback</command> = iso-8859-15 works, the other way
+    round does not.)
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> empty (no fallback conversion) </para>
     </refsect1>
     </refentry>
 
