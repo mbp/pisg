@@ -1339,8 +1339,6 @@ sad3 = "Itt senki sem szomoru!:) <B>( Hmm... )</B>"
 month = "Januar Februar Marcius Aprilis Majus Junius Julius Augusztus Szeptember Oktober November December"
 day = "Vasarnap Hetfo Kedd Szerda Csutortok Pentek Szombat"
 
-notopic = "A topic sosem valtozott."
-
 ## Topics
 
 bignumtopic = "Nagy szamok"
@@ -1351,6 +1349,8 @@ activenickstopic = "Legaktivabb nevek"
 mostwordstopic = "Legtobbet hasznalt szavak"
 referencetopic = "Legtobbet emlegetett nevek"
 urlstopic = "Legtobbet emlitett URL-ek"
+notopic = "A topic sosem valtozott."
+bylinetopic = "[:nick] allitotta be [:time]-kor."
 
 ## Other text
 
