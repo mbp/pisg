@@ -472,3 +472,10 @@ preferences you
                                                                                 
  - In order to use this, format must be set to 'Vision'
 
+* Supybot:
+  - http://supybot.sf.net
+  - Version tested with 0.77
+  - Log format :
+   normal msg:  [05-Mar-2004 17:28:10]  * Jkx|home bon je vais pas trainer ..
+   channel msg: [17-Feb-2004 08:13:47]  *** Jkx changes topic to "Oh my god of topic
+
