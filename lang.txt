@@ -262,7 +262,7 @@ actiontext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:
 
 mostdeop1 = "<b>[:nick]</b> holder orden på [:channel] med [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> deoppede [:deops] brugere"
-mostdeop3 = "Hmm, der var ingen som fik op på [:channel]!"
+mostdeop3 = "Hmm, der var ingen som blev deopped på [:channel]!"
 
 question1 = "<b>[:nick]</b> må være rimelig dum eller efterligner bare Spørge-Jørgen... [:per]% af hans linjer var spørgsmål!"
 question2 = "<b>[:nick]</b> var heller ingen Einstein, [:per]% af hans linjer var også spørgsmål"
