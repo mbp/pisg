@@ -294,7 +294,7 @@ sub init_config
         while (my $line = <CONFIG>)
         {
             $lineno++;
-            next if /^#/;
+            next if ($line =~ /^#/);
 
             if ($line =~ /<user.*>/) {
                 my $nick;
@@ -1070,7 +1070,7 @@ sub create_html
 
     mostusedword();
 
-    mostreferenced();
+    mostreferencednicks();
 
     mosturls();
 
@@ -1419,7 +1419,7 @@ sub mostwordsperline
 
 }
 
-sub mostreferenced
+sub mostreferencednicks
 {
     my %usages;
 
@@ -2429,7 +2429,7 @@ sub get_language_templates
 
     while (my $line = <FILE>)
     {
-        next if /^#/;
+        next if ($line =~ /^#/);
 
         if ($line =~ /<lang name=\"([^"]+)\">/) {
             # Found start tag, setting the current language
