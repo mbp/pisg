@@ -20,7 +20,7 @@ sub new
                       '^(\d+)\s(>>>)PRIVMSG\s(#\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$',
 	thirdline  => '^(\d+)\s:([^!]+)![^@]+@\S+\s(.+)$'
                       . '|' .
-                      '^(\d+)\s(>>>)([^P]\S+)\s+(.+)$',
+                      '^(\d+)\s(>>>)([^P].+)$',
     };
 
     bless($self, $type);
@@ -130,7 +130,7 @@ sub thirdline
             return unless (lc($line[1]) eq ':' . lc($self->{cfg}->{channel}));
             $hash{newjoin} = $hash{nick};
 
-        } elsif (defined($line[1]) && $line[0] eq 'NICK') {
+        } elsif ($line[0] eq 'NICK') {
             $hash{newnick} = $line[1];
             $hash{newnick} =~ s/^://;
         }
