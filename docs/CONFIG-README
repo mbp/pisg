@@ -5,14 +5,14 @@ This file is used for:
  - Setting up channel(s) to be parsed.
  - Setting pisg config options (for general things with pisg)
  - Word options (for adding words that are meant to be 'foul(bad) language')
- 
+
 
 USER OPTIONS
 ------------------
 User options are set with a simple SGML like syntax in the form:
 
     <user nick="NICK" option="VALUE">
-    
+
 Remember, the nick is always required.
 
 For example to add aliases to a nick, then you could do this:
@@ -90,9 +90,10 @@ logfile             The exact filename of the logfile. E.g. 'mylog.log'
 
 format              The logfile format. See FORMATS file for supported formats
 
-network             Network the channels is using. E.g. 'Undernet'
+network             Network the channel is using. E.g. 'Undernet'
 
-outputfile          Outputted stats goes to this HTML file. Default 'index.html'
+outputfile          Outputted stats goes to this HTML file.
+                    (default: index.html)
 
 maintainer          The maintainer or bot which makes the logfile.
 
@@ -102,9 +103,11 @@ lang                Language to use (see lang.txt)
 
 pagehead            Some 'page header' file which you want to include in top
                     of the output file.
+                    (default: none)
 
 imagepath           If your user pictures is located in a special direcotry,
                     set the path here. E.g. 'userpics/'
+                    (default: current directory)
 
 default_pic         If no picture defined for a user, use this default
                     picture, good for example to display 'No picture
@@ -122,74 +125,96 @@ timeoffset          A time offset on the stats page - if your country has
                     a different timezone than the machine where the stats
                     are being generated, then for example set '+1' to add
                     one hour to the stats.
+                    (default: +0)
 
 show_activetimes    1 or 0, this enables/disables the 'Most Active Tiems'
-                    section, default is enabled.
+                    section.
+                    (default: 1)
 
 show_bignumbers     1 or 0, enable/disable 'Big Numbers' and 'Other
-                    interesting numbers', default is enabled.
+                    interesting numbers'.
+                    (default: 1)
 
 show_wpl            1 or 0, this enables pisg to show 'words per line' for
                     each person in 'most active nicks'
+                    (default: 0)
 
 show_cpl            Same as above, this is just 'characters per line'
-
-show_lastseen       1 or 0, display a coloumn showing when the user was last
-                    on the channel (how many days ago)
+                    (default: 0)
 
 show_words          1 or 0, this will enable/disable both of the 2 above
                     options.
+                    (default: 0)
+
+show_lastseen       1 or 0, display a coloumn showing when the user was last
+                    on the channel (how many days ago)
+                    (default: 0)
 
 show_time           1 or 0, this will enable/disable the showing of the
                     fancy timebars indicating when a nick was active.
+                    (default: 1)
 
 show_linetime       1 or 0, the same as above, except this will show the
                     bar next to the number of lines like in mIRCStats
+                    (default: 0)
 
 show_randquote      1 or 0, this wil enable or disable the random quote
                     displayed in the "active nick list"
+                    (default: 1)
 
 show_legend         1 or 0, this will add a legend of the different time-
                     bars.
+                    (default: 1)
 
 show_kickline       1 or 0, this will add an example-kickline to the
                     "Most kicked"-stats
+                    (default: 1)
 
 show_actionline     1 or 0, this will add an example-actionline to the
                     "Most actions"-stats
+                    (default: 1)
 
 show_shoutline      1 or 0, this will add an example-shoutline to the
                     "Most shouting people"-stats
+                    (default: 1)
 
 show_violentlines   1 or 0, this will add an example-attack to the
                     "Most aggressive" and "Most attacked"-stats
+                    (default: 1)
 
 show_muw            1 or 0, this will enable or disable the "most used
                     words" list
+                    (default: 1)
 
 show_mrn            1 or 0, this will enable or disable the "most
                     referenced nicks" list
+                    (default: 1)
 
 show_mru            1 or 0, this will enable or disable the "most
                     referenced urls" list
+                    (default: 1)
 
 show_voices         1 or 0, this will enable or disable the voice statistics
-                    (those who got voice and those who voiced). Disabled by
-                    default.
+                    (those who got voice and those who voiced).
+                    (default: 0)
 
 ignorewords         A space seperated list of words to ignore in 'most
                     referenced words'
+                    (default: "")
 
 foul                Space seperated list of words considered to be 'foul'
                     language, look in the bottom for a better explanation.
 
 regexp_alises       1 or 0, enabling this will make aliases in <user> tags
-                    regex-able. Default '0'.
+                    regex-able.
+                    (default: 0)
 
 silent              1 or 0.  Enabling this will suppress all standard output
                     from pisg.  Error messages will still be sent to STDOUT.
+                    (default: 0)
 
-charset             Charset to use for stats page, default is 'iso-8859-1'.
+charset             Charset to use for stats page.
+                    (default: iso-8859-1)
 
  * Colors / layout for your stats page *
 
@@ -202,12 +227,15 @@ hicell              Background color in highlighted cells
 hicell2             Background color in highlighted cells
 tdcolor             Color of text in tables
 tdtop               Top color in some tables.
+
 link                Color of links in tables
 vlink               Color of visited links in tables
 hlink               Color of hovered links in tables
-bg_link                Color of links on background
-bg_vlink               Color of visited links on background
-bg_hlink               Color of hovered links on background
+
+bg_link             Color of links on background
+bg_vlink            Color of visited links on background
+bg_hlink            Color of hovered links on background
+
 headline            Border color of headlines
 rankc               Colors of 'ranks' (1,2,3,4) and active times
 hi_rankc            Highlighted ranks
@@ -217,7 +245,7 @@ pic_height          Hardcode user picture sizes on stats page. This is when
 pic_width
 
 pic_v_0             Below settings are the filenames of the images to be
-pic_v_6             shown on the page on timebars, the names should be 
+pic_v_6             shown on the page on timebars, the names should be
 pic_v_12            self-explainable.
 pic_v_18
 pic_h_0
@@ -226,35 +254,39 @@ pic_h_12
 pic_h_18
 
 pic_loc             Directory containing your png graphics files.
+                    (default: current dir)
 
   * Small things, useful for some people *
 
 logtype             The type of logs kept for your channel.  Currently only
                     "Logfile" is supported.
 
-langfile            Filename of language file. Default 'lang.txt'
+langfile            Filename of language file.
+                    (default: lang.txt)
 
 minquote            Minimal value of letters for a random quote
+                    (default: 25)
 
 maxquote            Maximum value of letters for a random quote
+                    (default: 65)
 
 wordlength          The minimum number of chars an interesting word may be
-                    (in 'most referenced words')
+                    in 'most referenced words' (default: 5)
 
 activenicks         Number of nicks to show in 'most active nicks'
-                    (default 25)
+                    (default: 25)
 
 activenicks2        Nicks to show in 'these didnt make it...'
-                    (default 30)
+                    (default: 30)
 
 topichistory        Maximum number of topics to show in 'latest topics'
-                    (default 3)
+                    (default: 3)
 
 urlhistory          Maximum number of URLs to show in 'most referenced URLs'
-                    (default 5)
+                    (default: 5)
 
 nicktracking        1 or 0, track nickchanges and create aliases?
-                    (default 1)
+                    (default: 1)
 
 
 WORD OPTIONS
