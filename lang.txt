@@ -158,6 +158,15 @@ mostdeop1 = "<b>[:nick]</b> ist die Channel-Polizei. [:Er:Sie:] hat [:deops] Use
 mostdeop2 = "<b>[:nick]</b> nahm [:deops] Usern das @ wieder weg."
 mostdeop3 = "Wow, niemand wurde deopped in [:channel]!"
 
+mostvoice1 = "<b>[:nick]</b> hat [:voices] voices im Channel vergeben..."
+mostvoice2 = "<b>[:nick]</b> war auch sehr höflich:: [:voices] voices von [:him:her:]."
+mostvoice3 = "Seltsam, keine voices in [:channel] vergeben!"
+
+mostdevoice1 = "<b>[:nick]</b> ist der Wachtmeister des Channels mit  [:devoices] devoices."
+mostdevoice2 = "<b>[:nick]</b> hat [:devoices] Nutzer devoiced."
+mostdevoice3 = "Wow, keine devoices in [:channel]!"
+
+
 action1 = "<b>[:nick]</b> hält uns immer auf dem Laufenden was [:er:sie:] gerade macht: [:actions] Actions!"
 action2 = "Auch <b>[:nick]</b> verät uns was los ist: [:actions] Actions von [:ihm:ihr:]."
 action3 = "Keine Actions in [:channel] !"
