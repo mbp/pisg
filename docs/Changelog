@@ -8,6 +8,9 @@ pisg (x.xx)
      it as <set foo="you">. Will now NOT work with mis-matched quotes... which
      it probably never should have. EG: <set foo="bar'>)
    * Fix bug in xchat format - was not recognizing joins
+   * Fix really old bug with foulwords - was only applying the wordbreak settings
+     to the first and last words in the list of foulwords.  Now applies it to
+     each word.
 
 
 pisg (0.46) - Tue Feb, 11th 2003

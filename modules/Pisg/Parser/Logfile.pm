@@ -299,7 +299,7 @@ sub _parse_file
                         }
                     }
 
-                    if (my @foul = $saying =~ /(\b$self->{cfg}->{foulwords}|$self->{cfg}->{foulwords}\b)/io) {
+                    if (my @foul = $saying =~ /($self->{cfg}->{foulwords})/io) {
                         $stats->{foul}{$nick} += scalar @foul;
                         push @{ $lines->{foullines}{$nick} }, $line;
                     }

@@ -271,7 +271,10 @@ sub init_words
 {
     my $self = shift;
     $self->{cfg}->{foulwords} =~ s/(^\s+|\s+$)//g;
-    $self->{cfg}->{foulwords} =~ s/\s+/|/g;
+    my $foultemp = $self->{cfg}->{foulwords};
+    $self->{cfg}->{foulwords} =~ s/\s+/|\b/g;
+    $self->{cfg}->{foulwords} = '\b' . $self->{cfg}->{foulwords} . '|' . $foultemp . '\b';
+    $self->{cfg}->{foulwords} =~ s/\s+/\b|/g;
     foreach (split(/\s+/, $self->{cfg}->{ignorewords})) {
         $self->{cfg}->{ignoreword}{$_} = 1;
     }
