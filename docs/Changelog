@@ -9,7 +9,11 @@ pisg (0.60) - ??
    German strings.
    * Updated Norwegian translation (thanks, Andreas Blaafladt).
    * Updated Dutch translation (thanks, Tiniduske).
-   * Fixed xchat2 "Topic for #chan is" parsing and added logsample.
+   * Fixed xchat2 "Topic for #chan is" parsing and added logsample (thanks,
+   Brice Goglin).
+   * Make BigNumbersThreshold accept only numbers and "sqrt" for security,
+   use sqrt(most active nick's lines).
+   * aspell'ed pisg-doc.xml.
    Changes by Morten Brix Pedersen:
    * Renamed the Danish translation to its correct abbreviation, DA instead
    of DK.

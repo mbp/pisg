@@ -37,17 +37,6 @@ sub new
         }
     }
 
-    if($self->{cfg}->{bignumbersthreshold} !~ /^\d*$/) { # threshold is not a number
-        my $t = $self->{cfg}->{bignumbersthreshold};
-        $t =~ s/\$lines/($self->{stats}->{parsedlines})/g;
-        my $t2 = eval "$t";
-        if($@) {
-            print STDERR "Error when evaluating bignumbersthreshold '$t'.\n";
-            $t2 = 100;
-        }
-        $self->{cfg}->{bignumbersthreshold} = $t2 < 1 ? 1 : int($t2);
-    }
-
     bless($self, $type);
     return $self;
 }
@@ -62,6 +51,10 @@ sub create_output
     my $self = shift;
 
     $self->_topactive();
+
+    if($self->{cfg}->{bignumbersthreshold} =~ /^sqrt/) {
+        $self->{cfg}->{bignumbersthreshold} = int(sqrt($self->{stats}->{topactive_lines}));
+    }
 
     my $fname = $self->{cfg}->{outputfile};
     $fname =~ s/\%t/$self->{cfg}->{outputtag}/g;
@@ -2131,6 +2124,9 @@ sub _topactive {
     }
             
     (@top_active) = @top_active[0..($self->{cfg}->{activenicks}+$self->{cfg}->{activenicks2}-1)];
+    if(@top_active) {
+        $self->{stats}->{topactive_lines} = $self->{stats}->{lines}{$top_active[0]};
+    }
             
     foreach (@top_active) {
         $self->{topactive}{$_} = 1;

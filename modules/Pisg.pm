@@ -169,7 +169,7 @@ sub get_default_config_settings
         minquote => 25,
         maxquote => 65,
         quotewidth => 80,
-        bignumbersthreshold => 'sqrt($lines)',
+        bignumbersthreshold => 'sqrt',
         wordlength => 5,
         activenicks => 25,
         activenicks2 => 30,

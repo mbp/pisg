@@ -142,7 +142,7 @@
     <![CDATA[<user nick="Joe" alias="Joe^*">]]>
     </programlisting>
 
-    The asterix (*) means that it will match all nicks starting with 'Joe^'. So
+    The asterisk (*) means that it will match all nicks starting with 'Joe^'. So
     it will add all Joe^'s to 'Joe' in the stats.
 
     Another thing you can do is to add a picture to a user:
@@ -223,8 +223,8 @@
      <![CDATA[<set lang="DE" timeoffset="+1">]]>
      </programlisting>
 
-     The above will set the language on the statistics page to DE (Deutch,
-     German) and set the timeoffset to +1.
+     The above will set the language on the statistics page to DE (Deutsch,
+     German) and set the time offset to +1.
 
      All options available are mentioned in the reference documentation.
     </para>
@@ -358,7 +358,7 @@
     </para>
 
     <para>
-    If you believe that you have found a bug, you should use the Sourceforge
+    If you believe that you have found a bug, you should use the SourceForge
     <ulink
     url="http://sourceforge.net/tracker/?group_id=31862&amp;atid=403711">bug
     tracking system.</ulink>
@@ -910,7 +910,7 @@
 
     <refnamediv>
     <refname>LogSuffix</refname>
-    <refpurpose>Regex to sort logfiles by format month||day||year</refpurpose>
+    <refpurpose>Regexp to sort logfiles by format month||day||year</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -924,7 +924,7 @@
     <para>
     <command>LogSuffix</command> is used to define the suffix of a logfile,
     it only works when <command>LogDir</command> is defined. The example in
-    the synopsis is for the eggdrop bots default foramt.
+    the synopsis is for the eggdrop bots default format.
     </para>
     </refsect1>
     <refsect1>
@@ -1242,7 +1242,7 @@
     <title>Description</title>
     <para>
     The default behaviour is to add a column to the "Most Active Nicks"
-    section displaying a fancy timebar to show when a user was active. With
+    section displaying a fancy time bar to show when a user was active. With
     this option it can be disabled.
     </para>
     </refsect1>
@@ -1259,7 +1259,7 @@
 
     <refnamediv>
     <refname>ShowLineTime</refname>
-    <refpurpose>mIRCStats like behaviour of timebar</refpurpose>
+    <refpurpose>mIRCStats like behaviour of time bar</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -1278,9 +1278,9 @@
     <title>Description</title>
     <para>
     The default behaviour is to add a column to the "Most Active Nicks"
-    section displaying a fancy linetimebar to show when a user was active.
+    section displaying a fancy time bar to show when a user was active.
     With this option it can be done the same way as mIRCStats does it; that
-    is, by putting that timebar next to the number of lines, in the same
+    is, by putting that time bar next to the number of lines, in the same
     column.
     </para>
     </refsect1>
@@ -1316,10 +1316,10 @@
     <title>Description</title>
     <para>
     The default behaviour is to add a column to the "Most Active Nicks"
-    section displaying a fancy linetimebar to show when a user was active.
+    section displaying a fancy time bar to show when a user was active.
     With this option it can be done similarly to mIRCStats does it and like
     the ShowLineTime option, but using words instead of lines; that is, by
-    putting that timebar next to the number of words, in the same column.
+    putting that time bar next to the number of words, in the same column.
     </para>
     </refsect1>
     <refsect1>
@@ -1371,7 +1371,7 @@
 
     <refnamediv>
     <refname>ShowLegend</refname>
-    <refpurpose>enable or disable the legend of the timebars</refpurpose>
+    <refpurpose>enable or disable the legend of the time bars</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -1406,7 +1406,7 @@
 
     <refnamediv>
     <refname>ShowKickLine</refname>
-    <refpurpose>enable or disable the kickline</refpurpose>
+    <refpurpose>enable or disable the kick line</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -1424,7 +1424,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By default, pisg shows an example kickline in the "Most kicked"-stats.
+    By default, pisg shows an example kick line in the "Most kicked"-stats.
     With this option it can be disabled.
     </para>
     </refsect1>
@@ -1441,7 +1441,7 @@
 
     <refnamediv>
     <refname>ShowActionLine</refname>
-    <refpurpose>enable or disable the actionline</refpurpose>
+    <refpurpose>enable or disable the action line</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -1459,7 +1459,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By default, pisg shows an example actionline in the "Most actions"-stats.
+    By default, pisg shows an example action line in the "Most actions"-stats.
     With this option it can be disabled.
     </para>
     </refsect1>
@@ -1476,7 +1476,7 @@
 
     <refnamediv>
     <refname>ShowShoutLine</refname>
-    <refpurpose>enable or disable the shoutline</refpurpose>
+    <refpurpose>enable or disable the shout line</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -1494,7 +1494,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By default, pisg shows an example shoutline in the "Most shouting
+    By default, pisg shows an example shout line in the "Most shouting
     people"-stats.  With this option it can be disabled.
     </para>
     </refsect1>
@@ -1546,7 +1546,7 @@
 
     <refnamediv>
     <refname>ShowFoulLine</refname>
-    <refpurpose>enable or disable the foulline</refpurpose>
+    <refpurpose>enable or disable the foul line</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -1564,7 +1564,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By default, pisg doesn't show an example foulline in the "Most
+    By default, pisg doesn't show an example foul line in the "Most
     fouls"-stats.  With this option it can be enabled.
     </para>
     </refsect1>
@@ -1581,7 +1581,7 @@
 
     <refnamediv>
     <refname>ShowViolentLines</refname>
-    <refpurpose>enable or disable the violentlines</refpurpose>
+    <refpurpose>enable or disable the violent lines</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -1599,7 +1599,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By default, pisg shows example violentlines in the "Most aggressive"
+    By default, pisg shows example violent lines in the "Most aggressive"
     and "Most attacked"-stats.  With this option it can be disabled.
     </para>
     </refsect1>
@@ -2230,8 +2230,8 @@
     <title>Description</title>
     <para>
     Pisg will automatically insert a space in words that have a length
-    over the amount quotewidth is set to.  When used in breaking up
-    URL's it will insert a space in the displayed URL, but not in the
+    over the amount QuoteWidth is set to.  When used in breaking up
+    URLs it will insert a space in the displayed URL, but not in the
     actual URL referenced by the HREF.
     </para>
     </refsect1>
@@ -2259,7 +2259,7 @@
          BigNumbersThreshold = "10"
         </channel>
 
-        <set BigNumbersThreshold="10">
+        <set BigNumbersThreshold="sqrt">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -2268,13 +2268,14 @@
     <para>
     Pisg will ignore users with less than this setting lines in the "questions
     asked", "shouts loudest", "CAPSLOCK", "longest line", "most sad", and "most
-    happy" sections. This setting is eval'ed as a Perl expression; $lines is
-    the total number of lines parsed. The default is the square root of lines.
+    happy" sections. If the setting is "sqrt" (the default), it will be
+    dynamically replaced with the square root of the number of lines of the
+    most active nick.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> sqrt($lines) </para>
+    <para> sqrt </para>
     </refsect1>
     </refentry>
 
@@ -2495,7 +2496,7 @@
 
     <refnamediv>
     <refname>UrlHistory</refname>
-    <refpurpose>maximum number of urls to show</refpurpose>
+    <refpurpose>maximum number of URLs to show</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2513,7 +2514,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    With this option you can define how many urls you want to appear in
+    With this option you can define how many URLs you want to appear in
     the "Most referenced URLs" section.
     </para>
     </refsect1>
@@ -2612,7 +2613,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    Enabling this option will track nickchanges as well as it can. It will
+    Enabling this option will track nick changes as well as it can. It will
     then automatically create aliases for these nicks.
     </para>
     </refsect1>
@@ -3153,7 +3154,7 @@
 
     <refnamediv>
     <refname>CssDir</refname>
-    <refpurpose>path to directory with css files</refpurpose>
+    <refpurpose>path to directory with CSS files</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
