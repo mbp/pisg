@@ -12,6 +12,8 @@ pisg (x.xx)
      PicHeight, pic_loc => PicLocation. Documentation also added.
    * Split up the documentation of options into different categories, for
      better overview.
+   * Fix minor typo in bxlog formats which causes joins to a channel not being
+     registered properly (thanks, comcute <comcute@blastnet.ee>)
    * A dutch translation appeared in the English version of pisg; fixed.
 
 pisg (0.37) - Mon Apr, 8th 2002
