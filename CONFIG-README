@@ -73,11 +73,10 @@ Other examples:
 <set activenicks="25" activenicks2="30" topichistory="3" nicktracking="0" timeoffset="+0">
 
 
-There is many variables which can be set, here's a list of them all:
+There is many variables which can be set, here's a list of them all (not
+casesensitive):
 
  * The most useful ones *
-
-(The variables are not case sensitive)
 
 channel              The name of your channel.
 logfile              The exact filename of the logfile
@@ -88,9 +87,6 @@ maintainer           The maintainer or bot which makes the logfile
 pagehead             Some 'page header' file which you want to include in top
                      of the stats
 
-configfile           Path to config file (aliases, ignores,
-                     pics and more, see pisg.cfg for examples)
-
 imagepath            If your user pictures is located some special directory,
                      set the path here.
 
@@ -98,10 +94,10 @@ logdir               If you specify a path to a dir here, then pisg will
                      take that dir, and parse ALL logfiles in it, and create
                      1 HTML file from it
 
-lang                 Language to use:
-                     EN | DE | DK | FR | ES | PL | NO | NL
+lang                 Language to use (see lang.txt)
+                     EN | DE | DK | FR | ES | PL | NO | NL | SE
 
-langfile             Name of language file
+langfile             Filename of language file
 
 timeoffset           A time offset on the stats page - if your country has
                      a different timezone than the machine where the stats
@@ -124,7 +120,13 @@ show_linetime        1 or 0, the same as above, except this will show the
 show_legend          1 or 0, this will add a legend of the different time-
                      bars.
 
-* Colors for your stats page *
+ignorewords          A space seperated list of words to ignore in 'most
+                     referenced words'
+
+foul                 Space seperated list of words considered to be 'foul'
+                     language, look in the bottom for a better explanation.
+
+ * Colors / layout for your stats page *
 
 bgcolor              Background color of the page
 bgpic                Background picture of the page
@@ -176,6 +178,5 @@ So this option configures which words which are considered to be "foul":
 
 Or in German:
 <set foul="scheisse scheiße kacke">
-
 
 Have fun configuring pisg! :)
