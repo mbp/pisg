@@ -145,7 +145,7 @@ shout2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von ih
 shout3 = "Alle hatten ihre Shift-Taste gut unter kontrolle :)"
 
 slap1 = "<b>[:nick]</b> ist etwas agressiv. Er/Sie schlug <b>[:slaps]</b> mal wild um sich herum."
-slap2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halen, <b>[:slaps]</b> Schläge von ihm/ihr."
+slap2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halten, <b>[:slaps]</b> Schläge von ihm/ihr."
 slap3 = "Alle waren friedlich im Channel, niemand hat jemanden geschlagen."
 
 slapped1 = "<b>[:nick]</b> ist der Sündenbock im Channel, er/sie wurde <b>[:slaps]</b> mal geschlagen."
