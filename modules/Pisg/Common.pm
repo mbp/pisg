@@ -59,7 +59,7 @@ sub is_ignored
     my $nick = shift;
     if ($ignored{$nick}) {
         return 1;
-    } elsif ($ignored{find_alias($nick)}) {
+    } elsif ($ignored{is_nick($nick)}) {
         $ignored{$nick} = 1;
     } else {
         $ignored{$nick} = 0;
