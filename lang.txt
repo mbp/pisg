@@ -1847,6 +1847,19 @@ today = "oggi"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
 pagetitle2 = "Statistiche generate il "
 pagetitle3 = "Durante questi [:days] giorni di analisi, un totale di <b>[:nicks]</b> nick differenti si sono visti su [:channel]."
+hours = "ore"
+minutes = "minuti"
+seconds = "secondi"
+and = "e"
+stats_gen_by = "Statistiche generate tramite [:pisg_url] v[:version]"
+author = "pisg by [:author_url] e altri :)"
+stats_gen_in = "Stats generated in [:time]"
+
+# Mouse-over titles
+pisghomepage = "Vai all'homepage di pisg"
+authorhomepage = "Vai all'homepage dell'autore"
+mailto = "Scrivi un email"
+newwindow = "Apri in un'altra finestra:"
 </lang>
 
 ### Catalan
