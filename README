@@ -14,12 +14,14 @@ It's quite simple to set up pisg. You have 2 choices:
  * Set settings from commandline (try pisg.pl --help)
  * Configure pisg from the pisg.cfg file (more flexible and configurable)
 
-The most important here is the name of the logfile, the maintainers name,
-and then the format of your logfile.
+If you look in the example pisg.cfg, you will see a small working sample
+where you can insert your own data.
 
-You cannot set up everything on the commandline, only the important things.
+The most important things to set is the name of the logfile, the channel
+name, the format of your logfile and the maintainers name.
 
-The 'pisg.cfg' file controls a lot of things, you should read CONFIG-README.
+The commandline version has the disadvantage that you can only set up one
+channel to be run.
 
 NOTE: The stats will look best with a logfile which is at least one day
 long.  Some stats (like smilies, exclamation marks, etc) doesn't get counted

@@ -1,10 +1,6 @@
-# Language file for pisg, contains all the translations, a language must be
-# defined like this:
+# In order to use a translation, you must set 'lang', eg.:
 #
-# <lang name="EN">
-# template_name = "text to show"
-# template_name2 = "text to show"
-# </lang>
+# <set lang="DK"> - to get a Danish translated page.
 #
 # Translations in this file as of now:
 #
