@@ -1105,6 +1105,13 @@ sub activetimes
         my $size = ($times{$hour} / $highest_value) * 100;
         my $percent = ($times{$hour} / $lines) * 100;
         $percent =~ s/(\.\d)\d+/$1/;
+        
+        if ($size < 1 && $size != 0) {
+            # Opera doesn't understand '0.xxxx' in the height="xx" attr,
+            # so we simply round up to 1.0 here.
+
+            $size = 1.0;
+        }
 
         if ($conf->{timeoffset} =~ /\+(\d+)/) {
             # We must plus some hours to the time
