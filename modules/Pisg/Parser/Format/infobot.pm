@@ -31,7 +31,7 @@ sub normalline
     my $sec; my $min; my $hour; my $mday; my $mon; my $year;
     my $wday; my $yday; my $isdst;
 
-    if ($line =~ /$self->{normalline}/) {
+    if ($line =~ /$self->{normalline}/o) {
         $self->{debug}->("[$lines] Normal: $1 $2 $3");
 
         ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($1);
@@ -52,7 +52,7 @@ sub actionline
     my $sec; my $min; my $hour; my $mday; my $mon; my $year; 
     my $wday; my $yday; my $isdst;
 
-    if ($line =~ /$self->{actionline}/) {
+    if ($line =~ /$self->{actionline}/o) {
         $self->{debug}->("[$lines] Action: $1 $2 $3");
 
         ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($1);
@@ -73,7 +73,7 @@ sub thirdline
     my $sec; my $min; my $hour; my $mday; my $mon; my $year; 
     my $wday; my $yday; my $isdst;
 
-    if ($line =~ /$self->{thirdline}/) {
+    if ($line =~ /$self->{thirdline}/o) {
         $self->{debug}->("[$lines] ***: $1 $2");
 
         ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($1);
