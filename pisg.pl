@@ -62,6 +62,15 @@ my $conf = {
     pic1 => "pipe-blue.png",
     pic2 => "pipe-purple.png",
 
+    pic_v_0 => "pipe-v-blue.png",
+    pic_v_6 => "pipe-v-green.png",
+    pic_v_12 => "pipe-v-yellow.png",
+    pic_v_18 => "pipe-v-red.png",
+    pic_h_0 => "pipe-h-blue.png",
+    pic_h_6 => "pipe-h-green.png",
+    pic_h_12 => "pipe-h-yellow.png",
+    pic_h_18 => "pipe-h-red.png",
+
     # Less important things
 
     minquote => "25",
@@ -74,7 +83,10 @@ my $conf = {
     timeoffset => "+0",
 
     # Stats settings
-    
+
+    show_linetime => 0,
+    show_time => 1,
+    show_words => 0,
     show_wpl => 0,
     show_cpl => 0,
 
@@ -97,7 +109,8 @@ $thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
 %line, %length, %sadface, %smile, $nicks, %longlines, %mono, %times, %question,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
-$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words);
+$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
+%line_time);
 
 
 sub main
@@ -198,6 +211,7 @@ sub init_pisg
     undef %slap; 
     undef %slapped; 
     undef %words; 
+    undef %line_time; 
 
 
     $timestamp = time;
@@ -434,7 +448,7 @@ sub parse_file
                 unless (grep /^\Q$nick\E$/i, @ignore) {
                     $normals++;
                     $line{$nick}++;
-
+                    $line_time{$nick}[int($hour/6)]++;
                     # Count up monologues
 
                     if ($lastline eq $nick) {
@@ -517,6 +531,7 @@ sub parse_file
             unless (grep /^\Q$nick\E$/i, @ignore) {
                 $actions++;
                 $line{$nick}++;
+                $line_time{$nick}[int($hour/6)]++;
 
                 if($saying =~ /^slaps (\S+)/) {
                     $slap{$nick}++;
@@ -1008,6 +1023,12 @@ sub create_html
 
     open (OUTPUT, "> $conf->{outputfile}") or die("$0: Unable to open outputfile($conf->{outputfile}): $!\n");
 
+    if ($conf->{show_time}) {
+        $conf->{tablewidth} += 40;
+    }
+    if ($conf->{show_words}) {
+        $conf->{tablewidth} += 40;
+    }
     if ($conf->{show_wpl}) {
         $conf->{tablewidth} += 40;
     }
@@ -1081,11 +1102,9 @@ sub activetimes
 
     for my $hour (sort keys %times) {
         debug("Time: $hour => ". $times{$hour});
-        if ($toptime[0] == $hour) {
-            $image = $conf->{pic2};
-        } else {
-            $image = $conf->{pic1};
-        }
+	$image = "pic_v_".(int($hour/6)*6);
+	$image = $conf->{$image};
+	debug("Image: $image");
 
         my $size = ($times{$hour} / $highest_value) * 100;
         my $percent = ($times{$hour} / $lines) * 100;
@@ -1147,6 +1166,8 @@ sub activenicks
         . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
 	. template_text('numberlines') 
         . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
+	. ($conf->{show_time} ? template_text('show_time')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
+	. ($conf->{show_words} ? template_text('show_words')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
 	. ($conf->{show_wpl} ? template_text('show_wpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
 	. ($conf->{show_cpl} ? template_text('show_cpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
         . template_text('randquote') ."</b></td>");
@@ -1203,9 +1224,18 @@ sub activenicks
 
         html("<tr><td bgcolor=\"$conf->{rankc}\" align=\"left\">");
         my $line = $line{$nick};
-	my $w    = $words{$nick};
-	my $ch   = $length{$nick};
-        html("$i</td><td bgcolor=\"#$col_r$col_g$col_b\">$visiblenick</td><td bgcolor=\"#$col_r$col_g$col_b\">$line</td>"
+        my $w    = $words{$nick};
+        my $ch   = $length{$nick};
+        html("$i</td><td bgcolor=\"#$col_r$col_g$col_b\">$visiblenick</td>"
+        . ($conf->{show_linetime} ?
+           "<td bgcolor=\"$col_r$col_g$col_b\">".user_linetimes($nick,$active[0])."</td>"
+           : "<td bgcolor=\"#$col_r$col_g$col_b\">$line</td>")
+	. ($conf->{show_time} ?
+	 "<td bgcolor=\"$col_r$col_g$col_b\">".user_times($nick)."</td>"
+	 : "")
+	. ($conf->{show_words} ? 
+	 "<td bgcolor=\"#$col_r$col_g$col_b\">$w</td>"
+	 : "")
 	. ($conf->{show_wpl} ? 
 	 "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$w/$line)."</td>"
 	 : "")
@@ -1244,6 +1274,39 @@ sub activenicks
     }
 
 
+}
+
+sub user_linetimes {
+    my $nick = shift;
+    my $top  = shift;
+    my $bar   = "";
+    my $len = ($line{$nick} / $line{$top}) * 100;
+    my $debuglen = 0;
+    for (my $i = 0; $i <= 3; $i++) {
+        next if not defined $line_time{$nick}[$i];
+        my $w = int(($line_time{$nick}[$i] / $line{$nick}) * $len);
+	$debuglen += $w;
+        if ($w) {
+            my $pic = 'pic_h_'.(6*$i);
+            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\">";
+        }
+    }
+    debug("Length='$len', Sum='$debuglen'");
+    return "$bar$line{$nick}";
+}
+
+sub user_times {
+    my $nick = shift;
+    my $bar   = "";
+    for (my $i = 0; $i <= 3; $i++) {
+        next if not defined $line_time{$nick}[$i];
+        my $w = int(($line_time{$nick}[$i] / $line{$nick}) * 40);
+        if ($w) {
+            my $pic = 'pic_h_'.(6*$i);
+            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"20\">";
+        }
+    }
+    return $bar;
 }
 
 sub mostusedword

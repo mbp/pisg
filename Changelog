@@ -8,6 +8,8 @@ pisg (0.20)
    * Add new options 'show_wpl' and 'show_cpl', this enables user to view the
      'chars per line' and 'words per line' in the 'most active nicks',
      disabled by default.
+   * New option 'show_time', this will display a small bar in the 'most active
+     nicks' of when the respective people actually speak. [enabled]
    * Remember to distribute the 'FORMATS' file (was missed in the last two
      releases)
    * Swedish translation (thanks to Andreas Henriksson)
