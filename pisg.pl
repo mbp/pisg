@@ -21,8 +21,7 @@ use Getopt::Long;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-my $conf;
-my $words;
+my ($conf, $words, $chans);
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
 $conf->{channel} = "#channel";	# The name of your channel.
@@ -108,6 +107,7 @@ sub main
 {
     print "pisg $conf->{version} - Perl IRC Statistics Generator\n\n";
     init_config();      # Init config. (Aliases, ignores, other options etc.)
+    parse_channels();   # parse any channels in <channel> statements
     do_channel()
         unless ($conf->{chan_done}{$conf->{channel}});
 
@@ -135,6 +135,20 @@ sub do_channel
 
     print "\nFile was parsed succesfully in $processtime on $time.\n";
     $conf->{chan_done}{$conf->{channel}} = 1;
+}
+
+sub parse_channels
+{
+    my %origconf = %{ $conf };
+
+    foreach my $channel (keys %{ $chans }) {
+        foreach (keys %{ $chans->{$channel} }) {
+            $conf->{$_} = $chans->{$channel}{$_};
+        }
+        do_channel();
+        $origconf{chan_done} = $conf->{chan_done};
+        %{ $conf } = %origconf;
+    }
 }
 
 sub init_pisg
@@ -333,26 +347,24 @@ sub init_config
                     $words->{$1} = $2;
                     debug("Words: $1 = $2");
                 }
-            } elsif ($line =~ /<(channel=.*)>/i) {
-                my $settings = $1;
+            } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
+                my ($channel, $settings) = ($1, $2);
+                $conf->{chan_done}{$conf->{channel}} = 1;             # don't parse channel in $conf->{channel} if a channel statement is present
                 while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
-                    unless ($conf->{$var} eq $2) {
-                        $conf->{$var} = $2;
-                    }
-                    debug("Channel conf: $var = $2");
+                    $chans->{$channel}{$var} = $2;
+                    debug("Channel conf $channel: $var = $2");
                 }
                 while (<CONFIG>) {
                     last if ($_ =~ /<\/*channel>/i);
                     while ($_ =~ s/^\s*([^=]+)=["']([^"']*)["']//) {
                         my $var = lc($1);
-                        unless (($conf->{$var} eq $2) || $conf->{cmdl}{$var}) {
-                            $conf->{$var} = $2;
+                        unless ($conf->{cmdl}{$var}) {
+                            $chans->{$channel}{$var} = $2;
                         }
-                        debug("Conf: $var = $2");
+                        debug("Conf $channel: $var = $2");
                     }
                 }
-                do_channel();
             }
         }
 
