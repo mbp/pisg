@@ -183,7 +183,7 @@ sub get_default_config_settings
 
         # Developer stuff
 
-        version => "v0.33-cvs",
+        version => "v0.34-cvs",
     };
 
     # Parse the optional overriden configuration variables
