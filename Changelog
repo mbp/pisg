@@ -9,6 +9,11 @@ pisg (0.18)
    * Added Foulwords-Variable to pisg.cfg
    * Make pisg die when there is no files in logdir
    * Portugese translation (thanks to JaMiR0W <jamirow@ig.com.br>)
+   * Updated a lot of documentation (README and CONFIG-README), you should
+     reread it ;)
+   * Added pisg.cfg support which now obsoletes user.cfg, in this file
+     everything should be set, instead of in the script - this makes it easier
+     upgrading pisg. Read CONFIG-README in order to "understand" it.
 
 pisg (0.17) - Sat, July 28th 2001
 
