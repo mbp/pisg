@@ -1026,6 +1026,41 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWACTIVENICKS *** -->
+    <refentry id="ShowActiveNicks">
+
+    <refmeta> <refentrytitle>ShowActiveNicks</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowActiveNicks</refname>
+    <refpurpose>enable/disable "Most Active Nicks"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowActiveNicks = "0"
+        </channel>
+
+        <set ShowActiveNicks="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can disable the "Most Active Nicks" section on the
+    stats page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWBIGNUMBERS *** -->
     <refentry id="ShowBigNumbers">
 

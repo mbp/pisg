@@ -98,7 +98,10 @@ sub create_output
     if ($self->{cfg}->{showactivetimes}) {
         $self->_activetimes();
     }
-    $self->_activenicks();
+
+    if ($self->{cfg}->{showactivenicks}) {
+        $self->_activenicks();
+    }
 
     if ($self->{cfg}->{showmostactivebyhour}) {
         $self->_mostactivebyhour();

@@ -5,6 +5,7 @@ pisg (0.62) - ??
    * Make FoulWords, ViolentWords, and IgnoreWords configurable per channel
      (required quite some black regexp magic; SF tracker #1066103 by jjp3).
    * wordlist_regexp uses quotemeta.
+   * New ShowActiveNicks option (defaulting to 1).
 
 pisg (0.61) - Sat Oct, 30th 2004
    Changes by Christoph Berg:

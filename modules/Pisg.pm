@@ -132,6 +132,7 @@ sub get_default_config_settings
         # Stats settings
 
         showactivetimes => 1,
+        showactivenicks => 1,
         showbignumbers => 1,
         showtopics => 1,
         showlinetime => 0,
