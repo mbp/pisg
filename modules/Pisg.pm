@@ -130,6 +130,9 @@ sub get_default_config_settings
         headline => "#000000",
         rankc => "#CCCCCC",
 
+        pic_width => '',
+        pic_height => '',
+
         pic_v_0 => "blue-v.png",
         pic_v_6 => "green-v.png",
         pic_v_12 => "yellow-v.png",
