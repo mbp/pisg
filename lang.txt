@@ -1155,7 +1155,7 @@ action3 = "Nobenih dejanj na kanalu [:channel]!"
 actiontext = "<b>Najbolj izstopa primer:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 mostdeop1 = "<b>[:nick]</b> je [:bil:bila:] serif tega kanala z [:deops] deopi."
-mostdeop2 = "<b>[:nick]</b> je [:odvzel:odvzelaa:] op [:deops] uporabnikom kanala."
+mostdeop2 = "<b>[:nick]</b> je [:odvzel:odvzela:] op [:deops] uporabnikom kanala."
 mostdeop3 = "Wooo...nikomu ni bil odvzet op na kanalu [:channel]!"
 
 question1 = "Je <b>[:nick]</b> res najbolj [:neumen:neumna:] na tem kanalu ali samo sprasuje veliko vprasanj? [:per]% [:njegovih:njenih:] vrstic so bila vprasanja!"
@@ -1163,8 +1163,8 @@ question2 = "<b>[:nick]</b> ni [:imel:imela:] pojma o nicemer.  [:per]% [:njegov
 question3 = "Nihce ni nic vprasal na tem kanalu; ocitno so sami geniji na tem kanalu?"
 
 shout1 = "Najbolj [:glasen:glasna:] je [:bil:bila:] <b>[:nick]</b>, ki se je [:drl:drla:] kar [:per]% svojega govorjenja na kanalu!"
-shout2 = "Naziv <i>Hripav cucek</i> pa pripada: <b>[:nick]</b>, ki je z nami delila [:per]% svojega lajanja na kanalu!"
-shout3 = "Nihce ni nikoli krical"
+shout2 = "Naziv <i>Hripav cucek</i> pa dobi: <b>[:nick]</b>, ki je z nami [:delil:delila:] [:per]% svojega lajanja na kanalu!"
+shout3 = "Nihce ni nikoli krical."
 
 allcaps1 = " <b>[:nick]</b> je [:imel:imela:] zataknjeno tipko shift:  [:per]% svojega pisanja je [:pisal:pisalaa:] z VELIKIMI CRKAMI!"
 allcaps2 = "<b>[:nick]</b> je [:pozabil:pozabila:] ponovno pritisniti svojo Caps-Lock tipko. Z VELIKIMI CRKAMI je [:pisal:pisala:] kar [:per]% svojega besedicenja na kanalu."
@@ -1174,8 +1174,8 @@ allcapstext = "<b>Ce si pogledamo tale primer:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 violent1 = "<b>[:nick]</b> je zelo [:agresiven:agresivna:]. <b>[:attacks]</b>-krat je [:napadel:napadla:] druge ljudi na kanalu."
 violent2 = "<b>[:nick]</b> tudi ni [:znal:znala:] kontorlirati svoje jeze. Na druge se je [:spravil:spravila:] <b>[:attacks]</b>-krat!" 
-violent3 = "Nihce ni nikogar pretepel.  Vsi so bili prijazni."
-violenttext = "<b>Vzamimo primer:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+violent3 = "Nihce ni nikogar napadel.  Vsi so bili prijazni."
+violenttext = "<b>Vzemimo primer:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "[:Bogi:Boga:] <b>[:nick]</b>. Nihce [:ga:je:] ne mara. [:Bil:Bila:] je [:napaden:napadena:] <b>[:attacks]</b>-krat."
 attacked2 = "Tudi <b>[:nick]</b> ni [:bil:bila:] najbolj [:priljubljen:priljubljena:]. <b>[:attacks]</b>-krat je [:dobil:dobila:] buske!."
@@ -1234,6 +1234,7 @@ activenickstopic = "Najbolj aktivni nicki"
 mostwordstopic = "Najveckrat izrecene besede"
 referencetopic = "Najveckrat omenjen nick"
 urlstopic = "Najveckrat povedan URL naslov"
+bylinetopic = "[:Povedal:Povedala:] [:nick] ob [:time]"
 
 ## Other text
 
