@@ -6,4 +6,4 @@
 #
 # I hope someone will use this and hopefully make pisg a bit faster :)
 
-dprofpp -u -p pisg.pl
+dprofpp -u -p ./pisg.pl
