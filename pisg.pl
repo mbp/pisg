@@ -2,6 +2,7 @@
 
 use strict;
 use Getopt::Long;
+use FindBin;
 
 # pisg - Perl IRC Statistics Generator
 #
@@ -274,7 +275,7 @@ sub init_config
 {
     get_cmdlineoptions();
 
-    if (open(CONFIG, $conf->{configfile})) {
+    if ((open(CONFIG, $conf->{configfile}) or open(CONFIG, $FindBin::Bin . "/$conf->{configfile}"))) {
         print "Using config file: $conf->{configfile}\n";
 
         my $lineno = 0;
@@ -2210,7 +2211,6 @@ END_USAGE
 
 sub get_language_templates
 {
-    use FindBin;
 
     open(FILE, $conf->{langfile}) or open (FILE, $FindBin::Bin . "/$conf->{langfile}") or die("$0: Unable to open language file($conf->{langfile}): $!\n");
 
