@@ -1831,6 +1831,35 @@
     </refsect1>
     </refentry>
 
+    <!-- *** NOIGNOREDQUOTES *** -->
+    <refentry id="NoIgnoredQuotes">
+
+    <refmeta> <refentrytitle>NoIgnoredQuotes</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>NoIgnoredQuotes</refname>
+    <refpurpose>Control random quote output</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set NoIgnoredQuotes="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+     When set to "1", pisg will not output quotes containing ignored words.
+     Pisg will output a blank line after trying 20 random quotes if all 20 random quotes were ignored.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** FOULWORDS *** -->
     <refentry id="FoulWords">
 

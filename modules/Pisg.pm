@@ -186,6 +186,7 @@ sub get_default_config_settings
         foulwords => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
         violentwords => 'slaps beats smacks',
         ignorewords => '',
+        noignoredquotes => 0,
         tablewidth => 614,
         regexpaliases => 0,
 
@@ -271,12 +272,17 @@ sub init_words
 {
     my $self = shift;
     $self->{cfg}->{foulwords} =~ s/(^\s+|\s+$)//g;
-    my $foultemp = $self->{cfg}->{foulwords};
-    $self->{cfg}->{foulwords} =~ s/\s+/|\b/g;
-    $self->{cfg}->{foulwords} = '\b' . $self->{cfg}->{foulwords} . '|' . $foultemp . '\b';
-    $self->{cfg}->{foulwords} =~ s/\s+/\b|/g;
+    my @foulwords = split(/\s+/, $self->{cfg}->{foulwords});
+    $self->{cfg}->{foulwords} = '\b' . join('|\b', @foulwords) . '|' . join('\b|', @foulwords) . '\b';
+    $self->{cfg}->{ignorewords} =~ s/(^\s+|\s+$)//g;
     foreach (split(/\s+/, $self->{cfg}->{ignorewords})) {
         $self->{cfg}->{ignoreword}{$_} = 1;
+    }
+    if ($self->{cfg}->{noignoredquotes}) {
+        my $igntmp = $self->{cfg}->{ignorewords};
+        $igntmp =~ s/(\[|\]|\(|\)|\/|\\)/\\$1/g;
+        my @ignorewords = split(/\s+/, $igntmp);
+        $self->{cfg}->{ignorewordsregex} = '\b' . join('|\b', @ignorewords) . '|' . join('\b|', @ignorewords) . '\b';
     }
     $self->{cfg}->{violentwords} =~ s/(^\s+|\s+$)//g;
     $self->{cfg}->{violentwords} =~ s/\s+/|/g;

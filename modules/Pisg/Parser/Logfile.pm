@@ -74,7 +74,7 @@ sub analyze
             $self->_parse_file(\%stats, \%lines, $self->{cfg}->{logfile}, \%state);
         }
 
-        _pick_random_lines(\%stats, \%lines);
+        $self->_pick_random_lines(\%stats, \%lines);
         _uniquify_nicks(\%stats);
 
         my ($sec,$min,$hour) = gmtime(time() - $starttime);
@@ -512,13 +512,24 @@ sub _parse_words
 
 sub _pick_random_lines
 {
-    my ($stats, $lines) = @_;
+    my ($self, $stats, $lines) = @_;
 
     foreach my $key (keys %{ $lines }) {
         foreach my $nick (keys %{ $lines->{$key} }) {
-            $stats->{$key}{$nick} = 
-            @{ $lines->{$key}{$nick} }[rand@{ $lines->{$key}{$nick} }];
+            $stats->{$key}{$nick} = $self->_random_line($stats, $lines, $key, $nick, 0);
         }
+    }
+}
+
+sub _random_line
+{
+    my ($self, $stats, $lines, $key, $nick, $count) = @_;
+    my $random = ${ $lines->{$key}{$nick} }[rand@{ $lines->{$key}{$nick} }];
+    if ($self->{cfg}->{noignoredquotes} && $random =~ /$self->{cfg}->{ignorewordsregex}/io) {
+        return '' if ($count > 20);
+        return $self->_random_line($stats, $lines, $key, $nick, ++$count);
+    } else {
+        return $random;
     }
 }
 
