@@ -298,7 +298,7 @@ referencetopic = "Begehrte Nicks :)"
 urlstopic = "Am meisten benutzte URLs"
 notopic = "In diesem Channel wurde kein Topic gesetzt."
 bylinetopic = "von [:nick] um [:time]"
-dailyactivitytopic = "Tägliche Aktivität (letzten [:n] Tage)"
+dailyactivitytopic = "Tägliche Aktivität (letzte [:n] Tage)"
 mostnickstopic = "Chatter mit den meisten Nicks"
 
 ## Other text
