@@ -414,7 +414,7 @@ sub parse_dir
     @filesarray = grep { /^[^\.]/ && /^$conf->{prefix}/ && -f "$conf->{logdir}/$_" } readdir(LOGDIR) or die("No files in \"$conf->{logdir}\" matched prefix \"$conf->{prefix}\"");
     close(LOGDIR);
     
-    foreach my $file (@filesarray) {
+    foreach my $file (sort @filesarray) {
         $file = $conf->{logdir} . $file;
         parse_file($file);
     }
