@@ -787,7 +787,7 @@ mostdeop3 = "Wow, zaden op nie zostal odebrany na [:channel]!"
 
 mostvoice1 = "<b>[:nick]</b> lubi rozdawac voice`y robiac to [:voices] razy..."
 mostvoice2 = "<b>[:nick]</b> rowniez byl[::a:] bardzo uprzejmy/a: rozdal[::a:] [:voices] voice`ow"
-mostvoice3 = Dziwne, nikt nie dostal voice`a na  [:channel]!"
+mostvoice3 = "Dziwne, nikt nie dostal voice`a na  [:channel]!"
 
 mostdevoice1 = "<b>[:nick]</b> lubi zabierac ludziom voice`y, [:devoices] devoice`ow."
 mostdevoice2 = "<b>[:nick]</b> ma prawie taki sam wynik, zabral[::a:] voice`y [:devoices] ircownikow."
