@@ -949,11 +949,14 @@ sub template_text
 
     if (!$T{$conf->{lang}}{$template}) {
         # Fall back to English if the language template doesn't exist
-        $text = $T{EN}{$template};
-    }
 
-    if (!$text) {
-        die("No such template '$template' in language file.\n");
+        if ($T{EN}{$template}) {
+            print "Note: There was no translation in $conf->{lang} for '$template' - falling back to English..\n";
+            $text = $T{EN}{$template};
+        } else {
+            die("No such template '$template' in language file.\n");
+        }
+
     }
 
     foreach my $key (sort keys %hash) {
