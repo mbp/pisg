@@ -3,9 +3,9 @@ package Pisg::Parser::Format::mIRC;
 use strict;
 $^W = 1;
 
-my $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
-my $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
-my $thirdline  = '^\[(\d+):(\d+)\] \*\*\* (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
+my $normalline = '^\[(\d+):\d+[^ ]+ <([^>]+)> (.*)';
+my $actionline = '^\[(\d+):\d+[^ ]+ \* (\S+) (.*)';
+my $thirdline  = '^\[(\d+):(\d+)[^ ]+ \*\*\* (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
 
 my ($debug);
 
