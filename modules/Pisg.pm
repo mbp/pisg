@@ -65,9 +65,6 @@ sub run
     print "Using config file: $self->{cfg}->{configfile}\n\n"
         if ($r && !$self->{cfg}->{silent});
 
-    $self->init_words()       # Init words. (Foulwords, ignorewords, etc.)
-        if ($self->{use_configfile});
-
     # Get translations from langfile
     $self->get_language_templates();
 
@@ -246,14 +243,6 @@ sub get_language_templates
     close(FILE);
 }
 
-sub init_words
-{
-    my $self = shift;
-    $self->{cfg}->{foulwords} = wordlist_regexp($self->{cfg}->{foulwords}, $self->{cfg}->{regexpaliases});
-    $self->{cfg}->{ignorewords} = wordlist_regexp($self->{cfg}->{ignorewords}, $self->{cfg}->{regexpaliases});
-    $self->{cfg}->{violentwords} = wordlist_regexp($self->{cfg}->{violentwords}, $self->{cfg}->{regexpaliases});
-}
-
 sub init_config
 {
     my $self = shift;
@@ -411,6 +400,11 @@ sub init_pisg
     }
     $self->{cfg}->{timestamp} = $timestamp;
 
+    # convert wordlists
+    $self->{cfg}->{foulwords} = wordlist_regexp($self->{cfg}->{foulwords}, $self->{cfg}->{regexpaliases});
+    $self->{cfg}->{ignorewords} = wordlist_regexp($self->{cfg}->{ignorewords}, $self->{cfg}->{regexpaliases});
+    $self->{cfg}->{violentwords} = wordlist_regexp($self->{cfg}->{violentwords}, $self->{cfg}->{regexpaliases});
+
     # Add trailing slash when it's not there..
     $self->{cfg}->{imagepath} =~ s/([^\/])$/$1\//;
     # Set ImageGlobPath default
@@ -514,7 +508,7 @@ sub parse_channels
             print STDERR "Channel $channel not in config file, ignoring\n";
             next;
         }
-        foreach (keys %{ $self->{chans}->{$channel} }) {
+        foreach (keys %{ $self->{chans}->{$channel} }) { # import channel specific config
             $self->{cfg}->{$_} = $self->{chans}->{$channel}{$_};
         }
         $self->do_channel();

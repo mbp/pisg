@@ -52,6 +52,11 @@ sub new
         }
     }
 
+    # precompile the regexps used (we can't use /o since the config might be different per channel)
+    $self->{foulwords_regexp} = qr/($self->{cfg}->{foulwords})/i;
+    $self->{ignorewords_regexp} = qr/$self->{cfg}->{ignorewords}/i;
+    $self->{violentwords_regexp} = qr/^($self->{cfg}->{violentwords}) (\S+)(.*)/i;
+
     return $self;
 }
 
@@ -365,7 +370,7 @@ sub _parse_file
                         }
                     }
 
-                    if (my @foul = $saying =~ /($self->{cfg}->{foulwords})/io) {
+                    if (my @foul = $saying =~ /($self->{foulwords_regexp})/) {
                         $stats->{foul}{$nick} += scalar @foul;
                         push @{ $lines->{foullines}{$nick} }, $line;
                     }
@@ -392,7 +397,7 @@ sub _parse_file
                         }
                     }
 
-                    _parse_words($stats, $saying, $nick, $self->{cfg}->{ignorewords}, $hour);
+                    _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
                 }
             }
             $lastnormal = $line;
@@ -433,7 +438,7 @@ sub _parse_file
                 $stats->{lastvisited}{$nick} = $stats->{days};
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^($self->{cfg}->{violentwords}) (\S+)(.*)/o) {
+                if ($saying =~ /$self->{violentwords_regexp}/) {
                     my $victim;
                     unless ($victim = is_nick($2)) {
                         foreach my $trynick (split(/\s+/, $3)) {
@@ -454,7 +459,7 @@ sub _parse_file
 
                 $stats->{lengths}{$nick} += length($saying);
 
-                _parse_words($stats, $saying, $nick, $self->{cfg}->{ignorewords}, $hour);
+                _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
             }
         }
 
@@ -619,7 +624,7 @@ sub _random_line
 {
     my ($self, $stats, $lines, $key, $nick, $count) = @_;
     my $random = ${ $lines->{$key}{$nick} }[rand@{ $lines->{$key}{$nick} }];
-    if ($self->{cfg}->{noignoredquotes} && $random =~ /$self->{cfg}->{ignorewords}/io) {
+    if ($self->{cfg}->{noignoredquotes} && $random =~ /$self->{ignorewords_regexp}/i) {
         return '' if ($count > 20);
         return $self->_random_line($stats, $lines, $key, $nick, ++$count);
     } else {

@@ -1,7 +1,10 @@
 pisg (0.62) - ??
    Changes by Christoph Berg:
-   * Update mIRC script for the mIRC6hack format.
+   * Update mIRC script for the mIRC6hack format (thanks, coaster).
    * Warnings about missing Text::Iconv are suppressed by 'silent'.
+   * Make FoulWords, ViolentWords, and IgnoreWords configurable per channel
+     (required quite some black regexp magic; SF tracker #1066103 by jjp3).
+   * wordlist_regexp uses quotemeta.
 
 pisg (0.61) - Sat Oct, 30th 2004
    Changes by Christoph Berg:

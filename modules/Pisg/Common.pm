@@ -205,9 +205,10 @@ sub wordlist_regexp
     my $regexpaliases = shift;
     unless($regexpaliases) {
         map {
-            $_ = /^\*(.*)/ ? $1 : "\\b$_";
-            $_ = /(.*)\*$/ ? $1 : "$_\\b";
-            s/\*/.*/g;
+            $_ = quotemeta; # quote everything
+            s/\\\*/\\S*/g; # replace \*
+            s/^\\S\*// or $_ = "\\b$_"; # ... but remote it at beginning/end of word
+            s/\\S\*$// or $_ = "$_\\b";
         } @words;
     }
     return join '|', @words;
