@@ -17,6 +17,7 @@ pisg (x.xx)
    * A dutch translation appeared in the English version of pisg; fixed.
    * Nicktracking wasn't working with the irssi logfile format, fixed (thanks,
      Matthäus Wander <jonny_b.good@gmx.de>)
+   * Czech translation added (thanks, Jaroslav Ostadal <s98704@tacheon.dkm.cz>)
 
 pisg (0.37) - Mon Apr, 8th 2002
    * The "lets clean up and move things around"-release
