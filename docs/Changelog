@@ -23,8 +23,9 @@ pisg (x.xx)
    * Fixed bug in infobot format -- was matching any line that began lowercase
      as an action line.  Infobot does not log actions in a recognizable format
      ... I even examined the output in hex to be sure.  Fix BugID#652239
-
-
+   * Fixed a bug in logsuffix handling where pisg would blow up if the
+     'logsuffix' expression did not return dates for every filename.  It will
+     now not parse any files that logsuffix does not match.
 
 pisg (0.43) - Fri Nov, 22th 2002
    * Add "ShowOnlyTop" option which can be used if you only want to have stats
