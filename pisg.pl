@@ -59,8 +59,6 @@ my $conf = {
     hlink => "#0b407a",
     headline => "#000000",
     rankc => "#CCCCCC",  
-    pic1 => "pipe-blue.png",
-    pic2 => "pipe-purple.png",
 
     pic_v_0 => "blue-v.png",
     pic_v_6 => "green-v.png",
@@ -215,7 +213,7 @@ sub init_pisg
     undef %line_time; 
 
 
-    $timestamp = time;
+    $timestamp = time();
 
     if ($conf->{timeoffset} =~ /\+(\d+)/) {
         # We must plus some hours to the time
@@ -241,7 +239,7 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
-    $conf->{start} = time();   # set start time of file parse
+    $conf->{start} = $timestamp;   # set start time of file parse
 
     print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
 
@@ -1306,7 +1304,7 @@ sub user_times {
         my $w = int(($line_time{$nick}[$i] / $line{$nick}) * 40);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"20\">";
+            $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\">";
         }
     }
     return $bar;
@@ -2132,11 +2130,11 @@ sub timefix {
     $min =~ s/^(.)$/0$1/;             # Fixes the display of mins/secs below
     $sec =~ s/^(.)$/0$1/;             # it displays 03 instead of 3
 
-    if($hour > '23'){                 # Checks to see if it Midnight
+    if($hour > '23') {                 # Checks to see if it Midnight
         $hour = 12;                   # Makes it display the hour 12
         $tday = "AM";                 # Display AM
     }
-    elsif($hour > '12'){              # Get rid of the Military time and
+    elsif($hour > '12') {              # Get rid of the Military time and
         $hour -= 12;                  # put it into normal time
         $tday = "PM";                 # If past Noon and before Midnight set
     }                                 # the time as PM
@@ -2145,7 +2143,7 @@ sub timefix {
     }                                 # set the time as AM
 
     # Use 24 hours pr. day
-    if($tday eq "PM" && $hour < '12'){
+    if($tday eq "PM" && $hour < '12') {
         $hour += 12;
     }
 
