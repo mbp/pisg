@@ -24,16 +24,15 @@ $^W = 1;
 sub new
 {
     my $type = shift;
+    my %args = @_;
     my $self = {
+        override_cfg => $args{override_cfg},
+        use_configfile => $args{use_configfile},
         chans => {},
         users => {},
         cfg => {},
         tmps => {},
     };
-    my %args = @_;
-
-    $self->{override_cfg} = $args{override_cfg};
-    $self->{use_configfile} = $args{use_configfile};
 
     # FIXME - ugly hack to get the anonymous sub working, looks stupid to
     # put this in the new constructor:
@@ -48,8 +47,7 @@ sub new
         }
     };
 
-    # Load the Common module from wherever it's configured to be.
-    #push(@INC, $self->{cfg}->{modules_dir});
+    # Import common functions in Pisg::Common
     require Pisg::Common;
     Pisg::Common->import();
 
@@ -68,6 +66,9 @@ sub run
 
     # Init the configuration file (aliases, ignores, channels, etc)
     $self->init_config()
+        if ($self->{use_configfile});
+
+    $self->init_words()       # Init words. (Foulwords, ignorewords, etc.)
         if ($self->{use_configfile});
 
     # Init the debugging file.
@@ -111,7 +112,6 @@ sub get_default_config_settings
         lang => 'EN',
         langfile => 'lang.txt',
         prefix => "",
-        modules_dir => $FindBin::Bin . "/modules",     # Module search path
 
         # Colors / Layout
 
@@ -184,12 +184,11 @@ sub get_default_config_settings
     }
 }
 
-
 sub get_language_templates
 {
     my $self = shift;
-    open(FILE, $self->{cfg}->{langfile}) or open (FILE, $FindBin::Bin . "/$self->{cfg}->{langfile}") or die("$0: Unable to open language file($self->{cfg}->{langfile}): $!\n");
 
+    open(FILE, $self->{cfg}->{langfile}) or open (FILE, $FindBin::Bin . "/$self->{cfg}->{langfile}") or die("$0: Unable to open language file($self->{cfg}->{langfile}): $!\n");
 
     while (my $line = <FILE>)
     {
@@ -254,7 +253,6 @@ sub init_words
 sub init_config
 {
     my $self = shift;
-
 
     if ((open(CONFIG, $self->{cfg}->{configfile}) or open(CONFIG, $FindBin::Bin . "/$self->{cfg}->{configfile}"))) {
         print "Using config file: $self->{cfg}->{configfile}\n";
@@ -342,7 +340,6 @@ sub init_config
 
         close(CONFIG);
     }
-
 }
 
 sub init_pisg
@@ -368,7 +365,6 @@ sub init_pisg
     print "Using language template: $self->{cfg}->{lang}\n\n" if ($self->{cfg}->{lang} ne 'EN');
 
     print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n";
-
 }
 
 sub do_channel
@@ -379,19 +375,19 @@ sub do_channel
     } elsif ((!$self->{cfg}->{logfile}) && (!$self->{cfg}->{logdir})) {
         print "No logfile or logdir defined for " . $self->{cfg}->{channel} . "\n";
     } else {
-
         $self->init_pisg();        # Init some general things
-        $self->init_words();       # Init words. (Foulwords, ignorewords, etc.)
-
 
         # Pick our stats generator.
         my $analyzer;
         eval <<_END;
 use Pisg::Parser::$self->{cfg}->{logtype};
-\$analyzer = new Pisg::Parser::$self->{cfg}->{logtype}(\$self->{cfg}, \$self->{debug});
+\$analyzer = new Pisg::Parser::$self->{cfg}->{logtype}(
+    cfg => \$self->{cfg},
+    debug => \$self->{debug}
+);
 _END
         if ($@) {
-            print STDERR "Could not load stats generator for '$self->{cfg}->{logtype}': $@\n";
+            print STDERR "Could not load stats analyzer for '$self->{cfg}->{logtype}': $@\n";
             return undef;
         }
 
@@ -411,7 +407,7 @@ use Pisg::HTMLGenerator;
 _END
 
         if ($@) {
-            print STDERR "Could not load stats html generator (Pisg::HTMLGenerator): $@\n";
+            print STDERR "Could not load stats generator (Pisg::HTMLGenerator): $@\n";
             return undef;
         }
 
