@@ -11,7 +11,7 @@ sub new
     my $self = {
         cfg => $args{cfg},
         normalline => '^(\d+):\d+ <[@%+ ]?([^>]+)> (.*)',
-        actionline => '^(\d+):\d+  \* (\S+) (.*)',
+        actionline => '^(\d+):\d+ +\* (\S+) (.*)',
         thirdline  => '^(\d+):(\d+) -\!- (\S+) (\S+) (\S+) (\S+) (\S+)(.*)',
     };
 
