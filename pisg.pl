@@ -883,8 +883,9 @@ sub parse_thirdline
                 $hash{newmode} = $5;
 
             } elsif ($4 eq 'JOIN') {
+                $3 =~ /^([^!]+)!/;
                 $hash{newjoin} = $1;
-                $hash{newjoin} =~ s/!.*//;
+                $hash{nick} = $1;
 
             } elsif ($4 eq 'NICK') {
                 $hash{newnick} = $5;
