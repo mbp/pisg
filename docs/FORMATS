@@ -284,4 +284,19 @@ time"
 
   - In order to use this, format must be set to 'RacBot'.
 
+* KVIrc:
+  - A KDE client for Linux (http://www.kvirc.net/)
 
+  - Support for this format is not completely done yet, actions and -/+o
+    modes are not detected, so you should add to you config file:
+    <set show_actionline="0">                                                                   
+  - Supports logs from version 2.x.x. v3.x.x or former versions has
+    not been tested.
+
+  - In order to use this, format must be set to 'kvirc'.
+
+  Example:
+	### Log session started at Thu Aug 23 17:25:36 2001 ###
+	[17:25:36] wwp [anonymous@AMontpellier-201-2-1-77.abo.wanadoo.fr] has joined #ECI
+	[17:25:47] <wwp> yop
+	### Log session terminated at Sun Sep 9 22:56:51 2001 ###
