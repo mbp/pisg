@@ -5,7 +5,8 @@ pisg (0.21)
    * Fix a word counting bug - was counting a lot less words than in the
      previous version.
    * Supplied some extra info to the 'got kicked' stats, now it shows an
-     example kick line from the stats.
+     example kick line from the stats. (Thanks to Michael Dales for 
+     show_kickline-patch)
    * Display the remaining nicks on the stats page (those who didnt reach the
      stats at all)
    * Some small HTML validation fixes
