@@ -115,7 +115,7 @@ $thirdline, $processtime, @topics, %monologue, %kicked, %gotkick,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
 $normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
 %line_time, @urls, %urlnick, %kickline, %actionline, %shoutline, %slapline,
-%slappedline);
+%slappedline, $debug);
 
 
 sub main
@@ -344,7 +344,7 @@ sub init_config
                     unless (($conf->{$var} eq $2) || $conf->{cmdl}{$var}) {
                         $conf->{$var} = $2;
                     }
-                    debug("Conf: $var = $2");
+                    $debug->("Conf: $var = $2");
                 }
 
             } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
@@ -354,7 +354,7 @@ sub init_config
                 while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
                     $chans->{$channel}{$var} = $2;
-                    debug("Channel conf $channel: $var = $2");
+                    $debug->("Channel conf $channel: $var = $2");
                 }
                 while (<CONFIG>) {
                     last if ($_ =~ /<\/*channel>/i);
@@ -363,7 +363,7 @@ sub init_config
                         unless ($conf->{cmdl}{$var}) {
                             $chans->{$channel}{$var} = $2;
                         }
-                        debug("Conf $channel: $var = $2");
+                        $debug->("Conf $channel: $var = $2");
                     }
                 }
             }
@@ -386,7 +386,7 @@ sub init_debug
         print "[ Debugging => $conf->{debugfile} ]\n";
         open(DEBUG,"> $conf->{debugfile}") or print STDERR "$0: Unable to open debug
         file($conf->{debugfile}): $!\n";
-        debug("*** pisg debug file for $conf->{logfile}\n");
+        $debug->("*** pisg debug file for $conf->{logfile}\n");
         if ($conf->{debugqueue}) {
             print DEBUG $conf->{debugqueue};
             delete $conf->{debugqueue};
@@ -644,7 +644,7 @@ sub parse_normalline
     my %hash;
 
     if ($line =~ /$normalline/) {
-        debug("[$lines] Normal: $1 $2 $3");
+        $debug->("[$lines] Normal: $1 $2 $3");
 
         if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
         'eggdrop') || ($conf->{format} eq 'bxlog') || ($conf->{format} eq 'grufti')) {
@@ -671,7 +671,7 @@ sub parse_actionline
     my %hash;
 
     if ($line =~ /$actionline/) {
-        debug("[$lines] Action: $1 $2 $3");
+        $debug->("[$lines] Action: $1 $2 $3");
 
         if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
         'eggdrop') || $conf->{format} eq 'bxlog' || ($conf->{format} eq 'grufti')) {
@@ -710,11 +710,11 @@ sub parse_thirdline
 
     if ($line =~ /$thirdline/) {
         if ($7) {
-          debug("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
+          $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
         } elsif ($5) {
-          debug("[$lines] ***: $1 $2 $3 $4 $5 $6");
+          $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6");
         } else {
-          debug("[$lines] ***: $1 $2 $3 $4");
+          $debug->("[$lines] ***: $1 $2 $3 $4");
         }
 
 
@@ -1009,9 +1009,9 @@ sub replace_links
 
 }
 
-sub debug
-{
-    if ($conf->{debug}) {
+if ($conf->{debug}) {
+    $debug = sub
+    {
         my $debugline = $_[0] . "\n";
         if ($conf->{debugstarted}) {
             print DEBUG $debugline;
@@ -1019,6 +1019,8 @@ sub debug
             $conf->{debugqueue} .= $debugline;
         }
     }
+} else {
+    $debug = sub {};
 }
 
 sub find_alias
@@ -1130,10 +1132,10 @@ sub activetimes
     my $image;
 
     for my $hour (sort keys %times) {
-        debug("Time: $hour => ". $times{$hour});
+        $debug->("Time: $hour => ". $times{$hour});
         $image = "pic_v_".(int($hour/6)*6);
         $image = $conf->{$image};
-        debug("Image: $image");
+        $debug->("Image: $image");
 
         my $size = ($times{$hour} / $highest_value) * 100;
         my $percent = ($times{$hour} / $lines) * 100;
@@ -1337,7 +1339,7 @@ sub user_linetimes {
             $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\">";
         }
     }
-    debug("Length='$len', Sum='$debuglen'");
+    $debug->("Length='$len', Sum='$debuglen'");
     return "$bar&nbsp;$line{$nick}";
 }
 
@@ -2178,7 +2180,7 @@ sub mostsmiles
 
 sub lasttopics
 {
-    debug("Total number of topics: ". scalar @topics);
+    $debug->("Total number of topics: ". scalar @topics);
 
     my %hash = (
 	    total => scalar @topics
