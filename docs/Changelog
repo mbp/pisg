@@ -6,6 +6,7 @@ pisg (x.xx)
    shr3kst3r@hushmail.com/Andreas Blaafladt).
    * Added option BigNumbersThreshold to make previously undocumented behavior
    configurable.
+   * Fixed warning when users didn't say any words. Thanks, Torbjörn Svensson.
 
 pisg (0.56) - Sat Jun, 19th 2004
    * Fix parsing of energymech kick messages and modes (thanks, optika81)

@@ -1893,9 +1893,10 @@ sub _user_wordtimes
     my $nick  = shift;
     my $top   = shift;
 
-    my $bar      = "";
-    my $len      = ($self->{stats}->{words}{$nick} / $self->{stats}->{words}{$top}) * 100;
+    $self->{stats}->{words}{$nick} ||= 0;
+    my $len = ($self->{stats}->{words}{$nick} / $self->{stats}->{words}{$top}) * 100;
 
+    my $bar = "";
     for (my $i = 0; $i <= 3; $i++) {
         next if not defined $self->{stats}->{word_times}{$nick}[$i];
         my $w = int(($self->{stats}->{word_times}{$nick}[$i] / $self->{stats}->{words}{$nick}) * $len);
