@@ -75,7 +75,7 @@ sub analyze
         }
 
         _pick_random_lines(\%stats, \%lines);
-	_uniquify_nicks(\%stats);
+        _uniquify_nicks(\%stats);
 
         my ($sec,$min,$hour) = gmtime(time() - $starttime);
         my $processtime = sprintf("%02d hours, %02d minutes and %02d seconds", $hour, $min, $sec);
@@ -387,7 +387,10 @@ sub _parse_file
                     $stats->{joins}{$nick}++;
 
                 } elsif (defined($newnick) and ($self->{cfg}->{nicktracking} == 1)) {
-                    add_alias($nick, $newnick);
+                    # Don't add an alias if new nick belongs to someone else.
+                    if (lc($newnick) eq lc(find_alias($newnick))) {
+                        add_alias($nick, $newnick);
+                    }
                     checkname($nick, $newnick, $stats) if ($self->{cfg}->{showmostnicks});
                 }
             }
