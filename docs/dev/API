@@ -63,8 +63,9 @@ topics        array          Each array element is a hash with the
                                min   - The minute in which the change took
                                        place.
 days          scalar         Number of days the reporting period spanned.
-totallines    scalar         Total number of lines (normal, action, and
-                             third) seen in channel.
+totallines    scalar         Total number of lines seen in file(s).
+parsedlines   scalar         Total number of parseable lines (normal,
+                             action, and third) seen in channel.
 processtime   hash           A hash containing 'hours', 'mins' and 'secs',
                              describing the time elapsed while processing
                              this channel.

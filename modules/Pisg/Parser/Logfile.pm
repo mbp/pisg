@@ -57,6 +57,7 @@ sub analyze
 
         # Just initialize these to 0
         $stats{days} = 0;
+        $stats{parsedlines} = 0;
         $stats{totallines} = 0;
 
         if ($self->{cfg}->{logdir}) {
@@ -253,7 +254,7 @@ sub _parse_file
                 $state->{oldtime} = $hour;
 
                 if (!is_ignored($nick)) {
-                    $stats->{totallines}++;
+                    $stats->{parsedlines}++;
 
                     # Timestamp collecting
                     $stats->{times}{$hour}++;
@@ -335,7 +336,7 @@ sub _parse_file
 
         # Match action lines.
         elsif ($hashref = $self->{parser}->actionline($line, $.)) {
-            $stats->{totallines}++;
+            $stats->{parsedlines}++;
 
             my ($hour, $nick, $saying);
 
@@ -384,7 +385,7 @@ sub _parse_file
 
         # Match *** lines.
         elsif (($hashref = $self->{parser}->thirdline($line, $.)) and $hashref->{nick}) {
-            $stats->{totallines}++;
+            $stats->{parsedlines}++;
 
             my ($hour, $min, $nick, $kicker, $newtopic, $newmode, $newjoin);
             my ($newnick);
@@ -434,6 +435,8 @@ sub _parse_file
             }
         }
     }
+
+    $stats->{totallines} = $.;
 
     close(LOGFILE);
 

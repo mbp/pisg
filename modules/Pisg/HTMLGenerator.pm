@@ -130,7 +130,7 @@ sub create_html
         _html("</table>"); # Needed for sections
     }
 
-    my %hash = ( lines => $self->{stats}->{totallines} );
+    my %hash = ( lines => $self->{stats}->{parsedlines} );
     _html($self->_template_text('totallines', %hash) . "<br /><br />");
 
     $self->_pagefooter()
@@ -318,7 +318,7 @@ sub _activetimes
     for my $hour (sort keys %{ $self->{stats}->{times} }) {
 
         my $size = ($self->{stats}->{times}{$hour} / $highest_value) * 100;
-        my $percent = ($self->{stats}->{times}{$hour} / $self->{stats}->{totallines}) * 100;
+        my $percent = ($self->{stats}->{times}{$hour} / $self->{stats}->{parsedlines}) * 100;
         $percent =~ s/(\.\d)\d+/$1/;
 
         if ($size < 1 && $size != 0) {

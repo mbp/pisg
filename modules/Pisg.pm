@@ -507,11 +507,12 @@ _END
         }
 
         # Create our HTML page if the logfile has any data.
-        if (defined $stats and $stats->{totallines} > 0) {
+        if (defined $stats and $stats->{parsedlines} > 0) {
             $generator->create_html();
-        } elsif ($stats->{totallines} == 0) {
-            print STDERR "No lines found in logfile.. skipping.\n";
+        } elsif ($stats->{parsedlines} == 0) {
+            print STDERR "No parseable lines found in logfile ($stats->{totallines} total lines). Skipping.\nYou might be using the wrong format.\n";
         }
+
         restore_aliases();
 
         $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1;

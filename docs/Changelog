@@ -17,6 +17,10 @@ pisg (x.xx)
      ignored words if this is set.  Will output a blank line after trying 20
      random quotes if all 20 random quotes were ignored.
    * Add support for HydraIRC logfiles (thanks, David Lynch)
+   * When a logfile had no matching lines according to the format, pisg
+     outputted that no lines were found in the logfile. This was confusing
+     because files in the wrong format usually contained lines. Now be more
+     verbose.
 
 pisg (0.46) - Tue Feb, 11th 2003
    * Fix serious bug which caused garbled output i "Latest topics" and other
