@@ -306,6 +306,10 @@ urlhistory          Maximum number of URLs to show in 'most referenced URLs'
 wordhistory         Maximum number of words to show in 'Most used words'
                     (default: 10)
 
+nickhistory         Maximum number of nicks to show in 'Most referenced
+                    nicks'
+                    (default: 5)
+
 langfile            Filename of language file.
                     (default: lang.txt)
 

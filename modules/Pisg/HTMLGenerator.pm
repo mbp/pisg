@@ -1500,7 +1500,7 @@ sub _mostreferencednicks
         _html("<td class=\"tdtop\"><b>" . $self->_template_text('numberuses') . "</b></td>");
         _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td></tr>");
 
-        for(my $i = 0; $i < 5; $i++) {
+        for(my $i = 0; $i < $self->{cfg}->{nickhistory}; $i++) {
             last unless $i < $#popular;
             my $a = $i + 1;
             my $popular   = $popular[$i];
