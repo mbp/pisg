@@ -1480,7 +1480,7 @@ sub _mosturls
         _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('lastused') . "</b></td>");
 
         for(my $i = 0; $i < 5; $i++) {
-            last unless $i < $#sorturls;
+            last unless $i < @sorturls;
             my $a = $i + 1;
             my $sorturl  = $sorturls[$i];
             my $urlcount = $self->{stats}->{urlcounts}{$sorturls[$i]};
