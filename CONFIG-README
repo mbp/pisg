@@ -126,6 +126,9 @@ show_kickline        1 or 0, this will add an example-kickline to the
 show_actionline      1 or 0, this will add an example-actionline to the
                      "Most actions"-stats
 
+show_shoutline       1 or 0, this will add an example-shoutline to the
+                     "Most shouting people"-stats
+
 ignorewords          A space seperated list of words to ignore in 'most
                      referenced words'
 
