@@ -141,6 +141,10 @@ sub create_output
         $self->_mostreferencednicks();
     }
 
+    if ($self->{cfg}->{showkarma}) {
+        $self->_karma();
+    }
+
     if ($self->{cfg}->{showmru}) {
         $self->_mosturls();
     }
@@ -1588,10 +1592,10 @@ sub _template_text
         # Fall back to English if the language template doesn't exist
 
         if ($text = $self->{tmps}->{en}{$template}) {
-            print "Note: No translation in '$self->{cfg}->{lang}' for '$template' - falling back to English..\n"
+            print "Note: No translation in '$self->{cfg}->{lang}' for '$template' - falling back to English.\n"
                 unless ($self->{cfg}->{silent});
         } else {
-            die("No such template '$template' in language file.\n");
+            die("No template for '$template' in language file.\n");
         }
     }
     if($self->{iconv}) {
@@ -1820,6 +1824,89 @@ sub _mostreferencednicks
     }
 }
 
+sub _karma
+{
+    # List showing the most referenced nicks
+    my $self = shift;
+
+    my %karma;
+
+    foreach my $thing (sort keys %{ $self->{stats}->{karma} }) {
+        foreach my $nick (keys %{ $self->{stats}->{karma}{$thing} }) {
+            $karma{$thing} += $self->{stats}->{karma}{$thing}{$nick};
+        }
+    }
+
+    my @popular = sort { $karma{$b} <=> $karma{$a} } keys %karma;
+    return unless @popular;
+
+    $self->_headline($self->_template_text('karmatopic'));
+
+    _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
+    _html("<td>&nbsp;</td><td class=\"tdtop\"><b>" . $self->_template_text('nick') . "</b></td>");
+    _html("<td class=\"tdtop\"><b>" . $self->_template_text('karma') . "</b></td>");
+    _html("<td class=\"tdtop\"><b>" . $self->_template_text('goodkarma') . "</b></td>");
+    _html("<td class=\"tdtop\"><b>" . $self->_template_text('badkarma') . "</b></td></tr>");
+
+    my @goodpos = grep { $karma{$_} > 0 } @popular;
+    splice @goodpos, $self->{cfg}->{karmahistory}, @goodpos
+        if @goodpos > $self->{cfg}->{karmahistory};
+    my @badpos = grep { $karma{$_} < 0 } @popular;
+    splice @badpos, 0, @badpos - $self->{cfg}->{karmahistory}
+        if @badpos > $self->{cfg}->{karmahistory};
+
+    my $pos = 0;
+    foreach my $thing (@goodpos) {
+        my $class = ($pos++ == 0) ? 'hirankc' : 'rankc';
+        my $Thing = $self->_format_word(is_nick($thing) || $thing);
+        _html("<tr><td class=\"$class\">$pos</td>");
+        _html("<td class=\"hicell\">$Thing</td>");
+        _html("<td class=\"hicell\">$karma{$thing}</td>");
+
+        my @k = grep { $self->{stats}->{karma}{$thing}{$_} > 0 }
+            (keys %{ $self->{stats}->{karma}{$thing} });
+        @k = $self->_trimlist(@k);
+        my $n = join ', ', map { $self->_format_word($_) } @k;
+        _html("<td class=\"hicell\">$n</td>");
+
+        @k = grep { $self->{stats}->{karma}{$thing}{$_} < 0 }
+            (keys %{ $self->{stats}->{karma}{$thing} });
+        @k = $self->_trimlist(@k);
+        $n = join ', ', map { $self->_format_word($_) } @k;
+        _html("<td class=\"hicell\">$n</td>");
+        _html("</tr>");
+    }
+
+    if (@goodpos and @badpos) {
+            _html("<tr><td class=\"rankc\"></td>");
+            _html("<td class=\"hicell\" colspan=\"4\"></td>");
+        _html("</tr>");
+    }
+
+    $pos = @badpos;
+    foreach my $thing (@badpos) {
+        my $class = ($pos == 1) ? 'hirankc' : 'rankc';
+        my $Thing = $self->_format_word(is_nick($thing) || $thing);
+        _html("<tr><td class=\"$class\">". ($pos--) ."</td>");
+        _html("<td class=\"hicell\">$Thing</td>");
+        _html("<td class=\"hicell\">$karma{$thing}</td>");
+
+        my @k = grep { $self->{stats}->{karma}{$thing}{$_} > 0 }
+            (keys %{ $self->{stats}->{karma}{$thing} });
+        @k = $self->_trimlist(@k);
+        my $n = join ', ', map { $self->_format_word($_) } @k;
+        _html("<td class=\"hicell\">$n</td>");
+
+        @k = grep { $self->{stats}->{karma}{$thing}{$_} < 0 }
+            (keys %{ $self->{stats}->{karma}{$thing} });
+        @k = $self->_trimlist(@k);
+        $n = join ', ', map { $self->_format_word($_) } @k;
+        _html("<td class=\"hicell\">$n</td>");
+        _html("</tr>");
+    }
+    _html("</table>");
+}
+
 sub _mosturls
 {
     # List showing the most referenced URLs
@@ -2042,7 +2129,8 @@ sub _mostnicks
         foreach my $nick (@sortnicks) {
             next if is_ignored($nick);
             my $nickcount = keys %{ $self->{stats}->{nicks}->{$nick} };
-            my $nickused = join(", ", values %{ $self->{stats}->{nicks}->{$nick} });
+            my @nicks = values %{ $self->{stats}->{nicks}->{$nick} };
+            my $nickused = join(", ", $self->_trimlist(@nicks));
 
             last unless ($nickcount > 1);
 
@@ -2202,6 +2290,13 @@ sub _istoponly {
     }
 }
 
+sub _trimlist {
+    my $self = shift;
+    return @_ unless $self->{cfg}->{nicklimit};
+    splice @_, $self->{cfg}->{nicklimit}, @_, qw/.../ if @_ > $self->{cfg}->{nicklimit};
+    return @_;
+}
+
 sub _activegenders {
     # The most active gender in the channel
     my $self = shift;
@@ -2234,8 +2329,9 @@ sub _activegenders {
         my @top_active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} }
             grep { $self->{users}->{sex}{$_} and $self->{users}->{sex}{$_} eq $gender }
             keys %{ $self->{stats}->{lines} };
-        splice @top_active, 20 if @top_active > 20;
-        my $nicklist = join ", ", map { "$_ ($self->{stats}->{lines}{$_})" } @top_active;
+        my $nicklist = join ", ",
+            map { $_ . ($self->{stats}->{lines}{$_} ? " ($self->{stats}->{lines}{$_})" : "") }
+            $self->_trimlist(@top_active);
 
         my $class = ($i == 1 ? "hirankc" : "rankc");
         my $span_class = $gender eq 'm' ? "male" : ($gender eq 'f' ? "female" : "bot");
@@ -2247,7 +2343,7 @@ sub _activegenders {
         $i++;
     }
 
-    _html("</tr></table><br />");
+    _html("</tr></table>");
 }
 
 1;

@@ -18,6 +18,10 @@ pisg (0.63) - ??
    * Hint user to use a log with timestamps when no parseable lines are found.
    * Apply (and heavily sanitize) patch by Igge for "Most active genders"
      stats (enable with ShowActiveGenders="1").
+   * New karma statistics (ShowKarma, KarmaHistory options).
+   * New NickLimit option (affects mostnicks, gender, and karma stats).
+   * docs/pisg-doc.xml: more crossrefs and clarifications.
+   * Fix subtle ignorewords issue.
 
 pisg (0.62) - Sat Dec, 11th 2004
    Changes by Christoph Berg:

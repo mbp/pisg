@@ -49,9 +49,9 @@ sub new
     }
 
     # precompile the regexps used (we can't use /o since the config might be different per channel)
-    $self->{foulwords_regexp} = qr/($self->{cfg}->{foulwords})/i;
-    $self->{ignorewords_regexp} = qr/$self->{cfg}->{ignorewords}/i;
-    $self->{violentwords_regexp} = qr/^($self->{cfg}->{violentwords}) (\S+)(.*)/i;
+    $self->{foulwords_regexp} = qr/($self->{cfg}->{foulwords})/i if $self->{cfg}->{foulwords};
+    $self->{ignorewords_regexp} = qr/$self->{cfg}->{ignorewords}/i if $self->{cfg}->{ignorewords};
+    $self->{violentwords_regexp} = qr/^($self->{cfg}->{violentwords}) (\S+)(.*)/i if $self->{cfg}->{violentwords};
 
     return $self;
 }
@@ -366,7 +366,7 @@ sub _parse_file
                         }
                     }
 
-                    if (my @foul = $saying =~ /($self->{foulwords_regexp})/) {
+                    if ($self->{foulwords_regexp} and my @foul = $saying =~ /$self->{foulwords_regexp}/) {
                         $stats->{foul}{$nick} += scalar @foul;
                         push @{ $lines->{foullines}{$nick} }, $line;
                     }
@@ -380,6 +380,16 @@ sub _parse_file
                     if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/o and
                         $saying !~ /\w+:\/\//o) {
                         $stats->{frowns}{$nick}++;
+                    }
+
+                    if ($self->{cfg}->{showkarma}) {
+                        # require 2 chars (catches C++), nick must not end in [+=-]
+                        if ($saying =~ /^(\S*\w\S*\w\S*(?<![+=-]))(\+\+|==|--)$/o) {
+                            my $thing = lc $1;
+                            my $k = $2 eq "++" ? 1 : ($2 eq "==" ? 0 : -1);
+                            $stats->{karma}{$thing}{$nick} = $k
+                                if !is_ignored($thing) and $thing ne lc($nick);
+                        }
                     }
 
                     # Find URLs
@@ -438,7 +448,7 @@ sub _parse_file
                 $stats->{lastvisited}{$nick} = $stats->{days};
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /$self->{violentwords_regexp}/) {
+                if ($self->{violentwords_regexp} and $saying =~ /$self->{violentwords_regexp}/) {
                     my $victim;
                     unless ($victim = is_nick($2)) {
                         foreach my $trynick (split(/\s+/, $3)) {
@@ -455,7 +465,6 @@ sub _parse_file
                         push @{ $lines->{attackedlines}{$victim} }, $line;
                     }
                 }
-
 
                 $stats->{lengths}{$nick} += length($saying);
 
@@ -587,7 +596,7 @@ sub _modechanges
 
 sub _parse_words
 {
-    my ($stats, $saying, $nick, $ignorewords, $hour) = @_;
+    my ($stats, $saying, $nick, $ignorewords_regexp, $hour) = @_;
     # Cache time of day
     my $tod = int($hour/6);
 
@@ -595,7 +604,7 @@ sub _parse_words
         $stats->{words}{$nick}++;
         $stats->{word_times}{$nick}[$tod]++;
         # remove uninteresting words
-        next if $ignorewords and $word =~ m/$ignorewords/i;
+        next if $ignorewords_regexp and $word =~ m/$ignorewords_regexp/i;
 
         # ignore contractions
         next if ($word =~ m/'.{1,2}$/o);
@@ -629,7 +638,7 @@ sub _random_line
 {
     my ($self, $stats, $lines, $key, $nick, $count) = @_;
     my $random = ${ $lines->{$key}{$nick} }[rand@{ $lines->{$key}{$nick} }];
-    if ($self->{cfg}->{noignoredquotes} && $random =~ /$self->{ignorewords_regexp}/i) {
+    if ($self->{cfg}->{noignoredquotes} and $self->{ignorewords_regexp} and $random =~ /$self->{ignorewords_regexp}/i) {
         return '' if ($count > 20);
         return $self->_random_line($stats, $lines, $key, $nick, ++$count);
     } else {
@@ -710,7 +719,7 @@ C<Pisg::Parser::Logfile> parses a logfile using the configuration variables set 
     use Pisg::Parser::Logfile;
 
     $analyzer = new Pisg::Parser::Logfile(
-        cfg => $cfg,
+        { cfg => $self->{cfg}, users => $self->{users} }
     );
 
 =head1 CONSTRUCTOR
@@ -719,11 +728,9 @@ C<Pisg::Parser::Logfile> parses a logfile using the configuration variables set 
 
 =item new ( [ OPTIONS ] )
 
-This is the constructor for a new Pisg::Parser::Logfile object. C<OPTIONS> are passed in a hash like fashion using key and value pairs.
+This is the constructor for a new Pisg::Parser::Logfile object.
 
-Possible options are:
-
-B<cfg> - hashref containing configuration variables, created by the Pisg module.
+The first option must be a reference to a hash containing the cfg and users structures.
 
 =back
 

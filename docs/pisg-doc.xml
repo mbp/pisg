@@ -91,7 +91,7 @@
    <title>Setting up a channel</title>
 
    <para>
-   An element called <link linkend="Channel">channel</link> is made for defining
+   An element called <xref linkend="Channel" /> is made for defining
    channels, a quick example of a channel is here:
 
    <programlisting>
@@ -158,7 +158,7 @@
 
     You can include * or ? to enable filename globbing to randomly choose one
     from several pictures: (see documentation for the
-    <link linkend="ImageGlobPath">ImageGlobPath</link> option)
+    <xref linkend="ImageGlobPath" /> option)
     <programlisting>
     <![CDATA[<user nick="Ben" pic="ben_*.jpg">]]>
     </programlisting>
@@ -278,7 +278,7 @@
 
     <para>
     There are a few predefined color schemes for you to use, use the
-    <link linkend="ColorScheme">ColorScheme</link> option when using them. The
+    <xref linkend="ColorScheme" /> option when using them. The
     colorschemes distributed with pisg are: default (which is the default),
     darkgalaxy, darkred, justgrey, ocean, orange_grey, pisg, softgreen.
     </para>
@@ -540,9 +540,9 @@
     <title>Description</title>
     <para>
     <command>OutputTag</command> specifies a string that will replace
-    occurrences of "%t" in <link linkend="OutputFile">OutputFile</link>. This option is most
+    occurrences of "%t" in <xref linkend="OutputFile" />. This option is most
     useful when used as a command line switch (-t) to pisg in conjunction with
-    <link linkend="NFiles">NFiles</link> (-nf). Example:
+    <xref linkend="NFiles" /> (-nf). Example:
 
     <programlisting>
       <![CDATA[
@@ -589,7 +589,7 @@
     <para>
     This defines the filename of the logfile to parse for the channel. If
     you want to parse a directory full of logfiles, you should use the
-    <link linkend="LogDir">LogDir</link> option instead. Providing this option multiple
+    <xref linkend="LogDir" /> option instead. Providing this option multiple
     times will parse multiple files in the order the statements appear.
     </para>
     </refsect1>
@@ -643,7 +643,7 @@
 
     <refnamediv>
     <refname>NFiles</refname>
-    <refpurpose>parse only the last files in <link linkend="LogDir">LogDir</link></refpurpose>
+    <refpurpose>parse only the last files in <xref linkend="LogDir" /></refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -662,11 +662,11 @@
     <title>Description</title>
     <para>
     When <command>NFiles</command> is set to a positive integer, pisg will
-    process at most that much files from <link linkend="LogDir">LogDir</link>. Useful to
+    process at most that much files from <xref linkend="LogDir" />. Useful to
     create statistics that cover the last week or month. Note that if multiple
-    <link linkend="LogDir">LogDir</link> options are provided, <command>NFiles</command>
+    <xref linkend="LogDir" /> options are provided, <command>NFiles</command>
     refers to the number of files which will be processed from each
-    <link linkend="LogDir">LogDir</link>
+    <xref linkend="LogDir" />
     </para>
     </refsect1>
     <refsect1>
@@ -745,7 +745,7 @@
     name or URL (i.e. a color scheme name with .css or a path), the file will
     be linked to instead. Using "none" will cause pisg to write only the body
     of the page; use this to include the statistics into a custom page. See
-    also <link linkend="CssDir">CssDir</link>,
+    also <xref linkend="CssDir" />,
     <link linkend="HiCell">HiCell/HiCell2</link>.
     </para>
     </refsect1>
@@ -810,7 +810,7 @@
     SQ    (Albanian),
     TR    (Turkish),
     YU    (Serbian).
-    See also <link linkend="LangFile">LangFile</link>.
+    See also <xref linkend="LangFile" />.
     </para>
     </refsect1>
     <refsect1>
@@ -849,7 +849,7 @@
     for example an introduction text, a link to an image or a banner. The
     file can hold anything, it will be included raw in the stats page -
     so HTML should be preferred. The file will be included in the top of
-    the page. This option is the opposite of <link linkend="PageFoot">PageFoot</link>.
+    the page. This option is the opposite of <xref linkend="PageFoot" />.
 
     </para>
     </refsect1>
@@ -889,7 +889,7 @@
     for example an introduction text, a link to an image or a banner. The
     file can hold anything, it will be included raw in the stats page -
     so HTML should be preferred. The file will be included in the bottom of
-    the page. This option is the opposite of <link linkend="PageHead">PageHead</link>.
+    the page. This option is the opposite of <xref linkend="PageHead" />.
     </para>
     </refsect1>
     <refsect1>
@@ -924,7 +924,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    When using the <link linkend="LogDir">LogDir</link> option and you only want to use
+    When using the <xref linkend="LogDir" /> option and you only want to use
     a slew of the files in it, you can have pisg choose only files which are
     prefixed with a special string.
     </para>
@@ -956,7 +956,7 @@
     <title>Description</title>
     <para>
     <command>LogSuffix</command> is used to define the suffix of a logfile,
-    it only works when <link linkend="LogDir">LogDir</link> is defined. The example in
+    it only works when <xref linkend="LogDir" /> is defined. The example in
     the synopsis is for the eggdrop bots default format.
     </para>
     </refsect1>
@@ -1738,8 +1738,9 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By default,  pisg adds an "Most used words" section to the stats page.
+    By default, pisg adds an "Most used words" section to the stats page.
     With this option you can disable it from being shown.
+    See also <xref linkend="WordHistory" />.
     </para>
     </refsect1>
     <refsect1>
@@ -1775,6 +1776,7 @@
     <para>
     By default,  pisg adds an "Most referenced nicks" section to the stats
     page.  With this option you can disable it from being shown.
+    See also <xref linkend="NickHistory" />.
     </para>
     </refsect1>
     <refsect1>
@@ -1810,6 +1812,7 @@
     <para>
     By default,  pisg adds an "Most referenced URLs" section to the stats
     page.  With this option you can disable it from being shown.
+    See also <xref linkend="UrlHistory" />.
     </para>
     </refsect1>
     <refsect1>
@@ -1954,7 +1957,10 @@
     <para>
     By enabling this option, pisg will add a section to the stats showing
     who had the most nicks, and what the nicks were. This option only works
-    properly when <link linkend="NickTracking">NickTracking</link> is enabled.
+    properly when <xref linkend="NickTracking" /> is enabled.
+    See also <xref linkend="MostNicksHistory" />,
+    <xref linkend="MostNicksVerbose" />, and
+    <xref linkend="NickLimit" />.
     </para>
     </refsect1>
     <refsect1>
@@ -1990,7 +1996,45 @@
     <para>
     Setting this option will make pisg create statistics on which gender
     (female/male/bot) talked most (see the "sex" option in <xref
-    linkend="user-options" />).
+    linkend="user-options" />). See also <xref linkend="NickLimit" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOWKARMA *** -->
+    <refentry id="ShowKarma">
+
+    <refmeta> <refentrytitle>ShowKarma</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowKarma</refname>
+    <refpurpose>show channel karma</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowKarma = "0"
+        </channel>
+
+        <set ShowKarma="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option, pisg will analyze the channel karma. Users can give other
+    users (or things) good or bad karma by saying "nickname++" or "nickname--";
+    "nickname==" resets it to zero. Only the last karma is remembered per
+    nick/nick combination, so there is at most +- 1 karma point.
+    See also <xref linkend="KarmaHistory" /> and <xref linkend="NickLimit" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2026,8 +2070,8 @@
     <para>
     By enabling this option, pisg will add a section to the stats showing
     "Most Active Nicks By Hour" - also look at the
-    <link linkend="ShowMostActiveByHourGraph">ShowMostActiveByHourGraph</link> and
-    <link linkend="ActiveNicksByHour">ActiveNicksByHour</link> settings.
+    <xref linkend="ShowMostActiveByHourGraph" /> and
+    <xref linkend="ActiveNicksByHour" /> settings.
     </para>
     </refsect1>
     <refsect1>
@@ -2065,7 +2109,7 @@
     Numbers" section will only be counted for users who were the most
     active. E.g. users who appear in the "Most Active Nicks" section, as
     respected by the ActiveNicks and ActiveNicks2 options. See also
-    <link linkend="BigNumbersThreshold">BigNumbersThreshold</link>.
+    <xref linkend="BigNumbersThreshold" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2100,7 +2144,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By enabling this option and the <link linkend="ShowMostActiveByHour">ShowMostActiveByHour</link>
+    By enabling this option and the <xref linkend="ShowMostActiveByHour" />
     option, pisg will show graphs in the "Most Active Nicks By Hour"
     section.
     </para>
@@ -2263,7 +2307,7 @@
     The random quotes displayed in the "Most Active Nicks" section has a
     certain range specified. With this option you can change the minimum
     number of letters required for a random quote. Also see the
-    <link linkend="MaxQuote">MaxQuote</link> option.
+    <xref linkend="MaxQuote" /> option.
     </para>
     </refsect1>
     <refsect1>
@@ -2300,7 +2344,7 @@
     The random quotes displayed in the "Most Active Nicks" section has a
     certain range specified. With this option you can change the maximum
     number of letters required for a random quote. Also see the
-    <link linkend="MinQuote">MinQuote</link> option.
+    <xref linkend="MinQuote" /> option.
     </para>
     </refsect1>
     <refsect1>
@@ -2411,7 +2455,7 @@
     asked", "shouts loudest", "CAPSLOCK", "longest line", "most sad", and "most
     happy" sections. If the setting is "sqrt" (the default), it will be
     dynamically replaced with the square root of the number of lines of the
-    most active nick. See also <link linkend="ShowOnlyTop">ShowOnlyTop</link>.
+    most active nick. See also <xref linkend="ShowOnlyTop" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2532,7 +2576,7 @@
 
     <refnamediv>
     <refname>MostNicksHistory</refname>
-    <refpurpose>maximum number of nicks to show in "most nicks"</refpurpose>
+    <refpurpose>maximum number of nicks to show in "users with most nicknames"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2551,7 +2595,8 @@
     <title>Description</title>
     <para>
     With this option you can define how many nicks you want to appear in
-    the "Most used nicks" section.
+    the "Users with most nicknames" section. See also
+    <xref linkend="ShowMostNicks" /> and <xref linkend="MostNicksVerbose" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2587,11 +2632,13 @@
     <para>
     By disabling this option you can stop pisg from displaying all the nicks
     a user has had in the "Most used nicks" section.
+    See also <xref linkend="ShowMostNicks" />,
+    <xref linkend="MostNicksHistory" />, and <xref linkend="NickLimit" />.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> 1 </para>
+    <para> 1 (enabled) </para>
     </refsect1>
     </refentry>
 
@@ -2656,7 +2703,7 @@
     <title>Description</title>
     <para>
     With this option you can define how many URLs you want to appear in
-    the "Most referenced URLs" section.
+    the "Most referenced URLs" section. See also <xref linkend="ShowMru" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2691,7 +2738,7 @@
     <title>Description</title>
     <para>
     With this option you can define how many words you want to appear in
-    the "Most used words" section.
+    the "Most used words" section. See also <xref linkend="ShowMuw" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2707,7 +2754,7 @@
 
     <refnamediv>
     <refname>NickHistory</refname>
-    <refpurpose>maximum number of nicks to show</refpurpose>
+    <refpurpose>maximum number of nicks to show in "Most referenced nicks"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -2726,7 +2773,42 @@
     <title>Description</title>
     <para>
     With this option you can define how many nicks you want to appear in
-    the "Most referenced nicks" section.
+    the "Most referenced nicks" section. See also <xref linkend="ShowMrn" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 5 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** KarmaHistory *** -->
+    <refentry id="KarmaHistory">
+
+    <refmeta> <refentrytitle>KarmaHistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>KarmaHistory</refname>
+    <refpurpose>maximum number of nicks to show in "Karma"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         logfile = "channel.log"
+         format = "mIRC"
+         KarmaHistory = "3"
+        </channel>
+
+        <set KarmaHistory="15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    At most this many nicks will appear in the good and bad karma stats.
+    See also <xref linkend="ShowKarma" /> and <xref linkend="NickLimit" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2755,12 +2837,46 @@
     <title>Description</title>
     <para>
     Enabling this option will track nick changes as well as it can. It will
-    then automatically create aliases for these nicks.
+    then automatically create aliases for these nicks. Useful for
+    <xref linkend="ShowMostNicks" /> and other stats.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
     <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** NickLimit *** -->
+    <refentry id="NickLimit">
+
+    <refmeta> <refentrytitle>NickLimit</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>NickLimit</refname>
+    <refpurpose>maximum number of nicks in lists</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set NickLimit="0">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    This option trims lists of nicks to a maximum length, replacing the rest
+    with "...". Setting to 0 disables trimming. Affected are the used nicks in
+    the "Users with most nicknames" section, nicks in "Most active genders",
+    and nicks in the "Good/bad karma by" columns. See
+    <xref linkend="ShowMostNicks" />, <xref linkend="ShowKarma" />, and
+    <xref linkend="ShowActiveGenders" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 10 </para>
     </refsect1>
     </refentry>
 
@@ -2936,7 +3052,7 @@
     <command>DefaultPic</command> defines a picture to be displayed for all
     users which have no other picture defined in the <command>user</command>
     element. This is good for showing "No picture available" or something.
-    May contain globbing patterns, see <link linkend="ImageGlobPath">ImageGlobPath</link> below.
+    May contain globbing patterns, see <xref linkend="ImageGlobPath" /> below.
     </para>
     </refsect1>
     <refsect1>
@@ -2975,15 +3091,15 @@
     user pictures are located, relative to the current directory. This setting
     is used to choose random pictures if ? or * (globbing characters) are used
     in the picture name. ? matches a single character, * matches a (possibly
-    empty) string. The default is the <link linkend="ImagePath">ImagePath</link> setting.
-    (NB: This setting will be different from <link linkend="ImagePath">ImagePath</link> if
+    empty) string. The default is the <xref linkend="ImagePath" /> setting.
+    (NB: This setting will be different from <xref linkend="ImagePath" /> if
     the latter is not relative to the current directory, e.g. if you are
     writing the HTML file outside of the current directory.)
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> current <link linkend="ImagePath">ImagePath</link> setting </para>
+    <para> current <xref linkend="ImagePath" /> setting </para>
     </refsect1>
     </refentry>
 
@@ -3014,7 +3130,7 @@
     <para>
     <command>PicWidth</command> defines the standard width for user
     pictures. Setting the 'width' attribute of image-elements on the
-    outputted stats page. See also <link linkend="PicHeight">PicHeight</link>
+    outputted stats page. See also <xref linkend="PicHeight" />.
     </para>
     </refsect1>
     <refsect1>
@@ -3050,7 +3166,7 @@
     <para>
     <command>PicHeight</command> defines the standard height for user
     pictures. Setting the 'height' attribute of image-elements on the
-    outputted stats page. See also <link linkend="PicWidth">PicWidth</link>
+    outputted stats page. See also <xref linkend="PicWidth" />.
     </para>
     </refsect1>
     <refsect1>
@@ -3091,7 +3207,7 @@
     The pisg stats page defines a character set in a meta tag, this can be
     used if your country is using a different one than the default. Pisg
     will also use this setting to convert the language templates from
-    <link linkend="LangFile">LangFile</link> if the language defines a source charset.
+    <xref linkend="LangFile" /> if the language defines a source charset.
     Note: you also have to tell your webserver to transmit the charset to
     the browser. With Apache, use "AddDefaultCharset off" in the server
     config.
@@ -3131,7 +3247,7 @@
     <title>Description</title>
     <para>
     If <command>LogCharset</command> is set and different from
-    <link linkend="Charset">Charset</link>, pisg will convert the charset using
+    <xref linkend="Charset" />, pisg will convert the charset using
     Text::Iconv. Using this option slows down log processing.
     </para>
     </refsect1>
@@ -3171,9 +3287,9 @@
     <title>Description</title>
     <para>
     <command>LogCharsetFallback</command> defines a fallback charset for
-    the <link linkend="LogCharset">LogCharset</link> conversion. This is useful if you
+    the <xref linkend="LogCharset" /> conversion. This is useful if you
     have mixed unicode/iso-8859-* logs. Pisg will first try the conversion
-    from <link linkend="LogCharset">LogCharset</link>. If that fails,
+    from <xref linkend="LogCharset" />. If that fails,
     <command>LogCharsetFallback</command> is used. Note that this only works
     for charsets where certain byte sequences are illegal, like UTF-8. (In
     short: <command>LogCharset</command> = utf-8,
@@ -3248,8 +3364,8 @@
     <para>
     Enabling this option will make all aliases in &lt;user&gt; lines be
     parsed as regular expressions; this setting also applies to the
-    <link linkend="IgnoreWords">IgnoreWords</link>, <link linkend="FoulWords">FoulWords</link>, and
-    <link linkend="ViolentWords">ViolentWords</link> settings.
+    <xref linkend="IgnoreWords" />, <xref linkend="FoulWords" />, and
+    <xref linkend="ViolentWords" /> settings.
     </para>
     </refsect1>
     <refsect1>
@@ -3308,7 +3424,7 @@
     <title>Description</title>
     <para>
     <command>CssDir</command> is used to define the paths to the CSS files
-    (the <link linkend="ColorScheme">ColorScheme</link>s). Usually you don't
+    (the <xref linkend="ColorScheme" />s). Usually you don't
     need to change this. This setting is only used when statically including
     the CSS file.
     </para>
@@ -3340,7 +3456,7 @@
     <para>
     <command>HiCell</command> and <command>HiCell2</command> define the colors
     to be used for the color gradient in the most active nicks section. They should
-    match your <link linkend="ColorScheme">ColorScheme</link>.
+    match your <xref linkend="ColorScheme" />.
     </para>
     </refsect1>
     <refsect1>

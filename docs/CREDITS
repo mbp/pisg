@@ -1,4 +1,4 @@
-CREDITS goes to...
+CREDITS go to...
 --
 
 Original author and leading developer:
@@ -13,7 +13,7 @@ Major contributors:
  * Christoph Berg <cb@df7cb.de>
    | NFiles and UserPics options, wildcards for random user pictures,
      wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords,
-     Charset conversion support, BigNumbersThreshold option, ...
+     charset conversion support, BigNumbersThreshold option, karma ...
 
 Other contributors:
 
