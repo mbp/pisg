@@ -735,7 +735,7 @@ sub parse_thirdline
             } elsif (($4.$5) eq 'modechange') {
                 $hash{newmode} = substr($6, 1);
                 $hash{nick} = $9;
-                $hash{nick} =~ m/[by ](\S+)/g;
+                $hash{nick} =~ m/by (\S+)/g;
                 $hash{nick} = $1;
 
             } elsif ($5 eq 'joined') {
