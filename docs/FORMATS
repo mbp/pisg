@@ -11,6 +11,16 @@ modules/Pisg/Parser/Format/Template.pm. If you don't have any Perl
 knowledge, then mail a sample logfile to the mailinglist (preferred as a
 link to the logfile)
 
+* mIRC6:
+  - Version 6.x of mIRC
+
+  - Same as mIRC except it uses a retarded logging format that makes modes
+    indeciperable from actions
+
+  - Don't use it if you can avoid it, it dosnt do very well at understanding modes
+
+  - In order to use this, format must be set to 'mIRC6'.
+
 * mIRC:
   - A client for Windows (www.mirc.com)
   
