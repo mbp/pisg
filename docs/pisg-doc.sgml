@@ -327,7 +327,7 @@
 
     <refnamediv>
     <refname>LogSuffix</refname>
-    <refpurpose>Regex to sort logfiles by format month|day|year</refpurpose>
+    <refpurpose>Regex to sort logfiles by format month||day||year</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
