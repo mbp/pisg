@@ -73,23 +73,25 @@ my $conf = {
     nicktracking => 0,
     timeoffset => "+0",
 
+    # Misc settings
+
+    foul => "ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe",
+
     # Developer stuff
+
     debug => 0,
     debugfile => "debug.log",
     version => "v0.20-cvs",
 };
 
-my ($words, $chans, $users);
-
-$words->{foul} = "ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe";
+my ($chans, $users);
 
 my ($lines, $smile, $time, $timestamp, %alias, $normalline, $actionline,
 $thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
 %line, %length, %sadface, %smile, $nicks, %longlines, %mono, %times, %question,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
-$normals, %T, $repeated, $lastnormal, $foulwords, %shout, %slap, %slapped,
-%words);
+$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words);
 
 
 sub main
@@ -185,7 +187,6 @@ sub init_pisg
     undef %foul; 
 
     undef $lastnormal; 
-    undef $foulwords; 
     undef %shout; 
 
     undef %slap; 
@@ -316,12 +317,6 @@ sub init_config
                     debug("Conf: $var = $2");
                 }
 
-            } elsif ($line =~ /<words(.*)>/) {
-                my $settings = $1;
-                while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
-                    $words->{$1} = $2;
-                    debug("Words: $1 = $2");
-                }
             } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
                 my ($channel, $settings) = ($1, $2);
                 $chans->{$channel}->{channel} = $channel;
@@ -350,19 +345,7 @@ sub init_config
 }
 
 sub init_words {
-    my (@words, $i);
-    if($words->{foul}) {
-        @words = split(/\ /, $words->{foul});
-        $i = 0;
-        foreach (@words) {
-            if($foulwords) {
-                $foulwords = $foulwords . "\|" . $words[$i];
-            } else {
-                $foulwords = $foulwords . $words[$i];
-            }
-            $i++;
-        }
-    }
+    $conf->{foul} =~ s/\s+/|/g;
 }
 
 sub init_debug
@@ -410,6 +393,7 @@ sub parse_dir
 sub parse_file
 {
     my $file = shift;
+    my $foulwords = $conf->{foul};
 
     # This parses the file..
     print "Analyzing log($file) in '$conf->{format}' format...\n";
