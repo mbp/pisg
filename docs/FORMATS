@@ -128,7 +128,7 @@ link to the logfile)
   - In order to use this, format must be set to 'infobot'
 
 * Trillian:
-  - Trilian's IRC component. (http://www.trilian.cc)
+  - Trillian's IRC component. (http://www.trillian.cc)
 
   Note: Your Logs must be timestamped in the format [%h:%m] or [%h:%m:%s]
   This is set in Preferences -> General -> Windows -> Display in your Trillian Client
