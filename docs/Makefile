@@ -1,4 +1,4 @@
-DOCBOOK_UTILS=/usr/share/sgml/docbook/utils-0.6.13
+DOCBOOK_UTILS=/usr/share/docbook-utils
 
 all:
 	jade -i html -t sgml -V nochunks -d $(DOCBOOK_UTILS)/docbook-utils.dsl\#html pisg-doc.sgml | w3m -dump -T text/html > pisg-tmp.txt
