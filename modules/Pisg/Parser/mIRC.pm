@@ -1,8 +1,7 @@
 package Pisg::Parser::mIRC;
 
 use strict;
-use warnings;
-
+$^W = 1;
 
 my $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
 my $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';

@@ -1,8 +1,8 @@
 package Pisg::Parser::eggdrop;
 
 use strict;
-use warnings;
-
+$^W = 1;
+ 
 
 my $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
 my $actionline = '^\[(\d+):\d+\] Action: (\S+) (.*)';

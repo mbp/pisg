@@ -1,7 +1,7 @@
 package Pisg::Parser::mbot;
 
 use strict;
-use warnings;
+$^T = 1;
 
 
 my $normalline = '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> (?!\001ACTION)(.*)';

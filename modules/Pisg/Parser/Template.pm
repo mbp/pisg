@@ -5,7 +5,7 @@
 package Pisg::Parser::Template;
 
 use strict;
-use warnings;
+$^W = 1;
 
 # These three variables are regular expressions for extracting information
 # from the logfile.  $normalline is for lines where the person merely said

@@ -1,7 +1,7 @@
 package Pisg::Parser::bxlog;
 
 use strict;
-use warnings;
+$^W = 1;
 
 
 my $normalline = '^\[\d+ \S+\/(\d+):\d+\] <([^>]+)> (.*)';

@@ -1,7 +1,8 @@
 package Pisg::Parser::xchat;
 
 use strict;
-use warnings;
+$^W = 1;
+
 
 my $normalline = '^(\d+):\d+:\d+ <([^>]+)>\s+(.*)';
 my $actionline = '^(\d+):\d+:\d+ \*\s+(\S+) (.*)';
