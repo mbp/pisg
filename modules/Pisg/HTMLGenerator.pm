@@ -1345,6 +1345,7 @@ sub _mostusedword
     foreach my $word (keys %{ $self->{stats}->{wordcounts} }) {
         # Skip people's nicks.
         next if exists $self->{stats}->{lines}{$word};
+        next if (length($word) < $self->{cfg}->{wordlength});
         $usages{$word} = $self->{stats}->{wordcounts}{$word};
     }
 

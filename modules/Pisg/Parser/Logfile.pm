@@ -438,7 +438,7 @@ sub _parse_words
     foreach my $word (split(/[\s,!?.:;)(\"]+/, $saying)) {
         $stats->{words}{$nick}++;
         # remove uninteresting words
-        next unless (length($word) >= $self->{cfg}->{wordlength});
+        # next unless (length($word) >= $self->{cfg}->{wordlength});
         next if ($self->{cfg}->{ignoreword}{$word});
 
         # ignore contractions
