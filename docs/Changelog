@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.42) - Fri Nov, 1st 2002
    * ircII logfile support added (thanks, James Andrewartha)
    * Changed behavior of most active nicks to print an action line if no
      normal line is available for that nick
@@ -11,6 +11,8 @@ pisg (x.xx)
      (thanks, J Lehto)
    * The ocean colorscheme has been updated, the link-hover color is now
      white.
+   * A bug which appeared with some variations of xchat logfiles have been
+     fixed. (thanks, Michael Hostbaek).
 
 pisg (0.41) - Sun Aug, 11th 2002
    * Fix a bug in the winbot logfile format where lines containing the channel
