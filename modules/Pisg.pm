@@ -102,7 +102,7 @@ sub get_default_config_settings
         defaultpic => '',
         logdir => [],
         nfiles => 0,
-        lang => 'en',
+        lang => 'EN',
         langfile => 'lang.txt',
         cssdir => 'layout/',
         colorscheme => 'default',
@@ -230,7 +230,7 @@ sub get_language_templates
 
         if ($line =~ /<lang name=\"([^"]+)\"(?: charset=\"(.*)\")?>/i) {
             # Found start tag, setting the current language
-            my $current_lang = lc($1);
+            my $current_lang = uc($1);
             $self->{tmps}->{$current_lang}{lang_charset} = lc($2);
 
             while (<FILE>) {
@@ -406,6 +406,9 @@ sub init_pisg
     }
     $self->{cfg}->{timestamp} = $timestamp;
 
+    $self->{cfg}->{lang} = uc $self->{cfg}->{lang};
+    $self->{cfg}->{lang} =~ s/-/_/g; # PT_BR was called PT-BR before
+
     # convert wordlists
     $self->{cfg}->{foulwords} = wordlist_regexp($self->{cfg}->{foulwords}, $self->{cfg}->{regexpaliases});
     $self->{cfg}->{ignorewords} = wordlist_regexp($self->{cfg}->{ignorewords}, $self->{cfg}->{regexpaliases});
@@ -428,6 +431,8 @@ sub init_pisg
 
     unless ($self->{cfg}->{silent}) {
         print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n";
+        die sprintf "No such language: %s\n", $self->{cfg}->{lang}
+            unless $self->{tmps}->{$self->{cfg}->{lang}};
         print "Using language template: $self->{cfg}->{lang}\n\n" if $self->{cfg}->{lang} ne 'EN';
     }
 }

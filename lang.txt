@@ -10,7 +10,7 @@
 # (DE) German - Christoph Berg <cb@df7cb.de>
 # (NO) Norwegian - Andreas Blaafladt <andreabl@login1.powertech.no>
 # (PT) Portuguese - MrWho <mrwho@softhome.net>
-# (PT-BR) Portuguese/BR(Brazil) - francisco lopes <falmp@terra.com.br>
+# (PT_BR) Portuguese/BR(Brazil) - francisco lopes <falmp@terra.com.br>
 # (DA) Danish - Morten Brix Pedersen <morten at wtf dot dk>
 # (FR) French - Molator <molator@ifrance.com>
 # (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
@@ -2705,7 +2705,7 @@ mailto = "Mail til"
 </lang>
 
 ### Portuguese/Brazil
-<lang name="PT-BR" charset="iso-8859-1">
+<lang name="PT_BR" charset="iso-8859-1">
 action1 = "<b>[:nick]</b> sempre nos deixou por dentro do que [:ele:ela:] estava fazendo: <b>[:actions]</b> actions!"
 action2 = "<b>[:nick]</b> também nos contou sobre o que se passava com <b>[:actions]</b> actions."
 action3 = "Não houve actions no [:channel]!"

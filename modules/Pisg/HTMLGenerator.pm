@@ -27,7 +27,7 @@ sub new
     require Pisg::Common;
     Pisg::Common->import();
 
-    my $lang_charset = $self->{tmps}->{lc($self->{cfg}->{lang})}{lang_charset};
+    my $lang_charset = $self->{tmps}->{$self->{cfg}->{lang}}{lang_charset};
     if($lang_charset and $lang_charset ne $self->{cfg}->{charset}) {
         if($have_iconv) {
             # convert from template charset to our
@@ -1612,10 +1612,10 @@ sub _template_text
 
     my $text;
 
-    unless ($text = $self->{tmps}->{lc($self->{cfg}->{lang})}{$template}) {
+    unless ($text = $self->{tmps}->{$self->{cfg}->{lang}}{$template}) {
         # Fall back to English if the language template doesn't exist
 
-        if ($text = $self->{tmps}->{en}{$template}) {
+        if ($text = $self->{tmps}->{EN}{$template}) {
             print "Note: No translation in '$self->{cfg}->{lang}' for '$template' - falling back to English.\n"
                 unless ($self->{cfg}->{silent});
         } else {
