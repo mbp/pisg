@@ -108,11 +108,20 @@ sub main
 {
     print "pisg $conf->{version} - Perl IRC Statistics Generator\n\n";
     init_config();      # Init config. (Aliases, ignores, other options etc.)
-    init_words();	# Init words. (Foulwords etc)
+    do_channel()
+        unless ($conf->{chan_done}{$conf->{channel}});
+
+    close_debug();      # Close the debugging file
+}
+
+sub do_channel
+{
+    init_debug()
+        unless ($conf->{debugstarted});       # Init the debugging file
     init_pisg();        # Init commandline arguments and other things
+    init_words();	# Init words. (Foulwords etc)
     init_lineformats(); # Attempt to set line formats in compliance with user specification (--format)
 
-    init_debug(); 	        # Init the debugging file
 
     if ($conf->{logdir}) {
         parse_dir();            # Run through all logfiles in dir
@@ -124,16 +133,81 @@ sub main
                         # (look here if you want to remove some of the
                         # stats which you don't care about)
 
-    close_debug();      # Close the debugging file
-
     print "\nFile was parsed succesfully in $processtime on $time.\n";
+    $conf->{chan_done}{$conf->{channel}} = 1;
 }
 
 sub init_pisg
 {
 
-    get_language_templates();
+    # Reset all variables
 
+    undef $lastnormal;
+    undef $lines;
+    undef $kicked;
+    undef $gotkicked;
+    undef $smile;
+    undef $longlines;
+    undef $time;
+
+    undef $normalline;
+    undef $actionline;
+    undef $thirdline;
+    undef $line;
+    undef $processtime;
+    undef @topics;
+
+    undef %monologue;
+    undef %kicked;
+    undef %gotkick;
+    undef %line;
+    undef %length;
+    undef %qpercent;
+    undef %lpercent;
+    undef %sadface;
+
+    undef %smile;
+    undef $nicks;
+    undef %longlines;
+    undef %mono;
+    undef %times;
+    undef %question;
+    undef %loud;
+    undef $totallength;
+
+    undef %gaveop;
+    undef %tookop;
+    undef %joins;
+    undef %actions;
+    undef %sayings; 
+    undef %wordcount; 
+    undef %lastused; 
+    undef %gotban; 
+
+    undef %setban; 
+    undef %foul; 
+    undef $days; 
+    undef $oldtime; 
+    undef $lastline; 
+    undef $actions; 
+    undef $normals; 
+    undef %userpics; 
+
+    undef %userlinks; 
+    undef %T; 
+    undef $repeated; 
+    undef $lastnormal; 
+    undef $foulwords; 
+    undef %shout; 
+    undef %spercent; 
+
+    undef %slap; 
+    undef %slapped; 
+    undef $slaps; 
+    undef %words; 
+    undef $timestamp;
+
+    get_language_templates();
     $timestamp = time;
 
     if ($conf->{timeoffset} =~ /\+(\d+)/) {
@@ -145,7 +219,12 @@ sub init_pisg
         $timestamp -= 3600 * $1; # 3600 seconds per hour
     }
 
-    # Set useful values.
+    # Add trailing slash when it's not there..
+    if (substr($conf->{imagepath}, -1) ne '/') {
+        $conf->{imagepath} =~ s/(.*)/$1\//;
+    }
+
+    # Set some values
     $days = 1;
     $oldtime = "00";
     $lastline = "";
@@ -153,12 +232,6 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
-    $lastnormal = "";
-
-    # Add trailing slash when it's not there..
-    if (substr($conf->{imagepath}, -1) ne '/') {
-        $conf->{imagepath} =~ s/(.*)/$1\//;
-    }
 
     print "Statistics for channel $conf->{channel} \@ $conf->{network} by $conf->{maintainer}\n\n";
 
@@ -260,6 +333,26 @@ sub init_config
                     $words->{$1} = $2;
                     debug("Words: $1 = $2");
                 }
+            } elsif ($line =~ /<channel(.*)>/i) {
+                my $settings = $1;
+                while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
+                    my $var = lc($1);
+                    unless ($conf->{$var} eq $2) {
+                        $conf->{$var} = $2;
+                    }
+                    debug("Channel conf: $var = $2\n");
+                }
+                while (<CONFIG>) {
+                    last if ($_ =~ /<\/*channel>/i);
+                    while ($_ =~ s/^\s*([^=]+)=["']([^"']*)["']//) {
+                        my $var = lc($1);
+                        unless (($conf->{$var} eq $2) || $conf->{cmdl}{$var}) {
+                            $conf->{$var} = $2;
+                        }
+                        debug("Conf: $var = $2\n");
+                    }
+                }
+                do_channel();
             }
         }
 
@@ -286,12 +379,16 @@ sub init_words {
 
 sub init_debug
 {
+    $conf->{debugstarted} = 1;
     if ($conf->{debug}) {
         print "[ Debugging => $conf->{debugfile} ]\n";
         open(DEBUG,"> $conf->{debugfile}") or print STDERR "$0: Unable to open debug
         file($conf->{debugfile}): $!\n";
         debug("*** pisg debug file for $conf->{logfile}\n");
-
+        if ($conf->{debugqueue}) {
+            print DEBUG $conf->{debugqueue};
+            delete $conf->{debugqueue};
+        }
     }
 }
 
@@ -899,7 +996,11 @@ sub debug
 {
     if ($conf->{debug}) {
         my $debugline = $_[0] . "\n";
-        print DEBUG $debugline;
+        if ($conf->{debugstarted}) {
+            print DEBUG $debugline;
+        } else {
+            $conf->{debugqueue} .= $debugline;
+        }
     }
 }
 
