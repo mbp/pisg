@@ -324,7 +324,7 @@ sub _activetimes
     _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>\n");
 
     for ($b = 0; $b < 24; $b++) {
-        if ($b < 10) { $a = "0" . $b; } else { $a = $b; }
+        $a = sprintf("%02d", $b);
 
         if (!defined($output{$a}) || $output{$a} eq "") {
             _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">0%</td>");

@@ -535,13 +535,13 @@ sub _adjusttimeoffset
         # We must plus some hours to the time
         $hour += $1;
         $hour = $hour % 24;
-        if ($hour < 10) { $hour = "0" . $hour; }
+        $hour = sprintf("%02d", $hour);
 
     } elsif ($self->{cfg}->{timeoffset} =~ /-(\d+)/) {
         # We must remove some hours from the time
         $hour -= $1;
         $hour = $hour % 24;
-        if ($hour < 10) { $hour = "0" . $hour; }
+        $hour = sprintf("%02d", $hour);
     }
     return $hour;
 }
