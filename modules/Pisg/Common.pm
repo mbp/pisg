@@ -109,7 +109,8 @@ sub match_url
 {
     my ($str) = @_;
 
-    if ($str =~ /(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/) {
+    #if ($str =~ /(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/) {
+    if ($str =~ /(http:\/\/|https:\/\/|ftp:\/\/|telnet:\/\/|news:\/\/|www.)([-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/) {
         my $url = "$1$2";
         if ($url_seen{$url}) {
             return $url;
