@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.43) - Fri Nov, 22th 2002
    * Add "ShowOnlyTop" option which can be used if you only want to have stats
      for the users which appeared in the "Most Active Nicks" (top talkers)
      section. (thanks, mincus)
@@ -600,7 +600,7 @@ pisg (0.11) - Fri, June 29th 2001
    * Replace URLs and e-mail addys in 'random quote' and 'last topic' to HTML
      hrefs
    * Some other small changes which I forgot
-   
+
 pisg (0.10) - Fri, June 22th 2001
    * The 'Im going on vacation'-release. Fixes very small things.
    * Small bug in counting kicker/kicked person when using xchat - fixed.
