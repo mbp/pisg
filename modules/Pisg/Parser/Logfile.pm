@@ -118,7 +118,7 @@ sub parse_dir
     );
     foreach my $file (sort @filesarray) {
         $file = $self->{conf}->{logdir} . $file;
-        parse_file($stats, $lines, $file, \%state);
+        $self->parse_file($stats, $lines, $file, \%state);
     }
 }
 
