@@ -22,7 +22,6 @@ use FindBin;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-my ($words, $chans, $users);
 
 # Default values for pisg. Their meanings are explained in CONFIG-README.
 #
@@ -47,6 +46,7 @@ my $conf = {
     # Colors
 
     bgcolor => "#dedeee",
+    bgpic => '',
     text => "black",
     hbgcolor => "#666699",
     hcolor => "white",
@@ -79,6 +79,8 @@ my $conf = {
     version => "v0.20-cvs",
 };
 
+my ($words, $chans, $users);
+
 $words->{foul} = "ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe";
 
 my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
@@ -88,10 +90,12 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
 %setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent, %slap, %slapped, $slaps, %words);
 
+
 sub main
 {
     print "pisg $conf->{version} - Perl IRC Statistics Generator\n\n";
     init_config();      # Init config. (Aliases, ignores, other options etc.)
+    get_language_templates(); # Get translations from lang.txt
     parse_channels();   # parse any channels in <channel> statements
     do_channel()
         unless ($conf->{chan_done}{$conf->{channel}});
@@ -118,7 +122,7 @@ sub do_channel
                         # (look here if you want to remove some of the
                         # stats which you don't care about)
 
-    print "\nFile was parsed succesfully in $processtime on $time.\n";
+    print "\nFile parsed succesfully in $processtime on $time.\n";
     $conf->{chan_done}{$conf->{channel}} = 1;
 }
 
@@ -191,7 +195,6 @@ sub init_pisg
     undef $actions; 
     undef $normals; 
 
-    undef %T; 
     undef $repeated; 
     undef $lastnormal; 
     undef $foulwords; 
@@ -204,7 +207,6 @@ sub init_pisg
     undef %words; 
     undef $timestamp;
 
-    get_language_templates();
     $timestamp = time;
 
     if ($conf->{timeoffset} =~ /\+(\d+)/) {
@@ -231,6 +233,8 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
+
+    print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
 
     print "Statistics for channel $conf->{channel} \@ $conf->{network} by $conf->{maintainer}\n\n";
 
@@ -2214,7 +2218,6 @@ sub get_language_templates
 
     open(FILE, $conf->{langfile}) or open (FILE, $FindBin::Bin . "/$conf->{langfile}") or die("$0: Unable to open language file($conf->{langfile}): $!\n");
 
-    my $current_lang;
 
     while (<FILE>)
     {
@@ -2223,22 +2226,24 @@ sub get_language_templates
 
         if ($line =~ /<lang name=\"([^"]+)\">/) {
             # Found start tag, setting the current language
-            $current_lang = "$1";
+            my $current_lang = $1;
+
+            while (<FILE>) {
+                last if ($_ =~ /<\/lang>/i);
+
+                # Get 'template = "Text"' in language file:
+                if ($_ =~ /(\w+)\s+=\s+"(.*)"\s*$/) {
+                    $T{$current_lang}{$1} = $2;
+                }
+            }
+
+                    
         }
 
-        elsif ($line =~ /<\/lang>/) {
-            # Found end tag, resetting the current language
-            $current_lang = '';
-        }
-        
-        elsif ($line =~ /(\w+)\s+=\s+"(.*)"\s*$/ && $current_lang ne '') {
-            $T{$current_lang}{$1} = $2;
-        }
     }
 
     close(FILE);
 
-    print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
 
 }
     
