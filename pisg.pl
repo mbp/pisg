@@ -66,9 +66,8 @@ sub get_cmdline_options
         modules_dir => "$script_dir/modules/",     # Module search path
     };
 
-    my $tmp;
     # Commandline options
-    my ($moduledir, $channel, $logfile, $format, $network, $maintainer, $outputfile, $logdir, $prefix, $configfile, $help, $silent);
+    my ($tmp, $help, $silent, $option);
 
 my $usage = <<END_USAGE;
 Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
@@ -76,15 +75,15 @@ Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 
 -ch --channel=xxx      : Set channel name
 -l  --logfile=xxx      : Log file to parse
--o  --outfile=xxx      : Name of html file to create
+-o  --outfile=xxx      : Name of HTML file to create
 -ma --maintainer=xxx   : Channel/statistics maintainer
 -f  --format=xxx       : Logfile format [see FORMATS file]
--n  --network=xxx      : IRC Network this channel is on.
+-n  --network=xxx      : IRC Network for the channel.
 -d  --dir=xxx          : Analyze all files in this dir. Ignores logfile.
--p  --prefix=xxx       : Analyse only files starting with xxx in dir.
+-p  --prefix=xxx       : Analyse only files prefixed by xxx in dir.
                          Only works with --dir
--mo --moduledir=xxx    : Directory containing pisg's modules.
--co --configfile=xxx   : Config file
+-mo --moduledir=xxx    : Directory containing pisg modules.
+-co --configfile=xxx   : Configuration file
 -s  --silent           : Suppress output (except error messages)
 -h  --help             : Output this message and exit (-? also works).
 
@@ -96,19 +95,19 @@ All options may also be defined by editing the configuration file and
 calling pisg without arguments.
 
 END_USAGE
-#'
-    if (GetOptions('channel=s'    => \$channel,
-                   'logfile=s'    => \$logfile,
-                   'format=s'     => \$format,
-                   'network=s'    => \$network,
-                   'maintainer=s' => \$maintainer,
-                   'outfile=s'    => \$outputfile,
-                   'dir=s'        => \$logdir,
-                   'prefix=s'     => \$prefix,
+
+    if (GetOptions('channel=s'    => \$cfg->{channel},
+                   'logfile=s'    => \$cfg->{logfile},
+                   'format=s'     => \$cfg->{format},
+                   'network=s'    => \$cfg->{network},
+                   'maintainer=s' => \$cfg->{maintainer},
+                   'outfile=s'    => \$cfg->{outputfile},
+                   'dir=s'        => \$cfg->{logdir},
+                   'prefix=s'     => \$cfg->{prefix},
+                   'moduledir=s'  => \$cfg->{moduledir},
+                   'configfile=s' => \$cfg->{configfile},
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
-                   'moduledir=s'  => \$moduledir,
-                   'configfile=s' => \$configfile,
                    'silent'       => \$silent,
                    'help|?'       => \$help
                ) == 0 or $help) {
@@ -119,26 +118,6 @@ END_USAGE
         die("The aliasfile and ignorefile has been obsoleted by the new
         pisg.cfg, please use that instead [look in pisg.cfg]\n");
     }
-
-    if ($channel) { $cfg->{channel} = $channel; }
-
-    if ($logfile) { $cfg->{logfile} = $logfile; }
-
-    if ($format) { $cfg->{format} = $format; }
-
-    if ($network) { $cfg->{network} = $network; }
-
-    if ($maintainer) { $cfg->{maintainer} = $maintainer; }
-
-    if ($outputfile) { $cfg->{outputfile} = $outputfile; }
-
-    if ($logdir) { $cfg->{logdir} = $logdir; }
-
-    if ($prefix) { $cfg->{prefix} = $prefix; }
-
-    if ($moduledir) { $cfg->{modules_dir} = $moduledir; }
-
-    if ($configfile) { $cfg->{configfile} = $configfile; }
 
     if ($silent) { $cfg->{silent} = 1; }
 
