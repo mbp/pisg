@@ -1,4 +1,4 @@
-pisg (0.21)
+pisg (0.21) - Mon, Aug 27th 2001
    * Fix stupid legend bug; 0-6 should be 0-5, and 7-11 should be 6-11.
    * Added "Most referenced URLs".
    * Stop matching 'user@host blah' as a mailto link.

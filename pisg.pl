@@ -103,7 +103,7 @@ my $conf = {
 
     debug => 0,
     debugfile => "debug.log",
-    version => "v0.21-cvs",
+    version => "v0.22-cvs",
 };
 
 my ($chans, $users);
