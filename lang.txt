@@ -1186,7 +1186,7 @@ mostwordstopic = "Mest använda ord"
 referencetopic = "Mest tilltalade personer"
 urlstopic = "Mest refererade URLer"
 notopic = "Ingen rubrik blev nånsin satt på denna kanal"
-bylinetopic = "Av [:nick] à [:time]"
+bylinetopic = "Av [:nick] klockan [:time]"
 
 ## Other text
 
