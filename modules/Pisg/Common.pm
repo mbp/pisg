@@ -145,40 +145,17 @@ sub match_urls
 {
     my $str = shift;
 
-    # Interpret 'www.' as 'http://www.'
-    $str =~ s/\b(http:\/\/)?www\./http:\/\/www\./igo;
-
     my @urls;
-    while ($str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~\@:]+\.[-a-zA-Z0-9.,_~=:&amp;\@%?#\/+]+)//io) { 
-        my $url = "$1$2";
-        if ($url_seen{$url}) {
-            push(@urls, $url);
-        } elsif ($url =~ s/\/$//) {
-            if ($url_seen{$url}) {
-                push(@urls, $url);
-            } else {
-                $url_seen{"$url/"} = 1;
-                push(@urls, "$url/");
-            }
-        } elsif ($url_seen{"$url/"}) {
-            push(@urls, "$url/");
-        } else {
-            $url_seen{$url} = 1;
-            push(@urls, $url);
-        }
+    # we don't treat mailto: as URL here
+    while ($str =~ /((?:(?:https?|ftp|telnet|news):\/\/|(?:(?:(www)|(ftp))[\w-]*\.))[-\w\/~\@:]+\.\S+[\w\/])/gio) {
+        my $url = $2 ? "http://$1" : ($3 ? "ftp://$1" : $1);
+        my $url_strip = $url;
+        $url_strip =~ s/\/$//;
+        $url_seen{$url_strip} ||= $url; # normalize URL to first seen form
+        push (@urls, $url_seen{$url_strip});
     }
 
     return @urls;
-}
-
-sub match_email
-{
-    my $str = shift;
-
-    if ($str =~ /([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/) {
-        return $1;
-    }
-    return undef;
 }
 
 sub htmlentities

@@ -1589,7 +1589,7 @@ sub _template_text
 sub _format_word
 {
     # This function formats a word -- should ONLY be called on words used alone (EG: not whole line printed)
-    my ($self, $word, $nick) = @_;
+    my ($self, $word, $nick) = @_; # nick is only defined for user links in top table
 
     $word = htmlentities($word, $self->{cfg}->{charset});
     $word = $self->_replace_links($word, $nick);
@@ -1842,28 +1842,40 @@ sub _legend
 }
 
 
+sub _replace_url # used internally by _replace_links
+{
+    my ($self, $url, $www, $ftp, $text) = @_;
+    $url = "http://$url" if $www;
+    $url = "ftp://$url" if $ftp;
+    my $texturl = $self->_template_text("newwindow");
+    return "<a href=\"$url\" target=\"_blank\" title=\"$texturl $url\">" . $self->_split_long_text($text) . '</a>';
+}
+
+
+sub _replace_email # used internally by _replace_links
+{
+    my ($self, $mailto, $user, $domain, $nick) = @_;
+    $mailto = '' if $nick or not $mailto;
+    $nick ||= "$user&#64;$domain"; # obfuscate mail address
+    my $textmail = $self->_template_text("mailto");
+    return "<a href=\"mailto:$user&#64;$domain\" title=\"$textmail $nick\">" . $self->_split_long_text($mailto . $nick) . "<\/a>";
+}
+
+
 sub _replace_links
 {
-    # Sub to replace urls and e-mail addys to links
-    my ($self, $str, $nick) = @_;
+    # replace URLs and email addresses by links
+    my ($self, $str, $nick) = @_; # nick is only defined for user links in top table
 
     # Regular expressions are taken from match_urls() and match_email() in
     # Common.pm
 
-    my $texturl = $self->_template_text("newwindow");
-    my $textmail = $self->_template_text("mailto");
     my (@str) = split(/ /,$str);
 
     foreach (@str) {
-        if (m/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~:@]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/o) {
-            my $nick = $nick || $1 . $2;
-            $_ = "<a href=\"$1$2\" target=\"_blank\" title=\"$texturl $1$2\">" . $self->_split_long_text($nick) . '</a>';
-        } elsif (m/(^|[^:])\b([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/o) {
-            my $nick = $nick || $1 . $2;
-            $_ = "$1<a href=\"mailto:$2\" title=\"$textmail $nick\">" . $self->_split_long_text($nick) . "<\/a>";
-        } else {
-            $_ = $self->_split_long_text($_);
-        }
+        s/((?:(?:https?|ftp|telnet|news):\/\/|(?:(?:(www)|(ftp))[\w-]*\.))[-\w\/~\@:]+\.\S+[\w\/])/$self->_replace_url($1, $2, $3, $nick || $1)/egio
+            or s/(mailto:)?([-\w.]+)@([-\w]+\.[-\w.]+)/$self->_replace_email($1, $2, $3, $nick)/egio
+            or $_ = $self->_split_long_text($_);
      }
 
     return join(' ', @str);
