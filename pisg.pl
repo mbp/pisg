@@ -69,6 +69,16 @@ my $conf = {
     pic_h_12 => "yellow-h.png",
     pic_h_18 => "red-h.png",
 
+    # Stats settings
+
+    show_linetime => 0,
+    show_time => 1,
+    show_words => 0,
+    show_wpl => 0,
+    show_cpl => 0,
+    show_legend => 1,
+    show_kickline => 1,
+
     # Less important things
 
     minquote => 25,
@@ -79,16 +89,6 @@ my $conf = {
     topichistory => 3,
     nicktracking => 0,
     timeoffset => "+0",
-
-    # Stats settings
-
-    show_linetime => 0,
-    show_time => 1,
-    show_words => 0,
-    show_wpl => 0,
-    show_cpl => 0,
-    show_legend => 1,
-    show_kickline => 1,
 
     # Misc settings
 
@@ -423,8 +423,6 @@ sub parse_file
     while(my $line = <LOGFILE>) {
         $lines++; # Increment number of lines.
 
-        $line = strip_mirccodes($line);
-
         my $hashref;
 
         # Match normal lines.
@@ -433,12 +431,12 @@ sub parse_file
             my ($hour, $nick, $saying, $i);
 
             for ($i = 0; $i <= $repeated; $i++) {
+                $line = strip_mirccodes($line);
 
                 if ($i > 0) {
                     $hashref = parse_normalline($lastnormal);
                     $lines++; #Increment number of lines for repeated lines
                 }
-
 
                 $hour = $hashref->{hour};
                 $nick = find_alias($hashref->{nick});
@@ -451,8 +449,8 @@ sub parse_file
                     $normals++;
                     $line{$nick}++;
                     $line_time{$nick}[int($hour/6)]++;
-                    # Count up monologues
 
+                    # Count up monologues
                     if ($lastline eq $nick) {
                         $mono{$nick}++;
 
@@ -470,7 +468,7 @@ sub parse_file
 
                     if ($l > $conf->{minquote} && $l < $conf->{maxquote}) {
                         # Creates $hash{nick}[n] - a hash of an array.
-                        push (@{ $sayings{$nick} }, htmlentities($saying));
+                        push (@{ $sayings{$nick} }, $saying);
                         $longlines{$nick}++;
                     }
 
@@ -491,12 +489,10 @@ sub parse_file
 
                     $smile{$nick}++
                         if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/);
-                    $sadface{$nick}++
-                        if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/);
 
-                    # Don't count http:// as a :/ face
-                    $sadface{$nick}--
-                        if ($saying =~ /\w+:\/\//);
+                    if (($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/) && !($saying =~ /\w+:\/\//)) {
+                        $sadface{$nick}++
+                    }
 
                     if ($saying =~ /(\w+):+\/\/(\S+).*/) {
                         $urls[$urlcount] = $1 . "://" . $2;
@@ -525,6 +521,7 @@ sub parse_file
 
             # Timestamp collecting
             $times{$hour}++;
+            $line = strip_mirccodes($line);
 
             unless (grep /^\Q$nick\E$/i, @ignore) {
                 $actions++;
@@ -561,6 +558,7 @@ sub parse_file
 
             # Timestamp collecting
             $times{$hour}++;
+            $line = strip_mirccodes($line);
 
             unless (grep /^\Q$nick\E$/i, @ignore) {
 
@@ -574,13 +572,10 @@ sub parse_file
                     unless ($newtopic eq '') {
                         my $tcount = @topics;
 
-                        $topics[$tcount]{topic} = htmlentities($newtopic);
+                        $topics[$tcount]{topic} = $newtopic;
                         $topics[$tcount]{nick} = $nick;
                         $topics[$tcount]{hour} = $hour;
                         $topics[$tcount]{min} = $min;
-
-                        # Strip off the quotes (')
-                        $topics[$tcount]{topic} =~ s/^\'(.*)\'$/$1/;
                     }
                 } elsif (defined($newmode)) {
                     my @opchange = opchanges($newmode);
@@ -889,8 +884,8 @@ sub parse_words
         # ignore contractions
         next if ($word =~ m/'..?$/);
 
-        $wordcount{htmlentities($word)}++ unless (grep /^\Q$word\E$/i, @ignore);
-        $lastused{htmlentities($word)} = $nick;
+        $wordcount{$word}++ unless (grep /^\Q$word\E$/i, @ignore);
+        $lastused{$word} = $nick;
     }
 
 }
@@ -1225,7 +1220,7 @@ sub activenicks
             $randomline = "";
         } else {
             my $rand = rand($longlines{$nick});
-            $randomline = $sayings{$nick}[$rand];
+            $randomline = htmlentities($sayings{$nick}[$rand]);
         }
 
         # Convert URLs and e-mail addys to links
@@ -1369,8 +1364,8 @@ sub mostusedword
             last unless $i < $#popular;
             my $a = $i + 1;
             my $popular = $popular[$i];
-            my $wordcount = $wordcount{$popular[$i]};
-            my $lastused = $lastused{$popular[$i]};
+            my $wordcount = htmlentities($wordcount{$popular[$i]});
+            my $lastused = htmlentities($lastused{$popular[$i]});
             html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
             html("<td bgcolor=\"$conf->{hicell}\">$popular</td>");
             html("<td bgcolor=\"$conf->{hicell}\">$wordcount</td>");
@@ -1691,15 +1686,15 @@ sub gotkicks
         );
 
         my $text = template_text('gotkick1', %hash);
-        
-	if ($conf->{show_kickline}) {
-		my $exttext = template_text('kicktext', %hash);
-		html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
-	} else {
-		html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
-	}
-	
-	if (@gotkick >= 2) {
+
+        if ($conf->{show_kickline}) {
+            my $exttext = template_text('kicktext', %hash);
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+        } else {
+            html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        }
+
+        if (@gotkick >= 2) {
             my %hash = (
                 nick => $gotkick[1],
                 kicks => $gotkick{$gotkick[1]}
@@ -2155,7 +2150,10 @@ sub lasttopics
 
         for (my $i = $ltopic; $i >= $tlimit; $i--) {
             $topics[$i]{"topic"} = replace_links($topics[$i]{"topic"});
-            my $topic = $topics[$i]{topic};
+            my $topic = htmlentities($topics[$i]{topic});
+            # Strip off the quotes (')
+            $topic =~ s/^\'(.*)\'$/$1/;
+
             my $nick = $topics[$i]{nick};
             my $hour = $topics[$i]{hour};
             my $min = $topics[$i]{min};
