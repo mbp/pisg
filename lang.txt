@@ -211,7 +211,7 @@ allcaps3 = "Alle hatten ihre Shift-Taste gut unter kontrolle :)"
 allcapstext = "<b>Zum Beispiel so:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> ist etwas agressiv. [:Er:Sie:] schlug <b>[:attacks]</b> mal wild um sich herum."
-violent2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halten, <b>[:attacks]</b> Schläge von [:ihm:ihr:]."
+violent2 = "Auch <b>[:nick]</b> hat einige Probleme [:seine:ihre:] Agressionen unter Kontrolle zu halten, <b>[:attacks]</b> Schläge von [:ihm:ihr:]."
 violent3 = "Alle waren friedlich im Channel, niemand hat jemanden geschlagen."
 violenttext = "<b>Zum Beispiel so:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
