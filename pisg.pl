@@ -78,6 +78,7 @@ my $conf = {
     show_cpl => 0,
     show_legend => 1,
     show_kickline => 1,
+    show_actionline => 1,
 
     # Less important things
 
@@ -111,7 +112,7 @@ $thirdline, $processtime, @topics, %monologue, %kicked, %gotkick,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
 $normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
-%line_time, @urls, %urlnick, %kickline);
+%line_time, @urls, %urlnick, %kickline, %actionline);
 
 
 sub main
@@ -529,6 +530,7 @@ sub parse_file
             unless ($conf->{ignores}{$nick}) {
                 $actions++;
                 $actions{$nick}++;
+				$actionline{$nick} = $line;
                 $line{$nick}++;
                 $line_time{$nick}[int($hour/6)]++;
 
@@ -2073,11 +2075,17 @@ sub mostactions
     if (@actions) {
         my %hash = (
             nick => $actions[0],
-            actions => $actions{$actions[0]}
+            actions => $actions{$actions[0]},
+			line => $actionline{$actions[0]}
         );
 
-        my $text = template_text('action1', %hash);
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");  
+		my $text = template_text('action1', %hash);
+		if($conf->{show_actionline}) {
+			my $exttext = template_text('actiontext', %hash);
+    	    html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");  
+		} else {
+			html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+		}
 
         if (@actions >= 2) {
             my %hash = (
