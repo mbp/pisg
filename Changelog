@@ -1,4 +1,4 @@
-pisg (0.20) 
+pisg (0.20) - Tue, Aug 14th 2001
    * Add 'bgpic' config setting for the possibility to add a userdefined
      background picture to the page (Vetinari)
    * If pisg can't find the config file in the current directory (when running
