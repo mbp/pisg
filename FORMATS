@@ -40,3 +40,8 @@ pisg supports a variety of logfile formats, these are:
   - A logging script for BitchX (console client - see scripts.bitchx.com)
    
   - In order to use this, format must be set to 'bxlog'
+
+* mbot:
+  - C-Based IRC Bot (http://darksun.com.pt/mbot/)
+
+  - In order to use this, format must be set to 'mbot'
