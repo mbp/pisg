@@ -1,0 +1,127 @@
+/*  Ocean colorscheme made by: Mikko Nissinen <Gwadj>
+ *  To report bugs or suggestions please email to: 
+ *  gwadj79@hotmail.com
+ *  
+ *  To obtain a better result, then set the these pisg options:
+ *  <set hicell="#3399cc">
+ *  <set hicell2="#006699">
+ */
+
+
+A
+{
+    TEXT-DECORATION: none
+}
+A:link
+{
+    COLOR: #99ccff
+}
+A:visited
+{
+    COLOR: #99ccff
+}
+A:hover
+{
+    COLOR: #66ccff;
+    TEXT-DECORATION: underline
+}
+A.background
+{
+    TEXT-DECORATION: none
+}
+A.background:link
+{
+    COLOR: #3399cc
+}
+A.background:visited
+{
+    COLOR: #3399cc
+}
+A.background:hover
+{
+    COLOR: #99ccff;
+    TEXT-DECORATION: underline
+}
+BODY
+{
+    FONT-SIZE: 13px;
+    COLOR: #dedede;
+    FONT-FAMILY: Verdana, Arial, sans-serif;
+    BACKGROUND-COLOR: #000033
+}
+TD
+{
+    FONT-SIZE: 13px;
+    COLOR: #dedede;
+    FONT-FAMILY: Verdana, Arial, sans-serif;
+    TEXT-ALIGN: left
+}
+.title
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16px;
+    FONT-FAMILY: Tahoma, Arial, sans-serif
+}
+.headtext
+{
+    FONT-WEIGHT: bold;
+    COLOR: #dedede;
+    BACKGROUND-COLOR: #003366;
+    TEXT-ALIGN: center
+}
+.headlinebg
+{
+    BACKGROUND-COLOR: #003366
+}
+.tdtop
+{
+    BACKGROUND-COLOR: #336699
+}
+.hicell
+{
+    BACKGROUND-COLOR: #000066
+}
+.hicell10
+{
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #336699
+}
+.rankc
+{
+    BACKGROUND-COLOR: #336699
+}
+.hirankc
+{
+    FONT-WEIGHT: bold;
+    BACKGROUND-COLOR: #6699cc
+}
+.rankc10
+{
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #336699
+}
+.rankc10center
+{
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #336699;
+    TEXT-ALIGN: center
+}
+.hirankc10center
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10px;
+    BACKGROUND-COLOR: #6699cc;
+    TEXT-ALIGN: center
+}
+.small
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana, Arial, sans-serif
+}
+.asmall
+{
+    FONT-SIZE: 10px;
+    COLOR: #dedede;
+    FONT-FAMILY: "Arial narrow", Arial, sans-serif
+    TEXT-ALIGN: center
+}
