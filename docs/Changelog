@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.41) - Sun Aug, 11th 2002
    * Fix a bug in the winbot logfile format where lines containing the channel
      name in a wrong case wouldn't get counted.
    * Fix a bug in the mIRC format, where characters in the nick would be
