@@ -277,8 +277,9 @@
 
     <para>
     There are a few predefined color schemes for you to use, use the
-    ColorScheme option when using them. The available colorschemes are:
-    'default', 'darkgalaxy', 'ocean', 'darkred'.
+    <link linkend="ColorScheme">ColorScheme</link> option when using them. The
+    colorschemes distributed with pisg are: default (which is the default),
+    darkgalaxy, darkred, justgrey, ocean, orange_grey, pisg, softgreen.
     </para>
 
     <para>
@@ -292,8 +293,8 @@
     directory. In it resides <filename>default.css</filename> which is the
     file being included onto the HTML page. Open it in a text editor like
     vi or notepad. Then change it until you're happy with it. Be aware that
-    you might want to look at the hicell and hicell2 options through
-    pisg.cfg for changing the last two colors.
+    you might want to look at the <link linkend="HiCell">HiCell and HiCell2</link>
+    options through pisg.cfg for changing the last two colors.
     </para>
 
 
@@ -736,8 +737,12 @@
     <para>
     <command>ColorScheme</command> is used to define the color scheme used
     for the statistics page. Actually it's the CSS file being included.
-    Available options are: default, darkgalaxy, darkred, justgrey, ocean,
-    softgreen, orange_grey.
+    CSS files distributed with pisg are: darkgalaxy, darkred, default,
+    justgrey, ocean, orange_grey, pisg, softgreen (omit the .css). The file
+    will be included statically in the generated HTML page. If you give a file
+    name or URL (i.e. a color scheme name with .css or a path), the file will
+    be linked to instead. See also <link linkend="CssDir">CssDir</link>,
+    <link linkend="HiCell">HiCell/HiCell2</link>.
     </para>
     </refsect1>
     <refsect1>
@@ -3227,12 +3232,44 @@
     <title>Description</title>
     <para>
     <command>CssDir</command> is used to define the paths to the CSS files
-    (the color schemes). Usually you don't need to change this.
+    (the <link linkend="ColorScheme">ColorScheme</link>s). Usually you don't
+    need to change this. This setting is only used when statically including
+    the CSS file.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
     <para> layout/ (in current directory) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** HICELL *** -->
+    <refentry id="HiCell">
+
+    <refmeta> <refentrytitle>HiCell, HiCell2</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>HiCell, HiCell2</refname>
+    <refpurpose>colors for color gradient in most active nicks section</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set HiCell="#BABADD" HiCell2="#CCCCCC">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>HiCell</command> and <command>HiCell2</command> define the colors
+    to be used for the color gradient in the most active nicks section. They should
+    match your <link linkend="ColorScheme">ColorScheme</link>.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> #BABADD, #CCCCCC </para>
     </refsect1>
     </refentry>
 

@@ -183,12 +183,18 @@ sub _htmlheader
         nicks      => scalar keys %{ $self->{stats}->{lines} }
     );
 
-    my $css_file = $self->{cfg}->{cssdir} . $self->{cfg}->{colorscheme} . ".css";
-
-    # Get the chosen CSS file
-    open(FILE, $css_file) or open (FILE, $self->{cfg}->{search_path} . "/$css_file") or die("$0: Unable to open stylesheet($css_file): $!\n");
-
-    my @CSS = <FILE>;
+    my $CSS;
+    if($self->{cfg}->{colorscheme} =~ /[^\w]/) { # use external CSS file
+        $CSS = "<link rel=\"stylesheet\" type=\"text/css\" href=\"$self->{cfg}->{colorscheme}\">";
+    } else { # read the chosen CSS file
+        my $css_file = $self->{cfg}->{cssdir} . $self->{cfg}->{colorscheme} . ".css";
+        open(FILE, $css_file) or open (FILE, $self->{cfg}->{search_path} . "/$css_file") or die("$0: Unable to open stylesheet $css_file: $!\n");
+        {
+            local $/; # enable "slurp" mode
+            $CSS = "<style type=\"text/css\">\n". <FILE>. "</style>";
+        }
+        close FILE;
+    }
 
     my $title = $self->_template_text('pagetitle1', %hash);
     print OUTPUT <<HTML;
@@ -197,9 +203,8 @@ sub _htmlheader
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$self->{cfg}->{charset}" />
 <title>$title</title>
-<style type="text/css">
-@CSS
-</style></head>
+$CSS
+</head>
 <body>
 <div align="center">
 HTML

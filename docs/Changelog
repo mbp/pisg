@@ -7,6 +7,9 @@ pisg (0.62) - ??
    * wordlist_regexp uses quotemeta.
    * New ShowActiveNicks option (defaulting to 1).
    * Added lulubot parser (thanks, Vianney Lecroart).
+   * Yet another URL parsing fix (certainly not the last).
+   * CSS file can be linked to instead of being included statically.
+   * Documented HiCell and HiCell2 options.
    Changes by Morten Brix Pedersen:
    * Fixed typo in French translation.
 
