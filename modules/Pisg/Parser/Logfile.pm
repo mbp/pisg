@@ -55,6 +55,10 @@ sub analyze
     if (defined $self->{parser}) {
         my $starttime = time();
 
+        # Just initialize these to 0
+        $stats{days} = 0;
+        $stats{totallines} = 0;
+
         if ($self->{cfg}->{logdir}) {
             # Run through all files in dir
             $self->_parse_dir(\%stats, \%lines);
@@ -142,8 +146,6 @@ sub _parse_file
     my $lastnormal = "";
     my $repeated;
 
-    $stats->{days} = 0;
-    $stats->{totallines} = 0;
 
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
