@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.51) - Wed Jan, 21st 2004
    * Fixed a bug in the irssi format where an action could be recognized as a
      normal line (thanks, Emil Mikulic)
    * Added a DailyActivity option, which shows the activity in the channel of
