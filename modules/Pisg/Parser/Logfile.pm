@@ -271,7 +271,7 @@ sub _parse_file
                     }
 
                     $stats->{foul}{$nick}++
-                        if ($saying =~ /$self->{cfg}->{foulwords}/io);
+                        if ($saying =~ /(\b$self->{cfg}->{foulwords}|$self->{cfg}->{foulwords}\b)/io);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
