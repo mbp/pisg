@@ -1,4 +1,4 @@
-pisg (0.23)
+pisg (0.23) - Sun, Sep 23th 2001
    * Support irssi logfiles
    * Support psybnc logfiles
    * Topics in mIRC format wasn't being recognized. Fixed.

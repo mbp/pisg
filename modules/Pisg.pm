@@ -175,7 +175,7 @@ sub get_default_config_settings
 
         debug => 0,
         debugfile => "debug.log",
-        version => "v0.23-cvs",
+        version => "v0.24-cvs",
     };
 
     # Parse the optional overriden configuration variables

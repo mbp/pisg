@@ -1,6 +1,6 @@
 # Simple Makefile to make new releases of pisg
 
-VERSION = 0.23
+VERSION = 0.24
 
 DIRNAME = pisg-$(VERSION)
 
@@ -92,4 +92,4 @@ pisg:
 	mv pisg.zip newrelease/$(ZIPFILE)
 	mv $(DIRNAME) newrelease
 clean:
-	rm -r newrelease/
+	rm -rf newrelease/
