@@ -113,6 +113,9 @@ pagehead            Some 'page header' file which you want to include in top
                     of the output file.
                     (default: none)
 
+pagefoot            Same as above, this is just the footer.
+                    (default: none)
+
 imagepath           If your user pictures is located in a special direcotry,
                     set the path here. E.g. 'userpics/'
                     (default: current directory)
