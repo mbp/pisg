@@ -1,6 +1,8 @@
 pisg (x.xx)
    * Fixed a bug in the irssi format where an action could be recognized as a
      normal line (thanks, Emil Mikulic)
+   * Added a DailyActivity option, which shows the activity in the channel of
+     the last N days. Disabled by default. (thanks, sektor).
 
 pisg (0.50) - Mon Nov, 17th 2003
    * Added NFiles option, which can be used for LogDirs to only parse the last

@@ -68,6 +68,10 @@ sub create_output
     $self->_pageheader()
         if ($self->{cfg}->{pagehead} ne 'none');
 
+    if ($self->{cfg}->{dailyactivity}) {
+	$self->_activedays();
+    }
+
     if ($self->{cfg}->{showactivetimes}) {
         $self->_activetimes();
     }
@@ -298,6 +302,71 @@ sub _pagefooter
         _html($_);
     }
     close(PAGEFOOT);
+}
+
+sub _activedays
+{
+    # The most actives times on the channel
+    my $self = shift;
+    my $days = $self->{stats}->{days};
+    my $ndays = $self->{cfg}->{dailyactivity};
+    my $image;
+    my $time;
+    my $day;
+
+    my (%output, $class);
+
+    my $highest_value = 1;
+    for ($day = $days; $day > $days - $ndays ; $day--) {
+        if (defined($self->{stats}->{day_lines}{$day})) {
+            if ($self->{stats}->{day_lines}{$day} > $highest_value) {
+                $highest_value=$self->{stats}->{day_lines}{$day};
+            }
+        } else {
+            #there are only $days - $day days :)
+            $ndays = $days - $day;
+        }
+    }
+
+    $self->_headline("Daily activity (last $ndays days)");
+
+    _html("<table border=\"0\"><tr>\n");
+
+    for ($day = $days - $ndays +1; $day <= $days ; $day++) {
+        my $lines = $self->{stats}->{day_lines}{$day};
+        _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">$lines<br>");
+        for ($time = 4; $time >= 0; $time--) {
+            if (defined($self->{stats}->{day_times}{$day}[$time])) {
+                my $size = ($self->{stats}->{day_times}{$day}[$time] / $highest_value) * 100;
+
+                if ($size < 1 && $size != 0) {
+                    # Opera doesn't understand '0.xxxx' in the height="xx" attr,
+                    # so we simply round up to 1.0 here.
+
+                    $size = 1.0;
+                }
+
+                $image = "pic_v_".$time*6;
+                $image = $self->{cfg}->{$image};
+                _html("<img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines\" /><br>");
+
+            }
+        }
+        _html("</td>\n");
+    }
+
+    _html("</tr><tr>");
+
+    for ($b = $ndays-1; $b >= 0 ; $b--) {
+            $class = 'rankc10center';
+        _html("<td class=\"$class\" align=\"center\">$b</td>");
+}
+
+    _html("</tr></table>");
+
+    if($self->{cfg}->{showlegend} == 1) {
+        $self->_legend();
+    }
 }
 
 sub _activetimes

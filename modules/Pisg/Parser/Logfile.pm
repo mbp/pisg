@@ -260,7 +260,14 @@ sub _parse_file
                 checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
                 $saying = $hashref->{saying};
 
-                if ($hour < $state->{oldtime}) { $stats->{days}++ }
+                if ($hour < $state->{oldtime}) {
+                    $stats->{days}++;
+                    $stats->{day_times}{$stats->{days}}[0] = 0;
+                    $stats->{day_times}{$stats->{days}}[1] = 0;
+                    $stats->{day_times}{$stats->{days}}[2] = 0;
+                    $stats->{day_times}{$stats->{days}}[3] = 0;
+                    $stats->{day_lines}{$stats->{days}} = 0;
+                }
                 $state->{oldtime} = $hour;
 
                 if (!is_ignored($nick)) {
@@ -268,6 +275,8 @@ sub _parse_file
 
                     # Timestamp collecting
                     $stats->{times}{$hour}++;
+                    $stats->{day_times}{$stats->{days}}[int($hour/6)]++;
+                    $stats->{day_lines}{$stats->{days}}++;
 
                     $stats->{lines}{$nick}++;
                     $stats->{lastvisited}{$nick} = $stats->{days};
@@ -355,12 +364,22 @@ sub _parse_file
             checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
             $saying = $hashref->{saying};
 
-            if ($hour < $state->{oldtime}) { $stats->{days}++ }
+            if ($hour < $state->{oldtime}) {
+                $stats->{days}++;
+                $stats->{day_times}{$stats->{days}}[0] = 0;
+                $stats->{day_times}{$stats->{days}}[1] = 0;
+                $stats->{day_times}{$stats->{days}}[2] = 0;
+                $stats->{day_times}{$stats->{days}}[3] = 0;
+                $stats->{day_lines}{$stats->{days}} = 0;
+            }
+
             $state->{oldtime} = $hour;
 
             if (!is_ignored($nick)) {
                 # Timestamp collecting
                 $stats->{times}{$hour}++;
+                $stats->{day_times}{$stats->{days}}[int($hour/6)]++;
+                $stats->{day_lines}{$stats->{days}}++;
 
                 $stats->{actions}{$nick}++;
                 push @{ $lines->{actionlines}{$nick} }, $line;
@@ -411,12 +430,22 @@ sub _parse_file
             $newjoin  = $hashref->{newjoin};
             $newnick  = $hashref->{newnick};
 
-            if ($hour < $state->{oldtime}) { $stats->{days}++ }
+            if ($hour < $state->{oldtime}) {
+                $stats->{days}++;
+                $stats->{day_times}{$stats->{days}}[0]=0;
+                $stats->{day_times}{$stats->{days}}[1]=0;
+                $stats->{day_times}{$stats->{days}}[2]=0;
+                $stats->{day_times}{$stats->{days}}[3]=0;
+                $stats->{day_lines}{$stats->{days}}=0;
+            }
+
             $state->{oldtime} = $hour;
 
             if (!is_ignored($nick)) {
                 # Timestamp collecting
                 $stats->{times}{$hour}++;
+                $stats->{day_times}{$stats->{days}}[int($hour/6)]++;
+                $stats->{day_lines}{$stats->{days}}++;
 
                 $stats->{lastvisited}{$nick} = $stats->{days};
 
