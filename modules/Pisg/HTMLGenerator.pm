@@ -847,7 +847,7 @@ sub linelengths
 
     my @len = sort { $len{$b} <=> $len{$a} } keys %len;
 
-    my $all_lines;
+    my $all_lines = 0;
     my $totallength;
     foreach my $nick (keys %{ $stats->{lines} }) {
         $all_lines   += $stats->{lines}{$nick};
@@ -1286,18 +1286,21 @@ sub mostusedword
 
 sub mostwordsperline
 {
-    my $self = shift;
     # The person who got words the most
+    my $self = shift;
     my ($stats) = @_;
 
     my %wpl = ();
-    my ($numlines,$avg,$numwords);
+    my $numlines = 0;
+    my ($avg, $numwords);
     foreach my $n (keys %{ $stats->{words} }) {
         $wpl{$n} = sprintf("%.2f", $stats->{words}{$n}/$stats->{lines}{$n});
         $numlines += $stats->{lines}{$n};
         $numwords += $stats->{words}{$n};
     }
-    $avg = sprintf("%.2f", $numwords/$numlines);
+    if ($numlines > 0) {
+        $avg = sprintf("%.2f", $numwords/$numlines);
+    }
 
     my @wpl = sort { $wpl{$b} <=> $wpl{$a} } keys %wpl;
 
