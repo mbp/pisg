@@ -18,6 +18,8 @@ DOCS = docs/CONFIG-README \
 	 docs/Changelog \
 	 docs/CREDITS \
 
+DEVDOCS = docs/dev/API
+
 GFX = gfx/green-h.png \
 	 gfx/green-v.png \
 	 gfx/blue-h.png \
@@ -65,6 +67,9 @@ pisg:
 
 	mkdir $(DIRNAME)/docs
 	cp $(DOCS) $(DIRNAME)/docs
+
+	mkdir $(DIRNAME)/docs/dev
+	cp $(DEVDOCS) $(DIRNAME)/docs/dev
 
 	mkdir $(DIRNAME)/scripts/addalias
 	cp $(ADDALIAS) $(DIRNAME)/scripts/addalias
