@@ -327,8 +327,8 @@ words1 = "<b>[:nick]</b> er meget aktiv med [:words] skrevne ord!"
 words2 = "[:oldnick] blev tæt forfulgt af <b>[:nick]</b>, med [:words] ord."
 words3 = "Hmmm ingen har sagt noget endnu... underlig kanal..."
 
-month = "Januar Februar March April Maj Juni July August September Oktober November December"
-day = "Søndag Mondag Tirsdag Onsdag Torsdag Fredag Lørdag"
+month = "Januar Februar Marts April Maj Juni Juli August September Oktober November December"
+day = "Søndag Mandag Tirsdag Onsdag Torsdag Fredag Lørdag"
 
 notopic = "A topic was never set on this channel"
 
@@ -643,7 +643,7 @@ mostop3 = "Merkelig, ingen smultringer ble delt ut på [:channel]!"
 
 mostdeop1 = "<b>[:nick]</b> er kanalens sheriff med [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> deopet [:deops] brukere."
-mostdeop3 = Villt! Ingen har blitt deopet på [:channel]!"
+mostdeop3 = "Villt! Ingen har blitt deopet på [:channel]!"
 
 question1 = "<b>[:nick]</b> er sikkert dum, hvis ikke bare litt nysgjerrig. [:per]% av linjene hans/hennes inneholdt et spørsmål!"
 question2 = "<b>[:nick]</b> skjønner heller ikke mye, [:per]% av hans/hennes linjer ser mistenkelig ut som spørsmål."
@@ -723,36 +723,30 @@ mostdeop1 = "<b>[:nick]</b> é o malvado do canal, tirou op de [:deops] pessoas"
 mostdeop2 = "<b>[:nick]</b> tirou o op de [:deops] pessoas"
 mostdeop3 = "Incrivel, nenhúm op foi tirado no [:channel]!"
 
-question1 = "<b>[:nick]</b> necessitava mais horas de estudo quando
-criança, [:per]% de suas linhas contém uma pergunta!"
-question2 = "<b>[:nick]</b> tampouco é muito inteligente, [:per]% de
-suas linhas são perguntas"
+question1 = "<b>[:nick]</b> necessitava mais horas de estudo quando criança, [:per]% de suas linhas contém uma pergunta!"
+question2 = "<b>[:nick]</b> tampouco é muito inteligente, [:per]% de suas linhas são perguntas"
 question3 = "Ninguém fez perguntas aqui, apenas gênios neste canal?"
 
-loud1 = "A pessoa que mais gritou foi: <b>[:nick]</b> que escreve com
-exclamações em [:per]% do tempo!"
+loud1 = "A pessoa que mais gritou foi: <b>[:nick]</b> que escreve com exclamações em [:per]% do tempo!"
 loud2 = "Quem não fica atrás é <b>[:nick]</b>, que gritou [:per]% do tempo!"
 loud3 = "Ninguém escreveu frases exclamativas."
 
 gotkick1 = "<b>[:nick]</b> não tem sido muito popular, levou chute [:kicks] vezes!"
 gotkick2 = "<b>[:nick]</b> também tem sido odiado, [:kicks] foram recebidos"
 
-joins = "<b>[:nick]</b> não sabe se fica ou se vai, entrou [:joins]
-vezes no canal!"
+joins = "<b>[:nick]</b> não sabe se fica ou se vai, entrou [:joins] vezes no canal!"
 
 kick1 = "<b>[:nick]</b> é insano ou apenas linha dura, chutou [:kicked] pessoas!"
 kick2 = "[:oldnick] tem um seguidor barra-pesada, <b>[:nick]</b> chutou [:kicked] pessoas"
 kick3 = "Bons ops aqui, ninguém foi chutado"
 
-mono1 = "<b>[:nick]</b> não tem amigos, escreveu mais de 5 linhas
-seguidas em [:monos] ocasiões!"
+mono1 = "<b>[:nick]</b> não tem amigos, escreveu mais de 5 linhas seguidas em [:monos] ocasiões!"
 mono2 = "Outra pessoa solitária é <b>[:nick]</b>, que fez o mesmo em [:monos] vezes"
 
 long1 = "<b>[:nick]</b> escreve grandes linhas, em média [:letters] letras por linha..."
 long2 = "A média de [:channel] é de [:avg] letras por linha"
 
-short1 = "<b>[:nick]</b> é a pessoa q escreve menos linhas, com uma
-média de [:letters] letras por linha..."
+short1 = "<b>[:nick]</b> é a pessoa q escreve menos linhas, com uma média de [:letters] letras por linha..."
 short2 = "[:nick] não fica atrás, com uma média de [:letters]"
 
 foul1 = "<b>[:nick]</b> necessita que lavem a sua boca com sabão, [:per]% de sua linhas contém 1 palavrão"
@@ -890,6 +884,7 @@ lastused = "Laatst gebruikt door"
 pagetitle1 = "[:channel] @ [:network] statistieken door [:maintainer]"
 pagetitle2 = "Statistics gegenereerd op "
 pagetitle3 = "Tijdens deze [:days]-daagse periode, waren er in totaal <b>[:nicks]</b> verschillende nicks te vinden op [:channel]."
+day = "zondag maandag dinsdag woensdag donderdag vrijdag zaterdag"
 </lang>
 
 <lang name="SE">
