@@ -340,7 +340,7 @@ sub _activedays
 
     for ($day = $days - $ndays +1; $day <= $days ; $day++) {
         my $lines = $self->{stats}->{day_lines}{$day};
-        _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">$lines<br>");
+        _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">$lines<br />");
         for ($time = 4; $time >= 0; $time--) {
             if (defined($self->{stats}->{day_times}{$day}[$time])) {
                 my $size = int(($self->{stats}->{day_times}{$day}[$time] / $highest_value) * 100);
@@ -353,7 +353,7 @@ sub _activedays
 
                 $image = "pic_v_".$time*6;
                 $image = $self->{cfg}->{$image};
-                _html("<img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines\" /><br>");
+                _html("<img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines\" /><br />");
 
             }
         }
