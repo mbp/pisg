@@ -1,4 +1,4 @@
-pisg (0.18) - Fri, Aug 3rd 2001
+pisg (0.18)
 
    * Added pisg.cfg support which now obsoletes user.cfg, in this file
      everything should be set, instead of in the script - this makes it easier
@@ -16,6 +16,8 @@ pisg (0.18) - Fri, Aug 3rd 2001
    * New feature: 'Those who couldnt control the shift key and wrote UPPERCASE'
    * New feature: 'Who got slapped the most'
    * Stop copying CVS dirs with distribution
+   * Also count words in actions, and a new feature: 'most words' (thanks to
+     Hanno Hecker)
    * Updated a lot of documentation (README and CONFIG-README), you should
      reread it ;)
    * The usual small improvements (and bug additions)
