@@ -74,15 +74,18 @@ sub thirdline
 
         if (($4.$5) eq 'waskicked') {
             $hash{kicker} = $8;
-            $hash{kicker} =~ s/.* by (\w+) .*/$1/;
+            $hash{kicker} =~ m/by (\S+)/;
+            $hash{kicker} = $1;
 
         } elsif ($4 eq 'changed') {
             $hash{newtopic} = $8;
+            $hash{newtopic} =~ m/to:(.*)/;
+            $hash{newtopic} = $1;
 
         } elsif (substr($3, 0, 4) eq 'mode') {
             $hash{newmode} = substr($4, 1);
             $hash{nick} = $8;
-            $hash{nick} =~ s/.* (\w+)$/$1/; # Get the last word of the string
+            $hash{nick} =~ s/.* (\S+)$/$1/; # Get the last word of the string
 
         } elsif (($5.$6) eq 'hasjoined') {
             $hash{newjoin} = $3;
