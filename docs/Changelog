@@ -12,6 +12,7 @@ pisg (x.xx)
      super long quotes showing up - BugID#594618)
    * Only match emails if it begins at the beginning of a line or after
      something other than ':' URL on that line. Fixes BugID#618540
+   * Strip DOS Formatting from files - Fixes space at end of line BugID#628580
 
 
 

@@ -195,6 +195,7 @@ sub _parse_file
 
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
+        $line =~ s/\r+$//;       # Strip DOS Formatting
 
         my $hashref;
 
