@@ -462,10 +462,10 @@ sub _parse_words
         next if ($ignoreword->{$word});
 
         # ignore contractions
-        next if ($word =~ m/'..?$/);
+        next if ($word =~ m/'.{1,2}$/);
 
         # Also ignore stuff from URLs.
-        next if ($word =~ m/https?|^\/\//);
+        next if ($word =~ m/^https?$|^\/\//);
 
         $stats->{wordcounts}{$word}++;
         $stats->{wordnicks}{$word} = $nick;
@@ -488,15 +488,17 @@ sub _uniquify_nicks {
     my ($stats) = @_;
 
     foreach my $word (keys %{ $stats->{wordcounts} }) {
-	my $realnick = find_alias($word);
+        if (is_nick($word)) {
+	    my $realnick = find_alias($word);
 
-	# The lc() is an attempt at being case insensitive.
-	if (lc($realnick) ne lc($word)) {
-	    $stats->{wordcounts}{$realnick} += $stats->{wordcounts}{$word};
-	    $stats->{wordnicks}{$realnick}   = $stats->{wordnicks}{$word};
-	    delete $stats->{wordcounts}{$word};
-	    delete $stats->{wordnicks}{$word};
-	}
+	    # The lc() is an attempt at being case insensitive.
+	    if (lc($realnick) ne lc($word)) {
+	        $stats->{wordcounts}{$realnick} += $stats->{wordcounts}{$word};
+	        $stats->{wordnicks}{$realnick}   = $stats->{wordnicks}{$word};
+	        delete $stats->{wordcounts}{$word};
+	        delete $stats->{wordnicks}{$word};
+	    }
+        }
     }
 }
 

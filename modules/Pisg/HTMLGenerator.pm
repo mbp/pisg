@@ -1498,7 +1498,7 @@ sub _mostusedword
 
     foreach my $word (keys %{ $self->{stats}->{wordcounts} }) {
         # Skip people's nicks.
-        next if exists $self->{stats}->{lines}{$word};
+        next if is_nick($word);
         next if (length($word) < $self->{cfg}->{wordlength});
         $usages{$word} = $self->{stats}->{wordcounts}{$word};
     }
@@ -1521,7 +1521,7 @@ sub _mostusedword
             # Skip nicks.  It's far more efficient to do this here than when
             # @popular is created.
             next if is_ignored($popular[$i]);
-            next if exists $self->{stats}->{lines}{find_alias($popular[$i])};
+            next if is_nick($popular[$i]);
             my $a = $count + 1;
             my $popular = htmlentities($popular[$i]);
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
