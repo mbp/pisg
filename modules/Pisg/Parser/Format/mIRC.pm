@@ -12,7 +12,7 @@ sub new
         cfg => $args{cfg},
         normalline => '^\[(\d+):\d+[^ ]+ <([^>]+)> (.*)',
         actionline => '^\[(\d+):\d+[^ ]+ \* (\S+) (.*)',
-        thirdline  => '^\[(\d+):(\d+)[^ ]+ \*\*\* (\S+) (\S+) (\S+) (\S+) (\S+)(.*)',
+        thirdline  => '^\[(\d+):(\d+)[^ ]+ \*\*\* (.+)'
     };
 
     bless($self, $type);
@@ -60,24 +60,26 @@ sub thirdline
 
     if ($line =~ /$self->{thirdline}/o) {
 
+        my @line = split(/\s/, $3);
+
         $hash{hour} = $1;
         $hash{min}  = $2;
-        $hash{nick} = remove_prefix($3);
+        $hash{nick} = remove_prefix($line[0]);
 
-        if (($4.$5) eq 'waskicked') {
-            $hash{kicker} = $7;
+        if ($#line >= 4 && ($line[1].$line[2]) eq 'waskicked') {
+            $hash{kicker} = $line[4];
 
-        } elsif ($4 eq 'changes') {
-            $hash{newtopic} = "$7 $8";
+        } elsif ($#line >= 5 && $line[3] eq 'changes') {
+            $hash{newtopic} = "$line[4] $line[5]";
 
-        } elsif (($4.$5) eq 'setsmode:') {
-            $hash{newmode} = $6;
+        } elsif ($#line >= 3 && ($line[1].$line[2]) eq 'setsmode:') {
+            $hash{newmode} = $line[3];
 
-        } elsif (($5.$6) eq 'hasjoined') {
-            $hash{newjoin} = $3;
+        } elsif ($#line >= 3 && ($line[2].$line[3]) eq 'hasjoined') {
+            $hash{newjoin} = $line[0];
 
-        } elsif (($4.$5) eq 'nowknown') {
-            $hash{newnick} = $8;
+        } elsif ($#line >= 5 && ($line[2].$line[3]) eq 'nowknown') {
+            $hash{newnick} = $line[5];
         }
 
         return \%hash;
