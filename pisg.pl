@@ -1080,6 +1080,7 @@ sub find_alias
     } elsif ($conf->{aliaswilds}) {
         foreach (keys %{ $conf->{aliaswilds} }) {
             if ($nick =~ /^$_$/i) {
+	        $alias{$lcnick} = $conf->{aliaswilds}{$_};
                 return $conf->{aliaswilds}{$_};
             }
         }
