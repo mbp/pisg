@@ -110,7 +110,7 @@ $thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
 $normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
-%line_time);
+%line_time, @urls, %urlnick);
 
 
 sub main
@@ -409,6 +409,7 @@ sub parse_file
 {
     my $file = shift;
     my $foulwords = $conf->{foul};
+	my $urlcount = 0;
 
     # This parses the file..
     print "Analyzing log($file) in '$conf->{format}' format...\n";
@@ -420,7 +421,6 @@ sub parse_file
     } else {
         open (LOGFILE, $file) or die("$0: Unable to open logfile($file): $!\n");
     }
-
     while(my $line = <LOGFILE>) {
         $lines++; # Increment number of lines.
 
@@ -498,6 +498,12 @@ sub parse_file
                     # Don't count http:// as a :/ face
                     $sadface{$nick}--
                         if ($saying =~ /\w+:\/\//);
+
+					if ($saying =~ /(\w+):+\/\/(\S+).*/) {
+						$urls[$urlcount] = $1 . "://" . $2;
+						$urlnick{$urls[$urlcount]} = $nick;
+						$urlcount++;
+					}
 
                     foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
                         $words{$nick}++;
@@ -1065,6 +1071,8 @@ sub create_html
 
     mostreferenced();
 
+	mosturls();
+
     headline(template_text('othernumtopic'));
     html("<table width=\"$conf->{tablewidth}\">\n"); # Needed for sections
     gotkicks();
@@ -1437,6 +1445,44 @@ sub mostreferenced
            html("<td bgcolor=\"$conf->{hicell}\">$popular</td>");
            html("<td bgcolor=\"$conf->{hicell}\">$wordcount</td>");
            html("<td bgcolor=\"$conf->{hicell}\">$lastused</td>");
+           html("</tr>");
+       }
+   html("</table>");
+   }
+
+}
+
+sub mosturls
+{
+	my %toll;
+	my $k = 0;
+	foreach(@urls) {
+		if($_ eq $urls[$k]) {
+			$toll{$_}++;
+		}
+		$k++;
+	}
+	my @sorturls = sort { $toll{$b} <=> $toll{$a} } keys %toll;
+
+    if (@sorturls) {
+
+        &headline(template_text('urlstopic'));
+
+        html("<table border=\"0\" width=\"$conf->{tablewidth}\"><tr>");
+        html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('url') . "</b></td>");
+        html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
+        html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
+
+       for(my $i = 0; $i < 5; $i++) {
+           last unless $i < $#sorturls;
+           my $a = $i + 1;
+           my $sorturl = $sorturls[$i];
+           my $urlcount = $toll{$sorturls[$i]};
+		   my $lastused = $urlnick{$sorturls[$i]};
+           html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
+           html("<td bgcolor=\"$conf->{hicell}\"><a href=\"$sorturl\">$sorturl</a></td>");
+           html("<td bgcolor=\"$conf->{hicell}\">$urlcount</td>");
+		   html("<td bgcolor=\"$conf->{hicell}\">$lastused</td>");
            html("</tr>");
        }
    html("</table>");
