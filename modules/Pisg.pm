@@ -391,7 +391,7 @@ sub init_config
                                 $self->{chans}->{$channel}{$var} = $2;
                             }
                         }
-                    } else {
+                    } elsif ($_ !~ /^$/) {
                         print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
                     }
                 }
