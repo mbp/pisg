@@ -1533,25 +1533,35 @@ sub _replace_links
     # Sub to replace urls and e-mail addys to links
     my $str = shift;
     my $nick = shift;
-    my ($url, $email);
+    my ($url, $email, $replaced, $return_str);
 
-    if ($nick) {
+    $return_str = $str;
+    $replaced = 0;
+     if ($nick) {
         if ($url = match_url($str)) {
-            $str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$nick<\/a>/g;
+            $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window:
+$1">$nick<\/a>/g;
         }
         if ($email = match_email($str)) {
-            $str =~ s/(\Q$email\E)/<a href="mailto:$1" title="Mail to $nick">$nick<\/a>/g;
+            $return_str =~ s/(\Q$email\E)/<a href="mailto:$1" title="Mail to $nick">$nick<\/a>/g;
         }
     } else {
-        if ($url = match_url($str)) {
-            $str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$1<\/a>/g;
-        }
-        if ($email = match_email($str)) {
-            $str =~ s/(\Q$email\E)/<a href="mailto:$1" title="Mail to $1">$1<\/a>/g;
+        while ($replaced < 1) {
+            $replaced = 1;
+            if ($url = match_url($str)) {
+                if ($url =~ /^www\./i) { $return_str =~ s/(\Q$url\E)/<a href="http:\/\/$1" target="_blank" title="Open in new window: $1">$1<\/a>/g; }
+                else { $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$1<\/a>/g; }
+                $str =~ s/(\Q$url\E)//g;
+                $replaced--;
+            }
+            if ($email = match_email($str)) {
+                $return_str =~ s/(\Q$email\E)/<a href="mailto:$1" title="Mail to $1">$1<\/a>/g;
+                $str =~ s/(\Q$email\E)//g;
+                $replaced--;
+            }
         }
     }
-
-    return $str;
+    return $return_str;
 }
 
 sub _user_linetimes
