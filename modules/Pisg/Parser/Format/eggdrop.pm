@@ -71,9 +71,9 @@ sub thirdline
             $hash{kicker} = $1;
 
         } elsif ($3 eq 'Topic') {
-            $7 =~ /^ by ([\S]+)![\S]+: (.*)/;
-            $hash{nick} = $1;
-            $hash{newtopic} = $2;
+            $7 =~ /^ by (\S*)!(\S+): (.*)/;
+            $hash{nick} = $1 || $2; # $1 might be empty if topic is reset by server
+            $hash{newtopic} = $3;
 
         } elsif (($4.$5) eq 'modechange') {
             my $newmode = $6;
