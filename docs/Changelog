@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.57) - Sat Aug, 28th 2004
    Changes by Christoph Berg:
    * Fix problem where NFiles didn't work when the specified values was more
    than the actual number of logfiles.
