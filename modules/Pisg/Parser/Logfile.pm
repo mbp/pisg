@@ -213,6 +213,7 @@ sub _parse_file
 
                 $hour   = $hashref->{hour};
                 $nick   = find_alias($hashref->{nick});
+                checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{show_mostnicks});
                 $saying = $hashref->{saying};
 
                 if ($hour < $state->{oldtime}) { $stats->{days}++ }
@@ -304,6 +305,7 @@ sub _parse_file
 
             $hour   = $hashref->{hour};
             $nick   = find_alias($hashref->{nick});
+            checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{show_mostnicks});
             $saying = $hashref->{saying};
 
             if ($hour < $state->{oldtime}) { $stats->{days}++ }
@@ -347,6 +349,7 @@ sub _parse_file
             $hour     = $hashref->{hour};
             $min      = $hashref->{min};
             $nick     = find_alias($hashref->{nick});
+            checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{show_mostnicks});
             $kicker   = find_alias($hashref->{kicker})
                 if ($hashref->{kicker});
             $newtopic = $hashref->{newtopic};
@@ -381,6 +384,7 @@ sub _parse_file
 
                 } elsif (defined($newnick) and ($self->{cfg}->{nicktracking} == 1)) {
                     add_alias($nick, $newnick);
+                    checkname($nick, $newnick, $stats) if ($self->{cfg}->{show_mostnicks});
                 }
             }
         }
@@ -499,6 +503,21 @@ sub _strip_mirccodes
     $line =~ s/[\002\017\026\037]//go;
 
     return $line;
+}
+
+sub checkname {
+    # This function tracks nickchanges and puts them all in a hash->array,
+    # so we can show all nicks that I user had later (only works properly
+    # when nicktracking is enabled)
+    my ($nick, $newnick, $stats) = @_;
+
+    foreach (@{ $stats->{nicks}{$newnick}}) {
+        if ($_ eq $nick) {
+            return;
+        } 
+    }
+
+    push (@{ $stats->{nicks}{$newnick} }, $nick);
 }
 
 1;

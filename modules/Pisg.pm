@@ -158,6 +158,7 @@ sub get_default_config_settings
         show_mrn => 1,
         show_mru => 1,
         show_voices => 0,
+        show_mostnicks => 0,
 
         # Less important things
 

@@ -2,6 +2,18 @@ pisg (0.35)
    * Translate mouse-over items (eg. "Open in new window: URL")
    * Support for oer bot logfiles (thanks to EQU <equ@equnet.org>)
    * Support for perlbot logfiles (thanks to Travis Roy <travis@scootz.net>)
+   * Add -v / --version commandline option
+   * Fix a rare bug where a user with only one line, and no words were causing
+     unitialized values error.
+   * Many fixes to axur logfile format (thanks, Andrew <andy@lewman.com>)
+   * Fix to irssi logfile handling, where a user was recognized as a mode
+     (thanks, David Leadbeater <dgl@dgl.cx>)
+   * Support new xchat logfile format (from 1.8.6 and up)
+   * Add "show_mostnicks" feature (thanks to "ST8" <st8@barrysworld.com>),
+     this adds a box on the stats page showing how many different nick uses
+     people had
+   * Fix bug in documentation, which said nicktracking was enabled by default,
+     but it really isn't.
 
 pisg (0.34) - Tue, Jan 8th 2002
    * New option 'show_topics', to enable/disable 'last topics'

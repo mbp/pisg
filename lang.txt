@@ -119,6 +119,7 @@ mostwordstopic = "Most used words"
 referencetopic = "Most referenced nick"
 urlstopic = "Most referenced URLs"
 notopic = "A topic was never set on this channel."
+mostnickstopic = "Users with most nicknames"
 bylinetopic = "by [:nick] on [:time]"
 
 ## Other text

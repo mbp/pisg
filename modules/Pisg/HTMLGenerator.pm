@@ -77,6 +77,10 @@ sub create_html
         _html("</table>"); # Needed for sections
     }
 
+    if ($self->{cfg}->{show_mostnicks}) {
+        $self->_mostnicks();
+    }
+
     if ($self->{cfg}->{show_muw}) {
         $self->_mostusedword();
     }
@@ -1639,6 +1643,43 @@ sub _user_times
     }
     return $bar;
 }
+
+sub _mostnicks
+{
+    # List showing the user with most used nicks
+    my $self = shift;
+
+    my @sortnicks = sort { @{ $self->{stats}->{nicks}->{$b} } <=> @{ $self->{stats}->{nicks}->{$a} } } 
+                                keys %{ $self->{stats}->{nicks} };
+
+    if (@{ $self->{stats}->{nicks}->{$sortnicks[0]} } > 1) {
+
+        $self->_headline($self->_template_text('mostnickstopic'));
+
+        _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
+        _html("<td>&nbsp;</td><td class=\"tdtop\"><b>Nick</b></td>");
+        _html("<td class=\"tdtop\"><b>Names Used</b></td></tr>");
+
+        for(my $i = 0; $i < 5; $i++) {
+            last unless $i < @sortnicks;
+            my $nickcount = scalar(@{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
+            my $nickused = join(", ", @{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
+
+            next unless ($nickcount > 1);
+            
+            my $a = $i + 1;
+            my $class = $a == 1 ? 'hirankc' : 'rankc';
+            my $n = $nickcount > 1 ? "names" : "name";
+
+            _html("<tr><td class=\"$class\">$a</td>");
+            _html("<td class=\"hicell\">$sortnicks[$i]<br><font size='1'>($nickcount $n)</font></td>");
+            _html("<td class=\"hicell\" valign='top'><font size='1'>$nickused</font></td>");
+            _html("</tr>");
+        }
+        _html("</table>");
+    }
+}
+
 
 1;
 
