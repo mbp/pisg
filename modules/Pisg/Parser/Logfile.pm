@@ -1,4 +1,4 @@
-package Pisg::Logfile;
+package Pisg::Parser::Logfile;
 
 use strict;
 $^W = 1;
@@ -29,8 +29,8 @@ sub choose_log_format {
     $debug->("Loading module for log format $format");
     eval <<_END;
 use lib '$conf->{modules_dir}';
-use Pisg::Parser::$format;
-\$parser = new Pisg::Parser::$format(\$debug);
+use Pisg::Parser::Format::$format;
+\$parser = new Pisg::Parser::Format::$format(\$debug);
 _END
     if ($@) {
         print STDERR "Could not load parser for '$format': $@\n";
@@ -94,9 +94,11 @@ sub parse_dir {
     die("No files in \"$conf->{logdir}\" matched prefix \"$conf->{prefix}\"");
     closedir(LOGDIR);
 
-    my %state = (lastnick   => "",
-    monocount  => 0,
-    oldtime    => 24);
+    my %state = (
+        lastnick   => "",
+        monocount  => 0,
+        oldtime    => 24
+    );
     foreach my $file (sort @filesarray) {
         $file = $conf->{logdir} . $file;
         parse_file($stats, $lines, $file, \%state);

@@ -1,11 +1,12 @@
-package Pisg::Parser::grufti;
+package Pisg::Parser::Format::bxlog;
 
 use strict;
 $^W = 1;
 
-my $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
-my $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
-my $thirdline  = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
+
+my $normalline = '^\[\d+ \S+\/(\d+):\d+\] <([^>]+)> (.*)';
+my $actionline = '^\[\d+ \S+\/(\d+):\d+\] \* (\S+) (.*)';
+my $thirdline  = '^\[\d+ \S+\/(\d+):(\d+)\] ([<>@!]) (.*)';
 
 my ($debug);
 
@@ -45,7 +46,7 @@ sub actionline
     if ($line =~ /$actionline/) {
 	$debug->("[$lines] Action: $1 $2 $3");
 
-	$hash{hour}   = $1;
+	$hash{hour}    = $1;
 	$hash{nick}   = $2;
 	$hash{saying} = $3;
 
@@ -73,35 +74,38 @@ sub thirdline
     my %hash;
 
     if ($line =~ /$thirdline/) {
-	if (defined $9) {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
-	} else {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8");
-	}
+	$debug->("[$lines] ***: $1 $2 $3 $4");
 
 	$hash{hour} = $1;
 	$hash{min}  = $2;
-	$hash{nick} = $3;
 
-	if ($5 eq 'kicked') {
-	    $hash{kicker} = $3;
-	    $hash{nick} = $6;
+	if ($3 eq '<') {
+	    if  ($4 =~ /^([^!]+)!\S+ was kicked off \S+ by ([^!]+)!/) {
+		$hash{kicker} = $2;
+		$hash{nick} = $1;
+	    }
 
-	} elsif (($4.$5) eq 'haschanged') {
-	    $hash{newtopic} = $9;
+	} elsif ($3 eq '>') {
+	    if ($4 =~ /^([^!])+!\S+ has joined \S+$/) {
+		$hash{nick} = $1;
+		$hash{newjoin} = $1;
+	    }
 
-	} elsif (($4.$5) eq 'modechange') {
-	    $hash{newmode} = substr($6, 1);
-	    $hash{nick} = $9;
-	    $hash{nick} =~ /.*[by ](\S+)/;
-	    $hash{nick} = $1;
+	} elsif ($3 eq '@') {
+	    if ($4 =~ /^Topic by ([^!:])[!:]*: (.*)$/) {
+		$hash{nick} = $1;
+		$hash{newtopic} = $2;
 
-	} elsif ($5 eq 'joined') {
-	    $hash{newjoin} = $1;
+	    } elsif ($4 =~ /^mode \S+ \[([\S]+) [^\]]+\] by ([^!]+)!\S+$/) {
+		$hash{newmode} = $1;
+		$hash{nick} = $2;
+	    }
 
-	} elsif (($3.$4) eq 'Nickchange') {
-	    $hash{nick} = $7;
-	    $hash{newnick} = $9;
+	} elsif ($3 eq '!') {
+	    if ($4 =~ /^(\S+) is known as (\S+)$/) {
+		$hash{nick} = $1;
+		$hash{newnick} = $2;
+	    }
 	}
 
 	return \%hash;

@@ -143,8 +143,8 @@ sub do_channel
     # Pick our stats generator.
     my $analyzer;
     eval <<_END;
-use Pisg::$conf->{logtype};
-\$analyzer = new Pisg::$conf->{logtype}(\$conf, \$debug);
+use Pisg::Parser::$conf->{logtype};
+\$analyzer = new Pisg::Parser::$conf->{logtype}(\$conf, \$debug);
 _END
     if ($@) {
         print STDERR "Could not load stats generator for '$conf->{logtype}': $@\n";

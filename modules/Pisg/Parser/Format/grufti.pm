@@ -1,12 +1,11 @@
-package Pisg::Parser::eggdrop;
+package Pisg::Parser::Format::grufti;
 
 use strict;
 $^W = 1;
- 
 
 my $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
-my $actionline = '^\[(\d+):\d+\] Action: (\S+) (.*)';
-my $thirdline  = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+)(.*)';
+my $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
+my $thirdline  = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
 
 my ($debug);
 
@@ -70,50 +69,39 @@ sub thirdline
     #   newmode         - deops or ops, must be '+o' or '-o', or '+ooo'
     #   newjoin         - a new nick which has joined the channel
     #   newnick         - a person has changed nick and this is the new nick
-    #
-    # The hash my also have a "repeated" key indicating the number of times
-    # the line was repeated.
     my ($self, $line, $lines) = @_;
     my %hash;
 
     if ($line =~ /$thirdline/) {
-	if (defined $7) {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
+	if (defined $9) {
+	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
 	} else {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6");
+	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8");
 	}
 
 	$hash{hour} = $1;
 	$hash{min}  = $2;
 	$hash{nick} = $3;
 
-	if (($4.$5) eq 'kickedfrom') {
-	    $7 =~ /^ by ([\S]+):.*/;
-	    $hash{kicker} = $1;
+	if ($5 eq 'kicked') {
+	    $hash{kicker} = $3;
+	    $hash{nick} = $6;
 
-	} elsif ($3 eq 'Topic') {
-	    $7 =~ /^ by ([\S]+)![\S]+: (.*)/;
-	    $hash{nick} = $1;
-	    $hash{newtopic} = $2;
+	} elsif (($4.$5) eq 'haschanged') {
+	    $hash{newtopic} = $9;
 
 	} elsif (($4.$5) eq 'modechange') {
-	    my $newmode = $6;
-	    if ($7 =~ /^ .+ by ([\S]+)!.*/) {
-		$hash{nick} = $1;
-		$newmode =~ s/^\'//;
-		$hash{newmode} = $newmode;
-	    }
+	    $hash{newmode} = substr($6, 1);
+	    $hash{nick} = $9;
+	    $hash{nick} =~ /.*[by ](\S+)/;
+	    $hash{nick} = $1;
 
 	} elsif ($5 eq 'joined') {
-	    $hash{newjoin} = $3;
+	    $hash{newjoin} = $1;
 
-	} elsif (($3.$4) eq 'Nickchange:') {
-	    $hash{nick} = $5;
-	    $7 =~ /([\S]+)/;
-	    $hash{newnick} = $1;
-
-	} elsif (($3.$4.$5) eq 'Lastmessagerepeated') {
-	    $hash{repeated} = $6;
+	} elsif (($3.$4) eq 'Nickchange') {
+	    $hash{nick} = $7;
+	    $hash{newnick} = $9;
 	}
 
 	return \%hash;

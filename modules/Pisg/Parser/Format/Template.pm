@@ -2,7 +2,7 @@
 # necessary changes to the template, you will need to add the new module to
 # pisg.pl and add an entry for it in the choose_log_format subroutine.
 
-package Pisg::Parser::Template;
+package Pisg::Parser::Format::Template;
 
 use strict;
 $^W = 1;

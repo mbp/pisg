@@ -1,16 +1,14 @@
-package Pisg::Parser::xchat;
+package Pisg::Parser::Format::mIRC;
 
 use strict;
 $^W = 1;
 
-
-my $normalline = '^(\d+):\d+:\d+ <([^>]+)>\s+(.*)';
-my $actionline = '^(\d+):\d+:\d+ \*\s+(\S+) (.*)';
-my $thirdline  = '^(\d+):(\d+):\d+ .--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)';
+my $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
+my $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
+my $thirdline  = '^\[(\d+):(\d+)\] \*\*\* (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
 
 my ($debug);
 
-# Preloaded methods go here.
 
 sub new
 {
@@ -28,8 +26,8 @@ sub normalline
     if ($line =~ /$normalline/) {
 	$debug->("[$lines] Normal: $1 $2 $3");
 
-	$hash{hour} = $1;
-	$hash{nick} = $2;
+	$hash{hour}   = $1;
+	$hash{nick}   = $2;
 	$hash{saying} = $3;
 
 	return \%hash;
@@ -47,8 +45,8 @@ sub actionline
     if ($line =~ /$actionline/) {
 	$debug->("[$lines] Action: $1 $2 $3");
 
-	$hash{hour} = $1;
-	$hash{nick} = $2;
+	$hash{hour}   = $1;
+	$hash{nick}   = $2;
 	$hash{saying} = $3;
 
 	return \%hash;
@@ -75,29 +73,29 @@ sub thirdline
     my %hash;
 
     if ($line =~ /$thirdline/) {
-	$debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
+	if (defined $8) {
+	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8");
+	} else {
+	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
+	}
 
 	$hash{hour} = $1;
-	$hash{min} = $2;
+	$hash{min}  = $2;
 	$hash{nick} = $3;
 
-	if (($4.$5) eq 'haskicked') {
-	    $hash{kicker} = $3;
-	    $hash{nick} = $6;
+	if (($4.$5) eq 'waskicked') {
+	    $hash{kicker} = $7;
 
-	} elsif (($4.$5) eq 'haschanged') {
-	    $hash{newtopic} = $9;
+	} elsif (($4.$5) eq 'changes') {
+	    $hash{newtopic} = "$7 $8";
 
-	} elsif (($4.$5) eq 'giveschannel') {
-	    $hash{newmode} = '+o';
+	} elsif (($4.$5) eq 'setsmode:') {
+	    $hash{newmode} = $6;
 
-	} elsif (($4.$5) eq 'removeschannel') {
-	    $hash{newmode} = '-o';
+	} elsif (($4.$5) eq 'hasjoined') {
+	    $hash{newjoin} = $3;
 
-	} elsif (($5.$6) eq 'hasjoined') {
-	    $hash{newjoin} = $1;
-
-	} elsif (($5.$6) eq 'nowknown') {
+	} elsif (($4.$5) eq 'nowknown') {
 	    $hash{newnick} = $8;
 	}
 
