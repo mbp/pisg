@@ -182,9 +182,9 @@ sub init_lineformats {
         $actionline = '^\[(\d+):\d+\] Action: (\S+) (.*)';
         $thirdline = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+)(.*)';
     } elsif ($config->{format} eq 'bxlog') {
-        $normalline = '^\[\d+ \w+\/(\d+):\d+\] <([^>]+)> (.*)';
-        $actionline = '^\[\d+ \w+\/(\d+):\d+\] \* (\S+) (.*)';
-        $thirdline = '^\[\d+ \w+\/(\d+):(\d+)\] \S (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)';
+        $normalline = '^\[\d+ \S+\/(\d+):\d+\] <([^>]+)> (.*)';
+        $actionline = '^\[\d+ \S+\/(\d+):\d+\] \* (\S+) (.*)';
+        $thirdline = '^\[\d+ \S+\/(\d+):(\d+)\] ([<>@!]) (.*)';
     } elsif ($config->{format} eq 'grufti') {
         $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
         $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
@@ -416,7 +416,7 @@ sub parse_file
         }
 
         # Match *** lines.
-        elsif ($hashref = parse_thirdline($line)) {
+        elsif (($hashref = parse_thirdline($line)) && $hashref->{nick}) {
 
             my ($hour, $min, $nick, $kicker, $newtopic, $newmode, $newjoin, $newnick);
 
@@ -565,9 +565,12 @@ sub parse_thirdline
     if ($line =~ /$thirdline/) {
         if ($7) {
           debug("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
-        } else {
+        } elsif ($5) {
           debug("[$lines] ***: $1 $2 $3 $4 $5 $6");
+        } else {
+          debug("[$lines] ***: $1 $2 $3 $4");
         }
+
 
         if ($config->{format} eq 'mIRC') {
             $hash{hour} = $1;
@@ -651,27 +654,35 @@ sub parse_thirdline
         } elsif ($config->{format} eq 'bxlog') {
             $hash{hour} = $1;
             $hash{min} = $2;
-            $hash{nick} = $3;
 
-            if ($5 eq 'kicked') {
-                $hash{kicker} = $9;
-                $hash{kicker} =~ s/!.*$//;
+            if ($3 eq '<') {
+                if  ($4 =~ /^([^!]+)!([\S+]) was kicked off (\S+) by ([^!]+)!(\S+) \(([^)]+)\)$/) {
+                    $hash{kicker} = $4;
+                    $hash{nick} = $1;
+                }
 
-            } elsif ($3 eq 'Topic') {
-                $hash{nick} = substr($5, 0, -1);
-                $hash{newtopic} = "$6 $7 $8 $9 $10";
+            } elsif ($3 eq '>') {
+                if ($4 =~ /^([^!])+!(\S+) has joined (\S+)$/) {
+                    $hash{nick} = $1;
+                    $hash{newjoin} = $1;
+                }
 
-            } elsif ($5 =~ /^\[[+-]o$/) {
-                $hash{newmode} = substr($5, 0, -1);
+            } elsif ($3 eq '@') {
+                if ($4 =~ /^Topic by ([^!:])[!:]*: (.*)$/) {
+                    $hash{nick} = $1;
+                    $hash{newtopic} = $2;
 
-            } elsif (($4.$5) eq 'hasjoined') {
-                $hash{newjoin} = $1;
+                } elsif ($4 =~ /^mode (\S+) \[([+-]o)\S* (\S+)[^\]]*\] by ([^!]+)!(\S+)$/) {
+                    $hash{newmode} = $2;
+                    $hash{nick} = $4;
+                }
 
-            } elsif (($4.$5) eq 'isknown') {
-                $hash{newnick} = $6;
+            } elsif ($3 eq '!') {
+                if ($4 =~ /^(\S+) is known as (\S+)$/) {
+                  $hash{nick} = $1;
+                  $hash{newnick} = $2;
+                }
             }
-
-            $hash{nick} =~ s/!.*$//;
 
         } elsif ($config->{format} eq 'grufti') {
             $hash{hour} = $1;
