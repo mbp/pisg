@@ -1116,7 +1116,8 @@ activenickstopic = "Suurimmat höpöttäjät"
 mostwordstopic = "Käytetyimpiä sanoja"
 referencetopic = "Kaivatuin irkkaaja"
 urlstopic = "Yleisimmät linkit"
-notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia."
+notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia..."
+bylinetopic = "Laittanut <b>[:nick]</b> klo <b>[:time]</b>"
 
 ## Other text (Muuta sälää)
 
