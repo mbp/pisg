@@ -66,7 +66,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \
 
-pisg:
+release:
 	mkdir -p newrelease
 
 	mkdir $(DIRNAME)
