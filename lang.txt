@@ -1400,6 +1400,7 @@ urlstopic = "Mest refererade URLer"
 notopic = "Ingen rubrik blev nånsin satt på denna kanal"
 bylinetopic = "Av [:nick] klockan [:time]"
 dailyactivitytopic = "Daglig aktivitet (senaste [:n] dagarna)"
+activegenderstopic = "Mest aktiva kön"
 
 ## Other text
 
