@@ -143,14 +143,29 @@ sub _parse_dir
         my (@month, @day, @year);
         for my $file (@filesarray) {
             $file =~ /$mreg/;
+            unless (defined $1) {
+                splice(@filesarray,$#month + 1, 1);
+                next;
+            }
             my $month = $1;
             $month = lc $month;
             $month = $months{$month}
                 if (defined $months{$month});
             push @month, $month;
             $file =~ /$dreg/;
+            unless (defined $1) {
+                splice(@filesarray,$#day + 1, 1);
+                splice(@month,$#day + 1);
+                next;
+            }
             push @day, $1;
             $file =~ /$yreg/;
+            unless (defined $1) {
+                splice(@filesarray,$#year + 1, 1);
+                splice(@month,$#year + 1);
+                splice(@day,$#year + 1);
+                next;
+            }
             push @year, $1;
         }
         my @newarray = @filesarray[ sort {
