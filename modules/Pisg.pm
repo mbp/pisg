@@ -114,7 +114,6 @@ sub get_default_config_settings
 
         # Colors / Layout
 
-        bgpic => '', # FIXME
         hicell => '#BABADD', # FIXME 
         hicell2 => '#CCCCCC', # FIXME
 
@@ -185,8 +184,6 @@ sub get_default_config_settings
         ignorewords => '',
         tablewidth => 614,
         regexpaliases => 0,
-
-        # Developer stuff
 
         version => "0.39-cvs",
     };

@@ -139,7 +139,6 @@ sub create_html
 sub _htmlheader
 {
     my $self = shift;
-    my $bgpic = "";
     my %hash = (
         network    => $self->{cfg}->{network},
         maintainer => $self->{cfg}->{maintainer},
@@ -155,9 +154,6 @@ sub _htmlheader
     my @CSS = <FILE>;
 
     my $title = $self->_template_text('pagetitle1', %hash);
-    if ($self->{cfg}->{bgpic}) {
-        $bgpic = " background=\"$self->{cfg}->{bgpic}\"";
-    }
     print OUTPUT <<HTML;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -167,7 +163,7 @@ sub _htmlheader
 <style type="text/css">
 @CSS
 </style></head>
-<body$bgpic>
+<body>
 <div align="center">
 HTML
     _html("<span class=\"title\">$title</span><br />");
