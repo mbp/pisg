@@ -17,6 +17,8 @@ pisg (0.64) - ??
    * Make "most used words" case-insensitive.
    * Applied patch by Hanno Hecker to keep only the last 50 quotes for each
      nick while parsing. Saves memory and is probably saner anyway (thanks!).
+   * Add version number to documentation title (and let the release Makefile
+     update it).
 
 pisg (0.63) - Wed Jan, 12th 2005
    Morten:

@@ -1,7 +1,9 @@
 # Bloated Makefile to make new releases of pisg
 
+all: release
+
 # Ugly hack to get the version number from Pisg.pm
-VERSION = `grep "version =>" modules/Pisg.pm | sed 's/.*\"\(.*\)\".*/\1/'`
+VERSION = $(shell grep "version =>" modules/Pisg.pm | sed 's/.*\"\(.*\)\".*/\1/')
 
 DIRNAME = pisg-$(VERSION)
 
@@ -94,7 +96,13 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \
 
-release:
+doc-version:
+	perl -i -pe 's/(<title>pisg ).*(documentation<\/title>)/$${1}$(VERSION) $${2}/' docs/pisg-doc.xml
+
+docs:
+	$(MAKE) -C docs
+
+release: doc-version docs
 	mkdir -p newrelease
 
 	mkdir $(DIRNAME)
@@ -106,7 +114,6 @@ release:
 	mkdir $(DIRNAME)/gfx
 	cp $(GFX) $(DIRNAME)/gfx
 
-	cd docs && make
 	mkdir $(DIRNAME)/docs
 	cp -r $(DOCS) $(DIRNAME)/docs
 
@@ -133,7 +140,10 @@ release:
 	zip -r pisg $(DIRNAME)
 	mv pisg.zip newrelease/$(ZIPFILE)
 	mv $(DIRNAME) newrelease
+
 clean:
 	cd docs && make clean
 	rm -rf newrelease/
 	rm -rf $(DIRNAME)
+
+.PHONY: all release doc-version docs clean
