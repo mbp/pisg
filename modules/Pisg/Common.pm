@@ -146,7 +146,7 @@ sub match_urls
     my $str = shift;
 
     # Interpret 'www.' as 'http://www.'
-    $str =~ s/(http:\/\/)?www\./http:\/\/www\./igo;
+    $str =~ s/\b(http:\/\/)?www\./http:\/\/www\./igo;
 
     my @urls;
     while ($str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~\@:]+\.[-a-zA-Z0-9.,_~=:&amp;\@%?#\/+]+)//io) { 

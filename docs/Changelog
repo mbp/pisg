@@ -1,6 +1,8 @@
 pisg (x.xx)
    * Revert most of the performance improvement changes, they caused bugs.
    * Really fix topics with the mbot format.
+   * Fix wrong recognizing of www URLs where "ewww" would be recognized as an
+     URL.
 
 pisg (0.53) - Tue Mar, 23rd 2004
    * Several noticeable performance improvements (thanks, Hanno Hecker)
