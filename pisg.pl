@@ -25,65 +25,65 @@ my $config;
 my $words;
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
-$config->{channel} = "#channel";	# The name of your channel.
-$config->{logfile} = "channel.log";	# The exact filename of the logfile
-$config->{format} = "mIRC";		# logfile format. see FORMATS file
-$config->{network} = "SomeIRCNet";	# Network the channels is using.
-$config->{outputfile} = "index.html";	# The name of the html file to be generated
-$config->{maintainer} = "MAINTAINER";	# The maintainer or bot which makes the logfile
-$config->{pagehead} = "none";		# Some 'page header' file which you want to
+$conf->{channel} = "#channel";	# The name of your channel.
+$conf->{logfile} = "channel.log";	# The exact filename of the logfile
+$conf->{format} = "mIRC";		# logfile format. see FORMATS file
+$conf->{network} = "SomeIRCNet";	# Network the channels is using.
+$conf->{outputfile} = "index.html";	# The name of the html file to be generated
+$conf->{maintainer} = "MAINTAINER";	# The maintainer or bot which makes the logfile
+$conf->{pagehead} = "none";		# Some 'page header' file which you want to
 					# include in top of the stats
 
-$config->{configfile} = "pisg.cfg";	# Path to config file (aliases, ignores,
+$conf->{configfile} = "pisg.cfg";	# Path to config file (aliases, ignores,
 					# pics and more, see pisg.cfg for examples)
 
-$config->{imagepath} = "";	# If your user pictures is located
+$conf->{imagepath} = "";	# If your user pictures is located
 				# some special directory, set the path here.
 
-$config->{logdir} = "";		# If you specify a path to a dir here, then
+$conf->{logdir} = "";		# If you specify a path to a dir here, then
 				# pisg will take that dir, and parse ALL
 				# logfiles in it, and create 1 HTML file
 				# from it
 
-$config->{lang} = 'EN';			# Language to use:
+$conf->{lang} = 'EN';			# Language to use:
 			   	        # EN | DE | DK | FR | ES | PL
-$config->{langfile} = 'lang.txt';	# Name of language file
+$conf->{langfile} = 'lang.txt';	# Name of language file
 
-$config->{prefix} = "";         # If you specify a string here and have $logdir
+$conf->{prefix} = "";         # If you specify a string here and have $logdir
                                 # set, then only those files starting with
                                 # $prefix in $logdir will be read.
 
 
 
 # Here you can set the colors for your stats page..
-$config->{bgcolor} = "#dedeee";		# Background color of the page
-$config->{text} = "black";		# Normal text color
-$config->{hbgcolor} = "#666699";	# Background color in headlines
-$config->{hcolor} = "white";		# Text color in headline
-$config->{hicell} = "#BABADD";		# Background color in highlighted cells
-$config->{hicell2} = "#CCCCCC";		# Background color in highlighted cells
-$config->{tdcolor} = "black";		# Color of text in tables
-$config->{tdtop} = "#C8C8DD";		# Top color in some tables.
-$config->{link} = "#0b407a";		# Color of links
-$config->{vlink} = "#0b407a";		# Color of visited links
-$config->{hlink} = "#0b407a";		# Color of hovered links
-$config->{headline} = "#000000";	# Border color of headlines
-$config->{rankc} = "#CCCCCC";           # Colors of 'ranks' (1,2,3,4)
-$config->{pic1} = "pipe-blue.png";	# Bar-graphic-file for normal times
-$config->{pic2} = "pipe-purple.png";    # Bar-graphic-file for top-times
+$conf->{bgcolor} = "#dedeee";		# Background color of the page
+$conf->{text} = "black";		# Normal text color
+$conf->{hbgcolor} = "#666699";	# Background color in headlines
+$conf->{hcolor} = "white";		# Text color in headline
+$conf->{hicell} = "#BABADD";		# Background color in highlighted cells
+$conf->{hicell2} = "#CCCCCC";		# Background color in highlighted cells
+$conf->{tdcolor} = "black";		# Color of text in tables
+$conf->{tdtop} = "#C8C8DD";		# Top color in some tables.
+$conf->{link} = "#0b407a";		# Color of links
+$conf->{vlink} = "#0b407a";		# Color of visited links
+$conf->{hlink} = "#0b407a";		# Color of hovered links
+$conf->{headline} = "#000000";	# Border color of headlines
+$conf->{rankc} = "#CCCCCC";           # Colors of 'ranks' (1,2,3,4)
+$conf->{pic1} = "pipe-blue.png";	# Bar-graphic-file for normal times
+$conf->{pic2} = "pipe-purple.png";    # Bar-graphic-file for top-times
 
 # Other things that you might set, but not everyone cares about them
-$config->{minquote} = "25";	# Minimal value of letters for a random quote
-$config->{maxquote} = "65";	# Maximum value of letters for a random quote
-$config->{wordlength} = "5";	# The minimum number of chars an interesting
+$conf->{minquote} = "25";	# Minimal value of letters for a random quote
+$conf->{maxquote} = "65";	# Maximum value of letters for a random quote
+$conf->{wordlength} = "5";	# The minimum number of chars an interesting
 				# word may be (in 'most referenced words')
-$config->{activenicks} = "25";	# Number of nicks to show in the 'top 25'
-$config->{activenicks2} = "30";	# Nicks to show in 'these didnt make it...'
-$config->{topichistory} = "3";	# How many topics to show in 'latest topics'
-$config->{nicktracking} = 0;	# Track nickchanges and create aliases (can
+$conf->{activenicks} = "25";	# Number of nicks to show in the 'top 25'
+$conf->{activenicks2} = "30";	# Nicks to show in 'these didnt make it...'
+$conf->{topichistory} = "3";	# How many topics to show in 'latest topics'
+$conf->{nicktracking} = 0;	# Track nickchanges and create aliases (can
 				# be slow, so it's disabled by default)
 
-$config->{timeoffset} = "+0";	# A time offset on the stats page - if your
+$conf->{timeoffset} = "+0";	# A time offset on the stats page - if your
 				# country has a different timezone than the
 				# machine where the stats are being
 				# generated, then for example do +1
@@ -91,9 +91,9 @@ $config->{timeoffset} = "+0";	# A time offset on the stats page - if your
 $words->{foul} = "ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe"; # If not set in pisg.cfg set your Foulwords here.
 
 # You shouldn't care about anything below this point
-$config->{debug} = 0;			# 0 = Debugging off, 1 = Debugging on
-$config->{debugfile} = "debug.log";	# Path to debug file(must be set if $debug == 1)
-$config->{version} = "v0.18-cvs";
+$conf->{debug} = 0;			# 0 = Debugging off, 1 = Debugging on
+$conf->{debugfile} = "debug.log";	# Path to debug file(must be set if $debug == 1)
+$conf->{version} = "v0.18-cvs";
 
 my ($lines, $kicked, $gotkicked, $smile, $longlines, $time, $timestamp, %alias,
 $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
@@ -105,7 +105,7 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 
 sub main
 {
-    print "pisg $config->{version} - Perl IRC Statistics Generator\n\n";
+    print "pisg $conf->{version} - Perl IRC Statistics Generator\n\n";
     init_config();      # Init config. (Aliases, ignores, other options etc.)
     init_words();	# Init words. (Foulwords etc)
     init_pisg();        # Init commandline arguments and other things
@@ -113,10 +113,10 @@ sub main
 
     init_debug(); 	        # Init the debugging file
 
-    if ($config->{logdir}) {
+    if ($conf->{logdir}) {
         parse_dir();            # Run through all logfiles in dir
     } else {
-        parse_file($config->{logfile});   # Run through the whole logfile
+        parse_file($conf->{logfile});   # Run through the whole logfile
     }
 
     create_html();      # Create the HTML
@@ -135,11 +135,11 @@ sub init_pisg
 
     $timestamp = time;
 
-    if ($config->{timeoffset} =~ /\+(\d+)/) {
+    if ($conf->{timeoffset} =~ /\+(\d+)/) {
         # We must plus some hours to the time
         $timestamp += 3600 * $1; # 3600 seconds per hour
 
-    } elsif ($config->{timeoffset} =~ /-(\d+)/) {
+    } elsif ($conf->{timeoffset} =~ /-(\d+)/) {
         # We must remove some hours from the time
         $timestamp -= 3600 * $1; # 3600 seconds per hour
     }
@@ -155,11 +155,11 @@ sub init_pisg
     $lastnormal = "";
 
     # Add trailing slash when it's not there..
-    if (substr($config->{imagepath}, -1) ne '/') {
-        $config->{imagepath} =~ s/(.*)/$1\//;
+    if (substr($conf->{imagepath}, -1) ne '/') {
+        $conf->{imagepath} =~ s/(.*)/$1\//;
     }
 
-    print "Statistics for channel $config->{channel} \@ $config->{network} by $config->{maintainer}\n\n";
+    print "Statistics for channel $conf->{channel} \@ $conf->{network} by $conf->{maintainer}\n\n";
 
 }
 
@@ -171,29 +171,29 @@ sub init_lineformats {
     # regex here, and then you also have to modify the parse subroutines called
     # 'parse_normalline()', 'parse_actionline()' and 'parse_thirdline()'
 
-    if ($config->{format} eq 'xchat') {
+    if ($conf->{format} eq 'xchat') {
         $normalline = '^(\d+):\d+:\d+ <([^>]+)>\s+(.*)';
         $actionline = '^(\d+):\d+:\d+ \*\s+(\S+) (.*)';
         $thirdline = '^(\d+):(\d+):\d+ .--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)';
-    } elsif ($config->{format} eq 'mIRC') {
+    } elsif ($conf->{format} eq 'mIRC') {
         $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
         $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
         $thirdline = '^\[(\d+):(\d+)\] \*\*\* (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
-    } elsif ($config->{format} eq 'eggdrop') {
+    } elsif ($conf->{format} eq 'eggdrop') {
         $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
         $actionline = '^\[(\d+):\d+\] Action: (\S+) (.*)';
         $thirdline = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+)(.*)';
-    } elsif ($config->{format} eq 'bxlog') {
+    } elsif ($conf->{format} eq 'bxlog') {
         $normalline = '^\[\d+ \S+\/(\d+):\d+\] <([^>]+)> (.*)';
         $actionline = '^\[\d+ \S+\/(\d+):\d+\] \* (\S+) (.*)';
         $thirdline = '^\[\d+ \S+\/(\d+):(\d+)\] ([<>@!]) (.*)';
-    } elsif ($config->{format} eq 'grufti') {
+    } elsif ($conf->{format} eq 'grufti') {
         $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
         $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
         $thirdline = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
 
     } else {
-        die("Logfile format not supported, check \$config->{format} setting.\n");
+        die("Logfile format not supported, check \$conf->{format} setting.\n");
     }
 
 }
@@ -202,8 +202,8 @@ sub init_config
 {
     get_cmdlineoptions();
 
-    if (open(CONFIG, $config->{configfile})) {
-        print "Using config file: $config->{configfile}\n";
+    if (open(CONFIG, $conf->{configfile})) {
+        print "Using config file: $conf->{configfile}\n";
 
         my $lineno = 0;
         while (<CONFIG>)
@@ -218,7 +218,7 @@ sub init_config
                 if ($line =~ /nick="([^"]+)"/) {
                     $nick = $1;
                 } else {
-                    print STDERR "Warning: no nick specified in $config->{configfile} on line $lineno\n";
+                    print STDERR "Warning: no nick specified in $conf->{configfile} on line $lineno\n";
                     next;
                 }
 
@@ -242,13 +242,13 @@ sub init_config
                     push(@ignore, $nick);
                 }
 
-            } elsif ($line =~ /<settings(.*)>/) {
+            } elsif ($line =~ /<set(.*)>/) {
 
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1); # Make the string lowercase
-                    unless (($config->{$var} eq $2) || $config->{cmdl}{$var}) {
-                        $config->{$var} = $2;
+                    unless (($conf->{$var} eq $2) || $conf->{cmdl}{$var}) {
+                        $conf->{$var} = $2;
                     }
                     debug("Conf: $var = $2");
                 }
@@ -285,32 +285,32 @@ sub init_words {
 
 sub init_debug
 {
-    if ($config->{debug}) {
-        print "[ Debugging => $config->{debugfile} ]\n";
-        open(DEBUG,"> $config->{debugfile}") or print STDERR "$0: Unable to open debug
-        file($config->{debugfile}): $!\n";
-        debug("*** pisg debug file for $config->{logfile}\n");
+    if ($conf->{debug}) {
+        print "[ Debugging => $conf->{debugfile} ]\n";
+        open(DEBUG,"> $conf->{debugfile}") or print STDERR "$0: Unable to open debug
+        file($conf->{debugfile}): $!\n";
+        debug("*** pisg debug file for $conf->{logfile}\n");
 
     }
 }
 
 sub parse_dir
 {
-    print "Going into $config->{logdir} and parsing all files there...\n\n";
+    print "Going into $conf->{logdir} and parsing all files there...\n\n";
     my @filesarray;
-    opendir(LOGDIR, $config->{logdir}) || die("can't opendir $config->{logdir}: $!");
+    opendir(LOGDIR, $conf->{logdir}) || die("can't opendir $conf->{logdir}: $!");
     unless (@filesarray = readdir(LOGDIR)) {
-        die("No files in $config->{logdir}!");
+        die("No files in $conf->{logdir}!");
     }
     close(LOGDIR);
 
     # Add trailing slash when it's not there..
-    if (substr($config->{logdir}, -1) ne '/') {
-        $config->{logdir} =~ s/(.*)/$1\//;
+    if (substr($conf->{logdir}, -1) ne '/') {
+        $conf->{logdir} =~ s/(.*)/$1\//;
     }
 
     foreach my $file (@filesarray) {
-        $file = $config->{logdir} . $file;
+        $file = $conf->{logdir} . $file;
         parse_file($file);
     }
 
@@ -321,7 +321,7 @@ sub parse_file
     my $file = shift;
 
     # This parses the file..
-    print "Analyzing log($file) in '$config->{format}' format...\n";
+    print "Analyzing log($file) in '$conf->{format}' format...\n";
 
     if ($file =~ /.bz$/ || $file =~ /.bz2$/) {
         open (LOGFILE, "bunzip2 -c $file |") or die("$0: Unable to open logfile($file): $!\n");
@@ -379,7 +379,7 @@ sub parse_file
 
                     my $l = length($saying);
 
-                    if ($l > $config->{minquote} && $l < $config->{maxquote}) {
+                    if ($l > $conf->{minquote} && $l < $conf->{maxquote}) {
                         # Creates $hash{nick}[n] - a hash of an array.
                         push (@{ $sayings{$nick} }, htmlentities($saying));
                         $longlines{$nick}++;
@@ -408,7 +408,7 @@ sub parse_file
 
                     foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
                         # remove uninteresting words
-                        next unless (length($word) > $config->{wordlength});
+                        next unless (length($word) > $conf->{wordlength});
                         # ignore contractions
                         next if ($word =~ m/'..?$/);
 
@@ -488,7 +488,7 @@ sub parse_file
                     $tookop{$nick} += $opchange[1] if $opchange[1];
                 } elsif (defined($newjoin)) {
                     $joins{$nick}++;
-                } elsif (defined($newnick) && ($config->{nicktracking} == 1)) {
+                } elsif (defined($newnick) && ($conf->{nicktracking} == 1)) {
                     if (find_alias($newnick) eq $newnick) {
                         if (defined($alias{$nick}) && !defined($alias{$newnick})) {
                             push (@{$alias{$nick}}, $newnick);
@@ -532,8 +532,8 @@ sub parse_normalline
     if ($line =~ /$normalline/) {
         debug("[$lines] Normal: $1 $2 $3");
 
-        if (($config->{format} eq 'mIRC') || ($config->{format} eq 'xchat') || ($config->{format} eq
-        'eggdrop') || ($config->{format} eq 'bxlog') || ($config->{format} eq 'grufti')) {
+        if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
+        'eggdrop') || ($conf->{format} eq 'bxlog') || ($conf->{format} eq 'grufti')) {
 
             $hash{hour} = $1;
             $hash{nick} = $2;
@@ -559,8 +559,8 @@ sub parse_actionline
     if ($line =~ /$actionline/) {
         debug("[$lines] Action: $1 $2 $3");
 
-        if (($config->{format} eq 'mIRC') || ($config->{format} eq 'xchat') || ($config->{format} eq
-        'eggdrop') || $config->{format} eq 'bxlog' || ($config->{format} eq 'grufti')) {
+        if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
+        'eggdrop') || $conf->{format} eq 'bxlog' || ($conf->{format} eq 'grufti')) {
 
             $hash{hour} = $1;
             $hash{nick} = $2;
@@ -604,7 +604,7 @@ sub parse_thirdline
         }
 
 
-        if ($config->{format} eq 'mIRC') {
+        if ($conf->{format} eq 'mIRC') {
             $hash{hour} = $1;
             $hash{min} = $2;
             $hash{nick} = $3;
@@ -626,7 +626,7 @@ sub parse_thirdline
             }
 
 
-        } elsif ($config->{format} eq 'xchat') {
+        } elsif ($conf->{format} eq 'xchat') {
             $hash{hour} = $1;
             $hash{min} = $2;
             $hash{nick} = $3;
@@ -651,7 +651,7 @@ sub parse_thirdline
                 $hash{newnick} = $8;
             }
 
-        } elsif ($config->{format} eq 'eggdrop') {
+        } elsif ($conf->{format} eq 'eggdrop') {
             $hash{hour} = $1;
             $hash{min} = $2;
             $hash{nick} = $3;
@@ -683,7 +683,7 @@ sub parse_thirdline
                 $repeated = $6;
             }
 
-        } elsif ($config->{format} eq 'bxlog') {
+        } elsif ($conf->{format} eq 'bxlog') {
             $hash{hour} = $1;
             $hash{min} = $2;
 
@@ -716,7 +716,7 @@ sub parse_thirdline
                 }
             }
 
-        } elsif ($config->{format} eq 'grufti') {
+        } elsif ($conf->{format} eq 'grufti') {
             $hash{hour} = $1;
             $hash{min} = $2;
             $hash{nick} = $3;
@@ -827,12 +827,12 @@ sub template_text
 
     my $text;
 
-    if (!$T{$config->{lang}}{$template}) {
+    if (!$T{$conf->{lang}}{$template}) {
         # Fall back to English if the language template doesn't exist
         $text = $T{EN}{$template};
     }
 
-    $text = $T{$config->{lang}}{$template};
+    $text = $T{$conf->{lang}}{$template};
 
     if (!$text) {
         die("No such template $template\n");
@@ -875,7 +875,7 @@ sub replace_links
 
 sub debug
 {
-    if ($config->{debug}) {
+    if ($conf->{debug}) {
         my $debugline = $_[0] . "\n";
         print DEBUG $debugline;
     }
@@ -903,9 +903,9 @@ sub create_html
     # This is where all subroutines get executed, you can actually design
     # your own layout here, the lines should be self-explainable
 
-    print "Now generating HTML($config->{outputfile})...\n";
+    print "Now generating HTML($conf->{outputfile})...\n";
 
-    open (OUTPUT, "> $config->{outputfile}") or die("$0: Unable to open outputfile($config->{outputfile}): $!\n");
+    open (OUTPUT, "> $conf->{outputfile}") or die("$0: Unable to open outputfile($conf->{outputfile}): $!\n");
 
     htmlheader();
     pageheader();
@@ -970,22 +970,22 @@ sub activetimes
     for my $hour (sort keys %times) {
         debug("Time: $hour => ". $times{$hour});
         if ($toptime[0] == $hour) {
-            $image = $config->{pic2};
+            $image = $conf->{pic2};
         } else {
-            $image = $config->{pic1};
+            $image = $conf->{pic1};
         }
 
         my $size = ($times{$hour} / $highest_value) * 100;
         my $percent = ($times{$hour} / $lines) * 100;
         $percent =~ s/(\.\d)\d+/$1/;
 
-        if ($config->{timeoffset} =~ /\+(\d+)/) {
+        if ($conf->{timeoffset} =~ /\+(\d+)/) {
             # We must plus some hours to the time
             $hour += $1;
             $hour = $hour % 24;
             if ($hour < 10) { $hour = "0" . $hour; }
 
-        } elsif ($config->{timeoffset} =~ /-(\d+)/) {
+        } elsif ($conf->{timeoffset} =~ /-(\d+)/) {
             # We must remove some hours from the time
             $hour -= $1;
             $hour = $hour % 24;
@@ -1024,23 +1024,23 @@ sub activenicks
     headline(template_text('activenickstopic'));
 
     html("<table border=\"0\" width=\"614\"><tr>");
-    html("<td>&nbsp;</td><td bgcolor=\"$config->{tdtop}\"><b>" . template_text('nick') . "</b></td><td bgcolor=\"$config->{tdtop}\"><b>" . template_text('numberlines') ."</b></td><td bgcolor=\"$config->{tdtop}\"><b>". template_text('randquote') ."</b></td>");
+    html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberlines') ."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>". template_text('randquote') ."</b></td>");
     if (%userpics) {
-        html("<td bgcolor=\"$config->{tdtop}\"><b>" . template_text('userpic') ."</b></td>");
+        html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('userpic') ."</b></td>");
     }
 
     html("</tr>");
 
     my @active = sort { $line{$b} <=> $line{$a} } keys %line;
 
-    if ($config->{activenicks} > $nicks) {
-        $config->{activenicks} = $nicks;
+    if ($conf->{activenicks} > $nicks) {
+        $conf->{activenicks} = $nicks;
         print "Note: There was less nicks in the logfile than your specificied there to be in most active nicks...\n";
     }
 
     my ($nick, $visiblenick, $randomline);
     my $i = 1;
-    for (my $c = 0; $c < $config->{activenicks}; $c++) {
+    for (my $c = 0; $c < $conf->{activenicks}; $c++) {
         $nick = $active[$c];
         $visiblenick = $active[$c];
 
@@ -1059,10 +1059,10 @@ sub activenicks
             $visiblenick = replace_links($userlinks{$nick}, $nick);
         }
 
-        my $h = $config->{hicell};
+        my $h = $conf->{hicell};
         $h =~ s/^#//;
         $h = hex $h;
-        my $h2 = $config->{hicell2};
+        my $h2 = $conf->{hicell2};
         $h2 =~ s/^#//;
         $h2 = hex $h2;
         my $f_b = $h & 0xff;
@@ -1071,18 +1071,18 @@ sub activenicks
         my $t_b = $h2 & 0xff;
         my $t_g = ($h2 & 0xff00) >> 8;
         my $t_r = ($h2 & 0xff0000) >> 16;
-        my $col_b  = sprintf "%0.2x", abs int(((($t_b - $f_b) / $config->{activenicks}) * +$c) + $f_b);
-        my $col_g  = sprintf "%0.2x", abs int(((($t_g - $f_g) / $config->{activenicks}) * +$c) + $f_g);
-        my $col_r  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $config->{activenicks}) * +$c) + $f_r);
+        my $col_b  = sprintf "%0.2x", abs int(((($t_b - $f_b) / $conf->{activenicks}) * +$c) + $f_b);
+        my $col_g  = sprintf "%0.2x", abs int(((($t_g - $f_g) / $conf->{activenicks}) * +$c) + $f_g);
+        my $col_r  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $conf->{activenicks}) * +$c) + $f_r);
 
 
-        html("<tr><td bgcolor=\"$config->{rankc}\" align=\"left\">");
+        html("<tr><td bgcolor=\"$conf->{rankc}\" align=\"left\">");
         my $line = $line{$nick};
         html("$i</td><td bgcolor=\"#$col_r$col_g$col_b\">$visiblenick</td><td bgcolor=\"#$col_r$col_g$col_b\">$line</td><td bgcolor=\"#$col_r$col_g$col_b\">");
         html("\"$randomline\"</td>");
 
         if ($userpics{$nick}) {
-            html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$config->{imagepath}$userpics{$nick}\"></td>");
+            html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$conf->{imagepath}$userpics{$nick}\"></td>");
         }
 
         html("</tr>");
@@ -1093,14 +1093,14 @@ sub activenicks
 
     # Almost as active nicks ('These didn't make it to the top..')
 
-    my $nickstoshow = $config->{activenicks} + $config->{activenicks2};
+    my $nickstoshow = $conf->{activenicks} + $conf->{activenicks2};
 
     unless ($nickstoshow > $nicks) {
 
         html("<br><b><i>" . template_text('nottop') . "</i></b><table><tr>");
-        for (my $c = $config->{activenicks}; $c < $nickstoshow; $c++) {
-            unless ($c % 5) { unless ($c == $config->{activenicks}) { html("</tr><tr>"); } }
-            html("<td bgcolor=\"$config->{rankc}\" class=\"small\">");
+        for (my $c = $conf->{activenicks}; $c < $nickstoshow; $c++) {
+            unless ($c % 5) { unless ($c == $conf->{activenicks}) { html("</tr><tr>"); } }
+            html("<td bgcolor=\"$conf->{rankc}\" class=\"small\">");
             my $nick = $active[$c];
             my $lines = $line{$nick};
             html("$nick ($lines)</td>");
@@ -1129,9 +1129,9 @@ sub mostusedword
         &headline(template_text('mostwordstopic'));
 
         html("<table border=\"0\" width=\"614\"><tr>");
-        html("<td>&nbsp;</td><td bgcolor=\"$config->{tdtop}\"><b>" . template_text('word') . "</b></td>");
-        html("<td bgcolor=\"$config->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
-        html("<td bgcolor=\"$config->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
+        html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('word') . "</b></td>");
+        html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
+        html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
 
 
         for(my $i = 0; $i < 10; $i++) {
@@ -1140,10 +1140,10 @@ sub mostusedword
             my $popular = $popular[$i];
             my $wordcount = $wordcount{$popular[$i]};
             my $lastused = $lastused{$popular[$i]};
-            html("<tr><td bgcolor=\"$config->{rankc}\"><b>$a</b>");
-            html("<td bgcolor=\"$config->{hicell}\">$popular</td>");
-            html("<td bgcolor=\"$config->{hicell}\">$wordcount</td>");
-            html("<td bgcolor=\"$config->{hicell}\">$lastused</td>");
+            html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
+            html("<td bgcolor=\"$conf->{hicell}\">$popular</td>");
+            html("<td bgcolor=\"$conf->{hicell}\">$wordcount</td>");
+            html("<td bgcolor=\"$conf->{hicell}\">$lastused</td>");
             html("</tr>");
        }
 
@@ -1169,9 +1169,9 @@ sub mostreferenced
         &headline(template_text('referencetopic'));
 
         html("<table border=\"0\" width=\"614\"><tr>");
-        html("<td>&nbsp;</td><td bgcolor=\"$config->{tdtop}\"><b>" . template_text('nick') . "</b></td>");
-        html("<td bgcolor=\"$config->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
-        html("<td bgcolor=\"$config->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
+        html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('nick') . "</b></td>");
+        html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
+        html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
 
        for(my $i = 0; $i < 5; $i++) {
            last unless $i < $#popular;
@@ -1179,10 +1179,10 @@ sub mostreferenced
            my $popular = $popular[$i];
            my $wordcount = $wordcount{$popular[$i]};
            my $lastused = $lastused{$popular[$i]};
-           html("<tr><td bgcolor=\"$config->{rankc}\"><b>$a</b>");
-           html("<td bgcolor=\"$config->{hicell}\">$popular</td>");
-           html("<td bgcolor=\"$config->{hicell}\">$wordcount</td>");
-           html("<td bgcolor=\"$config->{hicell}\">$lastused</td>");
+           html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
+           html("<td bgcolor=\"$conf->{hicell}\">$popular</td>");
+           html("<td bgcolor=\"$conf->{hicell}\">$wordcount</td>");
+           html("<td bgcolor=\"$conf->{hicell}\">$lastused</td>");
            html("</tr>");
        }
    html("</table>");
@@ -1210,7 +1210,7 @@ sub questions
         );
 
         my $text = template_text('question1', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
         if (@question >= 2) {
             my %hash = (
                 nick => $question[1],
@@ -1223,7 +1223,7 @@ sub questions
         html("</td></tr>");
 
     } else {
-        html("<tr><td bgcolor=\"$config->{hicell}\">" . template_text('question3') . "</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">" . template_text('question3') . "</td></tr>");
     }
 }
 
@@ -1247,7 +1247,7 @@ sub loudpeople
         );
 
         my $text = template_text('loud1', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
         if (@loud >= 2) {
             my %hash = (
                 nick => $loud[1],
@@ -1261,7 +1261,7 @@ sub loudpeople
 
     } else {
         my $text = template_text('loud3');
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 
 }
@@ -1280,7 +1280,7 @@ sub gotkicks
 
         my $text = template_text('gotkick1', %hash);
 
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
         if (@gotkick >= 2) {
             my %hash = (
                 nick => $gotkick[1],
@@ -1307,7 +1307,7 @@ sub mostjoins
 
         my $text = template_text('joins', %hash);
 
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
 
@@ -1325,7 +1325,7 @@ sub mostkicks
          );
 
          my $text = template_text('kick1', %hash);
-         html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+         html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
 
          if (@kicked >= 2) {
          my %hash = (
@@ -1340,7 +1340,7 @@ sub mostkicks
          html("</td></tr>");
      } else {
          my $text = template_text('kick3');
-         html("<tr><td bgcolor=\"$config->{hicell}\">$text</td></tr>");
+         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
      }
 
 }
@@ -1359,7 +1359,7 @@ sub mostmonologues
 
          my $text = template_text('mono1', %hash);
 
-         html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+         html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
          if (@monologue >= 2) {
              my %hash = (
                  nick => $monologue[1],
@@ -1367,7 +1367,7 @@ sub mostmonologues
              );
 
              my $text = template_text('mono2', %hash);
-             if ($monologue{$monologue[1]} == 1 && $config->{lang} eq 'EN') {
+             if ($monologue{$monologue[1]} == 1 && $conf->{lang} eq 'EN') {
                 $text = substr $text, 0, -1;
              }
              html("<br><span class=\"small\">$text</span>");
@@ -1408,11 +1408,11 @@ sub longlines
         );
 
         my $text = template_text('long1', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text<br>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br>");
 
         if (@len >= 2) {
             %hash = (
-                channel => $config->{channel},
+                channel => $conf->{channel},
                 avg => $totalaverage
             );
 
@@ -1447,7 +1447,7 @@ sub shortlines
         );
 
         my $text = template_text('short1', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text<br>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br>");
 
         if (@len >= 2) {
             %hash = (
@@ -1485,7 +1485,7 @@ sub mostfoul
 
         my $text = template_text('foul1', %hash);
 
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
 
         if (@foul >= 2) {
             my %hash = (
@@ -1500,12 +1500,12 @@ sub mostfoul
        html("</td></tr>");
     } else {
         my %hash = (
-            channel => $config->{channel}
+            channel => $conf->{channel}
         );
 
         my $text = template_text('foul3', %hash);
 
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
 
@@ -1531,7 +1531,7 @@ sub mostsad
         );
 
         my $text = template_text('sad1', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
 
         if (@sadface >= 2) {
             my %hash = (
@@ -1546,10 +1546,10 @@ sub mostsad
         html("</td></tr>");
     } else {
         my %hash = (
-            channel => $config->{channel}
+            channel => $conf->{channel}
         );
         my $text = template_text('sad3', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$config->text</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$conf->text</td></tr>");
     }
 }
 
@@ -1567,7 +1567,7 @@ sub mostop
 
         my $text = template_text('mostop1', %hash);
 
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
 
         if (@ops >= 2) {
             my %hash = (
@@ -1580,19 +1580,19 @@ sub mostop
         }
         html("</td></tr>");
     } else {
-        my %hash = ( channel => $config->{channel} );
+        my %hash = ( channel => $conf->{channel} );
         my $text = template_text('mostop3', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
     if (@deops) {
         my %hash = (
-            channel => $config->{channel},
+            channel => $conf->{channel},
             nick => $deops[0],
             deops => $tookop{$deops[0]}
         );
         my $text = template_text('mostdeop1', %hash);
 
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
 
         if (@deops >= 2) {
             my %hash = (
@@ -1605,9 +1605,9 @@ sub mostop
         }
             html("</td></tr>");
     } else {
-        my %hash = ( channel => $config->{channel} );
+        my %hash = ( channel => $conf->{channel} );
         my $text = template_text('mostdeop3', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
     }
 }
 
@@ -1635,7 +1635,7 @@ sub mostsmiles
 
         my $text = template_text('smiles1', %hash);
 
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
         if (@smiles >= 2) {
             my %hash = (
                 nick => $smiles[1],
@@ -1649,11 +1649,11 @@ sub mostsmiles
 
     } else {
         my %hash = (
-            channel => $config->{channel}
+            channel => $conf->{channel}
         );
 
         my $text = template_text('smiles3', %hash);
-        html("<tr><td bgcolor=\"$config->{hicell}\">$text</td></tr>");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
 
@@ -1665,10 +1665,10 @@ sub lasttopics
         my $ltopic = @topics - 1;
         my $tlimit = 0;
 
-        $config->{topichistory} -= 1;
+        $conf->{topichistory} -= 1;
 
 
-        if ($ltopic > $config->{topichistory}) { $tlimit = $ltopic - $config->{topichistory}; }
+        if ($ltopic > $conf->{topichistory}) { $tlimit = $ltopic - $conf->{topichistory}; }
 
         for (my $i = $ltopic; $i >= $tlimit; $i--) {
             $topics[$i]{"topic"} = replace_links($topics[$i]{"topic"});
@@ -1676,11 +1676,11 @@ sub lasttopics
             my $nick = $topics[$i]{nick};
             my $hour = $topics[$i]{hour};
             my $min = $topics[$i]{min};
-            html("<tr><td bgcolor=\"$config->{hicell}\"><i>$topic</i></td>");
-            html("<td bgcolor=\"$config->{hicell}\">By <b>$nick</b> at <b>$hour:$min</b></td></tr>");
+            html("<tr><td bgcolor=\"$conf->{hicell}\"><i>$topic</i></td>");
+            html("<td bgcolor=\"$conf->{hicell}\">By <b>$nick</b> at <b>$hour:$min</b></td></tr>");
         }
        } else {
-            html("<tr><td bgcolor=\"$config->{hicell}\">" . template_text('notopic') ."</td></tr>");
+            html("<tr><td bgcolor=\"$conf->{hicell}\">" . template_text('notopic') ."</td></tr>");
        }
 }
 
@@ -1692,24 +1692,24 @@ print OUTPUT <<HTML;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>$config->{channel} @ $config->{network} channel statistics</title>
+<title>$conf->{channel} @ $conf->{network} channel statistics</title>
 <style type="text/css">
 a { text-decoration: none }
-a:link { color: $config->{link}; }
-a:visited { color: $config->{vlink}; }
-a:hover { text-decoration: underline; color: $config->{hlink} }
+a:link { color: $conf->{link}; }
+a:visited { color: $conf->{vlink}; }
+a:hover { text-decoration: underline; color: $conf->{hlink} }
 
 body {
-    background-color: $config->{bgcolor};
+    background-color: $conf->{bgcolor};
     font-family: verdana, arial, sans-serif;
     font-size: 13px;
-    color: $config->{text};
+    color: $conf->{text};
 }
 
 td {
     font-family: verdana, arial, sans-serif;
     font-size: 13px;
-    color: $config->{tdcolor};
+    color: $conf->{tdcolor};
 }
 
 .title {
@@ -1718,7 +1718,7 @@ td {
     font-weight: bold;
 }
 
-.headline { color: $config->{hcolor}; }
+.headline { color: $conf->{hcolor}; }
 .small { font-family: verdana, arial, sans-serif; font-size: 10px; }
 .asmall { font-family: arial narrow, sans-serif; font-size: 10px }
 </style></head>
@@ -1726,13 +1726,13 @@ td {
 <div align="center">
 HTML
 my %hash = (
-    channel => $config->{channel},
-    network => $config->{network},
-    maintainer => $config->{maintainer},
+    channel => $conf->{channel},
+    network => $conf->{network},
+    maintainer => $conf->{maintainer},
     time => $time,
     days => $days,
     nicks => $nicks,
-    channel => $config->{channel}
+    channel => $conf->{channel}
 );
 print OUTPUT "<span class=\"title\">" . template_text('pagetitle1', %hash) . "</span><br>";
 print OUTPUT "<br>" . template_text('pagetitle2', %hash) . "<br>";
@@ -1744,7 +1744,7 @@ sub htmlfooter
 {
 print OUTPUT <<HTML;
 <span class="small">
-Stats generated by <a href="http://www.wtf.dk/hp/index.php?page=pisg" title="Go to the pisg homepage">pisg</a> $config->{version}<br>
+Stats generated by <a href="http://www.wtf.dk/hp/index.php?page=pisg" title="Go to the pisg homepage">pisg</a> $conf->{version}<br>
 pisg by <a href="http://www.wtf.dk/hp/" title="Go to the authors homepage">Morten "LostStar" Brix Pedersen</a> and others<br>
 Stats generated in $processtime
 </span>
@@ -1761,10 +1761,10 @@ print OUTPUT <<HTML;
    <br>
    <table width="610" cellpadding="1" cellspacing="0" border="0">
     <tr>
-     <td bgcolor="$config->{headline}">
+     <td bgcolor="$conf->{headline}">
       <table width="100%" cellpadding="2" cellspacing="0" border="0" align="center">
        <tr>
-        <td bgcolor="$config->{hbgcolor}" class="text10">
+        <td bgcolor="$conf->{hbgcolor}" class="text10">
          <div align="center" class="headline"><b>$title</b></div>
         </td>
        </tr>
@@ -1777,8 +1777,8 @@ HTML
 
 sub pageheader
 {
-    if ($config->{pagehead} ne 'none') {
-        open(PAGEHEAD, $config->{pagehead}) or die("$0: Unable to open $config->{pagehead} for reading: $!\n");
+    if ($conf->{pagehead} ne 'none') {
+        open(PAGEHEAD, $conf->{pagehead}) or die("$0: Unable to open $conf->{pagehead} for reading: $!\n");
         while (<PAGEHEAD>) {
             html($_);
         }
@@ -1787,8 +1787,8 @@ sub pageheader
 
 sub close_debug
 {
-    if ($config->{debug}) {
-        close(DEBUG) or print STDERR "$0: Cannot close debugfile($config->{debugfile}): $!\n";
+    if ($conf->{debug}) {
+        close(DEBUG) or print STDERR "$0: Cannot close debugfile($conf->{debugfile}): $!\n";
     }
 }
 
@@ -1841,10 +1841,10 @@ END_USAGE
                }
 
     if (@ARGV) {
-        if ($ARGV[0]) { $config->{channel} = $ARGV[0]; }
-        if ($ARGV[1]) { $config->{logfile} = $ARGV[1]; }
-        if ($ARGV[2]) { $config->{outputfile} = $ARGV[2]; }
-        if ($ARGV[3]) { $config->{maintainer} = $ARGV[3]; }
+        if ($ARGV[0]) { $conf->{channel} = $ARGV[0]; }
+        if ($ARGV[1]) { $conf->{logfile} = $ARGV[1]; }
+        if ($ARGV[2]) { $conf->{outputfile} = $ARGV[2]; }
+        if ($ARGV[3]) { $conf->{maintainer} = $ARGV[3]; }
     }
 
     if ($tmp) {
@@ -1853,48 +1853,48 @@ END_USAGE
     }
 
     if ($channel) {
-        $config->{channel} = $channel;
-        $config->{cmdl}{channel} = 1;
+        $conf->{channel} = $channel;
+        $conf->{cmdl}{channel} = 1;
     }
 
     if ($logfile) {
-        $config->{logfile} = $logfile;
-        $config->{cmdl}{logfile} = 1;
+        $conf->{logfile} = $logfile;
+        $conf->{cmdl}{logfile} = 1;
     }
 
     if ($format) {
-        $config->{format} = $format;
-        $config->{cmdl}{format} = 1;
+        $conf->{format} = $format;
+        $conf->{cmdl}{format} = 1;
     }
 
     if ($network) {
-        $config->{network} = $network;
-        $config->{cmdl}{network} = 1;
+        $conf->{network} = $network;
+        $conf->{cmdl}{network} = 1;
     }
 
     if ($maintainer) {
-        $config->{maintainer} = $maintainer;
-        $config->{cmdl}{maintainer} = 1;
+        $conf->{maintainer} = $maintainer;
+        $conf->{cmdl}{maintainer} = 1;
     }
 
     if ($outputfile) {
-        $config->{outputfile} = $outputfile;
-        $config->{cmdl}{outputfile} = 1;
+        $conf->{outputfile} = $outputfile;
+        $conf->{cmdl}{outputfile} = 1;
     }
 
     if ($logdir) {
-        $config->{logdir} = $logdir;
-        $config->{cmdl}{logdir} = 1;
+        $conf->{logdir} = $logdir;
+        $conf->{cmdl}{logdir} = 1;
     }
 
     if ($prefix) {
-        $config->{prefix} = $prefix;
-        $config->{cmdl}{prefix} = 1;
+        $conf->{prefix} = $prefix;
+        $conf->{cmdl}{prefix} = 1;
     }
 
     if ($configfile) {
-        $config->{configfile} = $configfile;
-        $config->{cmdl}{configfile} = 1;
+        $conf->{configfile} = $configfile;
+        $conf->{cmdl}{configfile} = 1;
     }
 
 }
@@ -1903,7 +1903,7 @@ sub get_language_templates
 {
     use FindBin;
 
-    open(FILE, $config->{langfile}) or open (FILE, $FindBin::Bin . "/$config->{langfile}") or die("$0: Unable to open language file($config->{langfile}): $!\n");
+    open(FILE, $conf->{langfile}) or open (FILE, $FindBin::Bin . "/$conf->{langfile}") or die("$0: Unable to open language file($conf->{langfile}): $!\n");
 
     my $current_lang;
 
@@ -1929,7 +1929,7 @@ sub get_language_templates
 
     close(FILE);
 
-    print "Using language template: $config->{lang}\n\n" if ($config->{lang} ne 'EN');
+    print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
 
 }
     
