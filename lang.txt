@@ -226,6 +226,7 @@ mostwordstopic = "Am meisten benutzte Wörter"
 referencetopic = "Begehrte Nicks :)"
 urlstopic = "Am meisten benutzte URLs"
 notopic = "In diesem Channel wurde kein Topic gesetzt."
+bylinetopic = "von [:nick] um [:time]"
 
 ## Other text
 
