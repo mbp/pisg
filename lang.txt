@@ -1,6 +1,6 @@
 # To use a translation, set 'lang' in the pisg configuration file, e.g.:
 #
-# <set lang="DK">
+# <set lang="DA">
 #
 # to get a page in Danish.
 #
@@ -11,7 +11,7 @@
 # (NO) Norwegian - Andreas Blaafladt <andreabl@login1.powertech.no>
 # (PT) Portuguese - MrWho <mrwho@softhome.net>
 # (PT-BR) Portuguese/BR(Brazil) - francisco lopes <falmp@terra.com.br>
-# (DK) Danish - Kim Ingemann <tuxi@tuxi.dk>
+# (DA) Danish - Morten Brix Pedersen <morten at wtf dot dk>
 # (FR) French - Molator <molator@ifrance.com>
 # (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
 # (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
@@ -347,7 +347,7 @@ mailto = "Mail an"
 </lang>
 
 ### Danish
-<lang name="DK" charset="iso-8859-1">
+<lang name="DA" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> gav [:ops] op status i kanalen..."
 mostop2 = "<b>[:nick]</b> var også venlig at gi': [:ops] fra sig"
 mostop3 = "Underligt, ingen har fået op på [:channel] endnu!"
@@ -363,6 +363,14 @@ mostvoice3 = "Underligt, ingen har fået voice på [:channel] endnu!"
 mostdevoice1 = "<b>[:nick]</b> holder orden på [:channel] med [:devoices] -v's"
 mostdevoice2 = "<b>[:nick]</b> devoicede [:devoices] brugere"
 mostdevoice3 = "Hmm, der var ingen som blev devoiced på [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> gav [:halfops] halfop status i kanalen..."
+mosthalfop2 = "<b>[:nick]</b> var også venlig at gi': [:halfops] halfops fra sig"
+mosthalfop3 = "Underligt, ingen har fået halfop på [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> er kanal sheriffen med [:dehalfops] dehalfops."
+mostdehalfop2 = "<b>[:nick]</b> fjernede halfop fra [:dehalfops] brugere."
+mostdehalfop3 = "Wow, ingen halfop blev taget fra nogen på [:channel]!"
 
 action1 = "<b>[:nick]</b> bruger /me meget tit, ialt [:actions] gange!"
 action2 = "<b>[:nick]</b> fortæller os også hvad [:han:hun:] laver.. [:actions] /me's"
@@ -447,6 +455,7 @@ urlstopic = "Mest brugte URLs"
 notopic = "Et topic blev aldrig sat på denne kanal."
 mostnickstopic = "Brugere med flest nicks"
 bylinetopic = "Af [:nick] kl. [:time]"
+dailyactivitytopic = "Daglig aktivitet (sidste [:n] dage)"
 
 ## Other text
 

@@ -775,8 +775,9 @@
     use, if the language support is there, the text on the stats page will
     be outputted in that language. All supported languages is mentioned in
     the lang.txt file with the pisg distribution. Some of the languages
-    supported are: EN | DE | DK | FR | ES | PL | PT | NO | NL | SE | EE | IT
-    | HU | SI | FI
+    supported are: EN | DE | NO | PT | PT-BR | DA | FR | ES | PL | NL | SE |
+    FI | SI | HU | EE | IT | CA | TR | RO | IS | CZ | SK | RU | GR | HE | BG
+    | YU | SQ
     </para>
     </refsect1>
     <refsect1>
