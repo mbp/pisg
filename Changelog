@@ -7,8 +7,12 @@ pisg (0.21)
    * Supplied some extra info to the 'got kicked' stats, now it shows an
      example kick line from the stats. (Thanks to Michael Dales for 
      show_kickline-patch)
+   * The same for 'most slaps', 'most slapped', 'most actions' and
+     'most shouted' stats. Every option has it's own activation_variable,
+     see CONFIG-README for more infos
    * Display the remaining nicks on the stats page (those who didnt reach the
      stats at all)
+   * Display the total count of topics that were set
    * Some small HTML validation fixes
    * Stop hardcoding filenames in 'legend'
 
