@@ -102,7 +102,7 @@ short2 = "<b>[:nick]</b> was tight-lipped, too, averaging [:letters] characters.
 foul1 = "<b>[:nick]</b> has quite a potty mouth.  [:per]% words were foul language."
 foul2 = "<b>[:nick]</b> also makes sailors blush, [:per]% of the time."
 foul3 = "Nobody is foul-mouthed in [:channel]!  Get out much?"
-foultext = "For example, like this:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+foultext = "<b>For example, like this:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> brings happiness to the world.  [:per]% lines contained smiling faces.  :)"
 smiles2 = "<b>[:nick]</b> isn't a sad person either, smiling [:per]% of the time."
