@@ -367,8 +367,6 @@ sub _activenicks
 
     if ($self->{cfg}->{activenicks} > $nicks) {
         $self->{cfg}->{activenicks} = $nicks;
-        print "Note: There were fewer nicks in the logfile than your specificied there to be in most active nicks...\n"
-            unless ($self->{cfg}->{silent});
     }
 
     my ($nick, $visiblenick, $randomline, %hash);
@@ -1179,8 +1177,12 @@ sub _lasttopics
             my $nick = $stats->{topics}[$i]{nick};
             my $hour = $stats->{topics}[$i]{hour};
             my $min  = $stats->{topics}[$i]{min};
+            %hash = (
+                nick => $nick,
+                time => "$hour:$min"
+            );
             _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\"><i>$topic</i></td>");
-            _html("<td bgcolor=\"$self->{cfg}->{hicell}\">By <b>$nick</b> at <b>$hour:$min</b></td></tr>");
+            _html("<td bgcolor=\"$self->{cfg}->{hicell}\">" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
         }
         _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
     } else {
@@ -1203,7 +1205,7 @@ sub _template_text
         # Fall back to English if the language template doesn't exist
 
         if ($text = $self->{tmps}->{EN}{$template}) {
-            print "Note: There was no translation in $self->{cfg}->{lang} for '$template' - falling back to English..\n"
+            print "Note: No translation in '$self->{cfg}->{lang}' for '$template' - falling back to English..\n"
                 unless ($self->{cfg}->{silent});
         } else {
             die("No such template '$template' in language file.\n");

@@ -99,8 +99,6 @@ sad3 = "Nobody is sad in [:channel]!  What a happy channel.  :-)"
 month = "January February March April May June July August September October November December"
 day = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
 
-notopic = "A topic was never set on this channel."
-
 ## Topics
 
 bignumtopic = "Big numbers"
@@ -111,6 +109,8 @@ activenickstopic = "Most active nicks"
 mostwordstopic = "Most used words"
 referencetopic = "Most referenced nick"
 urlstopic = "Most referenced URLs"
+notopic = "A topic was never set on this channel."
+bylinetopic = "by [:nick] on [:time]"
 
 ## Other text
 
@@ -214,8 +214,6 @@ sad3 = "Niemand ist traurig in [:channel]! Was für ein fröhlicher Channel :)"
 month = "Januar Februar März April Mai Juni Juli August September Oktober November Dezember"
 day = "Sonntag Montag Dienstag Mittwoch Donnerstag Freitag Samstag"
 
-notopic = "In diesem Channel wurde kein Topic gesetzt."
-
 ## Topics
 
 bignumtopic = "Die Zahlen sprechen für sich :)"
@@ -226,6 +224,7 @@ activenickstopic = "Wer quatscht am meisten?"
 mostwordstopic = "Am meisten benutzte Wörter"
 referencetopic = "Begehrte Nicks :)"
 urlstopic = "Am meisten benutzte URLs"
+notopic = "In diesem Channel wurde kein Topic gesetzt."
 
 ## Other text
 
@@ -328,8 +327,6 @@ words3 = "Hmmm ingen har sagt noget endnu... underlig kanal..."
 month = "Januar Februar Marts April Maj Juni Juli August September Oktober November December"
 day = "Søndag Mandag Tirsdag Onsdag Torsdag Fredag Lørdag"
 
-notopic = "Et topic blev aldrig sat på denne kanal."
-
 ## Topics
 
 bignumtopic = "Store numre"
@@ -340,6 +337,8 @@ activenickstopic = "Mest aktive nicks"
 mostwordstopic = "Mest brugte ord"
 referencetopic = "Mest tiltalte nicks"
 urlstopic = "Mest brugte URLs"
+notopic = "Et topic blev aldrig sat på denne kanal."
+bylinetopic = "Af [:nick] kl. [:time]"
 
 ## Other text
 
@@ -443,8 +442,6 @@ sad3 = "Personne n'est triste sur [:channel]! Quel channel merveilleux :-)"
 month = "Janvier Février Mars Avril Mai Juin Juillet Août Septembre Octobre Novembre Décembre"
 day = "Dimanche Lundi Mardi Mercredi Jeudi Vendredi Samedi"
 
-notopic = "Il n'y a jamais eu de topic sur ce channel"
-
 ## Topics
 
 bignumtopic = "Les gros chiffres"
@@ -455,6 +452,7 @@ activenickstopic = "Les nicks les plus actifs"
 mostwordstopic = "Les mots les plus utilisés"
 referencetopic = "Les nicks les plus utilisés dans la conversation"
 urlstopic = "Les URLs les plus citées"
+notopic = "Il n'y a jamais eu de topic sur ce channel"
 
 ## Other text
 
@@ -552,8 +550,6 @@ sad3 = "Nadie está triste en [:channel]! Aquí somos todos felices :-)"
 month = "Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre"
 day = "Domingo Lunes Martes Miercoles Jueves Viernes Sabado"
 
-notopic = "Aún no se ha utilizado el topic del canal"
-
 ## Topics
 
 bignumtopic = "Acerca de nuestra gente"
@@ -563,6 +559,7 @@ activetimestopic = "Horas más frecuentadas"
 activenickstopic = "La gente que más habla"
 mostwordstopic = "Las palabras más utilizadas"
 referencetopic = "Las personas de las que más se habla"
+notopic = "Aún no se ha utilizado el topic del canal"
 
 ## Other text
 
@@ -629,8 +626,6 @@ sad1 = "<b>[:nick]</b> wyglada na smutna osobe, [:per]% linii zawieralo smutne m
 sad2 = "<b>[:nick]</b> nie czuje sie najlepiej na kanale smucac sie przez [:per]% czasu"
 sad3 = "Nikt nie jest smutny na [:channel]! Coz za szczesliwy kanal :-)"
 
-notopic = "Czyzby nigdy nie ustawiono tematu na tym kanale?"
-
 ## Topics
 
 bignumtopic = "Wielkie liczby"
@@ -640,6 +635,7 @@ activetimestopic = "Najaktywniejsze pory"
 activenickstopic = "Najaktywniejsze nicki"
 mostwordstopic = "Najczesciej uzywane slowa"
 referencetopic = "Najczesciej wywolywany nick"
+notopic = "Czyzby nigdy nie ustawiono tematu na tym kanale?"
 
 ## Other text
 
@@ -707,8 +703,6 @@ sad1 = "Blid kan man ikke kalle<b> [:nick]</b> som surmuler [:per]% av tiden."
 sad2 = "<b>[:nick]</b> er nok også ganske trist, [:per]% av [:hans:hennes:] linjer inneholdt :-(-er."
 sad3 = "Ingen triste ansikt på [:channel]! :-)"
 
-notopic = "Det er ikke satt noe topic på denne kanalen."
-
 ## Topics
 
 bignumtopic = "Store tall"
@@ -718,6 +712,7 @@ activetimestopic = "Mest aktive tider"
 activenickstopic = "Mest aktive nicks"
 mostwordstopic = "Mest brukte ord"
 referencetopic = "Mest nevnte nicks"
+notopic = "Det er ikke satt noe topic på denne kanalen."
 
 ## Other text
 
@@ -785,8 +780,6 @@ sad1 = "<b>[:nick]</b> parece estar triste no momento, [:per]% linhas contém car
 sad2 = "<b>[:nick]</b> também está triste por [:per]% do tempo"
 sad3 = "Ninguém está triste no [:channel]! Aqui somos todos felizes :-)"
 
-notopic = "Nunca foi usado um topic neste canal"
-
 ## Topics
 
 bignumtopic = "Sobre nossos usuarios"
@@ -796,6 +789,7 @@ activetimestopic = "Horas mais frequentadas"
 activenickstopic = "Pessoas que mais falam"
 mostwordstopic = "Palavras mais utilizadas"
 referencetopic = "Pessoas de quem mais se fala"
+notopic = "Nunca foi usado um topic neste canal"
 
 ## Other text
 
@@ -889,8 +883,6 @@ sad1 = "<b>[:nick]</b> is niet echt vrolijk , <b>[:per]%</b> regels bevatte een 
 sad2 = "<b>[:nick]</b> is ook al niet te vrolijk met een sad percentage van <b>[:per]%</b>."
 sad3 = "Niemand is "Bedroefd" [:channel]! What a happy channel :-)."
 
-notopic = "De mensen hiero weten nog steeds niet hoe ze +t moeten gebruiken."
-
 ## Topics
 
 bignumtopic = "Grote Getallen"
@@ -901,6 +893,7 @@ activenickstopic = "Meest actieve nicks"
 mostwordstopic = "Meest genoemde woorden"
 referencetopic = "Meest genoemde nicks"
 urlstopic = "Meest genoemde URLs"
+notopic = "De mensen hiero weten nog steeds niet hoe ze +t moeten gebruiken."
 
 ## Other text
 
@@ -994,8 +987,6 @@ sad1 = "<b>[:nick]</b> verkar vara ledsen för tillfället, [:per]% av raderna inn
 sad2 = "<b>[:nick]</b> är också en ledsen person, som grät [:per]% av tiden"
 sad3 = "Ingen i [:channel] är ledsen! Välkommen till den glada kanalen :-)"
 
-notopic = "Ingen rubrik blev nånsin satt på denna kanal"
-
 ## Topics
 
 bignumtopic = "Stora nummer"
@@ -1005,6 +996,7 @@ activetimestopic = "Mest aktiva tider"
 activenickstopic = "Mest aktiva personer"
 mostwordstopic = "Mest använda ord"
 referencetopic = "Mest tilltalade personer"
+notopic = "Ingen rubrik blev nånsin satt på denna kanal"
 
 ## Other text
 
@@ -1102,8 +1094,6 @@ sad3 = "Kukaan ei surkuttele tällä kanavalla! Hyvä [:channel]!  :-)"
 month = "tammikuuta helmikuuta maaliskuuta huhtikuuta toukokuuta kesäkuuta heinäkuuta elokuuta syyskuuta lokakuuta marraskuuta joulukuuta"
 day = "sunnuntaina maanantaina tiistaina keskiviikkona torstaina perjantaina lauantaina"
 
-notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia."
-
 ## Topics (Topikit)
 
 bignumtopic = "Suuria numeroita"
@@ -1114,6 +1104,7 @@ activenickstopic = "Suurimmat höpöttäjät"
 mostwordstopic = "Käytetyimpiä sanoja"
 referencetopic = "Kaivatuin irkkaaja"
 urlstopic = "Yleisimmät linkit"
+notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia."
 
 ## Other text (Muuta sälää)
 
