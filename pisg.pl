@@ -530,9 +530,6 @@ sub activetimes {
 
     for my $hour (sort keys %{ $stats->{times} }) {
         $debug->("Time: $hour => ". $stats->{times}{$hour});
-        $image = "pic_v_".(int($hour/6)*6);
-        $image = $conf->{$image};
-        $debug->("Image: $image");
 
         my $size = ($stats->{times}{$hour} / $highest_value) * 100;
         my $percent = ($stats->{times}{$hour} / $stats->{totallines}) * 100;
@@ -557,6 +554,9 @@ sub activetimes {
             $hour = $hour % 24;
             if ($hour < 10) { $hour = "0" . $hour; }
         }
+        $image = "pic_v_".(int($hour/6)*6);
+        $image = $conf->{$image};
+        $debug->("Image: $image");
 
         $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br><img src=\"$image\" width=\"15\" height=\"$size\" alt=\"$percent\"></td>\n";
     }
