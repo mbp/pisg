@@ -12,12 +12,12 @@ sub new
 
     my $self = {
         cfg => $args{cfg},
-        normalline => '^(\d+)\s:([^!]+)![^@]+@\S+\sPRIVMSG\s(#\S+)\s:([^' . $ctcpchr . '].*)$'
+        normalline => '^(\d+)\s:([^!]+)![^@]+@\S+\sPRIVMSG\s([#&+!]\S+)\s:([^' . $ctcpchr . '].*)$'
                       . '|' .
-                      '^(\d+)\s(>>>)PRIVMSG\s(#\S+)\s:([^' . $ctcpchr . '].*)$',
-        actionline => '^(\d+)\s:([^!]+)!([^@]+)@(\S+)\sPRIVMSG\s(#\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$'
+                      '^(\d+)\s(>>>)PRIVMSG\s([#&+!]\S+)\s:([^' . $ctcpchr . '].*)$',
+        actionline => '^(\d+)\s:([^!]+)!([^@]+)@(\S+)\sPRIVMSG\s([#&+!]\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$'
                       . '|' . 
-                      '^(\d+)\s(>>>)PRIVMSG\s(#\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$',
+                      '^(\d+)\s(>>>)PRIVMSG\s([#&+!]\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$',
 	thirdline  => '^(\d+)\s:([^!]+)![^@]+@\S+\s(.+)$'
                       . '|' .
                       '^(\d+)\s(>>>)([^P].+)$',
