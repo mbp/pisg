@@ -1509,10 +1509,10 @@ sub _legend
     # A legend showing the timebars and their associated time.
     my $self = shift;
     _html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
     _html("</tr></table>\n");
 }
 
@@ -1558,7 +1558,7 @@ sub _user_linetimes
         $debuglen += $w;
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\">";
+            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\">";
         }
     }
     $self->{debug}->("Length='$len', Sum='$debuglen'");
@@ -1577,7 +1577,7 @@ sub _user_times
         my $w = int(($self->{stats}->{line_times}{$nick}[$i] / $self->{stats}->{lines}{$nick}) * 40);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\">";
+            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\">";
         }
     }
     return $bar;
