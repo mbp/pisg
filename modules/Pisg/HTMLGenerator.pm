@@ -365,7 +365,7 @@ sub _activenicks
     . ($self->{cfg}->{show_randquote} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('randquote')."</b></td>" : "")
     );
 
-    if (scalar keys %{$self->{users}->{userpics}} > 0) {
+    if (scalar keys %{$self->{users}->{userpics}} > 0 or $self->{cfg}->{default_pic} ne '') {
         _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('userpic') ."</b></td>");
     }
 
@@ -456,6 +456,8 @@ sub _activenicks
             } else {
                 _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\"></td>");
             }
+        } elsif ($self->{cfg}->{default_pic} ne '')  {
+            _html("<td bgcolor=\"#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{default_pic}\"></td>");
         }
 
         _html("</tr>");

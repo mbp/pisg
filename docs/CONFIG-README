@@ -104,6 +104,10 @@ pagehead            Some 'page header' file which you want to include in top
 imagepath           If your user pictures is located in a special direcotry,
                     set the path here. E.g. 'userpics/'
 
+default_pic         If no picture defined for a user, use this default
+                    picture, good for example to display 'No picture
+                    available'.
+
 logdir              If you specify a path to a directory here, then pisg will
                     run through the files in that directory, parse all
                     logfiles in it and create 1 HTML file from it. Useful

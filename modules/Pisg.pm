@@ -113,6 +113,7 @@ sub get_default_config_settings
         pagehead => 'none',
         configfile => 'pisg.cfg',
         imagepath => '',
+        default_pic => '',
         logdir => '',
         lang => 'EN',
         langfile => 'lang.txt',
