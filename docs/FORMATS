@@ -143,3 +143,25 @@ link to the logfile)
 
   Example:
   [13/12/2001 - 20:38] <NazoZzz> hello world
+
+* axur/epic:
+  - A unix shell client similar to bitchx but not quite.
+
+  - EPIC is available at http://www.epicsol.org/
+
+  - AXUR script for EPIC is available at
+    http://www.asciifun.com/images/axur-2000.tar.gz or ax- b12r2.tar.gz
+
+  axur/epic logs with two formats at once, one for normal users
+  and one for the actual client doing the logging.  Why?  no idea.
+
+  The normal format is of:
+  [MM/DD/YYYY @ HH:MM:SS] <nick> saying
+  [MM/DD/YYYY @ HH:MM:SS] * nick does some action here
+
+
+  The loggers format is of:
+  [MM/DD/YYYY @ HH:MM:SS] >(logger) saying
+  [MM/DD/YYYY @ HH:MM:SS] >* logger does some action here
+
+  Both is supported.
