@@ -10,8 +10,8 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^\[\d+/\d+/\d+ @ (\d+):\d+:\d+\] <([^>\s]+)>\s+(.*)',
-        actionline => '^\[\d+/\d+/\d+ @ (\d+):\d+:\d+\] \*\s+(\S+) (.*)',
+        normalline => '^\[\d+/\d+/\d+ @ (\d+):\d+:\d+\] [\>\(|<]+([^>\s]+)[\)|>]\s+(.*)',
+        actionline => '^\[\d+/\d+/\d+ @ (\d+):\d+:\d+\] [\>\*|\*]+\s+(\S+) (.*)',
         thirdline  => '^\[\d+/\d+/\d+ @ (\d+):(\d+):\d+\] \*\*\*\s+(\S+) (\S+) (\S+) (\S+) (\S+) (.*)',
     };
 
@@ -71,22 +71,19 @@ sub thirdline
         } elsif (($4.$5) eq 'haschanged') {
             $hash{newtopic} = $8;
 
-        } elsif (($4.$5) eq 'giveschannel') {
+        } elsif (($7) eq '+o') {
             $hash{newmode} = '+o';
 
-        } elsif (($4.$5) eq 'removeschannel') {
+        } elsif (($7) eq '-o') {
             $hash{newmode} = '-o';
 
         } elsif (($4.$5) eq 'hasjoined') {
             $hash{newjoin} = $3;
 
-        } elsif (($4.$5) eq 'nowknown') {
+        } elsif ((($4.$5) eq 'nowknown') || (($4.$5) eq 'nowknow')) {
             $hash{newnick} = $7;
 
-        } elsif (($4.$5) eq 'nowknow') { # To fix an error in some axur's
-            $hash{newnick} = $7;
         }
-
 
         return \%hash;
 
@@ -96,3 +93,4 @@ sub thirdline
 }
 
 1;
+
