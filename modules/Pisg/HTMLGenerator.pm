@@ -504,7 +504,7 @@ sub _activenicks
     for (my $i = 0; $i < $self->{cfg}->{activenicks}; $i++) {
         my $c = $i + 1;
         my $nick = $active[$i];
-        my $visiblenick = $active[$i];
+        my $visiblenick;
 
         my $randomline;
         if (not defined $self->{stats}->{sayings}{$nick}) {
@@ -521,9 +521,11 @@ sub _activenicks
             $randomline = $self->_format_line($randomline);
         }
 
-        # Add a link to the nick if there is any
+        # Add a link to the nick if there is any and quote nick
         if ($self->{users}->{userlinks}{$nick}) {
-            $visiblenick = $self->_replace_links($self->{users}->{userlinks}{$nick}, $nick);
+            $visiblenick = $self->_format_word($self->{users}->{userlinks}{$nick}, $nick);
+        } else {
+            $visiblenick = $self->_format_word($nick);
         }
 
         my $color = $self->generate_colors($c);
@@ -1577,10 +1579,10 @@ sub _template_text
 sub _format_word
 {
     # This function formats a word -- should ONLY be called on words used alone (EG: not whole line printed)
-    my ($self, $word) = @_;
+    my ($self, $word, $nick) = @_;
 
     $word = htmlentities($word, $self->{cfg}->{charset});
-    $word = $self->_replace_links($word);
+    $word = $self->_replace_links($word, $nick);
     return $word;
 }
 
