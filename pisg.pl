@@ -1483,8 +1483,11 @@ sub mosturls
            my $sorturl = $sorturls[$i];
            my $urlcount = $toll{$sorturls[$i]};
            my $lastused = $urlnick{$sorturls[$i]};
+	   if (length($sorturl) > 60) {
+		   $sorturl = substr($sorturl, 0, 60);
+	   }
            html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
-           html("<td bgcolor=\"$conf->{hicell}\"><a href=\"$sorturl\">$sorturl</a></td>");
+           html("<td bgcolor=\"$conf->{hicell}\"><a href=\"$sorturls[$i]\">$sorturl</a></td>");
            html("<td bgcolor=\"$conf->{hicell}\">$urlcount</td>");
            html("<td bgcolor=\"$conf->{hicell}\">$lastused</td>");
            html("</tr>");
