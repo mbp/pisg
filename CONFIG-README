@@ -149,10 +149,10 @@ configure to their own language and slang.
 
 So this option configures which words which are considered to be "foul":
 
-<words foul="ass bitch fuck">
+<set foul="ass bitch fuck">
 
 Or in German:
-<words foul="scheisse scheiße kacke">
+<set foul="scheisse scheiße kacke">
 
 
 Have fun configuring pisg! :)
