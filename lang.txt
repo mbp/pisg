@@ -19,7 +19,7 @@
 # (SI) Slovenian - Ales Tepina <ales.tepina@guest.arnes.si>
 # (HU) Hungarian - Gyuri Horak <dyuri@dyuri.sch.bme.hu>
 # (EE) Estonian - comcute <comcute@blastnet.ee>
-# (IT) Italian - Pascal Brax <god@pascalbrax.com>
+# (IT) Italian - Venom Team <pisg@pascalbrax.com>
 # (CA) Catalan - Nikoru Kimochi <nikoru@menta.net>
 # (TR) Turkish - cti- (cti@tr.net)
 # (RO) Romanian - Parcalabior Vald <vlad@ifrance.com>
@@ -1824,11 +1824,11 @@ mostdeop3 = "Wow, nessuno e' stato deoppato su [:channel]!"
 
 action1 = "<b>[:nick]</b> vuole sempre farci sapere cosa sta facendo: [:actions] actions!"
 action2 = "Inoltre, <b>[:nick]</b> ci spiffera [:actions] actions."
-action3 = "No actions in [:channel]!"
+action3 = "Niente actions in [:channel]!"
 actiontext = "<b>Ad esempio:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-question1 = "Ma <b>[:nick]</b> e' stupido o semplicemente fa troppe domande?  [:per]% linee contengono una domanda!"
-question2 = "<b>[:nick]</b> non e' da meno.  [:per]% di linee erano domande."
+question1 = "Ma <b>[:nick]</b> e' stupido o semplicemente fa troppe domande?! Ben [:per]% linee contengono una domanda!"
+question2 = "<b>[:nick]</b> non e' da meno. [:per]% di linee erano domande."
 question3 = "Nessuno ha posto una domanda nel canale, tutti geni?"
 
 shout1 = "Il piu' rumoroso e' stato <b>[:nick]</b>, che ha urlato il [:per]% del tempo!"
@@ -1932,7 +1932,7 @@ seconds = "secondi"
 and = "e"
 stats_gen_by = "Statistiche generate tramite [:pisg_url] v[:version]"
 author = "pisg by [:author_url] e altri :)"
-stats_gen_in = "Stats generated in [:time]"
+stats_gen_in = "Statistiche generate in [:time]"
 
 # Mouse-over titles
 pisghomepage = "Vai all'homepage di pisg"
