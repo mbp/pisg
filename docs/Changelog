@@ -3,6 +3,7 @@ pisg (x.xx)
      for the users which appeared in the "Most Active Nicks" (top talkers)
      section. (thanks, mincus)
    * Fix voice/devoice detection with xchat format.
+   * mIRC6 format wasn't actually distributed with pisg, it is now.
 
 pisg (0.42) - Fri Nov, 1st 2002
    * ircII logfile support added (thanks, James Andrewartha)
