@@ -32,7 +32,6 @@ sub new
         chans => {},
         users => {},
         cfg => {},
-        bwd => {},
         tmps => {},
     };
 
@@ -201,38 +200,6 @@ sub get_default_config_settings
         version => "0.51-cvs",
     };
 
-    # Backwards compatibility with old option names:
-    $self->{bwd} = {
-        default_pic => 'DefaultPic',
-        prefix => 'LogPrefix',
-        show_activetimes => 'ShowActiveTimes',
-        show_bignumbers => 'ShowBigNumbers',
-        show_topics => 'ShowTopics',
-        show_linetime => 'ShowLineTime',
-        show_time => 'ShowTime',
-        show_words => 'ShowWords',
-        show_wpl => 'ShowWpl',
-        show_cpl => 'ShowCpl',
-        show_lastseen => 'ShowLastSeen',
-        show_legend => 'ShowLegend',
-        show_kickline => 'ShowKickLine',
-        show_actionline => 'ShowActionLine',
-        show_shoutline => 'ShowShoutLine',
-        show_violentlines => 'ShowViolentLines',
-        show_randquote => 'ShowRandQuote',
-        show_muw => 'ShowMuw',
-        show_mrn => 'ShowMrn',
-        show_mru => 'ShowMru',
-        show_voices => 'ShowVoices',
-        show_mostnicks => 'ShowMostNicks',
-        foul => 'FoulWords',
-        violent => 'ViolentWords',
-        regexp_aliases => 'RegexpAliases',
-        pic_loc => 'PicLocation',
-        pic_width => 'PicWidth',
-        pic_height => 'PicHeight'
-    };
-
     # This enables us to use the search_path in other modules
     $self->{cfg}->{search_path} = $self->{search_path};
 
@@ -371,16 +338,8 @@ sub init_config
                 my $var = lc($1);
                 $var =~ s/ //; # Remove whitespace
                 if (!defined($self->{cfg}->{$var})) {
-                    if (defined($self->{bwd}->{$var})) {
-                        print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                        unless (($self->{cfg}->{lc($self->{bwd}->{$var})} eq $3) || $self->{override_cfg}->{lc($self->{bwd}->{$var})}) {
-                            $self->{cfg}->{$self->{bwd}->{$var}} = $3;
-                        }
-                        next;
-                    } else {
-                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
-                        next;
-                    }
+                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
+                    next;
                 }
                 unless (($self->{cfg}->{$var} eq $3) || $self->{override_cfg}->{$var}) {
                     $self->{cfg}->{$var} = $3;
@@ -393,24 +352,14 @@ sub init_config
             $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
             while ($settings =~ s/\s([^=]+)=(["'])(.+?)\2//) {
                 my $var = lc($1);
-                if (defined($self->{bwd}->{$var})) {
-                    print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                    $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $3;
-                } else {
-                    $self->{chans}->{$channel}{$var} = $3;
-                }
+                $self->{chans}->{$channel}{$var} = $3;
             }
             while (<$fh>) {
                 last if ($_ =~ /<\/*channel>/i);
                 if ($_ =~ /^\s*(\w+)\s*=\s*(["'])(.+?)\2/) {
                     my $var = lc($1);
                     unless ($self->{override_cfg}->{$var}) {
-                        if (defined($self->{bwd}->{$var})) {
-                            print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                            $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $3;
-                        } else {
-                            $self->{chans}->{$channel}{$var} = $3;
-                        }
+                        $self->{chans}->{$channel}{$var} = $3;
                     }
                 } elsif ($_ !~ /^$/) {
                     print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
