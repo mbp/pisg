@@ -8,6 +8,8 @@ pisg (0.21)
      example kick line from the stats.
    * Display the remaining nicks on the stats page (those who didnt reach the
      stats at all)
+   * Some small HTML validation fixes
+   * Stop hardcoding filenames in 'legend'
 
 pisg (0.20) - Tue, Aug 14th 2001
    * Add 'bgpic' config setting for the possibility to add a userdefined
