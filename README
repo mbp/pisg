@@ -14,7 +14,7 @@ a HTML version. Quick explanation below:
 
 It's quite simple to set up pisg. You have 2 choices:
 
- * Set settings from commandline (try pisg.pl --help)
+ * Set settings from commandline (try pisg --help)
  * Configure pisg from the pisg.cfg file (more flexible and configurable)
 
 If you look in the example pisg.cfg, you will see a small working sample
@@ -43,18 +43,18 @@ RUNNING PISG
 If you have setup everything inside the config file, then you just need to
 run it. If you're on a Linux/BSD/Unix system, this should do the work:
 
-    $ ./pisg.pl
+    $ ./pisg
 
 Running pisg like this will just use the settings in pisg.cfg.
 
 If you want to specify things on commandline instead of in the config file,
 you could do:
 
-    $ ./pisg.pl -ch \#channel -l logfile.log -f mIRC -o index.html
+    $ ./pisg -ch \#channel -l logfile.log -f mIRC -o index.html
    
 The syntax and options is explained when doing:
 
-    $ ./pisg.pl --help
+    $ ./pisg --help
 
 Setting settings on commandline, will override the relevant settings in
 pisg.cfg.

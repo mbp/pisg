@@ -1,9 +1,9 @@
 # In order to run pisg in crontab, then do 'crontab -e' as a normal user,
 # and insert a line like this:
 
-*/10 * * * * /path/to/pisg.pl --silent
+*/10 * * * * /path/to/pisg --silent
 
 # This will make pisg run every 10 minutes, or you could do it every hour
 # by doing this:
 
-* 0 * * * /path/to/pisg.pl --silent
+* 0 * * * /path/to/pisg --silent

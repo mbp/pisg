@@ -25,8 +25,8 @@ sub main
 {
     my $script_dir = $0;
 
-    # If the script was executed as ./pisg.pl - then we just remove
-    # everything after the last slash, if it was executed as 'perl pisg.pl'
+    # If the script was executed as ./pisg - then we just remove
+    # everything after the last slash, if it was executed as 'perl pisg'
     # we assume that we are executing in the current dir.
     if ($script_dir =~ m/\/[^\/]*$/) {
         $script_dir =~ s/\/[^\/]*$//;
@@ -81,7 +81,7 @@ sub get_cmdline_options
     my ($tmp, $help, $silent, $option, @cfg);
 
 my $usage = <<END_USAGE;
-Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
+Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 [-f format] [-n network] [-d logdir] [-mo moduledir] [-s] [-v] [-h]
 
 -ch --channel=xxx      : Set channel name
@@ -102,7 +102,7 @@ Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 
 Example:
 
- \$ pisg.pl -n IRCnet -f xchat -o suid.html -ch \\#channel -l logfile.log
+ \$ pisg -n IRCnet -f xchat -o suid.html -ch \\#channel -l logfile.log
 
 All options may also be defined by editing the configuration file and
 calling pisg without arguments.
