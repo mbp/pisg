@@ -7,7 +7,7 @@ use Exporter;
 use strict;
 $^W = 1;
 
-my (%aliases, %aliaswilds, @ignored);
+my (%aliases, %aliaswilds, %ignored);
 
 # add_alias assumes that the first argument is the true nick and the second is
 # the alias, but will accomidate other arrangements if necessary.
@@ -46,18 +46,19 @@ sub add_aliaswild {
 }
 
 sub add_ignore {
-    my ($nick) = @_;
-    push @ignored, find_alias($nick);
+    my $nick = shift;
+    $ignored{$nick} = 1;
 }
 
 sub is_ignored {
-    my ($nick) = @_;
-    my $realnick = find_alias($nick);
-    return grep /^\Q$realnick\E$/, @ignored;
+    my $nick = shift;
+    if ($ignored{$nick}) {
+        return 1;
+    }
 }
 
 sub find_alias {
-    my $nick = shift;
+    my ($nick) = @_;
     my $lcnick = lc($nick);
 
     if ($aliases{$lcnick}) {
