@@ -3,8 +3,7 @@ package Pisg::Parser::Format::infobot;
 # Documentation for the Pisg::Parser::Format modules is found in Template.pm
 
 # Note that infobot log files do not distinguish between action lines and
-# normal lines. This parser assumes that people in your channel use correct
-# sentence case for normal lines. YMMV.
+# normal lines.
 
 use strict;
 $^W = 1;
