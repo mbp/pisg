@@ -6,6 +6,7 @@ pisg (x.xx)
    * Remove devel-code that appeared in 0.52 pisg.cfg.
    * Added support for supybot logfiles,set format to 'supy'. (thanks, Jerome
    Kerdreux)
+   * Fixed bug with uninitialised values in psybnc format.
    * Vision support wasn't being included with the tarball. Fixed.
 
 pisg (0.52) - Fri Feb, 13rd 2004

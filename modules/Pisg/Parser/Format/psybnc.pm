@@ -74,7 +74,6 @@ sub thirdline
 
         } elsif ($4 eq 'MODE') {
             $hash{newmode} = $arr[1];
-            $hash{newtopic} =~ s/^://;
 
         } elsif ($4 eq 'JOIN') {
             $hash{newjoin} = $3;
