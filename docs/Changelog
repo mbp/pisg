@@ -9,6 +9,7 @@ pisg (x.xx)
    * New 'darkred' colorscheme (thanks, Hanno Hecker)
    * mIRC, Trillian, perlbot and virc98 formats now strips half-op prefixes
      from nicks as well.
+   * moobot logfile support added (thanks, Phil Gregory)
 
 pisg (0.40) - Thu Jul, 4th 2002
    * The "It's Summer And The Sun Is Shining"-release.

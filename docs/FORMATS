@@ -300,3 +300,28 @@ time"
 	[17:25:36] wwp [anonymous@AMontpellier-201-2-1-77.abo.wanadoo.fr] has joined #ECI
 	[17:25:47] <wwp> yop
 	### Log session terminated at Sun Sep 9 22:56:51 2001 ###
+
+* moobot
+  - Python-based, modular IRC bot.  <http://sourceforge.net/projects/moobot>
+
+  - Turn on logging by adding an entry to the data table with type = 'logtype'
+    and data = 'file' or 'date'.  Add another entry with type = 'logfile' and
+    data = the name of the file if type == 'file' or a string to be passed to
+    strftime if type == 'date'.
+
+  - The format name is "moobot".
+
+  - All nicks are logged with their hostmasks, with the exception of those
+    from the bot itself.  (This may change in the future to have the bot's
+    hostmask, too.)
+
+  - Examples:
+
+      2002-07-06 00:05:29 :vergil!~vergil@host PUBMSG #space :mike_lap: i'm not joking, actually.
+      2002-07-04 15:56:19 :SpaceBot PUBMSG #space :huh?
+      2002-07-06 00:07:30 :vergil!~vergil@host CTCP #space :ACTION salutes
+      2002-07-18 10:37:18 :jeffcovey!~jeff@host KICK #space vergil :two days in a row!
+      2002-07-06.log:2002-07-06 12:07:41 :phil_tty!mjpr@host TOPIC #space :<She-Ra> of course, god can go to rotters, for all she's managed not to do for me
+      2002-07-04 17:34:01 :jeffcovey!~jeff@host MODE #space +o CowBot
+      2002-07-04 12:02:42 :Leebert!~lsherida@host JOIN :#space
+      2002-07-04 18:24:18 :mike_lap!~emag@host NICK :Cathy
