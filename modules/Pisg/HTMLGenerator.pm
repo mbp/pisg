@@ -408,7 +408,15 @@ sub _activenicks
         my $col_r  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $self->{cfg}->{activenicks}) * +$c) + $f_r);
 
 
-        _html("<tr><td bgcolor=\"$self->{cfg}->{rankc}\" align=\"left\">");
+        my $bgcolor;
+        if ($i == 1) {
+            $bgcolor = $self->{cfg}->{hi_rankc};
+        } else {
+            $bgcolor = $self->{cfg}->{rankc};
+        }
+            
+        _html("<tr><td bgcolor=\"$bgcolor\" align=\"left\">");
+
         my $line = $self->{stats}->{lines}{$nick};
         my $w    = $self->{stats}->{words}{$nick};
         my $ch   = $self->{stats}->{lengths}{$nick};
@@ -455,6 +463,10 @@ sub _activenicks
     my $remain = $self->{cfg}->{activenicks} + $toshow;
 
     unless ($toshow > $nicks) {
+        $remain = $self->{cfg}->{activenicks} + $self->{cfg}->{activenicks2};
+        if ($remain > $nicks) {
+            $remain = $nicks;
+        }
 
         _html("<br><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
         for (my $c = $self->{cfg}->{activenicks}; $c < $remain; $c++) {
@@ -1271,7 +1283,13 @@ sub _mostusedword
             my $popular = htmlentities($popular[$i]);
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
             my $lastused = htmlentities($self->{stats}->{wordnicks}{$popular[$i]});
-            _html("<tr><td bgcolor=\"$self->{cfg}->{rankc}\"><b>$a</b>");
+            my $bgcolor;
+            if ($a == 1) {
+                $bgcolor = $self->{cfg}->{hi_rankc};
+            } else {
+                $bgcolor = $self->{cfg}->{rankc};
+            }
+            _html("<tr><td bgcolor=\"$bgcolor\"><b>$a</b>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$popular</td>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$wordcount</td>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$lastused</td>");
@@ -1326,7 +1344,7 @@ sub _mostreferencednicks
     # List showing the most referenced nicks
     my $self = shift;
 
-    my (%usages);
+    my %usages;
 
     foreach my $word (sort keys %{ $self->{stats}->{wordcounts} }) {
         next unless exists $self->{stats}->{lines}{$word};
@@ -1351,7 +1369,14 @@ sub _mostreferencednicks
             my $popular   = $popular[$i];
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
             my $lastused  = $self->{stats}->{wordnicks}{$popular[$i]};
-            _html("<tr><td bgcolor=\"$self->{cfg}->{rankc}\"><b>$a</b>");
+
+            my $bgcolor;
+            if ($a == 1) {
+                $bgcolor = $self->{cfg}->{hi_rankc};
+            } else {
+                $bgcolor = $self->{cfg}->{rankc};
+            }
+            _html("<tr><td bgcolor=\"$bgcolor\"><b>$a</b>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$popular</td>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$wordcount</td>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$lastused</td>");
@@ -1387,7 +1412,13 @@ sub _mosturls
             if (length($sorturl) > 60) {
                 $sorturl = substr($sorturl, 0, 60);
             }
-            _html("<tr><td bgcolor=\"$self->{cfg}->{rankc}\"><b>$a</b>");
+            my $bgcolor;
+            if ($a == 1) {
+                $bgcolor = $self->{cfg}->{hi_rankc};
+            } else {
+                $bgcolor = $self->{cfg}->{rankc};
+            }
+            _html("<tr><td bgcolor=\"$bgcolor\"><b>$a</b>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\"><a href=\"$sorturls[$i]\">$sorturl</a></td>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$urlcount</td>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">$lastused</td>");
