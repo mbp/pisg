@@ -24,9 +24,9 @@ use Getopt::Long;
 my ($channel, $logfile, $format, $network, $outputfile, $maintainer,
 $pagehead, $usersfile, $imagepath, $logdir, $lang, $langfile, $bgcolor,
 $text, $hbgcolor, $hcolor, $hicell, $hicell2, $tdcolor, $tdtop, $link,
-$vlink, $hlink, $headline, $rankc, $minquote, $maxquote, $activenicks,
-$activenicks2, $topichistory, $pic1, $pic2, $nicktracking, $timeoffset,
-$version, $debug, $debugfile);
+$vlink, $hlink, $headline, $rankc, $minquote, $maxquote, $wordlength,
+$activenicks, $activenicks2, $topichistory, $pic1, $pic2, $nicktracking,
+$timeoffset, $version, $debug, $debugfile);
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
 $channel = "#channel";		# The name of your channel.
@@ -73,6 +73,8 @@ $pic2 = "pipe-purple.png";      # Bar-graphic-file for top-times
 # Other things that you might set, but not everyone cares about them
 $minquote = "25";		# Minimal value of letters for a random quote
 $maxquote = "65";		# Maximum value of letters for a random quote
+$wordlength = "5";		# The minimum number of chars an interesting
+				# word may be (in 'most referenced words')
 $activenicks = "25";		# Number of nicks to show in the 'top 25'
 $activenicks2 = "30";		# Nicks to show in 'these didnt make it...'
 $topichistory = "3";		# How many topics to show in 'latest topics'
@@ -369,7 +371,7 @@ sub parse_file
 
                     foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
                         # remove uninteresting words
-                        next unless (length($word) > 5);
+                        next unless (length($word) > $wordlength);
                         # ignore contractions
                         next if ($word =~ m/'..?$/);
 
