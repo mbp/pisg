@@ -266,12 +266,15 @@ sub _parse_file
                         if ($saying =~ /!/);
 
                     if ($saying !~ /[a-z]/ && $saying =~ /[A-Z]/) {
-                        $stats->{allcaps}{$nick}++;
-                        push @{ $lines->{allcaplines}{$nick} }, $line;
+                        # Ignore single smileys on a line. eg. '<user> :P'
+                        if ($saying !~ /^[8;:=][ ^-o]?[)pPD}\]>]$/) {
+                            $stats->{allcaps}{$nick}++;
+                            push @{ $lines->{allcaplines}{$nick} }, $line;
+                        }
                     }
 
                     $stats->{foul}{$nick}++
-                    if ($saying =~ /$self->{cfg}->{foul}/i);
+                        if ($saying =~ /$self->{cfg}->{foul}/i);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
