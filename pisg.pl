@@ -1915,7 +1915,7 @@ sub get_language_templates
             $current_lang = '';
         }
         
-        elsif ($line =~ /(\w+) = "(.*)"$/ && $current_lang ne '') {
+        elsif ($line =~ /(\w+)\s+=\s+"(.*)"\s*$/ && $current_lang ne '') {
             $T{$current_lang}{$1} = $2;
         }
     }
