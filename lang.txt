@@ -2306,13 +2306,13 @@ kicktext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]
 
 joins = "<b>[:nick]</b> klarte ikke bestemme seg helt -  [:joins] joins i denne perioden!"
 
-kick1 = "<b>[:nick]</b> er enten kjip eller en real op, med totalt [:kicked] kicks på samvittigheten!"
-kick2 = "[:oldnick]s trofaste følgesvenn, <b>[:nick]</b>, kicket omtrent [:kicked] personer."
-kick3 = "Snille ops her, ingen er kicket!"
+kick1 = "<b>[:nick]</b> er enten kjip eller en real op med totalt [:kicked] kicks på samvittigheten!"
+kick2 = "[:oldnick]s trofaste disippel, <b>[:nick]</b>, kicket omtrent [:kicked] personer."
+kick3 = "Her er det bare snille ops. Ingen er kicket!"
 
 words1 = "<b>[:nick]</b> ytret totalt  [:words] ord!"
-words2 = "[:oldnick]s likemann, <b>[:nick]</b>, ytret ikke fullt så mye: [:words] ord."
-words3 = "Ingen sa noe som helst - For en behagelig kanal..."
+words2 = "[:oldnick] ble tett etterfulgt av <b>[:nick]</b> som ytret [:words] ord."
+words3 = "Ingen har sagt noe som helst!"
 
 mono1 = "<b>[:nick]</b> snakker mye med seg selv. [:Han:Hun:] skrev over 5 linjer på rad [:monos] ganger!"
 mono2 = "En annen ensom sjel var <b>[:nick]</b>, som skrev over 5 linjer på rad [:monos] ganger."
@@ -2324,16 +2324,16 @@ long1 = "<b>[:nick]</b> skrev de lengste linjene, gjennomsnittlig [:letters] bok
 long2 = "[:channel]s gjennomsnitt er [:avg] bokstaver pr linje."
 
 short1 = "<b>[:nick]</b> skrev de korteste linjene, gjennomsnittlig [:letters] bokstaver pr. linje."
-short2 = "<b>[:nick]</b> er også en person av få ord - [:letters] bokstaver."
+short2 = "<b>[:nick]</b> er også en person av få ord - [:letters] bokstaver pr. linje i gjennomsnitt."
 
 foul1 = "<b>[:nick]</b> må snart vaske munnen sin.  [:per]% av linjene inneholdt stygt språk."
 foul2 = "<b>[:nick]</b> er heller ikke svigermors drøm, [:per]% av tiden."
-foul3 = "Ingen prater stygt på [:channel]!  Villt!"
+foul3 = "Ingen prater stygt på [:channel]!?!"
 foultext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-smiles1 = "<b>[:nick]</b> bringer lykke til verden.  [:per]% av linjene inneholdt smileansikt. :)"
-smiles2 = "<b>[:nick]</b> er heller ikke særlig sur.  [:per]% av linjene inneholdt smileys."
-smiles3 = "Ingen smiler på [:channel]!  Cheer up!"
+smiles1 = "<b>[:nick]</b> bringer lykke til verden.  [:per]% av [:hans:hennes:] linjer inneholdt smileansikt. :-)"
+smiles2 = "<b>[:nick]</b> er heller ikke særlig sur.  [:per]% av [:hans:hennes:] linjer inneholdt et smil."
+smiles3 = "Ingen smiler på [:channel]!  :-("
 
 sad1 = "<b>[:nick]</b> er trist for øyeblikket:  [:per]% linjer inneholdt :(!"
 sad2 = "<b>[:nick]</b> er heller ikke særlig blid. [:per]% av tiden."
@@ -2387,8 +2387,8 @@ pagetitle1 = "[:channel] @ [:network] stats av [:maintainer]"
 pagetitle2 = "Statistikk generert"
 pagetitle3 = "I løpet av denne [:days]-dagers perioden var totalt <b>[:nicks]</b> forskjellige nick representert på [:channel]."
 stats_gen_by = "Stats generert av [:pisg_url] v[:version]"
-author =  "pisg er laget av [:author_url] og andre"
-stats_gen_in = "Statistikken er generert på [:time]"
+author =  "pisg er skrevet av [:author_url] og andre"
+stats_gen_in = "Statistikken ble generert på [:time]"
 hours = "timer"
 minutes = "minutter"
 seconds = "sekunder"
