@@ -1536,35 +1536,18 @@ sub _replace_links
     # Sub to replace urls and e-mail addys to links
     my $str = shift;
     my $nick = shift;
-    my ($url, $email, $replaced, $return_str);
 
+    # Regular expressions are taken from match_urls() and match_email() in
+    # Common.pm
 
-    $str =~ s/(http:\/\/)?www\./http:\/\/www\./ig;
-    $return_str = $str;
-    $replaced = 0;
-     if ($nick) {
-        if ($url = match_url($str)) {
-            $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$nick<\/a>/g;
-        }
-        if ($email = match_email($str)) {
-            $return_str =~ s/(\Q$email\E)/<a href="mailto:$1" title="Mail to $nick">$nick<\/a>/g;
-        }
+    if ($nick) {
+        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="Open in new window: $1$2">$nick<\/a>/g;
+        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="Mail to $nick">$nick<\/a>/g;
     } else {
-        while ($replaced < 1) {
-            $replaced = 1;
-            if ($url = match_url($str)) {
-                $return_str =~ s/(?<!(<a href="))(\Q$url\E)(?![-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/<a href="$2" target="_blank" title="Open in new window: $2">$2<\/a>/g;
-                $str =~ s/(\Q$url\E)//g;
-                $replaced--;
-            }
-            if ($email = match_email($str)) {
-                $return_str =~ s/(\Q$email\E)/<a href="mailto:$1" title="Mail to $1">$1<\/a>/g;
-                $str =~ s/(\Q$email\E)//g;
-                $replaced--;
-            }
-        }
+        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="Open in new window: $1$2">$1$2<\/a>/g;
+        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="Mail to $1">$1<\/a>/g;
     }
-    return $return_str;
+    return $str;
 }
 
 sub _user_linetimes

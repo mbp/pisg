@@ -125,18 +125,18 @@ sub _parse_dir
     if (defined $self->{cfg}->{logsuffix}) {
         my @temparray;
         my %months = (
-            'jan'	=> '0',
-            'feb'	=> '1',
-            'mar'	=> '2',
-            'apr'	=> '3',
-            'may'	=> '4',
-            'jun'	=> '5',
-            'jul'	=> '6',
-            'aug'	=> '7',
-            'sep'	=> '8',
-            'oct'	=> '9',
-            'nov'	=> '10',
-            'dec'	=> '11',
+            'jan' => '0',
+            'feb' => '1',
+            'mar' => '2',
+            'apr' => '3',
+            'may' => '4',
+            'jun' => '5',
+            'jul' => '6',
+            'aug' => '7',
+            'sep' => '8',
+            'oct' => '9',
+            'nov' => '10',
+            'dec' => '11',
         );
         my ($mreg, $dreg, $yreg) = split(/\|\|/, $self->{cfg}->{logsuffix});
         my (@month, @day, @year);
@@ -226,7 +226,7 @@ sub _parse_file
                 if ($hour < $state->{oldtime}) { $stats->{days}++ }
                 $state->{oldtime} = $hour;
 
-                unless (is_ignored($nick)) {
+                if (!is_ignored($nick)) {
                     $stats->{totallines}++;
 
                     # Timestamp collecting
@@ -260,10 +260,10 @@ sub _parse_file
                     $stats->{lengths}{$nick} += $len;
 
                     $stats->{questions}{$nick}++
-                        if ($saying =~ /\?/);
+                        if (index($saying, "?") > -1);
 
                     $stats->{shouts}{$nick}++
-                        if ($saying =~ /!/);
+                        if (index($saying, "!") > -1);
 
                     if ($saying !~ /[a-z]/ && $saying =~ /[A-Z]/) {
                         # Ignore single smileys on a line. eg. '<user> :P'
@@ -287,19 +287,13 @@ sub _parse_file
                     }
 
                     # Find URLs
-                    my $check_str = $saying;                                                   
-                    $check_str =~ s/(http:\/\/)?www\./http:\/\/www\./ig;                       
-                    my $replaced = 0;                                                          
-                    while ($replaced < 1) {                                                    
-                        $replaced = 1;                                                         
-                        if (my $url = match_url($check_str)) {                                 
-                            unless(url_is_ignored($url)) {                                     
-                                $stats->{urlcounts}{$url}++;                                   
-                                $stats->{urlnicks}{$url} = $nick;                              
-                            }                                                                  
-                            $check_str =~ s/(\Q$url\E)//g;                                     
-                            $replaced--;                                                       
-                        }                                                                      
+                    if (my @urls = match_urls($saying)) {
+                        foreach (@urls) {
+                            if(!url_is_ignored($_)) {
+                                $stats->{urlcounts}{$_}++;
+                                $stats->{urlnicks}{$_} = $nick;
+                            }
+                        }
                     }
 
                     $self->_parse_words($stats, $saying, $nick);
@@ -322,7 +316,7 @@ sub _parse_file
             if ($hour < $state->{oldtime}) { $stats->{days}++ }
             $state->{oldtime} = $hour;
 
-            unless (is_ignored($nick)) {
+            if (!is_ignored($nick)) {
                 # Timestamp collecting
                 $stats->{times}{$hour}++;
 
@@ -334,7 +328,7 @@ sub _parse_file
 
                 if ($saying =~ /^($self->{cfg}->{violent}) (\S+)/) {
                     my $victim = find_alias($2);
-                    unless (is_ignored($victim)) {
+                    if (!is_ignored($victim)) {
                         $stats->{violence}{$nick}++;
                         $stats->{attacked}{$victim}++;
                         push @{ $lines->{violencelines}{$nick} }, $line;
@@ -351,8 +345,7 @@ sub _parse_file
         }
 
         # Match *** lines.
-        elsif (($hashref = $self->{parser}->thirdline($line, $linecount)) and
-        $hashref->{nick}) {
+        elsif (($hashref = $self->{parser}->thirdline($line, $linecount)) and $hashref->{nick}) {
             $stats->{totallines}++;
 
             my ($hour, $min, $nick, $kicker, $newtopic, $newmode, $newjoin);
@@ -371,21 +364,21 @@ sub _parse_file
             if ($hour < $state->{oldtime}) { $stats->{days}++ }
             $state->{oldtime} = $hour;
 
-            unless (is_ignored($nick)) {
+            if (!is_ignored($nick)) {
                 # Timestamp collecting
                 $stats->{times}{$hour}++;
 
                 $stats->{lastvisited}{$nick} = $stats->{days};
 
                 if (defined($kicker)) {
-                    unless (is_ignored($kicker)) {
+                    if (!is_ignored($kicker)) {
                         $stats->{kicked}{$kicker}++;
                         $stats->{gotkicked}{$nick}++;
                         push @{ $lines->{kicklines}{$nick} }, $line;
                     }
 
                 } elsif (defined($newtopic)) {
-                    unless ($newtopic eq '') {
+                    if ($newtopic ne '') {
                         my $tcount;
                         if (defined $stats->{topics}) {
                             $tcount = @{ $stats->{topics} };

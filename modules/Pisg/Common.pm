@@ -8,7 +8,7 @@ Pisg::Common - some common functions of pisg.
 
 use Exporter;
 @ISA = ('Exporter');
-@EXPORT = qw(add_alias add_aliaswild add_ignore add_url_ignore is_ignored url_is_ignored find_alias match_url match_email htmlentities);
+@EXPORT = qw(add_alias add_aliaswild add_ignore add_url_ignore is_ignored url_is_ignored find_alias match_urls match_email htmlentities);
 
 use strict;
 $^W = 1;
@@ -105,34 +105,39 @@ sub find_alias
     return $nick;
 }
 
-sub match_url
+sub match_urls
 {
-    my ($str) = @_;
+    my $str = shift;
 
-    if ($str =~ /(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/) { 
+    # Interpret 'www.' as 'http://www.'
+    $str =~ s/(http:\/\/)?www\./http:\/\/www\./ig;
+
+    my @urls;
+    while ($str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)//i) { 
         my $url = "$1$2";
         if ($url_seen{$url}) {
-            return $url;
+            push(@urls, $url);
         } elsif ($url =~ s/\/$//) {
             if ($url_seen{$url}) {
-                return $url;
+                push(@urls, $url);
             } else {
                 $url_seen{"$url/"} = 1;
-                return "$url/";
+                push(@urls, "$url/");
             }
         } elsif ($url_seen{"$url/"}) {
-            return "$url/";
+            push(@urls, "$url/");
         } else {
             $url_seen{$url} = 1;
-            return $url;
+            push(@urls, $url);
         }
     }
-    return undef;
+
+    return @urls;
 }
 
 sub match_email
 {
-    my ($str) = @_;
+    my $str = shift;
 
     if ($str =~ /([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/) {
         return $1;
