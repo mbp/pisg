@@ -135,8 +135,8 @@ foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman no
 foul3 = "Alle gut erzogen in [:channel], niemand hat Schimpfworte benutzt!"
 
 smiles1 = "<b>[:nick]</b> ist ein fröhlicher Mensch, [:per]% seiner/ihrer Zeilen enthielt ein fröhliches Smily :)"
-smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. Er/Sie \"smilte\" [:per]% der Zeit"
-smiles3 = "Niemand \"smilte\" in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)"
+smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. Er/Sie "smilte" [:per]% der Zeit"
+smiles3 = "Niemand "smilte" in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)"
 
 sad1 = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% seiner/ihrer Zeilen enthielten ein trauriges Smily :("
 sad2 = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat"
@@ -420,7 +420,7 @@ loud3 = "Nikt nic nie wykrzykiwal na kanale, wow."
 gotkick1 = "<b>[:nick]</b> nie zalapal o co chodzilo operatorom za pierwszym razem i zostal wykopany [:kicks] razy!"
 gotkick2 = "<b>[:nick]</b> nie jest tu chyba zbyt lubiany - wylatywal [:kicks] razy"
 
-joins = "<b>[:nick]</b> zastanawial sie nad \"byc albo nie byc\", [:joins] razy wchodzil na kanal!"
+joins = "<b>[:nick]</b> zastanawial sie nad "byc albo nie byc", [:joins] razy wchodzil na kanal!"
 
 kick1 = "<b>[:nick]</b> jest szalony lub stara sie byc konsekwentny, wykopal [:kicked] osob"
 kick2 = "<b>[:nick]</b> idac w slad za [:oldnick] wykopal [:kicked] osob"
