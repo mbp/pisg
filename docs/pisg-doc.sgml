@@ -34,7 +34,7 @@
      <listitem>
        <para>
         You run pisg, pisg runs the log through and create statistics, it
-        then create an HTML page which you can upload to a server.
+        then creates an HTML page which you can upload to a server.
        </para>
       </listitem>
     </itemizedlist>
