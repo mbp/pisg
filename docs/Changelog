@@ -12,6 +12,8 @@ pisg (x.xx)
      picture from ImageGlobPath. (Christoph Berg)
    * Made all picture heights integer. (Christoph Berg)
    * Add support for Vision logs (thanks, Vegard Wærp)
+   * Timebars in "Most active users" now have a hover text which shows how
+   many lines a used wrote in that period of a time (thanks, oxman)
 
 pisg (0.50) - Mon Nov, 17th 2003
    * Added NFiles option, which can be used for LogDirs to only parse the last
