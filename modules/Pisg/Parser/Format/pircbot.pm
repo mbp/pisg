@@ -15,7 +15,7 @@ sub new
         normalline => '^(\d+)\s:([^!]+)![^@]+@\S+\sPRIVMSG\s([#&+!]\S+)\s:([^' . $ctcpchr . '].*)$'
                       . '|' .
                       '^(\d+)\s(>>>)PRIVMSG\s([#&+!]\S+)\s:([^' . $ctcpchr . '].*)$',
-        actionline => '^(\d+)\s:([^!]+)!([^@]+)@(\S+)\sPRIVMSG\s([#&+!]\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$'
+        actionline => '^(\d+)\s:([^!]+)![^@]+@\S+\sPRIVMSG\s([#&+!]\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$'
                       . '|' . 
                       '^(\d+)\s(>>>)PRIVMSG\s([#&+!]\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$',
 	thirdline  => '^(\d+)\s:([^!]+)![^@]+@\S+\s(.+)$'
