@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.50) - Mon Nov, 17th 2003
    * Added NFiles option, which can be used for LogDirs to only parse the last
      N files (thanks, Christoph Berg)
    * Added OutputTag option, which enables users to have variable output names
