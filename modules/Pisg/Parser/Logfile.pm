@@ -542,7 +542,7 @@ sub _parse_words
     my $word;
 
     study $saying;
-    $saying =~ s/[\s,!?.:;)(\"]+//o;
+    $saying =~ s/^[\s,!?.:;)(\"]+//o;
     while ($saying =~ s/([^\s,!?.:;)(\"]+)([\s,!?.:;)(\"]+)?//og) {
         $word = $1;
         $stats->{words}{$nick}++;
