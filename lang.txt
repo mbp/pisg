@@ -57,7 +57,7 @@ kick2 = "[:oldnick]'s faithfull follower, <b>[:nick]</b>, kicked about [:kicked]
 kick3 = "Nice oppers here, no one got kicked!"
 
 words1 = "<b>[:nick]</b> spoke a total of [:words] words!"
-words2 = "[:oldnick]'s faithfull follower, <b>[:nick]</b>, didn't speak su much: [:words] words."
+words2 = "[:oldnick]'s faithfull follower, <b>[:nick]</b>, didn't speak so much: [:words] words."
 words3 = "Nobody said anything... what a strange channel..."
 
 mono1 = "<b>[:nick]</b> is talking to himself a lot, wrote over 5 lines in a row [:monos] times!"
