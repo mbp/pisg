@@ -17,7 +17,7 @@
 # (FI) Finnish - Kirler@paincreators <kirler@paincreators.net>
 # (SI) Slovenian - Ales Tepina <ales.tepina@guest.arnes.si>
 # (HU) Hungarian - Gyuri Horak <dyuri@dyuri.sch.bme.hu>
-# (EE) Estonian - comcute <comcute@surfdata.ee>
+# (EE) Estonian - comcute <comcute@blastnet.ee>
 # (IT) Italian - Pascal Brax <god@pascalbrax.com>
 # (CA) Catalan - Nikoru Kimochi <nikoru@menta.net>
 
@@ -1511,18 +1511,18 @@ lastseen2 = "nappal ezelott"
 <lang name="EE">
 mostop1 = "Kõige rohkem op staatust jagas <b>[:nick]</b>, [:ops] opi kanalil..."
 mostop2 = "<b>[:nick]</b> ei tahtnud sitem olla ja andis [:ops] opi."
-mostop3 = "Imelik, aga kanalil [:channel] ei andnud keegi kellegile opi!"
-
-mostdeop1 = "<b>[:nick]</b> mõtles, et on kõva kutt ja võttis [:deops]-lt kasutajalt op staatuse ära."
-mostdeop2 = "<b>[:nick]</b> deopis [:deops] kasutajat."
-mostdeop3 = "Ohoh, päris karm kanal see [:channel], keegi ei võtnud kelleltki opi ära!"
+mostop3 = "Imelik, aga kanalil [:channel] ei andnud keegi kellelegi opi!"
 
 action1 = "<b>[:nick]</b> tahtis, et kõik teaksid, mida ta teeb: kokku [:actions] tegevust!"
 action2 = "Kusjuures, <b>[:nick]</b> tahtis ka, et kõik teaksid tema tegevusest: kokku [:actions] tegevust."
 action3 = "Mitte yhtegi tegevuse kirjeldus selle perioodi jooksul!"
-actiontext = "<b>Näiteks:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+actiontext = "<b>Näiteks:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-question1 = "Tundub, et <b>[:nick]</b> on mingi eriti loll tegelane või esitab ta lihtsalt liiga palju küsimusi?: [:per]% tema kirjutatud ridadest olid küsimused"
+mostdeop1 = "<b>[:nick]</b> mõtles, et on kõva kutt ja võttis [:deops]-lt kasutajalt op staatuse ära."
+mostdeop2 = "<b>[:nick]</b> deopis [:deops] kasutajat."
+mostdeop3 = "Ohoh, keegi ei võtnud kelleltki opi ära!"
+
+question1 = "Tundub, et <b>[:nick]</b> on mingi eriti loll tegelane või esitab ta lihtsalt liiga palju küsimusi? [:per]% tema kirjutatud ridadest olid küsimused"
 question2 = "<b>[:nick]</b> ei teadnud ka kuigi palju: [:per]% tema kirjutatud ridadest olid küsimused."
 question3 = "Keegi ei esitanud küsimusi, tundub et siin kanalis käivad ainult targad inimesed"
 
@@ -1533,20 +1533,20 @@ shout3 = "Lahe! kõik rääkisid vaikse häälega"
 allcaps1 = "Tundub et <b>[:nick]</b> shifti-nupp vajub iseenesest alla: [:per]% ajast kirjutas SUURTE TÄHTEDEGA."
 allcaps2 = "<b>[:nick]</b> unustas oma Caps-Locki peale. [:per]% ajast kirjutas SUURTE TÄHTEDEGA."
 allcaps3 = "Kõik kirjutasid väikeste tähtedega.  :)"
-allcapstext = "<b>Näiteks:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+allcapstext = "<b>Näiteks:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> on väga agressiivne persoon. Ta peksis teisi <b>[:attacks]</b> korda."
 violent2 = "<b>[:nick]</b> ei suuda sammuti end vaos hoida ja lõi teisi <b>[:attacks]</b> korda."
 violent3 = "[:channel] kanalis käib väga sõbralik rahvas, keegi ei löönud teisi"
-violenttext = "<b>Näiteks:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+violenttext = "<b>Näiteks:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Vaene <b>[:nick]</b>, ta ei meeldi vist teistele. Teda peksti <b>[:attacks]</b> korda."
 attacked2 = "Samas <b>[:nick]</b> sai <b>[:attacks]</b> korda kolakat."
-attackedtext = "<b>Näitex:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+attackedtext = "<b>Näitex:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> ei olnud eriti populaarne, ta sai [:kicks] korda jalaga!"
 gotkick2 = "<b>[:nick]</b> polnud ka eriti popp: teda kickiti [:kicks] korda."
-kicktext = "<b>Näiteks:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+kicktext = "<b>Näiteks:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 joins = "<b>[:nick]</b> ei suutnud otsustada, kas jääda kanalisse või mitte. Liitus kanaliga [:joins] korda!"
 
@@ -1570,20 +1570,20 @@ long2 = "[:channel] keskmine oli [:avg] tähte reas."
 short1 = "<b>[:nick]</b> kirjutas kõige lühemaid ridu, keskmiselt [:letters] sümbolit reas."
 short2 = "[:nick] kirjutas natuke pikemaid ridu, keskmiselt [:letters] sümbolit reas."
 
-foul1 = "<b>[:nick]</b> ajas kõige rohkem mula suust välja.  [:per]%  kirjutaud ridadest."
+foul1 = "<b>[:nick]</b> ajas kõige rohkem mula suust välja.  [:per]%  kirjutatud ridadest."
 foul2 = "Samas <b>[:nick]</b> ajas sammuti paska, seda siis [:per]% ajast."
 foul3 = "Kõik [:channel] tegelased rääkisid väga asjalikku juttu! Mingi igav kanal vä?"
 
-smiles1 = "<b>[:nick]</b> on [:channel] kanali kõige õnnelikum inimene. [:per]% ridadest sisaldasid naerunägu.  :)"
+smiles1 = "<b>[:nick]</b> on [:channel] kanali kõige õnnelikum inimene. [:per]% tema kirjutatud ridadest sisaldasid naerunägu.  :)"
 smiles2 = "<b>[:nick]</b> pole ka just kõige kurvem inimene, naeratas [:per]% ajast."
-smiles3 = "Eriliselt morn kanal see [:channel]!  Mitte keegi ei naeratanud."
+smiles3 = "Ehh, [:channel] kanalis käivad mingid imelikud. Mitte keegi ei naeratanud."
 
 sad1 = "<b>[:nick]</b> tundub olevat kuidagi kurvas meeleolus:  [:per]% tema kirjutatud ridadest sisaldasid kurba nägu.  :("
 sad2 = "<b>[:nick]</b> on ka millegipärast kurb, tema nuttis [:per]% ajast."
-sad3 = "Milline rõõm! Kõik [:channel] tegelased on heas tujus :-)"
+sad3 = "Lahe! Kõik [:channel] tegelased on heas tujus :-)"
 
-month = "Jaanuar Veebruar Märts April Mai Juuni Juuli August September Oktoober November Detsember"
-day = "Pühapäev Esmaspäev Teisipäev Kolmapäev Neljapäev Reede Laupäev"
+month = "Jaanuaril Veebruaril Märtsil Aprillil Mail Juunil Juulil Augustil Septembril Oktoobril Novembril Detsembril"
+day = "Pühapäeval Esmaspäeval Teisipäeval Kolmapäeval Neljapäeval Reedel Laupäeval"
 
 ## Topics
 
@@ -1597,7 +1597,7 @@ referencetopic = "Kõige enam mainitud nimed"
 urlstopic = "Kõige enam mainitud lingid"
 notopic = "Kanalil ei muudetud kordagi topicut."
 bylinetopic = "pani [:nick] kell [:time]"
-## Other text
+# Other text
 
 totallines = "Ridade arv kokku: [:lines]"
 totalnicks = "Muideks, peale nende kes tabelis on, kylastas kanalit veel [:totalnicks] tegelast."
@@ -1607,17 +1607,27 @@ url = "URL"
 numberlines = "Ridade arv"
 randquote = "Suvaline tsitaat"
 userpic = "Kasutaja pilt"
-nottop = "Nimed, kes tabelisse ei pääsenud:"
+nottop = "Nimed, mis tabelisse ei pääsenud:"
 word = "Sõna"
 numberuses = "Kasutatavus"
-show_words = "Mitu sõna?"
-show_time = "Millal"
+show_words = "Sõnade arv"
+show_time = "Aeg"
 show_wpl = "Sõna reas"
 show_cpl = "Tähte reas"
+show_lastseen = "Viimati ajas juttu"
 lastused = "Viimati kasutas"
+lastseen1 = "päev tagasi"
+lastseen2 = "päeva tagasi"
+today = "Täna"
 pagetitle1 = "[:channel] @ [:network] statistika koostas [:maintainer]"
-pagetitle2 = "Statistika on genereeritud ajavahemikul "
+pagetitle2 = "Statistika on genereeritud  "
 pagetitle3 = "Selle [:days]-päevase perioodi jooksul külastas [:channel] kanalit <b>[:nicks]</b> erinevat tegelast."
+
+# Mouse-over titles
+pisghomepage = "pisg kodulehele"
+authorhomepage = "Autori kodulehele"
+newwindow = "Ava uues aknas:"
+mailto = "e-post"
 </lang>
 
 ### Italian
