@@ -502,3 +502,12 @@ preferences you
      maj 07 21:12:02 ---     CreoN sets mode +o scalldog
      maj 07 21:12:05 <--     CreoN has kicked JavaBot (JavaBot)
      maj 07 21:12:06 -->     JavaBot (~javabot@host.com) has joined #channel
+
+* lulubot
+  - http://lulubot.berlios.de
+  - Version tested with the CVS the 12/04/04
+  - Log format :
+[22-11-2004/14:42] *** Joined ace (~ace@154.25.145.85)
+[22-11-2004/15:00] <ace> morning
+[22-11-2004/15:01] * ace is back
+  - Parser written by Vianney Lecroart <acemtp@free.fr>
