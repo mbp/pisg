@@ -9,18 +9,16 @@ $^W = 1;
 sub new
 {
     my $type = shift;
-    my $self = { };
-
     my %args = @_;
+    my $self = {
+        cfg => $args{cfg},
+        debug => $args{debug},
+        stats => $args{stats},
+        users => $args{users},
+        tmps => $args{tmps}
+    };
 
-    $self->{cfg} = $args{cfg};
-    $self->{debug} = $args{debug};
-    $self->{stats} = $args{stats};
-    $self->{users} = $args{users};
-    $self->{tmps} = $args{tmps};
-
-    # Load the Common module from wherever it's configured to be.
-    push(@INC, $self->{cfg}->{modules_dir});
+    # Import common functions in Pisg::Common
     require Pisg::Common;
     Pisg::Common->import();
 
