@@ -74,7 +74,7 @@ sub thirdline
              $hash{nick} = remove_prefix($1);
              $hash{newtopic} = $3;
 
-        } elsif ($3 =~ /^Mode change \"(\S+) ([^\"]+)\" .+/) {
+        } elsif ($3 =~ /^Mode change \"(\S+)[^\"]+\".+ by (.+)$/) {
              $hash{nick} = remove_prefix($2);
              $hash{newmode} = $1;
 
