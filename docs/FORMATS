@@ -172,3 +172,17 @@ link to the logfile)
   [MM/DD/YYYY @ HH:MM:SS] >* logger does some action here
 
   Both is supported.
+
+* Perlbot:
+  - A bot which written in perl that supports loadable modules
+    (http://perlbot.sourceforge.net)
+  - It also has some modules for searching logs and some perl scripts
+    for searching and browsing the log files.
+    (See examples at http://stats.978.org)
+  - Development on the bot seems to have stopped. I did need to edit it
+    a bit to get it to log actions correctly.
+
+  - In order to use this, format must be set to 'perlbot'
+
+  Example:
+        13:22:57 <Sc00ter> bah, gotta run to the store

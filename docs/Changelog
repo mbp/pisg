@@ -9,6 +9,8 @@ pisg (0.34) - Tue, Jan 8th 2002
    * bobot++ logfile support added (thanks to Oct@zoy.org)
    * New option 'nickhistory' to define the maximum number of nicks in 'most
      referenced nicks' (as suggested by Zapp <box@uni.de>)
+   * Support for oer bot logfiles (thanks to EQU <equ@equnet.org>)
+   * Support for perlbot logfiles (thanks to Travis Roy <travis@scootz.net>)
    * The usual slew of translation updates
 
 pisg (0.33) - Tue, Dec 20th 2001
