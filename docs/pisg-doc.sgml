@@ -94,6 +94,7 @@
      Logfile = "channel.log"
      Format = "mIRC"
      Maintainer = "John"
+     OutputFile = "mychan.html"
     </channel>
    ]]>
    </programlisting>
@@ -109,6 +110,14 @@
    That is basically it! Now, there are a lot more options that you can use
    for your channels, for this please refer to the reference documentation.
    </para>
+
+   <para>
+   Also be-aware of the fact that pisg uses various images to show the
+   time-related bars. These images are placed in the
+   <filename>gfx/</filename> folder and should be putted into the same
+   directory as your outputted HTML file.
+   </para>
+
    </sect1>
    <sect1 id="user-options">
     <title>Specifying user options</title>
