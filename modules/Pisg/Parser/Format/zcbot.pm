@@ -71,7 +71,7 @@ sub thirdline
             $hash{nick} = $arr[1];
 
         } elsif ($4 eq 'TOPIC' && lc($arr[0]) eq lc($self->{cfg}->{channel})) {
-            $tmp = join(" ", @arr[1..@arr]);
+            $tmp = join(" ", @arr[1..$#arr]);
             $tmp =~ s/^://;
             $hash{newtopic} = $tmp;
 
