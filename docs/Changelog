@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.44) - Sun Dec, 15th 2002
    * Fixed an error in the mIRC6 format which caused pisg to abort on some
      lines.
    * mirc2egg script updated.

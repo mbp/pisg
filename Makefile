@@ -53,6 +53,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/bxlog.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/bobot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/dancer.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/DCpp.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/eggdrop.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/energymech.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/grufti.pm \
