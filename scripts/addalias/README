@@ -1,8 +1,11 @@
+Addalias.pl
+Version: 0.1b
+Maintainer: Winfried "Doomshammer" Neessen <doomy@doomshammer.yi.org>
+
+Info:
+--
 This is a small Perl script/webinterface enabling users to add their own
 aliases/pictures/links to users.cfg
-
-It was made by Doomshammer <doomshammer@doomshammer.yi.org>, so any
-questions/suggestions etc. should go to him.
 
 Documentation:
 --
