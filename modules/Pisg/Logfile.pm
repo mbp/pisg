@@ -370,17 +370,17 @@ sub pick_random_lines {
 sub strip_mirccodes {
     my $line = shift;
 
-    my $boldcode = chr(2);
-    my $colorcode = chr(3);
-    my $plaincode = chr(15);
-    my $reversecode = chr(22);
-    my $underlinecode = chr(31);
+    # boldcode = chr(2) = oct 001
+    # colorcode = chr(3) = oct 003
+    # plaincode = chr(15) = oct 017
+    # reversecode = chr(22) = oct 026
+    # underlinecode = chr(31) = oct 037
 
     # Strip mIRC color codes
-    $line =~ s/$colorcode\d{1,2},\d{1,2}//go;
-    $line =~ s/$colorcode\d{0,2}//go;
+    $line =~ s/\003\d{1,2},\d{1,2}//go;
+    $line =~ s/\003\d{0,2}//go;
     # Strip mIRC bold, plain, reverse and underline codes
-    $line =~ s/[$boldcode$underlinecode$reversecode$plaincode]//go;
+    $line =~ s/[\002\017\026\037]//go;
 
     return $line;
 }
