@@ -15,11 +15,25 @@ link to the logfile)
   - Version 6.x of mIRC
 
   - Same as mIRC except it uses a retarded logging format that makes modes
-    indeciperable from actions
+    indeciperable from actions (which is a nightmare to parse)
 
-  - Don't use it if you can avoid it, it dosnt do very well at understanding modes
+  - DON'T USE IT if you can avoid it, it doesn't do very well at understanding
+    modes (see the "mIRC6hack" format)
 
   - In order to use this, format must be set to 'mIRC6'.
+
+* mIRC6hack:
+  - Version 6.x of mIRC using a logging script to produce a saner output
+
+  - Same as mIRC6 except it uses '**' for actions
+
+  - In order to use this, format must be set to 'mIRC6hack', and the following
+    be added to the remote script section: (thanks to virtuall)
+
+    on ^1:ACTION:*:*: {
+      haltdef
+      echo $chan ** $nick $1-
+    }
 
 * mIRC:
   - A client for Windows (www.mirc.com)

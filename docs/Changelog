@@ -4,6 +4,7 @@ pisg (0.61) - ??
    * Fix &amp; conversion.
    * More nick sanitizing.
    * Remove whitespace around user pictures, border="0", title.
+   * New "mIRC6hack" format to work around braindead mIRC6 logging.
    * docs/:
      + Nicer Makefile.
      + Write a single HTML file.
