@@ -479,3 +479,12 @@ preferences you
    normal msg:  [05-Mar-2004 17:28:10]  * Jkx|home bon je vais pas trainer ..
    channel msg: [17-Feb-2004 08:13:47]  *** Jkx changes topic to "Oh my god of topic
 
+* JavaBot
+  - http://javabot.sourceforge.net
+  - Version has to be 0.3.3 or newer
+  - To use this, format must be set to javabot
+  - Example:
+     maj 07 21:11:44 <CreoN> a regular line
+     maj 07 21:12:02 ---     CreoN sets mode +o scalldog
+     maj 07 21:12:05 <--     CreoN has kicked JavaBot (JavaBot)
+     maj 07 21:12:06 -->     JavaBot (~javabot@host.com) has joined #channel
