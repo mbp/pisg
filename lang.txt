@@ -1443,6 +1443,9 @@ lastused = "Utoljara hasznalta:"
 pagetitle1 = "[:channel] @ [:network] statisztika [:maintainer] segitsegevel"
 pagetitle2 = "A statisztika generalodott: "
 pagetitle3 = "Ezalatt a [:days] napos idoszak alatt <b>[:nicks]</b> kulonbozo nick-u emberke tevekenykedett a [:channel]-n."
+today = "Ma"
+lastseen1 = "nappal ezelott"
+lastseen2 = "nappal ezelott"
 </lang>
 
 ### Estonian
