@@ -135,3 +135,11 @@ link to the logfile)
   Tested with Trillian Version 0.70
 
   - In order to use this, format must be set to 'Trillian'
+
+* bobot++:
+  - IRC bot written in C++. (http://pltplp.net/bobot++/)
+
+  - In order to use this, format must be set to 'bobot'
+
+  Example:
+  [13/12/2001 - 20:38] <NazoZzz> hello world
