@@ -56,6 +56,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/bxlog.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Template.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/xchat.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \
 
 pisg:
 	mkdir -p newrelease

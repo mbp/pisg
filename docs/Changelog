@@ -1,3 +1,12 @@
+pisg (0.30)
+   * New feature: 'show_lastseen' - will add a column in the stats to display
+     when the user was last seen on the channel.
+   * When using mIRC logs which have a prefix (eg. <@osama> hi!), the prefix
+     will be removed automatically, works for both @ and +.
+   * New 'urlhistory' option added to define the maximum number of URLs to
+     show in 'most referenced URLs'
+   * zcbot (http://zcbot.sourceforge.net/) support added by Mo-Ize <mo-ize@pas-tres.net>
+
 pisg (0.29) - Sat, Nov 10th 2001
    * When using multiple channels, and not all channels have user pics, it was
      showing a big empty coloumn with no userpics. Now it checks whether any

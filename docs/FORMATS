@@ -101,3 +101,11 @@ link to the logfile)
 
   Example:
   15:32.58 17/10/2001  <Azhrarn/#darkgalaxy> This is a normal line.
+
+* zbot:
+  - Bot written in C++ (http://zcbot.sourceforge.net/)
+
+  - In order to use this, format must be set to 'zcbot'
+
+  Example:
+  12/11/01 22:05:42 :Keitaro!KOala_v5@EVYRV4A4.ipt.aol.com PRIVMSG #alsa-station :Re all :-)
