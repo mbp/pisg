@@ -81,3 +81,10 @@ also includes a sample line for these formats.
   Example:
   2001-08-19-23-14-06:#LINUX.DE::stelb!user@host.org PRIVMSG #linux.de :hi!
     
+* winbot:
+  - Windows-based IRC bot (http://www.winbot.co.uk/)
+
+  - In order to use this, format must be set to 'winbot'
+
+  Example:
+  15:32.58 17/10/2001  <Azhrarn/#darkgalaxy> This is a normal line.
