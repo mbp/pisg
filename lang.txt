@@ -7,7 +7,7 @@
 # (EN) English
 # (DE) German - Winfried Nessen <doomshammer@doomshammer.yi.org>
 # (NO) Norweigan - Andreas Blaafladt <andreabl@login1.powertech.no>
-# (PT) Portugese - JaMiR0W <jamirow@ig.com.br>
+# (PT) Portugese - JaMiR0W <jamirow@ig.com.br> and MrBoss <mrboss@terra.com.br>
 # (DK) Danish - Kim Ingemann <tuxi@tuxi.dk>
 # (FR) French - Molator <molator@ifrance.com>
 # (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
