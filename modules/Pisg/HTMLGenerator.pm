@@ -414,7 +414,11 @@ sub _activenicks
 
         my $randomline;
         if (not defined $self->{stats}->{sayings}{$nick}) {
-            $randomline = "";
+            if ($self->{stats}->{actions}{$nick}) {
+                $randomline = htmlentities($self->{stats}->{actionlines}{$nick});
+            } else {
+                $randomline = "";
+            }
         } else {
             $randomline = htmlentities($self->{stats}->{sayings}{$nick});
         }
