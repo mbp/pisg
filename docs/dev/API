@@ -64,5 +64,9 @@ topics        array          Each array element is a hash with the
 days          scalar         Number of days the reporting period spanned.
 totallines    scalar         Total number of lines (normal, action, and
                              third) seen in channel.
-processtime   scalar         String describing the time elapsed while
-                             processing this channel.
+processtime   hash           A hash containing 'hours', 'mins' and 'secs',
+                             describing the time elapsed while processing
+                             this channel.
+nicks         hash           A hash containing all nicks a user had through
+                             a logfile. The keys are the nicks, and the values
+                             is an array with their alternative nicknames.
