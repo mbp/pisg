@@ -1423,6 +1423,14 @@ mostdeop1 = "<b>[:nick]</b> je [:bil:bila:] serif tega kanala z [:deops] deopi."
 mostdeop2 = "<b>[:nick]</b> je [:odvzel:odvzela:] op [:deops] uporabnikom kanala."
 mostdeop3 = "Wooo...nikomu ni bil odvzet op na kanalu [:channel]!"
 
+mostvoice1 = "<b>[:nick]</b> je [:podaril:podarila:] [:voices] voicev na kanalu..."
+mostvoice2 = "<b>[:nick]</b> je [:bil:bila:] tudi zelo [:radodaren:radodarna:]. [:voices] voicev od [:njega:nje:]."
+mostvoice3 = "Cudno, nikomur ni bil dan voice na [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> [:rad:rada:] jemlje voice ljudem... [:devoices] ljudi je ostalo brez voice-a zaradi [:njega:nje:]."
+mostdevoice2 = "<b>[:nick]</b> tesno sledi... [:Odvzela:Odvzel:] voice [:devoices] ljudem."
+mostdevoice3 = "Nihce ni nikomur odvzel voice-a na [:channel]!"
+
 action1 = "<b>[:nick]</b> nam je vedno [:povedal:povedala:] kaj pocne: [:actions] dejanj!"
 action2 = "Tudi <b>[:nick]</b> nam je vedno [:povedal:povedala:] kaj se je dogajalo z [:njim:njo:], [:actions] dejanj."
 action3 = "Nobenih dejanj na kanalu [:channel]!"
@@ -1480,6 +1488,7 @@ short2 = "[:nick] mu je [:sledil:sledila:] z [:letters] znaki na vrstico."
 foul1 = "<b>[:nick]</b> je [:imel:imela:] umazana usta.  [:per]% [:njegovih:njenih:] vrstic je vsebovalo grde besede."
 foul2 = "<b>[:nick]</b> pa ni [:zaostajal:zaostajala:] dosti, [:per]% [:njegovih:njenih:] besed so bile kletvice."
 foul3 = "Nihce ni grdo govoril na kanalu [:channel]!  A sploh kej ven hod'te?"
+foultext = "Cisti primer je: </b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> je [:prinasal:prinasala:] sreco na ta svet.  [:per]% [:njegovih:njenih:] vrstic so bili smeskoti.  :)"
 smiles2 = "<b>[:nick]</b> tudi ni zalostna oseba, saj se smeje [:per]% vsega svojega casa."
@@ -1492,8 +1501,6 @@ sad3 = "Nihce ni zalosten na kanalu [:channel]!  Kaksen vesel kanal.  :-)"
 month = "Januar Februar Marec April Maj Junij Julij Avgust September Oktober November December"
 day = "Nedelja Ponedeljek Torek Sreda Cetrtek Petek Sobota"
 
-notopic = "Na tem kanalu ni nihce nikoli postavil topica."
-
 ## Topics
 
 bignumtopic = "Najvecji rekordi"
@@ -1501,9 +1508,12 @@ othernumtopic = "Druge zanimivosti"
 latesttopic = "Zadnji topici"
 activetimestopic = "Najbolj aktivni casi"
 activenickstopic = "Najbolj aktivni nicki"
+activenickbyhourtopic = "Najbolj aktivni nicki sortirani po casu"
 mostwordstopic = "Najveckrat izrecene besede"
 referencetopic = "Najveckrat omenjen nick"
 urlstopic = "Najveckrat povedan URL naslov"
+notopic = "Na tem kanalu ni nihce nikoli postavil topica."
+mostnickstopic = "Uporabniki z najvec nicki"
 bylinetopic = "[:Povedal:Povedala:] [:nick] ob [:time]"
 
 ## Other text
@@ -1512,6 +1522,7 @@ totallines = "Stevilo vseh vrstic znasa: [:lines]."
 totalnicks = "Ce koga zanima, je bilo se [:totalnicks] drugih nickov na tem kanalu, ki pa niso dovolj pomembni da bi bili vpisani na tej strani."
 totaltopic = "Topic je bil postavljen [:total]-krat."
 nick = "Nick"
+names = "Imena uporabljena"
 url = "URL"
 numberlines = "Stevilo vrstic"
 randquote = "Nakljucni citat"
@@ -1523,10 +1534,30 @@ show_words = "Stevilo besed"
 show_time = "Kdaj?"
 show_wpl = "Stevilo besed na vrstico"
 show_cpl = "Stevilo znakov na vrstico"
+show_lastseen = "Zadnjic viden/a"
 lastused = "Zadnjic uporabljal/a"
+lastseen1 = "dan nazaj"
+lastseen2 = "dni nazaj"
+today = "Danes"
 pagetitle1 = "Statistika kanala [:channel] na [:network]-u, ki jo vodi [:maintainer]"
 pagetitle2 = "Statistika generirana na dan: "
 pagetitle3 = "Med tem [:days]-dnevnim casom, ko je bil kanal logiran, je sestevek nickov, ki so si prisli ogledat kanal [:channel] <b>[:nicks]</b>"
+stats_gen_by = "Statistika narejena s programom [:pisg_url] v[:version]"
+author = "pisg napisal [:author_url] in drugi"
+stats_gen_in = "Statistika narejena v [:time]"
+hours = "urah"
+minutes = "minutah"
+seconds = "sekundah"
+and = "in"
+names1 = "imena"
+names2 = "ime"
+
+# Mouse-over titles
+pisghomepage = "Pojdi na domaco stran programa pisg"
+authorhomepage = "Pojdi na avtorjevo domaco stran"
+newwindow = "Odpri v novem oknu:"
+mailto = "Poslji mail na:"
+
 </lang>
 
 ### Magyar lengvidzsu szovegek
