@@ -24,8 +24,6 @@ And all the other contributors:
    | xchat logfiles request/help
  * Martin Poulsen <xact@mail.dk>
    | Suggestions and moral support
- * Vetinary <iranitev@gmx.net>
-   | Lots of feature additions and code cleanups, thanks!
  * Laocius <irish@rook.lug.usf.edu>
    | The features 'most used words' and 'most referenced nicks'
  * Luca (eni) <adsl.help@dada.it>
@@ -51,7 +49,8 @@ And all the other contributors:
    | Compressed files, and addition of --prefix
  * JaMiR0W <jamirow@ig.com.br>
    | Portugese translation
- * Hanno Hecker <hanno-pisg@bee.de>
+ * Hanno Hecker (Vetinari) <hanno-pisg@bee.de>
+   | Lots of feature additions and code cleanups, thanks!
    | Updates to German translation, some patches for words and the feature
    'most words'.
  * Pyrofikiemaan <gassman65@hotmail.com>

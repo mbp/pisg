@@ -1,6 +1,9 @@
 pisg (0.20) 
    * Add 'bgpic' config setting for the possibility to add a userdefined
      background picture to the page (Vetinari)
+   * If pisg can't find the config file in the current directory (when running
+     from crontab), then try opening the config file in which pisg.pl resides
+     instead..
 
 pisg (0.19) - Tue, Aug 7th 2001
    * Fix critical bug where <channel="#chan"> in pisg.cfg didn't work at all.

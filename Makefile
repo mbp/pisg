@@ -1,6 +1,6 @@
 # Simple Makefile to make new releases of pisg (newreleases dir must exist)
 
-VERSION = 0.18
+VERSION = 0.20
 
 DIRNAME = pisg-$(VERSION)
 
