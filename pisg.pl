@@ -850,7 +850,13 @@ sub template_text
 
     foreach my $key (sort keys %hash) {
         $text =~ s/\[:$key\]/$hash{$key}/;
-        $text = htmlentities($text);
+        $text =~ s/ü/&uuml;/g;
+        $text =~ s/ö/&ouml;/g;
+        $text =~ s/ä/&auml;/g;
+        $text =~ s/ß/&szlig;/g;
+        $text =~ s/å/&aring;/g;
+        $text =~ s/æ/&aelig;/g;
+        $text =~ s/ø/&oslash;/g;
     }
 
     return $text;
