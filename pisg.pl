@@ -944,12 +944,12 @@ sub template_text
 
     my $text;
 
+    $text = $T{$conf->{lang}}{$template};
+
     if (!$T{$conf->{lang}}{$template}) {
         # Fall back to English if the language template doesn't exist
         $text = $T{EN}{$template};
     }
-
-    $text = $T{$conf->{lang}}{$template};
 
     if (!$text) {
         die("No such template '$template' in language file.\n");
