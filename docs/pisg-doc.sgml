@@ -91,7 +91,8 @@
 
    <programlisting>
    <![CDATA[
-    <channel="#channel" LogFile="channel.log">
+    <channel="#channel">
+     Logfile = "channel.log"
      Format = "mIRC"
      Maintainer = "John"
     </channel>
@@ -238,7 +239,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          Faintainer = "John"
         </channel>
@@ -282,7 +284,7 @@
     <title>Description</title>
     <para>
     <command>LogSuffix</command> is used to define the suffix of a logfile,
-    it only works when <command>logdir</command> is defined. The example in
+    it only works when <command>LogDir</command> is defined. The example in
     the synopsis is for the eggdrop bots default foramt.
     </para>
     </refsect1>
@@ -304,7 +306,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "eggdrop"
          Maintainer = "John"
         </channel>
@@ -339,7 +342,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "eggdrop"
          Network = "Undernet"
         </channel>
@@ -373,7 +377,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "eggdrop"
          OutputFile = "mychan.html"
         </channel>
@@ -407,7 +412,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          Maintainer = "Benny"
         </channel>
@@ -443,7 +449,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          Lang = "DE"
         </channel>
@@ -481,7 +488,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "chaNnel.log"
          Format = "mIRC"
          OutputFile = "stats.html"
          PageHead = "myheader.txt"
@@ -520,7 +528,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          outputfile = "stats.html"
          PageFoot = "myfooter.txt"
@@ -558,7 +567,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          ImagePath = "userpics/"
         </channel>
@@ -593,7 +603,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          DefaultPic = "not_available.jpg"
         </channel>
@@ -628,7 +639,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogDir="/home/foo/eggdrop/logs/">
+        <channel="#channel">
+         LogDir="/home/foo/eggdrop/logs/"
          Format = "eggdrop"
         </channel>
 
@@ -662,7 +674,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logdir="/home/foo/eggdrop/logs/">
+        <channel="#channel">
+         LogDir="/home/foo/eggdrop/logs/"
          Format = "eggdrop"
          LogPrefix = "logjun"
         </channel>
@@ -697,7 +710,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          Maintainer = "John"
          TimeOffset = "+5"
@@ -734,7 +748,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowActiveTimes = "0"
         </channel>
@@ -768,7 +783,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowBigNumbers = "0"
         </channel>
@@ -803,7 +819,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowTopics = "0"
         </channel>
@@ -837,7 +854,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowWpl = "0"
         </channel>
@@ -872,7 +890,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowCpl = "0"
         </channel>
@@ -907,7 +926,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowWords = "0"
         </channel>
@@ -942,7 +962,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowLastSeen = "0"
         </channel>
@@ -976,7 +997,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowTime = "0"
         </channel>
@@ -1011,7 +1033,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "bobot"
          ShowLineTime = "0"
         </channel>
@@ -1048,7 +1071,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "bobot"
          ShowRandQuote = "0"
         </channel>
@@ -1083,7 +1107,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "bobot"
          ShowLegend = "0"
         </channel>
@@ -1117,7 +1142,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "bobot"
          ShowKickLine = "0"
         </channel>
@@ -1151,7 +1177,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "bobot"
          ShowActionLine = "0"
         </channel>
@@ -1185,7 +1212,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "bobot"
          ShowShoutLine = "0"
         </channel>
@@ -1219,7 +1247,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "bobot"
          ShowViolentLines = "0"
         </channel>
@@ -1253,7 +1282,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowMuw = "0"
         </channel>
@@ -1287,7 +1317,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowMrn = "0"
         </channel>
@@ -1321,7 +1352,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowMru = "0"
         </channel>
@@ -1355,7 +1387,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowVoices = "0"
         </channel>
@@ -1390,7 +1423,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          ShowMostNicks = "0"
         </channel>
@@ -1425,7 +1459,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          IgnoreWords = "foo bar"
         </channel>
@@ -1460,7 +1495,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          FoulWords = "ass bitch"
         </channel>
@@ -1557,7 +1593,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          Charset = "utf-8"
         </channel>
@@ -1591,7 +1628,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          MinQuote = "10"
         </channel>
@@ -1627,7 +1665,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          MaxQuote = "70"
         </channel>
@@ -1663,7 +1702,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "xchat"
          WordLength = "10"
         </channel>
@@ -1698,7 +1738,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          ActiveNicks = "50"
         </channel>
@@ -1732,7 +1773,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          ActiveNicks2 = "25"
         </channel>
@@ -1766,7 +1808,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          MostNicksHistory = "2"
         </channel>
@@ -1800,7 +1843,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          TopicHistory = "2"
         </channel>
@@ -1834,7 +1878,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          UrlHistory = "2"
         </channel>
@@ -1868,7 +1913,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          WordHistory = "5"
         </channel>
@@ -1902,7 +1948,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" LogFile="channel.log">
+        <channel="#channel">
+         Logfile = "channel.log"
          Format = "mIRC"
          NickHistory = "3"
         </channel>
