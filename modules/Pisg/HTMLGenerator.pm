@@ -157,6 +157,7 @@ td {
     font-family: verdana, arial, sans-serif;
     font-size: 13px;
     color: $self->{cfg}->{tdcolor};
+    text-align: left;
 }
 
 .title {
@@ -168,6 +169,7 @@ td {
 .headtext {
     color: $self->{cfg}->{hcolor};
     font-weight: bold;
+    text-align: center;
 }
 
 .tdtop { background-color: $self->{cfg}->{tdtop}; }
@@ -355,7 +357,7 @@ sub _activetimes
         } else {
             $class = 'rankc';
         }
-        _html("<td class=\"$class\" style=\"font-size: 10px\" align=\"center\">$b</td>");
+        _html("<td class=\"$class\" style=\"font-size: 10px; text-align: center\" align=\"center\">$b</td>");
 }
 
     _html("</tr></table>");
@@ -1296,7 +1298,7 @@ sub _lasttopics
             _html("<tr><td class=\"hicell\"><i>$topic</i></td>");
             _html("<td class=\"hicell\"><b>" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
         }
-        _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
+        _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\" style=\"text-align: center\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
     } else {
         _html("<tr><td class=\"hicell\">" . $self->_template_text('notopic') ."</td></tr>");
     }
