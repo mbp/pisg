@@ -2154,8 +2154,8 @@ sub lasttopics
         if ($ltopic > $conf->{topichistory}) { $tlimit = $ltopic - $conf->{topichistory}; }
 
         for (my $i = $ltopic; $i >= $tlimit; $i--) {
-            $topics[$i]{"topic"} = replace_links($topics[$i]{"topic"});
-            my $topic = $topics[$i]{topic};
+            $topics[$i]{"topic"} = htmlentities($topics[$i]{"topic"});
+            my $topic = replace_links($topics[$i]{topic});
             # Strip off the quotes (')
             $topic =~ s/^\'(.*)\'$/$1/;
 
