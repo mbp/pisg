@@ -113,7 +113,7 @@ sub analyze
         $stats{processtime}{mins} = sprintf('%02d', $min);
         $stats{processtime}{secs} = sprintf('%02d', $sec);
 
-        print "Channel analyzed succesfully in $processtime on ",
+        print "Channel analyzed successfully in $processtime on ",
         scalar localtime(time()), "\n"
             unless ($self->{cfg}->{silent});
 
@@ -247,7 +247,7 @@ sub _parse_file
     my $self = shift;
     my ($stats, $lines, $file, $state) = @_;
 
-    print "Analyzing log($file) in '$self->{cfg}->{format}' format...\n"
+    print "Analyzing log $file in '$self->{cfg}->{format}' format...\n"
         unless ($self->{cfg}->{silent});
 
     if ($file =~ /.bz2?$/ && -f $file) {
@@ -522,7 +522,7 @@ sub _parse_file
 
     close(LOGFILE);
 
-    print "Finished analyzing log, $stats->{days} days total.\n"
+    print "Finished analyzing log with $stats->{totallines} lines, total: $stats->{days} days, $stats->{parsedlines} lines.\n"
         unless ($self->{cfg}->{silent});
 }
 

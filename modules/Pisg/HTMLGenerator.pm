@@ -37,6 +37,17 @@ sub new
         }
     }
 
+    if($self->{cfg}->{bignumbersthreshold} !~ /^\d*$/) { # threshold is not a number
+        my $t = $self->{cfg}->{bignumbersthreshold};
+        $t =~ s/\$lines/($self->{stats}->{parsedlines})/g;
+        my $t2 = eval "$t";
+        if($@) {
+            print STDERR "Error when evaluating bignumbersthreshold '$t'.\n";
+            $t2 = 100;
+        }
+        $self->{cfg}->{bignumbersthreshold} = $t2 < 1 ? 1 : int($t2);
+    }
+
     bless($self, $type);
     return $self;
 }
@@ -54,7 +65,7 @@ sub create_output
 
     my $fname = $self->{cfg}->{outputfile};
     $fname =~ s/\%t/$self->{cfg}->{outputtag}/g;
-    print "Now generating HTML($fname)...\n"
+    print "Now generating HTML in $fname with BigNumbersThreshold $self->{cfg}->{bignumbersthreshold}...\n"
         unless ($self->{cfg}->{silent});
 
     open (OUTPUT, "> $fname") or

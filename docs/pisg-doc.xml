@@ -2276,12 +2276,13 @@
     <para>
     Pisg will ignore users with less than this setting lines in the "questions
     asked", "shouts loudest", "CAPSLOCK", "longest line", "most sad", and "most
-    happy" sections.
+    happy" sections. This setting is eval'ed as a Perl expression; $lines is
+    the total number of lines parsed. The default is the square root of lines.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> 100 </para>
+    <para> sqrt($lines) </para>
     </refsect1>
     </refentry>
 
