@@ -1122,19 +1122,24 @@ shout1 = "Skrikigast var <b>[:nick]</b> som skrek [:per]% av tiden!"
 shout2 = "En annan <i>skrikhals</i> var <b>[:nick]</b> som skrek [:per]% av tiden!"
 shout3 = "Ingen använde utropstecknet, wow."
 
+
 allcaps1 = "Det verkar som <b>[:nick]</b> har en hängande shift-tangent, [:per]% av tiden skrev [:han:hon:] i VERSALER"
 allcaps2 = "<b>[:nick]</b> glömde att deaktivera sin CapsLock-tangent, [:per]% av det [:han:hon:] skrev var VERSALER"
 allcaps3 = "Alla hade sin shift-tangent under kontroll :)"
+allcapstext = "<b>Till exempel så här:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> är en väldigt aggressiv person, som använde handflatan <b>[:attacks]</b> gånger."
 violent2 = "<b>[:nick]</b> kunde inte kontrollera sina aggressioner. [:Han:Hon:] slogs <b>[:attacks]</b> gånger med sin handflata."
 violent3 = "Ingen slog ingen, alla var vänner."
+violenttext = "<b>Till exempel så här:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Stackars <b>[:nick]</b>, ingen gillade [:honom:henne:]. [:Han:Hon:] blev slagen <b>[:attacks]</b> gånger med handflatan."
 attacked2 = "<b>[:nick]</b> var inte heller speciellt omtyckt, [:han:hon:] blev slagen <b>[:attacks]</b> gånger."
+attackedtext = "<b>Till exempel så här:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> var inte speciellt populär, och blev utsparkad [:kicks] gånger!"
 gotkick2 = "<b>[:nick]</b> verkar också vara hatad, [:kicks] utsparkningar"
+kicktext = "<b>Till exempel så här:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 joins = "<b>[:nick]</b> kunde inte bestämma sig för att stanna eller gå, och gjorde entré [:joins] gånger under den rapporterade perioden!"
 
@@ -1146,7 +1151,7 @@ words1 = "<b>[:nick]</b> är mycket aktiv och skrev totalt [:words] ord!"
 words2 = "Pratkvarnen [:oldnick] blev tätt följd av <b>[:nick]</b>, som inte pratade riktigt lika mycket: [:words] ord."
 words3 = "Ingen sa något... Vilken konstig kanal..."
 
-mono1 = "<b>[:nick]</b> pratar mycket med sigsjälv, och skrev över 5 rader i följd [:monos] gånger!"
+mono1 = "<b>[:nick]</b> pratar mycket med sig själv, och skrev över 5 rader i följd [:monos] gånger!"
 mono2 = "En annan ensam person var <b>[:nick]</b>, som lyckades med [:monos] monologer"
 
 wpl1 = "<b>[:nick]</b> skrev ett genomsnitt av [:wpl] ord per rad..."
@@ -1181,6 +1186,7 @@ mostwordstopic = "Mest använda ord"
 referencetopic = "Mest tilltalade personer"
 urlstopic = "Mest refererade URLer"
 notopic = "Ingen rubrik blev nånsin satt på denna kanal"
+bylinetopic = "Av [:nick] à [:time]"
 
 ## Other text
 
@@ -1196,11 +1202,25 @@ nottop = "Dessa personer kom inte med i toppen:"
 word = "Ord"
 numberuses = "Antal gånger"
 lastused = "Sist använt av"
+lastseen1 = "dag sen"
+lastseen2 = "dagar sen"
 pagetitle1 = "[:channel] @ [:network] statistik av [:maintainer]"
 pagetitle2 = "Statistik genererad "
 pagetitle3 = "Under denna [:days]-dagars reporterings period, blev ett totalt antal av <b>[:nicks]</b> olika personer representerade på [:channel]."
-</lang>
+month = "Januari Februari Mars April Maj Juni Juli Augusti September Oktober November December"
+day = "Måndag Tisdag Onsdag Torsdag Fredag Lördag Söndag"
+today = "Idag"
+show_time = "När?"
+show_words = "Antal ord"
+show_lastseen = "Sågs senast"
 
+# Mouse-over titles
+pisghomepage = "pisg's hemsida"
+authorhomepage = "Till utvecklarens hemsida"
+newwindow = "Öppna i nytt fönster:"
+mailto = "Email till"
+
+</lang>
 
 ### Finnish (Suomi)
 <lang name="FI">
