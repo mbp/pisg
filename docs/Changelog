@@ -20,6 +20,9 @@ pisg (x.xx)
      to variables, was part of Rev 1.3 but apparently I forgot to actually put
      in that part.  Thanks Marc Roberts for pointing this out. BugID#651485
    * Added support for 'DC++' format, used by Direct Connect hub chat
+   * Fixed bug in infobot format -- was matching any line that began lowercase
+     as an action line.  Infobot does not log actions in a recognizable format
+     ... I even examined the output in hex to be sure.  Fix BugID#652239
 
 
 

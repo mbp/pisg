@@ -14,8 +14,8 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^(\d+) \[\d+\] <([^\/]+)\/[^>]+> ([^a-z].*)',
-        actionline => '^(\d+) \[\d+\] <([^\/]+)\/[^>]+> ([a-z].*)',
+        normalline => '^(\d+) \[\d+\] <([^\/]+)\/[^>]+> (.*)',
+        actionline => '^NA',
         thirdline  => '^(\d+) \[\d+\] >>> (.*)',
     };
 
