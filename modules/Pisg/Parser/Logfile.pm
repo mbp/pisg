@@ -311,7 +311,7 @@ sub _parse_file
                 $stats->{times}{$hour}++;
 
                 if (defined($kicker)) {
-                    unless (is_ignored($kicker) {
+                    unless (is_ignored($kicker)) {
                         $stats->{kicked}{$kicker}++;
                         $stats->{gotkicked}{$nick}++;
                         push @{ $lines->{kicklines}{$nick} }, $line;
