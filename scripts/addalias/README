@@ -39,12 +39,22 @@ explain themselves.
 Release history:
 --
 
+Version 2.2:
+------------
+  Some modifications by icu (me@1cu.de):
+  * added a hardcoded baseurl
+  * added check for nick-field in input
+  * added list botton to get a list of all aliases
+
 Version 2.1:
+------------
   * Made nicks in config file incasesensitive
 
 Version 2.0:
+------------
   * Initial release of the improved version
     by deadlock. 
 
 Version 1.0:
+------------
   * Initial release by Doomshammer <doomy@doomshammer.yi.org>

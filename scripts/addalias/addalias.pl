@@ -6,7 +6,7 @@ use CGI::Carp qw(fatalsToBrowser carpout);
 
 ###########################################################################
 #                                                                         #
-#  addalias version 2.1 by deadlock (deadlock@cheeseheadz.net)            #
+#  addalias version 2.2 by deadlock (deadlock@cheeseheadz.net)            #
 #                                                                         #
 #  This script can be used on a webpage for users to enter and edit their #
 #  own info for the pisg ircstats program by mbrix.                       #
@@ -22,6 +22,12 @@ use CGI::Carp qw(fatalsToBrowser carpout);
 # File locations:
 
 my $pisg_config = "/path/to/pisg.cfg";
+
+# Server URL
+# If your script resists in http://myserver/cgi-bin/addalias.pl you should
+# set it to: "/cgi-bin"
+
+my $url         = "/cgi-bin";
 
 # Page layout:
 
@@ -49,7 +55,8 @@ my $txtignore   = "Ignore me";
 my $btnsubmit   = "Submit";
 my $btnupdate   = "Update";
 my $txtfoot1    = "To update your settings, just enter your nickname and click Submit to retrieve your current settings.";
-my $txthelp     = "For help on this form click <a href=\"addalias.pl/help\" target=\"_blank\">here</a>.";
+my $txthelp     = "For help on this form click <a href=\"$url/addalias.pl/help\" target=\"_blank\">here</a>.";
+my $txtlist     = "For a complete list of known nicks please click <a href=\"$url/addalias.pl/list\">here</a>.";
 my $txtupdate   = "These are your current settings. Edit them where needed and click Update to update your info.";
 my $txtaddok    = "Your nickname was successfully added.:";
 my $txtignoreon = "You activated ignore and will not appear in the stats.";
@@ -82,45 +89,63 @@ my ($cfg, $fnd);
 my ($submitbtn, $frmaction);
 
 htmlheader();
-
 if (!$path) {
     $submitbtn = $btnsubmit;
-    $frmaction="\"addalias.pl/input\"";
-    $txtupdate = ""; 
+    $frmaction="\"$url/addalias.pl/input\"";
+    $txtupdate = "";
     mainpage();
 } elsif ($path eq 'help') {
     helppage();
+} elsif ($path eq 'list') {
+    $submitbtn = $btnsubmit;
+    $frmaction="\"$url/addalias.pl/input\"";
+    $txtupdate = "";
+    mainpage();
+    list();
+
 } elsif ($path eq 'input') {
     readparams();
-    $cfg = read_config();
-    if ($cfg ne "1") {
-        $fnd = check_if_found();
-        if ($fnd eq "1") {
-            $submitbtn = $btnupdate;
-            $frmaction="\"update\"";
-            if ($old_sex eq "m" or $old_sex eq "M"){
-                $old_sexm = "checked";
-            }
-            elsif ($old_sex eq "f" or $old_sex eq "F"){
-                $old_sexf = "checked";
-            }
-            if ($old_ignore eq "1"){
-                $old_ignr = "checked";
-            }
-            $txtfoot1="";
-            mainpage();
-        }
-        else {
-            addinfo();      
-        }
-    }
-    else {
-        addinfo();
+    if ($frm_nick eq "") {
+       no_nick();
+       $submitbtn = $btnsubmit;
+       $frmaction="\"$url/addalias.pl/input\"";
+       $txtupdate = "";
+       mainpage();
+    } else {
+       $cfg = read_config();
+       if ($cfg ne "1") {
+           $fnd = check_if_found();
+           if ($fnd eq "1") {
+               $submitbtn = $btnupdate;
+               $frmaction="\"update\"";
+               if ($old_sex eq "m" or $old_sex eq "M"){
+                   $old_sexm = "checked";
+               }
+               elsif ($old_sex eq "f" or $old_sex eq "F"){
+                   $old_sexf = "checked";
+               }
+               if ($old_ignore eq "1"){
+                   $old_ignr = "checked";
+               }
+               $txtfoot1="";
+               mainpage();
+           }
+           else {
+               addinfo();
+           }
+       }
+       else {
+           addinfo();
+       }
     }
 } elsif ($path eq 'update') {
     readparams();
-    $cfg = read_config();
-    updateinfo();
+    if ($frm_nick eq "") {
+       no_nick();
+    } else {
+       $cfg = read_config();
+       updateinfo();
+    }
 } else {
     print "Illegal calling of script<br>\n";
 }
@@ -196,7 +221,8 @@ print <<HTML
    </table>
   </form>
   $txtfoot1<br>
-  $txthelp<br>
+  $txthelp<br><br>
+  $txtlist<br><br>
 HTML
 }
 
@@ -227,6 +253,38 @@ sub readparams
    $frm_pic = param('pic');
    $frm_sex = param('sex');
    $frm_ignore = param('ignore');
+}
+
+sub list
+{
+    open(FILE, "<$pisg_config") or die("Error opening pisg config file: $!");
+    my $i = 0;
+    my $nick;
+    my $alias;
+    while(<FILE>) {
+        if($_ =~ /^<user/) {
+            $users[$i] = $_;
+            chomp $users[$i];
+            $i++;
+        }
+    }
+    close(FILE);
+    $i = 0;
+
+    print "<table width=\"800\" cellpadding=\"2\" cellpadding=\"2\" border=\"0\" style=\"border: 1px ridge $c_border\">\n <tr>\n  <td align=\"left\"><b>$txtnick</b></td><td align=\"left\"><b>$txtalias</b></td> </tr>\n";
+
+    foreach (@users) {
+        if ($users[$i] =~ /nick=.*/) {
+            if ($users[$i] =~ /nick="(\S+)"(.*)/) {
+                $nick = lc($1);
+            }
+            if ($users[$i] =~ /alias="(\S+)".*/ or $users[$i] =~ /alias="(.*)"\s.*/ or $users[$i] =~ /alias="(.*)">/ ) {
+                $alias = $1;
+            }
+            print " <tr>\n  <td>$nick</td><td>$alias</td>\n <tr>\n";
+        }
+    $i++
+    }
 }
 
 sub read_config
@@ -268,8 +326,8 @@ sub read_config
             }
             if ($users[$i] =~ /ignore="(\S+)"(.*)/) {
                 my $ignore = $1;
-                if($ignore eq "y" or $ignore eq "Y") { 
-                    $ignore = 1; 
+                if($ignore eq "y" or $ignore eq "Y") {
+                    $ignore = 1;
                 } else {
                     $ignore = 0;
                 }
@@ -283,6 +341,14 @@ sub read_config
     return $search;
 }
 
+
+sub no_nick
+{
+    print <<HTML
+<font color="red" size="+1"><b>Warning:</b> Nick needs to be declared !</font><br>
+HTML
+;
+}
 
 sub check_if_found
 {
@@ -340,12 +406,12 @@ $txtaddok<br><br>\n
  </tr>
 HTML
 ;
-    if($frm_alias) { 
+    if ($frm_alias) {
         print " <tr>\n";
         print "  <td>$txtalias:</td><td>$frm_alias</td>\n";
         print " </tr>\n";
     }
-    if($frm_link) {
+    if ($frm_link) {
         print " <tr>\n";
         if($frm_link =~ /^http:|ftp:/) {
             print "  <td>$txturl:</td><td><a href=\"$frm_link\">$frm_link</a></td>\n";
@@ -358,22 +424,22 @@ HTML
         }
         print " </tr>\n";
     }
-    if($frm_pic) {
+    if ($frm_pic) {
         print " <tr>\n";
         print "  <td>$txtpic:</td><td><img src=\"$frm_pic\"></td>\n";
         print " </tr>\n";
     }
-    if($frm_sex eq "m") {
+    if ($frm_sex eq "m") {
         print " <tr>\n";
         print "  <td>$txtsex:</td><td>$txtmale</td>\n";
         print " </tr>\n";
     }
-    if($frm_sex eq "f") {
+    if ($frm_sex eq "f") {
         print " <tr>\n";
         print "  <td>$txtsex:</td><td>$txtfemale</td>\n";
         print " </tr>\n";
     }
-    if($frm_ignore eq "on") {
+    if ($frm_ignore eq "on") {
         print " <tr>\n";
         print "  <td>$txtignore:</td><td>$txtignoreon</td>\n";
         print " </tr>\n";
