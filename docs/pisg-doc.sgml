@@ -242,7 +242,7 @@
         <channel="#channel">
          Logfile = "channel.log"
          Format = "mIRC"
-         Faintainer = "John"
+         Maintainer = "John"
         </channel>
 
 
