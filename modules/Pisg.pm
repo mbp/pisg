@@ -270,10 +270,12 @@ sub close_debug
 sub init_words
 {
     my $self = shift;
+    $self->{cfg}->{foul} =~ s/(^\s+|\s+$)//g;
     $self->{cfg}->{foul} =~ s/\s+/|/g;
     foreach (split /\s+/, $self->{cfg}->{ignorewords}) {
         $self->{cfg}->{ignoreword}{$_} = 1;
     }
+    $self->{cfg}->{violent} =~ s/(^\s+|\s+$)//g;
     $self->{cfg}->{violent} =~ s/\s+/|/g;
 }
 
