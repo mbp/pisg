@@ -199,3 +199,16 @@ link to the logfile)
 
   Example:
   1010866756 :EQU!equ@mira.equnet.org PRIVMSG #oer :test for mbrix
+
+* muh
+ - A bouncer for unix/linux (http://mind.riot.org/muh/)
+
+ - In order to use this, format must be set to 'muh'.
+
+ Since you can configure the log-format as you want to, the standard-format
+ is used for parsing.
+ In order to set it correctly add this to you muhrc:
+        timestamptemplate = "[%a %d %b %H:%M:%S]";
+
+ Example:
+        [Sat 16 Mar 21:24:09] <pete> hello everybody
