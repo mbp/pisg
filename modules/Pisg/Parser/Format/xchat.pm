@@ -2,6 +2,8 @@ package Pisg::Parser::Format::xchat;
 
 # Documentation for the Pisg::Parser::Format modules is found in Template.pm
 
+# This module supports both the old and new logformat (after 1.8.7)
+
 use strict;
 $^W = 1;
 
@@ -10,9 +12,9 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^(\d+):\d+:\d+ <([^>\s]+)>\s+(.*)',
-        actionline => '^(\d+):\d+:\d+ \*\s+(\S+) (.*)',
-        thirdline  => '^(\d+):(\d+):\d+ .--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)',
+        normalline => '(\d+):\d+:\d+ <([^>\s]+)>\s+(.*)',
+        actionline => '(\d+):\d+:\d+ \*\s+(\S+) (.*)',
+        thirdline  => '(\d+):(\d+):\d+ .--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)',
     };
 
     bless($self, $type);

@@ -34,8 +34,15 @@ link to the logfile)
     
   -  In order to use this, format must be set to 'xchat'.
 
-  Example:
+  Both the old logformat, and the new logformat from 1.8.7 and above is
+  supported.
+
+  Example of old logformat:
         18:01:43 <Ben> Hello world
+
+  Example of new logformat:
+        jan 13 04:39:42 <Ben> Hello World
+
 
 * Eggdrop:
   - A cool and advanced IRC bot for Linux (www.eggheads.org)
