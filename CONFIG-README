@@ -20,6 +20,9 @@ This will add all Joe^'s to 'Joe' in the stats.
 Another thing you can do is to add a picture to a user:
     <user nick="Ben" pic="ben_holiday.jpg">
 
+You can also set a user's sex:
+    <user nick="Ben" sex="m">
+
 Also you can add links to URLs and e-mails:
     <user nick="Christine" link="http://www.christine.com">
 
@@ -31,7 +34,7 @@ The last thing you can do is to ignore nicks (for example bots):
     <user nick="nameofbot" ignore="y">
 
 You don't have to do all this in many lines, you could just as easily do:
-<user nick="Joe" alias="Joe^away Joe^work" pic="joe.jpg" link="joe@joe.com">
+<user nick="Joe" alias="Joe^away Joe^work" pic="joe.jpg" link="joe@joe.com" sex="m">
 
 (Here the aliases is a space seperated list of nicks, that also works! But *
 as a wildcard is smarter, but also slower).
