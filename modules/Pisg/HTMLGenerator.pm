@@ -532,7 +532,7 @@ sub _activenicks
     for (my $c = 0; $c < $self->{cfg}->{activenicks}; $c++) {
         last unless $self->{cfg}->{userpics};
         my $nick = $active[$c];
-        if ($self->{users}->{userpics}{$nick}) {
+        if ($self->{users}->{userpics}{$nick} or $self->{cfg}->{defaultpic}) {
             _html("<td class=\"tdtop\"" .
                 ($self->{cfg}->{userpics} > 1 ? " colspan=\"$self->{cfg}->{userpics}\"" : "") .
                 "><b>" . $self->_template_text('userpic') ."</b></td>");
