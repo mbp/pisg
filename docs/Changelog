@@ -1,7 +1,9 @@
-pisg (0.24)
-   * Fix stupid bug, logdirs not working.
+pisg (0.24) - Mon, Sep 24th 2001
+   * Logdirs not working, fixed.
    * Fix bug where it posted garbage on stats page where it should say
      "he/she"
+   * Small changes/corrections to psybnc format (Marco Dieckhoff)
+   * Kickers and 'victims' (/me beats john) wasn't being ignored, fixed.
 
 pisg (0.23) - Sun, Sep 23th 2001
    * Support irssi logfiles
