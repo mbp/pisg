@@ -86,6 +86,9 @@ sad1 = "<b>[:nick]</b> seems to be sad at the moment, [:per]% lines contained sa
 sad2 = "<b>[:nick]</b> is also a sad person, who cried [:per]% of the time"
 sad3 = "Nobody is sad at [:channel]! What a happy channel :-)"
 
+month = "January February March April May June July August September October November December"
+day = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
+
 notopic = "A topic was never set on this channel"
 
 ## Topics
@@ -112,7 +115,7 @@ show_wpl = "Words per line"
 show_cpl = "Chars per line"
 lastused = "Last Used by"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
-pagetitle2 = "Statistics generated on [:time]"
+pagetitle2 = "Statistics generated on "
 pagetitle3 = "During this [:days]-days reporting period, a total number of <b>[:nicks]</b> different nicks were represented on [:channel]."
 </lang>
 
@@ -209,7 +212,7 @@ show_cpl = "Zeichen pro Zeile"
 numberuses = "Wie oft benutzt"
 lastused = "Zuletzt benutzt von"
 pagetitle1 = "[:channel] @ [:network] stats erstellt von [:maintainer]"
-pagetitle2 = "Statistik erstellt am [:time]"
+pagetitle2 = "Statistik erstellt am "
 pagetitle3 = "Während des Statistikzeitraums von [:days] Tage(n) wurden <b>[:nicks]</b> verschiedene Nicks in [:channel] gezählt."
 </lang>
 
@@ -280,6 +283,9 @@ words1 = "<b>[:nick]</b> er meget aktiv med [:words] skrevne ord!"
 words2 = "[:oldnick] blev tæt forfulgt af <b>[:nick]</b>, med [:words] ord."
 words3 = "Hmmm ingen har sagt noget endnu... underlig kanal..."
 
+month = "Januar Februar March April Maj Juni July August September Oktober November December"
+day = "Søndag Mondag Tirsdag Onsdag Torsdag Fredag Lørdag"
+
 notopic = "A topic was never set on this channel"
 
 ## Topics
@@ -304,7 +310,7 @@ word = "Ord"
 numberuses = "Antal forbrug"
 lastused = "Sidst brugt af"
 pagetitle1 = "[:channel] @ [:network] statistikker af [:maintainer]"
-pagetitle2 = "Statistikker lavet d. [:time]"
+pagetitle2 = "Statistikker genereret "
 pagetitle3 = "Igennem denne [:days]-dages periode, har der været <b>[:nicks]</b> forskellige nicks på [:channel]."
 </lang>
 
@@ -381,7 +387,7 @@ word = "Mot"
 numberuses = "Nombre d'occurences"
 lastused = "Dernière utilisation par"
 pagetitle1 = "[:channel] @ [:network] stats par [:maintainer]"
-pagetitle2 = "Statistiques générées le [:time]"
+pagetitle2 = "Statistiques générées le "
 pagetitle3 = "Durant cette periode de [:days] jours, <b>[:nicks]</b> nicks différents sont apparus sur [:channel]."
 </lang>
 
@@ -457,7 +463,7 @@ word = "Palabra"
 numberuses = "Número de usos"
 lastused = "Usada por última vez"
 pagetitle1 = "[:channel] @ [:network] estadisticas por [:maintainer]"
-pagetitle2 = "Estadisticas generadas en [:time]"
+pagetitle2 = "Estadisticas generadas en "
 pagetitle3 = "Durante los [:days] dias de estadisticas, [:nicks] nicks distintos han pasado por[:channel]."
 </lang>
 
@@ -533,7 +539,7 @@ word = "Wyraz"
 numberuses = "Liczba uzyc"
 lastused = "Ostatnio uzywany przez"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
-pagetitle2 = "Statystyka wygenerowana [:time]"
+pagetitle2 = "Statystyka wygenerowana "
 pagetitle3 = "W przedziale [:days]-dni, <b>[:nicks]</b> roznych nickow odwiedzilo kanal [:channel]."
 </lang>
 
@@ -610,7 +616,7 @@ word = "Ord"
 numberuses = "Antall ganger brukt"
 lastused = "Sist brukt av"
 pagetitle1 = "[:channel] @ [:network] stats av [:maintainer]"
-pagetitle2 = "Stats generert [:time]"
+pagetitle2 = "Stats generert "
 pagetitle3 = "I løpet av denne [:days]-dagers rapport-perioden var <b>[:nicks]</b> forskjellige  nicks representert på [:channel]."
 
 </lang>
@@ -693,7 +699,7 @@ word = "Palavra"
 numberuses = "Número de usos"
 lastused = "Último uso por"
 pagetitle1 = "[:channel] @ [:network] estatísticas por [:maintainer]"
-pagetitle2 = "Estatísticas geradas em [:time]"
+pagetitle2 = "Estatísticas geradas em "
 pagetitle3 = "Durante os [:days] dias de estatísticas, [:nicks] nicks distintos passaram por [:channel]."
 </lang>
 
@@ -788,7 +794,7 @@ word = "Woord"
 numberuses = "Aantal keer genoemd"
 lastused = "Laatst gebruikt door"
 pagetitle1 = "[:channel] @ [:network] statistieken door [:maintainer]"
-pagetitle2 = "Statistics gegenereerd op [:time]"
+pagetitle2 = "Statistics gegenereerd op "
 pagetitle3 = "Tijdens deze [:days]-daagse periode, waren er in totaal <b>[:nicks]</b> verschillende nicks te vinden op [:channel]."
 </lang>
 
@@ -883,6 +889,6 @@ word = "Ord"
 numberuses = "Antal gånger"
 lastused = "Sist använt av"
 pagetitle1 = "[:channel] @ [:network] statistik av [:maintainer]"
-pagetitle2 = "Statistik genererad på [:time]"
+pagetitle2 = "Statistik genererad på "
 pagetitle3 = "Under denna [:days]-dagars reporterings period, blev ett totalt antal av <b>[:nicks]</b> olika personer representerade på [:channel]."
 </lang>

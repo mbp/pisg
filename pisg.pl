@@ -2044,8 +2044,57 @@ my %hash = (
     channel => $conf->{channel}
 );
 print OUTPUT "<span class=\"title\">" . template_text('pagetitle1', %hash) . "</span><br>";
-print OUTPUT "<br>" . template_text('pagetitle2', %hash) . "<br>";
-print OUTPUT template_text('pagetitle3', %hash) . "<br><br>";
+print OUTPUT "<br>";
+print OUTPUT template_text('pagetitle2', %hash);
+
+sub timefix {
+
+    my ($timezone, $sec, $min, $hour, $mday, $mon, $year, $wday, $yyear, $month, $day, $tday, $wdisplay, @month, @day, $timefixx, %hash);
+
+    $month = template_text('month', %hash);
+    $day = template_text('day', %hash);
+
+    @month=split / /, $month;
+    @day=split / /, $day;
+
+    # Get the Date from the users computer
+    $timezone = $conf->{timeoffset} * 3600;
+    ($sec,$min,$hour,$mday,$mon,$year,$wday) = gmtime(time+$timezone);
+
+    $yyear = 1900 + $year;            # Y2K Patch
+
+    if($min < '10') {                  # Fixes the display of Minutes below
+        $min = "0$min\n";              # it displays 03 instead of 3
+    }
+
+    if($sec < '10'){                  # Fixes the display of Seconds below
+        $sec = "0$sec\n";              # it displays 03 instead of 3
+    }
+
+    if($hour > '23'){                 # Checks to see if it Midnight
+        $hour = 12;                    # Makes it display the hour 12
+        $tday = "AM";                  # Display AM
+    }
+    elsif($hour > '12'){              # Get rid of the Military time and
+        $hour = $hour - 12;            # put it into normal time
+        $tday = "PM";                  # If past Noon and before Midnight set
+    }                              # the time as PM
+    else {
+        $tday = "AM";                # If it's past Midnight and before Noon
+    }                            # set the time as AM
+
+    # Use 24 hours pr. day
+    if($tday eq "PM" && $hour < '12'){
+        $hour = $hour + 12;
+    }
+
+    print OUTPUT "$day[$wday] $mday $month[$mon] $yyear - $hour:$min:$sec\n";
+
+}
+
+timefix();
+
+print OUTPUT "<br>" . template_text('pagetitle3', %hash) . "<br><br>";
 
 }
 
