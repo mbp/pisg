@@ -1046,6 +1046,7 @@ sub create_html
     longlines();
     shortlines();
     mostwords();
+    mostwordsperline();
     html("</table>"); # Needed for sections
 
     mostusedword();
@@ -1278,6 +1279,42 @@ sub mostusedword
 
 }
 
+sub mostwordsperline
+{
+     # The person who got words the most
+
+     my %wpl = ();
+     my ($numlines,$avg,$numwords);
+     foreach my $n (keys %words) {
+         $wpl{$n} = sprintf("%.2f", $words{$n}/$line{$n});
+         $numlines += $line{$n};
+	 $numwords += $words{$n};
+     }
+     $avg = sprintf("%.2f", $numwords/$numlines);
+     my @wpl = sort { $wpl{$b} <=> $wpl{$a} } keys %wpl;
+
+     if (@wpl) {
+         my %hash = (
+             nick => $wpl[0],
+             wpl => $wpl{$wpl[0]}
+         );
+
+         my $text = template_text('wpl1', %hash);
+         html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+
+         %hash = (
+             avg => $avg
+         );
+
+         $text = template_text('wpl2', %hash);
+             html("<br><span class=\"small\">$text</span>");
+         html("</td></tr>");
+     } else {
+         my $text = template_text('wpl3');
+         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
+     }
+
+}
 
 sub mostreferenced
 {

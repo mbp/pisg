@@ -15,6 +15,7 @@ pisg (0.18)
    * Norweigan translation (thanks to Andreas Blaafladt)
    * New feature: 'Those who couldnt control the shift key and wrote UPPERCASE'
    * New feature: 'Who got slapped the most'
+   * New feature; 'Average words per line'
    * Stop copying CVS dirs with distribution
    * Also count words in actions, and a new feature: 'most words' (thanks to
      Hanno Hecker)

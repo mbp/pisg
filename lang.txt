@@ -63,6 +63,9 @@ words3 = "Nobody said anything... what a strange channel..."
 mono1 = "<b>[:nick]</b> is talking to himself a lot, wrote over 5 lines in a row [:monos] times!"
 mono2 = "Another lonely one was <b>[:nick]</b>, who managed to hit [:monos] times"
 
+wpl1 = "<b>[:nick]</b> wrote an average of [:wpl] words per line..."
+wpl2 = "Channel average was [:avg] words per line."
+
 long1 = "<b>[:nick]</b> wrote longest lines, average of [:letters] per line..."
 long2 = "Channel average on [:channel] was [:avg] letters per line"
 
@@ -154,6 +157,9 @@ words3 = "Niemand hat etwas gesagt? Seltsamer Channel..."
 
 mono1 = "<b>[:nick]</b> spricht viel mit sich selbst, er/sie schrieb über 5 Zeilen in einer Reihe und das [:monos] mal!"
 mono2 = "Ein anderes einsames Herz ist <b>[:nick]</b>, der/die [:monos] mal mit sich selbst redete."
+
+wpl1 = "<b>[:nick]</b> schrieb im Schnitt [:wpl] Worte pro Zeile ..."
+wpl2 = "Der Channeldurchschnitt lag bei [:avg] Worten/Zeile."
 
 long1 = "<b>[:nick]</b> ist die Labertasche im Channel Er/Sie schrieb die längste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile..."
 long2 = "Channel-Durchschnitt in [:channel] war [:avg] Buchstaben pro Zeile."
