@@ -232,6 +232,12 @@
     </para>
 
     <para>
+    There is a few predefined colorschemes for you to use, use the
+    ColorScheme option when using them, the available colorschemes are:
+    default, darkgalaxy.
+    </para>
+
+    <para>
     When changing it, you need a fair knowledge of CSS (Cascading Style
     Sheets). CSS is what most of the web uses today to define styles and
     layout on HTML pages.
@@ -377,6 +383,42 @@
     <refsect1>
     <title>Default</title>
     <para> mIRC </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** FORMAT *** -->
+    <refentry id="ColorScheme">
+
+    <refmeta> <refentrytitle>ColorScheme</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ColorScheme</refname>
+    <refpurpose>use a different colorscheme for stats page</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "eggdrop"
+         Maintainer = "John"
+        </channel>
+
+        <set Format="mIRC">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>ColorScheme</command> is used to define the colorscheme used
+    for the statistics page. Actually it's the CSS file being included.
+    Available options are: default, darkgalaxy.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> default </para>
     </refsect1>
     </refentry>
 
