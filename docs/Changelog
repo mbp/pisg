@@ -11,7 +11,8 @@ pisg (x.xx)
    * Fix really old bug with foulwords - was only applying the wordbreak settings
      to the first and last words in the list of foulwords.  Now applies it to
      each word.
-
+   * Add note to lang.txt that the <set lang=""> line should be inserted into
+     the configuration file. Some users were confused about this.
 
 pisg (0.46) - Tue Feb, 11th 2003
    * Fix serious bug which caused garbled output i "Latest topics" and other

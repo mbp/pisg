@@ -1,6 +1,9 @@
-# In order to use a translation, you must set 'lang', eg.:
+# In order to use a specific translation, you must set 'lang' in the pisg
+# configuration file, e.g.:
 #
-# <set lang="DK"> - to get a Danish translated page.
+# <set lang="DK">
+#
+# To get a Danish translated page.
 #
 # Translations in this file as of now:
 #
