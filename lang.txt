@@ -3961,6 +3961,7 @@ urlstopic = "Najcesce pomenuta URL adresa"
 notopic = "Na ovom kanalu niko nije postavio topic"
 mostnickstopic = "Korisnici sa najvise nikova"
 bylinetopic = "od [:nick] u [:time]"
+dailyactivitytopic = "Aktivnosti po danu (poslednjih [:n] dana)"
 
 ## Other text
 
