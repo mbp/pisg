@@ -1336,6 +1336,41 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWFOULLINE *** -->
+    <refentry id="ShowFoulLine">
+
+    <refmeta> <refentrytitle>ShowFoulLine</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowFoulLine</refname>
+    <refpurpose>enable or disable the foulline</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "bobot"
+         ShowFoulLine = "0"
+        </channel>
+
+        <set ShowFoulLine="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg doesn't show an example foulline in the "Most
+    fouls"-stats.  With this option it can be enabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWVIOLENTLINES *** -->
     <refentry id="ShowViolentLines">
 

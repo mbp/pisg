@@ -270,8 +270,11 @@ sub _parse_file
                         }
                     }
 
-                    $stats->{foul}{$nick}++
-                        if ($saying =~ /(\b$self->{cfg}->{foulwords}|$self->{cfg}->{foulwords}\b)/io);
+                    if (my @foul = $saying =~ /(\b$self->{cfg}->{foulwords}|$self->{cfg}->{foulwords}\b)/io) {
+                        $stats->{foul}{$nick} += scalar @foul;
+                        push @{ $lines->{foullines}{$nick} }, $saying;
+                    }
+
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies

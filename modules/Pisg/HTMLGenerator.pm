@@ -984,7 +984,7 @@ sub _mostfoul
 
     foreach my $nick (sort keys %{ $self->{stats}->{foul} }) {
         if ($self->{stats}->{lines}{$nick} > 15) {
-            $spercent{$nick} = $self->{stats}->{foul}{$nick} / $self->{stats}->{lines}{$nick} * 100;
+            $spercent{$nick} = $self->{stats}->{foul}{$nick} / $self->{stats}->{words}{$nick} * 100;
             $spercent{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
@@ -995,12 +995,18 @@ sub _mostfoul
 
         my %hash = (
             nick => $foul[0],
-            per  => $spercent{$foul[0]}
+            per  => $spercent{$foul[0]},
+            line => $self->{stats}{foullines}{$foul[0]},
         );
 
         my $text = $self->_template_text('foul1', %hash);
 
-        _html("<tr><td class=\"hicell\">$text");
+        if($self->{cfg}->{showfoulline}) {
+            my $exttext = $self->_template_text('foultext', %hash);
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
+        } else {
+            _html("<tr><td class=\"hicell\">$text");
+        }
 
         if (@foul >= 2) {
             my %hash = (

@@ -27,6 +27,7 @@ shouts        hash   <nick>  Number of lines ending in exclamation points.
 allcaps       hash   <nick>  Number of lines in ALL CAPS.
 allcaplines   hash   <nick>  Random line containing ALL CAPS.
 foul          hash   <nick>  Number of lines containing foul words.
+foullines     hash   <nick>  Lines containing foul words.
 smiles        hash   <nick>  Number of lines containing smiling faces.
 frowns        hash   <nick>  Number of lines containing sad faces.
 urlcounts     hash   <url>   Number of times each URL was mentioned.

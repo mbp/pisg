@@ -4,6 +4,9 @@ pisg (x.xx)
    * Foul-words matching is now more strict. It no longer matches inside a
      word, but only in the end or at the start of a word (thanks, Matthew
      Cheetah Gabeler-Lee <msg2@po.cwru.edu>)
+   * ShowFoulLine option added (thanks, Adam Spiers <adam@spiers.net>).
+   * The "foul-words" counting is now done word-wise instead of line-wise
+     (thanks, Adam Spiers <adam@spiers.net>)
 
 pisg (0.38) - Thu Apr, 25th 2002
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)
