@@ -23,6 +23,7 @@ pisg (0.21)
      always mention text with the right sex when saying for example 'she was
      very ..'
    * Updated Spanish translation from Sheuron
+   * Add support for mbot logs (http://darksun.com.pt/mbot/)
    * Some nice speedup improvements
 
 pisg (0.20) - Tue, Aug 14th 2001
