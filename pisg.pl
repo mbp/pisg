@@ -1607,7 +1607,7 @@ sub shoutpeople
         my %hash = (
             nick => $shout[0],
             per => $spercent{$shout[0]},
-			line => $shoutline{$shout[0]}
+			line => htmlentities($shoutline{$shout[0]})
         );
 
         my $text = template_text('shout1', %hash);
