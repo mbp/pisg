@@ -5,6 +5,8 @@ pisg (x.xx)
      characters.
    * Added justgrey colorscheme (thanks, Jens Bergmann)
    * Update URL for oer format in docs/FORMATS (thanks, EQU)
+   * Update irssi format to accept 1 or more spaces before * for action lines
+     instead of requiring 2
 
 pisg (0.44) - Sun Dec, 15th 2002
    * Fixed an error in the mIRC6 format which caused pisg to abort on some
