@@ -50,7 +50,9 @@ PARSER_MODULES = $(MODULESDIR)/Pisg/Parser/Logfile.pm
 FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/bxlog.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/bobot.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/dancer.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/eggdrop.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/energymech.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/grufti.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircle.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/infobot.pm \
@@ -58,6 +60,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/oer.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/muh.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/perlbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/psybnc.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/Trillian.pm \
@@ -81,6 +84,9 @@ release:
 	cd docs && make
 	mkdir $(DIRNAME)/docs
 	cp -r $(DOCS) $(DIRNAME)/docs
+
+	mkdir $(DIRNAME)/layout
+	cp layout/*.css $(DIRNAME)/layout
 
 	mkdir $(DIRNAME)/docs/dev
 	cp $(DEVDOCS) $(DIRNAME)/docs/dev
