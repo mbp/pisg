@@ -1157,7 +1157,7 @@ sub _lasttopics
 
         for (my $i = $ltopic; $i >= $tlimit; $i--) {
             my $topic = htmlentities($self->{stats}->{topics}[$i]{topic});
-            $topic = _replace_links($self->{stats}->{topics}[$i]{topic});
+            $topic = _replace_links($topic);
             # Strip off the quotes (')
             $topic =~ s/^\'(.*)\'$/$1/;
 
