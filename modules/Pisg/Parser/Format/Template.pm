@@ -35,18 +35,18 @@ sub normalline
     my %hash;
 
     if ($line =~ /$self->{normalline}/) {
-	$self->{debug}->("[$lines] Normal: $1 $2 $3");
+        $self->{debug}->("[$lines] Normal: $1 $2 $3");
 
-	# Most log formats are regular enough that you can just match the
-	# appropriate things with parentheses in the regular expression.
+        # Most log formats are regular enough that you can just match the
+        # appropriate things with parentheses in the regular expression.
 
-	$hash{hour}   = $1;
-	$hash{nick}   = $2;
-	$hash{saying} = $3;
+        $hash{hour}   = $1;
+        $hash{nick}   = $2;
+        $hash{saying} = $3;
 
-	return \%hash;
+        return \%hash;
     } else {
-	return;
+        return;
     }
 }
 
@@ -57,18 +57,18 @@ sub actionline
     my %hash;
 
     if ($line =~ /$self->{actionline}/) {
-	$self->{debug}->("[$lines] Action: $1 $2 $3");
+        $self->{debug}->("[$lines] Action: $1 $2 $3");
 
-	# Most log formats are regular enough that you can just match the
-	# appropriate things with parentheses in the regular expression.
+        # Most log formats are regular enough that you can just match the
+        # appropriate things with parentheses in the regular expression.
 
-	$hash{hour}   = $1;
-	$hash{nick}   = $2;
-	$hash{saying} = $3;
+        $hash{hour}   = $1;
+        $hash{nick}   = $2;
+        $hash{saying} = $3;
 
-	return \%hash;
+        return \%hash;
     } else {
-	return;
+        return;
     }
 }
 
@@ -79,32 +79,32 @@ sub actionline
 #   hour            - the hour we're in (for timestamp logging)
 #   min             - the minute we're in (for timestamp logging)
 #   nick            - the nick
-#   kicker          - the nick which were kicked (if any)
+#   kicker          - the nick which kicked somebody (if any)
 #   newtopic        - the new topic (if any)
 #   newmode         - deops or ops, must be '+o' or '-o', or '+ooo'
 #   newjoin         - a new nick which has joined the channel
 #   newnick         - a person has changed nick and this is the new nick
 #
 # The hash may also have a "repeated" key indicating the number of times
-# the line was repeated.
+# the line was repeated. (Used by eggdrops log for example.)
 sub thirdline
 {
     my ($self, $line, $lines) = @_;
     my %hash;
 
     if ($line =~ /$self->{thirdline}/) {
-	$self->{debug}->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
+        $self->{debug}->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
 
-	$hash{hour} = $1;
-	$hash{min}  = $2;
-	$hash{nick} = $3;
+        $hash{hour} = $1;
+        $hash{min}  = $2;
+        $hash{nick} = $3;
 
-	# Format-specific stuff goes here.
+        # Format-specific stuff goes here.
 
-	return \%hash;
+        return \%hash;
 
     } else {
-	return;
+        return;
     }
 }
 
