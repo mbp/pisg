@@ -622,7 +622,7 @@ sub parse_file
 
     close(LOGFILE);
 
-    my ($sec,$min,$hour) = gmtime(time - $conf->{start});
+    my ($sec,$min,$hour) = localtime(time - $conf->{start});
     $processtime = sprintf("%02d hours, %02d minutes and %02d seconds", $hour,  $min, $sec);
 
     $nicks = scalar keys %line;
@@ -2122,7 +2122,7 @@ sub timefix {
 
     # Get the Date from the users computer
     $timezone = $conf->{timeoffset} * 3600;
-    ($sec,$min,$hour,$mday,$mon,$year,$wday) = gmtime(time+$timezone);
+    ($sec,$min,$hour,$mday,$mon,$year,$wday) = localtime(time+$timezone);
 
     $yyear = 1900 + $year;            # Y2K Patch
 
