@@ -88,6 +88,11 @@ channel             The name of your channel. E.g. '#mychannel'
 
 logfile             The exact filename of the logfile. E.g. 'mylog.log'
 
+logsuffix           Regexes to sort logfiles by in format month||day||year
+                    Note: example will work for eggdrop's default format
+                    Example: logsuffix="\.\d\d([A-Za-z]+)\d\d\d\d||\.(\d\d)[A-Za-z]+\d\d\d\d||\.\d\d[A-Za-z]+(\d\d\d\d)"
+                    default: unset
+
 format              The logfile format. See FORMATS file for supported formats
 
 network             Network the channel is using. E.g. 'Undernet'

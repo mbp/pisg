@@ -122,7 +122,49 @@ sub _parse_dir
         monocount  => 0,
         oldtime    => 24
     );
-    foreach my $file (sort @filesarray) {
+    if (defined $self->{cfg}->{logsuffix}) {
+        my @temparray;
+        my %months = (
+            'jan'	=> '0',
+            'feb'	=> '1',
+            'mar'	=> '2',
+            'apr'	=> '3',
+            'may'	=> '4',
+            'jun'	=> '5',
+            'jul'	=> '6',
+            'aug'	=> '7',
+            'sep'	=> '8',
+            'oct'	=> '9',
+            'nov'	=> '10',
+            'dec'	=> '11',
+        );
+        my ($mreg, $dreg, $yreg) = split(/\|\|/, $self->{cfg}->{logsuffix});
+        my (@month, @day, @year);
+        for my $file (@filesarray) {
+            $file =~ /$mreg/;
+            my $month = $1;
+            $month = lc $month;
+            $month = $months{$month}
+                if (defined $months{$month});
+            push @month, $month;
+            $file =~ /$dreg/;
+            push @day, $1;
+            $file =~ /$yreg/;
+            push @year, $1;
+        }
+        my @newarray = @filesarray[ sort {
+                                    $year[$a] <=> $year[$b]
+                                               ||
+                                    $month[$a] <=> $month[$b]
+                                               ||
+                                    $day[$a] <=> $day[$b]
+                                 } 0..$#filesarray ];
+        @filesarray = @newarray;
+    } else {
+        @filesarray = sort @filesarray;
+    }
+
+    foreach my $file (@filesarray) {
         $file = $self->{cfg}->{logdir} . $file;
         $self->_parse_file($stats, $lines, $file, \%state);
     }
