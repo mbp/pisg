@@ -3,6 +3,7 @@
 use strict;
 use Getopt::Long;
 use FindBin;
+use lib $FindBin::Bin . "/modules";     # Module search path
 
 # pisg - Perl IRC Statistics Generator
 #
@@ -22,6 +23,45 @@ use FindBin;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+
+# The log-parsing modules.  Add yours here.
+use Pisg::Parser::bxlog;
+use Pisg::Parser::eggdrop;
+use Pisg::Parser::grufti;
+use Pisg::Parser::mbot;
+use Pisg::Parser::mIRC;
+use Pisg::Parser::xchat;
+
+my ($debug);
+# The function to choose which module to use.  New parsing modules must also
+# be added here.  Should return a reference to an instance of the appropriate
+# class.
+sub choose_log_format {
+    my $format = shift;
+
+    if ($format eq "bxlog") {
+	return Pisg::Parser::bxlog->new($debug);
+
+    } elsif ($format eq "eggdrop") {
+	return Pisg::Parser::eggdrop->new($debug);
+
+    } elsif ($format eq "grufti") {
+	return Pisg::Parser::grufti->new($debug);
+
+    } elsif ($format eq "mbot") {
+	return Pisg::Parser::mbot->new($debug);
+
+    } elsif ($format eq "mIRC") {
+	return Pisg::Parser::mIRC->new($debug);
+
+    } elsif ($format eq "xchat") {
+	return Pisg::Parser::xchat->new($debug);
+
+    } else {
+	print STDERR "Log format \"$format\" is unknown.\n";
+	return undef;
+    }
+}
 
 # Default values for pisg. Their meanings are explained in CONFIG-README.
 #
@@ -116,7 +156,7 @@ $thirdline, $processtime, @topics, %monologue, %kicked, %gotkick,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
 $normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
 %line_time, @urls, %urlnick, %kickline, %actionline, %shoutline, %slapline,
-%slappedline, $debug);
+%slappedline);
 
 
 sub main
@@ -133,26 +173,30 @@ sub main
 
 sub do_channel
 {
-    init_debug()
-        unless ($conf->{debugstarted});       # Init the debugging file
-    init_pisg();        # Init commandline arguments and other things
-    init_words();       # Init words. (Foulwords etc)
-    init_lineformats(); # Attempt to set line formats in compliance with user specification (--format)
+    $conf->{parser} = choose_log_format($conf->{format});
+    if (defined $conf->{parser}) {
+	init_debug()
+	    unless ($conf->{debugstarted});       # Init the debugging file
+	init_pisg();        # Init commandline arguments and other things
+	init_words();       # Init words. (Foulwords etc)
 
 
-    if ($conf->{logdir}) {
-        parse_dir();            # Run through all logfiles in dir
+	if ($conf->{logdir}) {
+	    parse_dir();        # Run through all logfiles in dir
+	} else {
+	    parse_file($conf->{logfile});   # Run through the whole logfile
+	}
+
+	create_html()
+	    if ($lines > 0);# Create the HTML
+                            # (look here if you want to remove some of the
+                            # stats which you don't care about)
+
+	print "\nFile parsed succesfully in $processtime on $time.\n";
+	$conf->{chan_done}{$conf->{channel}} = 1;
     } else {
-        parse_file($conf->{logfile});   # Run through the whole logfile
+	print STDERR "Skipping channel $conf->{channel}\n";
     }
-
-    create_html()
-        if ($lines > 0);# Create the HTML
-                        # (look here if you want to remove some of the
-                        # stats which you don't care about)
-
-    print "\nFile parsed succesfully in $processtime on $time.\n";
-    $conf->{chan_done}{$conf->{channel}} = 1;
 }
 
 sub parse_channels
@@ -251,53 +295,14 @@ sub init_pisg
 
 }
 
-sub init_lineformats {
-
-    # These are the regular expressions which matches the lines in the logfile,
-    # and looks different if it's xchat, mIRC or whatever.
-    # If you want to add support for a new format - you first have to add the
-    # regex here, and then you also have to modify the parse subroutines called
-    # 'parse_normalline()', 'parse_actionline()' and 'parse_thirdline()'
-
-    if ($conf->{format} eq 'xchat') {
-        $normalline = '^(\d+):\d+:\d+ <([^>]+)>\s+(.*)';
-        $actionline = '^(\d+):\d+:\d+ \*\s+(\S+) (.*)';
-        $thirdline = '^(\d+):(\d+):\d+ .--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)';
-    } elsif ($conf->{format} eq 'mIRC') {
-        $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
-        $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
-        $thirdline = '^\[(\d+):(\d+)\] \*\*\* (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
-    } elsif ($conf->{format} eq 'eggdrop') {
-        $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
-        $actionline = '^\[(\d+):\d+\] Action: (\S+) (.*)';
-        $thirdline = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+)(.*)';
-    } elsif ($conf->{format} eq 'bxlog') {
-        $normalline = '^\[\d+ \S+\/(\d+):\d+\] <([^>]+)> (.*)';
-        $actionline = '^\[\d+ \S+\/(\d+):\d+\] \* (\S+) (.*)';
-        $thirdline = '^\[\d+ \S+\/(\d+):(\d+)\] ([<>@!]) (.*)';
-    } elsif ($conf->{format} eq 'grufti') {
-        $normalline = '^\[(\d+):\d+\] <([^>]+)> (.*)';
-        $actionline = '^\[(\d+):\d+\] \* (\S+) (.*)';
-        $thirdline = '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+) (\S+) (\S+)(.*)';
-    } elsif ($conf->{format} eq 'mbot') {
-        $normalline = '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> (?!\001ACTION)(.*)';
-        $actionline = '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> \001ACTION (.*)\001$';
-        $thirdline = '^\S+ \S+ \d+ (\d+):(\d+):\d+ \d+ (\S+) (\S+) ?(\S*) ?(\S*) ?(.*)';
-
-    } else {
-        die("Logfile format not supported, check \$conf->{format} setting.\n");
-    }
-
-}
-
 sub init_config
 {
     get_cmdlineoptions();
 
     if ((open(CONFIG, $conf->{configfile}) or open(CONFIG, $FindBin::Bin . "/$conf->{configfile}"))) {
-        print "Using config file: $conf->{configfile}\n";
+	print "Using config file: $conf->{configfile}\n";
 
-        my $lineno = 0;
+	my $lineno = 0;
         while (my $line = <CONFIG>)
         {
             $lineno++;
@@ -377,7 +382,7 @@ sub init_config
         }
 
         close(CONFIG);
-    } 
+    }
 
 }
 
@@ -400,6 +405,8 @@ sub init_debug
             print DEBUG $conf->{debugqueue};
             delete $conf->{debugqueue};
         }
+    } else {
+	$debug = sub {};
     }
 }
 
@@ -442,7 +449,11 @@ sub parse_file
         my $hashref;
 
         # Match normal lines.
-        if ($hashref = parse_normalline($line)) {
+        if ($hashref = $conf->{parser}->normalline($line, $lines)) {
+
+	    if (defined $hashref->{repeated}) {
+		$repeated = $hashref->{repeated};
+	    }
 
             my ($hour, $nick, $saying, $i);
 
@@ -450,7 +461,7 @@ sub parse_file
                 $line = strip_mirccodes($line);
 
                 if ($i > 0) {
-                    $hashref = parse_normalline($lastnormal);
+                    $hashref = $conf->{parser}->normalline($lastnormal, $lines);
                     $lines++; #Increment number of lines for repeated lines
                 }
 
@@ -529,7 +540,7 @@ sub parse_file
         }
 
         # Match action lines.
-        elsif ($hashref = parse_actionline($line)) {
+        elsif ($hashref = $conf->{parser}->actionline($line, $lines)) {
 
             my ($hour, $nick, $saying);
 
@@ -564,7 +575,8 @@ sub parse_file
         }
 
         # Match *** lines.
-        elsif (($hashref = parse_thirdline($line)) && $hashref->{nick}) {
+        elsif (($hashref = $conf->{parser}->thirdline($line, $lines)) &&
+	       $hashref->{nick}) {
 
             my ($hour, $min, $nick, $kicker, $newtopic, $newmode, $newjoin, $newnick);
 
@@ -641,268 +653,6 @@ sub parse_file
     $nicks = scalar keys %line;
 
     print "Finished analyzing log, $days days total.\n";
-}
-
-
-# Here is the 3 parse sub routines, their function is to return a hash with
-# the elements in the line. This is where we add the format dependent stuff.
-sub parse_normalline
-{
-    # Parse a normal line - returns a hash with 'hour', 'nick' and 'saying'
-    my $line = shift;
-    my %hash;
-
-    if ($line =~ /$normalline/) {
-        $debug->("[$lines] Normal: $1 $2 $3");
-
-        if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
-            'eggdrop') || ($conf->{format} eq 'bxlog') || ($conf->{format} eq 'grufti') ||
-            ($conf->{format} eq 'mbot')) {
-
-            $hash{hour} = $1;
-            $hash{nick} = $2;
-            $hash{saying} = $3;
-
-        } else {
-            die("Format not supported?!\n");
-        }
-
-        return \%hash;
-
-    } else {
-        return;
-    }
-}
-
-sub parse_actionline
-{
-    # Parse an action line - returns a hash with 'hour', 'nick' and 'saying'
-    my $line = shift;
-    my %hash;
-
-    if ($line =~ /$actionline/) {
-        $debug->("[$lines] Action: $1 $2 $3");
-
-        if (($conf->{format} eq 'mIRC') || ($conf->{format} eq 'xchat') || ($conf->{format} eq
-            'eggdrop') || $conf->{format} eq 'bxlog' || ($conf->{format} eq 'grufti') ||
-            ($conf->{format} eq 'mbot')) {
-
-            $hash{hour} = $1;
-            $hash{nick} = $2;
-            $hash{saying} = $3;
-
-        } else {
-            die("Format not supported?!\n");
-        }
-
-        return \%hash;
-
-    } else {
-        return;
-    }
-}
-
-sub parse_thirdline
-{
-    # Parses the 'third' line - (the third line is everything else, like
-    # topic changes, mode changes, kicks, etc.)
-    # parse_thirdline() have to return a hash with the following keys, for
-    # every format:
-    #   hour            - the hour we're in (for timestamp loggin)
-    #   min             - the minute we're in (for timestamp loggin)
-    #   nick            - the nick
-    #   kicker          - the nick which were kicked (if any)
-    #   newtopic        - the new topic (if any)
-    #   newmode         - deops or ops, must be '+o' or '-o', or '+ooo'
-    #   newjoin         - a new nick which has joined the channel
-    #   newnick         - a person has changed nick and this is the new nick
-    my $line = shift;
-    my %hash;
-
-    if ($line =~ /$thirdline/) {
-        if ($7) {
-          $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
-        } elsif ($5) {
-          $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6");
-        } else {
-          $debug->("[$lines] ***: $1 $2 $3 $4");
-        }
-
-
-        if ($conf->{format} eq 'mIRC') {
-            $hash{hour} = $1;
-            $hash{min} = $2;
-            $hash{nick} = $3;
-
-            if (($4.$5) eq 'waskicked') {
-                $hash{kicker} = $7;
-
-            } elsif (($4.$5) eq 'changestopic') {
-                $hash{newtopic} = "$7 $8";
-
-            } elsif (($4.$5) eq 'setsmode:') {
-                $hash{newmode} = $6;
-
-            } elsif (($4.$5) eq 'hasjoined') {
-                $hash{newjoin} = $3;
-
-            } elsif (($4.$5) eq 'nowknown') {
-                $hash{newnick} = $8;
-            }
-
-
-        } elsif ($conf->{format} eq 'xchat') {
-            $hash{hour} = $1;
-            $hash{min} = $2;
-            $hash{nick} = $3;
-
-            if (($4.$5) eq 'haskicked') {
-                $hash{kicker} = $3;
-                $hash{nick} = $6;
-
-            } elsif (($4.$5) eq 'haschanged') {
-                $hash{newtopic} = $9;
-
-            } elsif (($4.$5) eq 'giveschannel') {
-                $hash{newmode} = '+o';
-
-            } elsif (($4.$5) eq 'removeschannel') {
-                $hash{newmode} = '-o';
-
-            } elsif (($5.$6) eq 'hasjoined') {
-                $hash{newjoin} = $1;
-
-            } elsif (($5.$6) eq 'nowknown') {
-                $hash{newnick} = $8;
-            }
-
-        } elsif ($conf->{format} eq 'eggdrop') {
-            $hash{hour} = $1;
-            $hash{min} = $2;
-            $hash{nick} = $3;
-
-            if (($4.$5) eq 'kickedfrom') {
-                $7 =~ /^ by ([\S]+):.*/o;
-                $hash{kicker} = $1;
-
-            } elsif ($3 eq 'Topic') {
-                $7 =~ /^ by ([\S]+)![\S]+: (.*)/o;
-                $hash{nick} = $1;
-                $hash{newtopic} = $2;
-
-            } elsif (($4.$5) eq 'modechange') {
-                my $newmode = $6;
-                if ($7 =~ /^ .+ by ([\S]+)!.*/o) {
-                    $hash{nick} = $1;
-                    $newmode =~ s/^\'//o;
-                    $hash{newmode} = $newmode;
-                } 
-
-            } elsif ($5 eq 'joined') {
-                $hash{newjoin} = $3;
-
-            } elsif (($3.$4) eq 'Nickchange:') {
-                $hash{nick} = $5;
-                $7 =~ /([\S]+)/o;
-                $hash{newnick} = $1;
-
-            } elsif (($3.$4.$5) eq 'Lastmessagerepeated') {
-                $repeated = $6;
-            }
-
-        } elsif ($conf->{format} eq 'bxlog') {
-            $hash{hour} = $1;
-            $hash{min} = $2;
-
-            if ($3 eq '<') {
-                if  ($4 =~ /^([^!]+)!\S+ was kicked off \S+ by ([^!]+)!/o) {
-                    $hash{kicker} = $2;
-                    $hash{nick} = $1;
-                }
-
-            } elsif ($3 eq '>') {
-                if ($4 =~ /^([^!])+!\S+ has joined \S+$/o) {
-                    $hash{nick} = $1;
-                    $hash{newjoin} = $1;
-                }
-
-            } elsif ($3 eq '@') {
-                if ($4 =~ /^Topic by ([^!:])[!:]*: (.*)$/o) {
-                    $hash{nick} = $1;
-                    $hash{newtopic} = $2;
-
-                } elsif ($4 =~ /^mode \S+ \[([\S]+) [^\]]+\] by ([^!]+)!\S+$/o) {
-                    $hash{newmode} = $1;
-                    $hash{nick} = $2;
-                }
-
-            } elsif ($3 eq '!') {
-                if ($4 =~ /^(\S+) is known as (\S+)$/o) {
-                  $hash{nick} = $1;
-                  $hash{newnick} = $2;
-                }
-            }
-
-        } elsif ($conf->{format} eq 'grufti') {
-            $hash{hour} = $1;
-            $hash{min} = $2;
-            $hash{nick} = $3;
-
-            if ($5 eq 'kicked') {
-                $hash{kicker} = $3;
-                $hash{nick} = $6;
-
-            } elsif (($4.$5) eq 'haschanged') {
-                $hash{newtopic} = $9;
-
-            } elsif (($4.$5) eq 'modechange') {
-                $hash{newmode} = substr($6, 1);
-                $hash{nick} = $9;
-                $hash{nick} =~ /.*[by ](\S+)/o;
-                $hash{nick} = $1;
-
-            } elsif ($5 eq 'joined') {
-                $hash{newjoin} = $1;
-
-            } elsif (($3.$4) eq 'Nickchange') {
-                $hash{nick} = $7;
-                $hash{newnick} = $9;
-            }
-
-        } elsif ($conf->{format} eq 'mbot') {
-            $hash{hour} = $1;
-            $hash{min} = $2;
-            $hash{nick} = $3;
-
-            if ($4 eq 'KICK') {
-                $hash{kicker} = $3;
-                $hash{nick} = $5;
-
-            } elsif ($4 eq 'TOPIC') {
-                $hash{newtopic} = $5;
-                $hash{newtopic} =~ s/^.*://o;
-
-            } elsif ($4 eq 'MODE') {
-                $hash{newmode} = $5;
-
-            } elsif ($4 eq 'JOIN') {
-                $3 =~ /^([^!]+)!/o;
-                $hash{newjoin} = $1;
-                $hash{nick} = $1;
-
-            } elsif ($4 eq 'NICK') {
-                $hash{newnick} = $5;
-            }
-
-        } else {
-            die("Format not supported?!\n");
-        }
-
-        return \%hash;
-
-    } else {
-        return;
-    }
 }
 
 sub opchanges
@@ -1056,19 +806,16 @@ sub replace_links
 
 }
 
-if ($conf->{debug}) {
-    $debug = sub
-    {
-        my $debugline = $_[0] . "\n";
-        if ($conf->{debugstarted}) {
-            print DEBUG $debugline;
-        } else {
-            $conf->{debugqueue} .= $debugline;
-        }
+$debug = sub {
+    if ($conf->{debug} or not $conf->{debugstarted}) {
+	my $debugline = $_[0] . "\n";
+	if ($conf->{debugstarted}) {
+	    print DEBUG $debugline;
+	} else {
+	    $conf->{debugqueue} .= $debugline;
+	}
     }
-} else {
-    $debug = sub {};
-}
+};
 
 sub find_alias
 {
