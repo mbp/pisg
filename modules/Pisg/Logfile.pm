@@ -33,10 +33,10 @@ use Pisg::Parser::$format;
 \$parser = new Pisg::Parser::$format(\$debug);
 _END
     if ($@) {
-    print STDERR "Could not load parser for '$format': $@\n";
-    return undef;
-}
-return $parser;
+        print STDERR "Could not load parser for '$format': $@\n";
+        return undef;
+    }
+    return $parser;
 }
 
 sub analyze {
