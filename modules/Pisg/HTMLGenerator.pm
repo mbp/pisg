@@ -93,7 +93,7 @@ sub create_html
         $self->_gotkicks();
         $self->_mostkicks();
         $self->_mostop();
-        $self->_mostvoice() if $self->{cfg}->{show_voice};
+        $self->_mostvoice() if $self->{cfg}->{show_voices};
         $self->_mostactions();
         $self->_mostmonologues();
         $self->_mostjoins();
