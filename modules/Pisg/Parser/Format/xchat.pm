@@ -14,7 +14,7 @@ sub new
         cfg => $args{cfg},
         normalline => '(\d+):\d+:\d+ <([^>\s]+)>\s+(.*)',
         actionline => '(\d+):\d+:\d+ (\*){1,}\s+(\S+) (.*)',
-        thirdline  => '(\d+):(\d+):\d+ .{1,}--\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)',
+        thirdline  => '(\d+):(\d+):\d+ .{1,}--\s+(\S+) (\S+) (\S+) (\S+) (\S+) ?(\S+)? ?(.*)?',
     };
 
     bless($self, $type);
@@ -78,6 +78,12 @@ sub thirdline
 
         } elsif (($4.$5) eq 'removeschannel') {
             $hash{newmode} = '-o';
+
+        } elsif (($4.$5) eq 'givesvoice') {
+            $hash{newmode} = '+v';
+
+        } elsif (($4.$5) eq 'removesvoice') {
+            $hash{newmode} = '-v';
 
         } elsif (($5.$6) eq 'hasjoined') {
             $hash{newjoin} = $1;
