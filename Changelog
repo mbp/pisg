@@ -6,6 +6,7 @@ pisg (0.18)
      starting with what you specify, for example -p '#mychan' will only get
      dir/#mychan* files. (Sascha Lüdecke)
    * Fix op tracking with bx logs
+   * Added Foulwords-Variable to pisg.cfg
 
 pisg (0.17) - Sat, July 28th 2001
 
