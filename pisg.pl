@@ -73,6 +73,11 @@ my $conf = {
     nicktracking => 0,
     timeoffset => "+0",
 
+    # Stats settings
+    
+    show_wpl => 0,
+    show_cpl => 0,
+
     # Misc settings
 
     foul => "ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe",
@@ -91,7 +96,8 @@ $thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
 %line, %length, %sadface, %smile, $nicks, %longlines, %mono, %times, %question,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
-$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words);
+$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words, 
+$tablewidth, $headwidth);
 
 
 sub main
@@ -193,6 +199,7 @@ sub init_pisg
     undef %slapped; 
     undef %words; 
 
+
     $timestamp = time;
 
     if ($conf->{timeoffset} =~ /\+(\d+)/) {
@@ -219,6 +226,7 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
+    $tablewidth = 614;
     $conf->{start} = time();   # set start time of file parse
 
     print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
@@ -1000,13 +1008,20 @@ sub create_html
 
     open (OUTPUT, "> $conf->{outputfile}") or die("$0: Unable to open outputfile($conf->{outputfile}): $!\n");
 
+    if ($conf->{show_wpl}) {
+        $tablewidth += 40;
+    }
+    if ($conf->{show_cpl}) {
+        $tablewidth += 40;
+    }
+    $headwidth = $tablewidth - 4;
     htmlheader();
     pageheader();
     activetimes();
     activenicks();
 
     headline(template_text('bignumtopic'));
-    html("<table width=\"614\">\n"); # Needed for sections
+    html("<table width=\"$tablewidth\">\n"); # Needed for sections
     questions();
     loudpeople();
 	shoutpeople();
@@ -1024,7 +1039,7 @@ sub create_html
     mostreferenced();
 
     headline(template_text('othernumtopic'));
-    html("<table width=\"614\">\n"); # Needed for sections
+    html("<table width=\"$tablewidth\">\n"); # Needed for sections
     gotkicks();
     mostkicks();
     mostop();
@@ -1034,7 +1049,7 @@ sub create_html
     html("</table>"); # Needed for sections
 
     headline(template_text('latesttopic'));
-    html("<table width=\"614\">\n"); # Needed for sections
+    html("<table width=\"$tablewidth\">\n"); # Needed for sections
     lasttopics();
     html("</table>"); # Needed for sections
 
@@ -1099,7 +1114,7 @@ sub activetimes
         $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br><img src=\"$image\" width=\"15\" height=\"$size\" alt=\"$percent\"></td>\n";
     }
 
-    html("<table border=\"0\" width=\"614\"><tr>\n");
+    html("<table border=\"0\" width=\"$tablewidth\"><tr>\n");
 
     for ($b = 0; $b < 24; $b++) {
         if ($b < 10) { $a = "0" . $b; } else { $a = $b; }
@@ -1127,8 +1142,14 @@ sub activenicks
 
     headline(template_text('activenickstopic'));
 
-    html("<table border=\"0\" width=\"614\"><tr>");
-    html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberlines') ."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>". template_text('randquote') ."</b></td>");
+    html("<table border=\"0\" width=\"$tablewidth\"><tr>");
+    html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" 
+        . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
+	. template_text('numberlines') 
+        . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
+	. ($conf->{show_wpl} ? template_text('show_wpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
+	. ($conf->{show_cpl} ? template_text('show_cpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
+        . template_text('randquote') ."</b></td>");
     if (scalar keys %{$users->{userpics}} > 0) {
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('userpic') ."</b></td>");
     }
@@ -1182,7 +1203,16 @@ sub activenicks
 
         html("<tr><td bgcolor=\"$conf->{rankc}\" align=\"left\">");
         my $line = $line{$nick};
-        html("$i</td><td bgcolor=\"#$col_r$col_g$col_b\">$visiblenick</td><td bgcolor=\"#$col_r$col_g$col_b\">$line</td><td bgcolor=\"#$col_r$col_g$col_b\">");
+	my $w    = $words{$nick};
+	my $ch   = $length{$nick};
+        html("$i</td><td bgcolor=\"#$col_r$col_g$col_b\">$visiblenick</td><td bgcolor=\"#$col_r$col_g$col_b\">$line</td>"
+	. ($conf->{show_wpl} ? 
+	 "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$w/$line)."</td>"
+	 : "")
+	. ($conf->{show_cpl} ? 
+	 "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$ch/$line)."</td>"
+	 : "")
+	."<td bgcolor=\"#$col_r$col_g$col_b\">");
         html("\"$randomline\"</td>");
 
         if ($users->{userpics}{$nick}) {
@@ -1232,7 +1262,7 @@ sub mostusedword
     if (@popular) {
         &headline(template_text('mostwordstopic'));
 
-        html("<table border=\"0\" width=\"614\"><tr>");
+        html("<table border=\"0\" width=\"$tablewidth\"><tr>");
         html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('word') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
@@ -1308,7 +1338,7 @@ sub mostreferenced
 
         &headline(template_text('referencetopic'));
 
-        html("<table border=\"0\" width=\"614\"><tr>");
+        html("<table border=\"0\" width=\"$tablewidth\"><tr>");
         html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('nick') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
@@ -2038,7 +2068,7 @@ sub headline
     my ($title) = @_;
 print OUTPUT <<HTML;
    <br>
-   <table width="610" cellpadding="1" cellspacing="0" border="0">
+   <table width="$headwidth" cellpadding="1" cellspacing="0" border="0">
     <tr>
      <td bgcolor="$conf->{headline}">
       <table width="100%" cellpadding="2" cellspacing="0" border="0" align="center">
