@@ -1,4 +1,4 @@
-pisg (0.28)
+pisg (0.28) - Sun, Oct 21th 2001
    * Added Hungarian translation by Gyuri Horak <dyuri@dyuri.org>
    * Performance improvements in HTML generation
    * Fix bug where the 'These didn't make it to the top' section wasn't being
@@ -8,6 +8,19 @@ pisg (0.28)
      - 'show_activetimes' enable/disable 'Most Active Times' section.
      - 'show_bignumbers' enable/disable 'Big Numbers' and 'Other Interesting
        Numbers' section.
+   * The numbers below the timebars in 'Most Active Times' wasnt using the
+     'rankc' color option, it now does, and additionally adds a color
+     'hi_rankc' for highlighted ranks.
+   * A topic like "<Joe> blah blah blah" was showing up as "blah blah blah" in
+     'latest topics' - fixed.
+   * Hopefully fix pisg on Win32.
+   * Add charset to the HTML page to make validator.w3.org happy, it's user
+     defineable with the new 'charset' option, default is 'iso-8859-1'.
+   * The color of the links in the bottom of the page (not in tables) can be
+     set by the new 'bg_link', 'bg_hlink' and 'bg_vlink' options.
+   * New option: 'default_pic' makes it possible to display a default picture
+     for a user if no picture defined. For example to display a picture
+     showing 'No picture available.'
 
 pisg (0.27) - Sun, Oct 7th 2001
    * Stats page was showing [:total] instead of the actual number, fixed.
