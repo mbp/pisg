@@ -8,6 +8,7 @@ pisg (0.64) - ??
      + Estonian (thanks, Hannes Tarien).
      + Bulgarian (thanks, Dimitar and elseif).
      + Spanish (thanks, Anonymous).
+     + Dutch (thanks, Jeroen van Nimwegen).
    * Modified the CSS files containing .male/.female classes to show sex color
      also for <a href>s (SF tracker #1088382 by Jeroen - tux2020).
    * Applied patch by Torbjörn Svensson for using alternate CSS files - thanks
@@ -19,8 +20,6 @@ pisg (0.64) - ??
    * Make failure to read PageHead/PageFoot files non-fatal.
    * Applied patch by Hanno Hecker to keep only the last 50 quotes for each
      nick while parsing. Saves memory and is probably saner anyway (thanks!).
-   * Add version number to documentation title (and let the release Makefile
-     update it).
    * The "Latest Topics" section now displays the day like the "Last seen"
      column (introduce [:days] in the last seen templates, add [:date] in
      bylinetopic, swich [:nick] and [:time] around in English and German,
@@ -28,6 +27,7 @@ pisg (0.64) - ??
      languages welcome!) (thanks, Christian Garbs).
    * Make the ircII format use Maintainer instead of ircIINick.
    * Documentation:
+     + Add version number to title (and let the release Makefile update it).
      + Add note that Maintainer is used by some log formats.
      + State that NickTracking does not work for the Maintainer nick.
 
