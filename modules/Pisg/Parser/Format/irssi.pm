@@ -83,7 +83,9 @@ sub thirdline
             $hash{newjoin} = $3;
 
         } elsif (($5.$6) eq 'nowknown') {
-            $hash{newnick} = $8;
+            if ($8 =~ /^\s+(\S+)/) {
+                $hash{newnick} = $1;
+            }
         }
 
         return \%hash;
