@@ -241,7 +241,7 @@ pisg (0.29) - Sat, Nov 10th 2001
    * 'Hello' and 'hello' are no longer treated as seperate words in 'Most
      Referenced Words'
    * Added Estonian translation by comcute <comcute@surfdata.ee>
-   * Added Italian translation by Pascal Brax <god@pascalbrax.com>
+   * Added Italian translation by Pascal Brax
    * Added Catalan translatino by Roger Utgés (Nikoru) <nikoru@menta.net>
 
 pisg (0.28) - Sun, Oct 21th 2001
