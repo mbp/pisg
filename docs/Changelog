@@ -10,6 +10,7 @@ pisg (x.xx)
    * Files in a LogDir is now run through alphabetically incase-sensitive
      (thanks, Gissehel <gissehel-pisggene@giss.mine.nu>)
    * --prefix commandline option wasn't working, fixed.
+   * Slovak translation added (thanks, Gabriel Svajko <snowman@ew.sk>)
 
 pisg (0.38) - Thu Apr, 25th 2002
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)
