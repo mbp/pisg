@@ -493,16 +493,18 @@ sub _activenicks
             $remain = $nicks;
         }
 
-        _html("<br><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
-        for (my $c = $self->{cfg}->{activenicks}; $c < $remain; $c++) {
-            unless ($c % 5) { unless ($c == $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
-            _html("<td bgcolor=\"$self->{cfg}->{rankc}\" class=\"small\">");
-            my $nick = $active[$c];
-            my $lines = $self->{stats}->{lines}{$nick};
-            _html("$nick ($lines)</td>");
-        }
+        if ($self->{cfg}->{activenicks} <  $remain) {
+            _html("<br><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
+            for (my $c = $self->{cfg}->{activenicks}; $c < $remain; $c++) {
+                unless ($c % 5) { unless ($c == $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
+                _html("<td bgcolor=\"$self->{cfg}->{rankc}\" class=\"small\">");
+                my $nick = $active[$c];
+                my $lines = $self->{stats}->{lines}{$nick};
+                _html("$nick ($lines)</td>");
+            }
 
-        _html("</table>");
+            _html("</table>");
+        }
     }
 
     $hash{totalnicks} = $nicks - $remain;
@@ -1540,8 +1542,7 @@ sub _replace_links
     $replaced = 0;
      if ($nick) {
         if ($url = match_url($str)) {
-            $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window:
-$1">$nick<\/a>/g;
+            $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$nick<\/a>/g;
         }
         if ($email = match_email($str)) {
             $return_str =~ s/(\Q$email\E)/<a href="mailto:$1" title="Mail to $nick">$nick<\/a>/g;
@@ -1550,8 +1551,11 @@ $1">$nick<\/a>/g;
         while ($replaced < 1) {
             $replaced = 1;
             if ($url = match_url($str)) {
-                if ($url =~ /^www\./i) { $return_str =~ s/(\Q$url\E)/<a href="http:\/\/$1" target="_blank" title="Open in new window: $1">$1<\/a>/g; }
-                else { $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$1<\/a>/g; }
+                if ($url =~ /^www\./i) {
+                    $return_str =~ s/(\Q$url\E)/<a href="http:\/\/$1" target="_blank" title="Open in new window: $1">$1<\/a>/g;
+                } else {
+                    $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$1<\/a>/g;
+                }
                 $str =~ s/(\Q$url\E)//g;
                 $replaced--;
             }
