@@ -32,7 +32,7 @@
 # (RU) Russian - Anton Tretiakov <manager@ykt.ru>
 # (GR) Greek - Konstantinos Tzanidis <erebus@irc.gr>
 # (HE) Hebrew - Shimi <shimi@shimi.net>
-# (BG) Bulgarian - m9ck <m9ck@abv.bg>
+# (BG) Bulgarian - Dimitar <m9ck@sofiaclub.com> (2005-01-24)
 # (YU) Serbian - Garp <garp@pixelsndots.com>
 # (SQ) Albanian - h3li0s <elbo_79@yahoo.it>
 #
@@ -3889,7 +3889,7 @@ sad3 = "Никой не е тъжен в  [:channel]! Щастлив канал ! :)"
 month = "Януари Февруари Март Април Май Юни Юли Август Септември Октомври Ноември Декември"
 day = "Неделя Понеделник Вторник Сряда Четвъртак Петак Събота"
 
-## Заглавия
+## Topics - Заглавия
 
 bignumtopic = "Големи цифри"
 othernumtopic = "Други интересни цифри"
@@ -3903,6 +3903,7 @@ urlstopic = "Последните web-адреси"
 notopic = "Не е имало тема в канала"
 mostnickstopic = "Хора с много nicknames"
 bylinetopic = "от [:nick] в [:time]"
+dailyactivitytopic = "Дневна активност (последните [:n] дни)"
 
 ## Other text
 
