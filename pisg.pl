@@ -288,6 +288,7 @@ sub init_config
 
                 if ($line =~ /nick="([^"]+)"/) {
                     $nick = $1;
+                    $alias{lc($nick)} = $nick;
                 } else {
                     print STDERR "Warning: no nick specified in $conf->{configfile} on line $lineno\n";
                     next;
