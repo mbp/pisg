@@ -26,13 +26,13 @@ sub new
     bless($self, $type);
 
     # Pick our parser.
-    $self->{parser} = $self->choose_log_format($self->{cfg}->{format});
+    $self->{parser} = $self->_choose_format($self->{cfg}->{format});
 
     return $self;
 }
 
 # The function to choose which module to use.
-sub choose_log_format
+sub _choose_format
 {
     my $self = shift;
     my $format = shift;
@@ -60,7 +60,7 @@ sub analyze
 
         if ($self->{cfg}->{logdir}) {
             # Run through all files in dir
-            $self->parse_dir(\%stats, \%lines);
+            $self->_parse_dir(\%stats, \%lines);
         } else {
             # Run through the whole logfile
             my %state = (
@@ -70,10 +70,10 @@ sub analyze
                 lastnormal => "",
                 oldtime    => 24
             );
-            $self->parse_file(\%stats, \%lines, $self->{cfg}->{logfile}, \%state);
+            $self->_parse_file(\%stats, \%lines, $self->{cfg}->{logfile}, \%state);
         }
 
-        pick_random_lines(\%stats, \%lines);
+        _pick_random_lines(\%stats, \%lines);
 
         my ($sec,$min,$hour) = gmtime(time() - $starttime);
         $stats{processtime} =
@@ -93,7 +93,7 @@ sub analyze
     return undef;
 }
 
-sub parse_dir
+sub _parse_dir
 {
     my $self = shift;
     my ($stats, $lines) = @_;
@@ -118,12 +118,12 @@ sub parse_dir
     );
     foreach my $file (sort @filesarray) {
         $file = $self->{cfg}->{logdir} . $file;
-        $self->parse_file($stats, $lines, $file, \%state);
+        $self->_parse_file($stats, $lines, $file, \%state);
     }
 }
 
 # This parses the file...
-sub parse_file
+sub _parse_file
 {
     my $self = shift;
     my ($stats, $lines, $file, $state) = @_;
@@ -149,7 +149,7 @@ sub parse_file
     $stats->{totallines} = 0;
 
     while(my $line = <LOGFILE>) {
-        $line = strip_mirccodes($line);
+        $line = _strip_mirccodes($line);
         $linecount++;
 
         my $hashref;
@@ -204,14 +204,19 @@ sub parse_file
                     my $len = length($saying);
                     if ($len > $self->{cfg}->{minquote} && $len < $self->{cfg}->{maxquote}) {
                         push @{ $lines->{sayings}{$nick} }, $saying;
+                    } elsif (!$lines->{sayings}{$nick}) {
+                        # Just fill the users first saying in if he hasn't
+                        # said anything yet, to get rid of empty quotes.
+                        push @{ $lines->{sayings}{$nick} }, $saying;
                     }
+
                     $stats->{lengths}{$nick} += $len;
 
                     $stats->{questions}{$nick}++
-                    if ($saying =~ /\?/);
+                        if ($saying =~ /\?/);
 
                     $stats->{shouts}{$nick}++
-                    if ($saying =~ /!/);
+                        if ($saying =~ /!/);
 
                     if ($saying !~ /[a-z]/ && $saying =~ /[A-Z]/) {
                         $stats->{allcaps}{$nick}++;
@@ -224,10 +229,10 @@ sub parse_file
                     # Who smiles the most?
                     # A regex matching al lot of smilies
                     $stats->{smiles}{$nick}++
-                    if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/);
+                        if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/);
 
                     if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/ and
-                    $saying !~ /\w+:\/\//) {
+                        $saying !~ /\w+:\/\//) {
                         $stats->{frowns}{$nick}++;
                     }
 
@@ -236,7 +241,7 @@ sub parse_file
                         $stats->{urlnicks}{$url} = $nick;
                     }
 
-                    $self->parse_words($stats, $saying, $nick);
+                    $self->_parse_words($stats, $saying, $nick);
                 }
             }
             $lastnormal = $line;
@@ -277,7 +282,7 @@ sub parse_file
                 my $len = length($saying);
                 $stats->{lengths}{$nick} += $len;
 
-                $self->parse_words($stats, $saying, $nick);
+                $self->_parse_words($stats, $saying, $nick);
             }
         }
 
@@ -326,7 +331,7 @@ sub parse_file
                     }
 
                 } elsif (defined($newmode)) {
-                    my @opchange = opchanges($newmode);
+                    my @opchange = _opchanges($newmode);
                     $stats->{gaveops}{$nick} += $opchange[0] if $opchange[0];
                     $stats->{tookops}{$nick} += $opchange[1] if $opchange[1];
 
@@ -345,7 +350,7 @@ sub parse_file
     print "Finished analyzing log, $stats->{days} days total.\n";
 }
 
-sub opchanges
+sub _opchanges
 {
     my (@ops, $plus);
     foreach (split(//, $_[0])) {
@@ -361,7 +366,7 @@ sub opchanges
     return @ops;
 }
 
-sub parse_words
+sub _parse_words
 {
     my $self = shift;
     my ($stats, $saying, $nick) = @_;
@@ -383,7 +388,7 @@ sub parse_words
     }
 }
 
-sub pick_random_lines
+sub _pick_random_lines
 {
     my ($stats, $lines) = @_;
 
@@ -395,7 +400,7 @@ sub pick_random_lines
     }
 }
 
-sub strip_mirccodes
+sub _strip_mirccodes
 {
     my $line = shift;
 
