@@ -1,0 +1,143 @@
+/*
+This is a soft green theme that I created. It is the first of many that
+I
+will create.
+Visit http://ircstats.axelay.com to see it in action!
+
+Created by: Melody Mayberry, http://www.melbell.com
+
+Place this line in pisg.cfg
+<set hicell="#B4CEA9" hicell2="#CCEAC0">
+*/
+
+/* These are for the regular links (in the stats) */
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+a:link {
+    color: #008800;
+}
+a:visited {
+    color: #008800;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: ##008800;
+}
+
+/* These are for other links EX: Links at the bottom of the page */
+a.background {
+    text-decoration: none;
+}
+
+a.background:link {
+    color: #008800;
+}
+
+a.background:visited {
+    color: #008800;
+}
+
+a.background:hover {
+    text-decoration: underline;
+    color: #008800;
+}
+
+body {
+    background-color: #dfffd1;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    color: black;
+}
+
+td {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    color: black;
+    text-align: left;
+}
+
+.title {
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Cell Properties for Headlines EX: "Most Active Nicks" */
+.headtext {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: #54604F;
+}
+
+/* Has no apparent effect */
+.headlinebg {
+    background-color: #000000;
+}
+
+/* Column Titles in Numbered Lists EX: "Most Active Nicks" */
+.tdtop {
+    background-color: #CDEBC1;
+}
+
+/* Cell in "Big Numbers" section, also the cells of the data in certain
+numbered lists (all except the "Most active nicks" and the "Users with
+most
+nicknames" sections) */
+.hicell {
+    background-color: #C1DDB5;
+}
+
+/* Cells of the data in "Users with most nicknames" section */
+.hicell10 {
+    background-color: #C1DDB5;
+    font-size: 10px;
+}
+
+/* In numbered lists, the cell properties for 2+ */
+.rankc {
+    background-color: #B4CEA9;
+}
+
+/* In numbered lists, the cell properties for 1 */
+.hirankc {
+    background-color: #91AC87;
+    font-weight: bold;
+}
+
+/* Name Cells in These Didn't Make It... */
+.rankc10 {
+    background-color: #CCEAC0;
+    font-size: 10px;
+}
+
+/* Hours "1-23"  in Most Active Times Cell */
+.rankc10center {
+    background-color: #B4CEA9;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Hour "0" in Most Active Times Cell */
+.hirankc10center {
+    background-color: #91AC87;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+}
+
+.small {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 10px;
+}
+
+
+.asmall {
+      font-family: "Arial narrow", Arial, sans-serif;
+      font-size: 10px;
+      color: black;
+      text-align: center;
+}

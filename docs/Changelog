@@ -6,6 +6,7 @@ pisg (x.xx)
    * Added retarded support for retarded logformat used for mIRC6.x
    * A bug in the zcbot format where the first character would be truncated
      has been fixed (thanks, Guillaume Leclanche)
+   * New 'softgreen' colorscheme (thanks, Melody Mayberry)
 
 pisg (0.41) - Sun Aug, 11th 2002
    * Fix a bug in the winbot logfile format where lines containing the channel
