@@ -100,6 +100,8 @@ sub get_default_config_settings
         logdir => '',
         lang => 'en',
         langfile => 'lang.txt',
+        cssdir => 'layout/',
+        colorscheme => 'default',
         logprefix => '',
         logsuffix => '',
         silent => 0,
@@ -107,24 +109,9 @@ sub get_default_config_settings
 
         # Colors / Layout
 
-        bgcolor => '#dedeee',
-        bgpic => '',
-        text => 'black',
-        hbgcolor => '#666699',
-        hcolor => 'white',
-        hicell => '#BABADD',
-        hicell2 => '#CCCCCC',
-        tdcolor => 'black',
-        tdtop => '#C8C8DD',
-        link => '#0b407a',
-        vlink => '#0b407a',
-        hlink => '#0b407a',
-        bg_link => '#0b407a',
-        bg_vlink => '#0b407a',
-        bg_hlink => '#0b407a',
-        headline => '#000000',
-        rankc => '#CCCCCC',
-        hi_rankc => '#AAAAAA',
+        bgpic => '', # FIXME
+        hicell => '#BABADD', # FIXME 
+        hicell2 => '#CCCCCC', # FIXME
 
         pic_width => '',
         pic_height => '',
@@ -219,6 +206,9 @@ sub get_default_config_settings
         violent => 'ViolentWords',
         regexp_aliases => 'RegexpAliases',
     };
+
+    # This enables us to use the search_path in other modules
+    $self->{cfg}->{search_path} = $self->{search_path};
 
     # Parse the optional overriden configuration variables
     foreach my $key (keys %{$self->{override_cfg}}) {

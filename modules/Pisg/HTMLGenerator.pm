@@ -136,6 +136,14 @@ sub _htmlheader
         days       => $self->{stats}->{days},
         nicks      => scalar keys %{ $self->{stats}->{lines} }
     );
+
+    my $css_file = $self->{cfg}->{cssdir} . $self->{cfg}->{colorscheme} . ".css";
+
+    # Get the chosen CSS file
+    open(FILE, $css_file) or open (FILE, $self->{cfg}->{search_path} . "/$css_file") or die("$0: Unable to open stylesheet($css_file): $!\n");
+
+    my @CSS = <FILE>;
+
     my $title = $self->_template_text('pagetitle1', %hash);
     if ($self->{cfg}->{bgpic}) {
         $bgpic = " background=\"$self->{cfg}->{bgpic}\"";
@@ -147,52 +155,7 @@ sub _htmlheader
 <meta http-equiv="Content-Type" content="text/html; charset=$self->{cfg}->{charset}" />
 <title>$title</title>
 <style type="text/css">
-a { text-decoration: none }
-a:link { color: $self->{cfg}->{link}; }
-a:visited { color: $self->{cfg}->{vlink}; }
-a:hover { text-decoration: underline; color: $self->{cfg}->{hlink} }
-
-a.background { text-decoration: none }
-a.background:link { color: $self->{cfg}->{bg_link}; }
-a.background:visited { color: $self->{cfg}->{bg_vlink}; }
-a.background:hover { text-decoration: underline; color: $self->{cfg}->{bg_hlink} }
-
-body {
-    background-color: $self->{cfg}->{bgcolor};
-    font-family: verdana, arial, sans-serif;
-    font-size: 13px;
-    color: $self->{cfg}->{text};
-}
-
-td {
-    font-family: verdana, arial, sans-serif;
-    font-size: 13px;
-    color: $self->{cfg}->{tdcolor};
-    text-align: left;
-}
-
-.title {
-    font-family: tahoma, arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.headtext {
-    color: $self->{cfg}->{hcolor};
-    font-weight: bold;
-    text-align: center;
-}
-
-.tdtop { background-color: $self->{cfg}->{tdtop}; }
-.hicell { background-color: $self->{cfg}->{hicell}; }
-.rankc { background-color: $self->{cfg}->{rankc}; }
-.hirankc { background-color: $self->{cfg}->{hi_rankc}; font-weight: bold; }
-.small { font-family: verdana, arial, sans-serif; font-size: 10px; }
-.asmall {
-      font-family: arial narrow, sans-serif;
-      font-size: 10px;
-      color: $self->{cfg}->{text};
-}
+@CSS
 </style></head>
 <body$bgpic>
 <div align="center">
@@ -292,10 +255,10 @@ sub _headline
    <br />
    <table width="$self->{cfg}->{headwidth}" cellpadding="1" cellspacing="0" border="0">
     <tr>
-     <td style="background-color: $self->{cfg}->{headline}">
+     <td class="headlinebg">
       <table width="100%" cellpadding="2" cellspacing="0" border="0">
        <tr>
-        <td style="background-color: $self->{cfg}->{hbgcolor}" class="headtext">$title</td>
+        <td class="headtext">$title</td>
        </tr>
       </table>
      </td>
@@ -390,11 +353,11 @@ sub _activetimes
     for ($b = 0; $b < 24; $b++) {
         if ($toptime[0] == $b) {
             # Highlight the top time
-            $class = 'hirankc';
+            $class = 'hirankc10center';
         } else {
-            $class = 'rankc';
+            $class = 'rankc10center';
         }
-        _html("<td class=\"$class\" style=\"font-size: 10px; text-align: center\" align=\"center\">$b</td>");
+        _html("<td class=\"$class\" align=\"center\">$b</td>");
 }
 
     _html("</tr></table>");
@@ -478,12 +441,12 @@ sub _activenicks
             }
         }
         
-        _html("<tr><td class=\"$class\" align=\"left\">");
+        _html("<tr><td class=\"$class\" align=\"left\">$c</td>");
 
         my $line = $self->{stats}->{lines}{$nick};
         my $w = $self->{stats}->{words}{$nick} ? $self->{stats}->{words}{$nick} : 0;
         my $ch   = $self->{stats}->{lengths}{$nick};
-        _html("$c</td><td style=\"background-color: $color\">$visiblenick</td>"
+        _html("<td style=\"background-color: $color\">$visiblenick</td>"
         . ($self->{cfg}->{showlinetime} ?
         "<td style=\"background-color: $color\">".$self->_user_linetimes($nick,$active[0])."</td>"
         : "<td style=\"background-color: $color\">$line</td>")
@@ -515,16 +478,16 @@ sub _activenicks
 		_html("<a href=\"$self->{cfg}->{imagepath}$self->{users}->{biguserpics}{$nick}\">");
 	    }
             if ($width ne '') {
-		_html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" />");
+		_html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
             } else {
-                _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" />");
+                _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
             }
 	    if (defined $self->{users}->{biguserpics}{$nick}) {
 		_html("</a>");
 	    }
 	    _html("</td>");
         } elsif ($self->{cfg}->{defaultpic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
-            _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" /></td>");
+            _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
         }
 
         _html("</tr>");
@@ -548,7 +511,7 @@ sub _activenicks
             for (my $i = $self->{cfg}->{activenicks}; $i < $remain; $i++) {
                 unless ($i % 5) { if ($i != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
                 my $lines = $self->{stats}->{lines}{$active[$i]};
-                _html("<td class=\"rankc\" style=\"font-size: 10px\">$active[$i] ($lines)</td>");
+                _html("<td class=\"rankc10\">$active[$i] ($lines)</td>");
             }
             _html("</tr></table>");
         }
@@ -1345,7 +1308,7 @@ sub _lasttopics
             _html("<tr><td class=\"hicell\"><i>$topic</i></td>");
             _html("<td class=\"hicell\"><b>" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
         }
-        _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\" style=\"text-align: center\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
+        _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmallcenter\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
     } else {
         _html("<tr><td class=\"hicell\">" . $self->_template_text('notopic') ."</td></tr>");
     }
@@ -1699,8 +1662,8 @@ sub _mostnicks
             my $n = $nickcount > 1 ? $names1 : $names2;
 
             _html("<tr><td class=\"$class\">$a</td>");
-            _html("<td class=\"hicell\" style=\"font-size: 10px\">$sortnicks[$i]<br />($nickcount $n)</td>");
-            _html("<td class=\"hicell\" style=\"font-size: 10px\" valign='top'>$nickused</td>");
+            _html("<td class=\"hicell10\">$sortnicks[$i]<br />($nickcount $n)</td>");
+            _html("<td class=\"hicell10\" valign='top'>$nickused</td>");
             _html("</tr>");
         }
         _html("</table>");
