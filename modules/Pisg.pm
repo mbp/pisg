@@ -113,8 +113,8 @@ sub get_default_config_settings
         hicell => '#BABADD', # FIXME 
         hicell2 => '#CCCCCC', # FIXME
 
-        pic_width => '',
-        pic_height => '',
+        picwidth => '',
+        picheight => '',
 
         pic_v_0 => 'blue-v.png',
         pic_v_6 => 'green-v.png',
@@ -124,7 +124,7 @@ sub get_default_config_settings
         pic_h_6 => 'green-h.png',
         pic_h_12 => 'yellow-h.png',
         pic_h_18 => 'red-h.png',
-        pic_loc => '.',
+        piclocation => '.',
 
         # Stats settings
 
@@ -205,6 +205,9 @@ sub get_default_config_settings
         foul => 'FoulWords',
         violent => 'ViolentWords',
         regexp_aliases => 'RegexpAliases',
+        pic_loc => 'PicLocation',
+        pic_width => 'PicWidth',
+        pic_height => 'PicHeight'
     };
 
     # This enables us to use the search_path in other modules

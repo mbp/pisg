@@ -318,7 +318,7 @@ sub _activetimes
         $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{pic_loc}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
     }
 
     _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>\n");
@@ -458,8 +458,8 @@ sub _activenicks
         : "")
         );
 
-        my $height = $self->{cfg}->{pic_height};
-        my $width = $self->{cfg}->{pic_width};
+        my $height = $self->{cfg}->{picheight};
+        my $width = $self->{cfg}->{picwidth};
         if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
 	    _html("<td style=\"background-color: $color\" align=\"center\">");
 	    if (defined $self->{users}->{biguserpics}{$nick}) {
@@ -1549,10 +1549,10 @@ sub _legend
     # A legend showing the timebars and their associated time.
     my $self = shift;
     _html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"0-5\" /> = 0-5</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"6-11\" /> = 6-11</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"12-17\" /> = 12-17</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"18-23\" /> = 18-23</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"0-5\" /> = 0-5</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"6-11\" /> = 6-11</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"12-17\" /> = 12-17</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"18-23\" /> = 18-23</td>");
     _html("</tr></table>\n");
 }
 
@@ -1593,7 +1593,7 @@ sub _user_linetimes
         my $w = int(($self->{stats}->{line_times}{$nick}[$i] / $self->{stats}->{lines}{$nick}) * $len);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />";
+            $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />";
         }
     }
     return "$bar&nbsp;$self->{stats}->{lines}{$nick}";
@@ -1611,7 +1611,7 @@ sub _user_times
         my $w = int(($self->{stats}->{line_times}{$nick}[$i] / $self->{stats}->{lines}{$nick}) * 40);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\" />";
+            $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\" />";
         }
     }
     return $bar;
