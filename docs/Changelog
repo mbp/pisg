@@ -7,6 +7,8 @@ pisg (0.63) - ??
    * Updated some German strings (thanks, Igge).
    * Inhibit warning in _mostreferencednicks when a nick is referenced
      before being used first.
+   * Choose locally-installed pisg versions ahead of system-installed pisg
+   versions. (thanks, Bruce W. Murphy)
 
 pisg (0.62) - Sat Dec, 11th 2004
    Changes by Christoph Berg:
