@@ -81,8 +81,7 @@ sub analyze
 
         my ($sec,$min,$hour) = gmtime(time() - $starttime);
         $stats{processtime} =
-        sprintf("%02d hours, %02d minutes and %02d seconds", $hour, $min,
-        $sec);
+        sprintf("%02d hours, %02d minutes and %02d seconds", $hour, $min, $sec);
         print "Channel analyzed succesfully in $stats{processtime} on ",
         scalar localtime(time()), "\n"
             unless ($self->{cfg}->{silent});
@@ -190,19 +189,17 @@ sub _parse_file
         die("$0: Unable to open logfile($file): $!\n");
     }
 
-    my $linecount = 0;
     my $lastnormal = "";
-    my $repeated;
 
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
-        $linecount++;
 
         my $hashref;
 
         # Match normal lines.
-        if ($hashref = $self->{parser}->normalline($line, $linecount)) {
+        if ($hashref = $self->{parser}->normalline($line, $.)) {
 
+            my $repeated;
             if (defined $hashref->{repeated}) {
                 $repeated = $hashref->{repeated};
             } else {
@@ -214,9 +211,8 @@ sub _parse_file
             for ($i = 0; $i <= $repeated; $i++) {
 
                 if ($i > 0) {
-                    $hashref = $self->{parser}->normalline($lastnormal, $linecount);
+                    $hashref = $self->{parser}->normalline($lastnormal, $.);
                     #Increment number of lines for repeated lines
-                    $linecount++;
                 }
 
                 $hour   = $hashref->{hour};
@@ -304,7 +300,7 @@ sub _parse_file
         }
 
         # Match action lines.
-        elsif ($hashref = $self->{parser}->actionline($line, $linecount)) {
+        elsif ($hashref = $self->{parser}->actionline($line, $.)) {
             $stats->{totallines}++;
 
             my ($hour, $nick, $saying);
@@ -345,7 +341,7 @@ sub _parse_file
         }
 
         # Match *** lines.
-        elsif (($hashref = $self->{parser}->thirdline($line, $linecount)) and $hashref->{nick}) {
+        elsif (($hashref = $self->{parser}->thirdline($line, $.)) and $hashref->{nick}) {
             $stats->{totallines}++;
 
             my ($hour, $min, $nick, $kicker, $newtopic, $newmode, $newjoin);
