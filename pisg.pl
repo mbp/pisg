@@ -106,7 +106,7 @@ my $conf = {
 my ($chans, $users);
 
 my ($lines, $smile, $time, $timestamp, %alias, $normalline, $actionline,
-$thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
+$thirdline, $processtime, @topics, %monologue, %kicked, %gotkick,
 %line, %length, %sadface, %smile, $nicks, %longlines, %mono, %times, %question,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
@@ -328,7 +328,7 @@ sub init_config
                 }
 
                 if ($line =~ /ignore="Y"/i) {
-                    push(@ignore, $nick);
+                    $conf->{ignores}{$nick} = 1;
                 }
 
             } elsif ($line =~ /<set(.*)>/) {
@@ -447,7 +447,7 @@ sub parse_file
                 # Timestamp collecting
                 $times{$hour}++;
 
-                unless (grep /^\Q$nick\E$/i, @ignore) {
+                unless ($conf->{ignores}{$nick}) {
                     $normals++;
                     $line{$nick}++;
                     $line_time{$nick}[int($hour/6)]++;
@@ -525,7 +525,7 @@ sub parse_file
             $times{$hour}++;
             $line = strip_mirccodes($line);
 
-            unless (grep /^\Q$nick\E$/i, @ignore) {
+            unless ($conf->{ignores}{$nick}) {
                 $actions++;
                 $actions{$nick}++;
                 $line{$nick}++;
@@ -563,10 +563,10 @@ sub parse_file
             $times{$hour}++;
             $line = strip_mirccodes($line);
 
-            unless (grep /^\Q$nick\E$/i, @ignore) {
+            unless ($conf->{ignores}{$nick}) {
 
                 if (defined($kicker)) {
-                    unless (grep /^\Q$kicker\E$/i, @ignore) {
+                    unless ($conf->{ignores}{$kicker}) {
                         $gotkick{$nick}++;
                         $kicked{$kicker}++;
                         $kickline{$nick} = $line;
@@ -891,7 +891,7 @@ sub parse_words
         # ignore contractions
         next if ($word =~ m/'..?$/);
 
-        $wordcount{$word}++ unless (grep /^\Q$word\E$/i, @ignore);
+        $wordcount{$word}++ unless ($conf->{ignores}{$word});
         $lastused{$word} = $nick;
     }
 
