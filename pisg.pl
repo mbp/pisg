@@ -24,7 +24,16 @@ use Getopt::Long;
 sub main
 {
     my $script_dir = $0;
-    $script_dir =~ s/\/[^\/]*$//;
+
+    # If the script was executed as ./pisg.pl - then we just remove
+    # everything after the last slash, if it was executed as 'perl pisg.pl'
+    # we assume that we are executing in the current dir.
+    if ($script_dir =~ m/\/[^\/]*$/) {
+        $script_dir =~ s/\/[^\/]*$//;
+    } else {
+        $script_dir = ".";
+    }
+
     my $cfg = get_cmdline_options($script_dir);
     push(@INC, $cfg->{modules_dir});
 
