@@ -14,7 +14,9 @@ pisg (0.21)
      stats at all)
    * Display the total count of topics that were set
    * Some small HTML validation fixes
+   * Fix: pisg didn't find the alias for the kicker.
    * Stop hardcoding filenames in 'legend'
+   * Some nice speedup improvements
 
 pisg (0.20) - Tue, Aug 14th 2001
    * Add 'bgpic' config setting for the possibility to add a userdefined
