@@ -39,6 +39,8 @@ ADDALIAS = scripts/addalias/addalias.htm \
 
 MODULESDIR = modules
 
+MAIN_MODULE = $(MODULESDIR)/Pisg.pm
+
 PISG_MODULES = $(MODULESDIR)/Pisg/Common.pm \
 	       $(MODULESDIR)/Pisg/HTMLGenerator.pm
 
@@ -79,6 +81,7 @@ pisg:
 	mkdir $(DIRNAME)/$(MODULESDIR)/Pisg
 	mkdir $(DIRNAME)/$(MODULESDIR)/Pisg/Parser
 	mkdir $(DIRNAME)/$(MODULESDIR)/Pisg/Parser/Format
+	cp $(MAIN_MODULE) $(DIRNAME)/$(MODULESDIR)/
 	cp $(PISG_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/
 	cp $(PARSER_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/Parser
 	cp $(FORMAT_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/Parser/Format
