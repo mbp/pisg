@@ -13,6 +13,10 @@ pisg (0.23)
         Again, please report back if you find any trouble with any of these
         changes.
 
+   * Better logic when no channels are defined. Instead of just defaulting to
+     #channel and channel.log, then force the user to define these on either
+     commandline or in the config file. This should be better for first-time
+     users.
    * Ship developer docs in docs/dev/ instead of just dumping it in docs/,
      docs/ should be for end users.
    * Various updates to language templates
