@@ -7,6 +7,12 @@ pisg (x.xx)
    * scripts/windows-ftp-upload.txt has been added, a sample script and
      description on how to upload files automatically on Windows. (thanks,
      Azhrarn)
+   * A old configuration option appeared on commandline when doing pisg --help
+   * Configuration options renamed: pic_width => PicWidth, pic_height =>
+     PicHeight, pic_loc => PicLocation. Documentation also added.
+   * Split up the documentation of options into different categories, for
+     better overview.
+   * A dutch translation appeared in the English version of pisg; fixed.
 
 pisg (0.37) - Mon Apr, 8th 2002
    * The "lets clean up and move things around"-release
