@@ -63,7 +63,7 @@ allcapstext = "<b>For example, like this:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 
 violent1 = "<b>[:nick]</b> is a very aggressive person.  [:He:She:] attacked others <b>[:attacks]</b> times."
 violent2 = "<b>[:nick]</b> can't control [:his:her:] aggressions, either.  [:He:She:] picked on others <b>[:attacks]</b> times."
-violent3 = "Geen klappen uitgedeeld hiero, wat een vriendelijk zooitje."
+violent3 = "Nobody beat anyone up.  Everybody was friendly."
 violenttext = "<b>For example, like this:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Poor <b>[:nick]</b>, nobody likes [:him:her:].  [:He:She:] was attacked <b>[:attacks]</b> times."
