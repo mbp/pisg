@@ -1,0 +1,142 @@
+/* <set hicell="#444444"> <set hicell2="#999999"> */
+a {
+    text-decoration:none; 
+}
+a:link {
+    color:#990000; 
+}
+a:visited {
+    color:#990000;
+}
+a:hover {
+ 	text-decoration:underline;
+ 	color:#990000;
+}
+
+a.background {
+ 	text-decoration:none;
+}
+
+a.background:link {
+    color:#990000; 
+}
+
+a.background:visited {
+    color:#990000; 
+}
+
+a.background:hover {
+ 	text-decoration:underline;
+ 	color:#990000;
+}
+
+body {
+ 	background-color:black;
+ 	font-family: verdana, arial, sans-serif;
+ 	font-size:13px;
+ 	color:white;
+}
+
+table {
+	border-collapse:collapse;
+}
+
+td {
+	font-family: verdana, arial, sans-serif;
+ 	font-size: 13px;
+ 	color:white;
+ 	text-align:left; 
+	border-color:black;
+	border-style:solid;
+	border-width:1px;
+}
+
+.title {
+ 	font-family: tahoma, arial, sans-serif;
+ 	font-size: 16px;
+ 	font-weight:bold;
+}
+
+.headtext {
+    font-family: verdana, arial, sans-serif;
+    font-size:13px;
+    color:white;
+    background-color:#444444;
+    border-color:#990000;
+    border-style:solid; 
+    text-align:center;
+    border-width:1px;
+    font-weight:bold;
+}
+
+.headlinebg {
+    background-color:black; 
+}
+
+.tdtop {
+    background-color:#444444; 
+    color:white;
+    font-weight:normal;
+}
+
+.hicell {
+    background-color:#AAAAAA; 
+    color:black;
+}
+
+.hicell10 {
+ 	background-color:#AAAAAA;
+ 	font-size:10px;
+    color:black;
+}
+
+.rankc {
+    background-color:#AAAAAA; 
+    color:black;
+}
+
+.hirankc {
+ 	background-color:#444444;
+ 	font-weight:bold;
+    color:white;
+}
+
+.rankc10 {
+ 	background-color:#AAAAAA;
+ 	font-size:10px;
+    color:black;
+}
+
+.rankc10center {
+ 	background-color:#AAAAAA;
+ 	font-size:10px;
+ 	text-align:center;
+    color:black;
+}
+
+.hirankc10center {
+ 	background-color:#AAAAAA;
+ 	font-weight:bold;
+ 	font-size:10px;
+ 	text-align:center;
+    color:black;
+}
+
+.small {
+ 	font-family: verdana,arial, sans-serif;
+ 	font-size:10px;
+}
+
+.asmall {
+ 	font-family: arial narrow, sans-serif;
+ 	font-size:10px;
+ 	color:white;
+}
+
+.asmallcenter {
+ 	font-family: arial narrow, sans-serif;
+ 	font-size:10px;
+ 	color:black;
+ 	text-align:center;
+}
+

@@ -6,6 +6,7 @@ pisg (x.xx)
    * When ShowTopics was set to 0, the headline "Latest topics" was still
      shown, fixed (thanks, Kean "zakarun" Pedersen)
    * New 'ocean' colorscheme (thanks, Mikko Nissinen)
+   * New 'darkred' colorscheme (thanks, Hanno Hecker)
 
 pisg (0.40) - Thu Jul, 4th 2002
    * The "It's Summer And The Sun Is Shining"-release.
