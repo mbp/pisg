@@ -259,6 +259,49 @@
     </para>
 
    </sect1>
+   <sect1 id="running-pisg">
+    <title>Running pisg</title>
+
+    <para>
+    When everything is set up in the pisg configuration file (pisg.cfg),
+    then you simply run pisg on the command-line.
+
+    </para>
+
+    <para>
+    Using Linux, BSD or another UNIX-like system:
+
+    <screen>
+    <prompt>user@host:pisg-0.37$</prompt> <userinput>./pisg</userinput>
+    </screen>
+    </para>
+
+    <para>
+    Using Windows:
+    <screen>
+    <prompt>c:\perl\bin&gt;</prompt> <userinput>perl c:\pisg\pisg</userinput>
+    </screen>
+    </para>
+
+    <para>
+    The program will run and parse the logfiles you specified in the
+    configuration file.
+    </para>
+    
+    <para>
+    If you are using Linux and want run pisg
+    automatically several times a day, then see the
+    <filename>crontab</filename> file in the
+    <filename>scripts/</filename> directory.
+    </para>
+
+    <para>
+    For Windows, see the <filename>windows-upload-ftp.txt</filename> file
+    with the pisg distribution, this file is also placed in the
+    <filename>scripts/</filename> directory.
+    </para>
+
+   </sect1>
    <sect1 id="mailing-list-and-bugs">
     <title>Obtaining help and reporting bugs</title>
 
