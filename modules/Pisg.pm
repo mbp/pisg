@@ -285,10 +285,8 @@ sub init_config
 
     if ((open(CONFIG, $self->{cfg}->{configfile}) or open(CONFIG, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
 
-        my $lineno = 0;
         while (my $line = <CONFIG>)
         {
-            $lineno++;
             next if ($line =~ /^#/);
 
             if ($line =~ /<user.*>/) {
@@ -298,7 +296,7 @@ sub init_config
                     $nick = $1;
                     add_alias($nick, $nick);
                 } else {
-                    print STDERR "Warning: No nick specified in $self->{cfg}->{configfile} on line $lineno\n";
+                    print STDERR "Warning: No nick specified in $self->{cfg}->{configfile} on line $.\n";
                     next;
                 }
 
@@ -341,7 +339,7 @@ sub init_config
                         add_url_ignore($url);
                     }
                 } else {
-                    print STDERR "Warning: no URL specified in $self->{cfg}->{configfile} on line $lineno\n";
+                    print STDERR "Warning: no URL specified in $self->{cfg}->{configfile} on line $.\n";
                 }
 
 
@@ -380,12 +378,12 @@ sub init_config
                     }
                 }
             } elsif ($line =~ /<set/) {
-                print STDERR "Warning: Malformed <set ..> line in $self->{cfg}->{configfile} on line $lineno\n";
+                print STDERR "Warning: Malformed <set ..> line in $self->{cfg}->{configfile} on line $.\n";
             } elsif ($line =~ /<channel/) {
-                print STDERR "Warning: Malformed <channel ..> line in $self->{cfg}->{configfile} on line $lineno\n";
+                print STDERR "Warning: Malformed <channel ..> line in $self->{cfg}->{configfile} on line $.\n";
             } elsif ($line =~ /\S/) {
                 $line =~ s/\n//;
-                print "Warning: Unrecognized line in $self->{cfg}->{configfile} on line $lineno: '$line'\n";
+                print "Warning: Unrecognized line in $self->{cfg}->{configfile} on line $.: '$line'\n";
             }
         }
 
