@@ -1,7 +1,8 @@
-FORMATS - supported IRC logfile formats by pisg
+FORMATS - supported logfile formats by pisg
 ------------------
 
-pisg supports a variety of logfile formats, these are:
+This file contains a list of the different formats that pisg supports. It
+also includes a sample line for these formats.
 
 * mIRC:
   - A client for Windows (www.mirc.com)
@@ -14,19 +15,28 @@ pisg supports a variety of logfile formats, these are:
     http://mel.angelbears.org/
 
     Remember to timestamp your logs, or it wont work, the timestamp must be
-    in [HH:MM] format.
+    in [HH:MM] or [HH:MM:SS] format.
     
   - In order to use this, format must be set to 'mIRC'.
+
+  Example:
+        [23:44] <Christina> Hello world
 
 * X-Chat:
   -  A client for Linux (www.xchat.org)
     
   -  In order to use this, format must be set to 'xchat'.
 
+  Example:
+        18:01:43 <Ben> Hello world
+
 * Eggdrop:
   - A cool and advanced IRC bot for Linux (www.eggheads.org)
 
   - In order to use this, format must be set to 'eggdrop'.
+
+  Example:
+        [00:02] <Jenny> Hello world
      
 * Grufti:
   - A bot which I'm not really familiar with (www.grufti.com)
@@ -35,18 +45,30 @@ pisg supports a variety of logfile formats, these are:
     over a year, and it had some problems..
 
   - In order to use this, format must be set to 'grufti'
+  
+  Example:
+        [00:17] <John> Hello world
 
 * bxlog:
   - A logging script for BitchX (console client - see scripts.bitchx.com)
    
   - In order to use this, format must be set to 'bxlog'
 
+  Example:
+        [31 Dec/11:26] <John> Hello world
+
 * mbot:
   - C-Based IRC Bot (http://darksun.com.pt/mbot/)
 
   - In order to use this, format must be set to 'mbot'
 
+  Example:
+        Thu Aug 23 12:59:40 2001 <John> Hello world
+
 * irssi:
   - console IRC client (www.irssi.org)
 
   - In order to use this, format must be set to 'irssi'
+
+  Example:
+        17:40 <@John> Hello world
