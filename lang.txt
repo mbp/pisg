@@ -278,7 +278,7 @@ kicktext = "<b>F.eks. sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 joins = "<b>[:nick]</b> er lidt forvirret. Han har været inde og ude af kanalen [:joins] gange!"
 
-kick1 = "<b>[:nick]</b> er magtsygt eller ved hvordan han/hun skal kontrollere sine fjender. Han har sparket [:kicked] folk ud af kanalen!"
+kick1 = "<b>[:nick]</b> er magtsygt eller ved hvordan [:han:hun:] skal kontrollere sine fjender. Han har sparket [:kicked] folk ud af kanalen!"
 kick2 = "[:oldnick] har en efterfølger. <b>[:nick]</b> sparkede [:kicked] folk ud af kanalen"
 kick3 = "Venlige operatører må man sige. Ingen har fået sparket!"
 
@@ -312,11 +312,11 @@ allcaps3 = "Ser ud til at alle har deres shift under kontrol :)"
 allcapstext = "<b>For eksempel sådan her: </b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> er en meget aggresiv person, han delte <b>[:attacks]</b> slaps ud."
-violent2 = "<b>[:nick]</b> er ude af kontrol. Han/Hun slog andre folk <b>[:attacks]</b> gang(e)."
+violent2 = "<b>[:nick]</b> er ude af kontrol. [:Han:Hun:] slog andre folk <b>[:attacks]</b> gang(e)."
 violent3 = "Alle er glade ... endnu 8)"
 violenttext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-attacked1 = "Ærgeligt. Ingen kan li' <b>[:nick]</b>. Han/Hun blev banket <b>[:attacks]</b> gange."
+attacked1 = "Ærgeligt. Ingen kan li' <b>[:nick]</b>. [:Han:Hun:] blev banket <b>[:attacks]</b> gange."
 attacked2 = "<b>[:nick]</b> er vidst heller ikke for polulær, han/hun fik tæsk <b>[:attacks]</b> gang(e)."
 attackedtext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -959,10 +959,10 @@ allcaps2 = "<b>[:nick]</b> glömde att deaktivera sin CapsLock-tangent, [:per]% a
 allcaps3 = "Alla hade sin shift-tangent under kontroll :)"
 
 violent1 = "<b>[:nick]</b> är en väldigt aggressiv person, som använde handflatan <b>[:attacks]</b> gånger."
-violent2 = "<b>[:nick]</b> kunde inte kontrollera sina aggressioner. Han/Hon slogs <b>[:attacks]</b> gånger med sin handflata."
+violent2 = "<b>[:nick]</b> kunde inte kontrollera sina aggressioner. [:Han:Hon:] slogs <b>[:attacks]</b> gånger med sin handflata."
 violent3 = "Ingen slog ingen, alla var vänner."
 
-attacked1 = "Stackars <b>[:nick]</b>, ingen gillade honom/henne. Han/Hon blev slagen <b>[:attacks]</b> gånger med handflatan."
+attacked1 = "Stackars <b>[:nick]</b>, ingen gillade honom/henne. [:Han:Hon:] blev slagen <b>[:attacks]</b> gånger med handflatan."
 attacked2 = "<b>[:nick]</b> var inte heller speciellt omtyckt, han/hon blev slagen <b>[:attacks]</b> gånger."
 
 gotkick1 = "<b>[:nick]</b> var inte speciellt populär, och blev utsparkad [:kicks] gånger!"
