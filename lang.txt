@@ -534,6 +534,7 @@ short2 = "<b>[:nick]</b> n'a pas grand chose à dire non plus, en moyenne [:lette
 foul1 = "<b>[:nick]</b> a du mal à s'exprimer, [:per]% de ses lignes contiennent des mots incompréhensibles."
 foul2 = "<b>[:nick]</b> parle aussi comme un chartier, [:per]% du temps."
 foul3 = "Personne n'a de problème pour parler sur [:channel] ! Pendant combien de temps encore?"
+foultext = "<b>Exemple:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> apporte un peu de gaiété dans le monde, [:per]% de ses lignes contiennent un smiley :)"
 smiles2 = "<b>[:nick]</b> n'est pas triste non plus, qui sourit [:per]% du temps."
@@ -594,6 +595,8 @@ hours = "heures"
 minutes = "minutes"
 seconds = "secondes"
 and = "et"
+names1 = "noms"
+names2 = "nom"
 
 # Mouse-over titles
 pisghomepage = "Aller sur le site de pisg"
