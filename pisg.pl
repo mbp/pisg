@@ -844,19 +844,18 @@ sub parse_thirdline
 
 sub opchanges
 {
-    my @modes = split(//, $_[0]);
-    my ($mode,$plus)        = ("",0);
-    my ($gaveop,$tookop)    = (0,0);
-
-    foreach (@modes) {
-        if    (/^\+$/) { $plus  = 1; next; }
-        elsif (/^-$/)  { $plus  = 0; next; }
-        else  { next unless /^o$/ }
-
-        if ($plus) { $gaveop++ } else { $tookop++ }
+    my (@ops, $plus);
+    while ($_[0] =~ s/^(.)//) {
+        if ($1 eq "+") {
+            $plus = 0;
+        } elsif ($1 eq "-") {
+            $plus = 1;
+        } elsif ($1 eq "o") {
+            $ops[$plus]++;
+        }
     }
 
-    return ($gaveop,$tookop);
+    return @ops;
 }
 
 sub strip_mirccodes
