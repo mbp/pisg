@@ -279,6 +279,12 @@ today = "heute"
 pagetitle1 = "[:channel] @ [:network] stats erstellt von [:maintainer]"
 pagetitle2 = "Statistik erstellt am "
 pagetitle3 = "Während des Statistikzeitraums von [:days] Tage(n) wurden <b>[:nicks]</b> verschiedene Nicks in [:channel] gezählt."
+
+# Mouse-over titles
+pisghomepage = "pisg Homepage öffnen"
+authorhomepage = "Homepage des Autors öffnen"
+newwindow = "In einem neuen Fenster öffnen:"
+mailto = "Mail an"
 </lang>
 
 ### Danish
