@@ -40,11 +40,11 @@ shout2 = "<b>[:nick]</b> just forgot to deactivate his/her Caps-Lock, [:per]% of
 shout3 = "Everybody had their shift-key under control :)"
 
 slap1 = "<b>[:nick]</b> is a very aggresive person, who slapped around <b>[:slaps]</b> times."
-slap2 = "<b>[:nick]</b> can't control his/her aggressions. He/She slapped around <b>[:slaps]</b> times."
+slap2 = "<b>[:nick]</b> can't control their aggressions. He/She slapped around <b>[:slaps]</b> times."
 slap3 = "Nobody slapped around anybody, everybody was friendly."
 
-slapped1 = "Poor <b>[:nick]</b>, nobody likes him/her. He/She got slapped <b>[:slaps]</b> times."
-slapped2 = "<b>[:nick]</b> seems to be unliked to, he/she got slapped <b>[:slaps]</b> times."
+slapped1 = "Poor <b>[:nick]</b>, nobody likes him/her. They got slapped <b>[:slaps]</b> times."
+slapped2 = "<b>[:nick]</b> seems to be unliked too, he/she got slapped <b>[:slaps]</b> times."
 slapped3 = "Nobody got slapped in Channel :)"
 
 gotkick1 = "<b>[:nick]</b> wasn't very popular, got kicked [:kicks] times!"
