@@ -188,6 +188,9 @@ sad1 = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% seiner
 sad2 = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat."
 sad3 = "Niemand ist traurig in [:channel]! Was für ein fröhlicher Channel :)"
 
+month = "Januar Februar März April Mai Juni Juli August September Oktober November Dezember"
+day = "Sonntag Montag Dienstag Mittwoch Donnerstag Freitag Samstag"
+
 notopic = "In diesem Channel wurde kein Topic gesetzt."
 
 ## Topics
