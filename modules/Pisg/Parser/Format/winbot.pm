@@ -24,7 +24,7 @@ sub normalline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{normalline}/o && $3 eq $self->{cfg}->{channel}) {
+    if ($line =~ /$self->{normalline}/o && lc($3) eq lc($self->{cfg}->{channel})) {
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
@@ -40,7 +40,7 @@ sub actionline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{actionline}/o && $3 eq $self->{cfg}->{channel}) {
+    if ($line =~ /$self->{actionline}/o && lc($3) eq lc($self->{cfg}->{channel})) {
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
@@ -63,19 +63,19 @@ sub thirdline
         $hash{nick} = $3;
 
         if ($3 =~ /^(\S+) was kicked from (\S+) by (\S+) .+/) {
-            if ($2 eq $self->{cfg}->{channel}) {
+            if (lc($2) eq lc($self->{cfg}->{channel})) {
                 $hash{nick} = $1;
                 $hash{kicker} = $3;
             }
 
         } elsif ($3 =~ /^([^\/]+)\/(\S+) changes topic to \"(.+)\"[^\"]*$/) {
-            if ($2 eq $self->{cfg}->{channel}) {
+            if (lc($2) eq lc($self->{cfg}->{channel})) {
                 $hash{nick} = $1;
                 $hash{newtopic} = $3;
             }
 
         } elsif ($3 =~ /^([^\/]+)\/(\S+) sets mode: (\S+) [^\)]+/) {
-            if ($2 eq $self->{cfg}->{channel}) {
+            if (lc($2) eq lc($self->{cfg}->{channel})) {
                 $hash{nick} = $1;
                 $hash{newmode} = $3;
             }

@@ -24,7 +24,7 @@ sub normalline
     my %hash;
 
     if ($line =~ /$self->{normalline}/o and
-	$3 eq $self->{cfg}->{channel}) {
+	lc($3) eq lc($self->{cfg}->{channel})) {
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
@@ -42,7 +42,7 @@ sub actionline
     my %hash;
 
     if ($line =~ /$self->{actionline}/o and
-	$3 eq $self->{cfg}->{channel}) {
+	lc($3) eq lc($self->{cfg}->{channel})) {
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
@@ -60,7 +60,7 @@ sub thirdline
     my %hash;
 
     if ($line =~ /$self->{thirdline}/o and
-	$5 eq $self->{cfg}->{channel}) {
+	lc($5) eq ($self->{cfg}->{channel})) {
 
 	my $args = $6;
 
