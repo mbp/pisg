@@ -185,7 +185,7 @@ sub get_default_config_settings
         tablewidth => 614,
         regexpaliases => 0,
 
-        version => "0.39-cvs",
+        version => "0.40-cvs",
     };
 
     # Backwards compatibility with old option names:

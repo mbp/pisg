@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.39) - Tue May, 14th 2002
    * ShowFoulLine option added (thanks, Adam Spiers <adam@spiers.net>).
    * The "foul-words" counting is now done word-wise instead of line-wise
      (thanks, Adam Spiers <adam@spiers.net>)
