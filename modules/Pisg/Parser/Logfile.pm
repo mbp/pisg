@@ -13,20 +13,20 @@ sub new
 {
     my $type = shift;
     my $self = {
-        conf => $_[0],
+        cfg => $_[0],
         debug => $_[1],
         parser => undef,
     };
 
     # Load the Common module from wherever it's configured to be.
-    push(@INC, $self->{conf}->{modules_dir});
+    push(@INC, $self->{cfg}->{modules_dir});
     require Pisg::Common;
     Pisg::Common->import();
 
     bless($self, $type);
 
     # Pick our parser.
-    $self->{parser} = $self->choose_log_format($self->{conf}->{format});
+    $self->{parser} = $self->choose_log_format($self->{cfg}->{format});
 
     return $self;
 }
@@ -39,7 +39,7 @@ sub choose_log_format
     $self->{parser} = undef;
     $self->{debug}->("Loading module for log format $format");
     eval <<_END;
-use lib '$self->{conf}->{modules_dir}';
+use lib '$self->{cfg}->{modules_dir}';
 use Pisg::Parser::Format::$format;
 \$self->{parser} = new Pisg::Parser::Format::$format(\$self->{debug});
 _END
@@ -58,7 +58,7 @@ sub analyze
     if (defined $self->{parser}) {
         my $starttime = time();
 
-        if ($self->{conf}->{logdir}) {
+        if ($self->{cfg}->{logdir}) {
             # Run through all files in dir
             $self->parse_dir(\%stats, \%lines);
         } else {
@@ -70,7 +70,7 @@ sub analyze
                 lastnormal => "",
                 oldtime    => 24
             );
-            $self->parse_file(\%stats, \%lines, $self->{conf}->{logfile}, \%state);
+            $self->parse_file(\%stats, \%lines, $self->{cfg}->{logfile}, \%state);
         }
 
         pick_random_lines(\%stats, \%lines);
@@ -85,7 +85,7 @@ sub analyze
         return \%stats;
 
     } else {
-        print STDERR "Skipping channel '$self->{conf}->{channel}' due to lack of parser.\n";
+        print STDERR "Skipping channel '$self->{cfg}->{channel}' due to lack of parser.\n";
         return undef
     }
 
@@ -99,16 +99,16 @@ sub parse_dir
     my ($stats, $lines) = @_;
 
     # Add trailing slash when it's not there..
-    $self->{conf}->{logdir} =~ s/([^\/])$/$1\//;
+    $self->{cfg}->{logdir} =~ s/([^\/])$/$1\//;
 
-    print "Going into $self->{conf}->{logdir} and parsing all files there...\n\n";
+    print "Going into $self->{cfg}->{logdir} and parsing all files there...\n\n";
     my @filesarray;
-    opendir(LOGDIR, $self->{conf}->{logdir}) or
-    die("Can't opendir $self->{conf}->{logdir}: $!");
+    opendir(LOGDIR, $self->{cfg}->{logdir}) or
+    die("Can't opendir $self->{cfg}->{logdir}: $!");
     @filesarray = grep {
-        /^[^\.]/ && /^$self->{conf}->{prefix}/ && -f "$self->{conf}->{logdir}/$_"
+        /^[^\.]/ && /^$self->{cfg}->{prefix}/ && -f "$self->{cfg}->{logdir}/$_"
     } readdir(LOGDIR) or
-    die("No files in \"$self->{conf}->{logdir}\" matched prefix \"$self->{conf}->{prefix}\"");
+    die("No files in \"$self->{cfg}->{logdir}\" matched prefix \"$self->{cfg}->{prefix}\"");
     closedir(LOGDIR);
 
     my %state = (
@@ -117,7 +117,7 @@ sub parse_dir
         oldtime    => 24
     );
     foreach my $file (sort @filesarray) {
-        $file = $self->{conf}->{logdir} . $file;
+        $file = $self->{cfg}->{logdir} . $file;
         $self->parse_file($stats, $lines, $file, \%state);
     }
 }
@@ -128,7 +128,7 @@ sub parse_file
     my $self = shift;
     my ($stats, $lines, $file, $state) = @_;
 
-    print "Analyzing log($file) in '$self->{conf}->{format}' format...\n";
+    print "Analyzing log($file) in '$self->{cfg}->{format}' format...\n";
 
     if ($file =~ /.bz2?$/ && -f $file) {
         open (LOGFILE, "bunzip2 -c $file |") or
@@ -202,7 +202,7 @@ sub parse_file
                     $state->{lastnick} = $nick;
 
                     my $len = length($saying);
-                    if ($len > $self->{conf}->{minquote} && $len < $self->{conf}->{maxquote}) {
+                    if ($len > $self->{cfg}->{minquote} && $len < $self->{cfg}->{maxquote}) {
                         push @{ $lines->{sayings}{$nick} }, $saying;
                     }
                     $stats->{lengths}{$nick} += $len;
@@ -219,7 +219,7 @@ sub parse_file
                     }
 
                     $stats->{foul}{$nick}++
-                    if ($saying =~ /$self->{conf}->{foul}/i);
+                    if ($saying =~ /$self->{cfg}->{foul}/i);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
@@ -265,7 +265,7 @@ sub parse_file
                 $stats->{lines}{$nick}++;
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^($self->{conf}->{violent}) (\S+)/) {
+                if ($saying =~ /^($self->{cfg}->{violent}) (\S+)/) {
                     my $victim = find_alias($2);
                     $stats->{violence}{$nick}++;
                     $stats->{attacked}{$victim}++;
@@ -333,7 +333,7 @@ sub parse_file
                 } elsif (defined($newjoin)) {
                     $stats->{joins}{$nick}++;
 
-                } elsif (defined($newnick) and ($self->{conf}->{nicktracking} == 1)) {
+                } elsif (defined($newnick) and ($self->{cfg}->{nicktracking} == 1)) {
                     add_alias($nick, $newnick);
                 }
             }
@@ -369,8 +369,8 @@ sub parse_words
     foreach my $word (split(/[\s,!?.:;)(\"]+/, $saying)) {
         $stats->{words}{$nick}++;
         # remove uninteresting words
-        next unless (length($word) >= $self->{conf}->{wordlength});
-        next if ($self->{conf}->{ignoreword}{$word});
+        next unless (length($word) >= $self->{cfg}->{wordlength});
+        next if ($self->{cfg}->{ignoreword}{$word});
 
         # ignore contractions
         next if ($word =~ m/'..?$/);#'
