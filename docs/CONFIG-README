@@ -115,6 +115,12 @@ timeoffset          A time offset on the stats page - if your country has
                     are being generated, then for example set '+1' to add
                     one hour to the stats.
 
+show_activetimes    1 or 0, this enables/disables the 'Most Active Tiems'
+                    section, default is enabled.
+
+show_bignumbers     1 or 0, enable/disable 'Big Numbers' and 'Other
+                    interesting numbers', default is enabled.
+
 show_wpl            1 or 0, this enables pisg to show 'words per line' for
                     each person in 'most active nicks'
 

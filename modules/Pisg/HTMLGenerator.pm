@@ -56,21 +56,25 @@ sub create_html
     $self->{cfg}->{headwidth} = $self->{cfg}->{tablewidth} - 4;
     $self->_htmlheader();
     $self->_pageheader();
-    $self->_activetimes();
+    if ($self->{cfg}->{show_activetimes}) {
+        $self->_activetimes();
+    }
     $self->_activenicks();
 
-    $self->_headline($self->_template_text('bignumtopic'));
-    _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
-    $self->_questions();
-    $self->_shoutpeople();
-    $self->_capspeople();
-    $self->_violent();
-    $self->_mostsmiles();
-    $self->_mostsad();
-    $self->_linelengths();
-    $self->_mostwords();
-    $self->_mostwordsperline();
-    _html("</table>"); # Needed for sections
+    if ($self->{cfg}->{show_bignumbers}) {
+        $self->_headline($self->_template_text('bignumtopic'));
+        _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
+        $self->_questions();
+        $self->_shoutpeople();
+        $self->_capspeople();
+        $self->_violent();
+        $self->_mostsmiles();
+        $self->_mostsad();
+        $self->_linelengths();
+        $self->_mostwords();
+        $self->_mostwordsperline();
+        _html("</table>"); # Needed for sections
+    }
 
     if ($self->{cfg}->{show_muw}) {
         $self->_mostusedword();
@@ -84,16 +88,18 @@ sub create_html
         $self->_mosturls();
     }
 
-    $self->_headline($self->_template_text('othernumtopic'));
-    _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
-    $self->_gotkicks();
-    $self->_mostkicks();
-    $self->_mostop();
-    $self->_mostactions();
-    $self->_mostmonologues();
-    $self->_mostjoins();
-    $self->_mostfoul();
-    _html("</table>"); # Needed for sections
+    if ($self->{cfg}->{show_bignumbers}) {
+        $self->_headline($self->_template_text('othernumtopic'));
+        _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
+        $self->_gotkicks();
+        $self->_mostkicks();
+        $self->_mostop();
+        $self->_mostactions();
+        $self->_mostmonologues();
+        $self->_mostjoins();
+        $self->_mostfoul();
+        _html("</table>"); # Needed for sections
+    }
 
     $self->_headline($self->_template_text('latesttopic'));
     _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
@@ -449,7 +455,6 @@ sub _activenicks
     my $remain = $self->{cfg}->{activenicks} + $toshow;
 
     unless ($toshow > $nicks) {
-        print "\ttest\n";
 
         _html("<br><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
         for (my $c = $self->{cfg}->{activenicks}; $c < $remain; $c++) {
