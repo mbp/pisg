@@ -10,7 +10,6 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        debug => $args{debug},
         normalline => '^\[\d+ \S+\/(\d+):\d+\] <([^>]+)> (.*)',
         actionline => '^\[\d+ \S+\/(\d+):\d+\] \* (\S+) (.*)',
         thirdline => '^\[\d+ \S+\/(\d+):(\d+)\] ([<>@!]) (.*)'
@@ -26,7 +25,6 @@ sub normalline
     my %hash;
 
     if ($line =~ /$self->{normalline}/o) {
-        $self->{debug}->("[$lines] Normal: $1 $2 $3");
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
@@ -44,7 +42,6 @@ sub actionline
     my %hash;
 
     if ($line =~ /$self->{actionline}/o) {
-        $self->{debug}->("[$lines] Action: $1 $2 $3");
 
         $hash{hour}    = $1;
         $hash{nick}   = $2;
@@ -62,7 +59,6 @@ sub thirdline
     my %hash;
 
     if ($line =~ /$self->{thirdline}/o) {
-        $self->{debug}->("[$lines] ***: $1 $2 $3 $4");
 
         $hash{hour} = $1;
         $hash{min}  = $2;

@@ -12,7 +12,6 @@ sub new
     my %args = @_;
     my $self = {
         cfg => $args{cfg},
-        debug => $args{debug},
         parser => undef
     };
 
@@ -34,12 +33,10 @@ sub _choose_format
     my $self = shift;
     my $format = shift;
     $self->{parser} = undef;
-    $self->{debug}->("Loading module for log format $format");
     eval <<_END;
 use lib '$self->{cfg}->{modules_dir}';
 use Pisg::Parser::Format::$format;
 \$self->{parser} = new Pisg::Parser::Format::$format(
-    debug => \$self->{debug},
     cfg => \$self->{cfg},
 );
 _END
@@ -199,11 +196,9 @@ sub _parse_file
         # Match normal lines.
         if ($hashref = $self->{parser}->normalline($line, $.)) {
 
-            my $repeated;
+            my $repeated = 0;
             if (defined $hashref->{repeated}) {
                 $repeated = $hashref->{repeated};
-            } else {
-                $repeated = 0;
             }
 
             my ($hour, $nick, $saying, $i);
@@ -292,7 +287,7 @@ sub _parse_file
                         }
                     }
 
-                    $self->_parse_words($stats, $saying, $nick);
+                    _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword});
                 }
             }
             $lastnormal = $line;
@@ -336,7 +331,7 @@ sub _parse_file
                 my $len = length($saying);
                 $stats->{lengths}{$nick} += $len;
 
-                $self->_parse_words($stats, $saying, $nick);
+                _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword});
             }
         }
 
@@ -373,19 +368,8 @@ sub _parse_file
                         push @{ $lines->{kicklines}{$nick} }, $line;
                     }
 
-                } elsif (defined($newtopic)) {
-                    if ($newtopic ne '') {
-                        my $tcount;
-                        if (defined $stats->{topics}) {
-                            $tcount = @{ $stats->{topics} };
-                        } else {
-                            $tcount = 0;
-                        }
-                        $stats->{topics}[$tcount]{topic} = $newtopic;
-                        $stats->{topics}[$tcount]{nick}  = $nick;
-                        $stats->{topics}[$tcount]{hour}  = $hour;
-                        $stats->{topics}[$tcount]{min}   = $min;
-                    }
+                } elsif (defined($newtopic) && $newtopic ne '') {
+                    _topic_change($stats, $newtopic, $nick, $hour, $min);
 
                 } elsif (defined($newmode)) {
                     _modechanges($stats, $newmode, $nick);
@@ -404,6 +388,24 @@ sub _parse_file
 
     print "Finished analyzing log, $stats->{days} days total.\n"
         unless ($self->{cfg}->{silent});
+}
+
+sub _topic_change
+{
+    my $stats = shift;
+    my $newtopic = shift;
+    my $nick = shift;
+    my $hour = shift;
+    my $min = shift;
+
+    my $tcount = 0;
+    if (defined $stats->{topics}) {
+        $tcount = @{ $stats->{topics} };
+    }
+    $stats->{topics}[$tcount]{topic} = $newtopic;
+    $stats->{topics}[$tcount]{nick}  = $nick;
+    $stats->{topics}[$tcount]{hour}  = $hour;
+    $stats->{topics}[$tcount]{min}   = $min;
 }
 
 sub _modechanges
@@ -428,25 +430,22 @@ sub _modechanges
     $stats->{tookops}{$nick} += $ops[1] if $ops[1];
     $stats->{gavevoice}{$nick} += $voice[0] if $voice[0];
     $stats->{tookvoice}{$nick} += $voice[1] if $voice[1];
-
 }
 
 sub _parse_words
 {
-    my $self = shift;
-    my ($stats, $saying, $nick) = @_;
+    my ($stats, $saying, $nick, $ignoreword) = @_;
 
     foreach my $word (split(/[\s,!?.:;)(\"]+/, $saying)) {
         $stats->{words}{$nick}++;
         # remove uninteresting words
-        # next unless (length($word) >= $self->{cfg}->{wordlength});
-        next if ($self->{cfg}->{ignoreword}{$word});
+        next if ($ignoreword->{$word});
 
         # ignore contractions
-        next if ($word =~ m/'..?$/);#'
+        next if ($word =~ m/'..?$/);
 
         # Also ignore stuff from URLs.
-        next if ($word =~ m{https?|^//});
+        next if ($word =~ m/https?|^\/\//);
 
         $stats->{wordcounts}{$word}++;
         $stats->{wordnicks}{$word} = $nick;
@@ -502,7 +501,6 @@ C<Pisg::Parser::Logfile> parses a logfile using the configuration variables set 
 
     $analyzer = new Pisg::Parser::Logfile(
         cfg => $cfg,
-        debug => $debug,
     );
 
 =head1 CONSTRUCTOR
@@ -516,8 +514,6 @@ This is the constructor for a new Pisg::Parser::Logfile object. C<OPTIONS> are p
 Possible options are:
 
 B<cfg> - hashref containing configuration variables, created by the Pisg module.
-
-B<debug> - reference to a sub routine to send the debug information.
 
 =back
 

@@ -12,7 +12,6 @@ sub new
     my %args = @_;
     my $self = {
         cfg => $args{cfg},
-        debug => $args{debug},
         stats => $args{stats},
         users => $args{users},
         tmps => $args{tmps}
@@ -297,7 +296,6 @@ sub _activetimes
     my $image;
 
     for my $hour (sort keys %{ $self->{stats}->{times} }) {
-        $self->{debug}->("Time: $hour => ". $self->{stats}->{times}{$hour});
 
         my $size = ($self->{stats}->{times}{$hour} / $highest_value) * 100;
         my $percent = ($self->{stats}->{times}{$hour} / $self->{stats}->{totallines}) * 100;
@@ -324,7 +322,6 @@ sub _activetimes
         }
         $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
-        $self->{debug}->("Image: $image");
 
         $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{pic_loc}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
     }
@@ -1262,7 +1259,6 @@ sub _lasttopics
     my $self = shift;
 
     if ($self->{stats}->{topics}) {
-        $self->{debug}->("Total number of topics: " . scalar @{ $self->{stats}->{topics} });
 
         my %topic_seen;
 
@@ -1585,18 +1581,15 @@ sub _user_linetimes
 
     my $bar      = "";
     my $len      = ($self->{stats}->{lines}{$nick} / $self->{stats}->{lines}{$top}) * 100;
-    my $debuglen = 0;
 
     for (my $i = 0; $i <= 3; $i++) {
         next if not defined $self->{stats}->{line_times}{$nick}[$i];
         my $w = int(($self->{stats}->{line_times}{$nick}[$i] / $self->{stats}->{lines}{$nick}) * $len);
-        $debuglen += $w;
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
             $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />";
         }
     }
-    $self->{debug}->("Length='$len', Sum='$debuglen'");
     return "$bar&nbsp;$self->{stats}->{lines}{$nick}";
 }
 
@@ -1636,7 +1629,6 @@ C<Pisg::HTMLGenerator> uses the hash returned by Pisg::Parser::Logfile and turns
 
     $generator = new Pisg::HTMLGenerator(
         cfg => $cfg,
-        debug => $debug,
         stats => $stats,
         users => $users,
         tmps => $tmps
@@ -1653,8 +1645,6 @@ This is the constructor for a new Pisg::HTMLGenerator object. C<OPTIONS> are pas
 Possible options are:
 
 B<cfg> - hashref containing configuration variables, created by the Pisg module.
-
-B<debug> - reference to a sub routine to send the debug information.
 
 B<stats> - reference to the hash returned by Pisg::Parser::Logfile containing all stats.
 

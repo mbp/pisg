@@ -35,19 +35,6 @@ sub new
         tmps => {},
     };
 
-    # FIXME - ugly hack to get the anonymous sub working, looks stupid to
-    # put this in the new constructor:
-    $self->{debug} = sub {
-        if ($self->{cfg}->{debug} or not $self->{cfg}->{debugstarted}) {
-            my $debugline = $_[0] . "\n";
-            if ($self->{cfg}->{debugstarted}) {
-                print DEBUG $debugline;
-            } else {
-                $self->{cfg}->{debugqueue} .= $debugline;
-            }
-        }
-    };
-
     # Import common functions in Pisg::Common
     require Pisg::Common;
     Pisg::Common->import();
@@ -76,10 +63,6 @@ sub run
     $self->init_words()       # Init words. (Foulwords, ignorewords, etc.)
         if ($self->{use_configfile});
 
-    # Init the debugging file.
-    $self->init_debug()
-        if (!$self->{cfg}->{debugstarted});
-
     # Get translations from langfile
     $self->get_language_templates();
 
@@ -90,8 +73,6 @@ sub run
     $self->do_channel()
         if (!$self->{cfg}->{chan_done}{$self->{cfg}->{channel}});
 
-    # Close the debugging file.
-    $self->close_debug();
 }
 
 sub get_default_config_settings
@@ -200,8 +181,6 @@ sub get_default_config_settings
 
         # Developer stuff
 
-        debug => 0,
-        debugfile => 'debug.log',
         version => "v0.33-cvs",
     };
 
@@ -241,33 +220,6 @@ sub get_language_templates
     }
 
     close(FILE);
-}
-
-sub init_debug
-{
-    my $self = shift;
-    $self->{cfg}->{debugstarted} = 1;
-    if ($self->{cfg}->{debug}) {
-        print "[ Debugging => $self->{cfg}->{debugfile} ]\n"
-            unless ($self->{cfg}->{silent});
-        open(DEBUG,"> $self->{cfg}->{debugfile}") or print STDERR "$0: Unable to open debug
-        file($self->{cfg}->{debugfile}): $!\n";
-        $self->{debug}->("*** pisg debug file for $self->{cfg}->{logfile}\n");
-        if ($self->{cfg}->{debugqueue}) {
-            print DEBUG $self->{cfg}->{debugqueue};
-            delete $self->{cfg}->{debugqueue};
-        }
-    } else {
-        $self->{debug} = sub {};
-    }
-}
-
-sub close_debug
-{
-    my $self = shift;
-    if ($self->{cfg}->{debug}) {
-        close(DEBUG) or print STDERR "$0: Cannot close debugfile($self->{cfg}->{debugfile}): $!\n";
-    }
 }
 
 sub init_words
@@ -362,7 +314,6 @@ sub init_config
                     unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
                         $self->{cfg}->{$var} = $2;
                     }
-                    $self->{debug}->("cfg: $var = $2");
                 }
 
             } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
@@ -372,7 +323,6 @@ sub init_config
                 while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
                     $self->{chans}->{$channel}{$var} = $2;
-                    $self->{debug}->("Channel cfg $channel: $var = $2");
                 }
                 while (<CONFIG>) {
                     last if ($_ =~ /<\/*channel>/i);
@@ -381,7 +331,6 @@ sub init_config
                         unless ($self->{override_cfg}->{$var}) {
                             $self->{chans}->{$channel}{$var} = $2;
                         }
-                        $self->{debug}->("Conf $channel: $var = $2");
                     } else {
                         print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
                     }
@@ -439,8 +388,7 @@ sub do_channel
         eval <<_END;
 use Pisg::Parser::$self->{cfg}->{logtype};
 \$analyzer = new Pisg::Parser::$self->{cfg}->{logtype}(
-    cfg => \$self->{cfg},
-    debug => \$self->{debug}
+    cfg => \$self->{cfg}
 );
 _END
         if ($@) {
@@ -456,7 +404,6 @@ _END
 use Pisg::HTMLGenerator;
 \$generator = new Pisg::HTMLGenerator(
     cfg => \$self->{cfg},
-    debug => \$self->{debug},
     stats => \$stats,
     users => \$self->{users},
     tmps => \$self->{tmps}

@@ -14,7 +14,6 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        debug => $args{debug},
         normalline => '^(\d+) \[\d+\] <([^\/]+)\/[^>]+> ([^a-z].*)',
         actionline => '^(\d+) \[\d+\] <([^\/]+)\/[^>]+> ([a-z].*)',
         thirdline  => '^(\d+) \[\d+\] >>> (.*)',
@@ -32,7 +31,6 @@ sub normalline
     my $wday; my $yday; my $isdst;
 
     if ($line =~ /$self->{normalline}/o) {
-        $self->{debug}->("[$lines] Normal: $1 $2 $3");
 
         ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($1);
         $hash{hour}   = $hour;
@@ -53,7 +51,6 @@ sub actionline
     my $wday; my $yday; my $isdst;
 
     if ($line =~ /$self->{actionline}/o) {
-        $self->{debug}->("[$lines] Action: $1 $2 $3");
 
         ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($1);
         $hash{hour}   = $hour;
@@ -74,7 +71,6 @@ sub thirdline
     my $wday; my $yday; my $isdst;
 
     if ($line =~ /$self->{thirdline}/o) {
-        $self->{debug}->("[$lines] ***: $1 $2");
 
         ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($1);
         $hash{hour} = $hour;

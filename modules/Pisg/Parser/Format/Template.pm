@@ -19,7 +19,6 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        debug => $args{debug},
         normalline => '',
         actionline => '',
         thirdline  => '',
@@ -36,7 +35,6 @@ sub normalline
     my %hash;
 
     if ($line =~ /$self->{normalline}/o) {
-        $self->{debug}->("[$lines] Normal: $1 $2 $3");
 
         # Most log formats are regular enough that you can just match the
         # appropriate things with parentheses in the regular expression.
@@ -58,7 +56,6 @@ sub actionline
     my %hash;
 
     if ($line =~ /$self->{actionline}/o) {
-        $self->{debug}->("[$lines] Action: $1 $2 $3");
 
         # Most log formats are regular enough that you can just match the
         # appropriate things with parentheses in the regular expression.
@@ -94,7 +91,6 @@ sub thirdline
     my %hash;
 
     if ($line =~ /$self->{thirdline}/o) {
-        $self->{debug}->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8 $9");
 
         $hash{hour} = $1;
         $hash{min}  = $2;
