@@ -1,4 +1,4 @@
-all: pisg-doc.txt html/index.html
+all: pisg-doc.txt pisg-doc.html
 
 pisg-doc.txt: pisg-doc.xml
 	docbook2txt pisg-doc.xml
@@ -6,10 +6,8 @@ pisg-doc.txt: pisg-doc.xml
 	cat pisg-tmp.txt | ./modifytxt.pl > pisg-doc.txt
 	rm -f pisg-tmp.txt
 
-html/index.html: pisg-doc.xml
-	-rm -f html/*
-	docbook2html pisg-doc.xml -V "%use-id-as-filename%" -o html
+pisg-doc.html: pisg-doc.xml
+	docbook2html pisg-doc.xml -V "%use-id-as-filename%" -V nochunks
 
 clean:
-	rm -rf html
-	rm -f pisg-doc.txt
+	rm -f pisg-doc.txt pisg-doc.html

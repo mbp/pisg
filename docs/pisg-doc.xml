@@ -91,7 +91,7 @@
    <title>Setting up a channel</title>
 
    <para>
-   An element called <command>channel</command> is made for defining
+   An element called <link linkend="Channel">channel</link> is made for defining
    channels, a quick example of a channel is here:
 
    <programlisting>
@@ -158,7 +158,7 @@
 
     You can include * or ? to enable filename globbing to randomly choose one
     from several pictures: (see documentation for the
-    <command>ImageGlobPath</command> option)
+    <link linkend="ImageGlobPath">ImageGlobPath</link> option)
     <programlisting>
     <![CDATA[<user nick="Ben" pic="ben_*.jpg">]]>
     </programlisting>
@@ -537,9 +537,9 @@
     <title>Description</title>
     <para>
     <command>OutputTag</command> specifies a string that will replace
-    occurrences of "%t" in <command>OutputFile</command>. This option is most
+    occurrences of "%t" in <link linkend="OutputFile">OutputFile</link>. This option is most
     useful when used as a command line switch (-t) to pisg in conjunction with
-    <command>NFiles</command> (-nf). Example:
+    <link linkend="NFiles">NFiles</link> (-nf). Example:
 
     <programlisting>
       <![CDATA[
@@ -586,7 +586,7 @@
     <para>
     This defines the filename of the logfile to parse for the channel. If
     you want to parse a directory full of logfiles, you should use the
-    <command>LogDir</command> option instead. Providing this option multiple
+    <link linkend="LogDir">LogDir</link> option instead. Providing this option multiple
     times will parse multiple files in the order the statements appear.
     </para>
     </refsect1>
@@ -640,7 +640,7 @@
 
     <refnamediv>
     <refname>NFiles</refname>
-    <refpurpose>parse only the last files in <command>LogDir</command></refpurpose>
+    <refpurpose>parse only the last files in <link linkend="LogDir">LogDir</link></refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
@@ -659,11 +659,11 @@
     <title>Description</title>
     <para>
     When <command>NFiles</command> is set to a positive integer, pisg will
-    process at most that much files from <command>LogDir</command>. Useful to
+    process at most that much files from <link linkend="LogDir">LogDir</link>. Useful to
     create statistics that cover the last week or month. Note that if multiple
-    <command>LogDir</command> options are provided, <command>NFiles</command>
+    <link linkend="LogDir">LogDir</link> options are provided, <command>NFiles</command>
     refers to the number of files which will be processed from each
-    <command>LogDir</command>
+    <link linkend="LogDir">LogDir</link>
     </para>
     </refsect1>
     <refsect1>
@@ -771,13 +771,37 @@
     <refsect1>
     <title>Description</title>
     <para>
-    <command>Lang</command> is used to define the language translation to
-    use, if the language support is there, the text on the stats page will
-    be outputted in that language. All supported languages is mentioned in
-    the lang.txt file with the pisg distribution. Some of the languages
-    supported are: EN | DE | NO | PT | PT-BR | DA | FR | ES | PL | NL | SE |
-    FI | SI | HU | EE | IT | CA | TR | RO | IS | CZ | SK | RU | GR | HE | BG
-    | YU | SQ
+    <command>Lang</command> defines the language to use for the stats.
+    Currently, lang.txt includes:
+    EN    (English),
+    BG    (Bulgarian),
+    CA    (Catalan),
+    CZ    (Czech),
+    DA    (Danish),
+    DE    (German),
+    EE    (Estonian),
+    ES    (Spanish),
+    FI    (Finnish),
+    FR    (French),
+    GR    (Greek),
+    HE    (Hebrew),
+    HU    (Hungarian),
+    IS    (Icelandic),
+    IT    (Italian),
+    NL    (Dutch),
+    NO    (Norwegian),
+    PL    (Polish),
+    PT    (Portuguese),
+    PT-BR (Portuguese/Brazil),
+    RO    (Romanian),
+    RU    (Russian),
+    SE    (Swedish),
+    SI    (Slovenian),
+    SK    (Slovak),
+    SQ    (Albanian),
+    TR    (Turkish),
+    YU    (Serbian).
+    See also <link linkend="LangFile">LangFile</link>.
     </para>
     </refsect1>
     <refsect1>
@@ -787,7 +811,7 @@
     </refentry>
 
     <!-- *** PAGEHEAD *** -->
-    <refentry id="pagehead">
+    <refentry id="PageHead">
 
     <refmeta> <refentrytitle>PageHead</refentrytitle> </refmeta>
 
@@ -816,7 +840,7 @@
     for example an introduction text, a link to an image or a banner. The
     file can hold anything, it will be included raw in the stats page -
     so HTML should be preferred. The file will be included in the top of
-    the page. This option is the opposite of <command>PageFoot</command>.
+    the page. This option is the opposite of <link linkend="PageFoot">PageFoot</link>.
 
     </para>
     </refsect1>
@@ -856,7 +880,7 @@
     for example an introduction text, a link to an image or a banner. The
     file can hold anything, it will be included raw in the stats page -
     so HTML should be preferred. The file will be included in the bottom of
-    the page. This option is the opposite of <command>PageHead</command>.
+    the page. This option is the opposite of <link linkend="PageHead">PageHead</link>.
     </para>
     </refsect1>
     <refsect1>
@@ -891,7 +915,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    When using the <command>LogDir</command> option and you only want to use
+    When using the <link linkend="LogDir">LogDir</link> option and you only want to use
     a slew of the files in it, you can have pisg choose only files which are
     prefixed with a special string.
     </para>
@@ -923,7 +947,7 @@
     <title>Description</title>
     <para>
     <command>LogSuffix</command> is used to define the suffix of a logfile,
-    it only works when <command>LogDir</command> is defined. The example in
+    it only works when <link linkend="LogDir">LogDir</link> is defined. The example in
     the synopsis is for the eggdrop bots default format.
     </para>
     </refsect1>
@@ -1850,7 +1874,7 @@
     <para>
     By enabling this option, pisg will add a section to the stats showing
     who had the most nicks, and what the nicks were. This option only works
-    properly when <command>NickTracking</command> is enabled.
+    properly when <link linkend="NickTracking">NickTracking</link> is enabled.
     </para>
     </refsect1>
     <refsect1>
@@ -1886,8 +1910,8 @@
     <para>
     By enabling this option, pisg will add a section to the stats showing
     "Most Active Nicks By Hour" - also look at the
-    <command>ShowMostActiveByHourGraph</command> and
-    <command>ActiveNicksByHour</command> settings.
+    <link linkend="ShowMostActiveByHourGraph">ShowMostActiveByHourGraph</link> and
+    <link linkend="ActiveNicksByHour">ActiveNicksByHour</link> settings.
     </para>
     </refsect1>
     <refsect1>
@@ -1925,7 +1949,7 @@
     Numbers" section will only be counted for users who were the most
     active. E.g. users who appear in the "Most Active Nicks" section, as
     respected by the ActiveNicks and ActiveNicks2 options. See also
-    <command>BigNumbersThreshold</command>.
+    <link linkend="BigNumbersThreshold">BigNumbersThreshold</link>.
     </para>
     </refsect1>
     <refsect1>
@@ -1960,7 +1984,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    By enabling this option and the <command>ShowMostActiveByHour</command>
+    By enabling this option and the <link linkend="ShowMostActiveByHour">ShowMostActiveByHour</link>
     option, pisg will show graphs in the "Most Active Nicks By Hour"
     section.
     </para>
@@ -2123,7 +2147,7 @@
     The random quotes displayed in the "Most Active Nicks" section has a
     certain range specified. With this option you can change the minimum
     number of letters required for a random quote. Also see the
-    <command>MaxQuote</command> option.
+    <link linkend="MaxQuote">MaxQuote</link> option.
     </para>
     </refsect1>
     <refsect1>
@@ -2160,7 +2184,7 @@
     The random quotes displayed in the "Most Active Nicks" section has a
     certain range specified. With this option you can change the maximum
     number of letters required for a random quote. Also see the
-    <command>MinQuote</command> option.
+    <link linkend="MinQuote">MinQuote</link> option.
     </para>
     </refsect1>
     <refsect1>
@@ -2271,7 +2295,7 @@
     asked", "shouts loudest", "CAPSLOCK", "longest line", "most sad", and "most
     happy" sections. If the setting is "sqrt" (the default), it will be
     dynamically replaced with the square root of the number of lines of the
-    most active nick. See also <command>ShowOnlyTop</command>.
+    most active nick. See also <link linkend="ShowOnlyTop">ShowOnlyTop</link>.
     </para>
     </refsect1>
     <refsect1>
@@ -2796,7 +2820,7 @@
     <command>DefaultPic</command> defines a picture to be displayed for all
     users which have no other picture defined in the <command>user</command>
     element. This is good for showing "No picture available" or something.
-    May contain globbing patterns, see <command>ImageGlobPath</command> below.
+    May contain globbing patterns, see <link linkend="ImageGlobPath">ImageGlobPath</link> below.
     </para>
     </refsect1>
     <refsect1>
@@ -2835,15 +2859,15 @@
     user pictures are located, relative to the current directory. This setting
     is used to choose random pictures if ? or * (globbing characters) are used
     in the picture name. ? matches a single character, * matches a (possibly
-    empty) string. The default is the <command>ImagePath</command> setting.
-    (NB: This setting will be different from <command>ImagePath</command> if
+    empty) string. The default is the <link linkend="ImagePath">ImagePath</link> setting.
+    (NB: This setting will be different from <link linkend="ImagePath">ImagePath</link> if
     the latter is not relative to the current directory, e.g. if you are
     writing the HTML file outside of the current directory.)
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> current <command>ImagePath</command> setting </para>
+    <para> current <link linkend="ImagePath">ImagePath</link> setting </para>
     </refsect1>
     </refentry>
 
@@ -2874,7 +2898,7 @@
     <para>
     <command>PicWidth</command> defines the standard width for user
     pictures. Setting the 'width' attribute of image-elements on the
-    outputted stats page. See also <command>PicHeight</command>
+    outputted stats page. See also <link linkend="PicHeight">PicHeight</link>
     </para>
     </refsect1>
     <refsect1>
@@ -2910,7 +2934,7 @@
     <para>
     <command>PicHeight</command> defines the standard height for user
     pictures. Setting the 'height' attribute of image-elements on the
-    outputted stats page. See also <command>PicWidth</command>
+    outputted stats page. See also <link linkend="PicWidth">PicWidth</link>
     </para>
     </refsect1>
     <refsect1>
@@ -2951,7 +2975,7 @@
     The pisg stats page defines a character set in a meta tag, this can be
     used if your country is using a different one than the default. Pisg
     will also use this setting to convert the language templates from
-    <command>LangFile</command> if the language defines a source charset.
+    <link linkend="LangFile">LangFile</link> if the language defines a source charset.
     Note: you also have to tell your webserver to transmit the charset to
     the browser. With Apache, use "AddDefaultCharset off" in the server
     config.
@@ -2991,7 +3015,7 @@
     <title>Description</title>
     <para>
     If <command>LogCharset</command> is set and different from
-    <command>Charset</command>, pisg will convert the charset using
+    <link linkend="Charset">Charset</link>, pisg will convert the charset using
     Text::Iconv. Using this option slows down log processing.
     </para>
     </refsect1>
@@ -3001,7 +3025,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** LOGCHARSET *** -->
+    <!-- *** LOGCHARSETFALLBACK *** -->
     <refentry id="LogCharsetFallback">
 
     <refmeta> <refentrytitle>LogCharsetFallback</refentrytitle> </refmeta>
@@ -3031,9 +3055,9 @@
     <title>Description</title>
     <para>
     <command>LogCharsetFallback</command> defines a fallback charset for
-    the <command>LogCharset</command> conversion. This is useful if you
+    the <link linkend="LogCharset">LogCharset</link> conversion. This is useful if you
     have mixed unicode/iso-8859-* logs. Pisg will first try the conversion
-    from <command>LogCharset</command>. If that fails,
+    from <link linkend="LogCharset">LogCharset</link>. If that fails,
     <command>LogCharsetFallback</command> is used. Note that this only works
     for charsets where certain byte sequences are illegal, like UTF-8. (In
     short: <command>LogCharset</command> = utf-8,
@@ -3108,8 +3132,8 @@
     <para>
     Enabling this option will make all aliases in &lt;user&gt; lines be
     parsed as regular expressions; this setting also applies to the
-    <command>IgnoreWords<command>, </command>FoulWords</command>, and
-    <command>ViolentWords</command> settings.
+    <link linkend="IgnoreWords">IgnoreWords</link>, <link linkend="FoulWords">FoulWords</link>, and
+    <link linkend="ViolentWords">ViolentWords</link> settings.
     </para>
     </refsect1>
     <refsect1>

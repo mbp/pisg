@@ -2,8 +2,10 @@ pisg (0.61) - ??
    Changes by Christoph Berg:
    * More nick sanitizing.
    * docs/:
-     + BigNumbersThreshold - ShowOnlyTop crossref.
      + Nicer Makefile.
+     + Write a single HTML file.
+     + Various crossrefs.
+     + Updated list of languages.
 
 pisg (0.60) - Fri Oct, 15th 2004
    Changes by Christoph Berg:
