@@ -67,7 +67,7 @@ sub get_cmdline_options
     );
 
     # Commandline options
-    my ($tmp, $help, $silent, $option);
+    my ($tmp, $help, $silent, $option, @cfg);
 
 my $usage = <<END_USAGE;
 Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
@@ -78,14 +78,15 @@ Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 -o  --outfile=xxx      : Name of HTML file to create
 -ma --maintainer=xxx   : Channel/statistics maintainer
 -f  --format=xxx       : Logfile format [see FORMATS file]
--n  --network=xxx      : IRC Network for the channel.
--d  --dir=xxx          : Analyze all files in this dir. Ignores logfile.
--p  --prefix=xxx       : Analyse only files prefixed by xxx in dir.
+-n  --network=xxx      : IRC network for the channel
+-d  --dir=xxx          : Analyze all files in this dir. Ignores logfile 
+-p  --prefix=xxx       : Analyse only files prefixed by xxx in dir
                          Only works with --dir
--mo --moduledir=xxx    : Directory containing pisg modules.
+-cf --cfg              : Specify configuration options, eg. -cf show_wpl=1
 -co --configfile=xxx   : Configuration file
+-mo --moduledir=xxx    : Directory containing pisg modules
 -s  --silent           : Suppress output (except error messages)
--h  --help             : Output this message and exit (-? also works).
+-h  --help             : Output this message and exit.
 
 Example:
 
@@ -109,6 +110,7 @@ END_USAGE
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
                    'silent'       => \$silent,
+                   'cfg=s'        => \@cfg,
                    'help|?'       => \$help
                ) == 0 or $help) {
                    die($usage);
@@ -120,6 +122,16 @@ END_USAGE
     }
 
     if ($silent) { $cfg{silent} = 1; }
+
+    if (@cfg) {
+        foreach (@cfg) {
+            if (/(.*)=(.*)/) {
+                $cfg{$1} = $2;
+            } else {
+                print STDERR "Warning: Couldn't parse -cfg option\n";
+            }
+        }
+    }
 
     return \%cfg;
 
