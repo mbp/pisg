@@ -16,6 +16,9 @@ pisg (x.xx)
    * Fix bug in mIRC6 format where it didn't recognize logfiles logging seconds
    * Fix bug in mIRC6 format where it didn't recognize kicks of the maintainer
    * Add support for sirc format (thanks bartko)
+   * Move 'valign="middle"' statements out of <img> blocks to <td> blocks where
+     they belong.  According to HTML validator, valign is an invalid attribute
+     for an <img> statement.  (see http://validator.w3.org/)
 
 pisg (0.44) - Sun Dec, 15th 2002
    * Fixed an error in the mIRC6 format which caused pisg to abort on some
