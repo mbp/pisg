@@ -1,6 +1,6 @@
 README for pisg.cfg - the configuration file for pisg
 ------------------
-This file is used for two things:
+This file is used for:
  - Setting user options (for user aliases, pics, ignores and links)
  - Setting up channel(s) to be parsed.
  - Setting pisg config options (for general things with pisg)
@@ -9,8 +9,11 @@ This file is used for two things:
 
 USER OPTIONS
 ------------------
-User options are set with a simple SGML like syntax; remember the nick is
-always required.
+User options are set with a simple SGML like syntax in the form:
+
+    <user nick="NICK" option="VALUE">
+    
+Remember, the nick is always required.
 
 For example to add aliases to a nick, then you could do this:
     <user nick="Joe" alias="Joe^*">
@@ -53,7 +56,7 @@ something like this:
 Any options in the <channel *> section will be forced, even over commandline
 options... any options before </channel> can be overridden from command line
 
-There is a lot of variables which you can set between the <channel> and
+There is a lot of options which you can set between the <channel> and
 </channel> tags, these are listed in the next section.
 
 PISG OPTIONS
@@ -68,7 +71,7 @@ And you won't have to worry about setting the format for every channel.
 You can also combine settings into one line such as:
 <set channel="#channel" logfile="/var/log/channel.log">
 
-All the differents variables are listed below.
+All the different options are listed below.
 
 Other examples:
 <set lang='EN' langfile='lang.txt'>
@@ -76,96 +79,100 @@ Other examples:
 <set activenicks="25" activenicks2="30" topichistory="3" nicktracking="0" timeoffset="+0">
 
 
-There is many variables which can be set, here's a list of them all (not
+There is many options which can be set, here's a list of them all (not
 casesensitive):
 
  * The most useful ones *
 
-channel              The name of your channel.
-logtype              The type of logs kept for your channel.  Currently only
-                     "Logfile" is supported.
-logfile              The exact filename of the logfile
-format               logfile format. see FORMATS file
-network              Network the channels is using.
-outputfile           The name of the html file to be generated
-maintainer           The maintainer or bot which makes the logfile
-pagehead             Some 'page header' file which you want to include in top
-                     of the stats
+channel             The name of your channel. E.g. '#mychannel'
 
-imagepath            If your user pictures is located some special directory,
-                     set the path here.
+logfile             The exact filename of the logfile. E.g. 'mylog.log'
 
-logdir               If you specify a path to a dir here, then pisg will
-                     take that dir, and parse ALL logfiles in it, and create
-                     1 HTML file from it
+format              The logfile format. See FORMATS file for supported formats
 
-lang                 Language to use (see lang.txt)
-                     EN | DE | DK | FR | ES | PL | NO | NL | SE
+network             Network the channels is using. E.g. 'Undernet'
 
-langfile             Filename of language file
+outputfile          Outputted stats goes to this HTML file. Default 'index.html'
 
-timeoffset           A time offset on the stats page - if your country has
-                     a different timezone than the machine where the stats
-                     are being generated, then for example do +1
+maintainer          The maintainer or bot which makes the logfile.
 
-show_wpl             1 or 0, this enables pisg to show 'words per line' for
-                     each person in 'most active nicks'
+lang                Language to use (see lang.txt)
+                    EN | DE | DK | FR | ES | PL | PT | NO | NL | SE
 
-show_cpl             Same as above, this is just 'chars per line'
+pagehead            Some 'page header' file which you want to include in top
+                    of the output file.
 
-show_words           1 or 0, this will enable/disable both of the 2 above
-                     options.
+imagepath           If your user pictures is located in a special direcotry,
+                    set the path here. E.g. 'userpics/'
 
-show_time            1 or 0, this will enable/disable the showing of the
-                     fancy timebars indicating when a nick was active.
+logdir              If you specify a path to a directory here, then pisg will
+                    run through the files in that directory, parse all
+                    logfiles in it and create 1 HTML file from it. Useful
+                    with eggdrops.
 
-show_linetime        1 or 0, the same as above, except this will show the
-                     bar next to the number of lines like in mIRCStats
+timeoffset          A time offset on the stats page - if your country has
+                    a different timezone than the machine where the stats
+                    are being generated, then for example set '+1' to add
+                    one hour to the stats.
 
-show_legend          1 or 0, this will add a legend of the different time-
-                     bars.
+show_wpl            1 or 0, this enables pisg to show 'words per line' for
+                    each person in 'most active nicks'
 
-show_kickline        1 or 0, this will add an example-kickline to the
-                     "Most kicked"-stats
+show_cpl            Same as above, this is just 'characters per line'
 
-show_actionline      1 or 0, this will add an example-actionline to the
-                     "Most actions"-stats
+show_words          1 or 0, this will enable/disable both of the 2 above
+                    options.
 
-show_shoutline       1 or 0, this will add an example-shoutline to the
-                     "Most shouting people"-stats
+show_time           1 or 0, this will enable/disable the showing of the
+                    fancy timebars indicating when a nick was active.
 
-show_violentlines    1 or 0, this will add an example-attack to the
-                     "Most aggressive" and "Most attacked"-stats
+show_linetime       1 or 0, the same as above, except this will show the
+                    bar next to the number of lines like in mIRCStats
 
-ignorewords          A space seperated list of words to ignore in 'most
-                     referenced words'
+show_legend         1 or 0, this will add a legend of the different time-
+                    bars.
 
-foul                 Space seperated list of words considered to be 'foul'
-                     language, look in the bottom for a better explanation.
+show_kickline       1 or 0, this will add an example-kickline to the
+                    "Most kicked"-stats
 
-regexp_alises        1 or 0, enabling this will make aliases in <user> tags
-                     regex-able.
+show_actionline     1 or 0, this will add an example-actionline to the
+                    "Most actions"-stats
+
+show_shoutline      1 or 0, this will add an example-shoutline to the
+                    "Most shouting people"-stats
+
+show_violentlines   1 or 0, this will add an example-attack to the
+                    "Most aggressive" and "Most attacked"-stats
+
+ignorewords         A space seperated list of words to ignore in 'most
+                    referenced words'
+
+foul                Space seperated list of words considered to be 'foul'
+                    language, look in the bottom for a better explanation.
+
+regexp_alises       1 or 0, enabling this will make aliases in <user> tags
+                    regex-able. Default '0'.
 
  * Colors / layout for your stats page *
 
-bgcolor              Background color of the page
-bgpic                Background picture of the page
-text                 Normal text color
-hbgcolor             Background color in headlines
-hcolor               Text color in headline
-hicell               Background color in highlighted cells
-hicell2              Background color in highlighted cells
-tdcolor              Color of text in tables
-tdtop                Top color in some tables.
-link                 Color of links
-vlink                Color of visited links
-hlink                Color of hovered links
-headline             Border color of headlines
-rankc                Colors of 'ranks' (1,2,3,4)
+bgcolor             Background color of the page
+bgpic               Background picture of the page
+text                Normal text color
+hbgcolor            Background color in headlines
+hcolor              Text color in headline
+hicell              Background color in highlighted cells
+hicell2             Background color in highlighted cells
+tdcolor             Color of text in tables
+tdtop               Top color in some tables.
+link                Color of links
+vlink               Color of visited links
+hlink               Color of hovered links
+headline            Border color of headlines
+rankc               Colors of 'ranks' (1,2,3,4)
 
-pic_v_0              Below settings are the filenames of the images to be
-pic_v_6              shown on thepage on timebars, the names should be 
-pic_v_12             self-explainable.
+pic_v_0             Below settings are the filenames of the images to be
+pic_v_6             shown on thepage on timebars, the names should be 
+pic_v_12            self-explainable.
 pic_v_18
 pic_h_0
 pic_h_6
@@ -174,16 +181,26 @@ pic_h_18
 
   * Small things, useful for some people *
 
-minquote             Minimal value of letters for a random quote
-maxquote             Maximum value of letters for a random quote
-wordlength           The minimum number of chars an interesting word may be
-                     (in 'most referenced words')
-activenicks          Number of nicks to show in the 'top 25'
-activenicks2         Nicks to show in 'these didnt make it...'
-topichistory         How many topics to show in 'latest topics'
-nicktracking         Track nickchanges and create aliases [1 or 0, enabled
-                     by default]
+logtype             The type of logs kept for your channel.  Currently only
+                    "Logfile" is supported.
 
+langfile            Filename of language file. Default 'lang.txt'
+
+minquote            Minimal value of letters for a random quote
+
+maxquote            Maximum value of letters for a random quote
+
+wordlength          The minimum number of chars an interesting word may be
+                    (in 'most referenced words')
+
+activenicks         Number of nicks to show in the 'top 25'
+
+activenicks2        Nicks to show in 'these didnt make it...'
+
+topichistory        How many topics to show in 'latest topics'
+
+nicktracking        Track nickchanges and create aliases [1 or 0, enabled
+                    by default]
 
 
 WORD OPTIONS
