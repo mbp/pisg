@@ -884,6 +884,7 @@ sub parse_thirdline
 
             } elsif ($4 eq 'JOIN') {
                 $hash{newjoin} = $1;
+                $hash{newjoin} =~ s/!.*//;
 
             } elsif ($4 eq 'NICK') {
                 $hash{newnick} = $5;
