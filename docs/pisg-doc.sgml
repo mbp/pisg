@@ -400,11 +400,11 @@
       <![CDATA[
         <channel="#channel">
          Logfile = "channel.log"
-         Format = "eggdrop"
+         ColorScheme = "darkgalaxy"
          Maintainer = "John"
         </channel>
 
-        <set Format="mIRC">
+        <set ColorScheme="default">
       ]]>
     </programlisting></refsynopsisdiv>
 
