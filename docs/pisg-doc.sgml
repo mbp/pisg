@@ -1726,6 +1726,43 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWONLYTOP *** -->
+    <refentry id="ShowOnlyTop">
+
+    <refmeta> <refentrytitle>ShowOnlyTop</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowOnlyTop</refname>
+    <refpurpose>only count stats for top talkers, ignore less-active users</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowOnlyTop = "1"
+        </channel>
+
+        <set ShowOnlyTop="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By enabling this option, stats in the "Big Numbers" and "Interesting
+    Numbers" section will only be counted for users who were the most
+    active. E.g. users who appear in the "Most Active Nicks" section, as
+    respected by the ActiveNicks and ActiveNicks2 options.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWMOSTACTIVEBYHOURGRAPH *** -->
     <refentry id="ShowMostActiveByHourGraph">
 

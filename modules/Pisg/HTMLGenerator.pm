@@ -15,6 +15,7 @@ sub new
         stats => $args{stats},
         users => $args{users},
         tmps => $args{tmps},
+        topactive => {},
     };
 
     # Import common functions in Pisg::Common
@@ -33,6 +34,8 @@ sub create_html
     # sub itself.
 
     my $self = shift;
+
+    $self->_topactive();
 
     print "Now generating HTML($self->{cfg}->{outputfile})...\n"
         unless ($self->{cfg}->{silent});
@@ -578,9 +581,11 @@ sub _questions
     my %qpercent;
 
     foreach my $nick (sort keys %{ $self->{stats}->{questions} }) {
-        if ($self->{stats}->{lines}{$nick} > 100) {
-            $qpercent{$nick} = ($self->{stats}->{questions}{$nick} / $self->{stats}->{lines}{$nick}) * 100;
-            $qpercent{$nick} =~ s/(\.\d)\d+/$1/;
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          if ($self->{stats}->{lines}{$nick} > 100) {
+              $qpercent{$nick} = ($self->{stats}->{questions}{$nick} / $self->{stats}->{lines}{$nick}) * 100;
+              $qpercent{$nick} =~ s/(\.\d)\d+/$1/;
+          }
         }
     }
 
@@ -618,9 +623,11 @@ sub _shoutpeople
     my %spercent;
 
     foreach my $nick (sort keys %{ $self->{stats}->{shouts} }) {
-        if ($self->{stats}->{lines}{$nick} > 100) {
-            $spercent{$nick} = ($self->{stats}->{shouts}{$nick} / $self->{stats}->{lines}{$nick}) * 100;
-            $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          if ($self->{stats}->{lines}{$nick} > 100) {
+              $spercent{$nick} = ($self->{stats}->{shouts}{$nick} / $self->{stats}->{lines}{$nick}) * 100;
+              $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+          }
         }
     }
 
@@ -660,9 +667,11 @@ sub _capspeople
     my %cpercent;
 
     foreach my $nick (sort keys %{ $self->{stats}->{allcaps} }) {
-        if ($self->{stats}->{lines}{$nick} > 100) {
-            $cpercent{$nick} = $self->{stats}->{allcaps}{$nick} / $self->{stats}->{lines}{$nick} * 100;
-            $cpercent{$nick} =~ s/(\.\d)\d+/$1/;
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          if ($self->{stats}->{lines}{$nick} > 100) {
+              $cpercent{$nick} = $self->{stats}->{allcaps}{$nick} / $self->{stats}->{lines}{$nick} * 100;
+              $cpercent{$nick} =~ s/(\.\d)\d+/$1/;
+          }
         }
     }
 
@@ -704,10 +713,10 @@ sub _violent
     # They attacked others (words defined by $self->{cfg}->{violent})
     my $self = shift;
 
-    my @aggressors;
-
-    @aggressors = sort { $self->{stats}->{violence}{$b} <=> $self->{stats}->{violence}{$a} }
+    my @aggressors = sort { $self->{stats}->{violence}{$b} <=> $self->{stats}->{violence}{$a} }
                          keys %{ $self->{stats}->{violence} };
+
+    @aggressors = $self->_istoponly(@aggressors);
 
     if(@aggressors) {
         my %hash = (
@@ -739,9 +748,10 @@ sub _violent
 
 
     # They got attacked
-    my @victims;
-    @victims = sort { $self->{stats}->{attacked}{$b} <=> $self->{stats}->{attacked}{$a} }
+    my @victims = sort { $self->{stats}->{attacked}{$b} <=> $self->{stats}->{attacked}{$a} }
                     keys %{ $self->{stats}->{attacked} };
+
+    @victims = $self->_istoponly(@victims);
 
     if(@victims) {
         my %hash = (
@@ -776,6 +786,8 @@ sub _gotkicks
 
     my @gotkick = sort { $self->{stats}->{gotkicked}{$b} <=> $self->{stats}->{gotkicked}{$a} }
                        keys %{ $self->{stats}->{gotkicked} };
+
+    @gotkick = $self->_istoponly(@gotkick);
 
     if (@gotkick) {
         my %hash = (
@@ -813,6 +825,8 @@ sub _mostjoins
     my @joins = sort { $self->{stats}->{joins}{$b} <=> $self->{stats}->{joins}{$a} }
                      keys %{ $self->{stats}->{joins} };
 
+    @joins = $self->_istoponly(@joins);
+
     if (@joins) {
         my %hash = (
             nick  => $joins[0],
@@ -830,8 +844,10 @@ sub _mostwords
     # The person who got words the most
     my $self = shift;
 
-     my @words = sort { $self->{stats}->{words}{$b} <=> $self->{stats}->{words}{$a} }
+    my @words = sort { $self->{stats}->{words}{$b} <=> $self->{stats}->{words}{$a} }
                       keys %{ $self->{stats}->{words} };
+
+    @words = $self->_istoponly(@words);
 
     if (@words) {
         my %hash = (
@@ -867,6 +883,8 @@ sub _mostkicks
     my @kicked = sort { $self->{stats}->{kicked}{$b} <=> $self->{stats}->{kicked}{$a} }
                         keys %{ $self->{stats}->{kicked} };
 
+    @kicked = $self->_istoponly(@kicked);
+
     if (@kicked) {
         my %hash = (
             nick   => $kicked[0],
@@ -898,7 +916,10 @@ sub _mostmonologues
     # The person who had the most monologues (speaking to himself)
     my $self = shift;
 
-    my @monologue = sort { $self->{stats}->{monologues}{$b} <=> $self->{stats}->{monologues}{$a} } keys %{ $self->{stats}->{monologues} };
+    my @monologue = sort { $self->{stats}->{monologues}{$b} <=> $self->{stats}->{monologues}{$a} } 
+                           keys %{ $self->{stats}->{monologues} };
+
+    @monologue = $self->_istoponly(@monologue);
 
     if (@monologue) {
         my %hash = (
@@ -930,9 +951,11 @@ sub _linelengths
     my %len;
 
     foreach my $nick (sort keys %{ $self->{stats}->{lengths} }) {
-        if ($self->{stats}->{lines}{$nick} > 100) {
-            $len{$nick} = $self->{stats}->{lengths}{$nick} / $self->{stats}->{lines}{$nick};
-            $len{$nick} =~ s/(\.\d)\d+/$1/;
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          if ($self->{stats}->{lines}{$nick} > 100) {
+              $len{$nick} = $self->{stats}->{lengths}{$nick} / $self->{stats}->{lines}{$nick};
+              $len{$nick} =~ s/(\.\d)\d+/$1/;
+          }
         }
     }
 
@@ -1001,9 +1024,11 @@ sub _mostfoul
     my %spercent;
 
     foreach my $nick (sort keys %{ $self->{stats}->{foul} }) {
-        if ($self->{stats}->{lines}{$nick} > 15) {
-            $spercent{$nick} = $self->{stats}->{foul}{$nick} / $self->{stats}->{words}{$nick} * 100;
-            $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          if ($self->{stats}->{lines}{$nick} > 15) {
+              $spercent{$nick} = $self->{stats}->{foul}{$nick} / $self->{stats}->{words}{$nick} * 100;
+              $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+          }
         }
     }
 
@@ -1052,9 +1077,11 @@ sub _mostsad
     my %spercent;
 
     foreach my $nick (sort keys %{ $self->{stats}->{frowns} }) {
-        if ($self->{stats}->{lines}{$nick} > 100) {
-            $spercent{$nick} = $self->{stats}->{frowns}{$nick} / $self->{stats}->{lines}{$nick} * 100;
-            $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          if ($self->{stats}->{lines}{$nick} > 100) {
+              $spercent{$nick} = $self->{stats}->{frowns}{$nick} / $self->{stats}->{lines}{$nick} * 100;
+              $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+          }
         }
     }
 
@@ -1094,8 +1121,13 @@ sub _mostop
 
     my @ops   = sort { $self->{stats}->{gaveops}{$b} <=> $self->{stats}->{gaveops}{$a} }
                      keys %{ $self->{stats}->{gaveops} };
+
+    @ops = $self->_istoponly(@ops);
+
     my @deops = sort { $self->{stats}->{tookops}{$b} <=> $self->{stats}->{tookops}{$a} }
                      keys %{ $self->{stats}->{tookops} };
+
+    @deops = $self->_istoponly(@deops);
 
     if (@ops) {
         my %hash = (
@@ -1153,8 +1185,13 @@ sub _mostvoice
 
     my @voice   = sort { $self->{stats}->{gavevoice}{$b} <=> $self->{stats}->{gavevoice}{$a} }
                      keys %{ $self->{stats}->{gavevoice} };
+
+    @voice = $self->_istoponly(@voice);
+
     my @devoice = sort { $self->{stats}->{tookvoice}{$b} <=> $self->{stats}->{tookvoice}{$a} }
                      keys %{ $self->{stats}->{tookvoice} };
+
+    @devoice = $self->_istoponly(@devoice);
 
     if (@voice) {
         my %hash = (
@@ -1213,8 +1250,13 @@ sub _mosthalfop
 
     my @halfops   = sort { $self->{stats}->{gavehalfops}{$b} <=> $self->{stats}->{gavehalfops}{$a} }
                      keys %{ $self->{stats}->{gavehalfops} };
+
+    @halfops = $self->_istoponly(@halfops);
+
     my @dehalfops = sort { $self->{stats}->{tookhalfops}{$b} <=> $self->{stats}->{tookhalfops}{$a} }
                      keys %{ $self->{stats}->{tookhalfops} };
+
+    @dehalfops = $self->_istoponly(@dehalfops);
 
     if (@halfops) {
         my %hash = (
@@ -1274,6 +1316,8 @@ sub _mostactions
     my @actions = sort { $self->{stats}->{actions}{$b} <=> $self->{stats}->{actions}{$a} }
                         keys %{ $self->{stats}->{actions} };
 
+    @actions = $self->_istoponly(@actions);
+
     if (@actions) {
         my %linehash =
         my %hash = (
@@ -1314,9 +1358,11 @@ sub _mostsmiles
     my %spercent;
 
     foreach my $nick (sort keys %{ $self->{stats}->{smiles} }) {
-        if ($self->{stats}->{lines}{$nick} > 100) {
-            $spercent{$nick} = $self->{stats}->{smiles}{$nick} / $self->{stats}->{lines}{$nick} * 100;
-            $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          if ($self->{stats}->{lines}{$nick} > 100) {
+              $spercent{$nick} = $self->{stats}->{smiles}{$nick} / $self->{stats}->{lines}{$nick} * 100;
+              $spercent{$nick} =~ s/(\.\d)\d+/$1/;
+          }
         }
     }
 
@@ -1552,10 +1598,12 @@ sub _mostwordsperline
     my %wpl = ();
     my $numlines = 0;
     my ($avg, $numwords);
-    foreach my $n (keys %{ $self->{stats}->{words} }) {
-        $wpl{$n} = sprintf("%.2f", $self->{stats}->{words}{$n}/$self->{stats}->{lines}{$n});
-        $numlines += $self->{stats}->{lines}{$n};
-        $numwords += $self->{stats}->{words}{$n};
+    foreach my $nick (keys %{ $self->{stats}->{words} }) {
+        if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
+          $wpl{$nick} = sprintf("%.2f", $self->{stats}->{words}{$nick}/$self->{stats}->{lines}{$nick});
+          $numlines += $self->{stats}->{lines}{$nick};
+          $numwords += $self->{stats}->{words}{$nick};
+        }
     }
     if ($numlines > 0) {
         $avg = sprintf("%.2f", $numwords/$numlines);
@@ -1891,6 +1939,54 @@ sub _mostactivebyhour
             _html("</tr>");
         }
         _html("</table>");
+    }
+}
+
+sub _topactive {
+    my $self = shift;
+    my @top_active;
+    my $top_nicks;
+
+    if ($self->{cfg}->{sortbywords}) {
+        @top_active = sort { $self->{stats}->{words}{$b} <=> $self->{stats}->{words}{$a} } 
+                             keys %{ $self->{stats}->{words} };
+        $top_nicks = scalar keys %{ $self->{stats}->{words} };
+    } else {
+        @top_active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} } 
+                             keys %{ $self->{stats}->{lines} };
+        $top_nicks = scalar keys %{ $self->{stats}->{lines} };
+    }   
+            
+    if ($self->{cfg}->{activenicks} > $top_nicks) {
+        $self->{cfg}->{activenicks} = $top_nicks;
+    } 
+    if (($self->{cfg}->{activenicks}+$self->{cfg}->{activenicks2}) > $top_nicks) {
+        $self->{cfg}->{activenicks2} = $top_nicks-$self->{cfg}->{activenicks};
+    }
+            
+    (@top_active) = @top_active[0..($self->{cfg}->{activenicks}+$self->{cfg}->{activenicks2}-1)];
+            
+    foreach (@top_active) {
+        $self->{topactive}{$_} = 1;
+    }
+} 
+
+
+sub _istoponly {
+    my $self = shift;
+    my (@nicks_tmp) = @_;
+    my @nicks;
+    my $cnt=0;
+
+    if ($self->{cfg}->{showonlytop}) {
+        foreach my $nick (@nicks_tmp) {
+            if ($self->{topactive}{$nick}) {
+                push(@nicks, $nick);
+            }
+        }
+        return(@nicks);
+    } else {
+        return(@nicks_tmp);
     }
 }
 

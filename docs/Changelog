@@ -1,3 +1,8 @@
+pisg (x.xx)
+   * Add "ShowOnlyTop" option which can be used if you only want to have stats
+     for the users which appeared in the "Most Active Nicks" (top talkers)
+     section. (thanks, mincus)
+
 pisg (0.42) - Fri Nov, 1st 2002
    * ircII logfile support added (thanks, James Andrewartha)
    * Changed behavior of most active nicks to print an action line if no

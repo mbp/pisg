@@ -157,6 +157,7 @@ sub get_default_config_settings
         showmostnicks => 0,
         showmostactivebyhour => 0,
         showmostactivebyhourgraph => 0,
+        showonlytop => 0,
 
         # Less important things
 
@@ -187,7 +188,7 @@ sub get_default_config_settings
         tablewidth => 614,
         regexpaliases => 0,
 
-        version => "0.42",
+        version => "0.43-cvs",
     };
 
     # Backwards compatibility with old option names:
