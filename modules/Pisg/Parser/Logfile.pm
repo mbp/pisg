@@ -328,8 +328,16 @@ sub _parse_file
                 $stats->{lastvisited}{$nick} = $stats->{days};
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^($self->{cfg}->{violentwords}) (\S+)/o) {
-                    my $victim = find_alias($2);
+                if ($saying =~ /^($self->{cfg}->{violentwords}) (\S+)(.*)/o) {
+                    my $victim;
+                    unless ($victim = is_nick($2)) {
+                        foreach my $trynick (split(/\s+/, $3)) {
+                            last if ($victim = is_nick($trynick));
+                        }
+                        unless ($victim) {
+                            $victim = $2;
+                        }
+                    }
                     if (!is_ignored($victim)) {
                         $stats->{violence}{$nick}++;
                         $stats->{attacked}{$victim}++;
