@@ -331,7 +331,10 @@ sub _activedays
         }
     }
 
-    $self->_headline("Daily activity (last $ndays days)");
+    my %hash = (
+        n => $ndays
+    );
+    $self->_headline($self->_template_text('dailyactivitytopic', %hash));
 
     _html("<table border=\"0\"><tr>\n");
 
