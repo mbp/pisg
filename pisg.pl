@@ -98,6 +98,7 @@ my $conf = {
     foul => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
     ignorewords => '',
     tablewidth => 614,
+    regexp_aliases => 0,
 
     # Developer stuff
 
@@ -315,8 +316,10 @@ sub init_config
                 if ($line =~ /alias="([^"]+)"/) {
                     my @thisalias = split(/\s+/, lc($1));
                     foreach (@thisalias) {
-                        if ($_ =~ s/\*/\.\*/g) {
-                            $_ =~ s/([\[\]\{\}\-\^])/\\$1/g; # quote it if it is a wildcard
+		        if ($conf->{regexp_aliases} and $_ =~ /[\[\]\{\}\(\)\?\+\.\*\^\\]/) {
+                            $conf->{aliaswilds}{$_} = $nick;
+                        } elsif (not $conf->{regexp_aliases} and $_ =~ s/\*/\.\*/g) {
+                            $_ =~ s/([\[\]\{\}\(\)\?\+\^\\])/\\$1/g; # quote it if it is a wildcard
                             $conf->{aliaswilds}{$_} = $nick;
                         } else {
                             $alias{$_} = $nick;

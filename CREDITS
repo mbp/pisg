@@ -61,6 +61,8 @@ And all the other contributors:
    | Language specific dates on stats page
  * Christian Legler <capt@capt.de>
    | New images for pisg
+ * Phil Gregory <phil_g@pobox.com>
+   | Regex support in user aliases
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)

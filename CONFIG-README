@@ -141,6 +141,9 @@ ignorewords          A space seperated list of words to ignore in 'most
 foul                 Space seperated list of words considered to be 'foul'
                      language, look in the bottom for a better explanation.
 
+regexp_alises        1 or 0, enabling this will make aliases in <user> tags
+                     regex-able.
+
  * Colors / layout for your stats page *
 
 bgcolor              Background color of the page
@@ -176,8 +179,8 @@ wordlength           The minimum number of chars an interesting word may be
 activenicks          Number of nicks to show in the 'top 25'
 activenicks2         Nicks to show in 'these didnt make it...'
 topichistory         How many topics to show in 'latest topics'
-nicktracking         Track nickchanges and create aliases (can be slow, so
-                     it's disabled by default)
+nicktracking         Track nickchanges and create aliases [1 or 0, enabled
+                     by default]
 
 
 
