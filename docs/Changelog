@@ -1,3 +1,10 @@
+pisg (0.31) - Mon, Dec 3rd 2001
+   * Fix serious bug where pisg would end up in an endless loop when multiple
+     URLs were on a line.
+   * More improved parsing: pisg will now complain if a configuration option
+     is used, which doesn't exist in the real world.
+   * Fix some documentation bugs
+
 pisg (0.30) - Sun, Dec 2nd 2001
    * New feature: 'show_lastseen' - will add a column in the stats to display
      when the user was last seen on the channel.
