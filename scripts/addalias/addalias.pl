@@ -1,11 +1,10 @@
 #!/usr/bin/perl -w
 
-# By Doomshammer <doomshammer@doomshammer.yi.org>
 
 print "Content-Type: text/html\n\n";
 
 my %oldnicks;
-open(FILE, "<users.cfg") || die "Datei nicht gefunden";
+open(FILE, "<users.cfg") || die "File not found";
 $i = 0;
 while(<FILE>) {
 	if($_ =~ /^<user/) {
@@ -22,7 +21,7 @@ foreach(@users) {
 			$nick[$i] = $1;
 			$oldnicks{$nick[$i]}{'nick'} = $nick[$i];
 		}
-		if($users[$i] =~ /alias="(\S+)".*/ or $users[$i] =~ /alias="(.*)"\s/ or $users[$i] =~ /alias="(.*)">/) {
+		if($users[$i] =~ /alias="(\S+)".*/ or $users[$i] =~ /alias="(.*)"\s.* / or $users[$i] =~ /alias="(.*)">/ ) {
 			$alias = $1;
 			$oldnicks{$nick[$i]}{'alias'} = $alias;
 		}
@@ -71,13 +70,13 @@ if($search ne "1") {
 		}
 	}
 	if($found eq "1") { 
-		print "<p>F&uuml;r den angegebenen Nicknamen sind bereits Einstellung gesetzt:</p>\n";
+		print "<p>The Nickname you've choosen is allready configured with the following settings:</p>\n";
 		print "<table>\n <tr>\n";
 		print "  <td>Nickname:</td>\n  <td>$oldnicks{$form{'nick'}}{'nick'}</td>\n";
 		print " </tr>\n";
 		if($oldnicks{$form{'nick'}}{'alias'}) { 
 			print " <tr>\n";
-			print "  <td>Aliase:</td>\n  <td>$oldnicks{$form{'nick'}}{'alias'}</td>\n";
+			print "  <td>Aliases:</td>\n  <td>$oldnicks{$form{'nick'}}{'alias'}</td>\n";
 			print " </tr>\n";
 		}
 		if($oldnicks{$form{'nick'}}{'link'}) {
@@ -99,22 +98,22 @@ if($search ne "1") {
 		}
 		if($oldnicks{$form{'nick'}}{'ignore'} eq "1") {
             print " <tr>\n";
-            print "  <td>Ignorieren:</td>\n  <td>Ja</td>\n";
+            print "  <td>Ignore:</td>\n  <td>Yes</td>\n";
             print " </tr>\n";
 		}
 		print "</table>\n";
-		print "<p>Bitte <a href=\"javascript:history.back()\">hier</a> klicken um einen anderen Nicknamen zu w&auml;hlen</p>\n";
+		print "<p>Please click <a href=\"javascript:history.back()\">here</a> to choose an other Nickname</p>\n";
 		exit(0);
 	}
 }
 if(!$form{'nick'}) { 
-	print "Kein Nickname eingegeben... Anfrage ung&uuml;ltig<br>";
-	print "Bitte <a href=\"javascript:history.back()\">hier</a> klicken um einen Nicknamen zu w&auml;hlen";
+	print "You haven't entered a Nickname.. Your request will be ignored<br>";
+	print "Please click <a href=\"javascript:history.back()\">here</a> to choose an other Nickname";
 	exit(0);
 }
 if($form{'nick'} and !$form{'alias'} and !$form{'link'} and !$form{'pic'} and !$form{'ignore'}) {
-	print "Sie haben zwar einen Nicknamen gew&auml;hlt aber keine weiteren Einstellungen<br>\n";
-	print "Bitte <a href=\"javascript:history.back()\">hier</a> klicken um weitere Einstellungen zu machen";
+	print "You've entered a Nickname but haven't configured any settings for that Nickname<br>\n";
+	print "Please click <a href=\"javascript:history.back()\">here</a> to configure some settings for the nickname";
 	exit(0);
 }
 $eintrag = "<user";
@@ -136,7 +135,7 @@ if($form{'ignore'} eq "1") {
 $eintrag = $eintrag . ">";
 
 print <<HTML
-Dein Nickname wurde erfolgreich eingetragen:<br>\n
+You Nickname was successfully added.:<br>\n
 <table>
  <tr>
   <td>Nickname:</td><td>$form{'nick'}</td>
@@ -145,7 +144,7 @@ HTML
 ;
 if($form{'alias'}) { 
 	print " <tr>\n";
-	print "  <td>Aliase:</td><td>$form{'alias'}</td>\n";
+	print "  <td>Aliases:</td><td>$form{'alias'}</td>\n";
 	print " </tr>\n";
 }
 if($form{'link'}) {
@@ -163,6 +162,6 @@ if($form{'ignore'} eq "1") {
     print "  <td>Ignorieren:</td><td>Ja</td>\n";
     print " </tr>\n";
 }
-open(FILE, ">>users.cfg") || die "Datei nicht gefunden";
+open(FILE, ">>users.cfg") || die "File not found";
 print FILE "$eintrag\n";
 close(FILE);
