@@ -1608,7 +1608,7 @@ sub _mostusedword
             # Skip nicks.  It's far more efficient to do this here than when
             # @popular is created.
             next if is_ignored($popular[$i]);
-            next if is_nick($popular[$i]);
+
             my $a = $count + 1;
             my $popular = htmlentities($popular[$i]);
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
