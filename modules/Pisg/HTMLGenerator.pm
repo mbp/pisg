@@ -125,7 +125,7 @@ body {
     font-family: verdana, arial, sans-serif;
     font-size: 13px;
     color: $self->{cfg}->{text};
-
+}
 
 td {
     font-family: verdana, arial, sans-serif;
@@ -139,7 +139,7 @@ td {
     font-weight: bold;
 }
 
-._headline { color: $self->{cfg}->{hcolor}; }
+.headline { color: $self->{cfg}->{hcolor}; }
 .small { font-family: verdana, arial, sans-serif; font-size: 10px; }
 .asmall {
       font-family: arial narrow, sans-serif;
@@ -232,7 +232,7 @@ sub _headline
       <table width="100%" cellpadding="2" cellspacing="0" border="0" align="center">
        <tr>
         <td bgcolor="$self->{cfg}->{hbgcolor}" class="text10">
-         <div align="center" class="_headline"><b>$title</b></div>
+         <div align="center" class="headline"><b>$title</b></div>
         </td>
        </tr>
       </table>
