@@ -253,7 +253,7 @@ sub init_words
     my $self = shift;
     $self->{cfg}->{foulwords} =~ s/(^\s+|\s+$)//g;
     $self->{cfg}->{foulwords} =~ s/\s+/|/g;
-    foreach (split /\s+/, $self->{cfg}->{ignorewords}) {
+    foreach (split(/\s+/, $self->{cfg}->{ignorewords})) {
         $self->{cfg}->{ignoreword}{$_} = 1;
     }
     $self->{cfg}->{violentwords} =~ s/(^\s+|\s+$)//g;
@@ -317,10 +317,9 @@ sub init_config
                     $self->{users}->{sex}{$nick} = lc($1);
                 }
             } elsif ($line =~ /<link(.*)>/) {
-                my $url;
 
                 if ($line =~ /url="([^"]+)"/) {
-                    $url = $1;
+                    my $url = $1;
                     if ($line =~ /ignore="Y"/i) {
                         add_url_ignore($url);
                     }
