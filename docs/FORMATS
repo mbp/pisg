@@ -384,7 +384,7 @@ time"
     5 minutes), with the main effect being the topic change times will only
     accurate to how often the time is marked.
 
-  - The config option "ircIINick" needs to be set to the maintainer's nick
+  - The config option "Maintainer" needs to be set to the maintainer's nick
 
   Example:
     22:40

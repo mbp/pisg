@@ -19,6 +19,9 @@ pisg (0.64) - ??
      nick while parsing. Saves memory and is probably saner anyway (thanks!).
    * Add version number to documentation title (and let the release Makefile
      update it).
+   * Make the ircII format use Maintainer instead of ircIINick.
+   * Documentation:
+     + Add note that Maintainer is used by some log formats.
 
 pisg (0.63) - Wed Jan, 12th 2005
    Morten:

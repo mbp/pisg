@@ -188,7 +188,6 @@ sub get_default_config_settings
         charset => 'iso-8859-1',
         logcharset => '',
         logcharsetfallback => '',
-        irciinick => 'maintainer',
 
         # sorting
         sortbywords => 0,

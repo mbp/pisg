@@ -105,10 +105,10 @@
    ]]>
    </programlisting>
 
-   The above will define a channel called <command>#channel</command>, the
+   The above will define a <xref linkend="Channel" /> called <command>#channel</command>, the
    logfile pisg will look for is called <command>channel.log</command> and
-   the format of the logfile will be <command>mIRC</command>. The
-   maintainer (which will be stated on the output page) is
+   the <xref linkend="Format" /> of the logfile will be <command>mIRC</command>. The
+   <xref linkend="Maintainer" /> (which will be stated on the output page) is
    <command>John</command>.
    </para>
 
@@ -435,6 +435,7 @@
     <command>Format</command> is used to define the format of the logfile,
     pisg supports a various number of different logfiles, see the FORMATS
     file included with the pisg distribution.
+    See also <xref linkend="Maintainer" />.
     </para>
     </refsect1>
     <refsect1>
@@ -706,6 +707,9 @@
     maintainer of the statistics page, this can be either the person
     generating the stats or the bot/client doing the logging.
     The maintainer is displayed in the outputted stats page.
+    This setting is also used by some log parsers where "You" is used
+    instead of the nick in the log (e.g. "You have been kicked").
+    See also <xref linkend="Format" />.
     </para>
     </refsect1>
     <refsect1>

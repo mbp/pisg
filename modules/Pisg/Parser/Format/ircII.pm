@@ -46,7 +46,7 @@ sub normalline
             $hash{nick}   = $1;
             $hash{saying} = $2;
         } elsif ($1 =~ /^> (.*)/) {
-            $hash{nick} = $self->{cfg}->{irciinick};
+            $hash{nick} = $self->{cfg}->{maintainer};
             $hash{saying} = $1;
         }
 
