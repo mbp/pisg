@@ -15,6 +15,9 @@ pisg (0.20)
    * Remember to distribute the 'FORMATS' file (was missed in the last two
      releases)
    * Swedish translation (thanks to Andreas Henriksson)
+   * New feature: 'Most actions'
+   * Add option 'show_legend' which can be used if you want to show the legend
+     for the different times..
    * Usual cleanups and improvements
 
 pisg (0.19) - Tue, Aug 7th 2001
