@@ -10,8 +10,8 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^\[(\d+):\d+\] <([^>]+)> (.*)',
-        thirdline  => '^\[(\d+):(\d+)\] \* (.+)'
+        normalline => '^\[(\d+):\d+:?\d*\] <([^>]+)> (.*)',
+        thirdline  => '^\[(\d+):(\d+):?\d*\] \* (.+)'
     };
 
     bless($self, $type);
@@ -62,7 +62,7 @@ sub thirdline
 
         } elsif ($#line >= 4 && ($line[1].$line[2]) eq 'werekicked' && ($line[$#line] =~ /\)$/)) {
                 $hash{kicker} = $line[4];
-                $hash{nick} = $self->{cfg}{botnick};
+                $hash{nick} = $self->{cfg}{maintainer};
 
         } elsif ($#line >= 4 && ($line[1] eq 'changes') && ($line[$#line] =~ /\'$/)) {
                 $hash{newtopic} = join(' ', @line[4..$#line]);
