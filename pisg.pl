@@ -125,11 +125,11 @@ sub init_pisg
 
     $timestamp = time;
 
-    if ($timeoffset =~ /\+(\d)/) {
+    if ($timeoffset =~ /\+(\d+)/) {
         # We must plus some hours to the time
         $timestamp += 3600 * $1; # 3600 seconds per hour
 
-    } elsif ($timeoffset =~ /-(\d)/) {
+    } elsif ($timeoffset =~ /-(\d+)/) {
         # We must remove some hours from the time
         $timestamp -= 3600 * $1; # 3600 seconds per hour
     }
@@ -883,13 +883,13 @@ sub activetimes
         my $percent = ($times{$hour} / $lines) * 100;
         $percent =~ s/(\.\d)\d+/$1/;
 
-        if ($timeoffset =~ /\+(\d)/) {
+        if ($timeoffset =~ /\+(\d+)/) {
             # We must plus some hours to the time
             $hour += $1;
             $hour = $hour % 24;
             if ($hour < 10) { $hour = "0" . $hour; }
 
-        } elsif ($timeoffset =~ /-(\d)/) {
+        } elsif ($timeoffset =~ /-(\d+)/) {
             # We must remove some hours from the time
             $hour -= $1;
             $hour = $hour % 24;
