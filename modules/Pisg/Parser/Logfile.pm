@@ -5,14 +5,15 @@ $^W = 1;
 
 my ($conf, $debug, $parser);
 
-sub new {
+sub new
+{
     # The sole argument is the config hash
     my $self = shift;
     $conf = shift;
     $debug = shift;
 
     # Load the Common module from wherever it's configured to be.
-    push @INC, $conf->{modules_dir};
+    push(@INC, $conf->{modules_dir});
     require Pisg::Common;
     Pisg::Common->import();
 
@@ -23,7 +24,8 @@ sub new {
 }
 
 # The function to choose which module to use.
-sub choose_log_format {
+sub choose_log_format
+{
     my $format = shift;
     my $parser = undef;
     $debug->("Loading module for log format $format");
@@ -39,7 +41,8 @@ _END
     return $parser;
 }
 
-sub analyze {
+sub analyze
+{
     my (%stats, %lines);
 
     if (defined $parser) {
@@ -50,11 +53,13 @@ sub analyze {
             parse_dir(\%stats, \%lines);
         } else {
             # Run through the whole logfile
-            my %state = (linecount  => 0,
-            lastnick   => "",
-            monocount  => 0,
-            lastnormal => "",
-            oldtime    => 24);
+            my %state = (
+                linecount  => 0,
+                lastnick   => "",
+                monocount  => 0,
+                lastnormal => "",
+                oldtime    => 24
+            );
             parse_file(\%stats, \%lines, $conf->{logfile}, \%state);
         }
 
@@ -78,7 +83,8 @@ sub analyze {
     return undef;
 }
 
-sub parse_dir {
+sub parse_dir
+{
     my ($stats, $lines) = @_;
 
     # Add trailing slash when it's not there..
@@ -106,7 +112,8 @@ sub parse_dir {
 }
 
 # This parses the file...
-sub parse_file {
+sub parse_file
+{
     my ($stats, $lines, $file, $state) = @_;
 
     print "Analyzing log($file) in '$conf->{format}' format...\n";
@@ -125,6 +132,9 @@ sub parse_file {
     my $linecount = 0;
     my $lastnormal = "";
     my $repeated;
+
+    $stats->{days} = 0;
+    $stats->{totallines} = 0;
 
     while(my $line = <LOGFILE>) {
         $line = strip_mirccodes($line);
@@ -323,7 +333,8 @@ sub parse_file {
     print "Finished analyzing log, $stats->{days} days total.\n";
 }
 
-sub opchanges {
+sub opchanges
+{
     my (@ops, $plus);
     foreach (split(//, $_[0])) {
         if ($_ eq "o") {
@@ -338,7 +349,8 @@ sub opchanges {
     return @ops;
 }
 
-sub parse_words {
+sub parse_words
+{
     my ($stats, $saying, $nick) = @_;
 
     foreach my $word (split(/[\s,!?.:;)(\"]+/, $saying)) {
@@ -358,7 +370,8 @@ sub parse_words {
     }
 }
 
-sub pick_random_lines {
+sub pick_random_lines
+{
     my ($stats, $lines) = @_;
 
     foreach my $key (keys %{ $lines }) {
@@ -369,7 +382,8 @@ sub pick_random_lines {
     }
 }
 
-sub strip_mirccodes {
+sub strip_mirccodes
+{
     my $line = shift;
 
     # boldcode = chr(2) = oct 001
