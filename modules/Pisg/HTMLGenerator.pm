@@ -452,7 +452,7 @@ sub _activenicks
         _html("<tr><td class=\"$class\" align=\"left\">");
 
         my $line = $self->{stats}->{lines}{$nick};
-        my $w    = $self->{stats}->{words}{$nick};
+        my $w = $self->{stats}->{words}{$nick} ? $self->{stats}->{words}{$nick} : 0;
         my $ch   = $self->{stats}->{lengths}{$nick};
         _html("$c</td><td style=\"background-color: $color\">$visiblenick</td>"
         . ($self->{cfg}->{show_linetime} ?
