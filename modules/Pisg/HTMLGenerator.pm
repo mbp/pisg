@@ -264,9 +264,9 @@ sub _headline
    <table width="$self->{cfg}->{headwidth}" cellpadding="1" cellspacing="0" border="0">
     <tr>
      <td style="background-color: $self->{cfg}->{headline}">
-      <table width="100%" cellpadding="2" cellspacing="0" border="0" align="center">
+      <table width="100%" cellpadding="2" cellspacing="0" border="0">
        <tr>
-        <td style="background-color: $self->{cfg}->{hbgcolor}" align="center" class="headtext">$title</td>
+        <td style="background-color: $self->{cfg}->{hbgcolor}" class="headtext">$title</td>
        </tr>
       </table>
      </td>
