@@ -35,9 +35,9 @@ mostvoice1 = "<b>[:nick]</b> donated [:voices] voices in the channel..."
 mostvoice2 = "<b>[:nick]</b> was also very polite: [:voices] voices from [:him:her:]."
 mostvoice3 = "Strange, no voices was given on [:channel]!"
 
-mostdevoice1 = "<b>[:nick]</b> is the channel sheriff with [:devoices] devoices."
-mostdevoice2 = "<b>[:nick]</b> devoiced [:devoices] users."
-mostdevoice3 = "Wow, no devoices was taken on [:channel]!"
+mostdevoice1 = "<b>[:nick]</b> likes taking voice from people, [:devoices] devoices."
+mostdevoice2 = "<b>[:nick]</b> was close to the same, devoiced [:devoices] users."
+mostdevoice3 = "No voices was taken on [:channel]!"
 
 action1 = "<b>[:nick]</b> always lets us know what [:he:she:]'s doing: [:actions] actions!"
 action2 = "Also, <b>[:nick]</b> tells us what's up with [:actions] actions."
