@@ -1,3 +1,6 @@
+pisg (x.xx)
+   * Fix wrong counting of most referenced nicks.
+
 pisg (0.52) - Fri Feb, 13rd 2004
    * Fixed a bug in the energymech format, it did not recognize join lines.
    * Fixed some bugs in the mIRC6 format.
