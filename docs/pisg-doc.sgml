@@ -2691,10 +2691,10 @@
         <channel="#channel">
          Logfile = "channel.log"
          Format = "mIRC"
-         PicWidth = "not_available.jpg"
+         PicWidth = "500"
         </channel>
 
-        <set PicWidth="unknown.gif">
+        <set PicWidth="500">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -2727,10 +2727,10 @@
         <channel="#channel">
          Logfile = "channel.log"
          Format = "mIRC"
-         PicHeight = "not_available.jpg"
+         PicHeight = "500"
         </channel>
 
-        <set PicHeight="unknown.gif">
+        <set PicHeight="500">
       ]]>
     </programlisting></refsynopsisdiv>
 
