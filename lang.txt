@@ -263,6 +263,7 @@ loud3 = "Der er ingen som råber. Leger de stilleleg?"
 
 gotkick1 = "<b>[:nick]</b> er ret upopulær, blev sparket ud [:kicks] gange!"
 gotkick2 = "<b>[:nick]</b> er heller ikke nogen Elvis, [:kicks] gange fik han sparket"
+kicktext = "<b>F.eks. sådan her:</b><br><dd>[:line]</dd>"
 
 joins = "<b>[:nick]</b> er lidt forvirret. Han har været inde og ude af kanalen [:joins] gange!"
 
@@ -329,6 +330,7 @@ urlstopic = "Mest brugte URLs"
 ## Other text
 
 totallines = "Hele antal linjer: [:lines]"
+totalnicks = "Forresten var der [:totalnicks] andre nicks"
 nick = "Nick"
 url = "URL"
 numberlines = "Antal linjer"
