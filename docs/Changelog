@@ -4,6 +4,8 @@ pisg (0.65) - ??
      though (thanks to Nico for the test log).
    * Fixed breakage when multiple LogDirs were given (thanks to Toni Viemerö
      for the report, SF tracker #1155433).
+   * Updated translations:
+      + French (thanks, Sébastien Bourgeois)
 
 pisg (0.64) - Thu Feb, 24th 2005
    Morten:
