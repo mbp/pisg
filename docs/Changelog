@@ -22,6 +22,7 @@ pisg (0.64) - ??
    * Make the ircII format use Maintainer instead of ircIINick.
    * Documentation:
      + Add note that Maintainer is used by some log formats.
+     + State that NickTracking does not work for the Maintainer nick.
 
 pisg (0.63) - Wed Jan, 12th 2005
    Morten:

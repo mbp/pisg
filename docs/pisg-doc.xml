@@ -709,7 +709,7 @@
     The maintainer is displayed in the outputted stats page.
     This setting is also used by some log parsers where "You" is used
     instead of the nick in the log (e.g. "You have been kicked").
-    See also <xref linkend="Format" />.
+    See also <xref linkend="Format" />, <xref linkend="NickTracking" />.
     </para>
     </refsect1>
     <refsect1>
@@ -2001,7 +2001,8 @@
     <para>
     By enabling this option, pisg will add a section to the stats showing
     who had the most nicks, and what the nicks were. This option only works
-    properly when <xref linkend="NickTracking" /> is enabled.
+    properly when <xref linkend="NickTracking" /> is enabled or
+    <link linkend="user-options">user aliases</link> have been defined.
     See also <xref linkend="MostNicksHistory" />,
     <xref linkend="MostNicksVerbose" />, and
     <xref linkend="NickLimit" />.
@@ -2883,6 +2884,9 @@
     Enabling this option will track nick changes as well as it can. It will
     then automatically create aliases for these nicks. Useful for
     <xref linkend="ShowMostNicks" /> and other stats.
+    Nick tracking does not work for log formats that do not use the nickname
+    for the person running the logger, but only show "You" there.
+    See <xref linkend="Maintainer" />.
     </para>
     </refsect1>
     <refsect1>
