@@ -727,8 +727,19 @@ sub parse_thirdline
                 $hash{newtopic} = $9;
 
             } elsif (($4.$5) eq 'modechange') {
-                $hash{newmode} = substr($6, 1);
-                $hash{nick} = substr($9, 1);
+				my $mode = $6;
+				my $kicker = $9;
+				if($mode =~ /([+-]o[ov])(\S+)(.*)/) {
+					my $modes = $1.$2;
+					$modes =~ s/v//g;
+					$hash{newmode} = $modes;
+					if($kicker =~ /(.*)' by (\S+)/) {
+						$hash{nick} = $2;
+					}
+				} else {
+	                $hash{newmode} = substr($6, 1);
+    	            $hash{nick} = substr($9, 1);
+				}
 
             } elsif ($5 eq 'joined') {
                 $hash{newjoin} = $1;
