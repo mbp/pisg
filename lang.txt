@@ -41,11 +41,11 @@ mostdeop3 = "Wow, no op was taken on [:channel]!"
 
 mostvoice1 = "<b>[:nick]</b> donated [:voices] voices in the channel..."
 mostvoice2 = "<b>[:nick]</b> was also very polite: [:voices] voices from [:him:her:]."
-mostvoice3 = "Strange, no voices was given on [:channel]!"
+mostvoice3 = "Strange, no voices were given on [:channel]!"
 
 mostdevoice1 = "<b>[:nick]</b> likes taking voice from people, [:devoices] devoices."
 mostdevoice2 = "<b>[:nick]</b> was close to the same, devoiced [:devoices] users."
-mostdevoice3 = "No voices was taken on [:channel]!"
+mostdevoice3 = "No voices were taken on [:channel]!"
 
 mosthalfop1 = "<b>[:nick]</b> donated [:halfops] halfops in the channel..."
 mosthalfop2 = "<b>[:nick]</b> was also very polite: [:halfops] halfops from [:him:her:]."
@@ -68,7 +68,7 @@ shout1 = "The loudest one was <b>[:nick]</b>, who yelled [:per]% of the time!"
 shout2 = "Another <i>old yeller</i> was <b>[:nick]</b>, who shouted [:per]% of the time!"
 shout3 = "Nobody shouted at all, wow."
 
-allcaps1 = "It seem that <b>[:nick]</b>'s shift-key is hanging:  [:per]% of the time [:he:she:] wrote UPPERCASE."
+allcaps1 = "It seems that <b>[:nick]</b>'s shift-key is hanging:  [:per]% of the time [:he:she:] wrote UPPERCASE."
 allcaps2 = "<b>[:nick]</b> just forgot to deactivate [:his:her:] Caps-Lock.  [:He:She:] wrote UPPERCASE [:per]% of the time."
 allcaps3 = "Everybody had their shift-key under control.  :)"
 allcapstext = "<b>For example, like this:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
