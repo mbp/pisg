@@ -1256,7 +1256,7 @@ mostvoice3 = "T‰ll‰ kertaa [:channel]:lla ei tippunut voiceja kenellek‰‰n..."
 
 mostdevoice1 = "<b>[:nick]</b> riisti irkkaajilta voiceja [:devoices]:sti!!"
 mostdevoice2 = "Per‰ss‰ seuraa <b>[:nick]</b>: h‰n otti [:channel]:lla voiceja pois [:devoices] kertaa..."
-mostdevoice3 = "Kenelt‰k‰‰n ei riistitty voiceja [:channel]:lla :)"
+mostdevoice3 = "Kenelt‰k‰‰n ei riistetty voiceja [:channel]:lla :)"
 
 action1 = "<b>[:nick]</b> halusi kaikkien tiet‰v‰n mit‰ on tekem‰ss‰: [:actions] /me:t‰!"
 action2 = "Myˆskin <b>[:nick]</b>:ssa esiintyy itserakkautta: selitteli tekemisi‰‰n [:actions] kertaa..."
