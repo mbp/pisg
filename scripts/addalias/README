@@ -39,6 +39,9 @@ explain themselves.
 Release history:
 --
 
+Version 2.1:
+  * Made nicks in config file incasesensitive
+
 Version 2.0:
   * Initial release of the improved version
     by deadlock. 

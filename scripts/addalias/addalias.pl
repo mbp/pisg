@@ -6,7 +6,7 @@ use CGI::Carp qw(fatalsToBrowser carpout);
 
 ###########################################################################
 #                                                                         #
-#  addalias version 2.0 by deadlock (deadlock@cheeseheadz.net)            #
+#  addalias version 2.1 by deadlock (deadlock@cheeseheadz.net)            #
 #                                                                         #
 #  This script can be used on a webpage for users to enter and edit their #
 #  own info for the pisg ircstats program by mbrix.                       #
@@ -15,54 +15,54 @@ use CGI::Carp qw(fatalsToBrowser carpout);
 #                                                                         #
 ###########################################################################
 
-######################
-### Config section ###
-######################
+#############################
+### Configuration section ###
+#############################
 
 # File locations:
 
-my $pisg_config="/path/to/pisg.cfg";
+my $pisg_config = "/path/to/pisg.cfg";
 
 # Page layout:
 
-my $c_bgcolor="#FFFFFF";
-my $c_text="#000000";
-my $c_link="blue";
-my $c_vlink="#C0C0C0";
-my $c_alink="#C0FFC0";
-my $c_border="#FFFFFF";
+my $c_bgcolor   = "#FFFFFF";
+my $c_text      = "#000000";
+my $c_link      = "blue";
+my $c_vlink     = "#C0C0C0";
+my $c_alink     = "#C0FFC0";
+my $c_border    = "#FFFFFF";
 
-my $title="IRC statistics - user addition page";
+my $title       = "IRC statistics - user addition page";
 
 # Text on the main page
 
-my $txthead1="In this form you can enter the settings (aliases, link and user picture) for your nickname in the IRC-stats.";
-my $txthead2="Nicknames are allowed only once.";
-my $txtnick="Nickname";
-my $txtalias="Alias(es)";
-my $txturl="URL/E-Mail";
-my $txtpic="Userpic";
-my $txtsex="Sex";
-my $txtmale="M";
-my $txtfemale="F";
-my $txtignore="Ignore me";
-my $btnsubmit="Submit";
-my $btnupdate="Update";
-my $txtfoot1="To update your settings, just enter your nickname and click Submit to retrieve your current settings.";
-my $txthelp="For help on this form click <a href=\"addalias.pl/help\" target=\"_blank\">here</a>.";
-my $txtupdate="These are your current settings. Edit them where needed and click Update to update your info.";
-my $txtaddok="Your nickname was successfully added.:";
-my $txtignoreon="You activated ignore and will not appear in the stats.";
-my $txtupdateok="Your info was successfully updated.:";
+my $txthead1    = "In this form you can enter the settings (aliases, link and user picture) for your nickname in the IRC-stats.";
+my $txthead2    = "Nicknames are allowed only once.";
+my $txtnick     = "Nickname";
+my $txtalias    = "Alias(es)";
+my $txturl      = "URL/E-Mail";
+my $txtpic      = "Userpic";
+my $txtsex      = "Sex";
+my $txtmale     = "M";
+my $txtfemale   = "F";
+my $txtignore   = "Ignore me";
+my $btnsubmit   = "Submit";
+my $btnupdate   = "Update";
+my $txtfoot1    = "To update your settings, just enter your nickname and click Submit to retrieve your current settings.";
+my $txthelp     = "For help on this form click <a href=\"addalias.pl/help\" target=\"_blank\">here</a>.";
+my $txtupdate   = "These are your current settings. Edit them where needed and click Update to update your info.";
+my $txtaddok    = "Your nickname was successfully added.:";
+my $txtignoreon = "You activated ignore and will not appear in the stats.";
+my $txtupdateok = "Your info was successfully updated.:";
 
 # Helptext:
 
-my $nickhelp="Enter the name you want to use in the stats here.";
-my $aliashelp="Add all aliases you use here, seperated by spaces, so they will be joined in the stats. A * is allowed as a wildcard. For example: MyNick[Zzz], MyNick-afk and MyNick-work could be entered as 'MyNick[Zzz] MyNick-*' or just as 'MyNick*'";
-my $urlhelp="You can enter a webpage or e-mail adress here to be linked to your nick in the stats.";
-my $pichelp="If you enter a link to a picture here it will be added to your stats on the page.";
-my $sexhelp="This setting is used to determine if lines in the stats should read 'his' or 'her' when referring to you.";
-my $ignorehelp="If you don't want to be included in the stats, select this option.";
+my $nickhelp    = "Enter the name you want to use in the stats here.";
+my $aliashelp   = "Add all aliases you use here, seperated by spaces, so they will be joined in the stats. A * is allowed as a wildcard. For example: MyNick[Zzz], MyNick-afk and MyNick-work could be entered as 'MyNick[Zzz] MyNick-*' or just as 'MyNick*'";
+my $urlhelp     = "You can enter a webpage or e-mail adress here to be linked to your nick in the stats.";
+my $pichelp     = "If you enter a link to a picture here it will be added to your stats on the page.";
+my $sexhelp     = "This setting is used to determine if lines in the stats should read 'his' or 'her' when referring to you.";
+my $ignorehelp  = "If you don't want to be included in the stats, select this option.";
 
 
 ###################################
@@ -84,57 +84,48 @@ my ($submitbtn, $frmaction);
 htmlheader();
 
 if (!$path) {
-   $submitbtn = $btnsubmit;
-   $frmaction="\"addalias.pl/input\"";
-   $txtupdate = ""; 
-   mainpage();
-}
-
-elsif ($path eq 'help') {
-   helppage();
-}
-
-elsif ($path eq 'input') {
-   readparams();
-   $cfg = read_config();
-      if ($cfg ne "1") {
+    $submitbtn = $btnsubmit;
+    $frmaction="\"addalias.pl/input\"";
+    $txtupdate = ""; 
+    mainpage();
+} elsif ($path eq 'help') {
+    helppage();
+} elsif ($path eq 'input') {
+    readparams();
+    $cfg = read_config();
+    if ($cfg ne "1") {
         $fnd = check_if_found();
         if ($fnd eq "1") {
-          $submitbtn = $btnupdate;
-          $frmaction="\"update\"";
-          if ($old_sex eq "m" or $old_sex eq "M"){
-            $old_sexm = "checked";
-          }
-          elsif ($old_sex eq "f" or $old_sex eq "F"){
-            $old_sexf = "checked";
-          }
-          if ($old_ignore eq "1"){
-            $old_ignr = "checked";
-          }
-          $txtfoot1="";
-          mainpage();
+            $submitbtn = $btnupdate;
+            $frmaction="\"update\"";
+            if ($old_sex eq "m" or $old_sex eq "M"){
+                $old_sexm = "checked";
+            }
+            elsif ($old_sex eq "f" or $old_sex eq "F"){
+                $old_sexf = "checked";
+            }
+            if ($old_ignore eq "1"){
+                $old_ignr = "checked";
+            }
+            $txtfoot1="";
+            mainpage();
         }
         else {
-          addinfo();      
+            addinfo();      
         }
-      }
-      else {
+    }
+    else {
         addinfo();
-      }
-}
-
-elsif ($path eq 'update') {
-   readparams();
-   $cfg = read_config();
-   updateinfo();
-}
-
-else {
-print "Illegal calling of script<br>\n";
+    }
+} elsif ($path eq 'update') {
+    readparams();
+    $cfg = read_config();
+    updateinfo();
+} else {
+    print "Illegal calling of script<br>\n";
 }
 
 htmlfooter();
-
 
 
 # Subs
@@ -253,10 +244,10 @@ sub read_config
 
     my $search = 0;
     $i = 0;
-    foreach(@users) {
-        if($users[$i] =~ /nick=/) {
+    foreach (@users) {
+        if ($users[$i] =~ /nick=/) {
             if ($users[$i] =~ /nick="(\S+)"(.*)/) {
-                $nick[$i] = $1;
+                $nick[$i] = lc($1);
                 $oldnicks{$nick[$i]}{'nick'} = $nick[$i];
             }
             if ($users[$i] =~ /alias="(\S+)".*/ or $users[$i] =~ /alias="(.*)"\s.* / or $users[$i] =~ /alias="(.*)">/ ) {
@@ -275,7 +266,7 @@ sub read_config
                 my $sex = $1;
                 $oldnicks{$nick[$i]}{'sex'} = $sex;
             }
-            if($users[$i] =~ /ignore="(\S+)"(.*)/) {
+            if ($users[$i] =~ /ignore="(\S+)"(.*)/) {
                 my $ignore = $1;
                 if($ignore eq "y" or $ignore eq "Y") { 
                     $ignore = 1; 
@@ -393,22 +384,22 @@ sub updateinfo
 {
     my $line;
     my $line_to_add = "<user";
-    if($frm_nick) {
+    if ($frm_nick) {
         $line_to_add .= " nick=\"$frm_nick\"";
     }
-    if($frm_alias) {
+    if ($frm_alias) {
         $line_to_add .= " alias=\"$frm_alias\"";
     }
-    if($frm_link) {
+    if ($frm_link) {
         $line_to_add .= " link=\"$frm_link\"";
     }
-    if($frm_pic) {
+    if ($frm_pic) {
         $line_to_add .= " pic=\"$frm_pic\"";
     }
-    if($frm_sex) {
+    if ($frm_sex) {
         $line_to_add .= " sex=\"$frm_sex\"";
     }
-    if($frm_ignore eq "on") {
+    if ($frm_ignore eq "on") {
         $line_to_add .= " ignore=\"y\"";
     }
 
@@ -421,10 +412,9 @@ sub updateinfo
     open(NEWFILE, ">$pisg_config") or die("Error updating configfile: $!");
     &lock_file(*NEWFILE);
     foreach $line (@lines) {
-       if ($line =~ /^<user.*nick=\"$frm_nick\"/) {
+       if ($line =~ /^<user.*nick=\"$frm_nick\"/i) {
          print NEWFILE "$line_to_add\n"
-       }
-       else {
+       } else {
          print NEWFILE $line;
        }
     }
@@ -437,40 +427,38 @@ $txtupdateok<br><br>\n
  </tr>
 HTML
 ;
-    if($frm_alias) {
+    if ($frm_alias) {
         print " <tr>\n";
         print "  <td>$txtalias:</td><td>$frm_alias</td>\n";
         print " </tr>\n";
     }
-    if($frm_link) {
+    if ($frm_link) {
         print " <tr>\n";
-        if($frm_link =~ /^http:|ftp:/) {
+        if ($frm_link =~ /^http:|ftp:/) {
             print "  <td>$txturl:</td><td><a href=\"$frm_link\">$frm_link</a></td>\n";
-        }
-        elsif ($frm_link =~ /(.*)@(.*).(.*)/) {
+        } elsif ($frm_link =~ /(.*)@(.*).(.*)/) {
             print "  <td>$txturl:</td><td><a href=\"mailto:$frm_link\">$frm_link</a></td>\n";
-        }
-        else {
+        } else {
             print "  <td>$txturl:</td><td>$frm_link</td>\n";
         }
         print " </tr>\n";
     }
-    if($frm_pic) {
+    if ($frm_pic) {
         print " <tr>\n";
         print "  <td>$txtpic:</td><td><img src=\"$frm_pic\"></td>\n";
         print " </tr>\n";
     }
-    if($frm_sex eq "m") {
+    if ($frm_sex eq "m") {
         print " <tr>\n";
         print "  <td>$txtsex:</td><td>$txtmale</td>\n";
         print " </tr>\n";
     }
-    if($frm_sex eq "f") {
+    if ($frm_sex eq "f") {
         print " <tr>\n";
         print "  <td>$txtsex:</td><td>$txtfemale</td>\n";
         print " </tr>\n";
     }
-    if($frm_ignore eq "on") {
+    if ($frm_ignore eq "on") {
         print " <tr>\n";
         print "  <td>$txtignore:</td><td>$txtignoreon</td>\n";
         print " </tr>\n";
