@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.49) - Sun Sep, 14th 2003
    * Make the HTML output XHTML compliant again (thanks, Stian Jordet)
    * Add a bullet conversion character to Common.pm (thanks, Stian Jordet)
    * Added support for rbot logs (thanks, Anders Bach Nielsen)
