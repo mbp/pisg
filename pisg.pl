@@ -88,6 +88,7 @@ my $conf = {
     show_wpl => 0,
     show_cpl => 0,
     show_legend => 1,
+    show_kickline => 1,
 
     # Misc settings
 
@@ -1690,10 +1691,15 @@ sub gotkicks
         );
 
         my $text = template_text('gotkick1', %hash);
-        my $exttext = template_text('kicktext', %hash);
-
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
-        if (@gotkick >= 2) {
+        
+	if ($conf->{show_kickline}) {
+		my $exttext = template_text('kicktext', %hash);
+		html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
+	} else {
+		html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+	}
+	
+	if (@gotkick >= 2) {
             my %hash = (
                 nick => $gotkick[1],
                 kicks => $gotkick{$gotkick[1]}
