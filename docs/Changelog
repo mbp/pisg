@@ -4,6 +4,7 @@ pisg (0.23)
    * Topics in mIRC format wasn't being recognized. Fixed.
    * Don't go beserk when the logfile doesn't contain any data; just tell it
      to the user.
+   * Fix: Don't show empty quotes on the stats page.
    * More work on the object oriented goal of pisg:
       - cleanups, don't use globals in modules, define these in the object.
       - add HTMLGenerator.pm, and move all HTML generation code from pisg.pl
