@@ -341,7 +341,7 @@ sub init_config
                 }
                 while (<CONFIG>) {
                     last if ($_ =~ /<\/*channel>/i);
-                    while ($_ =~ s/^\s*([^=]+)=["']([^"']*)["']//) {
+                    while ($_ =~ s/^\s*(\w+)\s*=\s*["']([^"']*)["']//) {
                         my $var = lc($1);
                         unless ($conf->{cmdl}{$var}) {
                             $chans->{$channel}{$var} = $2;
