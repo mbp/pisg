@@ -34,7 +34,7 @@
      <listitem>
        <para>
         You run pisg, pisg runs the log through and create statistics, it
-        then creates a HTML page which you can upload to a server.
+        then create an HTML page which you can upload to a server.
        </para>
       </listitem>
     </itemizedlist>
@@ -54,7 +54,7 @@
       </listitem>
      <listitem>
        <para>
-        Any operating system which Perl runs at, this includes popular OS'es
+        Any operating system which Perl runs on, this includes popular OS'es
         such as Linux, FreeBSD, Windows and Mac. You will have a hard time
         finding an OS where Perl isn't supported.
        </para>
@@ -107,8 +107,8 @@
    </para>
 
    <para>
-   That is basically it! Now, there is a lot more options you can use for
-   your channels, for this please refer to the reference documentation.
+   That is basically it! Now, there are a lot more options that you can use
+   for your channels, for this please refer to the reference documentation.
    </para>
    </sect1>
    <sect1 id="user-options">
@@ -168,8 +168,8 @@
     <![CDATA[<user nick="Joe" alias="Joe^away Joe^work" pic="joe.jpg" link="joe@joe.com" sex="m">]]>
     </programlisting>
 
-    (Here the aliases is a space separated list of nicks, that also works! But *
-    as a wildcard is smarter, but also slower).
+    (Here the aliases are a space separated list of nicks, that also works! But *
+    as a wildcard is smarter, although it is slower).
     </para>
 
    </sect1>
@@ -184,7 +184,7 @@
      <![CDATA[<set option="VALUE">]]>
      </programlisting>
 
-     Any global option will override anything defined with in channel
+     Any global option will override anything defined within channel
      elements (see <xref linkend="setting-up-a-channel">)
      </para>
 
@@ -226,14 +226,14 @@
     <title>Changing the layout of your stats page</title>
 
     <para>
-    The standard layout and colors in the outputted HTML page is made to be
+    The standard layout and colors in the outputted HTML page are made to be
     somewhat clean and neutral. But you have the chance to change the layout
     yourself.
     </para>
 
     <para>
-    There is a few predefined colorschemes for you to use, use the
-    ColorScheme option when using them, the available colorschemes are:
+    There are a few predefined colorschemes for you to use, use the
+    ColorScheme option when using them. The available colorschemes are:
     default, darkgalaxy.
     </para>
 
@@ -255,7 +255,7 @@
 
     <para>
     If you have created a nice stylesheet which other can take advantage of,
-    you are encouraged to send it to the pisg mailing list so it can be
+    you are encouraged to send it to the pisg mailing list so that it can be
     distributed with the next version of pisg.
     </para>
 
@@ -1649,10 +1649,10 @@
     <refsect1>
     <title>Description</title>
     <para>
-    There is a section in the "Most interesting numbers" which tells who had
-    is most "aggressive" - here you can define which words are considered
-    being "violent". It is a space seperated list of words.
-    Can not be used in a channel-only context.
+    There is a section in the "Most interesting numbers" which tells who is
+    most "aggressive" - here you can define which words are considered being
+    "violent". It is a space seperated list of words.  Can not be used in a
+    channel-only context.
     </para>
     </refsect1>
     <refsect1>
