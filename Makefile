@@ -1,6 +1,6 @@
 # Simple Makefile to make new releases of pisg
 
-VERSION = 0.22
+VERSION = 0.23
 
 DIRNAME = pisg-$(VERSION)
 
@@ -37,7 +37,8 @@ ADDALIAS = scripts/addalias/addalias.htm \
 
 MODULESDIR = modules
 
-PISG_MODULES = $(MODULESDIR)/Pisg/Common.pm
+PISG_MODULES = $(MODULESDIR)/Pisg/Common.pm \
+	       $(MODULESDIR)/Pisg/HTMLGenerator.pm
 
 PARSER_MODULES = $(MODULESDIR)/Pisg/Parser/Logfile.pm
 
