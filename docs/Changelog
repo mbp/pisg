@@ -17,6 +17,9 @@ pisg (0.22)
      Phil Gregory)
    * Moved some documentation to a new 'docs/' folder.
    * Joins wasn't working in mIRC format, fixed.
+   * Support both [HH::mm::ss] and [HH::mm] in mIRC logformats.
+   * Timebars was broken when using timeoffset, showing the wrong colors
+     comparing with the legend.
    * Usual minor optimizations and fixes
 
 pisg (0.21) - Mon, Aug 27th 2001
