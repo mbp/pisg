@@ -34,6 +34,7 @@ GFX = gfx/green-h.png \
 SCRIPTS = scripts/crontab \
 	   scripts/dropegg.pl \
 	   scripts/egg2mirc.awk
+	   scripts/windows-ftp-upload.txt
 
 ADDALIAS = scripts/addalias/addalias.pl \
 	    scripts/addalias/README
