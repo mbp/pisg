@@ -73,6 +73,7 @@ sub thirdline
 
         if (($4.$5) eq 'kickedfrom') {
             $7 =~ /^ by ([\S]+):.*/;
+            $1 =~ /([^!]+)/;    # Remove anything after the !
             $hash{kicker} = $1;
 
         } elsif ($3 eq 'Topic') {
@@ -100,6 +101,8 @@ sub thirdline
             $hash{repeated} = $6;
         }
 
+        $hash{nick} =~ /([^!]+)/;
+        $hash{nick} = $1;
         return \%hash;
 
     } else {

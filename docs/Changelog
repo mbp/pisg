@@ -7,6 +7,8 @@ pisg (0.25)
      - show_randquote, disable/enable the showing of the random quotes
    * More flexibility to irssi logfile format, will now work with more irssi
      logfile configurations. (David Leadbeater)
+   * Some fixes for eggdrop format where the nick was in nick!user@host
+     format.
 
 pisg (0.24) - Mon, Sep 24th 2001
    * Logdirs not working, fixed.
