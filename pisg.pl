@@ -499,25 +499,13 @@ sub parse_file
                     $sadface{$nick}--
                         if ($saying =~ /\w+:\/\//);
 
-					if ($saying =~ /(\w+):+\/\/(\S+).*/) {
-						$urls[$urlcount] = $1 . "://" . $2;
-						$urlnick{$urls[$urlcount]} = $nick;
-						$urlcount++;
-					}
-
-                    foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
-                        $words{$nick}++;
-                        # remove uninteresting words
-                        next unless (length($word) >= $conf->{wordlength});
-                        next if ($word =~ /$conf->{ignorewords}/);
-
-                        # ignore contractions
-                        next if ($word =~ m/'..?$/);
-
-                        $wordcount{htmlentities($word)}++ unless (grep /^\Q$word\E$/i, @ignore);
-                        $lastused{htmlentities($word)} = $nick;
+                    if ($saying =~ /(\w+):+\/\/(\S+).*/) {
+                        $urls[$urlcount] = $1 . "://" . $2;
+                        $urlnick{$urls[$urlcount]} = $nick;
+                        $urlcount++;
                     }
 
+                    parse_words($saying, $nick);
 
                     $length{$nick} += $l;
                     $totallength += $l;
@@ -553,16 +541,8 @@ sub parse_file
                 my $len = length($saying);
                 $length{$nick} += $len;
                 $totallength += $len;
-                foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
-                    $words{$nick}++;
-                    # remove uninteresting words
-                    next unless (length($word) > $conf->{wordlength});
-                    # ignore contractions
-                    next if ($word =~ m/'..?$/);
 
-                    $wordcount{htmlentities($word)}++ unless (grep /^\Q$word\E$/i, @ignore);
-                    $lastused{htmlentities($word)} = $nick;
-                }
+                parse_words($saying, $nick);
             }
         }
 
@@ -892,6 +872,26 @@ sub opchanges
     }
 
     return @ops;
+}
+
+sub parse_words
+{
+    my $saying = shift;
+    my $nick = shift;
+
+    foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
+        $words{$nick}++;
+        # remove uninteresting words
+        next unless (length($word) >= $conf->{wordlength});
+        next if ($word =~ /$conf->{ignorewords}/);
+
+        # ignore contractions
+        next if ($word =~ m/'..?$/);
+
+        $wordcount{htmlentities($word)}++ unless (grep /^\Q$word\E$/i, @ignore);
+        $lastused{htmlentities($word)} = $nick;
+    }
+
 }
 
 sub strip_mirccodes
