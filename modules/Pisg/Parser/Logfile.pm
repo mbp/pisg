@@ -402,8 +402,8 @@ sub _parse_words
         # Also ignore stuff from URLs.
         next if ($word =~ m{https?|^//});
 
-        $stats->{wordcounts}{$word}++;
-        $stats->{wordnicks}{$word} = $nick;
+        $stats->{wordcounts}{lc($word)}++;
+        $stats->{wordnicks}{lc($word)} = $nick;
     }
 }
 
