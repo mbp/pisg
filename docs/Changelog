@@ -1,3 +1,7 @@
+pisg (x.xx)
+   * Fix problem where NFiles didn't work when the specified values was more
+   than the actual number of logfiles (thanks, Christoph Berg)
+
 pisg (0.56) - Sat Jun, 19th 2004
    * Fix parsing of energymech kick messages and modes (thanks, optika81)
    * Add colorscheme with traditional pisg (website) colors. Thanks, mite.

@@ -231,7 +231,7 @@ sub _parse_dir
 
         if($self->{cfg}->{nfiles} > 0) {
             my $shift = @filesarray - $self->{cfg}->{nfiles};
-            splice(@filesarray, 0, $shift);
+            splice(@filesarray, 0, $shift) if $shift > 0;
         }
 
         foreach my $file (@filesarray) {
