@@ -319,7 +319,7 @@ sub init_config
 		        if ($conf->{regexp_aliases} and $_ =~ /[\[\]\{\}\(\)\?\+\.\*\^\\]/) {
                             $conf->{aliaswilds}{$_} = $nick;
                         } elsif (not $conf->{regexp_aliases} and $_ =~ s/\*/\.\*/g) {
-                            $_ =~ s/([\[\]\{\}\(\)\?\+\^\\])/\\$1/g; # quote it if it is a wildcard
+                            $_ =~ s/([\|\[\]\{\}\(\)\?\+\^\\])/\\$1/g; # quote it if it is a wildcard
                             $conf->{aliaswilds}{$_} = $nick;
                         } else {
                             $alias{$_} = $nick;
@@ -412,7 +412,7 @@ sub parse_dir
     my @filesarray;
     opendir(LOGDIR, $conf->{logdir}) or die("Can't opendir $conf->{logdir}: $!");
     @filesarray = grep { /^[^\.]/ && /^$conf->{prefix}/ && -f "$conf->{logdir}/$_" } readdir(LOGDIR) or die("No files in \"$conf->{logdir}\" matched prefix \"$conf->{prefix}\"");
-    close(LOGDIR);
+    closedir(LOGDIR);
     
     foreach my $file (sort @filesarray) {
         $file = $conf->{logdir} . $file;
@@ -489,12 +489,12 @@ sub parse_file
                     }
 
                     $question{$nick}++
-                        if ($saying =~ /\?/);
+                        if ($saying =~ /\?/o);
 
                     $loud{$nick}++
-                        if ($saying =~ /!/);
+                        if ($saying =~ /!/o);
 
-                    if ($saying !~ /[a-z0-9:]/ && $saying =~ /[A-Z]+/) {
+                    if ($saying !~ /[a-z0-9:]/o && $saying =~ /[A-Z]+/o) {
                         $shout{$nick}++;
                         $shoutline{$nick} = $line;
                     }
@@ -506,13 +506,13 @@ sub parse_file
                     # A regex matching al lot of smilies
 
                     $smile{$nick}++
-                        if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/);
+                        if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/o);
 
-                    if (($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/) && !($saying =~ /\w+:\/\//)) {
+                    if (($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/o) && !($saying =~ /\w+:\/\//o)) {
                         $sadface{$nick}++;
                     }
 
-                    if ($saying =~ /(\w+):\/\/(\S+)/) {
+                    if ($saying =~ /(\w+):\/\/(\S+)/o) {
                         $urls[$urlcount] = $1 . "://" . $2;
                         $urlnick{$urls[$urlcount]} = $nick;
                         $urlcount++;
@@ -548,7 +548,7 @@ sub parse_file
                 $line{$nick}++;
                 $line_time{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^slaps (\S+)/) {
+                if ($saying =~ /^slaps (\S+)/o) {
                     $slap{$nick}++;
                     $slapped{$1}++;
                     $slapline{$nick} = $line;
@@ -612,7 +612,7 @@ sub parse_file
                         if (!defined($alias{$lcnick})) {
                             if (defined($alias{$lcnewnick})) {
                                 $alias{$lcnick} = $alias{$lcnewnick};
-                            } elsif ($nick =~ /^Guest/) {
+                            } elsif ($nick =~ /^Guest/o) {
                                 $alias{$lcnick} = $newnick;
                                 $alias{$lcnewnick} = $newnick;
                             } else {
@@ -782,19 +782,19 @@ sub parse_thirdline
             $hash{nick} = $3;
 
             if (($4.$5) eq 'kickedfrom') {
-                $7 =~ /^ by ([\S]+):.*/;
+                $7 =~ /^ by ([\S]+):.*/o;
                 $hash{kicker} = $1;
 
             } elsif ($3 eq 'Topic') {
-                $7 =~ /^ by ([\S]+)![\S]+: (.*)/;
+                $7 =~ /^ by ([\S]+)![\S]+: (.*)/o;
                 $hash{nick} = $1;
                 $hash{newtopic} = $2;
 
             } elsif (($4.$5) eq 'modechange') {
                 my $newmode = $6;
-                if ($7 =~ /^ .+ by ([\S]+)!.*/) {
+                if ($7 =~ /^ .+ by ([\S]+)!.*/o) {
                     $hash{nick} = $1;
-                    $newmode =~ s/^\'//;
+                    $newmode =~ s/^\'//o;
                     $hash{newmode} = $newmode;
                 } 
 
@@ -803,7 +803,7 @@ sub parse_thirdline
 
             } elsif (($3.$4) eq 'Nickchange:') {
                 $hash{nick} = $5;
-                $7 =~ /([\S]+)/;
+                $7 =~ /([\S]+)/o;
                 $hash{newnick} = $1;
 
             } elsif (($3.$4.$5) eq 'Lastmessagerepeated') {
@@ -815,29 +815,29 @@ sub parse_thirdline
             $hash{min} = $2;
 
             if ($3 eq '<') {
-                if  ($4 =~ /^([^!]+)!\S+ was kicked off \S+ by ([^!]+)!/) {
+                if  ($4 =~ /^([^!]+)!\S+ was kicked off \S+ by ([^!]+)!/o) {
                     $hash{kicker} = $2;
                     $hash{nick} = $1;
                 }
 
             } elsif ($3 eq '>') {
-                if ($4 =~ /^([^!])+!\S+ has joined \S+$/) {
+                if ($4 =~ /^([^!])+!\S+ has joined \S+$/o) {
                     $hash{nick} = $1;
                     $hash{newjoin} = $1;
                 }
 
             } elsif ($3 eq '@') {
-                if ($4 =~ /^Topic by ([^!:])[!:]*: (.*)$/) {
+                if ($4 =~ /^Topic by ([^!:])[!:]*: (.*)$/o) {
                     $hash{nick} = $1;
                     $hash{newtopic} = $2;
 
-                } elsif ($4 =~ /^mode \S+ \[([\S]+) [^\]]+\] by ([^!]+)!\S+$/) {
+                } elsif ($4 =~ /^mode \S+ \[([\S]+) [^\]]+\] by ([^!]+)!\S+$/o) {
                     $hash{newmode} = $1;
                     $hash{nick} = $2;
                 }
 
             } elsif ($3 eq '!') {
-                if ($4 =~ /^(\S+) is known as (\S+)$/) {
+                if ($4 =~ /^(\S+) is known as (\S+)$/o) {
                   $hash{nick} = $1;
                   $hash{newnick} = $2;
                 }
@@ -858,7 +858,7 @@ sub parse_thirdline
             } elsif (($4.$5) eq 'modechange') {
                 $hash{newmode} = substr($6, 1);
                 $hash{nick} = $9;
-                $hash{nick} =~ /.*[by ](\S+)/;
+                $hash{nick} =~ /.*[by ](\S+)/o;
                 $hash{nick} = $1;
 
             } elsif ($5 eq 'joined') {
@@ -880,13 +880,13 @@ sub parse_thirdline
 
             } elsif ($4 eq 'TOPIC') {
                 $hash{newtopic} = $5;
-                $hash{newtopic} =~ s/^.*://;
+                $hash{newtopic} =~ s/^.*://o;
 
             } elsif ($4 eq 'MODE') {
                 $hash{newmode} = $5;
 
             } elsif ($4 eq 'JOIN') {
-                $3 =~ /^([^!]+)!/;
+                $3 =~ /^([^!]+)!/o;
                 $hash{newjoin} = $1;
                 $hash{nick} = $1;
 
@@ -908,7 +908,7 @@ sub parse_thirdline
 sub opchanges
 {
     my (@ops, $plus);
-    while ($_[0] =~ s/^(.)//) {
+    while ($_[0] =~ s/^(.)//o) {
         if ($1 eq "o") {
             $ops[$plus]++;
         } elsif ($1 eq "+") {
@@ -926,14 +926,14 @@ sub parse_words
     my $saying = shift;
     my $nick = shift;
 
-    foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
+    foreach my $word (split(/[\s,!?.:;)(]+/o, $saying)) {
         $words{$nick}++;
         # remove uninteresting words
         next unless (length($word) >= $conf->{wordlength});
         next if ($conf->{ignoreword}{$word});
 
         # ignore contractions
-        next if ($word =~ m/'..?$/);
+        next if ($word =~ m/'..?$/o);
 
         $wordcount{$word}++ unless ($users->{ignores}{$word});
         $lastused{$word} = $nick;
@@ -952,10 +952,10 @@ sub strip_mirccodes
     my $underlinecode = chr(31);
 
     # Strip mIRC color codes
-    $line =~ s/$colorcode\d{1,2},\d{1,2}//g;
-    $line =~ s/$colorcode\d{0,2}//g;
+    $line =~ s/$colorcode\d{1,2},\d{1,2}//go;
+    $line =~ s/$colorcode\d{0,2}//go;
     # Strip mIRC bold, plain, reverse and underline codes
-    $line =~ s/[$boldcode$underlinecode$reversecode$plaincode]//g;
+    $line =~ s/[$boldcode$underlinecode$reversecode$plaincode]//go;
 
     return $line;
 }
@@ -964,16 +964,16 @@ sub htmlentities
 {
     my $str = shift;
 
-    $str =~ s/\&/\&amp;/g;
-    $str =~ s/\</\&lt;/g;
-    $str =~ s/\>/\&gt;/g;
-    $str =~ s/ü/&uuml;/g;
-    $str =~ s/ö/&ouml;/g;
-    $str =~ s/ä/&auml;/g;
-    $str =~ s/ß/&szlig;/g;
-    $str =~ s/å/&aring;/g;
-    $str =~ s/æ/&aelig;/g;
-    $str =~ s/ø/&oslash;/g;
+    $str =~ s/\&/\&amp;/go;
+    $str =~ s/\</\&lt;/go;
+    $str =~ s/\>/\&gt;/go;
+    $str =~ s/ü/&uuml;/go;
+    $str =~ s/ö/&ouml;/go;
+    $str =~ s/ä/&auml;/go;
+    $str =~ s/ß/&szlig;/go;
+    $str =~ s/å/&aring;/go;
+    $str =~ s/æ/&aelig;/go;
+    $str =~ s/ø/&oslash;/go;
 
     return $str;
 }
@@ -1009,17 +1009,17 @@ sub template_text
 
     foreach my $key (sort keys %hash) {
         $text =~ s/\[:$key\]/$hash{$key}/;
-        $text =~ s/ü/&uuml;/g;
-        $text =~ s/ö/&ouml;/g;
-        $text =~ s/ä/&auml;/g;
-        $text =~ s/ß/&szlig;/g;
-        $text =~ s/å/&aring;/g;
-        $text =~ s/æ/&aelig;/g;
-        $text =~ s/ø/&oslash;/g;
+        $text =~ s/ü/&uuml;/go;
+        $text =~ s/ö/&ouml;/go;
+        $text =~ s/ä/&auml;/go;
+        $text =~ s/ß/&szlig;/go;
+        $text =~ s/å/&aring;/go;
+        $text =~ s/æ/&aelig;/go;
+        $text =~ s/ø/&oslash;/go;
     }
 
-    if ($text =~ /\[:.*?:.*?:\]/) {
-        $text =~ s/\[:(.*?):(.*?):\]/get_subst($1,$2,\%hash)/ge;
+    if ($text =~ /\[:.*?:.*?:\]/o) {
+        $text =~ s/\[:(.*?):(.*?):\]/get_subst($1,$2,\%hash)/geo;
     }
     return $text;
 
@@ -1044,11 +1044,11 @@ sub replace_links
     my $nick = shift;
 
     if ($nick) {
-        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/<a href="$1$2" target="_blank" title="Open in new window: $1$2">$nick<\/a>/g;
-        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="Mail to $nick">$nick<\/a>/g;
+        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/<a href="$1$2" target="_blank" title="Open in new window: $1$2">$nick<\/a>/go;
+        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="Mail to $nick">$nick<\/a>/go;
     } else {
-        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/<a href="$1$2" target="_blank" title="Open in new window: $1$2">$1$2<\/a>/g;
-        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="Mail to $1">$1<\/a>/g;
+        $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/<a href="$1$2" target="_blank" title="Open in new window: $1$2">$1$2<\/a>/go;
+        $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="Mail to $1">$1<\/a>/go;
     }
 
 
