@@ -1165,7 +1165,7 @@ sub activenicks
 
     html("<table border=\"0\" width=\"614\"><tr>");
     html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberlines') ."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>". template_text('randquote') ."</b></td>");
-    if ($users->{userpics}) {
+    if (scalar keys %{$users->{userpics}} > 0) {
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('userpic') ."</b></td>");
     }
 
