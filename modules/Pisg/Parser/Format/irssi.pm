@@ -82,7 +82,7 @@ sub thirdline
         } elsif (($5.$6) eq 'hasjoined') {
             $hash{newjoin} = $3;
 
-        } elsif (($4.$5) eq 'nowknown') {
+        } elsif (($5.$6) eq 'nowknown') {
             $hash{newnick} = $8;
         }
 
