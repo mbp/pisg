@@ -369,3 +369,12 @@ time"
 
   Example:
     <set botnicks="bot1 bot2 MainBot">
+
+
+* sirc
+  - Simple IRC Client (http://www.iagora.com/~espel/sirc.html)
+
+  - In order to use this, format must be set to 'sirc'
+
+  - You must also load the sirc-timestamp.pl script in the scripts subdirectory
+    into sirc (/load sirc-timestamp.pl after copying to appropriate location)
