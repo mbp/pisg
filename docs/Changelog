@@ -1,3 +1,7 @@
+pisg (x.xx)
+   * Fix a bug in the winbot logfile format where lines containing the channel
+     name in a wrong case wouldn't get counted.
+
 pisg (0.40) - Thu Jul, 4th 2002
    * The "It's Summer And The Sun Is Shining"-release.
    * When ShowMostAtiveByHour was enabled, unitialized values could appear

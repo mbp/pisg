@@ -81,7 +81,7 @@ sub thirdline
             }
 
         } elsif ($3 =~ /^(\S+) has joined (\S+)/) {
-            if ($2 eq $self->{cfg}->{channel}) {
+            if (lc($2) eq lc($self->{cfg}->{channel})) {
                 $hash{nick} = $1;
                 $hash{newjoin} = $1;
             }
