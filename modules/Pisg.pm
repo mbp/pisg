@@ -201,7 +201,7 @@ sub get_default_config_settings
 
         debug => 0,
         debugfile => 'debug.log',
-        version => "v0.30-cvs",
+        version => "v0.31-cvs",
     };
 
     # Parse the optional overriden configuration variables
@@ -350,6 +350,10 @@ sub init_config
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1); # Make the string lowercase
+                    if (!defined($self->{cfg}->{$var})) {
+                        print STDERR "Warning: no such configuration option: $1\n";
+                        next;
+                    }
                     unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
                         $self->{cfg}->{$var} = $2;
                     }
