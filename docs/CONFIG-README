@@ -273,7 +273,8 @@ maxquote            Maximum number of letters for a random quote
                     (default: 65)
 
 wordlength          The minimum number of chars an interesting word may be
-                    in 'most referenced words' (default: 5)
+                    in 'most used words'
+                    (default: 5)
 
 activenicks         Number of nicks to show in 'most active nicks'
                     (default: 25)
