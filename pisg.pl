@@ -81,6 +81,7 @@ my $conf = {
     # Misc settings
 
     foul => "ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe",
+    tablewidth => 614,
 
     # Developer stuff
 
@@ -96,8 +97,7 @@ $thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
 %line, %length, %sadface, %smile, $nicks, %longlines, %mono, %times, %question,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
-$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words, 
-$tablewidth, $headwidth);
+$normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words);
 
 
 sub main
@@ -226,7 +226,6 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
-    $tablewidth = 614;
     $conf->{start} = time();   # set start time of file parse
 
     print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
@@ -1009,23 +1008,23 @@ sub create_html
     open (OUTPUT, "> $conf->{outputfile}") or die("$0: Unable to open outputfile($conf->{outputfile}): $!\n");
 
     if ($conf->{show_wpl}) {
-        $tablewidth += 40;
+        $conf->{tablewidth} += 40;
     }
     if ($conf->{show_cpl}) {
-        $tablewidth += 40;
+        $conf->{tablewidth} += 40;
     }
-    $headwidth = $tablewidth - 4;
+    $conf->{headwidth} = $conf->{tablewidth} - 4;
     htmlheader();
     pageheader();
     activetimes();
     activenicks();
 
     headline(template_text('bignumtopic'));
-    html("<table width=\"$tablewidth\">\n"); # Needed for sections
+    html("<table width=\"$conf->{tablewidth}\">\n"); # Needed for sections
     questions();
     loudpeople();
-	shoutpeople();
-	slap();
+    shoutpeople();
+    slap();
     mostsmiles();
     mostsad();
     longlines();
@@ -1039,7 +1038,7 @@ sub create_html
     mostreferenced();
 
     headline(template_text('othernumtopic'));
-    html("<table width=\"$tablewidth\">\n"); # Needed for sections
+    html("<table width=\"$conf->{tablewidth}\">\n"); # Needed for sections
     gotkicks();
     mostkicks();
     mostop();
@@ -1049,7 +1048,7 @@ sub create_html
     html("</table>"); # Needed for sections
 
     headline(template_text('latesttopic'));
-    html("<table width=\"$tablewidth\">\n"); # Needed for sections
+    html("<table width=\"$conf->{tablewidth}\">\n"); # Needed for sections
     lasttopics();
     html("</table>"); # Needed for sections
 
@@ -1114,7 +1113,7 @@ sub activetimes
         $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br><img src=\"$image\" width=\"15\" height=\"$size\" alt=\"$percent\"></td>\n";
     }
 
-    html("<table border=\"0\" width=\"$tablewidth\"><tr>\n");
+    html("<table border=\"0\" width=\"$conf->{tablewidth}\"><tr>\n");
 
     for ($b = 0; $b < 24; $b++) {
         if ($b < 10) { $a = "0" . $b; } else { $a = $b; }
@@ -1142,7 +1141,7 @@ sub activenicks
 
     headline(template_text('activenickstopic'));
 
-    html("<table border=\"0\" width=\"$tablewidth\"><tr>");
+    html("<table border=\"0\" width=\"$conf->{tablewidth}\"><tr>");
     html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" 
         . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
 	. template_text('numberlines') 
@@ -1262,7 +1261,7 @@ sub mostusedword
     if (@popular) {
         &headline(template_text('mostwordstopic'));
 
-        html("<table border=\"0\" width=\"$tablewidth\"><tr>");
+        html("<table border=\"0\" width=\"$conf->{tablewidth}\"><tr>");
         html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('word') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
@@ -1338,7 +1337,7 @@ sub mostreferenced
 
         &headline(template_text('referencetopic'));
 
-        html("<table border=\"0\" width=\"$tablewidth\"><tr>");
+        html("<table border=\"0\" width=\"$conf->{tablewidth}\"><tr>");
         html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('nick') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('numberuses') . "</b></td>");
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('lastused') . "</b></td>");
@@ -2068,7 +2067,7 @@ sub headline
     my ($title) = @_;
 print OUTPUT <<HTML;
    <br>
-   <table width="$headwidth" cellpadding="1" cellspacing="0" border="0">
+   <table width="$conf->{headwidth}" cellpadding="1" cellspacing="0" border="0">
     <tr>
      <td bgcolor="$conf->{headline}">
       <table width="100%" cellpadding="2" cellspacing="0" border="0" align="center">
