@@ -153,6 +153,7 @@ sub get_default_config_settings
         pic_h_6 => 'green-h.png',
         pic_h_12 => 'yellow-h.png',
         pic_h_18 => 'red-h.png',
+        pic_loc => '.',
 
         # Stats settings
 

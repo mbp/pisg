@@ -319,7 +319,7 @@ sub _activetimes
         $image = $self->{cfg}->{$image};
         $self->{debug}->("Image: $image");
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br><img src=\"$image\" width=\"15\" height=\"$size\" alt=\"$percent\"></td>\n";
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br><img src=\"$self->{cfg}->{pic_loc}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\"></td>\n";
     }
 
     _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>\n");
