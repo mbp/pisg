@@ -6,7 +6,16 @@
 # template_name2 = "text to show"
 # </lang>
 #
-# etc.. :)
+# Translations in this file as of now:
+#
+# (EN) English
+# (DE) German - Winfried Nessen <doomshammer@doomshammer.yi.org>
+# (NO) Norweigan - Andreas Blaafladt <andreabl@login1.powertech.no>
+# (PT) Portugese - JaMiR0W <jamirow@ig.com.br>
+# (DK) Danish - Kim Ingemann <tuxi@tuxi.dk>
+# (FR) French - Molator <molator@ifrance.com>
+# (ES) Spanish - Sheuron Azxe <xeron@cfutura.com>
+# (PL) Polish - Gandalf the Grey <gandalf@irc.pl>
 
 <lang name="EN">
 ### English
@@ -466,9 +475,9 @@ pagetitle2 = "Statystyka wygenerowana [:time]"
 pagetitle3 = "W przedziale [:days]-dni, <b>[:nicks]</b> roznych nickow odwiedzilo kanal [:channel]."
 </lang>
 
+### Norwegian
 
 <lang name="NO">
-### Norwegian
 mostop1 = "<b>[:nick]</b> delte ut [:ops] smultringer."
 mostop2 = "<b>[:nick]</b> var også veldig raus: [:ops] smultringer fra ham/henne."
 mostop3 = "Merkelig, ingen smultringer ble delt ut på [:channel]!"
@@ -544,7 +553,7 @@ pagetitle3 = "I løpet av denne [:days]-dagers rapport-perioden var <b>[:nicks]</
 
 </lang>
 
-### Portuguese By JaMiR0W
+### Portugese
 <lang name="PT">
 mostop1 = "<b>[:nick]</b> deu [:ops] ops no canal..."
 mostop2 = "<b>[:nick]</b> também não fica atrás: [:ops] foram dados"
