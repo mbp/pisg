@@ -1,4 +1,4 @@
-pisg (0.30)
+pisg (0.30) - Sun, Dec 2nd 2001
    * New feature: 'show_lastseen' - will add a column in the stats to display
      when the user was last seen on the channel.
    * When using mIRC logs which have a prefix (eg. <@osama> hi!), the prefix
@@ -15,6 +15,10 @@ pisg (0.30)
      sorted correctly.
    * 'wordlength' was applying to nicks in 'most referenced nicks' as well,
      don't do that.
+   * Improved parsing of config file. pisg will now complain if a line isn't
+     what it's supposed to be.
+   * Lines with only a single smiley, eg. '<user> :P' got counted as a
+     UPPERCASE line, now ignored.
 
 pisg (0.29) - Sat, Nov 10th 2001
    * When using multiple channels, and not all channels have user pics, it was
