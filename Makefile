@@ -14,7 +14,7 @@ pisg:
 	cp gfx/pipe-purple.png $(DIRNAME)
 	cp gfx/pipe-blue.png $(DIRNAME)
 	cp COPYING $(DIRNAME)
-	cp users.cfg $(DIRNAME)
+	cp pisg.cfg $(DIRNAME)
 	cp README $(DIRNAME)
 	cp FORMATS $(DIRNAME)
 	cp Changelog $(DIRNAME)
