@@ -2147,6 +2147,10 @@ sub lasttopics
 {
     debug("Total number of topics: ". scalar @topics);
 
+    my %hash = (
+	    total => scalar @topics
+    );
+
     if (@topics) {
         my $ltopic = @topics - 1;
         my $tlimit = 0;
@@ -2171,6 +2175,9 @@ sub lasttopics
        } else {
             html("<tr><td bgcolor=\"$conf->{hicell}\">" . template_text('notopic') ."</td></tr>");
        }
+	   if(@topics) {
+		html("<tr><td align=\"center\" colspan=\"2\">" . template_text('totaltopic', %hash) . "</td></tr>");
+	   }
 }
 
 
