@@ -110,7 +110,9 @@ sub match_url
     my ($str) = @_;
 
     if ($str =~ /(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/) {
-        return "$1$2";
+        my $url = "$1$2";
+        $url =~ s/\/$//;
+        return $url;
     }
     return undef;
 }
