@@ -14,8 +14,7 @@ FILES = pisg.pl \
 	 pisg.cfg \
 	 lang.txt
 
-DOCS = docs/CONFIG-README \
-	 docs/FORMATS \
+DOCS = docs/FORMATS \
 	 docs/Changelog \
 	 docs/CREDITS \
 	 docs/html/ \

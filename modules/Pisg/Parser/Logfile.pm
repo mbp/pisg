@@ -113,9 +113,9 @@ sub _parse_dir
     opendir(LOGDIR, $self->{cfg}->{logdir}) or
     die("Can't opendir $self->{cfg}->{logdir}: $!");
     @filesarray = grep {
-        /^[^\.]/ && /^$self->{cfg}->{prefix}/ && -f "$self->{cfg}->{logdir}/$_"
+        /^[^\.]/ && /^$self->{cfg}->{logprefix}/ && -f "$self->{cfg}->{logdir}/$_"
     } readdir(LOGDIR) or
-    die("No files in \"$self->{cfg}->{logdir}\" matched prefix \"$self->{cfg}->{prefix}\"");
+    die("No files in \"$self->{cfg}->{logdir}\" matched prefix \"$self->{cfg}->{logprefix}\"");
     closedir(LOGDIR);
 
     my %state = (
@@ -217,7 +217,7 @@ sub _parse_file
 
                 $hour   = $hashref->{hour};
                 $nick   = find_alias($hashref->{nick});
-                checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{show_mostnicks});
+                checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
                 $saying = $hashref->{saying};
 
                 if ($hour < $state->{oldtime}) { $stats->{days}++ }
@@ -271,7 +271,7 @@ sub _parse_file
                     }
 
                     $stats->{foul}{$nick}++
-                        if ($saying =~ /$self->{cfg}->{foul}/io);
+                        if ($saying =~ /$self->{cfg}->{foulwords}/io);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
@@ -309,7 +309,7 @@ sub _parse_file
 
             $hour   = $hashref->{hour};
             $nick   = find_alias($hashref->{nick});
-            checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{show_mostnicks});
+            checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
             $saying = $hashref->{saying};
 
             if ($hour < $state->{oldtime}) { $stats->{days}++ }
@@ -325,7 +325,7 @@ sub _parse_file
                 $stats->{lastvisited}{$nick} = $stats->{days};
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^($self->{cfg}->{violent}) (\S+)/o) {
+                if ($saying =~ /^($self->{cfg}->{violentwords}) (\S+)/o) {
                     my $victim = find_alias($2);
                     if (!is_ignored($victim)) {
                         $stats->{violence}{$nick}++;
@@ -353,7 +353,7 @@ sub _parse_file
             $hour     = $hashref->{hour};
             $min      = $hashref->{min};
             $nick     = find_alias($hashref->{nick});
-            checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{show_mostnicks});
+            checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
             $kicker   = find_alias($hashref->{kicker})
                 if ($hashref->{kicker});
             $newtopic = $hashref->{newtopic};
@@ -388,7 +388,7 @@ sub _parse_file
 
                 } elsif (defined($newnick) and ($self->{cfg}->{nicktracking} == 1)) {
                     add_alias($nick, $newnick);
-                    checkname($nick, $newnick, $stats) if ($self->{cfg}->{show_mostnicks});
+                    checkname($nick, $newnick, $stats) if ($self->{cfg}->{showmostnicks});
                 }
             }
         }

@@ -40,16 +40,16 @@ sub create_html
     open (OUTPUT, "> $self->{cfg}->{outputfile}") or
         die("$0: Unable to open outputfile($self->{cfg}->{outputfile}): $!\n");
 
-    if ($self->{cfg}->{show_time}) {
+    if ($self->{cfg}->{showtime}) {
         $self->{cfg}->{tablewidth} += 40;
     }
-    if ($self->{cfg}->{show_words}) {
+    if ($self->{cfg}->{showwords}) {
         $self->{cfg}->{tablewidth} += 40;
     }
-    if ($self->{cfg}->{show_wpl}) {
+    if ($self->{cfg}->{showwpl}) {
         $self->{cfg}->{tablewidth} += 40;
     }
-    if ($self->{cfg}->{show_cpl}) {
+    if ($self->{cfg}->{showcpl}) {
         $self->{cfg}->{tablewidth} += 40;
     }
     $self->{cfg}->{headwidth} = $self->{cfg}->{tablewidth} - 4;
@@ -57,12 +57,12 @@ sub create_html
     $self->_pageheader()
         if ($self->{cfg}->{pagehead} ne 'none');
 
-    if ($self->{cfg}->{show_activetimes}) {
+    if ($self->{cfg}->{showactivetimes}) {
         $self->_activetimes();
     }
     $self->_activenicks();
 
-    if ($self->{cfg}->{show_bignumbers}) {
+    if ($self->{cfg}->{showbignumbers}) {
         $self->_headline($self->_template_text('bignumtopic'));
         _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
         $self->_questions();
@@ -77,29 +77,29 @@ sub create_html
         _html("</table>"); # Needed for sections
     }
 
-    if ($self->{cfg}->{show_mostnicks}) {
+    if ($self->{cfg}->{showmostnicks}) {
         $self->_mostnicks();
     }
 
-    if ($self->{cfg}->{show_muw}) {
+    if ($self->{cfg}->{showmuw}) {
         $self->_mostusedword();
     }
 
-    if ($self->{cfg}->{show_mrn}) {
+    if ($self->{cfg}->{showmrn}) {
         $self->_mostreferencednicks();
     }
 
-    if ($self->{cfg}->{show_mru}) {
+    if ($self->{cfg}->{showmru}) {
         $self->_mosturls();
     }
 
-    if ($self->{cfg}->{show_bignumbers}) {
+    if ($self->{cfg}->{showbignumbers}) {
         $self->_headline($self->_template_text('othernumtopic'));
         _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
         $self->_gotkicks();
         $self->_mostkicks();
         $self->_mostop();
-        $self->_mostvoice() if $self->{cfg}->{show_voices};
+        $self->_mostvoice() if $self->{cfg}->{showvoices};
         $self->_mostactions();
         $self->_mostmonologues();
         $self->_mostjoins();
@@ -111,7 +111,7 @@ sub create_html
     _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
 
     $self->_lasttopics()
-        if ($self->{cfg}->{show_topics});
+        if ($self->{cfg}->{showtopics});
 
     _html("</table>"); # Needed for sections
 
@@ -388,13 +388,9 @@ sub _activetimes
     $toptime[0] =~ s/0(\d)/$1/;
 
     for ($b = 0; $b < 24; $b++) {
-        if ($toptime[0] == $b && !$self->{cfg}->{use_activetime_alt}) {
+        if ($toptime[0] == $b) {
             # Highlight the top time
             $class = 'hirankc';
-        } elsif ($now[2] == $b && $self->{cfg}->{use_activetime_alt}) {
-            # Highlight the hour the stats is being generated in
-            $class = 'hirankc';
-
         } else {
             $class = 'rankc';
         }
@@ -403,7 +399,7 @@ sub _activetimes
 
     _html("</tr></table>");
 
-    if($self->{cfg}->{show_legend} == 1) {
+    if($self->{cfg}->{showlegend} == 1) {
         $self->_legend();
     }
 }
@@ -419,12 +415,12 @@ sub _activenicks
     _html("<td>&nbsp;</td>"
     . "<td class=\"tdtop\"><b>" . $self->_template_text('nick') . "</b></td>"
     . "<td class=\"tdtop\"><b>" . $self->_template_text('numberlines') . "</b></td>"
-    . ($self->{cfg}->{show_time} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_time')."</b></td>" : "")
-    . ($self->{cfg}->{show_words} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_words')."</b></td>" : "")
-    . ($self->{cfg}->{show_wpl} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_wpl')."</b></td>" : "")
-    . ($self->{cfg}->{show_cpl} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_cpl')."</b></td>" : "")
-    . ($self->{cfg}->{show_lastseen} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_lastseen')."</b></td>" : "")
-    . ($self->{cfg}->{show_randquote} ? "<td class=\"tdtop\"><b>".$self->_template_text('randquote')."</b></td>" : "")
+    . ($self->{cfg}->{showtime} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_time')."</b></td>" : "")
+    . ($self->{cfg}->{showwords} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_words')."</b></td>" : "")
+    . ($self->{cfg}->{showwpl} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_wpl')."</b></td>" : "")
+    . ($self->{cfg}->{showcpl} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_cpl')."</b></td>" : "")
+    . ($self->{cfg}->{showlastseen} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_lastseen')."</b></td>" : "")
+    . ($self->{cfg}->{showrandquote} ? "<td class=\"tdtop\"><b>".$self->_template_text('randquote')."</b></td>" : "")
     );
 
     my @active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} } keys %{ $self->{stats}->{lines} };
@@ -471,7 +467,7 @@ sub _activenicks
 
         my $lastseen;
 
-        if ($self->{cfg}->{show_lastseen}) {
+        if ($self->{cfg}->{showlastseen}) {
             $lastseen = $self->{stats}->{days} - $self->{stats}->{lastvisited}{$nick};
             if ($lastseen == 0) {
                 $lastseen = $self->_template_text('today');
@@ -488,25 +484,25 @@ sub _activenicks
         my $w = $self->{stats}->{words}{$nick} ? $self->{stats}->{words}{$nick} : 0;
         my $ch   = $self->{stats}->{lengths}{$nick};
         _html("$c</td><td style=\"background-color: $color\">$visiblenick</td>"
-        . ($self->{cfg}->{show_linetime} ?
+        . ($self->{cfg}->{showlinetime} ?
         "<td style=\"background-color: $color\">".$self->_user_linetimes($nick,$active[0])."</td>"
         : "<td style=\"background-color: $color\">$line</td>")
-        . ($self->{cfg}->{show_time} ?
+        . ($self->{cfg}->{showtime} ?
         "<td style=\"background-color: $color\">".$self->_user_times($nick)."</td>"
         : "")
-        . ($self->{cfg}->{show_words} ?
+        . ($self->{cfg}->{showwords} ?
         "<td style=\"background-color: $color\">$w</td>"
         : "")
-        . ($self->{cfg}->{show_wpl} ?
+        . ($self->{cfg}->{showwpl} ?
         "<td style=\"background-color: $color\">".sprintf("%.1f",$w/$line)."</td>"
         : "")
-        . ($self->{cfg}->{show_cpl} ?
+        . ($self->{cfg}->{showcpl} ?
         "<td style=\"background-color: $color\">".sprintf("%.1f",$ch/$line)."</td>"
         : "")
-        . ($self->{cfg}->{show_lastseen} ?
+        . ($self->{cfg}->{showlastseen} ?
         "<td style=\"background-color: $color\">$lastseen</td>"
         : "")
-        . ($self->{cfg}->{show_randquote} ?
+        . ($self->{cfg}->{showrandquote} ?
         "<td style=\"background-color: $color\">\"$randomline\"</td>"
         : "")
         );
@@ -527,8 +523,8 @@ sub _activenicks
 		_html("</a>");
 	    }
 	    _html("</td>");
-        } elsif ($self->{cfg}->{default_pic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
-            _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{default_pic}\" /></td>");
+        } elsif ($self->{cfg}->{defaultpic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
+            _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" /></td>");
         }
 
         _html("</tr>");
@@ -701,7 +697,7 @@ sub _capspeople
         );
 
         my $text = $self->_template_text('allcaps1', %hash);
-        if($self->{cfg}->{show_shoutline}) {
+        if($self->{cfg}->{showshoutline}) {
             my $exttext = $self->_template_text('allcapstext', %hash);
             _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
@@ -741,7 +737,7 @@ sub _violent
             line    => htmlentities($self->{stats}->{violencelines}{$aggressors[0]})
         );
         my $text = $self->_template_text('violent1', %hash);
-        if($self->{cfg}->{show_violentlines}) {
+        if($self->{cfg}->{showviolentlines}) {
             my $exttext = $self->_template_text('violenttext', %hash);
             _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
@@ -775,7 +771,7 @@ sub _violent
             line    => htmlentities($self->{stats}->{attackedlines}{$victims[0]})
         );
         my $text = $self->_template_text('attacked1', %hash);
-        if($self->{cfg}->{show_violentlines}) {
+        if($self->{cfg}->{showviolentlines}) {
             my $exttext = $self->_template_text('attackedtext', %hash);
             _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
@@ -811,7 +807,7 @@ sub _gotkicks
 
         my $text = $self->_template_text('gotkick1', %hash);
 
-        if ($self->{cfg}->{show_kickline}) {
+        if ($self->{cfg}->{showkickline}) {
             my $exttext = $self->_template_text('kicktext', %hash);
             _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
@@ -1034,7 +1030,6 @@ sub _mostfoul
 
     my @foul = sort { $spercent{$b} <=> $spercent{$a} } keys %spercent;
 
-
     if (@foul) {
 
         my %hash = (
@@ -1242,7 +1237,7 @@ sub _mostactions
             line    => htmlentities($self->{stats}->{actionlines}{$actions[0]})
         );
         my $text = $self->_template_text('action1', %hash);
-        if($self->{cfg}->{show_actionline}) {
+        if($self->{cfg}->{showactionline}) {
             my $exttext = $self->_template_text('actiontext', %hash);
             _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {

@@ -91,9 +91,9 @@
 
    <programlisting>
    <![CDATA[
-    <channel="#channel" logfile="channel.log">
-     format = "mIRC"
-     maintainer = "John"
+    <channel="#channel" LogFile="channel.log">
+     Format = "mIRC"
+     Maintainer = "John"
     </channel>
    ]]>
    </programlisting>
@@ -227,20 +227,20 @@
    <title>Reference for configuration options</title>
 
     <!-- *** CHANNEL *** -->
-    <refentry id="channel">
+    <refentry id="Channel">
 
-    <refmeta> <refentrytitle>channel</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>Channel</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>channel</refname>
+    <refname>Channel</refname>
     <refpurpose>define channel name</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         maintainer = "John"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         Faintainer = "John"
         </channel>
 
 
@@ -251,7 +251,7 @@
     <refsect1>
     <title>Description</title>
     <para>
-    <command>channel</command> is used in two contexts, globally when using
+    <command>Channel</command> is used in two contexts, globally when using
     &lt;set&gt; and when defining new channels. It sets the name of the
     channel.
     </para>
@@ -263,25 +263,25 @@
     </refentry>
 
     <!-- *** LOGSUFFIX *** -->
-    <refentry id="logsuffix">
+    <refentry id="LogSuffix">
 
-    <refmeta> <refentrytitle>logsuffix</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>LogSuffix</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>logsuffix</refname>
+    <refname>LogSuffix</refname>
     <refpurpose>Regex to sort logfiles by format month|day|year</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set logsuffix="\.\d\d([A-Za-z]+)\d\d\d\d||\.(\d\d)[A-Za-z]+\d\d\d\d||\.\d\d[A-Za-z]+(\d\d\d\d)">
+        <set LogSuffix="\.\d\d([A-Za-z]+)\d\d\d\d||\.(\d\d)[A-Za-z]+\d\d\d\d||\.\d\d[A-Za-z]+(\d\d\d\d)">
       ]]>
      </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>logsuffix</command> is used to define the suffix of a logfile,
+    <command>LogSuffix</command> is used to define the suffix of a logfile,
     it only works when <command>logdir</command> is defined. The example in
     the synopsis is for the eggdrop bots default foramt.
     </para>
@@ -293,30 +293,30 @@
     </refentry>
 
     <!-- *** FORMAT *** -->
-    <refentry id="format">
+    <refentry id="Format">
 
-    <refmeta> <refentrytitle>format</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>Format</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>format</refname>
+    <refname>Format</refname>
     <refpurpose>the logfile format</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "eggdrop"
-         maintainer = "John"
+        <channel="#channel" LogFile="channel.log">
+         Format = "eggdrop"
+         Maintainer = "John"
         </channel>
 
-        <set format="mIRC">
+        <set Format="mIRC">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>format</command> is used to define the format of the logfile,
+    <command>Format</command> is used to define the format of the logfile,
     pisg supports a various number of different logfiles, see the FORMATS
     file included with the pisg distribution.
     </para>
@@ -328,30 +328,30 @@
     </refentry>
 
     <!-- *** NETWORK *** -->
-    <refentry id="network">
+    <refentry id="Network">
 
-    <refmeta> <refentrytitle>network</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>Network</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>network</refname>
+    <refname>Network</refname>
     <refpurpose>the IRC network of the channel</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "eggdrop"
-         network = "Undernet"
+        <channel="#channel" LogFile="channel.log">
+         Format = "eggdrop"
+         Network = "Undernet"
         </channel>
 
-        <set network="Quakenet">
+        <set Network="Quakenet">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>network</command> is used to set the network which the channel
+    <command>Network</command> is used to set the network which the channel
     resides on, this name is displayed on the stats page.
     </para>
     </refsect1>
@@ -362,30 +362,30 @@
     </refentry>
 
     <!-- *** NETWORK *** -->
-    <refentry id="outputfile">
+    <refentry id="OutputFile">
 
-    <refmeta> <refentrytitle>outputfile</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>OutputFile</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>outputfile</refname>
+    <refname>OutputFile</refname>
     <refpurpose>name of the generated HTML page</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "eggdrop"
-         outputfile = "mychan.html"
+        <channel="#channel" LogFile="channel.log">
+         Format = "eggdrop"
+         OutputFile = "mychan.html"
         </channel>
 
-        <set outputfile="mychan.html">
+        <set OutputFile="mychan.html">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>outputfile</command> is used to define the name of the
+    <command>OutputFile</command> is used to define the name of the
     generated statistics page.
     </para>
     </refsect1>
@@ -396,30 +396,30 @@
     </refentry>
 
     <!-- *** MAINTAINER *** -->
-    <refentry id="maintainer">
+    <refentry id="Maintainer">
 
-    <refmeta> <refentrytitle>maintainer</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>Maintainer</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>maintainer</refname>
+    <refname>Maintainer</refname>
     <refpurpose>name of the maintainer</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         maintainer = "Benny"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         Maintainer = "Benny"
         </channel>
 
-        <set maintainer="Benny">
+        <set Maintainer="Benny">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>maintainer</command> is used to define the name of the
+    <command>Maintainer</command> is used to define the name of the
     maintaner of the statistics page, this can be either the person
     generating the stats or the bot/client doing the logging.
     The maintainer is displayed in the outputted stats page.
@@ -432,30 +432,30 @@
     </refentry>
 
     <!-- *** LANG *** -->
-    <refentry id="lang">
+    <refentry id="Lang">
 
-    <refmeta> <refentrytitle>lang</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>Lang</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>lang</refname>
+    <refname>Lang</refname>
     <refpurpose>define the language / translation to use</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         lang = "DE"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         Lang = "DE"
         </channel>
 
-        <set lang="FR">
+        <set Lang="FR">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>lang</command> is used to define the language translation to
+    <command>Lang</command> is used to define the language translation to
     use, if the language support is there, the text on the stats page will
     be outputted in that language. All supported languages is mentioned in
     the lang.txt file with the pisg distribution. Some of the languages
@@ -472,33 +472,33 @@
     <!-- *** PAGEHEAD *** -->
     <refentry id="pagehead">
 
-    <refmeta> <refentrytitle>pagehead</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>PageHead</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>pagehead</refname>
+    <refname>PageHead</refname>
     <refpurpose>define a file as page header</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         outputfile = "stats.html"
-         pagehead = "myheader.txt"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         OutputFile = "stats.html"
+         PageHead = "myheader.txt"
         </channel>
 
-        <set pagehead="someheader.txt">
+        <set PageHead="someheader.txt">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>pagehead</command> is used to include a file in the stats page,
+    <command>PageHead</command> is used to include a file in the stats page,
     for example an introduction text, a link to an image or a banner. The
     file can hold anything, it will be included raw in the stats page -
     so HTML should be preferred. The file will be included in the top of
-    the page. This option is the opposite of <command>pagefoot</command>.
+    the page. This option is the opposite of <command>PageFoot</command>.
 
     </para>
     </refsect1>
@@ -509,35 +509,35 @@
     </refentry>
 
     <!-- *** PAGEFOOT *** -->
-    <refentry id="pagefoot">
+    <refentry id="PageFoot">
 
-    <refmeta> <refentrytitle>pagefoot</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>PageFoot</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>pagefoot</refname>
+    <refname>PageFoot</refname>
     <refpurpose>define a file as page footer</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
          outputfile = "stats.html"
-         pagefoot = "myfooter.txt"
+         PageFoot = "myfooter.txt"
         </channel>
 
-        <set pagefoot="somefooter.txt">
+        <set PageFoot="somefooter.txt">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>pagefoot</command> is used to include a file in the stats page,
+    <command>PageFoot</command> is used to include a file in the stats page,
     for example an introduction text, a link to an image or a banner. The
     file can hold anything, it will be included raw in the stats page -
     so HTML should be preferred. The file will be included in the bottom of
-    the page. This option is the opposite of <command>pagehead</command>.
+    the page. This option is the opposite of <command>PageHead</command>.
     </para>
     </refsect1>
     <refsect1>
@@ -547,30 +547,30 @@
     </refentry>
 
     <!-- *** IMAGEPATH *** -->
-    <refentry id="imagepath">
+    <refentry id="ImagePath">
 
-    <refmeta> <refentrytitle>imagepath</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ImagePath</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>imagepath</refname>
+    <refname>ImagePath</refname>
     <refpurpose>path to user pictures</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         imagepath = "userpics/"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         ImagePath = "userpics/"
         </channel>
 
-        <set imagepath="alt_users/">
+        <set ImagePath="alt_users/">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>imagepath</command> defines an alternative path to where user
+    <command>ImagePath</command> defines an alternative path to where user
     pictures is located. The default is that user pictures is located in the
     same directory as the HTML page.
     </para>
@@ -582,30 +582,30 @@
     </refentry>
 
     <!-- *** DEFAULT_PIC *** -->
-    <refentry id="defaultpic">
+    <refentry id="DefaultPic">
 
-    <refmeta> <refentrytitle>default_pic</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>DefaultPic</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>default_pic</refname>
+    <refname>DefaultPic</refname>
     <refpurpose>use a default user picture</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         default_pic = "not_available.jpg"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         DefaultPic = "not_available.jpg"
         </channel>
 
-        <set default_pic="unknown.gif">
+        <set DefaultPic="unknown.gif">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    <command>default_pic</command> defines a picture to be displayed for all
+    <command>DefaultPic</command> defines a picture to be displayed for all
     users which have no other picture defined in the <command>user</command>
     element. This is good for showing "No picture available" or something.
     </para>
@@ -617,29 +617,29 @@
     </refentry>
 
     <!-- *** LOGDIR *** -->
-    <refentry id="logdir">
+    <refentry id="LogDir">
 
-    <refmeta> <refentrytitle>logdir</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>LogDir</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>logdir</refname>
+    <refname>LogDir</refname>
     <refpurpose>parse a directory full of logs</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logdir="/home/foo/eggdrop/logs/">
-         format = "eggdrop"
+        <channel="#channel" LogDir="/home/foo/eggdrop/logs/">
+         Format = "eggdrop"
         </channel>
 
-        <set logdir="dailylogs/">
+        <set LogDir="dailylogs/">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    When <command>logdir</command> is defined to valid path to a directory,
+    When <command>LogDir</command> is defined to valid path to a directory,
     then pisg will run through that directory, parse all logfiles in it and
     create 1 HTML from it. Useful with for example eggdrop logs.
     </para>
@@ -650,31 +650,31 @@
     </refsect1>
     </refentry>
 
-    <!-- *** PREFIX *** -->
-    <refentry id="prefix">
+    <!-- *** LogPrefix *** -->
+    <refentry id="LogPrefix">
 
-    <refmeta> <refentrytitle>prefix</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>LogPrefix</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>prefix</refname>
-    <refpurpose>only parse logs prefixed with a userdefined string</refpurpose>
+    <refname>LogPrefix</refname>
+    <refpurpose>only parse logs LogPrefixed with a userdefined string</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
         <channel="#channel" logdir="/home/foo/eggdrop/logs/">
-         format = "eggdrop"
-         prefix = "logjun"
+         Format = "eggdrop"
+         LogPrefix = "logjun"
         </channel>
 
-        <set prefix="logjanuary">
+        <set LogPrefix="logjanuary">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    When using the <command>logdir</command> option and you only want to use
+    When using the <command>LogDir</command> option and you only want to use
     a slew of the files in it, you can have pisg choose only files which are
     prefixed with a special string.
     </para>
@@ -686,24 +686,24 @@
     </refentry>
 
     <!-- *** TIMEOFFSET *** -->
-    <refentry id="timeoffset">
+    <refentry id="TimeOffset">
 
-    <refmeta> <refentrytitle>timeoffset</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>TimeOffset</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>timeoffset</refname>
+    <refname>TimeOffset</refname>
     <refpurpose>use a different time zone than the local machine</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         maintainer = "John"
-         timeoffset = "+5"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         Maintainer = "John"
+         TimeOffset = "+5"
         </channel>
 
-        <set timeoffset="+2">
+        <set TimeOffset="+2">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -713,7 +713,7 @@
     By default, pisg uses the time of the local machine to display the time
     of the generated stats. Sometimes when you have a shell on an external
     box, and it's in another country, you want to use another time. This is
-    accomplished by the <command>timeoffset</command> command.
+    accomplished by the <command>TimeOffset</command> command.
     </para>
     </refsect1>
     <refsect1>
@@ -723,23 +723,23 @@
     </refentry>
 
     <!-- *** SHOW_ACTIVETIMES *** -->
-    <refentry id="showactivetimes">
+    <refentry id="ShowActiveTimes">
 
-    <refmeta> <refentrytitle>show_activetimes</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowActiveTimes</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_activetimes</refname>
+    <refname>ShowActiveTimes</refname>
     <refpurpose>enable/disable "Most Active Times"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_activetimes = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowActiveTimes = "0"
         </channel>
 
-        <set show_activetimes="1">
+        <set ShowActiveTimes="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -757,23 +757,23 @@
     </refentry>
 
     <!-- *** SHOW_BIGNUMBERS *** -->
-    <refentry id="showbignumbers">
+    <refentry id="ShowBigNumbers">
 
-    <refmeta> <refentrytitle>show_bignumbers</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowBigNumbers</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_bignumbers</refname>
+    <refname>ShowBigNumbers</refname>
     <refpurpose>enable/disable "Big Numbers" sections</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_bignumbers = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowBigNumbers = "0"
         </channel>
 
-        <set show_bignumbers="1">
+        <set ShowBigNumbers="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -792,23 +792,23 @@
     </refentry>
 
     <!-- *** SHOW_TOPICS *** -->
-    <refentry id="showtopics">
+    <refentry id="ShowTopics">
 
-    <refmeta> <refentrytitle>show_topics</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowTopics</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_topics</refname>
+    <refname>ShowTopics</refname>
     <refpurpose>enable/disable "Latest topics" sections</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_topics = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowTopics = "0"
         </channel>
 
-        <set show_topics="1">
+        <set ShowTopics="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -826,23 +826,23 @@
     </refentry>
 
     <!-- *** SHOW_WPL *** -->
-    <refentry id="showwpl">
+    <refentry id="ShowWpl">
 
-    <refmeta> <refentrytitle>show_wpl</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowWpl</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_wpl</refname>
+    <refname>ShowWpl</refname>
     <refpurpose>enable/disable "words per line"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_wpl = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowWpl = "0"
         </channel>
 
-        <set show_wpl="1">
+        <set ShowWpl="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -861,23 +861,23 @@
     </refentry>
 
     <!-- *** SHOW_CPL *** -->
-    <refentry id="showcpl">
+    <refentry id="ShowCpl">
 
-    <refmeta> <refentrytitle>show_cpl</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowCpl</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_cpl</refname>
+    <refname>ShowCpl</refname>
     <refpurpose>enable/disable "characters per line"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_cpl = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowCpl = "0"
         </channel>
 
-        <set show_cpl="1">
+        <set ShowCpl="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -896,30 +896,30 @@
     </refentry>
 
     <!-- *** SHOW_WORDS *** -->
-    <refentry id="showwords">
+    <refentry id="ShowWords">
 
-    <refmeta> <refentrytitle>show_words</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowWords</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_words</refname>
+    <refname>ShowWords</refname>
     <refpurpose>enable/disable "number of words"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_words = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowWords = "0"
         </channel>
 
-        <set show_words="1">
+        <set ShowWords="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    The <command>show_words</command> option adds a column to the "Most
+    The <command>ShowWords</command> option adds a column to the "Most
     Active Nicks" list which list the total number of words a user has
     typed.
     </para>
@@ -930,24 +930,24 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_LASTSEEN *** -->
-    <refentry id="showlastseen">
+    <!-- *** ShowLastSeen *** -->
+    <refentry id="ShowLastSeen">
 
-    <refmeta> <refentrytitle>show_lastseen</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowLastSeen</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_lastseen</refname>
+    <refname>ShowLastSeen</refname>
     <refpurpose>show when a user was last seen on a channel</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_lastseen = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowLastSeen = "0"
         </channel>
 
-        <set show_lastseen="1">
+        <set ShowLastSeen="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -965,23 +965,23 @@
     </refentry>
 
     <!-- *** SHOW_TIME *** -->
-    <refentry id="showtime">
+    <refentry id="ShowTime">
 
-    <refmeta> <refentrytitle>show_time</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowTime</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_time</refname>
+    <refname>ShowTime</refname>
     <refpurpose>show when a nick was active</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_time = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowTime = "0"
         </channel>
 
-        <set show_time="1">
+        <set ShowTime="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1000,23 +1000,23 @@
     </refentry>
 
     <!-- *** SHOW_LINETIME *** -->
-    <refentry id="showlinetime">
+    <refentry id="ShowLineTime">
 
-    <refmeta> <refentrytitle>show_linetime</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowLineTime</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_linetime</refname>
+    <refname>ShowLineTime</refname>
     <refpurpose>mIRCStats like behaviour of timebar</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "bobot"
-         show_linetime = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "bobot"
+         ShowLineTime = "0"
         </channel>
 
-        <set show_linetime="1">
+        <set ShowLineTime="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1037,23 +1037,23 @@
     </refentry>
 
     <!-- *** SHOW_RANDQUOTE *** -->
-    <refentry id="showrandquote">
+    <refentry id="ShowRandQuote">
 
-    <refmeta> <refentrytitle>show_randquote</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowRandQuote</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_randquote</refname>
+    <refname>ShowRandQuote</refname>
     <refpurpose>enable or disable the random quotes</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "bobot"
-         show_randquote = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "bobot"
+         ShowRandQuote = "0"
         </channel>
 
-        <set show_randquote="1">
+        <set ShowRandQuote="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1072,23 +1072,23 @@
     </refentry>
 
     <!-- *** SHOW_LEGEND *** -->
-    <refentry id="showlegend">
+    <refentry id="ShowLegend">
 
-    <refmeta> <refentrytitle>show_legend</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowLegend</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_legend</refname>
+    <refname>ShowLegend</refname>
     <refpurpose>enable or disable the legend of the timebars</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "bobot"
-         show_legend = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "bobot"
+         ShowLegend = "0"
         </channel>
 
-        <set show_legend="1">
+        <set ShowLegend="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1106,23 +1106,23 @@
     </refentry>
 
     <!-- *** SHOW_KICKLINE *** -->
-    <refentry id="showkickline">
+    <refentry id="ShowKickLine">
 
-    <refmeta> <refentrytitle>show_kickline</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowKickLine</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_kickline</refname>
+    <refname>ShowKickLine</refname>
     <refpurpose>enable or disable the kickline</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "bobot"
-         show_kickline = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "bobot"
+         ShowKickLine = "0"
         </channel>
 
-        <set show_kickline="1">
+        <set ShowKickLine="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1140,23 +1140,23 @@
     </refentry>
 
     <!-- *** SHOW_ACTIONLINE *** -->
-    <refentry id="showactionline">
+    <refentry id="ShowActionLine">
 
-    <refmeta> <refentrytitle>show_actionline</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowActionLine</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_actionline</refname>
+    <refname>ShowActionLine</refname>
     <refpurpose>enable or disable the actionline</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "bobot"
-         show_actionline = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "bobot"
+         ShowActionLine = "0"
         </channel>
 
-        <set show_actionline="1">
+        <set ShowActionLine="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1174,23 +1174,23 @@
     </refentry>
 
     <!-- *** SHOW_SHOUTLINE *** -->
-    <refentry id="showshoutline">
+    <refentry id="ShowShoutLine">
 
-    <refmeta> <refentrytitle>show_shoutline</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowShoutLine</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_shoutline</refname>
+    <refname>ShowShoutLine</refname>
     <refpurpose>enable or disable the shoutline</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "bobot"
-         show_shoutline = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "bobot"
+         ShowShoutLine = "0"
         </channel>
 
-        <set show_shoutline="1">
+        <set ShowShoutLine="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1208,23 +1208,23 @@
     </refentry>
 
     <!-- *** SHOW_VIOLENTLINES *** -->
-    <refentry id="showviolentlines">
+    <refentry id="ShowViolentLines">
 
-    <refmeta> <refentrytitle>show_violentlines</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowViolentLines</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_violentlines</refname>
+    <refname>ShowViolentLines</refname>
     <refpurpose>enable or disable the violentlines</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "bobot"
-         show_violentlines = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "bobot"
+         ShowViolentLines = "0"
         </channel>
 
-        <set show_violentlines="1">
+        <set ShowViolentLines="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1242,23 +1242,23 @@
     </refentry>
 
     <!-- *** SHOW_MUW *** -->
-    <refentry id="showmuw">
+    <refentry id="ShowMuw">
 
-    <refmeta> <refentrytitle>show_muw</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowMuw</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_muw</refname>
+    <refname>ShowMuw</refname>
     <refpurpose>enable or disable "Most used words"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_muw = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowMuw = "0"
         </channel>
 
-        <set show_muw="1">
+        <set ShowMuw="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1276,23 +1276,23 @@
     </refentry>
 
     <!-- *** SHOW_MRN *** -->
-    <refentry id="showmrn">
+    <refentry id="ShowMrn">
 
-    <refmeta> <refentrytitle>show_mrn</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowMrn</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_mrn</refname>
+    <refname>ShowMrn</refname>
     <refpurpose>enable or disable "Most referenced nicks"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_mrn = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowMrn = "0"
         </channel>
 
-        <set show_mrn="1">
+        <set ShowMrn="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1310,23 +1310,23 @@
     </refentry>
 
     <!-- *** SHOW_MRU *** -->
-    <refentry id="showmru">
+    <refentry id="ShowMru">
 
-    <refmeta> <refentrytitle>show_mru</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowMru</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_mru</refname>
+    <refname>ShowMru</refname>
     <refpurpose>enable or disable "Most referenced URLs"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_mru = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowMru = "0"
         </channel>
 
-        <set show_mru="1">
+        <set ShowMru="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1344,23 +1344,23 @@
     </refentry>
 
     <!-- *** SHOW_VOICES *** -->
-    <refentry id="showvoices">
+    <refentry id="ShowVoices">
 
-    <refmeta> <refentrytitle>show_voices</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowVoices</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_voices</refname>
+    <refname>ShowVoices</refname>
     <refpurpose>enable or disable voice statistics</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_voices = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowVoices = "0"
         </channel>
 
-        <set show_voices="1">
+        <set ShowVoices="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1379,23 +1379,23 @@
     </refentry>
 
     <!-- *** SHOW_MOSTNICKS *** -->
-    <refentry id="showmostnicks">
+    <refentry id="ShowMostNicks">
 
-    <refmeta> <refentrytitle>show_mostnicks</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ShowMostNicks</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>show_mostnicks</refname>
+    <refname>ShowMostNicks</refname>
     <refpurpose>show who changed nick most often</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         show_mostnicks = "0"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         ShowMostNicks = "0"
         </channel>
 
-        <set show_mostnicks="1">
+        <set ShowMostNicks="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1404,7 +1404,7 @@
     <para>
     By enabling this option, pisg will add a section to the stats showing
     who had the most nicks, and what the nicks were. This option only works
-    properly when <command>nicktracking</command> is enabled.
+    properly when <command>NickTracking</command> is enabled.
     </para>
     </refsect1>
     <refsect1>
@@ -1414,23 +1414,23 @@
     </refentry>
 
     <!-- *** IGNOREWORDS *** -->
-    <refentry id="ignorewords">
+    <refentry id="IgnoreWords">
 
-    <refmeta> <refentrytitle>ignorewords</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>IgnoreWords</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>ignorewords</refname>
+    <refname>IgnoreWords</refname>
     <refpurpose>ignore specified words</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         ignorewords = "foo bar"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         IgnoreWords = "foo bar"
         </channel>
 
-        <set ignorewords="you me">
+        <set IgnoreWords="you me">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1449,23 +1449,23 @@
     </refentry>
 
     <!-- *** FOUL *** -->
-    <refentry id="foul">
+    <refentry id="FoulWords">
 
-    <refmeta> <refentrytitle>foul</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>FoulWords</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>foul</refname>
-    <refpurpose>specify words considered to be bad/foul language</refpurpose>
+    <refname>FoulWords</refname>
+    <refpurpose>specify words considered to be bad/FoulWords language</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         foul = "ass bitch"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         FoulWords = "ass bitch"
         </channel>
 
-        <set foul="slaps beats kick">
+        <set FoulWords="slaps beats kick">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1484,12 +1484,12 @@
     </refentry>
 
     <!-- *** REGEXP_ALIASES *** -->
-    <refentry id="regexpaliases">
+    <refentry id="RegexpAliases">
 
-    <refmeta> <refentrytitle>regexp_aliases</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>RegexpAliases</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>regexp_aliases</refname>
+    <refname>RegexpAliases</refname>
     <refpurpose>use regular expressions in user aliases</refpurpose>
     </refnamediv>
 
@@ -1497,7 +1497,7 @@
       <![CDATA[
         <user nick="Joe" alias="Joe\d+">
 
-        <set regexp_aliases="1">
+        <set RegexpAliases="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1515,18 +1515,18 @@
     </refentry>
 
     <!-- *** SILENT *** -->
-    <refentry id="silent">
+    <refentry id="Silent">
 
-    <refmeta> <refentrytitle>silent</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>Silent</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>silent</refname>
-    <refpurpose>make pisg silent, suppress messages</refpurpose>
+    <refname>Silent</refname>
+    <refpurpose>make pisg Silent, suppress messages</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set silent="1">
+        <set Silent="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1546,23 +1546,23 @@
     </refentry>
 
     <!-- *** CHARSET *** -->
-    <refentry id="charset">
+    <refentry id="Charset">
 
-    <refmeta> <refentrytitle>charset</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>Charset</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>charset</refname>
-    <refpurpose>charset to use for stats page</refpurpose>
+    <refname>Charset</refname>
+    <refpurpose>Charset to use for stats page</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         charset = "utf-8"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         Charset = "utf-8"
         </channel>
 
-        <set charset="iso-8859-15">
+        <set Charset="iso-8859-15">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1579,59 +1579,24 @@
     </refsect1>
     </refentry>
 
-    <!-- *** USE_ACTIVETIME_ALT *** -->
-    <refentry id="useactivetimealt">
+    <!-- *** MinQuote *** -->
+    <refentry id="MinQuote">
 
-    <refmeta> <refentrytitle>use_activetime_alt</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>use_activetime_alt</refname>
-    <refpurpose>alternative highlighting for "Most Active Times"</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         use_activetime_alt = "1"
-        </channel>
-
-        <set use_activetime_alt="0">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    Use an alternative way to highlight the number under the time bars, if
-    set to 1, will highlight the hour in which the stats were generated
-    instead of the default where the most active hour is highlighted.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> 0 (disabled) </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** MINQUOTE *** -->
-    <refentry id="minquote">
-
-    <refmeta> <refentrytitle>minquote</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>MinQuote</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>minquote</refname>
+    <refname>MinQuote</refname>
     <refpurpose>minimum numbers of letters for a random quote</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         minquote = "10"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         MinQuote = "10"
         </channel>
 
-        <set minquote="5">
+        <set MinQuote="5">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1650,24 +1615,24 @@
     </refsect1>
     </refentry>
 
-    <!-- *** MAXQUOTE *** -->
-    <refentry id="maxquote">
+    <!-- *** MaxQuote *** -->
+    <refentry id="MaxQuote">
 
-    <refmeta> <refentrytitle>maxquote</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>MaxQuote</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>maxquote</refname>
+    <refname>MaxQuote</refname>
     <refpurpose>maximum numbers of letters for a random quote</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         maxquote = "70"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         MaxQuote = "70"
         </channel>
 
-        <set maxquote="100">
+        <set MaxQuote="100">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1687,23 +1652,23 @@
     </refentry>
 
     <!-- *** WORDLENGTH *** -->
-    <refentry id="wordlength">
+    <refentry id="WordLength">
 
-    <refmeta> <refentrytitle>wordlength</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>WordLength</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>wordlength</refname>
+    <refname>WordLength</refname>
     <refpurpose>minimum number of characters in an interesting word</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "xchat"
-         wordlength = "10"
+        <channel="#channel" LogFile="channel.log">
+         Format = "xchat"
+         WordLength = "10"
         </channel>
 
-        <set wordlength="2">
+        <set WordLength="2">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1722,23 +1687,23 @@
     </refentry>
 
     <!-- *** ACTIVENICKS *** -->
-    <refentry id="activenicks">
+    <refentry id="ActiveNicks">
 
-    <refmeta> <refentrytitle>activenicks</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ActiveNicks</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>activenicks</refname>
+    <refname>ActiveNicks</refname>
     <refpurpose>nicks to show in "Most Active Nicks"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         activenicks = "50"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         ActiveNicks = "50"
         </channel>
 
-        <set activenicks="10">
+        <set ActiveNicks="10">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1756,23 +1721,23 @@
     </refentry>
 
     <!-- *** ACTIVENICKS2 *** -->
-    <refentry id="activenicks2">
+    <refentry id="ActiveNicks2">
 
-    <refmeta> <refentrytitle>activenicks2</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>ActiveNicks2</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>activenicks2</refname>
+    <refname>ActiveNicks2</refname>
     <refpurpose>nicks to show in "These didn't make it.."</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         activenicks2 = "25"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         ActiveNicks2 = "25"
         </channel>
 
-        <set activenicks2="10">
+        <set ActiveNicks2="10">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1790,23 +1755,23 @@
     </refentry>
 
     <!-- *** MOSTNICKSHISTORY *** -->
-    <refentry id="mostnickshistory">
+    <refentry id="MostNicksHistory">
 
-    <refmeta> <refentrytitle>mostnickshistory</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>MostNicksHistory</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>mostnickshistory</refname>
+    <refname>MostNicksHistory</refname>
     <refpurpose>maximum number of nicks to show in "most nicks"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         mostnickshistory = "2"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         MostNicksHistory = "2"
         </channel>
 
-        <set mostnickshistory="10">
+        <set MostNicksHistory="10">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1824,23 +1789,23 @@
     </refentry>
 
     <!-- *** TOPICHISTORY *** -->
-    <refentry id="topichistory">
+    <refentry id="TopicHistory">
 
-    <refmeta> <refentrytitle>topichistory</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>TopicHistory</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>topichistory</refname>
+    <refname>TopicHistory</refname>
     <refpurpose>maximum number of topics to show</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         topichistory = "2"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         TopicHistory = "2"
         </channel>
 
-        <set topichistory="10">
+        <set TopicHistory="10">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1858,23 +1823,23 @@
     </refentry>
 
     <!-- *** URLHISTORY *** -->
-    <refentry id="urlhistory">
+    <refentry id="UrlHistory">
 
-    <refmeta> <refentrytitle>urlhistory</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>UrlHistory</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>urlhistory</refname>
+    <refname>UrlHistory</refname>
     <refpurpose>maximum number of urls to show</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         urlhistory = "2"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         UrlHistory = "2"
         </channel>
 
-        <set urlhistory="10">
+        <set UrlHistory="10">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1892,23 +1857,23 @@
     </refentry>
 
     <!-- *** WORDHISTORY *** -->
-    <refentry id="wordhistory">
+    <refentry id="WordHistory">
 
-    <refmeta> <refentrytitle>wordhistory</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>WordHistory</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>wordhistory</refname>
+    <refname>WordHistory</refname>
     <refpurpose>maximum number of words to show</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         wordhistory = "5"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         WordHistory = "5"
         </channel>
 
-        <set wordhistory="15">
+        <set WordHistory="15">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1926,23 +1891,23 @@
     </refentry>
 
     <!-- *** NICKHISTORY *** -->
-    <refentry id="nickhistory">
+    <refentry id="NickHistory">
 
-    <refmeta> <refentrytitle>nickhistory</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>NickHistory</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>nickhistory</refname>
+    <refname>NickHistory</refname>
     <refpurpose>maximum number of nicks to show</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel" logfile="channel.log">
-         format = "mIRC"
-         nickhistory = "3"
+        <channel="#channel" LogFile="channel.log">
+         Format = "mIRC"
+         NickHistory = "3"
         </channel>
 
-        <set nickhistory="15">
+        <set NickHistory="15">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1960,18 +1925,18 @@
     </refentry>
 
     <!-- *** LANGFILE *** -->
-    <refentry id="langfile">
+    <refentry id="LangFile">
 
-    <refmeta> <refentrytitle>langfile</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>LangFile</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>langfile</refname>
+    <refname>LangFile</refname>
     <refpurpose>filename of language file</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set langfile="mylang.txt">
+        <set LangFile="mylang.txt">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1989,18 +1954,18 @@
     </refentry>
 
     <!-- *** NICKTRACKING *** -->
-    <refentry id="nicktracking">
+    <refentry id="NickTracking">
 
-    <refmeta> <refentrytitle>nicktracking</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>NickTracking</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>nicktracking</refname>
+    <refname>NickTracking</refname>
     <refpurpose>track nickchanges and create aliases</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set nicktracking="1">
+        <set NickTracking="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -2018,18 +1983,18 @@
     </refentry>
 
     <!-- *** LOGTYPE *** -->
-    <refentry id="logtype">
+    <refentry id="LogType">
 
-    <refmeta> <refentrytitle>logtype</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>LogType</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>logtype</refname>
+    <refname>LogType</refname>
     <refpurpose>type of log (not the format of the log)</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set logtype="Logfile">
+        <set LogType="Logfile">
       ]]>
     </programlisting></refsynopsisdiv>
 

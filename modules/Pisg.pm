@@ -32,6 +32,7 @@ sub new
         chans => {},
         users => {},
         cfg => {},
+        bwd => {},
         tmps => {},
     };
 
@@ -95,11 +96,12 @@ sub get_default_config_settings
         pagefoot => 'none',
         configfile => 'pisg.cfg',
         imagepath => '',
-        default_pic => '',
+        defaultpic => '',
         logdir => '',
         lang => 'en',
         langfile => 'lang.txt',
-        prefix => '',
+        logprefix => '',
+        logsuffix => '',
         silent => 0,
         userpics => 'y',
 
@@ -139,31 +141,30 @@ sub get_default_config_settings
 
         # Stats settings
 
-        show_activetimes => 1,
-        show_bignumbers => 1,
-        show_topics => 1,
-        show_linetime => 0,
-        show_time => 1,
-        show_words => 0,
-        show_wpl => 0,
-        show_cpl => 0,
-        show_lastseen => 0,
-        show_legend => 1,
-        show_kickline => 1,
-        show_actionline => 1,
-        show_shoutline => 1,
-        show_violentlines => 1,
-        show_randquote => 1,
-        show_muw => 1,
-        show_mrn => 1,
-        show_mru => 1,
-        show_voices => 0,
-        show_mostnicks => 0,
+        showactivetimes => 1,
+        showbignumbers => 1,
+        showtopics => 1,
+        showlinetime => 0,
+        showtime => 1,
+        showwords => 0,
+        showwpl => 0,
+        showcpl => 0,
+        showlastseen => 0,
+        showlegend => 1,
+        showkickline => 1,
+        showactionline => 1,
+        showshoutline => 1,
+        showviolentlines => 1,
+        showrandquote => 1,
+        showmuw => 1,
+        showmrn => 1,
+        showmru => 1,
+        showvoices => 0,
+        showmostnicks => 0,
 
         # Less important things
 
         timeoffset => '+0',
-        use_activetime_alt => 0,
         minquote => 25,
         maxquote => 65,
         wordlength => 5,
@@ -179,15 +180,44 @@ sub get_default_config_settings
 
         # Misc settings
 
-        foul => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
-        violent => 'slaps beats smacks',
+        foulwords => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
+        violentwords => 'slaps beats smacks',
         ignorewords => '',
         tablewidth => 614,
-        regexp_aliases => 0,
+        regexpaliases => 0,
 
         # Developer stuff
 
         version => "0.37-cvs",
+    };
+
+    # Backwards compatibility with old option names:
+    $self->{bwd} = {
+        default_pic => 'DefaultPic',
+        prefix => 'LogPrefix',
+        show_activetimes => 'ShowActiveTimes',
+        show_bignumbers => 'ShowBigNumbers',
+        show_topics => 'ShowTopics',
+        show_linetime => 'ShowLineTime',
+        show_time => 'ShowTime',
+        show_words => 'ShowWords',
+        show_wpl => 'ShowWpl',
+        show_cpl => 'ShowCpl',
+        show_lastseen => 'ShowLastSeen',
+        show_legend => 'ShowLegend',
+        show_kickline => 'ShowKickLine',
+        show_actionline => 'ShowActionLine',
+        show_shoutline => 'ShowShoutLine',
+        show_violentlines => 'ShowViolentLines',
+        show_randquote => 'ShowRandQuote',
+        show_muw => 'ShowMuw',
+        show_mrn => 'ShowMrn',
+        show_mru => 'ShowMru',
+        show_voices => 'ShowVoices',
+        show_mostnicks => 'ShowMostNicks',
+        foul => 'FoulWords',
+        violent => 'ViolentWords',
+        regexp_aliases => 'RegexpAliases',
     };
 
     # Parse the optional overriden configuration variables
@@ -231,13 +261,13 @@ sub get_language_templates
 sub init_words
 {
     my $self = shift;
-    $self->{cfg}->{foul} =~ s/(^\s+|\s+$)//g;
-    $self->{cfg}->{foul} =~ s/\s+/|/g;
+    $self->{cfg}->{foulwords} =~ s/(^\s+|\s+$)//g;
+    $self->{cfg}->{foulwords} =~ s/\s+/|/g;
     foreach (split /\s+/, $self->{cfg}->{ignorewords}) {
         $self->{cfg}->{ignoreword}{$_} = 1;
     }
-    $self->{cfg}->{violent} =~ s/(^\s+|\s+$)//g;
-    $self->{cfg}->{violent} =~ s/\s+/|/g;
+    $self->{cfg}->{violentwords} =~ s/(^\s+|\s+$)//g;
+    $self->{cfg}->{violentwords} =~ s/\s+/|/g;
 }
 
 sub init_config
@@ -265,9 +295,9 @@ sub init_config
                 if ($line =~ /alias="([^"]+)"/) {
                     my @thisalias = split(/\s+/, lc($1));
                     foreach (@thisalias) {
-                        if ($self->{cfg}->{regexp_aliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
+                        if ($self->{cfg}->{regexpaliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
                             add_aliaswild($nick, $_);
-                        } elsif (not $self->{cfg}->{regexp_aliases} and s/\*/\.\*/g) {
+                        } elsif (not $self->{cfg}->{regexpaliases} and s/\*/\.\*/g) {
                             # quote it if it is a wildcard
                             s/([\|\[\]\{\}\(\)\?\+\^\\])/\\$1/g;
                             add_aliaswild($nick, $_);
@@ -320,8 +350,16 @@ sub init_config
                     my $var = lc($1);
                     $var =~ s/ //; # Remove whitespace
                     if (!defined($self->{cfg}->{$var})) {
-                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
-                        next;
+                        if (defined($self->{bwd}->{$var})) {
+                            print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
+                            unless (($self->{cfg}->{lc($self->{bwd}->{$var})} eq $2) || $self->{override_cfg}->{lc($self->{bwd}->{$var})}) {
+                                $self->{cfg}->{$self->{bwd}->{$var}} = $2;
+                            }
+                            next;
+                        } else {
+                            print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
+                            next;
+                        }
                     }
                     unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
                         $self->{cfg}->{$var} = $2;
@@ -334,14 +372,24 @@ sub init_config
                 $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
                 while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
-                    $self->{chans}->{$channel}{$var} = $2;
+                    if (defined($self->{bwd}->{$var})) {
+                        print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
+                        $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
+                    } else {
+                        $self->{chans}->{$channel}{$var} = $2;
+                    }
                 }
                 while (<CONFIG>) {
                     last if ($_ =~ /<\/*channel>/i);
                     if ($_ =~ /^\s*(\w+)\s*=\s*["']([^"']*)["']/) {
                         my $var = lc($1);
                         unless ($self->{override_cfg}->{$var}) {
-                            $self->{chans}->{$channel}{$var} = $2;
+                            if (defined($self->{bwd}->{$var})) {
+                                print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
+                                $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
+                            } else {
+                                $self->{chans}->{$channel}{$var} = $2;
+                            }
                         }
                     } else {
                         print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";

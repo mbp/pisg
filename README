@@ -9,6 +9,9 @@ this distribution in the 'docs' directory.
 
 SETTING UP PISG
 ---------------
+Full documentation located in docs/pisg-doc.txt or docs/html/index.html for
+a HTML version. Quick explanation below:
+
 It's quite simple to set up pisg. You have 2 choices:
 
  * Set settings from commandline (try pisg.pl --help)
@@ -16,9 +19,6 @@ It's quite simple to set up pisg. You have 2 choices:
 
 If you look in the example pisg.cfg, you will see a small working sample
 where you can insert your own data.
-
-The most important things to set is the name of the logfile, the channel
-name, the format of your logfile and the maintainers name.
 
 The commandline version has the disadvantage that you can only set up one
 channel to be run.

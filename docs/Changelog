@@ -1,6 +1,16 @@
-pisg (?.??)
-   * 
-   * 
+pisg (0.37)
+   * Some HTML columns were missing their end-tag when no voices had been
+     made.
+   * There is now an "MostNicksHistory" option to define how many nicks you
+     want to have in the "Most Used Nicks" box
+   * The 'use_activetime_alt' option has been removed, not needed.
+   * Underscores in option names has been removed, but can still be used with
+     a small warning.
+   * prefix option has been renamed to LogPrefix
+   * It was not possible to use the logsuffix option before, it's now working
+     again.
+   * Remove CONFIG-README, obsoleted by new and better doc/pisg-doc.txt and
+     doc/html/index.html
 
 pisg (0.36) - Fri Feb, 8th 2002
    * Many translation updates (thanks all)
