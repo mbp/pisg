@@ -89,7 +89,7 @@ sub thirdline
               ) {
                 return 0;
             } else {
-                $hash{saying} =~ s/^$hash{nick} //;
+                $hash{saying} =~ s/^\Q$hash{nick}\E //;
                 return \%hash;
             }
 
