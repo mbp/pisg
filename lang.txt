@@ -1349,7 +1349,7 @@ long2 = "Kanalgenomsnittet i [:channel] var [:avg] tecken per rad"
 short1 = "<b>[:nick]</b> skrev kortast rader, med ett genomsnitt av [:letters] tecken per rad..."
 short2 = "[:nick] var också tystlåten, genomsnitt [:letters]"
 
-foul1 = "<b>[:nick]</b> borde tvätta munnen, [:per]% rader innehöll fula ord"
+foul1 = "<b>[:nick]</b> borde tvätta munnen, [:per]% av raderna innehöll fula ord"
 foul2 = "<b>[:nick]</b> får också sjömännen att rodna, [:per]% av tiden svors det"
 foul3 = "Ingen svor i [:channel]! Ute mycket?"
 foultext = "<b>Till exempel, såhär:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
