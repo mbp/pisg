@@ -1,11 +1,10 @@
 CREDITS goes to...
 --
 
-The developers:
+Major contributors:
 --
 Winfried Nessen <doomy@doomshammer.yi.org>
 Jamie Cheetham <jamie@softham.co.uk>
-Morten Brix Pedersen <morten@wtf.dk>
 Sam Bingner <sam@dhs.org>
 
 And all the other contributors:
@@ -77,6 +76,11 @@ And all the other contributors:
    | Slovenian translation
  * Gyuri Horak <dyuri@dyuri.sch.bme.hu>
    | Hungarian translation
+ * Pascal Brax <god@pascalbrax.com>
+   | Italian translation
+ * deadlock <deadlock@cheeseheadz.net>
+   | addalias.pl version 2, handling of users already in config file,
+     obsoletin of addalias.htm and more configurable script.
 
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
