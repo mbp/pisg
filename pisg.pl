@@ -983,6 +983,8 @@ sub template_text
         }
     }
 
+    $hash{channel} = $conf->{channel};
+
     foreach my $key (sort keys %hash) {
         $text =~ s/\[:$key\]/$hash{$key}/;
         $text =~ s/ü/&uuml;/g;
@@ -1902,7 +1904,6 @@ sub longlines
 
         if (@len >= 2) {
             %hash = (
-                channel => $conf->{channel},
                 avg => $totalaverage
             );
 
@@ -1989,11 +1990,7 @@ sub mostfoul
 
        html("</td></tr>");
     } else {
-        my %hash = (
-            channel => $conf->{channel}
-        );
-
-        my $text = template_text('foul3', %hash);
+        my $text = template_text('foul3');
 
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
@@ -2035,10 +2032,7 @@ sub mostsad
         }
         html("</td></tr>");
     } else {
-        my %hash = (
-            channel => $conf->{channel}
-        );
-        my $text = template_text('sad3', %hash);
+        my $text = template_text('sad3');
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
@@ -2070,13 +2064,11 @@ sub mostop
         }
         html("</td></tr>");
     } else {
-        my %hash = ( channel => $conf->{channel} );
-        my $text = template_text('mostop3', %hash);
+        my $text = template_text('mostop3');
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
     if (@deops) {
         my %hash = (
-            channel => $conf->{channel},
             nick => $deops[0],
             deops => $tookop{$deops[0]}
         );
@@ -2095,8 +2087,7 @@ sub mostop
         }
             html("</td></tr>");
     } else {
-        my %hash = ( channel => $conf->{channel} );
-        my $text = template_text('mostdeop3', %hash);
+        my $text = template_text('mostdeop3');
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
     }
 }
@@ -2178,11 +2169,8 @@ sub mostsmiles
         html("</td></tr>");
 
     } else {
-        my %hash = (
-            channel => $conf->{channel}
-        );
 
-        my $text = template_text('smiles3', %hash);
+        my $text = template_text('smiles3');
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
@@ -2274,13 +2262,11 @@ td {
 <div align="center">
 HTML
 my %hash = (
-    channel => $conf->{channel},
     network => $conf->{network},
     maintainer => $conf->{maintainer},
     time => $time,
     days => $days,
-    nicks => $nicks,
-    channel => $conf->{channel}
+    nicks => $nicks
 );
 print OUTPUT "<span class=\"title\">" . template_text('pagetitle1', %hash) . "</span><br>";
 print OUTPUT "<br>";
