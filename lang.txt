@@ -3333,8 +3333,8 @@ mostdevoice2 = "Ο/η <b>[:nick]</b> δεν πήγε πίσω, έκανε devoice σε [:devoices] χ
 mostdevoice3 = "Κανένα devoice δεν έγινε στο [:channel]!"
 
 mosthalfop1 = "Ο/η <b>[:nick]</b> έδωσε [:halfops] halfops στο κανάλι."
-mosthalfop2 = "Ο/η <b>[:nick]</b> was also very polite: [:halfops] halfops from [:him:her:]."
-mosthalfop3 = "Strange, no halfop was given on [:channel]!"
+mosthalfop2 = "Ο/η <b>[:nick]</b> ακολούθησε ευγενικά με [:halfops] halfops."
+mosthalfop3 = "Περίεργο, κανένα halfop δεν δώθηκε στο [:channel]!"
 
 mostdehalfop1 = "Ο/η <b>[:nick]</b> είναι ο σερίφης του καναλιού με [:dehalfops] dehalfops."
 mostdehalfop2 = "Ο/η <b>[:nick]</b> έκανε dehalfop σε [:dehalfops] χρήστες."
