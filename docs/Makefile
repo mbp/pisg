@@ -13,4 +13,4 @@ pisg.1: pisg.sgml
 	docbook-to-man $< > $@
 
 clean:
-	rm -f pisg-doc.txt pisg-doc.html
+	rm -f pisg-doc.txt pisg-doc.html pisg.1

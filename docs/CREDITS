@@ -106,6 +106,8 @@ Other contributors:
    | eggdrop-pisg.tcl for running pisg from eggdrop
  * Tiniduske <tiniduske@telenet.be>
    | updated Dutch translation
+ * Julien Danjou <acid@debian.org>
+   | pisg(1) manpage
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
