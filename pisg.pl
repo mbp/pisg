@@ -1295,7 +1295,7 @@ sub user_linetimes {
         }
     }
     debug("Length='$len', Sum='$debuglen'");
-    return "$bar$&nbsp;line{$nick}";
+    return "$bar&nbsp;$line{$nick}";
 }
 
 sub user_times {
