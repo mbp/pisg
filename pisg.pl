@@ -333,7 +333,8 @@ sub init_config
                 }
             } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
                 my ($channel, $settings) = ($1, $2);
-                $conf->{chan_done}{$conf->{channel}} = 1;             # don't parse channel in $conf->{channel} if a channel statement is present
+                $chans->{$channel}->{channel} = $channel;
+                $conf->{chan_done}{$conf->{channel}} = 1; # don't parse channel in $conf->{channel} if a channel statement is present
                 while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1);
                     $chans->{$channel}{$var} = $2;
