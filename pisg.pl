@@ -486,7 +486,6 @@ sub parse_file
                     $topics[$tcount]{topic} =~ s/^\'(.*)\'$/$1/;
                 } elsif (defined($newmode)) {
                     my @opchange = opchanges($newmode);
-                    unless (exists $gaveop{$nick}) { $gaveop{$nick} = 0 }
                     $gaveop{$nick} += $opchange[0] if $opchange[0];
                     $tookop{$nick} += $opchange[1] if $opchange[1];
                 } elsif (defined($newjoin)) {
@@ -591,7 +590,7 @@ sub parse_thirdline
     #   nick            - the nick
     #   kicker          - the nick which were kicked (if any)
     #   newtopic        - the new topic (if any)
-    #   newmode         - a deop or an op, must be '+o' or '-o'
+    #   newmode         - deops or ops, must be '+o' or '-o', or '+ooo'
     #   newjoin         - a new nick which has joined the channel
     #   newnick         - a person has changed nick and this is the new nick
     my $line = shift;
@@ -732,19 +731,10 @@ sub parse_thirdline
                 $hash{newtopic} = $9;
 
             } elsif (($4.$5) eq 'modechange') {
-				my $mode = $6;
-				my $kicker = $9;
-				if($mode =~ /([+-]o[ov])(\S+)(.*)/) {
-					my $modes = $1.$2;
-					$modes =~ s/v//g;
-					$hash{newmode} = $modes;
-					if($kicker =~ /(.*)' by (\S+)/) {
-						$hash{nick} = $2;
-					}
-				} else {
-	                $hash{newmode} = substr($6, 1);
-    	            $hash{nick} = substr($9, 1);
-				}
+                $hash{newmode} = substr($6, 1);
+                $hash{nick} = $9;
+                $hash{nick} =~ m/[by ](\S+)/g;
+                $hash{nick} = $1;
 
             } elsif ($5 eq 'joined') {
                 $hash{newjoin} = $1;
@@ -765,7 +755,6 @@ sub parse_thirdline
     }
 }
 
-
 sub opchanges
 {
     my @modes = split(//, $_[0]);
@@ -780,8 +769,7 @@ sub opchanges
         if ($plus) { $gaveop++ } else { $tookop++ }
     }
 
-    my @out = ($gaveop,$tookop);
-    return @out;
+    return ($gaveop,$tookop);
 }
 
 sub strip_mirccodes
