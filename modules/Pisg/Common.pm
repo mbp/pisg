@@ -34,7 +34,7 @@ sub add_alias {
     } elsif ($aliases{$lcnick} ne $aliases{$lcalias}) {
 	$debug->("Alias collision: alias $alias -> $aliases{$lcalias} but nick $nick -> $aliases{$lcnick}");
     }
-    $debug->("Alias added: $alias -> $aliases{$lcalias}");
+    #$debug->("Alias added: $alias -> $aliases{$lcalias}");
 }
 
 sub add_aliaswild {
