@@ -365,29 +365,19 @@ sub init_debug
 
 sub parse_dir
 {
+    # Add trailing slash when it's not there..
+    $conf->{logdir} =~ s/([^\/])$/$1\//;
+
     print "Going into $conf->{logdir} and parsing all files there...\n\n";
     my @filesarray;
     opendir(LOGDIR, $conf->{logdir}) or die("Can't opendir $conf->{logdir}: $!");
-    unless (@filesarray = readdir(LOGDIR)) {
-        die("No files in $conf->{logdir}!");
-    }
+    @filesarray = grep { /^[^\.]/ && /^$conf->{prefix}/ && -f "$conf->{logdir}/$_" } readdir(LOGDIR) or die("No files in \"$conf->{logdir}\" matched prefix \"$conf->{prefix}\"");
     close(LOGDIR);
-
-    # Add trailing slash when it's not there..
-    if (substr($conf->{logdir}, -1) ne '/') {
-        $conf->{logdir} =~ s/(.*)/$1\//;
-    }
     
-    my $parsed = 0;
-    foreach my $file (grep /^$conf->{prefix}/, @filesarray) {
-        unless ($file eq "." or $file eq "..") {
-            $file = $conf->{logdir} . $file;
-            parse_file($file);
-            $parsed = 1;
-        }
+    foreach my $file (@filesarray) {
+        $file = $conf->{logdir} . $file;
+        parse_file($file);
     }
-
-    die "No files matched prefix $conf->{prefix} in directory $conf->{logdir}" unless ($parsed);
 }
 
 sub parse_file
