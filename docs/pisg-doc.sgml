@@ -361,7 +361,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** NETWORK *** -->
+    <!-- *** OUTPUTFILE *** -->
     <refentry id="OutputFile">
 
     <refmeta> <refentrytitle>OutputFile</refentrytitle> </refmeta>
@@ -581,7 +581,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** DEFAULT_PIC *** -->
+    <!-- *** DEFAULTPIC *** -->
     <refentry id="DefaultPic">
 
     <refmeta> <refentrytitle>DefaultPic</refentrytitle> </refmeta>
@@ -722,7 +722,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_ACTIVETIMES *** -->
+    <!-- *** SHOWACTIVETIMES *** -->
     <refentry id="ShowActiveTimes">
 
     <refmeta> <refentrytitle>ShowActiveTimes</refentrytitle> </refmeta>
@@ -756,7 +756,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_BIGNUMBERS *** -->
+    <!-- *** SHOWBIGNUMBERS *** -->
     <refentry id="ShowBigNumbers">
 
     <refmeta> <refentrytitle>ShowBigNumbers</refentrytitle> </refmeta>
@@ -791,7 +791,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_TOPICS *** -->
+    <!-- *** SHOWTOPICS *** -->
     <refentry id="ShowTopics">
 
     <refmeta> <refentrytitle>ShowTopics</refentrytitle> </refmeta>
@@ -825,7 +825,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_WPL *** -->
+    <!-- *** SHOWWPL *** -->
     <refentry id="ShowWpl">
 
     <refmeta> <refentrytitle>ShowWpl</refentrytitle> </refmeta>
@@ -860,7 +860,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_CPL *** -->
+    <!-- *** SHOWCPL *** -->
     <refentry id="ShowCpl">
 
     <refmeta> <refentrytitle>ShowCpl</refentrytitle> </refmeta>
@@ -895,7 +895,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_WORDS *** -->
+    <!-- *** SHOWWORDS *** -->
     <refentry id="ShowWords">
 
     <refmeta> <refentrytitle>ShowWords</refentrytitle> </refmeta>
@@ -964,7 +964,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_TIME *** -->
+    <!-- *** SHOWTIME *** -->
     <refentry id="ShowTime">
 
     <refmeta> <refentrytitle>ShowTime</refentrytitle> </refmeta>
@@ -999,7 +999,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_LINETIME *** -->
+    <!-- *** SHOWLINETIME *** -->
     <refentry id="ShowLineTime">
 
     <refmeta> <refentrytitle>ShowLineTime</refentrytitle> </refmeta>
@@ -1036,7 +1036,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_RANDQUOTE *** -->
+    <!-- *** SHOWRANDQUOTE *** -->
     <refentry id="ShowRandQuote">
 
     <refmeta> <refentrytitle>ShowRandQuote</refentrytitle> </refmeta>
@@ -1071,7 +1071,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_LEGEND *** -->
+    <!-- *** SHOWLEGEND *** -->
     <refentry id="ShowLegend">
 
     <refmeta> <refentrytitle>ShowLegend</refentrytitle> </refmeta>
@@ -1105,7 +1105,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_KICKLINE *** -->
+    <!-- *** SHOWKICKLINE *** -->
     <refentry id="ShowKickLine">
 
     <refmeta> <refentrytitle>ShowKickLine</refentrytitle> </refmeta>
@@ -1139,7 +1139,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_ACTIONLINE *** -->
+    <!-- *** SHOWACTIONLINE *** -->
     <refentry id="ShowActionLine">
 
     <refmeta> <refentrytitle>ShowActionLine</refentrytitle> </refmeta>
@@ -1173,7 +1173,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_SHOUTLINE *** -->
+    <!-- *** SHOWSHOUTLINE *** -->
     <refentry id="ShowShoutLine">
 
     <refmeta> <refentrytitle>ShowShoutLine</refentrytitle> </refmeta>
@@ -1207,7 +1207,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_VIOLENTLINES *** -->
+    <!-- *** SHOWVIOLENTLINES *** -->
     <refentry id="ShowViolentLines">
 
     <refmeta> <refentrytitle>ShowViolentLines</refentrytitle> </refmeta>
@@ -1241,7 +1241,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_MUW *** -->
+    <!-- *** SHOWMUW *** -->
     <refentry id="ShowMuw">
 
     <refmeta> <refentrytitle>ShowMuw</refentrytitle> </refmeta>
@@ -1275,7 +1275,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_MRN *** -->
+    <!-- *** SHOWMRN *** -->
     <refentry id="ShowMrn">
 
     <refmeta> <refentrytitle>ShowMrn</refentrytitle> </refmeta>
@@ -1309,7 +1309,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_MRU *** -->
+    <!-- *** SHOWMRU *** -->
     <refentry id="ShowMru">
 
     <refmeta> <refentrytitle>ShowMru</refentrytitle> </refmeta>
@@ -1343,7 +1343,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_VOICES *** -->
+    <!-- *** SHOWVOICES *** -->
     <refentry id="ShowVoices">
 
     <refmeta> <refentrytitle>ShowVoices</refentrytitle> </refmeta>
@@ -1378,7 +1378,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** SHOW_MOSTNICKS *** -->
+    <!-- *** SHOWMOSTNICKS *** -->
     <refentry id="ShowMostNicks">
 
     <refmeta> <refentrytitle>ShowMostNicks</refentrytitle> </refmeta>
@@ -1448,7 +1448,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** FOUL *** -->
+    <!-- *** FOULWORDS *** -->
     <refentry id="FoulWords">
 
     <refmeta> <refentrytitle>FoulWords</refentrytitle> </refmeta>
@@ -1483,7 +1483,7 @@
     </refsect1>
     </refentry>
 
-    <!-- *** REGEXP_ALIASES *** -->
+    <!-- *** REGEXPALIASES *** -->
     <refentry id="RegexpAliases">
 
     <refmeta> <refentrytitle>RegexpAliases</refentrytitle> </refmeta>
