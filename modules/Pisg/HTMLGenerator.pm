@@ -1401,7 +1401,7 @@ sub _mostusedword
 
 
         my $count = 0;
-        for(my $i = 0; $count < 10; $i++) {
+        for(my $i = 0; $count < $self->{cfg}->{wordhistory}; $i++) {
             last unless $i < $#popular;
             # Skip nicks.  It's far more efficient to do this here than when
             # @popular is created.

@@ -296,6 +296,9 @@ topichistory        Maximum number of topics to show in 'latest topics'
 urlhistory          Maximum number of URLs to show in 'most referenced URLs'
                     (default: 5)
 
+wordhistory         Maximum number of words to show in 'Most used words'
+                    (default: 10)
+
 langfile            Filename of language file.
                     (default: lang.txt)
 
