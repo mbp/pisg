@@ -4,6 +4,8 @@ pisg (x.xx)
    than the actual number of logfiles.
    * Sanitize nicks in _activenicks (fixes problem reported by
    shr3kst3r@hushmail.com/Andreas Blaafladt).
+   * Added option BigNumbersThreshold to make previously undocumented behavior
+   configurable.
 
 pisg (0.56) - Sat Jun, 19th 2004
    * Fix parsing of energymech kick messages and modes (thanks, optika81)

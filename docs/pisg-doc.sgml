@@ -2208,6 +2208,42 @@
     </refsect1>
     </refentry>
 
+    <!-- *** BIGNUMBERSTHRESHOLD *** -->
+    <refentry id="BigNumbersThreshold">
+
+    <refmeta> <refentrytitle>BigNumbersThreshold</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>BigNumbersThreshold</refname>
+    <refpurpose>Minimum number of lines per user for some "Big Numbers" statistics</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         BigNumbersThreshold = "10"
+        </channel>
+
+        <set BigNumbersThreshold="10">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Pisg will ignore users with less than this setting lines in the "questions
+    asked", "shouts loudest", "CAPSLOCK", "longest line", "most sad", and "most
+    happy" sections.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 100 </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** ACTIVENICKS *** -->
     <refentry id="ActiveNicks">
 

@@ -671,7 +671,7 @@ sub _questions
 
     foreach my $nick (sort keys %{ $self->{stats}->{questions} }) {
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
-          if ($self->{stats}->{lines}{$nick} > 100) {
+          if ($self->{stats}->{lines}{$nick} > $self->{cfg}->{bignumbersthreshold}) {
               $qpercent{$nick} = ($self->{stats}->{questions}{$nick} / $self->{stats}->{lines}{$nick}) * 100;
               $qpercent{$nick} =~ s/(\.\d)\d+/$1/;
           }
@@ -713,7 +713,7 @@ sub _shoutpeople
 
     foreach my $nick (sort keys %{ $self->{stats}->{shouts} }) {
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
-          if ($self->{stats}->{lines}{$nick} > 100) {
+          if ($self->{stats}->{lines}{$nick} > $self->{cfg}->{bignumbersthreshold}) {
               $spercent{$nick} = ($self->{stats}->{shouts}{$nick} / $self->{stats}->{lines}{$nick}) * 100;
               $spercent{$nick} =~ s/(\.\d)\d+/$1/;
           }
@@ -757,7 +757,7 @@ sub _capspeople
 
     foreach my $nick (sort keys %{ $self->{stats}->{allcaps} }) {
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
-          if ($self->{stats}->{lines}{$nick} > 100) {
+          if ($self->{stats}->{lines}{$nick} > $self->{cfg}->{bignumbersthreshold}) {
               $cpercent{$nick} = $self->{stats}->{allcaps}{$nick} / $self->{stats}->{lines}{$nick} * 100;
               $cpercent{$nick} =~ s/(\.\d)\d+/$1/;
           }
@@ -1041,7 +1041,7 @@ sub _linelengths
 
     foreach my $nick (sort keys %{ $self->{stats}->{lengths} }) {
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
-          if ($self->{stats}->{lines}{$nick} > 100) {
+          if ($self->{stats}->{lines}{$nick} > $self->{cfg}->{bignumbersthreshold}) {
               $len{$nick} = $self->{stats}->{lengths}{$nick} / $self->{stats}->{lines}{$nick};
               $len{$nick} =~ s/(\.\d)\d+/$1/;
           }
@@ -1171,7 +1171,7 @@ sub _mostsad
 
     foreach my $nick (sort keys %{ $self->{stats}->{frowns} }) {
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
-          if ($self->{stats}->{lines}{$nick} > 100) {
+          if ($self->{stats}->{lines}{$nick} > $self->{cfg}->{bignumbersthreshold}) {
               $spercent{$nick} = $self->{stats}->{frowns}{$nick} / $self->{stats}->{lines}{$nick} * 100;
               $spercent{$nick} =~ s/(\.\d)\d+/$1/;
           }
@@ -1452,7 +1452,7 @@ sub _mostsmiles
 
     foreach my $nick (sort keys %{ $self->{stats}->{smiles} }) {
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
-          if ($self->{stats}->{lines}{$nick} > 100) {
+          if ($self->{stats}->{lines}{$nick} > $self->{cfg}->{bignumbersthreshold}) {
               $spercent{$nick} = $self->{stats}->{smiles}{$nick} / $self->{stats}->{lines}{$nick} * 100;
               $spercent{$nick} =~ s/(\.\d)\d+/$1/;
           }
