@@ -78,6 +78,7 @@ sub thirdline
 
         } elsif ($#line >= 4 && ($line[1].$line[2]) eq 'setsmode:') {
             $hash{newmode} = $line[3];
+            $hash{modechanges} = join(" ", splice(@line, 4));
 
         } elsif ($#line >= 1 && $line[0] eq 'Joins:') {
             $hash{nick} = $line[1];

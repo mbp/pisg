@@ -1,5 +1,5 @@
 pisg (x.xx)
-   * Fix parsing of energymech kick messages (thanks, optika81)
+   * Fix parsing of energymech kick messages and modes (thanks, optika81)
 
 pisg (0.55) - Sun May, 30th 2004
    * Added javabot support (thanks, Tobias Larsson)
