@@ -30,7 +30,8 @@ sub new
     $self->{parser} = $self->_choose_format($self->{cfg}->{format});
 
     if($self->{cfg}->{logcharsetfallback} and not $self->{cfg}->{logcharset}) {
-        print STDERR "Warning: LogCharset undefined, assuming LogCharset = LogCharsetFallback.\n";
+        print "LogCharset undefined, assuming LogCharset = LogCharsetFallback\n"
+            unless ($self->{cfg}->{silent});
         $self->{cfg}->{logcharset} = $self->{cfg}->{logcharsetfallback};
     }
 
@@ -46,7 +47,8 @@ sub new
                 $self->{iconvfallback} = Text::Iconv->new($self->{cfg}->{logcharsetfallback}, $self->{cfg}->{charset});
             }
         } else {
-            print STDERR "Text::Iconv is not available, skipping charset conversion of logfiles\n";
+            print "Text::Iconv is not installed, skipping charset conversion of logfiles\n"
+                unless ($self->{cfg}->{silent});
         }
     }
 
@@ -275,7 +277,8 @@ sub _parse_file
             if($line2) {
                 $line = $line2;
             } else {
-                print STDERR "Charset conversion failed for '$line'\n";
+                print "Charset conversion failed for '$line'\n"
+                    unless ($self->{cfg}->{silent});
             }
         }
 

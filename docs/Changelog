@@ -1,6 +1,7 @@
 pisg (0.62) - ??
    Changes by Christoph Berg:
    * Update mIRC script for the mIRC6hack format.
+   * Warnings about missing Text::Iconv are suppressed by 'silent'.
 
 pisg (0.61) - Sat Oct, 30th 2004
    Changes by Christoph Berg:

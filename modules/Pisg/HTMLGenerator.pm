@@ -33,7 +33,8 @@ sub new
             # convert from template charset to our
             $self->{iconv} = Text::Iconv->new($lang_charset, $self->{cfg}->{charset});
         } else {
-            print STDERR "Text::Iconv is not available, skipping charset conversion for language templates\n";
+            print "Text::Iconv is not installed, skipping charset conversion of language templates\n"
+                unless ($self->{cfg}->{silent});
         }
     }
 
