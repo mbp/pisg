@@ -1,27 +1,33 @@
-<html><body>
-<p>In this form you can enter the settings (aliases, link and userpic) for your nickname in the IRC-stats.<br>
-Nicknames are allowed only once.</p>
-<form action="../cgi-bin/addalias.pl" method="POST">
- <table>
-  <tr>
-   <td>Nickname: </td><td><input name="nick" type="text" width="30"></td>
-  </tr>
-  <tr>
-   <td>Aliases:<sup>*</sup> </td><td><input name="alias" type="text" width="30"></td>
-  </tr>
-  <tr>
-   <td>URL/Link: </td><td><input name="link" type="text" width="30"></td>
-  </tr>
-  <tr>
-   <td>Userpic: </td><td><input name="pic" type="text" width="30"></td>
-  </tr>
-  <tr>
-   <td><input type="checkbox" name="ignore"></td><td> Ignore?</td>
-  </tr>
-  <tr>
-   <td colspan="2"><center><input type="submit" value="Submit"></center></td>
-  </tr>
- </table>
-</form>
-<p><sup>*</sup>: If you want to set more then one alias, seperate them with a space... e.g. "Alias1 Alias2"</p>
-</body></html>
+<html>
+ <head>
+  <title>IRC statistics - user addition page</title>
+ </head>
+ <body>
+  <p>In this form you can enter the settings (aliases, link and user picture)
+  for your nickname in the IRC-stats.<br> Nicknames are allowed only once.</p>
+  <form action="../cgi-bin/addalias.pl" method="POST">
+   <table>
+    <tr>
+     <td>Nickname: </td><td><input name="nick" type="text" width="30"></td>
+    </tr>
+    <tr>
+     <td>Aliases:<sup>*</sup> </td><td><input name="alias" type="text" width="30"></td>
+    </tr>
+    <tr>
+     <td>URL/Link: </td><td><input name="link" type="text" width="30"></td>
+    </tr>
+    <tr>
+     <td>Userpic: </td><td><input name="pic" type="text" width="30"></td>
+    </tr>
+    <tr>
+     <td><input type="checkbox" name="ignore"></td><td> Ignore?</td>
+    </tr>
+    <tr>
+     <td colspan="2"><center><input type="submit" value="Submit"></center></td>
+    </tr>
+   </table>
+  </form>
+  <p><sup>*</sup>: If you want to set more then one alias, seperate them with
+  a space... e.g. "Alias1 Alias2"</p>
+ </body>
+</html>
