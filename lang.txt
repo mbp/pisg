@@ -379,6 +379,11 @@ mostop1 = "<b>[:nick]</b> a donné [:ops] ops sur le channel..."
 mostop2 = "<b>[:nick]</b> est aussi très poli : [:ops] ops de sa part"
 mostop3 = "Etrange, aucun op n'a été donné sur [:channel]!"
 
+action1 = "<b>[:nick]</b> aime bien faire savoir ce qu'il fait [:he:she:] deja: [:actions] actions!"
+action2 = "Egalement <b>[:nick]</b> qui n'est pas en reste avec [:actions] actions!"
+action3 = "Aucune action sur [:channel] !"
+actiontext = "<b>Exemple:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
 mostdeop1 = "<b>[:nick]</b> est le shérif avec [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs"
 mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
@@ -391,6 +396,20 @@ shout1 = "Le plus bruyant est <b>[:nick]</b> qui gueule [:per]% du temps!"
 shout2 = "Un autre <i>vieux raleur</i> est <b>[:nick]</b> qui braille [:per]% du temps!"
 shout3 = "Personne ne s'exclame ici, wow."
 
+allcaps1 = "IL semblerais que le CAPS-LOCK soit bloqué chez <b>[:nick]</b>, il/elle écrit en majuscule [:per]% du temps"
+allcaps2 = "<b>[:nick]</b> A oublié de désactiver son CAPS-LOCK, il/elle écrit en majuscule [:per]% du temps"
+allcaps3 = "tout les CAPS-LOCK sont sous control :)"
+allcapstext = "<b>Exemple:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> est une personne agressive, qui à déja slappé <b>[:slaps]</b> fois quelqu'un."
+violent2 = "<b>[:nick]</b> Ne peut controller son agressivitée. Il/elle a deja slappé <b>[:slaps]</b> fois quelqu'un."
+violent3 = "Personne ne slappe, tout le monde est sympa."
+violenttext = "<b>Exemple:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Pôvre <b>[:nick]</b>,Personne ne l'aime . Il/elle à été slappé <b>[:slaps]</b> fois."
+attacked2 = "<b>[:nick]</b> N'as pas l'air aprecié(e) non plus, Il/elle à deja été slappé <b>[:slaps]</b> fois."
+attackedtext = "<b>Exemple:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
 gotkick1 = "<b>[:nick]</b> n'est pas trés populaire, kické [:kicks] fois!"
 gotkick2 = "<b>[:nick]</b> n'a pas d'ami non plus, [:kicks] kicks reçus"
 kicktext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
@@ -401,11 +420,18 @@ kick1 = "<b>[:nick]</b> est malade ou alors aime bien jouer, son kick a sévi [:k
 kick2 = "Un disciple de [:oldnick], <b>[:nick]</b>, a kické [:kicked] personnes"
 kick3 = "Les ops sont sympas ici, personne n'a été kické!"
 
+words1 = "<b>[:nick]</b> à dit un total de [:words] mots!"
+words2 = "Et juste deriere [:oldnick], <b>[:nick]</b>, qui ne parle pas tant que ca, avec: [:words] mots."
+words3 = "Personne ne dit rien... quel channel étrange..."
+
 mono1 = "<b>[:nick]</b> se parle à lui-meme trés souvent, il a écrit plus de 5 lignes d'un coup à [:monos] reprises!"
 mono2 = "Un autre incompris est <b>[:nick]</b>, qui a tenté de le dépasser à [:monos] reprises"
 
 long1 = "<b>[:nick]</b> a écrit les lignes les plus longues, avec en moyenne [:letters] lettres par ligne..."
 long2 = "La moyenne sur [:channel] est de [:avg] lettres par ligne"
+
+wpl1 = "<b>[:nick]</b> ecrit en moyenne [:wpl] mots par ligne..."
+wpl2 = "La moyenne du channel est de [:avg] motd par ligne."
 
 short1 = "<b>[:nick]</b> a écrit les lignes les plus courtes, avec en moyenne [:letters] lettres par ligne..."
 short2 = "[:nick] n'a pas grand chose a dire non plus, en moyenne [:letters]"
@@ -422,6 +448,9 @@ sad1 = "<b>[:nick]</b> semble un peu triste en ce moment, [:per]% de ses lignes 
 sad2 = "<b>[:nick]</b> est aussi bien triste, il pleure [:per]% du temps"
 sad3 = "Personne n'est triste sur [:channel]! Quel channel merveilleux :-)"
 
+month = "Janvier Mars Avril Mai Juin Juillet Aout Semptembre Octobre Novembre Decembre"
+day = "Dimanche Lundi Mardi Mercredi Jeudi Vendredi Samedi"
+
 notopic = "Il n'y a jamais eu de topic sur ce channel"
 
 ## Topics
@@ -433,10 +462,13 @@ activetimestopic = "Les périodes d'intense activité"
 activenickstopic = "Les nicks les plus actifs"
 mostwordstopic = "Les mots les plus utilisés"
 referencetopic = "Les nicks les plus utilisés dans la conversation"
+urlstopic = "Les URLs les plus citées"
 
 ## Other text
 
 totallines = "Nombre total de lignes: [:lines]"
+totalnicks = "Il y a également eu [:totalnicks] autres nicks sur le channel"
+totaltopic = "Il y a eu [:total] Topic diférents sur le channel"
 nick = "Nick"
 url = "URL"
 numberlines = "Nombre de lignes"
@@ -445,6 +477,10 @@ userpic = "Image"
 nottop = "Ne sont pas dans le classement"
 word = "Mot"
 numberuses = "Nombre d'occurences"
+show_words = "Nombre de Mots"
+show_time = "Quand ?"
+show_wpl = "Mots par ligne"
+show_cpl = "Chars par ligne"
 lastused = "Dernière utilisation par"
 pagetitle1 = "[:channel] @ [:network] stats par [:maintainer]"
 pagetitle2 = "Statistiques générées le "
