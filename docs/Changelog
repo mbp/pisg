@@ -1,5 +1,6 @@
 pisg (x.xx)
    * Fix parsing of energymech kick messages and modes (thanks, optika81)
+   * Add colorscheme with traditional pisg (website) colors. Thanks, jarod.
 
 pisg (0.55) - Sun May, 30th 2004
    * Added javabot support (thanks, Tobias Larsson)

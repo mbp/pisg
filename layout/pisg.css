@@ -1,0 +1,133 @@
+/*
+
+http://pisg.sourceforge.net/ pisg css layout by mite. (mite@megalixer.com)
+
+Here is a pisg layout I made which matches the official pisg website @ http://pisg.sourcefourge.net/
+
+This file is edited from a modified version of one of the default layout files.
+I unfortuanantly don't recall which, as it's gone through many changes over the months.
+(My apologies.)
+
+I have tested this css with FireFox 0.8 and Internet Explorer 6.0 on Windows XP.
+Feel free to make changes to better suit other browsers.
+
+To obtain a better result, set the these pisg options in your cfg file:
+
+<set hicell="#EFEBEF">
+<set hicell2="#FFFFFF">
+
+
+ Enjoy the scheme,
+ mite (mite@megalixer.net)
+
+
+*/
+
+body {
+    font-family: verdana, tahoma, sans-serif;
+    font-size: 12px;
+    color: black;
+    color: #585858;
+    background-color: #FFFFFF;
+}
+
+a:link {
+    color: #0b407a;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #0b407a;
+    text-decoration: none;
+}
+
+a:visited:hover {
+    color: #0b407a;
+    text-decoration: underline;
+}
+
+a.background:link {
+    color: #0b407a;
+    text-decoration: none;
+}
+
+a.background:hover {
+    text-decoration: underline;
+}
+
+.asmall:link {
+    text-decoration: none;
+}
+
+.asmall:hover {
+    text-decoration: underline;
+}
+
+td {
+    background-color: white;
+    font-size: 12px;
+    font-family: verdana, tahoma, sans-serif;
+    color: black;
+    color: #585858;
+    max-width: 100%;
+}
+
+.title {
+    font-family: verdana, tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.headtext {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #FFFDBC;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+}
+
+.tdtop {
+    background-color: #F0F0F0;
+}
+
+
+.hicell {
+    background-color: #F0F0F0;
+}
+
+.hicell10 {
+    background-color: #F0F0F0;
+}
+
+.rankc {
+    background-color: #F0F0F0;
+}
+
+.hirankc {
+    background-color: #F0F0F0;
+    font-weight: bold;
+}
+
+.rankc10center {
+    background-color: #F0F0F0;
+    font-size: 10px;
+    text-align: center;
+}
+
+.hirankc10center {
+    background-color: #F0F0F0;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+}
+
+.small {
+    font-family: verdana, tahoma, sans-serif;
+}
