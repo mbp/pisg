@@ -231,6 +231,16 @@ link to the logfile)
  Example:
         [Sat 16 Mar 21:24:09] <pete> hello everybody
 
+* muh2:
+  - muh is a bouncer from muh.sf.net
+  - muh2 is for the new version 2.2, see 'muh' for older versions.
+  - In order to use this, format must be set to 'muh2'.
+
+Example:
+   [11:23] <boitl> Hello world
+   [11:24] * carmen means that she is nice
+
+
 * Energymech:
   - An irc bot written in C which is currently beeing developed.
 

@@ -1,6 +1,7 @@
 pisg (x.xx)
    * Make the HTML output XHTML compliant again (thanks, Stian Jordet)
    * Add a bullet conversion character to Common.pm (thanks, Stian Jordet)
+   * Support for muh2 logs (muh 2.2 and later) (thanks, Sebastian Erlhofer)
    * Add hebrew language translation (thanks, shimi)
    * Updated Icelandic translation (thanks, Einar Jonsson).
 
