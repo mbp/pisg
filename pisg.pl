@@ -24,29 +24,32 @@ use FindBin;
 
 sub main
 {
-    my $conf = get_cmdline_options();
-    push(@INC, $conf->{modules_dir});
+    my $cfg = get_cmdline_options();
+    push(@INC, $cfg->{modules_dir});
 
     my $pisg;
     eval <<END;
 
 use Pisg;
 
-\$pisg = new Pisg(\$conf);
+\$pisg = new Pisg(
+    use_configfile => '0',
+    override_cfg => \$cfg
+);
 \$pisg->run();
 END
     if ($@) {
         print $@;
     }
     if ($@) {
-        print STDERR "Could not load pisg!\n$@\n";
+        print STDERR "Could not load pisg! Reason:\n$@\n";
         return undef;
     }
 }
 
 sub get_cmdline_options
 {
-    my $conf = {
+    my $cfg = {
         modules_dir => $FindBin::Bin . "/modules",     # Module search path
     };
 
@@ -102,46 +105,27 @@ END_USAGE
         pisg.cfg, please use that instead [look in pisg.cfg]\n");
     }
 
-    if ($channel) {
-        $conf->{channel} = $channel;
-    }
+    if ($channel) { $cfg->{channel} = $channel; }
 
-    if ($logfile) {
-        $conf->{logfile} = $logfile;
-    }
+    if ($logfile) { $cfg->{logfile} = $logfile; }
 
-    if ($format) {
-        $conf->{format} = $format;
-    }
+    if ($format) { $cfg->{format} = $format; }
 
-    if ($network) {
-        $conf->{network} = $network;
-    }
+    if ($network) { $cfg->{network} = $network; }
 
-    if ($maintainer) {
-        $conf->{maintainer} = $maintainer;
-    }
+    if ($maintainer) { $cfg->{maintainer} = $maintainer; }
 
-    if ($outputfile) {
-        $conf->{outputfile} = $outputfile;
-    }
+    if ($outputfile) { $cfg->{outputfile} = $outputfile; }
 
-    if ($logdir) {
-        $conf->{logdir} = $logdir;
-    }
+    if ($logdir) { $cfg->{logdir} = $logdir; }
 
-    if ($prefix) {
-        $conf->{prefix} = $prefix;
-    }
+    if ($prefix) { $cfg->{prefix} = $prefix; }
 
-    if ($moduledir) {
-        $conf->{modules_dir} = $moduledir;
-    }
+    if ($moduledir) { $cfg->{modules_dir} = $moduledir; }
 
-    if ($configfile) {
-        $conf->{configfile} = $configfile;
-    }
-    return $conf;
+    if ($configfile) { $cfg->{configfile} = $configfile; }
+
+    return $cfg;
 
 }
 
