@@ -88,6 +88,7 @@ my $conf = {
     show_words => 0,
     show_wpl => 0,
     show_cpl => 0,
+    show_legend => 1,
 
     # Misc settings
 
@@ -1154,6 +1155,20 @@ sub activetimes
 }
 
     html("</tr></table>");
+
+    if($conf->{show_legend} == 1) {
+	&legend();
+    }
+}
+
+sub legend
+{
+    html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
+    html("<td align=\"center\"><img src=\"blue-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 0-6 h</td>");
+    html("<td align=\"center\"><img src=\"green-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 7-11 h</td>");
+    html("<td align=\"center\"><img src=\"yellow-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 12-17 h</td>");
+    html("<td align=\"center\"><img src=\"red-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 18-23 h</td>");
+    html("</tr></table>\n");
 }
 
 sub activenicks
