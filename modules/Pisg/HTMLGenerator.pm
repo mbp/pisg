@@ -118,13 +118,14 @@ sub create_html
         _html("</table>"); # Needed for sections
     }
 
-    $self->_headline($self->_template_text('latesttopic'));
-    _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
+    if ($self->{cfg}->{showtopics}) {
+        $self->_headline($self->_template_text('latesttopic'));
+        _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
 
-    $self->_lasttopics()
-        if ($self->{cfg}->{showtopics});
+        $self->_lasttopics();
 
-    _html("</table>"); # Needed for sections
+        _html("</table>"); # Needed for sections
+    }
 
     my %hash = ( lines => $self->{stats}->{totallines} );
     _html($self->_template_text('totallines', %hash) . "<br /><br />");

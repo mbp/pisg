@@ -3,6 +3,8 @@ pisg (x.xx)
      name in a wrong case wouldn't get counted.
    * Fix a bug in the mIRC format, where characters in the nick would be
      counted as mode changes.
+   * When ShowTopics was set to 0, the headline "Latest topics" was still
+     shown, fixed (thanks, Kean "zakarun" Pedersen)
 
 pisg (0.40) - Thu Jul, 4th 2002
    * The "It's Summer And The Sun Is Shining"-release.
