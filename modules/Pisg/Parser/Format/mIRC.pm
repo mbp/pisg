@@ -26,13 +26,9 @@ sub normalline
 
     if ($line =~ /$self->{normalline}/o) {
 
-        print "hour: $1\n";
-        print "nick $2\n";
-        print "saying $3\n";
         $hash{hour}   = $1;
         $hash{saying} = $3;
         ($hash{nick}  = $2) =~ s/^[@%\+]//o; # Remove prefix
-        print "saying.pm: $hash{saying}\n";
 
         return \%hash;
     } else {
