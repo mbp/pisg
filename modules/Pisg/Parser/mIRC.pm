@@ -86,7 +86,7 @@ sub thirdline
 	if (($4.$5) eq 'waskicked') {
 	    $hash{kicker} = $7;
 
-	} elsif (($4.$5) eq 'changestopic') {
+	} elsif (($4.$5) eq 'changes') {
 	    $hash{newtopic} = "$7 $8";
 
 	} elsif (($4.$5) eq 'setsmode:') {
