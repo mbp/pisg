@@ -498,7 +498,7 @@ sub parse_channels
     
     # make a list of channels to do
     my @chanlist;
-    if (defined $self->{cfg}->{cchannels}) {
+    if (scalar @ {$self->{cfg}->{cchannels} } > 0) {
         @chanlist = @{ $self->{cfg}->{cchannels} };
     } else {
         @chanlist = keys %{ $self->{chans} };
