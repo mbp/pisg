@@ -109,6 +109,7 @@ link to the logfile)
 
   Example:
   12/11/01 22:05:42 :Keitaro!KOala_v5@EVYRV4A4.ipt.aol.com PRIVMSG #alsa-station :Re all :-)
+
 * ircle:
   - IRC client for Mac OS X
 
@@ -118,3 +119,8 @@ link to the logfile)
 
   Example:
   6:35 PM:   Sinnikal: thats gross
+
+* infobot:
+  - bot written in Perl (http://www.infobot.org)
+
+  - In order to use this, format must be set to 'infobot'
