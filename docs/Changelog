@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.52) - Fri Feb, 13rd 2004
    * Fixed a bug in the energymech format, it did not recognize join lines.
    * Fixed some bugs in the mIRC6 format.
    * Backwards-compatibility for old option names (which became deprecated in
