@@ -101,7 +101,8 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused, %gotban,
 %setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %userpics,
-%userlinks, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent, %slap, %slapped, $slaps);
+%userlinks, %T, $repeated, $lastnormal, $foulwords, %shout, %spercent,
+%slap, %slapped, $slaps, %words);
 
 sub main
 {
@@ -413,6 +414,7 @@ sub parse_file
                         if ($saying =~ /\w+:\/\//);
 
                     foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
+                        $words{$nick}++;
                         # remove uninteresting words
                         next unless (length($word) >= $conf->{wordlength});
                         # ignore contractions
@@ -455,6 +457,16 @@ sub parse_file
                 my $len = length($saying);
                 $length{$nick} += $len;
                 $totallength += $len;
+                foreach my $word (split(/[\s,!?.:;)(]+/, $saying)) {
+                    $words{$nick}++;
+                    # remove uninteresting words
+                    next unless (length($word) > $conf->{wordlength});
+                    # ignore contractions
+                    next if ($word =~ m/'..?$/);
+
+                    $wordcount{htmlentities($word)}++ unless (grep /^\Q$word\E$/i, @ignore);
+                    $lastused{htmlentities($word)} = $nick;
+                }
             }
         }
 
@@ -845,7 +857,7 @@ sub template_text
     $text = $T{$conf->{lang}}{$template};
 
     if (!$text) {
-        die("No such template $template\n");
+        die("No such template '$template' in language file.\n");
     }
 
     foreach my $key (sort keys %hash) {
@@ -932,6 +944,7 @@ sub create_html
     mostsad();
     longlines();
     shortlines();
+    mostwords();
     html("</table>"); # Needed for sections
 
     mostusedword();
@@ -1420,6 +1433,38 @@ sub mostjoins
     }
 }
 
+sub mostwords
+{
+     # The person who got words the most
+
+     my @words = sort { $words{$b} <=> $words{$a} } keys %words;
+
+     if (@words) {
+         my %hash = (
+             nick => $words[0],
+             words => $words{$words[0]}
+         );
+
+         my $text = template_text('words1', %hash);
+         html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+
+         if (@words >= 2) {
+         my %hash = (
+             oldnick => $words[0],
+             nick => $words[1],
+             words => $words{$words[1]}
+         );
+
+         my $text = template_text('words2', %hash);
+             html("<br><span class=\"small\">$text</span>");
+         }
+         html("</td></tr>");
+     } else {
+         my $text = template_text('kick3');
+         html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
+     }
+
+}
 
 sub mostkicks
 {
