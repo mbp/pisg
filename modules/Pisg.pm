@@ -375,6 +375,10 @@ sub init_config
                         $self->{debug}->("Conf $channel: $var = $2");
                     }
                 }
+            } elsif ($line =~ /<set/) {
+                print STDERR "Warning: Malformed <set ..> line in $self->{cfg}->{configfile} on line $lineno\n";
+            } elsif ($line =~ /<channel/) {
+                print STDERR "Warning: Malformed <channel ..> line in $self->{cfg}->{configfile} on line $lineno\n";
             }
         }
 
