@@ -578,6 +578,10 @@ pagetitle3 = "Durant cette periode de [:days] jours, <b>[:nicks]</b> nicks diffé
 stats_gen_by = "Stats générées par [:pisg_url] v[:version]"
 author = "pisg de [:author_url] et autres"
 stats_gen_in = "Stats générées en [:time]"
+hours = "heures"
+minutes = "minutes"
+seconds = "secondes"
+and = "et"
 
 # Mouse-over titles
 pisghomepage = "Aller sur le site de pisg"
