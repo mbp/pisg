@@ -119,6 +119,13 @@ sub _htmlheader
 {
     my $self = shift;
     my $bgpic = "";
+    my %hash = (
+        network    => $self->{cfg}->{network},
+        maintainer => $self->{cfg}->{maintainer},
+        days       => $self->{stats}->{days},
+        nicks      => scalar keys %{ $self->{stats}->{lines} }
+    );
+    my $title = $self->_template_text('pagetitle1', %hash);
     if ($self->{cfg}->{bgpic}) {
         $bgpic = " background=\"$self->{cfg}->{bgpic}\"";
     }
@@ -127,7 +134,7 @@ sub _htmlheader
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$self->{cfg}->{charset}">
-<title>$self->{cfg}->{channel} @ $self->{cfg}->{network} channel statistics</title>
+<title>$title</title>
 <style type="text/css">
 a { text-decoration: none }
 a:link { color: $self->{cfg}->{link}; }
@@ -170,57 +177,51 @@ td {
 <body$bgpic>
 <div align="center">
 HTML
-my %hash = (
-    network    => $self->{cfg}->{network},
-    maintainer => $self->{cfg}->{maintainer},
-    days       => $self->{stats}->{days},
-    nicks      => scalar keys %{ $self->{stats}->{lines} }
-);
-print OUTPUT "<span class=\"title\">" . $self->_template_text('pagetitle1', %hash) . "</span><br>";
-print OUTPUT "<br>";
-print OUTPUT $self->_template_text('pagetitle2', %hash);
+    print OUTPUT "<span class=\"title\">$title</span><br>";
+    print OUTPUT "<br>";
+    print OUTPUT $self->_template_text('pagetitle2', %hash);
 
-sub timefix
-{
-    my $self = shift;
-    my ($timezone, $sec, $min, $hour, $mday, $mon, $year, $wday, $month, $day, $tday, $wdisplay, @month, @day, $timefixx, %hash);
+    sub timefix
+    {
+        my $self = shift;
+        my ($timezone, $sec, $min, $hour, $mday, $mon, $year, $wday, $month, $day, $tday, $wdisplay, @month, @day, $timefixx, %hash);
 
-    $month = $self->_template_text('month', %hash);
-    $day = $self->_template_text('day', %hash);
+        $month = $self->_template_text('month', %hash);
+        $day = $self->_template_text('day', %hash);
 
-    @month = split(" ", $month);
-    @day = split(" ", $day);
+        @month = split(" ", $month);
+        @day = split(" ", $day);
 
-    # Get the Date from the users computer
-    $timezone = $self->{cfg}->{timeoffset} * 3600;
-    ($sec,$min,$hour,$mday,$mon,$year,$wday) = localtime(time+$timezone);
+        # Get the Date from the users computer
+        $timezone = $self->{cfg}->{timeoffset} * 3600;
+        ($sec,$min,$hour,$mday,$mon,$year,$wday) = localtime(time+$timezone);
 
-    $year += 1900;                    # Y2K Patch
+        $year += 1900;                    # Y2K Patch
 
-    $min =~ s/^(.)$/0$1/;             # Fixes the display of mins/secs below
-    $sec =~ s/^(.)$/0$1/;             # it displays 03 instead of 3
+        $min =~ s/^(.)$/0$1/;             # Fixes the display of mins/secs below
+        $sec =~ s/^(.)$/0$1/;             # it displays 03 instead of 3
 
-    if ($hour > '23') {               # Checks to see if it Midnight
-        $hour = 12;                   # Makes it display the hour 12
-        $tday = "AM";                 # Display AM
-    } elsif($hour > '12') {           # Get rid of the Military time and
-        $hour -= 12;                  # put it into normal time
-        $tday = "PM";                 # If past Noon and before Midnight set
-    } else {
-        $tday = "AM";                 # If it's past Midnight and before Noon
-    }                                 # set the time as AM
+        if ($hour > '23') {               # Checks to see if it Midnight
+            $hour = 12;                   # Makes it display the hour 12
+            $tday = "AM";                 # Display AM
+        } elsif($hour > '12') {           # Get rid of the Military time and
+            $hour -= 12;                  # put it into normal time
+            $tday = "PM";                 # If past Noon and before Midnight set
+        } else {
+            $tday = "AM";                 # If it's past Midnight and before Noon
+        }                                 # set the time as AM
 
-    # Use 24 hours pr. day
-    if ($tday eq "PM" && $hour < '12') {
-        $hour += 12;
+        # Use 24 hours pr. day
+        if ($tday eq "PM" && $hour < '12') {
+            $hour += 12;
+        }
+
+        print OUTPUT "$day[$wday] $mday $month[$mon] $year - $hour:$min:$sec\n";
     }
 
-    print OUTPUT "$day[$wday] $mday $month[$mon] $year - $hour:$min:$sec\n";
-}
+    $self->timefix();
 
-$self->timefix();
-
-print OUTPUT "<br>" . $self->_template_text('pagetitle3', %hash) . "<br><br>";
+    print OUTPUT "<br>" . $self->_template_text('pagetitle3', %hash) . "<br><br>";
 
 }
 
