@@ -4,8 +4,16 @@ pisg (0.65) - ??
      though (thanks to Nico for the test log).
    * Fixed breakage when multiple LogDirs were given (thanks to Toni Viemerö
      for the report, SF tracker #1155433).
-   * Updated translations:
-      + French (thanks, Sébastien Bourgeois)
+   The "Christoph got bored in Ireland" changes:
+   * Get channel music charts with ShowCharts and ChartsHistory (suggested by
+     Sven in SF tracker #1164596).
+   * Made ShowLastSeen=1 and ShowMostActiveByHourGraph=1 default.
+   * More verbose config parser error messages.
+   * Most active nicks timebars have mouse-over titles.
+   * Update copyright years and add copyright and license to documentation.
+   Updated translations:
+   * French (thanks, Sébastien Bourgeois).
+   * Finnish (thanks, Sami Karuaho).
 
 pisg (0.64) - Thu Feb, 24th 2005
    Morten:

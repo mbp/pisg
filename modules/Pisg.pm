@@ -2,7 +2,8 @@ package Pisg;
 
 # Documentation(POD) for this module is found at the end of the file.
 
-# Copyright (C) 2001-2002  <Morten Brix Pedersen> - morten@wtf.dk
+# Copyright (C) 2001-2005  <Morten Brix Pedersen> - morten@wtf.dk
+# Copyright (C) 2003-2005  Christoph Berg <cb@df7cb.de>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -143,7 +144,7 @@ sub get_default_config_settings
         showwords => 0,
         showwpl => 0,
         showcpl => 0,
-        showlastseen => 0,
+        showlastseen => 1,
         showlegend => 1,
         showkickline => 1,
         showactionline => 1,
@@ -156,13 +157,14 @@ sub get_default_config_settings
         showmrn => 1,
         showkarma => 0,
         showmru => 1,
+        showcharts => 0,
         showops => 1,
         showvoices => 0,
         showhalfops => 0,
         showmostnicks => 0,
         showactivegenders => 0,
         showmostactivebyhour => 0,
-        showmostactivebyhourgraph => 0,
+        showmostactivebyhourgraph => 1,
         showonlytop => 0,
 
         # Less important things
@@ -173,11 +175,13 @@ sub get_default_config_settings
         quotewidth => 80,
         bignumbersthreshold => 'sqrt',
         wordlength => 5,
+        dailyactivity => 0,
         activenicks => 25,
         activenicks2 => 30,
         activenicksbyhour => 10,
         topichistory => 3,
         urlhistory => 5,
+        chartshistory => 5,
         nickhistory => 5,
         karmahistory => 5,
         wordhistory => 10,
@@ -196,6 +200,7 @@ sub get_default_config_settings
 
         foulwords => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
         violentwords => 'slaps beats smacks',
+        chartsregexp => '(?:np:|(?:now )?playing:? (?:MPEG stream from)?)\s*(.*)',
         ignorewords => '',
         noignoredquotes => 0,
         tablewidth => 574,
@@ -203,7 +208,6 @@ sub get_default_config_settings
 
         botnicks => '',            # Needed for DCpp format (non-irc)
 
-        dailyactivity => 0,
         version => "0.64",
     };
 
@@ -237,7 +241,8 @@ sub get_language_templates
                 last if ($_ =~ /<\/lang>/i);
 
                 # Get 'template = "Text"' in language file:
-                if ($_ =~ /(\w+)\s+=\s+"(.*)"\s*$/) {
+                if ($_ =~ /^(\w+)\s*=\s*"(.*)"\s*$/) {
+                    warn "duplicate translation $1 -> $2" if $self->{tmps}->{$current_lang}{$1};
                     $self->{tmps}->{$current_lang}{$1} = $2;
                 }
             }
@@ -361,7 +366,7 @@ sub init_config
 
                     }
                 } elsif ($_ !~ /^$/) {
-                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
+                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line: $_";
                 }
             }
         } elsif ($line =~ /<include\s*=\s*(["'])(.+?)\1\s*>/) {
@@ -382,7 +387,7 @@ sub init_config
             print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing end on element <$1 (probably multi-line?)\n";
         } elsif ($line =~ /\S/) {
             $line =~ s/\n//;
-            print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
+            print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line: $line\n";
         }
     }
 
@@ -467,7 +472,7 @@ _END
         }
 
         my $stats = $analyzer->analyze();
-        $self->{cfg}->{analyzer} = $analyzer;
+        $self->{cfg}->{analyzer} = $analyzer; # we need the parser in _format_line
 
         # Initialize HTMLGenerator object
         my $generator;

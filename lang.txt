@@ -20,7 +20,7 @@
 # (NL) Dutch - Jeroen van Nimwegen <jeroen.van.nimwegen@gmail.com> (2005-02-17)
 # (SE) Swedish - Andreas Henriksson <andreas@fjortis.info> (2005-01-12)
 # (FI) Finnish - Kirler@paincreators <kirler@paincreators.net>
-#      last update: 2005-01-12 by Sami Karuaho <sami.karuaho@kanetti.fi>
+#      last update: Sami Karuaho <sami.karuaho@kanetti.fi>( 2005-03-19)
 # (SI) Slovenian - Ales Tepina <??> (2005-01-09: bounces)
 # (HU) Hungarian - Gyuri Horak <??> (2005-01-09: bounces)
 # (EE) Estonian - Hannes Tarien <comcute@users.sf.net>
@@ -148,6 +148,7 @@ mostwordstopic = "Most used words"
 referencetopic = "Most referenced nicks"
 karmatopic = "[:channel] karma"
 urlstopic = "Most referenced URLs"
+chartstopic = "[:channel] Music Charts"
 notopic = "A topic was never set on this channel."
 mostnickstopic = "Users with most nicknames"
 bylinetopic = "[:date] on [:time] by [:nick]"
@@ -196,6 +197,9 @@ gender = "Gender"
 gender_f = "Female"
 gender_m = "Male"
 gender_b = "Bot"
+song = "Song"
+numberplayed = "How Often Played"
+playedby = "Last Played by"
 
 # Mouse-over titles
 pisghomepage = "Go to the pisg homepage"
@@ -312,6 +316,7 @@ mostwordstopic = "Am meisten benutzte Wörter"
 referencetopic = "Begehrte Nicks :)"
 karmatopic = "[:channel]-Karma"
 urlstopic = "Am meisten benutzte URLs"
+chartstopic = "Ohrwürmer auf [:channel]"
 notopic = "In diesem Channel wurde kein Topic gesetzt."
 bylinetopic = "[:date] um [:time] von [:nick]"
 dailyactivitytopic = "Tägliche Aktivität (letzte [:n] Tage)"
@@ -360,6 +365,9 @@ gender = "Geschlecht"
 gender_f = "Weiblich"
 gender_m = "Männlich"
 gender_b = "Bot"
+song = "Song"
+numberplayed = "Wie oft gespielt"
+playedby = "Zuletzt gespielt von"
 
 # Mouse-over titles
 pisghomepage = "pisg-Homepage öffnen"
@@ -1666,7 +1674,7 @@ mostdeop2 = "Sijaispomoksi pyrkii <b>[:nick]</b>: nöyryyttänyt muita [:deops] ke
 mostdeop3 = "Huh huh! [:channel] ei tällä kertaa rankaissut ketään!"
 
 mostvoice1 = "<b>[:nick]</b> antoi voiceja (+v) [:voices]:lle henkilölle"
-mostvoice2 = "Myös <b>[:nick]</b> voicetti ahkeraan: [:voices] kertaa!"
+mostvoice2 = "Myös <b>[:nick]</b> voicetti ahkerasti: [:voices] kertaa!"
 mostvoice3 = "Tällä kertaa [:channel]:n voicet on kiven alla..."
 
 mostdevoice1 = "<b>[:nick]</b> riisti irkkaajilta voiceja [:devoices]:sti!"
@@ -1787,7 +1795,7 @@ show_wpl = "Sanaa lauseessa"
 show_cpl = "Merkkiä lauseessa"
 show_lastseen = " Nähty viimeksi"
 lastused = "Viimeksi maininnut"
-lastseen1 = "[:days] päivä sitten" 
+lastseen1 = "Eilen" 
 lastseen2 = "[:days] päivää sitten"
 today = "Tänään"
 karma = "Karma"
@@ -1957,7 +1965,6 @@ pisghomepage = "Pojdi na domaco stran programa pisg"
 authorhomepage = "Pojdi na avtorjevo domaco stran"
 newwindow = "Odpri v novem oknu:"
 mailto = "Poslji mail na:"
-
 </lang>
 
 ### Hungarian (Magyar lengvidzsu szovegek)

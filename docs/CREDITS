@@ -13,7 +13,8 @@ Major contributors:
  * Christoph Berg <cb@df7cb.de>
    | NFiles and UserPics options, wildcards for random user pictures,
      wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords,
-     charset conversion support, BigNumbersThreshold option, karma ...
+     charset conversion support, BigNumbersThreshold option, karma, music
+     charts ...
 
 Other contributors:
 

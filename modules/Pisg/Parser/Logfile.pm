@@ -52,6 +52,7 @@ sub new
     $self->{foulwords_regexp} = qr/($self->{cfg}->{foulwords})/i if $self->{cfg}->{foulwords};
     $self->{ignorewords_regexp} = qr/$self->{cfg}->{ignorewords}/i if $self->{cfg}->{ignorewords};
     $self->{violentwords_regexp} = qr/^($self->{cfg}->{violentwords}) (\S+)(.*)/i if $self->{cfg}->{violentwords};
+    $self->{chartsregexp} = qr/^$self->{cfg}->{chartsregexp}/i if $self->{cfg}->{chartsregexp};
 
     return $self;
 }
@@ -351,7 +352,7 @@ sub _parse_file
 
                     if ($saying !~ /[a-z]/o && $saying =~ /[A-Z]/o) {
                         # Ignore single smileys on a line. eg. '<user> :P'
-                        if ($saying !~ /^[8;:=][ ^-o]?[)pPD}\]>]$/o) {
+                        if ($saying !~ /^[8;:=][ ^-o]?[)pPD\}\]>]$/o) {
                             $stats->{allcaps}{$nick}++;
                             push @{ $lines->{allcaplines}{$nick} }, $line;
                         }
@@ -362,13 +363,12 @@ sub _parse_file
                         push @{ $lines->{foullines}{$nick} }, $line;
                     }
 
-
                     # Who smiles the most?
                     # A regex matching al lot of smilies
                     $stats->{smiles}{$nick}++
-                        if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/o);
+                        if ($saying =~ /[8;:=][ ^-o]?[)pPD\}\]>]/o);
 
-                    if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/o and
+                    if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/\{]/o and
                         $saying !~ /\w+:\/\//o) {
                         $stats->{frowns}{$nick}++;
                     }
@@ -393,14 +393,28 @@ sub _parse_file
                         }
                     }
 
+                    if ($self->{cfg}->{showcharts}) {
+                        if ($saying =~ /$self->{chartsregexp}/i) {
+                            my $Song = $1;
+                            $Song =~ s/_/ /g;
+                            $Song =~ s/\d+ ?- ?//;
+                            $Song =~ s/\.mp3//g;
+                            $Song =~ s/ \.\.\.$//;
+                            my $song = lc $Song;
+                            $stats->{word_upcase}{$song} = $Song;
+                            $stats->{chartcounts}{$song}++;
+                            $stats->{chartnicks}{$song} = $nick;
+                        }
+                    }
+
                     if (my $s = $self->{users}->{sex}{$nick}) {
                         $stats->{sex_lines}{$s}++;
                         $stats->{sex_line_times}{$s}[int($hour/6)]++;
                     }
 
                     _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
-                }
-            }
+                } # ignored
+            } # repeated
             $lastnormal = $line;
             $repeated = 0;
         } # normal lines
@@ -457,6 +471,15 @@ sub _parse_file
                     }
                 }
 
+                if ($self->{cfg}->{showcharts}) {
+                    if ($saying =~ /$self->{chartsregexp}/i) {
+                        my $song = lc $1;
+                        $stats->{word_upcase}{$song} = $1;
+                        $stats->{chartcounts}{$song}++;
+                        $stats->{chartnicks}{$song} = $nick;
+                    }
+                }
+
                 $stats->{lengths}{$nick} += length($saying);
 
                 if (my $s = $self->{users}->{sex}{$nick}) {
@@ -465,7 +488,7 @@ sub _parse_file
                 }
 
                 _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
-            }
+            } # ignored
         } # action lines
 
         # Match *** lines.
@@ -684,7 +707,7 @@ sub _strip_mirccodes
 
 sub checkname {
     # This function tracks nickchanges and puts them all in a hash->array,
-    # so we can show all nicks that I user had later (only works properly
+    # so we can show all nicks that a user had later (only works properly
     # when nicktracking is enabled)
     my ($nick, $newnick, $stats) = @_;
 
@@ -742,7 +765,8 @@ Morten Brix Pedersen <morten@wtf.dk>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2001 Morten Brix Pedersen. All rights resereved.
+Copyright (C) 2001-2005 Morten Brix Pedersen. All rights resereved.
+Copyright (C) 2003-2005 Christoph Berg <cb@df7cb.de>.
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GPL, license is included with the distribution of
 this file.

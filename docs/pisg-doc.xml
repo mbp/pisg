@@ -1361,7 +1361,7 @@
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> 0 (disabled) </para>
+    <para> 1 (enabled) </para>
     </refsect1>
     </refentry>
 
@@ -1866,6 +1866,42 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWCHARTS *** -->
+    <refentry id="ShowCharts">
+
+    <refmeta> <refentrytitle>ShowCharts</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowCharts</refname>
+    <refpurpose>enable or disable channel music charts</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowCharts = "0"
+        </channel>
+
+        <set ShowCharts="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option set, pisg creates a chart listing of the top songs played
+    on the channel. See also <xref linkend="ChartsHistory" /> and
+    <xref linkend="ChartsRegexp" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWOPS *** -->
     <refentry id="ShowOps">
 
@@ -2197,7 +2233,7 @@
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> 0 (disabled) </para>
+    <para> 1 (enabled) </para>
     </refsect1>
     </refentry>
 
@@ -2755,6 +2791,76 @@
     <refsect1>
     <title>Default</title>
     <para> 5 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** CHARTSHISTORY *** -->
+    <refentry id="ChartsHistory">
+
+    <refmeta> <refentrytitle>ChartsHistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ChartsHistory</refname>
+    <refpurpose>number of songs to show</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         ChartsHistory = "10"
+        </channel>
+
+        <set ChartsHistory="5">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    This option sets the number of songs that will be show in the channel music
+    charts. See also <xref linkend="ShowCharts" /> and
+    <xref linkend="ChartsRegexp" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 5 (the Top Five) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** CHARTSREGEXP *** -->
+    <refentry id="ChartsRegexp">
+
+    <refmeta> <refentrytitle>ChartsRegexp</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ChartsRegexp</refname>
+    <refpurpose>how to recognize songs played</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         ChartsRegexp = "(?:np:|np - |playing )\s*"
+        </channel>
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    This option is a perl regexp that is used to recognize songs played. Please
+    tell the pisg mailing list if you have a better default. See also
+    <xref linkend="ShowCharts" /> and <xref linkend="ChartsHistory" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> "(?:np:|np - |playing )\s*" </para>
     </refsect1>
     </refentry>
 
@@ -3542,6 +3648,33 @@
     <para> Logfile </para>
     </refsect1>
     </refentry>
-</chapter>
+
+    </chapter>
+
+    <chapter id="copyright">
+    <title>Copyright and License</title>
+
+    <para>
+    pisg - Perl IRC Statistics Generator
+
+    Copyright (C) 2001-2005  Morten Brix Pedersen - &lt;morten at wtf.dk&gt;
+
+    Copyright (C) 2003-2005  Christoph Berg &lt;cb at df7cb.de&gt;
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    </para>
+    </chapter>
 
 </book>

@@ -149,6 +149,10 @@ sub create_output
         $self->_mosturls();
     }
 
+    if ($self->{cfg}->{showcharts}) {
+        $self->_charts();
+    }
+
     if ($self->{cfg}->{showbignumbers}) {
         $self->_headline($self->_template_text('othernumtopic'));
         _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
@@ -439,7 +443,7 @@ sub _activetimes
     # The most actives times on the channel
     my $self = shift;
 
-    my (%output, $class);
+    my (%output);
 
     $self->_headline($self->_template_text('activetimestopic'));
 
@@ -447,27 +451,17 @@ sub _activetimes
 
     my $highest_value = $self->{stats}->{times}{$toptime[0]};
 
-    my @now = localtime($self->{cfg}->{timestamp});
-
-    my $image;
-
     for my $hour (sort keys %{ $self->{stats}->{times} }) {
 
         my $size = int(($self->{stats}->{times}{$hour} / $highest_value) * 100);
         my $percent = ($self->{stats}->{times}{$hour} / $self->{stats}->{parsedlines}) * 100;
-        my $lines_per_hour = $self->{stats}->{times}{$hour};
         $percent =~ s/(\.\d)\d+/$1/;
+        my $lines_per_hour = $self->{stats}->{times}{$hour};
 
-        if ($size < 1) {
-            # Opera doesn't understand '0.xxxx' in the height="xx" attr,
-            # so we simply round up to 1 here.
-            $size = 1;
-        }
-
-        $image = "pic_v_".(int($hour/6)*6);
+        my $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines_per_hour\" title=\"$lines_per_hour\"/></td>\n";
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines_per_hour\" title=\"$lines_per_hour\"/></td>\n" if $size;
     }
 
     _html("<table border=\"0\"><tr>\n");
@@ -475,7 +469,7 @@ sub _activetimes
     for ($b = 0; $b < 24; $b++) {
         $a = sprintf("%02d", $b);
 
-        if (!defined($output{$a}) || $output{$a} eq "") {
+        if (!defined($output{$a})) {
             _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">0%</td>");
         } else {
             _html($output{$a});
@@ -485,17 +479,13 @@ sub _activetimes
     _html("</tr><tr>");
 
     # Remove leading zero
-    $toptime[0] =~ s/0(\d)/$1/;
+    $toptime[0] =~ s/^0//;
 
     for ($b = 0; $b < 24; $b++) {
-        if ($toptime[0] == $b) {
-            # Highlight the top time
-            $class = 'hirankc10center';
-        } else {
-            $class = 'rankc10center';
-        }
+        # Highlight the top time
+        my $class = $toptime[0] == $b ? 'hirankc10center' : 'rankc10center';
         _html("<td class=\"$class\" align=\"center\">$b</td>");
-}
+    }
 
     _html("</tr></table>");
 
@@ -1961,15 +1951,47 @@ sub _mosturls
             }
             $printurl = htmlentities($printurl, $self->{cfg}->{charset});
             my $linkurl = urlencode($sorturls[$i]);
-            my $class;
-            if ($a == 1) {
-                $class = 'hirankc';
-            } else {
-                $class = 'rankc';
-            }
+            my $class = ($a == 1) ? 'hirankc' : 'rankc';
             _html("<tr><td class=\"$class\">$a</td>");
             _html("<td class=\"hicell\"><a href=\"$linkurl\">$printurl</a></td>");
             _html("<td class=\"hicell\">$urlcount</td>");
+            _html("<td class=\"hicell\">$lastused</td>");
+            _html("</tr>");
+        }
+        _html("</table>");
+    }
+}
+
+sub _charts
+{
+    # List showing the most played songs
+    my $self = shift;
+
+    my @sortcharts = sort { $self->{stats}->{chartcounts}{$b} <=> $self->{stats}->{chartcounts}{$a} }
+                        keys %{ $self->{stats}->{chartcounts} };
+
+    if (@sortcharts) {
+
+        $self->_headline($self->_template_text('chartstopic'));
+
+        _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
+        _html("<td>&nbsp;</td><td class=\"tdtop\"><b>" . $self->_template_text('song') . "</b></td>");
+        _html("<td class=\"tdtop\"><b>" . $self->_template_text('numberplayed') . "</b></td>");
+        _html("<td class=\"tdtop\"><b>" . $self->_template_text('playedby') . "</b></td></tr>");
+
+        for(my $i = 0; $i < $self->{cfg}->{chartshistory}; $i++) {
+            last unless $i < @sortcharts;
+            my $a = $i + 1;
+            my $song = $sortcharts[$i];
+            my $chartcount = $self->{stats}->{chartcounts}{$song};
+            my $lastused = $self->{stats}->{chartnicks}{$song};
+            $song = $self->{stats}->{word_upcase}{$song};
+            $song = substr($song, 0, 60) if (length($song) > 60);
+            $song = $self->_format_word($song);
+            my $class = ($a == 1) ? 'hirankc' : 'rankc';
+            _html("<tr><td class=\"$class\">$a</td>");
+            _html("<td class=\"hicell\">$song</td>");
+            _html("<td class=\"hicell\">$chartcount</td>");
             _html("<td class=\"hicell\">$lastused</td>");
             _html("</tr>");
         }
@@ -2047,11 +2069,12 @@ sub _user_linetimes
     my $len      = ($self->{stats}->{lines}{$nick} / $self->{stats}->{lines}{$top}) * 100;
 
     for (my $i = 0; $i <= 3; $i++) {
-        next if not defined $self->{stats}->{line_times}{$nick}[$i];
-        my $w = int(($self->{stats}->{line_times}{$nick}[$i] / $self->{stats}->{lines}{$nick}) * $len);
+        my $l = $self->{stats}->{line_times}{$nick}[$i];
+        next if not defined $l;
+        my $w = int(($l / $self->{stats}->{lines}{$nick}) * $len);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"$self->{stats}->{line_times}{$nick}[$i]\" />";
+            $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"$l\" title=\"$l\" />";
         }
     }
     return "$bar&nbsp;$self->{stats}->{lines}{$nick}";
@@ -2089,11 +2112,12 @@ sub _user_times
     my $timestat = ($self->{cfg}->{sortbywords} ? 'word_times' : 'line_times');
     
     for (my $i = 0; $i <= 3; $i++) {
-        next if not defined $self->{stats}->{$timestat}{$nick}[$i];
-        my $w = int(($self->{stats}->{$timestat}{$nick}[$i] / $self->{stats}->{$itemstat}{$nick}) * 40);
+        my $l = $self->{stats}->{$timestat}{$nick}[$i];
+        next if not defined $l;
+        my $w = int(($l / $self->{stats}->{$itemstat}{$nick}) * 40);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\" />";
+            $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"$l\" title=\"$l\" />";
         }
     }
     return $bar;
@@ -2113,13 +2137,14 @@ sub _user_pic
     my $biguserpic = $self->{users}->{biguserpics}{$nick};
     if ($biguserpic) {
         $biguserpic = $self->{cfg}->{imagepath} .
-            randomglob($biguserpic, $self->{cfg}->{imageglobpath})
+            randomglob($biguserpic, $self->{cfg}->{imageglobpath}, $nick)
                 if $biguserpic !~ /^http:\/\//i;
         $output .= "<a href=\"$biguserpic\">";
     }
 
     my $pic = $self->{users}->{userpics}{$nick} || $self->{cfg}->{defaultpic};
-    $pic = $self->{cfg}->{imagepath} . randomglob($pic, $self->{cfg}->{imageglobpath})
+    $pic = $self->{cfg}->{imagepath} .
+        randomglob($pic, $self->{cfg}->{imageglobpath}, $nick)
         unless $pic =~ /^http:\/\//i;
     my $height = $self->{cfg}->{picheight} ? " height=\"$self->{cfg}->{picheight}\"" : "";
     my $width = $self->{cfg}->{picwidth} ? " width=\"$self->{cfg}->{picwidth}\"" : "";
@@ -2421,7 +2446,8 @@ Morten Brix Pedersen <morten@wtf.dk>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2001-2002 Morten Brix Pedersen. All rights reserved.
+Copyright (C) 2001-2005 Morten Brix Pedersen. All rights reserved.
+Copyright (C) 2003-2005 Christoph Berg <cb@df7cb.de>.
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GPL, license is included with the distribution of
 this file.
