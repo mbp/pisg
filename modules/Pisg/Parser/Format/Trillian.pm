@@ -29,6 +29,7 @@ sub normalline
         $hash{hour}   = $1;
         $hash{nick}   = remove_prefix($2);
         $hash{saying} = $3;
+        $hash{saying} =~ s/\(Link: ((http|https|ftp|telnet|news):\/\/.*?)\)\1/$1/;
 
         return \%hash;
     } else {
@@ -46,6 +47,7 @@ sub actionline
         $hash{hour}   = $1;
         $hash{nick}   = remove_prefix($2);
         $hash{saying} = $3;
+        $hash{saying} =~ s/\(Link: ((http|https|ftp|telnet|news):\/\/.*?)\)\1/$1/;
 
         return \%hash;
     } else {

@@ -16,6 +16,8 @@ pisg (x.xx)
      - ShowMostActiveByHourGraph
      - ActiveNicksByHour
      (thanks, Gissehel <gissehel-pisggene@giss.mine.nu>)
+   * A problem with links in trillian log formats has been fixed (thanks,
+     Hanno Hecker <hanno-pisg@bee.de>)
 
 pisg (0.38) - Thu Apr, 25th 2002
    * Grammar fixes in documentation (thanks, Azhrarn <diablo2@krock.com>)
