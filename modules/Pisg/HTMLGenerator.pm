@@ -365,11 +365,7 @@ sub _activenicks
     . ($self->{cfg}->{show_randquote} ? "<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>".$self->_template_text('randquote')."</b></td>" : "")
     );
 
-    if (scalar keys %{$self->{users}->{userpics}} > 0 or $self->{cfg}->{default_pic} ne '') {
-        _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('userpic') ."</b></td>");
-    }
 
-    _html("</tr>");
 
     my @active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} } keys %{ $self->{stats}->{lines} };
     my $nicks = scalar keys %{ $self->{stats}->{lines} };
@@ -377,6 +373,17 @@ sub _activenicks
     if ($self->{cfg}->{activenicks} > $nicks) {
         $self->{cfg}->{activenicks} = $nicks;
     }
+
+    my $have_userpics;
+    for (my $c = 0; $c < $self->{cfg}->{activenicks}; $c++) {
+        my $nick = $active[$c];
+        if ($self->{users}->{userpics}{$nick}) {
+            $have_userpics = 1;
+            _html("<td bgcolor=\"$self->{cfg}->{tdtop}\"><b>" . $self->_template_text('userpic') ."</b></td>");
+            last;
+        }
+    }
+    _html("</tr>");
 
     my ($nick, $visiblenick, $randomline, %hash);
     my $i = 1;
