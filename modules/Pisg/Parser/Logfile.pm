@@ -215,7 +215,7 @@ sub _parse_file
                     #Increment number of lines for repeated lines
                 }
 
-                $hour   = $hashref->{hour};
+                $hour   = $self->_adjusttimeoffset($hashref->{hour});
                 $nick   = find_alias($hashref->{nick});
                 checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
                 $saying = $hashref->{saying};
@@ -307,7 +307,7 @@ sub _parse_file
 
             my ($hour, $nick, $saying);
 
-            $hour   = $hashref->{hour};
+            $hour   = $self->_adjusttimeoffset($hashref->{hour});
             $nick   = find_alias($hashref->{nick});
             checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
             $saying = $hashref->{saying};
@@ -350,7 +350,7 @@ sub _parse_file
             my ($hour, $min, $nick, $kicker, $newtopic, $newmode, $newjoin);
             my ($newnick);
 
-            $hour     = $hashref->{hour};
+            $hour     = $self->_adjusttimeoffset($hashref->{hour});
             $min      = $hashref->{min};
             $nick     = find_alias($hashref->{nick});
             checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
@@ -522,6 +522,26 @@ sub checkname {
     }
 
     push (@{ $stats->{nicks}{$newnick} }, $nick);
+}
+
+sub _adjusttimeoffset
+{
+    my $self = shift;
+    my $hour = shift;
+
+    if ($self->{cfg}->{timeoffset} =~ /\+(\d+)/) {
+        # We must plus some hours to the time
+        $hour += $1;
+        $hour = $hour % 24;
+        if ($hour < 10) { $hour = "0" . $hour; }
+
+    } elsif ($self->{cfg}->{timeoffset} =~ /-(\d+)/) {
+        # We must remove some hours from the time
+        $hour -= $1;
+        $hour = $hour % 24;
+        if ($hour < 10) { $hour = "0" . $hour; }
+    }
+    return $hour;
 }
 
 1;

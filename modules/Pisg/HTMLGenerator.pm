@@ -315,8 +315,6 @@ sub _activetimes
             $size = 1.0;
         }
 
-        $hour = $self->_adjusttimeoffset($hour);
-
         $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
 
@@ -341,7 +339,7 @@ sub _activetimes
     $toptime[0] =~ s/0(\d)/$1/;
 
     for ($b = 0; $b < 24; $b++) {
-        if ($self->_adjusttimeoffset($toptime[0]) == $b) {
+        if ($toptime[0] == $b) {
             # Highlight the top time
             $class = 'hirankc10center';
         } else {
@@ -1659,27 +1657,6 @@ sub _mostnicks
         _html("</table>");
     }
 }
-
-sub _adjusttimeoffset
-{
-    my $self = shift;
-    my $hour = shift;
-
-    if ($self->{cfg}->{timeoffset} =~ /\+(\d+)/) {
-        # We must plus some hours to the time
-        $hour += $1;
-        $hour = $hour % 24;
-        if ($hour < 10) { $hour = "0" . $hour; }
-
-    } elsif ($self->{cfg}->{timeoffset} =~ /-(\d+)/) {
-        # We must remove some hours from the time
-        $hour -= $1;
-        $hour = $hour % 24;
-        if ($hour < 10) { $hour = "0" . $hour; }
-    }
-    return $hour;
-}
-
 
 1;
 
