@@ -1177,10 +1177,9 @@ sub _lasttopics
             my $nick = $stats->{topics}[$i]{nick};
             my $hour = $stats->{topics}[$i]{hour};
             my $min  = $stats->{topics}[$i]{min};
-            %hash = (
-                nick => $nick,
-                time => "$hour:$min"
-            );
+
+            $hash{nick} = $nick;
+            $hash{time} = "$hour:$min";
             _html("<tr><td bgcolor=\"$self->{cfg}->{hicell}\"><i>$topic</i></td>");
             _html("<td bgcolor=\"$self->{cfg}->{hicell}\">" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
         }
