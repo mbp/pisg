@@ -759,7 +759,7 @@ sub _capspeople
         my $text = $self->_template_text('allcaps1', %hash);
         if($self->{cfg}->{showshoutline}) {
             my $exttext = $self->_template_text('allcapstext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span>");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -799,7 +799,7 @@ sub _violent
         my $text = $self->_template_text('violent1', %hash);
         if($self->{cfg}->{showviolentlines}) {
             my $exttext = $self->_template_text('violenttext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span>");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -834,7 +834,7 @@ sub _violent
         my $text = $self->_template_text('attacked1', %hash);
         if($self->{cfg}->{showviolentlines}) {
             my $exttext = $self->_template_text('attackedtext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span>");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -872,7 +872,7 @@ sub _gotkicks
 
         if ($self->{cfg}->{showkickline}) {
             my $exttext = $self->_template_text('kicktext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span>");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -1122,7 +1122,7 @@ sub _mostfoul
 
         if($self->{cfg}->{showfoulline}) {
             my $exttext = $self->_template_text('foultext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span>");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -1404,7 +1404,7 @@ sub _mostactions
         my $text = $self->_template_text('action1', %hash);
         if($self->{cfg}->{showactionline}) {
             my $exttext = $self->_template_text('actiontext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span>");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -2063,13 +2063,13 @@ sub _mostactivebyhour
                 if ($nick) {
                     my $count=$self->{stats}->{line_times}{$nick}[$period];
                     if ($count) {
-                        _html("<td class=\"hicell\">".$nick." - ".$count);
-
+                        _html("<td class=\"hicell\">");
                         if ($self->{cfg}->{showmostactivebyhourgraph}) {
                             my $pic = 'pic_h_'.(6*$period);
-                            my $w = int(($count / $maxlines) * 100);
-                            _html("<br /><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />");
+                            my $w = int(($count / $maxlines) * 100) || 1;
+                            _html("<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />");
                         }
+                        _html($nick." - ".$count);
                         _html("</td>");
                     } else {
                         _html("<td class=\"hicell\">&nbsp;</td>");

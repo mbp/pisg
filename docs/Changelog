@@ -15,6 +15,7 @@ pisg (x.xx)
    changed in the above entry. (thanks, Christoph Berg)
    * RegexpAliases now also applies to IgnoreWords, FoulWords and
    ViolentWords. (thanks, Christoph Berg)
+   * Some minor layout changes (thanks, Christoph Berg)
 
 pisg (0.51) - Wed Jan, 21st 2004
    * Fixed a bug in the irssi format where an action could be recognized as a
