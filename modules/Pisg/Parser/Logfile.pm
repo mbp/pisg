@@ -605,14 +605,10 @@ sub _parse_words
         # Also ignore stuff from URLs.
         next if ($word =~ m/^https?$|^\/\//o);
 
-	# uniquify nicks
-	if (my $realnick = is_nick($word)) {
-            $stats->{wordcounts}{$realnick}++;
-            $stats->{wordnicks}{$realnick} = $nick;
-	} else {
-            $stats->{wordcounts}{$word}++;
-            $stats->{wordnicks}{$word} = $nick;
-	}
+        my $lcword = lc $word;
+        $stats->{wordcounts}{$lcword}++;
+        $stats->{wordnicks}{$lcword} = $nick;
+        $stats->{word_upcase}{$lcword} ||= $word; # remember first-seen case
     }
 }
 
@@ -643,13 +639,15 @@ sub _uniquify_nicks {
     my ($stats) = @_;
 
     foreach my $word (keys %{ $stats->{wordcounts} }) {
-        if (my $realnick = is_nick($word)) {
-	    # The lc() is an attempt at being case insensitive.
-	    if (lc($realnick) ne lc($word)) {
-	        $stats->{wordcounts}{$realnick} += $stats->{wordcounts}{$word};
-	        delete $stats->{wordcounts}{$word};
-	        delete $stats->{wordnicks}{$word};
-	    }
+        if (my $realnick = lc(is_nick($word))) {
+            if ($realnick ne $word) { # word is always lc
+                $stats->{wordcounts}{$realnick} += $stats->{wordcounts}{$word};
+                $stats->{wordnicks}{$realnick} ||= $stats->{wordnicks}{$word};
+                $stats->{word_upcase}{$realnick} ||= $stats->{word_upcase}{$word};
+                delete $stats->{wordcounts}{$word};
+                delete $stats->{wordnicks}{$word};
+                delete $stats->{word_upcase}{$word};
+            }
         }
     }
 }

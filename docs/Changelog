@@ -13,6 +13,7 @@ pisg (0.64) - ??
    * Made Logfile accept wildcards, sanitized NFiles behaviour on multiple
      LogDirs.
    * No "Userpic" headline was shown when there were only DefaultPics.
+   * Make "most used words" case-insensitive.
 
 pisg (0.63) - Wed Jan, 12th 2005
    Morten:

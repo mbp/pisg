@@ -1724,7 +1724,7 @@ sub _mostusedword
             next if is_ignored($popular[$i]);
 
             my $a = $count + 1;
-            my $popular = $self->_format_word($popular[$i]);
+            my $popular = $self->_format_word($self->{stats}->{word_upcase}{$popular[$i]});
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
             my $lastused = $self->_format_word($self->{stats}->{wordnicks}{$popular[$i]});
             my $class;
@@ -1810,7 +1810,8 @@ sub _mostreferencednicks
         for(my $i = 0; $i < $self->{cfg}->{nickhistory}; $i++) {
             last if $i >= @popular;
             my $a = $i + 1;
-            my $popular   = $self->_format_word($popular[$i]);
+            my $popular   = is_nick($popular[$i]) || $self->{stats}->{word_upcase}{$popular[$i]} || $popular[$i];
+            $popular      = $self->_format_word($popular[$i]);
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
             my $lastused  = $self->_format_word($self->{stats}->{wordnicks}{$popular[$i]} || "");
             # this is undefined when a nick is referenced before being used
