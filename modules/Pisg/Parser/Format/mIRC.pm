@@ -29,7 +29,7 @@ sub normalline
         $self->{debug}->("[$lines] Normal: $1 $2 $3");
 
         $hash{hour}   = $1;
-        $hash{nick}   = $2;
+        $hash{nick}   = remove_prefix($2);
         $hash{saying} = $3;
 
         return \%hash;
@@ -47,7 +47,7 @@ sub actionline
         $self->{debug}->("[$lines] Action: $1 $2 $3");
 
         $hash{hour}   = $1;
-        $hash{nick}   = $2;
+        $hash{nick}   = remove_prefix($2);
         $hash{saying} = $3;
 
         return \%hash;
@@ -70,7 +70,7 @@ sub thirdline
 
         $hash{hour} = $1;
         $hash{min}  = $2;
-        $hash{nick} = $3;
+        $hash{nick} = remove_prefix($3);
 
         if (($4.$5) eq 'waskicked') {
             $hash{kicker} = $7;
@@ -93,6 +93,17 @@ sub thirdline
     } else {
         return;
     }
+}
+
+sub remove_prefix
+{
+    my $str = shift;
+
+    $str =~ s/^@//;
+    $str =~ s/^\+//;
+
+    return $str;
+
 }
 
 1;
