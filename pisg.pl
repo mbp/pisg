@@ -777,13 +777,13 @@ sub parse_thirdline
             $hash{min} = $2;
 
             if ($3 eq '<') {
-                if  ($4 =~ /^([^!]+)!([\S+]) was kicked off (\S+) by ([^!]+)!(\S+) \(([^)]+)\)$/) {
-                    $hash{kicker} = $4;
+                if  ($4 =~ /^([^!]+)!\S+ was kicked off \S+ by ([^!]+)!/) {
+                    $hash{kicker} = $2;
                     $hash{nick} = $1;
                 }
 
             } elsif ($3 eq '>') {
-                if ($4 =~ /^([^!])+!(\S+) has joined (\S+)$/) {
+                if ($4 =~ /^([^!])+!\S+ has joined \S+$/) {
                     $hash{nick} = $1;
                     $hash{newjoin} = $1;
                 }
