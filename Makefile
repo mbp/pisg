@@ -1,6 +1,6 @@
-# Simple Makefile to make new releases of pisg (newreleases dir must exist)
+# Simple Makefile to make new releases of pisg
 
-VERSION = 0.20
+VERSION = 0.21
 
 DIRNAME = pisg-$(VERSION)
 
@@ -36,6 +36,7 @@ ADDALIAS = scripts/addalias/addalias.htm \
 	    scripts/addalias/README
 
 pisg:
+	mkdir -p newrelease
 	mkdir $(DIRNAME)
 	cp $(FILES) $(DIRNAME)
 	mkdir $(DIRNAME)/scripts
@@ -49,6 +50,4 @@ pisg:
 	mv pisg.zip newrelease/$(ZIPFILE)
 	mv $(DIRNAME) newrelease
 clean:
-	rm -r newrelease/$(DIRNAME)
-	rm newrelease/$(TARFILE)
-	rm newrelease/$(ZIPFILE)
+	rm -r newrelease/
