@@ -142,31 +142,35 @@ sub _parse_dir
         my ($mreg, $dreg, $yreg) = split(/\|\|/, $self->{cfg}->{logsuffix});
         my (@month, @day, @year);
         for my $file (@filesarray) {
-            $file =~ /$mreg/;
-            unless (defined $1) {
+            LOOPSTART:
+            if ($file =~ /$mreg/) {
+                my $month = $1;
+                $month = lc $month;
+                $month = $months{$month}
+                    if (defined $months{$month});
+                push @month, $month;
+            } else {
                 splice(@filesarray,$#month + 1, 1);
-                next;
+                $file = $filesarray[$#month + 1];
+                goto LOOPSTART;
             }
-            my $month = $1;
-            $month = lc $month;
-            $month = $months{$month}
-                if (defined $months{$month});
-            push @month, $month;
-            $file =~ /$dreg/;
-            unless (defined $1) {
+            if ($file =~ /$dreg/) {
+                push @day, $1;
+            } else {
                 splice(@filesarray,$#day + 1, 1);
                 splice(@month,$#day + 1);
-                next;
+                $file = $filesarray[$#day + 1];
+                goto LOOPSTART;
             }
-            push @day, $1;
-            $file =~ /$yreg/;
-            unless (defined $1) {
+            if ($file =~ /$yreg/) {
+                push @year, $1;
+            } else {
                 splice(@filesarray,$#year + 1, 1);
                 splice(@month,$#year + 1);
                 splice(@day,$#year + 1);
-                next;
+                $file = $filesarray[$#year + 1];
+                goto LOOPSTART;
             }
-            push @year, $1;
         }
         my @newarray = @filesarray[ sort {
                                     $year[$a] <=> $year[$b]
