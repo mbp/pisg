@@ -9,8 +9,8 @@ sub new
 {
     my ($type, %args) = @_;
     my $self = {
-        cfg => $args->{cfg},
-        debug => $args->{debug},
+        cfg => $args{cfg},
+        debug => $args{debug},
         normalline => '^\[(\d+):\d+\] <([^>]+)> (.*)',
         actionline => '^\[(\d+):\d+\] Action: (\S+) (.*)',
         thirdline  => '^\[(\d+):(\d+)\] (\S+) (\S+) (\S+) (\S+)(.*)',
