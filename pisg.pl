@@ -1775,8 +1775,8 @@ Example:
 
  \$ pisg.pl -n IRCnet -f xchat -o suid.html -ch \\#channel -l logfile.log
 
-As always, all options may also be defined by editing the source and calling
-pisg without arguments.
+All options may also be defined by editing the configuration file and
+calling pisg without arguments.
 
 END_USAGE
 #'
