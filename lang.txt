@@ -38,14 +38,14 @@ question1 = "Is <b>[:nick]</b> stupid or just asking too many questions?  [:per]
 question2 = "<b>[:nick]</b> didn't know that much either.  [:per]% of [:his:her:] lines were questions."
 question3 = "Nobody asked questions here; just geniuses in this channel?"
 
-loud1 = "The loudest one was <b>[:nick]</b>, who yelled [:per]% of the time!"
-loud2 = "Another <i>old yeller</i> was <b>[:nick]</b>, who shouted [:per]% of the time!"
-loud3 = "Nobody shouted at all, wow."
+shout1 = "The loudest one was <b>[:nick]</b>, who yelled [:per]% of the time!"
+shout2 = "Another <i>old yeller</i> was <b>[:nick]</b>, who shouted [:per]% of the time!"
+shout3 = "Nobody shouted at all, wow."
 
-shout1 = "It seem that <b>[:nick]</b>'s shift-key is hanging:  [:per]% of the time [:he:she:] wrote UPPERCASE."
-shout2 = "<b>[:nick]</b> just forgot to deactivate [:his:her:] Caps-Lock.  [:He:She:] wrote UPPERCASE [:per]% of the time."
-shout3 = "Everybody had their shift-key under control.  :)"
-shouttext = "<b>For example, like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+allcaps1 = "It seem that <b>[:nick]</b>'s shift-key is hanging:  [:per]% of the time [:he:she:] wrote UPPERCASE."
+allcaps2 = "<b>[:nick]</b> just forgot to deactivate [:his:her:] Caps-Lock.  [:He:She:] wrote UPPERCASE [:per]% of the time."
+allcaps3 = "Everybody had their shift-key under control.  :)"
+allcapstext = "<b>For example, like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 
 violent1 = "<b>[:nick]</b> is a very aggresive person.  [:He:She:] attacked others <b>[:attacks]</b> times."
@@ -154,14 +154,14 @@ question1 = "<b>[:nick]</b> hat wohl in der Schule nicht gut aufgepasst... [:per
 question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% [:seiner:ihrer:] Zeilen waren Fragen."
 question3 = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Genies sein? ;)"
 
-loud1 = "Am lautesten war <b>[:nick]</b> der/die [:per]% der Zeit geschrien hat!"
-loud2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> [:der:die:] [:per]% der Zeit rumgeschrieen hat!"
-loud3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
+shout1 = "Am lautesten war <b>[:nick]</b> der/die [:per]% der Zeit geschrien hat!"
+shout2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> [:der:die:] [:per]% der Zeit rumgeschrieen hat!"
+shout3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
 
-shout1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb [:er:sie:] in GROSSBUCHSTABEN."
-shout2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von [:ihm:ihr:] kamen [:per]% der Zeit GROSSBUCHSTABEN."
-shout3 = "Alle hatten ihre Shift-Taste gut unter kontrolle :)"
-shouttext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+allcaps1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb [:er:sie:] in GROSSBUCHSTABEN."
+allcaps2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von [:ihm:ihr:] kamen [:per]% der Zeit GROSSBUCHSTABEN."
+allcaps3 = "Alle hatten ihre Shift-Taste gut unter kontrolle :)"
+allcapstext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> ist etwas agressiv. [:Er:Sie:] schlug <b>[:attacks]</b> mal wild um sich herum."
 violent2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halten, <b>[:attacks]</b> Schläge von [:ihm:ihr:]."
@@ -268,9 +268,9 @@ question1 = "<b>[:nick]</b> må være rimelig dum eller efterligner bare Spørge-Jø
 question2 = "<b>[:nick]</b> var heller ingen Einstein, [:per]% af hans linjer var også spørgsmål"
 question3 = "Ingen spørgsmål på denne kanal. De må sørme være kloge!"
 
-loud1 = "Den mest larmende var <b>[:nick]</b>, som råbte [:per]% af tiden!"
-loud2 = "En anden skrigehals var <b>[:nick]</b>, som råbte [:per]% af tiden!"
-loud3 = "Der er ingen som råber. Leger de stilleleg?"
+shout1 = "Den mest larmende var <b>[:nick]</b>, som råbte [:per]% af tiden!"
+shout2 = "En anden skrigehals var <b>[:nick]</b>, som råbte [:per]% af tiden!"
+shout3 = "Der er ingen som råber. Leger de stilleleg?"
 
 gotkick1 = "<b>[:nick]</b> er ret upopulær, blev sparket ud [:kicks] gange!"
 gotkick2 = "<b>[:nick]</b> er heller ikke nogen Elvis, [:kicks] gange fik han sparket"
@@ -306,10 +306,10 @@ sad1 = "<b>[:nick]</b> er meget ked af det for tiden, [:per]% af linjerne havde 
 sad2 = "<b>[:nick]</b> er også en trist person, som græd [:per]% af tiden"
 sad3 = "Ingen er kede af det på [:channel]! Sikke en glad kanal :-)"
 
-shout1 = "Ser ud til at <b>[:nick]</b> har en voldsom trang til at råbe konstant, [:per]% af de gange han skrev var med stort" 
-shout2 = "<b>[:nick]</b> glemte vidst at Caps-Lock var slået til, [:per]% af de gange han skrev var med stort"
-shout3 = "Ser ud til at alle har deres shift under kontrol :)"
-shouttext = "<b>For eksempel sådan her: </b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+allcaps1 = "Ser ud til at <b>[:nick]</b> har en voldsom trang til at råbe konstant, [:per]% af de gange han skrev var med stort" 
+allcaps2 = "<b>[:nick]</b> glemte vidst at Caps-Lock var slået til, [:per]% af de gange han skrev var med stort"
+allcaps3 = "Ser ud til at alle har deres shift under kontrol :)"
+allcapstext = "<b>For eksempel sådan her: </b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 violent1 = "<b>[:nick]</b> er en meget aggresiv person, han delte <b>[:attacks]</b> slaps ud."
 violent2 = "<b>[:nick]</b> er ude af kontrol. Han/Hun slog andre folk <b>[:attacks]</b> gang(e)."
@@ -387,9 +387,9 @@ question1 = "<b>[:nick]</b> est soit stupide soit trop curieux... [:per]% de ses
 question2 = "<b>[:nick]</b> n'en connait pas davantage, [:per]% de ses lignes étaient des questions"
 question3 = "Personne ne pose de question ici, tous des génies sur ce channel?"
 
-loud1 = "Le plus bruyant est <b>[:nick]</b> qui gueule [:per]% du temps!"
-loud2 = "Un autre <i>vieux raleur</i> est <b>[:nick]</b> qui braille [:per]% du temps!"
-loud3 = "Personne ne s'exclame ici, wow."
+shout1 = "Le plus bruyant est <b>[:nick]</b> qui gueule [:per]% du temps!"
+shout2 = "Un autre <i>vieux raleur</i> est <b>[:nick]</b> qui braille [:per]% du temps!"
+shout3 = "Personne ne s'exclame ici, wow."
 
 gotkick1 = "<b>[:nick]</b> n'est pas trés populaire, kické [:kicks] fois!"
 gotkick2 = "<b>[:nick]</b> n'a pas d'ami non plus, [:kicks] kicks reçus"
@@ -465,13 +465,13 @@ question1 = "<b>[:nick]</b> necesitaba más horas de guardería cuando era pequeño
 question2 = "<b>[:nick]</b> tampoco se entera de mucho, el [:per]% de sus lineas son preguntas"
 question3 = "Nadie hace preguntas aquí, esto parece un canal de genios"
 
-loud1 = "Me parece que <b>[:nick]</b> está algo exaltado/a. Escribe con exclamaciones el [:per]% del tiempo!"
-loud2 = "A <b>[:nick]</b> tambien le gusta afirmar con rotundidad lo que dice. Escribe con exclamaciones el [:per]% del tiempo!"
-loud3 = "Nadie ha escrito frases con exclamaciones."
+shout1 = "Me parece que <b>[:nick]</b> está algo exaltado/a. Escribe con exclamaciones el [:per]% del tiempo!"
+shout2 = "A <b>[:nick]</b> tambien le gusta afirmar con rotundidad lo que dice. Escribe con exclamaciones el [:per]% del tiempo!"
+shout3 = "Nadie ha escrito frases con exclamaciones."
 
-shout1 = "A <b>[:nick]</b> se le ha atascado el bloqueo de mayusculas, el [:per]% del tiempo escribe CON ESTE ESTILO TAN PECULIAR"
-shout2 = "<b>[:nick]</b> debe tener vicio con la tecla shift, el [:per]% del tiempo hace lo mismo"
-shout3 = "Todo el mundo tiene su tecla shift bajo control :)"
+allcaps1 = "A <b>[:nick]</b> se le ha atascado el bloqueo de mayusculas, el [:per]% del tiempo escribe CON ESTE ESTILO TAN PECULIAR"
+allcaps2 = "<b>[:nick]</b> debe tener vicio con la tecla shift, el [:per]% del tiempo hace lo mismo"
+allcaps3 = "Todo el mundo tiene su tecla shift bajo control :)"
 
 violent1 = "<b>[:nick]</b> es el más agresivo del canal, ha repartido tortas <b>[:attacks]</b> veces."
 violent2 = "<b>[:nick]</b> tiene la mano floja. Ha repartido tortas <b>[:attacks]</b> veces."
@@ -567,9 +567,9 @@ question1 = "<b>[:nick]</b> jest glupi albo zadaje wiele pytan... [:per]% linii 
 question2 = "<b>[:nick]</b> rowniez nie wie zbyt wiele, [:per]% linii bylo pytaniami"
 question3 = "Nikt o nic nie pyta na kanale - czyzby sami geniusze?"
 
-loud1 = "Najglosniejszym okazal/a sie <b>[:nick]</b> krzyczac przez [:per]% czasu!"
-loud2 = "Kolejnym krzykaczem byl <b>[:nick]</b> ktory wrzeszczal przez [:per]% czasu!"
-loud3 = "Nikt nic nie wykrzykiwal na kanale, wow."
+shout1 = "Najglosniejszym okazal/a sie <b>[:nick]</b> krzyczac przez [:per]% czasu!"
+shout2 = "Kolejnym krzykaczem byl <b>[:nick]</b> ktory wrzeszczal przez [:per]% czasu!"
+shout3 = "Nikt nic nie wykrzykiwal na kanale, wow."
 
 gotkick1 = "<b>[:nick]</b> nie zalapal o co chodzilo operatorom za pierwszym razem i zostal wykopany [:kicks] razy!"
 gotkick2 = "<b>[:nick]</b> nie jest tu chyba zbyt lubiany - wylatywal [:kicks] razy"
@@ -645,9 +645,9 @@ question1 = "<b>[:nick]</b> er sikkert dum, hvis ikke bare litt nysgjerrig. [:pe
 question2 = "<b>[:nick]</b> skjønner heller ikke mye, [:per]% av hans/hennes linjer ser mistenkelig ut som spørsmål."
 question3 = "Ingen stilte noen spørsmål, er det bare glupinger her?"
 
-loud1 = "Den mest bråkete var såklart <b>[:nick]</b> som ropte [:per]% av tiden."
-loud2 = "En annen <i>bråkemaker</i> var <b>[:nick]</b> som ropte [:per]% av tiden."
-loud3 = "Finnes det ikke bråkemakere her? Kjekt."
+shout1 = "Den mest bråkete var såklart <b>[:nick]</b> som ropte [:per]% av tiden."
+shout2 = "En annen <i>bråkemaker</i> var <b>[:nick]</b> som ropte [:per]% av tiden."
+shout3 = "Finnes det ikke bråkemakere her? Kjekt."
 
 gotkick1 = "<b>[:nick]</b> ble kastet ut [:kicks] ganger og var neppe særlig populær."
 gotkick2 = "<b>[:nick]</b> stiller seg som en god nr 2, [:kicks] kicks er notert."
@@ -723,9 +723,9 @@ question1 = "<b>[:nick]</b> necessitava mais horas de estudo quando criança, [:p
 question2 = "<b>[:nick]</b> tampouco é muito inteligente, [:per]% de suas linhas são perguntas"
 question3 = "Ninguém fez perguntas aqui, apenas gênios neste canal?"
 
-loud1 = "A pessoa que mais gritou foi: <b>[:nick]</b> que escreve com exclamações em [:per]% do tempo!"
-loud2 = "Quem não fica atrás é <b>[:nick]</b>, que gritou [:per]% do tempo!"
-loud3 = "Ninguém escreveu frases exclamativas."
+shout1 = "A pessoa que mais gritou foi: <b>[:nick]</b> que escreve com exclamações em [:per]% do tempo!"
+shout2 = "Quem não fica atrás é <b>[:nick]</b>, que gritou [:per]% do tempo!"
+shout3 = "Ninguém escreveu frases exclamativas."
 
 gotkick1 = "<b>[:nick]</b> não tem sido muito popular, levou chute [:kicks] vezes!"
 gotkick2 = "<b>[:nick]</b> também tem sido odiado, [:kicks] foram recebidos"
@@ -800,13 +800,13 @@ question1 = "<b>[:nick]</b> is gewoon stom of verzint de vragen waar hij/zij bij
 question2 = "<b>[:nick]</b> is bijna net zo stom/blond en weet ook weinig, [:per]% van zijn/haar regels eindigde ook met ?"
 question3 = "Niemand vroeg wat hiero denken zeker allemaal dat ze slim zijn ~NOT?"
 
-loud1 = "Lelijk Schreeuwmonster was <b>[:nick]</b>, en schreeuwde [:per]% tijdens zijn/haar aanwezigheid!"
-loud2 = "Ook een <i>grote smoel </i> heeft <b>[:nick]</b> die schreeuwde  [:per]% tijdens het tijdbestek van zijn/haar aanwezigheid!"
-loud3 = "Hmm niet veel geschreeuw hiero, stil zooitje zeg."
+shout1 = "Lelijk Schreeuwmonster was <b>[:nick]</b>, en schreeuwde [:per]% tijdens zijn/haar aanwezigheid!"
+shout2 = "Ook een <i>grote smoel </i> heeft <b>[:nick]</b> die schreeuwde  [:per]% tijdens het tijdbestek van zijn/haar aanwezigheid!"
+shout3 = "Hmm niet veel geschreeuw hiero, stil zooitje zeg."
 
-shout1 = "Het lijkt dat  <b>[:nick]</b>'s zijn/haar shift-key kapot is,met een cabs percentage van [:per]% "
-shout2 = "<b>[:nick]</b> is ff vergetuh ze Caps-Lock uit te zettuh, [:per]% CAPS"
-shout3 = "Iedereen had het hoofdletter gebruik onder de knie :)"
+allcaps1 = "Het lijkt dat  <b>[:nick]</b>'s zijn/haar shift-key kapot is,met een cabs percentage van [:per]% "
+allcaps2 = "<b>[:nick]</b> is ff vergetuh ze Caps-Lock uit te zettuh, [:per]% CAPS"
+allcaps3 = "Iedereen had het hoofdletter gebruik onder de knie :)"
 
 violent1 = "<b>[:nick]</b> is een agressief persoon, die veel in het rond slaat wel <b>[:attacks]</b> keer."
 violent2 = "<b>[:nick]</b> ze pilltjes helpen niet. Hij/zij sloeg <b>[:attacks]</b> keer."
@@ -896,13 +896,13 @@ question1 = "<b>[:nick]</b> är antingen dum eller ställer bara många frågor... [
 question2 = "<b>[:nick]</b> visste heller inte mycket, [:per]% av hans/hennes rader innehöll en fråga"
 question3 = "Ingen frågade någonting, bara genier i denna kanalen?"
 
-loud1 = "Skrikigast var <b>[:nick]</b> som skrek [:per]% av tiden!"
-loud2 = "En annan <i>skrikhals</i> var <b>[:nick]</b> som skrek [:per]% av tiden!"
-loud3 = "Ingen använde utropstecknet, wow."
+shout1 = "Skrikigast var <b>[:nick]</b> som skrek [:per]% av tiden!"
+shout2 = "En annan <i>skrikhals</i> var <b>[:nick]</b> som skrek [:per]% av tiden!"
+shout3 = "Ingen använde utropstecknet, wow."
 
-shout1 = "Det verkar som <b>[:nick]</b> har en hängande shift-tangent, [:per]% av tiden skrev han/hon i VERSALER"
-shout2 = "<b>[:nick]</b> glömde att deaktivera sin CapsLock-tangent, [:per]% av det han/hon skrev var VERSALER"
-shout3 = "Alla hade sin shift-tangent under kontroll :)"
+allcaps1 = "Det verkar som <b>[:nick]</b> har en hängande shift-tangent, [:per]% av tiden skrev han/hon i VERSALER"
+allcaps2 = "<b>[:nick]</b> glömde att deaktivera sin CapsLock-tangent, [:per]% av det han/hon skrev var VERSALER"
+allcaps3 = "Alla hade sin shift-tangent under kontroll :)"
 
 violent1 = "<b>[:nick]</b> är en väldigt aggressiv person, som använde handflatan <b>[:attacks]</b> gånger."
 violent2 = "<b>[:nick]</b> kunde inte kontrollera sina aggressioner. Han/Hon slogs <b>[:attacks]</b> gånger med sin handflata."

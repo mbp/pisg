@@ -1,0 +1,66 @@
+With the advent of the modules, an API becomes necessary.  This
+file is the place to document anything along those lines.
+
+The main parts of pisg operate by passing around a %stats hash.  That
+hash is pretty big:
+
+Key           Type   Index   Description
+--------------------------------------------------------------------------
+words         hash   <nick>  Number of words typed by given nick.
+wordcounts    hash   <word>  Number of times given word was used.
+wordnicks     hash   <word>  The last nick to use the given word.
+times         hash   <hour>  Number of lines typed in the channel during
+                             the given hour (0..23).
+lines         hash   <nick>  Number of lines typed by the given nick (both
+                             "normal" and action lines).
+line_times    hash   <nick>  $line_times{nick}[index]  index ranges from 
+                             0 to 3 and contains a count of the number of
+                             lines typed by that nick in the given time
+                             period.  Each index is a 6-hour block.
+                             (e.g. 3 is from 18:00 to 23:59.)
+monologues    hash   <nick>  Number of times the given nick had a
+                             monologue.
+sayings       hash   <nick>  Random normal line from the given nick.
+questions     hash   <nick>  Number of lines from the given nick that
+                             ended in question marks.
+shouts        hash   <nick>  Number of lines ending in exclamation points.
+allcaps       hash   <nick>  Number of lines in ALL CAPS.
+allcaplines   hash   <nick>  Random line containing ALL CAPS.
+foul          hash   <nick>  Number of lines containing foul words.
+smiles        hash   <nick>  Number of lines containing smiling faces.
+frowns        hash   <nick>  Number of lines containing sad faces.
+urlcounts     hash   <url>   Number of times each URL was mentioned.
+urlnicks      hash   <url>   Last nick to mention each URL.
+lengths       hash   <nick>  Total length of all lines from the given
+                             nick.
+actions       hash   <nick>  Number of actions.
+actionlines   hash   <nick>  Random action line.
+violence      hash   <nick>  Number of times the given nick attacked
+                             someone else.
+violencelines hash   <nick>  Random example of the given nick attacking
+                             someone.
+attacked      hash   <nick>  Number of times the given nick was attacked.
+attackedlines hash   <nick>  Ramdom example of the given nick being
+                             attacked.
+gaveops       hash   <nick>  Number of times the given nick granted ops.
+tookops       hash   <nick>  Number of times the given nick removed ops.
+kicked        hash   <nick>  Number of times the given nick kicked
+                             someone.
+gotkicked     hash   <nick>  Number of times the give nick was kicked.
+kicklines     hash   <nick>  Random example of the given nick being
+                             kicked.
+joins         hash   <nick>  Number of times the given nick joined the
+                             channel.
+topics        array          Each array element is a hash with the
+                             following indices:
+                               topic - The new channel topic.
+                               nick  - The person who set the topic.
+                               hour  - The hour in which the change took
+                                       place.
+                               min   - The minute in which the change took
+                                       place.
+days          scalar         Number of days the reporting period spanned.
+totallines    scalar         Total number of lines (normal, action, and
+                             third) seen in channel.
+processtime   scalar         String describing the time elapsed while
+                             processing this channel.

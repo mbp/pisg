@@ -82,6 +82,8 @@ casesensitive):
  * The most useful ones *
 
 channel              The name of your channel.
+logtype              The type of logs kept for your channel.  Currently only
+                     "Logfile" is supported.
 logfile              The exact filename of the logfile
 format               logfile format. see FORMATS file
 network              Network the channels is using.
