@@ -45,6 +45,8 @@ loud3 = "Nobody raised an exclamation mark, wow."
 shout1 = "It seem that <b>[:nick]</b>'s shift-key is hanging, [:per]% of the time he/she wrote UPPERCASE"
 shout2 = "<b>[:nick]</b> just forgot to deactivate his/her Caps-Lock, [:per]% of the time he/she wrote UPPERCASE"
 shout3 = "Everybody had their shift-key under control :)"
+shouttext = "<b>For example like this:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
 
 slap1 = "<b>[:nick]</b> is a very aggresive person, who slapped around <b>[:slaps]</b> times."
 slap2 = "<b>[:nick]</b> can't control his aggressions. He/She slapped around <b>[:slaps]</b> times."
@@ -158,6 +160,7 @@ loud3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User i
 shout1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb er in GROSSBUCHSTABEN."
 shout2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von ihm/ihr kamen [:per]% der Zeit GROSSBUCHSTABEN."
 shout3 = "Alle hatten ihre Shift-Taste gut unter kontrolle :)"
+shouttext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 slap1 = "<b>[:nick]</b> ist etwas agressiv. Er/Sie schlug <b>[:slaps]</b> mal wild um sich herum."
 slap2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halten, <b>[:slaps]</b> Schläge von ihm/ihr."
