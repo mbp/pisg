@@ -1,9 +1,8 @@
-DOCBOOK_UTILS=/usr/share/docbook-utils
-
 all:
-	jade -i html -t sgml -V nochunks -d $(DOCBOOK_UTILS)/docbook-utils.dsl\#html pisg-doc.sgml | w3m -dump -T text/html > pisg-tmp.txt
+	docbook2txt pisg-doc.xml
+	mv pisg-doc.txt pisg-tmp.txt
 	cat pisg-tmp.txt | ./modifytxt.pl > pisg-doc.txt
-	docbook2html pisg-doc.sgml -o html
+	docbook2html pisg-doc.xml -V "%use-id-as-filename%" -o html
 
 clean:
 	rm -rf html

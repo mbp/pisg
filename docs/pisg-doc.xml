@@ -1,5 +1,7 @@
 <!-- This is the raw docbook source of the pisg documentation -->
-<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+<?xml version='1.0'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
 
 <book id="pisg-documentation">
   <bookinfo>
@@ -75,6 +77,8 @@
        </para>
       </listitem>
     </itemizedlist>
+    </para>
+    </sect1>
   </chapter>
   <chapter id="setting-up-pisg">
    <title>Setting up pisg for the first time</title>
@@ -203,7 +207,7 @@
      </programlisting>
 
      Any global option will override anything defined within channel
-     elements (see <xref linkend="setting-up-a-channel">)
+     elements (see <xref linkend="setting-up-a-channel" />)
      </para>
 
      <para>
@@ -224,6 +228,7 @@
      German) and set the timeoffset to +1.
 
      All options available are mentioned in the reference documentation.
+    </para>
    </sect1>
    <sect1 id="ignoring-links">
     <title>Ignoring links</title>
@@ -2061,7 +2066,7 @@
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe </para>
+    <para> ass fuck bitch shit scheisse kacke arsch ficker ficken schlampe </para>
     </refsect1>
     </refentry>
 
@@ -2658,6 +2663,7 @@
     </refsect1>
     </refentry>
 
+  </chapter>
   <chapter id="reference-pictures">
    <title>Picture options</title>
 
@@ -2688,6 +2694,7 @@
     <title>Default</title>
     <para> Current directory </para>
     </refsect1>
+    </refentry>
 
     <!-- *** USERPICS *** -->
     <refentry id="UserPics">
@@ -3200,6 +3207,7 @@
     <title>Default</title>
     <para> Logfile </para>
     </refsect1>
+    </refentry>
 </chapter>
 
 </book>
