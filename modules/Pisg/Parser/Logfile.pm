@@ -81,7 +81,8 @@ sub analyze
         sprintf("%02d hours, %02d minutes and %02d seconds", $hour, $min,
         $sec);
         print "Channel analyzed succesfully in $stats{processtime} on ",
-        scalar localtime(time()), "\n";;
+        scalar localtime(time()), "\n"
+            unless ($self->{cfg}->{silent});
 
         return \%stats;
 
@@ -102,7 +103,8 @@ sub _parse_dir
     # Add trailing slash when it's not there..
     $self->{cfg}->{logdir} =~ s/([^\/])$/$1\//;
 
-    print "Going into $self->{cfg}->{logdir} and parsing all files there...\n\n";
+    print "Going into $self->{cfg}->{logdir} and parsing all files there...\n\n"
+        unless ($self->{cfg}->{silent});
     my @filesarray;
     opendir(LOGDIR, $self->{cfg}->{logdir}) or
     die("Can't opendir $self->{cfg}->{logdir}: $!");
@@ -129,7 +131,8 @@ sub _parse_file
     my $self = shift;
     my ($stats, $lines, $file, $state) = @_;
 
-    print "Analyzing log($file) in '$self->{cfg}->{format}' format...\n";
+    print "Analyzing log($file) in '$self->{cfg}->{format}' format...\n"
+        unless ($self->{cfg}->{silent});
 
     if ($file =~ /.bz2?$/ && -f $file) {
         open (LOGFILE, "bunzip2 -c $file |") or
@@ -350,7 +353,8 @@ sub _parse_file
 
     close(LOGFILE);
 
-    print "Finished analyzing log, $stats->{days} days total.\n";
+    print "Finished analyzing log, $stats->{days} days total.\n"
+        unless ($self->{cfg}->{silent});
 }
 
 sub _opchanges

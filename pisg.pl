@@ -55,11 +55,11 @@ sub get_cmdline_options
 
     my $tmp;
     # Commandline options
-    my ($moduledir, $channel, $logfile, $format, $network, $maintainer, $outputfile, $logdir, $prefix, $configfile, $help);
+    my ($moduledir, $channel, $logfile, $format, $network, $maintainer, $outputfile, $logdir, $prefix, $configfile, $help, $silent);
 
 my $usage = <<END_USAGE;
 Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
-[-f format] [-n network] [-d logdir] [-mo moduledir] [-h]
+[-f format] [-n network] [-d logdir] [-mo moduledir] [-s] [-h]
 
 -ch --channel=xxx      : Set channel name
 -l  --logfile=xxx      : Log file to parse
@@ -72,7 +72,8 @@ Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
                          Only works with --dir
 -mo --moduledir=xxx    : Directory containing pisg's modules.
 -co --configfile=xxx   : Config file
--h --help              : Output this message and exit (-? also works).
+-s  --silent           : Suppress output (except error messages)
+-h  --help             : Output this message and exit (-? also works).
 
 Example:
 
@@ -95,6 +96,7 @@ END_USAGE
                    'aliasfile=s'  => \$tmp,
                    'moduledir=s'  => \$moduledir,
                    'configfile=s' => \$configfile,
+                   'silent'       => \$silent,
                    'help|?'       => \$help
                ) == 0 or $help) {
                    die($usage);
@@ -124,6 +126,8 @@ END_USAGE
     if ($moduledir) { $cfg->{modules_dir} = $moduledir; }
 
     if ($configfile) { $cfg->{configfile} = $configfile; }
+
+    if ($silent) { $cfg->{silent} = 1; }
 
     return $cfg;
 

@@ -165,6 +165,9 @@ foul                Space seperated list of words considered to be 'foul'
 regexp_alises       1 or 0, enabling this will make aliases in <user> tags
                     regex-able. Default '0'.
 
+silent              1 or 0.  Enabling this will suppress all standard output
+                    from pisg.  Error messages will still be sent to STDOUT.
+
  * Colors / layout for your stats page *
 
 bgcolor             Background color of the page

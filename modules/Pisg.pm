@@ -62,11 +62,15 @@ sub run
     # Set the default configuration settings.
     $self->get_default_config_settings();
 
-    print "pisg $self->{cfg}->{version} - Perl IRC Statistics Generator\n\n";
-
     # Init the configuration file (aliases, ignores, channels, etc)
-    $self->init_config()
+    my $r = $self->init_config()
         if ($self->{use_configfile});
+
+    print "pisg $self->{cfg}->{version} - Perl IRC Statistics Generator\n\n"
+        unless ($self->{cfg}->{silent});
+
+    print "Using config file: $self->{cfg}->{configfile}\n\n"
+        if ($r && !$self->{cfg}->{silent});
 
     $self->init_words()       # Init words. (Foulwords, ignorewords, etc.)
         if ($self->{use_configfile});
@@ -112,6 +116,7 @@ sub get_default_config_settings
         lang => 'EN',
         langfile => 'lang.txt',
         prefix => "",
+        silent => 0,
 
         # Colors / Layout
 
@@ -226,7 +231,8 @@ sub init_debug
     my $self = shift;
     $self->{cfg}->{debugstarted} = 1;
     if ($self->{cfg}->{debug}) {
-        print "[ Debugging => $self->{cfg}->{debugfile} ]\n";
+        print "[ Debugging => $self->{cfg}->{debugfile} ]\n"
+            unless ($self->{cfg}->{silent});
         open(DEBUG,"> $self->{cfg}->{debugfile}") or print STDERR "$0: Unable to open debug
         file($self->{cfg}->{debugfile}): $!\n";
         $self->{debug}->("*** pisg debug file for $self->{cfg}->{logfile}\n");
@@ -262,7 +268,6 @@ sub init_config
     my $self = shift;
 
     if ((open(CONFIG, $self->{cfg}->{configfile}) or open(CONFIG, $FindBin::Bin . "/$self->{cfg}->{configfile}"))) {
-        print "Using config file: $self->{cfg}->{configfile}\n";
 
         my $lineno = 0;
         while (my $line = <CONFIG>)
@@ -346,6 +351,7 @@ sub init_config
         }
 
         close(CONFIG);
+
     }
 }
 
@@ -369,18 +375,19 @@ sub init_pisg
     # Add trailing slash when it's not there..
     $self->{cfg}->{imagepath} =~ s/([^\/])$/$1\//;
 
-    print "Using language template: $self->{cfg}->{lang}\n\n" if ($self->{cfg}->{lang} ne 'EN');
+    print "Using language template: $self->{cfg}->{lang}\n\n" if ($self->{cfg}->{lang} ne 'EN' && !$self->{cfg}->{silent});
 
-    print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n";
+    print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n"
+        unless ($self->{cfg}->{silent});
 }
 
 sub do_channel
 {
     my $self = shift;
     if (!$self->{cfg}->{channel}) {
-        print "No channels defined.\n";
+        print STDERR "No channels defined.\n";
     } elsif ((!$self->{cfg}->{logfile}) && (!$self->{cfg}->{logdir})) {
-        print "No logfile or logdir defined for " . $self->{cfg}->{channel} . "\n";
+        print STDERR "No logfile or logdir defined for " . $self->{cfg}->{channel} . "\n";
     } else {
         $self->init_pisg();        # Init some general things
 

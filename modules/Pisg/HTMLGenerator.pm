@@ -35,7 +35,8 @@ sub create_html
 
     my $self = shift;
 
-    print "Now generating HTML($self->{cfg}->{outputfile})...\n";
+    print "Now generating HTML($self->{cfg}->{outputfile})...\n"
+        unless ($self->{cfg}->{silent});
 
     open (OUTPUT, "> $self->{cfg}->{outputfile}") or
         die("$0: Unable to open outputfile($self->{cfg}->{outputfile}): $!\n");
@@ -366,7 +367,8 @@ sub _activenicks
 
     if ($self->{cfg}->{activenicks} > $nicks) {
         $self->{cfg}->{activenicks} = $nicks;
-        print "Note: There were fewer nicks in the logfile than your specificied there to be in most active nicks...\n";
+        print "Note: There were fewer nicks in the logfile than your specificied there to be in most active nicks...\n"
+            unless ($self->{cfg}->{silent});
     }
 
     my ($nick, $visiblenick, $randomline, %hash);
@@ -1201,7 +1203,8 @@ sub _template_text
         # Fall back to English if the language template doesn't exist
 
         if ($text = $self->{tmps}->{EN}{$template}) {
-            print "Note: There was no translation in $self->{cfg}->{lang} for '$template' - falling back to English..\n";
+            print "Note: There was no translation in $self->{cfg}->{lang} for '$template' - falling back to English..\n"
+                unless ($self->{cfg}->{silent});
         } else {
             die("No such template '$template' in language file.\n");
         }
