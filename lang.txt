@@ -27,7 +27,7 @@
 # (TR) Turkish - cti- <??> (2005-01-09: bounces)
 # (RO) Romanian - Parcalabior Vald <vlad@ifrance.com>
 # (IS) Icelandic - Birkir Hreinsson <dkf@visir.is>
-# (CZ) Czech - Jaroslav Ostadal <s98704@tacheon.dkm.cz>
+# (CZ) Czech - Jaroslav Ostadal <??> (2005-01-14: bounces)
 # (SK) Slovak - Gabriel Svajko <snowman@ew.sk>
 # (RU) Russian - Anton Tretiakov <manager@ykt.ru>
 # (GR) Greek - Konstantinos Tzanidis <erebus@irc.gr>
