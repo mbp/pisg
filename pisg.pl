@@ -110,7 +110,7 @@ $thirdline, @ignore, $processtime, @topics, %monologue, %kicked, %gotkick,
 %loud, $totallength, %gaveop, %tookop, %joins, %actions, %sayings, %wordcount,
 %lastused, %gotban, %setban, %foul, $days, $oldtime, $lastline, $actions,
 $normals, %T, $repeated, $lastnormal, %shout, %slap, %slapped, %words,
-%line_time, @urls, %urlnick);
+%line_time, @urls, %urlnick, %kickline);
 
 
 sub main
@@ -589,6 +589,7 @@ sub parse_file
                     unless (grep /^\Q$kicker\E$/i, @ignore) {
                         $gotkick{$nick}++;
                         $kicked{$kicker}++;
+						$kickline{$nick} = $line;
                     }
                 } elsif (defined($newtopic)) {
                     unless ($newtopic eq '') {
@@ -1676,16 +1677,17 @@ sub gotkicks
     # The persons who got kicked the most
 
     my @gotkick = sort { $gotkick{$b} <=> $gotkick{$a} } keys %gotkick;
-
     if (@gotkick) {
         my %hash = (
             nick => $gotkick[0],
-            kicks => $gotkick{$gotkick[0]}
+            kicks => $gotkick{$gotkick[0]},
+			line => $kickline{$gotkick[0]}
         );
 
         my $text = template_text('gotkick1', %hash);
+		my $exttext = template_text('kicktext', %hash);
 
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
         if (@gotkick >= 2) {
             my %hash = (
                 nick => $gotkick[1],
