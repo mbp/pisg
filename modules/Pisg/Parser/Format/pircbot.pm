@@ -21,9 +21,15 @@ sub new
 
     my $self = {
         cfg => $args{cfg},
-        normalline => '^(\d+)\s:([^!]+)!([^@]+)@(\S+)\sPRIVMSG\s(#\S+)\s:([^' . $ctcpchr . '].*)$',
-        actionline => '^(\d+)\s:([^!]+)!([^@]+)@(\S+)\sPRIVMSG\s(#\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$',
-	thirdline  => '^(\d+)\s:([^!]+)!([^@]+)@(\S+)\s(.+)$',
+        normalline => '^(\d+)\s:([^!]+)![^@]+@\S+\sPRIVMSG\s(#\S+)\s:([^' . $ctcpchr . '].*)$'
+                      . '|' .
+                      '^(\d+)\s(>>>)PRIVMSG\s(#\S+)\s:([^' . $ctcpchr . '].*)$',
+        actionline => '^(\d+)\s:([^!]+)!([^@]+)@(\S+)\sPRIVMSG\s(#\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$'
+                      . '|' . 
+                      '^(\d+)\s(>>>)PRIVMSG\s(#\S+)\s:' . $ctcpchr . 'ACTION (.+)' . $ctcpchr . '\s*$',
+	thirdline  => '^(\d+)\s:([^!]+)![^@]+@\S+\s(.+)$'
+                      . '|' .
+                      '^(\d+)\s(>>>)([^P]\S+)\s+(.+)$',
     };
 
     bless($self, $type);
@@ -37,15 +43,24 @@ sub normalline
     my %hash;
 
     if ($line =~ /$self->{normalline}/o) {
-        return unless (lc($5) eq lc($self->{cfg}->{channel}));
+        if (defined($8)) {
+            return unless (lc($7) eq lc($self->{cfg}->{channel}));
 
-        # Most log formats are regular enough that you can just match the
-        # appropriate things with parentheses in the regular expression.
+            my @time = localtime($5 / 1000);
+            $hash{hour}   = $time[2];
+            $hash{nick}   = $6;
+            $hash{saying} = $8;
+        } else {
+            return unless (lc($3) eq lc($self->{cfg}->{channel}));
 
-        my @time = localtime($1 / 1000);
-        $hash{hour}   = $time[2];
-        $hash{nick}   = $2;
-        $hash{saying} = $6;
+            my @time = localtime($1 / 1000);
+            $hash{hour}   = $time[2];
+            $hash{nick}   = $2;
+            $hash{saying} = $4;
+        }
+
+        $hash{nick}   = $self->{cfg}->{maintainer}
+          if ($hash{nick} eq '>>>');
 
         return \%hash;
     } else {
@@ -60,15 +75,24 @@ sub actionline
     my %hash;
 
     if ($line =~ /$self->{actionline}/o) {
-        return unless (lc($5) eq lc($self->{cfg}->{channel}));
+        if (defined($8)) {
+            return unless (lc($7) eq lc($self->{cfg}->{channel}));
 
-        # Most log formats are regular enough that you can just match the
-        # appropriate things with parentheses in the regular expression.
+            my @time = localtime($5 / 1000);
+            $hash{hour}   = $time[2];
+            $hash{nick}   = $6;
+            $hash{saying} = $8;
+        } else {
+            return unless (lc($3) eq lc($self->{cfg}->{channel}));
 
-        my @time = localtime($1 / 1000);
-        $hash{hour}   = $time[2];
-        $hash{nick}   = $2;
-        $hash{saying} = $6;
+            my @time = localtime($1 / 1000);
+            $hash{hour}   = $time[2];
+            $hash{nick}   = $2;
+            $hash{saying} = $4;
+        }
+
+        $hash{nick}   = $self->{cfg}->{maintainer}
+          if ($hash{nick} eq '>>>');
 
         return \%hash;
     } else {
@@ -97,13 +121,22 @@ sub thirdline
     my %hash;
 
     if ($line =~ /$self->{thirdline}/o) {
+        my ($time, @line);
+        if (defined($6)) {
+            my @time = localtime($4 / 1000);
+            $hash{hour}   = $time[2];
+            $hash{min}  = $time[1];
+            $hash{nick} = $self->{cfg}->{maintainer};
 
-        my @time = localtime($1 / 1000);
-        $hash{hour}   = $time[2];
-        $hash{min}  = $time[1];
-        $hash{nick} = $2;
+            @line = split(/\s+/, $6);
+        } else {
+            my @time = localtime($1 / 1000);
+            $hash{hour}   = $time[2];
+            $hash{min}  = $time[1];
+            $hash{nick} = $2;
 
-        my @line = split(/\s+/, "$5");
+            @line = split(/\s+/, $3);
+        }
 
         if ($line[0] eq 'KICK') {
             return unless (lc($line[1]) eq lc($self->{cfg}->{channel}));
