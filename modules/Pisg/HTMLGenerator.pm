@@ -1857,8 +1857,9 @@ sub _karma
     my %karma;
 
     foreach my $thing (sort keys %{ $self->{stats}->{karma} }) {
+        my $Thing = lc(is_nick($thing) || $thing); # FIXME: this is ugly
         foreach my $nick (keys %{ $self->{stats}->{karma}{$thing} }) {
-            $karma{$thing} += $self->{stats}->{karma}{$thing}{$nick};
+            $karma{$Thing} += $self->{stats}->{karma}{$thing}{$nick};
         }
     }
 
@@ -1883,7 +1884,7 @@ sub _karma
     my $pos = 0;
     foreach my $thing (@goodpos) {
         my $class = ($pos++ == 0) ? 'hirankc' : 'rankc';
-        my $Thing = $self->_format_word(is_nick($thing) || $thing);
+        my $Thing = $self->_format_word(is_nick($thing) || $thing); # ugliness #2
         _html("<tr><td class=\"$class\">$pos</td>");
         _html("<td class=\"hicell\">$Thing</td>");
         _html("<td class=\"hicell\">$karma{$thing}</td>");
