@@ -69,11 +69,13 @@ sub thirdline
         if ($#line >= 4 && ($line[1].$line[2]) eq 'waskicked') {
             $hash{kicker} = $line[4];
 
-        } elsif ($#line >= 5 && $line[3] eq 'changes') {
-            $hash{newtopic} = "$line[4] $line[5]";
+        } elsif ($#line >= 4 && ($line[1] eq 'changes')) {
+            $hash{newtopic} = join(' ', @line[4..$#line]);
+            $hash{newtopic} =~ s/^'//;
+            $hash{newtopic} =~ s/'$//;
 
         } elsif ($#line >= 3 && ($line[1].$line[2]) eq 'setsmode:') {
-            $hash{newmode} = $line[3];
+            $hash{newmode} = join(' ', @line[3..$#line]);
 
         } elsif ($#line >= 3 && ($line[2].$line[3]) eq 'hasjoined') {
             $hash{newjoin} = $line[0];
