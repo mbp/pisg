@@ -75,7 +75,7 @@ my $conf = {
     # Developer stuff
     debug => 0,
     debugfile => "debug.log",
-    version => "v0.19-cvs",
+    version => "v0.20-cvs",
 };
 
 $words->{foul} = "ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe";
