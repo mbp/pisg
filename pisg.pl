@@ -1002,18 +1002,6 @@ sub template_text
 
     }
 
-    if ($hash{nick}) {
-        if ($users->{sex}{$hash{nick}}) {
-            $hash{posessive} = template_text($users->{sex}{$hash{nick}} . "posessive");
-            $hash{subj} = template_text($users->{sex}{$hash{nick}} . "subj");
-            $hash{sex} = template_text($users->{sex}{$hash{nick}} . "sex");
-        } else {
-            $hash{posessive} = template_text("uposessive");
-            $hash{subj} = template_text("usubj");
-            $hash{sex} = template_text("usex");
-        }
-    }
-
     $hash{channel} = $conf->{channel};
 
     foreach my $key (sort keys %hash) {
@@ -1027,10 +1015,24 @@ sub template_text
         $text =~ s/ø/&oslash;/g;
     }
 
+    if ($text =~ /\[:.*?:.*?:\]/) {
+        $text =~ s/\[:(.*?):(.*?):\]/get_subst($1,$2,\%hash)/ge;
+    }
     return $text;
 
 }
 
+sub get_subst {
+    my ($m,$f,$hash) = @_;
+    if ($hash->{nick} && $users->{sex}{$hash->{nick}}) {
+        if ($users->{sex}{$hash->{nick}} eq 'm') {
+            return $m;
+        } elsif ($users->{sex}{$hash->{nick}} eq 'f') {
+            return $f;
+        } 
+    }
+    return "$m/$f";
+}
 
 sub replace_links
 {
