@@ -1,10 +1,7 @@
 package Pisg::Parser::Logfile;
 
-=head1 NAME
-
-Pisg::Parser::Logfile - class to parse a normal logfile
-
-=cut
+# Copyright and license, as well as documentation(POD) for this module is
+# found at the end of the file.
 
 use strict;
 $^W = 1;
@@ -12,14 +9,14 @@ $^W = 1;
 sub new
 {
     my $type = shift;
+    my %args = @_;
     my $self = {
-        cfg => $_[0],
-        debug => $_[1],
-        parser => undef,
+        cfg => $args{cfg},
+        debug => $args{debug},
+        parser => undef
     };
 
-    # Load the Common module from wherever it's configured to be.
-    push(@INC, $self->{cfg}->{modules_dir});
+    # Import common functions in Pisg::Common
     require Pisg::Common;
     Pisg::Common->import();
 
@@ -419,5 +416,52 @@ sub _strip_mirccodes
     return $line;
 }
 
-
 1;
+
+__END__
+
+=head1 NAME
+
+Pisg::Parser::Logfile - class to parse a normal logfile
+
+=head1 DESCRIPTION
+
+C<Pisg::Parser::Logfile> parses a logfile using the configuration variables set in the 'cfg' option passed to the constructor.
+
+=head1 SYNOPSIS
+
+    use Pisg::Parser::Logfile;
+
+    $analyzer = new Pisg::Parser::Logfile(
+        cfg => $cfg,
+        debug => $debug,
+    );
+
+=head1 CONSTRUCTOR
+
+=over 4
+
+=item new ( [ OPTIONS ] )
+
+This is the constructor for a new Pisg::Parser::Logfile object. C<OPTIONS> are passed in a hash like fashion using key and value pairs.
+
+Possible options are:
+
+B<cfg> - hashref containing configuration variables, created by the Pisg module.
+
+B<debug> - reference to a sub routine to send the debug information.
+
+=back
+
+=head1 AUTHOR
+
+Morten Brix Pedersen <morten@wtf.dk>
+
+=head1 COPYRIGHT
+
+Copyright (C) 2001 Morten Brix Pedersen. All rights resereved.
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GPL, license is included with the distribution of
+this file.
+
+=cut
