@@ -1,3 +1,14 @@
+pisg (0.28)
+   * Added Hungarian translation by Gyuri Horak <dyuri@dyuri.org>
+   * Performance improvements in HTML generation
+   * Fix bug where the 'These didn't make it to the top' section wasn't being
+     shown on the stats page when 'activenicks2' was less than the people in
+     the top 25.
+   * New options:
+     - 'show_activetimes' enable/disable 'Most Active Times' section.
+     - 'show_bignumbers' enable/disable 'Big Numbers' and 'Other Interesting
+       Numbers' section.
+
 pisg (0.27) - Sun, Oct 7th 2001
    * Stats page was showing [:total] instead of the actual number, fixed.
    * Added Slovenian translation by Ales Tepina <ales.tepina@guest.arnes.si>
