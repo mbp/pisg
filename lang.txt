@@ -166,12 +166,11 @@ shouttext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 violent1 = "<b>[:nick]</b> ist etwas agressiv. [:Er:Sie:] schlug <b>[:attacks]</b> mal wild um sich herum."
 violent2 = "Auch <b>[:nick]</b> hat einige Probleme seine Agressionen unter Kontrolle zu halten, <b>[:attacks]</b> Schläge von [:ihm:ihr:]."
 violent3 = "Alle waren friedlich im Channel, niemand hat jemanden geschlagen."
-slaptext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+violenttext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "<b>[:nick]</b> ist der Sündenbock im Channel, [:er:sie:] wurde <b>[:attacks]</b> mal geschlagen."
 attacked2 = "<b>[:nick]</b> hat auch [:sein:ihr:] Fett weg bekommen, [:er:sie:] hat <b>[:attacks]</b> mal Schläge bekommen."
-attacked3 = "Niemand wurde geschlagen."
-violenttext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+attackedtext = "<b>Zum Beispiel so:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> war wohl der Channelclown, [:er:sie:] wurde [:kicks] mal gekickt!"
 gotkick2 = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für [:ihn:sie:]."
@@ -315,12 +314,11 @@ shouttext = "<b>For eksempel sådan her: </b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:
 violent1 = "<b>[:nick]</b> er en meget aggresiv person, han delte <b>[:attacks]</b> slaps ud."
 violent2 = "<b>[:nick]</b> er ude af kontrol. Han/Hun slog andre folk <b>[:attacks]</b> gang(e)."
 violent3 = "Alle er glade ... endnu 8)"
-slaptext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+violenttext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Ærgeligt. Ingen kan li' <b>[:nick]</b>. Han/Hun blev banket <b>[:attacks]</b> gange."
 attacked2 = "<b>[:nick]</b> er vidst heller ikke for polulær, han/hun fik tæsk <b>[:attacks]</b> gang(e)."
-attacked3 = "Ingen er blevet banket i denne kanal :)"
-violenttext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+attackedtext = "<b>For eksempel sådan her:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 words1 = "<b>[:nick]</b> er meget aktiv med [:words] skrevne ord!"
 words2 = "[:oldnick] blev tæt forfulgt af <b>[:nick]</b>, med [:words] ord."
@@ -481,7 +479,6 @@ violent3 = "Nadie ha repartido tortas en este canal, todo el mundo parece amigab
 
 attacked1 = "Pobre <b>[:nick]</b>, No le gusta a nadie. Ha sido abofeteado <b>[:attacks]</b> veces."
 attacked2 = "<b>[:nick]</b> tiene marcas de dedos en la cara. Ha sido abofeteado <b>[:attacks]</b> veces."
-attacked3 = "Nadie ha sido abofeteado en este canal :)"
 
 gotkick1 = "<b>[:nick]</b> ha sido algo capullo y por eso lo echamos [:kicks] veces!"
 gotkick2 = "<b>[:nick]</b> tambien nos toca bastante las narices, por eso lo echamos [:kicks] veces"
@@ -817,7 +814,6 @@ violent3 = "Geen slaps uitgedeeld hiero, wat een vriendelijk ongeregeld zooitje.
 
 attacked1 = "Zielige <b>[:nick]</b>, niemand mag haar/hem. Hij/zij werdt <b>[:attacks]</b> x geslapped."
 attacked2 = "<b>[:nick]</b> nog zo'n ongewenst zieltjes, hij/zij werd <b>[:attacks]</b> gepijnigt."
-attacked3 = "Niemand irriteerde mensen en er werdt dus ook niemand geslapt :)"
 
 gotkick1 = "<b>[:nick]</b> was gewoon niet populair genoeg, en werdt [:kicks] x gekickt !"
 gotkick2 = "<b>[:nick]</b> werd ook niet echt gemogen met, [:kicks] ontvangen kicks"
@@ -914,7 +910,6 @@ violent3 = "Ingen slog ingen, alla var vänner."
 
 attacked1 = "Stackars <b>[:nick]</b>, ingen gillade honom/henne. Han/Hon blev slagen <b>[:attacks]</b> gånger med handflatan."
 attacked2 = "<b>[:nick]</b> var inte heller speciellt omtyckt, han/hon blev slagen <b>[:attacks]</b> gånger."
-attacked3 = "Ingen i kanalen fick en svidande handflata över nosen :)"
 
 gotkick1 = "<b>[:nick]</b> var inte speciellt populär, och blev utsparkad [:kicks] gånger!"
 gotkick2 = "<b>[:nick]</b> verkar också vara hatad, [:kicks] utsparkningar"
