@@ -16,6 +16,8 @@ pisg (0.63) - ??
      Pinski).
    * irssi.pm: Recognize joins even when autorealname.pl is loaded.
    * Hint user to use a log with timestamps when no parseable lines are found.
+   * Apply (and heavily sanitize) patch by Igge for "Most active genders"
+     stats (enable with ShowActiveGenders="1").
 
 pisg (0.62) - Sat Dec, 11th 2004
    Changes by Christoph Berg:

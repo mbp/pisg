@@ -163,7 +163,8 @@
     <![CDATA[<user nick="Ben" pic="ben_*.jpg">]]>
     </programlisting>
 
-    You can also set a user's sex:
+    You can also set a user's sex.
+    The sex setting can be "f"emale, "m"ale, or "b"ot:
     <programlisting>
     <![CDATA[<user nick="Ben" sex="m">]]>
     </programlisting>
@@ -1954,6 +1955,42 @@
     By enabling this option, pisg will add a section to the stats showing
     who had the most nicks, and what the nicks were. This option only works
     properly when <link linkend="NickTracking">NickTracking</link> is enabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOWACTIVEGENDERS *** -->
+    <refentry id="ShowActiveGenders">
+
+    <refmeta> <refentrytitle>ShowActiveGenders</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowActiveGenders</refname>
+    <refpurpose>show stats on which gender talked most</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowActiveGenders = "0"
+        </channel>
+
+        <set ShowActiveGenders="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Setting this option will make pisg create statistics on which gender
+    (female/male/bot) talked most (see the "sex" option in <xref
+    linkend="user-options" />).
     </para>
     </refsect1>
     <refsect1>

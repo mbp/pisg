@@ -158,6 +158,7 @@ sub get_default_config_settings
         showvoices => 0,
         showhalfops => 0,
         showmostnicks => 0,
+        showactivegenders => 0,
         showmostactivebyhour => 0,
         showmostactivebyhourgraph => 0,
         showonlytop => 0,
@@ -296,7 +297,7 @@ sub init_config
                 add_ignore($nick);
             }
 
-            if ($line =~ /sex=(["'])([MmFf])\1/) {
+            if ($line =~ /sex=(["'])([MmFfBb])\1/) {
                 $self->{users}->{sex}{$nick} = lc($2);
             }
         } elsif ($line =~ /<link(.*)>/) {
@@ -449,7 +450,7 @@ sub do_channel
         eval <<_END;
 use Pisg::Parser::$self->{cfg}->{logtype};
 \$analyzer = new Pisg::Parser::$self->{cfg}->{logtype}(
-    cfg => \$self->{cfg}
+    { cfg => \$self->{cfg}, users => \$self->{users} }
 );
 _END
         if ($@) {

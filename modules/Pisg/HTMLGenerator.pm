@@ -129,6 +129,10 @@ sub create_output
         $self->_mostnicks();
     }
 
+    if ($self->{cfg}->{showactivegenders}) {
+        $self->_activegenders();
+    }
+
     if ($self->{cfg}->{showmuw}) {
         $self->_mostusedword();
     }
@@ -2196,6 +2200,54 @@ sub _istoponly {
     } else {
         return(@nicks_tmp);
     }
+}
+
+sub _activegenders {
+    # The most active gender in the channel
+    my $self = shift;
+    my @topgender = sort {$self->{stats}->{sex_lines}{$b} <=> $self->{stats}->{sex_lines}{$a}} keys %{$self->{stats}->{sex_lines}};
+
+    return unless @topgender;
+
+    $self->_headline($self->_template_text('activegenderstopic'));
+    _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
+    _html(" <td>&nbsp;</td>"
+    . "<td class=\"tdtop\"><b>" . $self->_template_text('gender') . "</b></td>"
+    . "<td class=\"tdtop\"><b>" . $self->_template_text('numberlines') . "</b></td>"
+    . "<td class=\"tdtop\"><b>" . $self->_template_text('nick') . "</b></td>"
+    );
+
+    my $i = 1;
+    for my $gender (@topgender) {
+        my $bar = "";
+        my $len = ($self->{stats}->{sex_lines}{$gender} / $self->{stats}->{sex_lines}{$topgender[0]}) * 100;
+
+        for (0 .. 3) {
+            next if not defined $self->{stats}->{sex_line_times}{$gender}[$_];
+            my $w = int(($self->{stats}->{sex_line_times}{$gender}[$_] / $self->{stats}->{sex_lines}{$gender}) * $len);
+            if ($w) {
+                my $pic = 'pic_h_'.(6*$_);
+                $bar .= "<img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"$self->{stats}->{sex_line_times}{$gender}[$_]\" />";
+            }
+        }
+
+        my @top_active = sort { $self->{stats}->{lines}{$b} <=> $self->{stats}->{lines}{$a} }
+            grep { $self->{users}->{sex}{$_} and $self->{users}->{sex}{$_} eq $gender }
+            keys %{ $self->{stats}->{lines} };
+        splice @top_active, 20 if @top_active > 20;
+        my $nicklist = join ", ", map { "$_ ($self->{stats}->{lines}{$_})" } @top_active;
+
+        my $class = ($i == 1 ? "hirankc" : "rankc");
+        my $span_class = $gender eq 'm' ? "male" : ($gender eq 'f' ? "female" : "bot");
+        _html("</tr><tr>");
+        _html(" <td class=\"$class\" align=\"left\">$i</td>");
+        _html(" <td class=\"hicell\"><span class=\"$span_class\">" . $self->_template_text("gender_$gender") . "</span></td>");
+        _html(" <td class=\"hicell\"><span style=\"white-space:nowrap;\">$bar</span> $self->{stats}->{sex_lines}{$gender}</td>");
+        _html(" <td class=\"hicell\">$nicklist</td>");
+        $i++;
+    }
+
+    _html("</tr></table><br />");
 }
 
 1;

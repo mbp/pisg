@@ -147,6 +147,7 @@ notopic = "A topic was never set on this channel."
 mostnickstopic = "Users with most nicknames"
 bylinetopic = "by [:nick] on [:time]"
 dailyactivitytopic = "Daily activity (last [:n] days)"
+activegenderstopic = "Most active gender"
 
 ## Other text
 
@@ -183,6 +184,10 @@ seconds = "seconds"
 and = "and"
 names1 = "names"
 names2 = "name"
+gender = "Gender"
+gender_f = "Female"
+gender_m = "Male"
+gender_b = "Bot"
 
 # Mouse-over titles
 pisghomepage = "Go to the pisg homepage"
@@ -302,6 +307,7 @@ notopic = "In diesem Channel wurde kein Topic gesetzt."
 bylinetopic = "von [:nick] um [:time]"
 dailyactivitytopic = "Tägliche Aktivität (letzte [:n] Tage)"
 mostnickstopic = "Chatter mit den meisten Nicks"
+activegenderstopic = "Aktivste Geschlechter"
 
 ## Other text
 
@@ -338,6 +344,10 @@ seconds = "Sekunden"
 and = "und"
 names1 = "Nicks"
 names2 = "Nick"
+gender = "Geschlecht"
+gender_f = "Weiblich"
+gender_m = "Männlich"
+gender_b = "Bot"
 
 # Mouse-over titles
 pisghomepage = "pisg-Homepage öffnen"

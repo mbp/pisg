@@ -14,11 +14,7 @@ $have_iconv = 0 if $@;
 sub new
 {
     my $type = shift;
-    my %args = @_;
-    my $self = {
-        cfg => $args{cfg},
-        parser => undef
-    };
+    my $self = shift; # get cfg and users
 
     # Import common functions in Pisg::Common
     require Pisg::Common;
@@ -396,6 +392,11 @@ sub _parse_file
                         }
                     }
 
+                    if (my $s = $self->{users}->{sex}{$nick}) {
+                        $stats->{sex_lines}{$s}++;
+                        $stats->{sex_line_times}{$s}[int($hour/6)]++;
+                    }
+
                     _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
                 }
             }
@@ -457,6 +458,11 @@ sub _parse_file
 
 
                 $stats->{lengths}{$nick} += length($saying);
+
+                if (my $s = $self->{users}->{sex}{$nick}) {
+                    $stats->{sex_lines}{$s}++;
+                    $stats->{sex_line_times}{$s}[int($hour/6)]++;
+                }
 
                 _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
             }
