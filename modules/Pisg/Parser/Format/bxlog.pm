@@ -70,7 +70,7 @@ sub thirdline
             }
 
         } elsif ($3 eq '>') {
-            if ($4 =~ /^([^!])+!\S+ has joined \S+$/) {
+            if ($4 =~ /^([^!]+)!\S+ has joined \S+$/) {
                 $hash{nick} = $1;
                 $hash{newjoin} = $1;
             }
