@@ -10,9 +10,9 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^\[(\d+):\d+[^ ]+ <([^>]+)> (.*)',
-        actionline => '^\[(\d+):\d+[^ ]+ \* (\S+) (.*)',
-        thirdline  => '^\[(\d+):(\d+)[^ ]+ \*\*\* (.+)'
+        normalline => '^\[(\d+):\d+\S+ <([^>]+)> (.*)$',
+        actionline => '^\[(\d+):\d+\S+ \* (\S+) (.*)$',
+        thirdline  => '^\[(\d+):(\d+)\S+ \*{3} (.+)$'
     };
 
     bless($self, $type);

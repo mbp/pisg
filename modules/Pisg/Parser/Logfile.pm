@@ -66,9 +66,9 @@ sub analyze
             # Run through the whole logfile
             my %state = (
                 linecount  => 0,
-                lastnick   => "",
+                lastnick   => '',
                 monocount  => 0,
-                lastnormal => "",
+                lastnormal => '',
                 oldtime    => 24
             );
             $self->_parse_file(\%stats, \%lines, $self->{cfg}->{logfile}, \%state);
@@ -78,11 +78,11 @@ sub analyze
         _uniquify_nicks(\%stats);
 
         my ($sec,$min,$hour) = gmtime(time() - $starttime);
-        my $processtime = sprintf("%02d hours, %02d minutes and %02d seconds", $hour, $min, $sec);
+        my $processtime = sprintf('%02d hours, %02d minutes and %02d seconds', $hour, $min, $sec);
 
-        $stats{processtime}{hours} = sprintf("%02d", $hour);
-        $stats{processtime}{mins} = sprintf("%02d", $min);
-        $stats{processtime}{secs} = sprintf("%02d", $sec);
+        $stats{processtime}{hours} = sprintf('%02d', $hour);
+        $stats{processtime}{mins} = sprintf('%02d', $min);
+        $stats{processtime}{secs} = sprintf('%02d', $sec);
 
         print "Channel analyzed succesfully in $processtime on ",
         scalar localtime(time()), "\n"
@@ -119,7 +119,7 @@ sub _parse_dir
     closedir(LOGDIR);
 
     my %state = (
-        lastnick   => "",
+        lastnick   => '',
         monocount  => 0,
         oldtime    => 24
     );
@@ -191,7 +191,7 @@ sub _parse_file
         die("$0: Unable to open logfile($file): $!\n");
     }
 
-    my $lastnormal = "";
+    my $lastnormal = '';
 
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
@@ -257,14 +257,14 @@ sub _parse_file
                     $stats->{lengths}{$nick} += $len;
 
                     $stats->{questions}{$nick}++
-                        if (index($saying, "?") > -1);
+                        if (index($saying, '?') > -1);
 
                     $stats->{shouts}{$nick}++
-                        if (index($saying, "!") > -1);
+                        if (index($saying, '!') > -1);
 
-                    if ($saying !~ /[a-z]/ && $saying =~ /[A-Z]/) {
+                    if ($saying !~ /[a-z]/o && $saying =~ /[A-Z]/o) {
                         # Ignore single smileys on a line. eg. '<user> :P'
-                        if ($saying !~ /^[8;:=][ ^-o]?[)pPD}\]>]$/) {
+                        if ($saying !~ /^[8;:=][ ^-o]?[)pPD}\]>]$/o) {
                             $stats->{allcaps}{$nick}++;
                             push @{ $lines->{allcaplines}{$nick} }, $line;
                         }
@@ -279,10 +279,10 @@ sub _parse_file
                     # Who smiles the most?
                     # A regex matching al lot of smilies
                     $stats->{smiles}{$nick}++
-                        if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/);
+                        if ($saying =~ /[8;:=][ ^-o]?[)pPD}\]>]/o);
 
-                    if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/ and
-                        $saying !~ /\w+:\/\//) {
+                    if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/{]/o and
+                        $saying !~ /\w+:\/\//o) {
                         $stats->{frowns}{$nick}++;
                     }
 
@@ -339,8 +339,7 @@ sub _parse_file
                 }
 
 
-                my $len = length($saying);
-                $stats->{lengths}{$nick} += $len;
+                $stats->{lengths}{$nick} += length($saying);
 
                 _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword}, $hour);
             }
@@ -431,15 +430,15 @@ sub _modechanges
 
     my (@voice, @halfops, @ops, $plus);
     foreach (split(//, $newmode)) {
-        if ($_ eq "o") {
+        if ($_ eq 'o') {
             $ops[$plus]++;
-        } elsif ($_ eq "h") {
+        } elsif ($_ eq 'h') {
             $halfops[$plus]++;
-        } elsif ($_ eq "v") {
+        } elsif ($_ eq 'v') {
             $voice[$plus]++;
-        } elsif ($_ eq "+") {
+        } elsif ($_ eq '+') {
             $plus = 0;
-        } elsif ($_ eq "-") {
+        } elsif ($_ eq '-') {
             $plus = 1;
         }
     }
@@ -454,18 +453,20 @@ sub _modechanges
 sub _parse_words
 {
     my ($stats, $saying, $nick, $ignoreword, $hour) = @_;
+    # Cache time of day
+    my $tod = int($hour/6);
 
-    foreach my $word (split(/[\s,!?.:;)(\"]+/, $saying)) {
+    foreach my $word (split(/[\s,!?.:;)(\"]+/o, $saying)) {
         $stats->{words}{$nick}++;
-        $stats->{word_times}{$nick}[int($hour/6)]++;
+        $stats->{word_times}{$nick}[$tod]++;
         # remove uninteresting words
         next if ($ignoreword->{$word});
 
         # ignore contractions
-        next if ($word =~ m/'.{1,2}$/);
+        next if ($word =~ m/'.{1,2}$/o);
 
         # Also ignore stuff from URLs.
-        next if ($word =~ m/^https?$|^\/\//);
+        next if ($word =~ m/^https?$|^\/\//o);
 
         $stats->{wordcounts}{$word}++;
         $stats->{wordnicks}{$word} = $nick;
@@ -538,21 +539,15 @@ sub checkname {
 
 sub _adjusttimeoffset
 {
-    my $self = shift;
-    my $hour = shift;
+    my ($self, $hour) = @_;
 
-    if ($self->{cfg}->{timeoffset} =~ /\+(\d+)/) {
-        # We must plus some hours to the time
-        $hour += $1;
+    if ($self->{cfg}{timeoffset} != 0) {
+        # Adjust time
+        $hour += $self->{cfg}{timeoffset};
         $hour = $hour % 24;
-        $hour = sprintf("%02d", $hour);
-
-    } elsif ($self->{cfg}->{timeoffset} =~ /-(\d+)/) {
-        # We must remove some hours from the time
-        $hour -= $1;
-        $hour = $hour % 24;
-        $hour = sprintf("%02d", $hour);
+        $hour = sprintf('%02d', $hour);
     }
+     
     return $hour;
 }
 
