@@ -587,14 +587,18 @@ sub parse_file
                 } elsif (defined($newnick) && ($conf->{nicktracking} == 1)) {
                     my $lcnewnick = lc($newnick);
                     my $lcnick = lc($nick);
-                    unless (defined($alias{$lcnewnick})) {
-                        if (defined($alias{$lcnick}) && !defined($alias{$lcnewnick})) {
-                            $alias{$lcnewnick} = $alias{$lcnick};
-                        } elsif (defined($alias{$lcnewnick}) && !defined($alias{$lcnick})) {
-                            $alias{$lcnick} = $alias{$lcnewnick};
-                        } elsif ($nick =~ /Guest/) {
-                            $alias{$lcnick} = $newnick;
-                        } else {
+                    if ($lcnewnick eq lc(find_alias($newnick))) {
+                        if (!defined($alias{$lcnick})) {
+                            if (defined($alias{$lcnewnick})) {
+                                $alias{$lcnick} = $alias{$lcnewnick};
+                            } elsif ($nick =~ /Guest/) {
+                                $alias{$lcnick} = $newnick;
+                                $alias{$lcnewnick} = $newnick;
+                            } else {
+                                $alias{$lcnewnick} = $nick;
+                                $alias{$lcnick} = $nick;
+                            }
+                        } elsif (!defined($alias{$lcnewnick})) {
                             $alias{$lcnewnick} = $nick;
                         }
                     }
