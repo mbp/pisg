@@ -2,6 +2,8 @@ pisg (0.17) -
 
    * Timezone offset now understands two digits as it should
    * The 'time bars' were broken, fix them.
+   * Spanish translation (thanks to Sheuron Azxe)
+   * Polish translation (thanks to Gandalf the Grey)
 
 pisg (0.16a) - Wed, July 25th 2001
 
