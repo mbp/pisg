@@ -4,6 +4,8 @@ pisg (x.xx)
    * mirc2egg script updated.
    * The random line in "Most Active Nicks" now wraps words that are longer
      than 40 characters. (thanks, glen)
+   * Check if a userpic link begins with http:// -- if so, dont prepend image
+     directory to URL
 
 pisg (0.43) - Fri Nov, 22th 2002
    * Add "ShowOnlyTop" option which can be used if you only want to have stats

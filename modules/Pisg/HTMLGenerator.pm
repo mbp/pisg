@@ -504,19 +504,35 @@ sub _activenicks
         if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
             _html("<td style=\"background-color: $color\" align=\"center\">");
             if (defined $self->{users}->{biguserpics}{$nick}) {
-                _html("<a href=\"$self->{cfg}->{imagepath}$self->{users}->{biguserpics}{$nick}\">");
+                if ($self->{users}->{biguserpics}{$nick} =~ /^http:\/\//i) {
+                    _html("<a href=\"$self->{users}->{biguserpics}{$nick}\">");
+                } else {
+                    _html("<a href=\"$self->{cfg}->{imagepath}$self->{users}->{biguserpics}{$nick}\">");
+                }
             }
             if ($width ne '') {
-                _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
+                if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
+                    _html("<img valign=\"middle\" src=\"$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
+                } else {
+                    _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" alt=\"$nick\" />");
+                }
             } else {
-                _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
+                if ($self->{users}->{userpics}{$nick} =~ /^http:\/\//i) {
+                    _html("<img valign=\"middle\" src=\"$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
+                } else {
+                    _html("<img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" alt=\"$nick\" />");
+                }
             }
             if (defined $self->{users}->{biguserpics}{$nick}) {
                 _html("</a>");
             }
             _html("</td>");
         } elsif ($self->{cfg}->{defaultpic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
-            _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
+             if ($self->{cfg}->{defaultpic} =~ /^http:\/\//i) {
+                _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
+             } else {
+                _html("<td style=\"background-color: $color\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{defaultpic}\" alt=\"\" /></td>");
+             }
         }
 
         _html("</tr>");
