@@ -85,6 +85,10 @@ sub thirdline
                 ($hash{saying} =~ /^Topic is \'.*\'/) ||  
                 ($hash{saying} =~ /^Disconnected/) ||  
                 ($hash{saying} =~ /^\S+ has quit IRC \(.+\)/) ||  
+                ($hash{saying} =~ /^\S+ has left \#\S+/) ||  
+                ($hash{saying} eq 'You're not channel operator') ||
+                ($hash{nick} eq 'Attempting' && $hash{saying} =~ /^to rejoin channel/) ||  
+                ($hash{nick} eq 'Rejoined' && $hash{saying} =~ /^channel/) ||  
                 ($hash{saying} =~ /^Retrieving #\S+ info\.\.\./)
               ) {
                 return 0;
