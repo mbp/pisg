@@ -941,6 +941,11 @@ mostop1 = "<b>[:nick]</b> gav [:ops] personer operatörsstatus i kanalen..."
 mostop2 = "<b>[:nick]</b> var också väldigt vänlig: [:ops] från [:honom:henne:]"
 mostop3 = "Underligt, inga personer fick operatörsstatus i [:channel]!"
 
+action1 = "<b>[:nick]</b> berättar alltid för oss vad [:han:hon:] gör: [:actions] beskrivningar!"
+action2 = "Även <b>[:nick]</b> berättar vad som händer med [:actions] beskrivningar."
+action3 = "Inga beskrivningar i [:channel]!"
+actiontext = "<b>Till exempel, såhär:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
 mostdeop1 = "<b>[:nick]</b> var kanalens sheriff och tog ifrån [:deops] personer deras operatörsstatus..."
 mostdeop2 = "<b>[:nick]</b> tog ifrån [:deops] användare sin operatörsstatus"
 mostdeop3 = "Wow, inga personer blev av med sin operatörsstatus i [:channel]!"
@@ -1010,11 +1015,14 @@ activetimestopic = "Mest aktiva tider"
 activenickstopic = "Mest aktiva personer"
 mostwordstopic = "Mest använda ord"
 referencetopic = "Mest tilltalade personer"
+urlstopic = "Mest refererade URLer"
 notopic = "Ingen rubrik blev nånsin satt på denna kanal"
 
 ## Other text
 
 totallines = "Totalt antal rader: [:lines]"
+totalnicks = "Och förresten, det var [:totalnicks] andra alias som inte kom med."
+totaltopic = "Kanalrubriken ändrades [:total] gånger."
 nick = "Namn/Alias"
 url = "URL"
 numberlines = "Antal rader"
@@ -1025,7 +1033,7 @@ word = "Ord"
 numberuses = "Antal gånger"
 lastused = "Sist använt av"
 pagetitle1 = "[:channel] @ [:network] statistik av [:maintainer]"
-pagetitle2 = "Statistik genererad på "
+pagetitle2 = "Statistik genererad "
 pagetitle3 = "Under denna [:days]-dagars reporterings period, blev ett totalt antal av <b>[:nicks]</b> olika personer representerade på [:channel]."
 </lang>
 
