@@ -146,6 +146,12 @@ today = "Today"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
 pagetitle2 = "Statistics generated on "
 pagetitle3 = "During this [:days]-day reporting period, a total of <b>[:nicks]</b> different nicks were represented on [:channel]."
+
+# Mouse-over titles
+pisghomepage = "Go to the pisg homepage"
+authorhomepage = "Go to the authors homepage"
+newwindow = "Open in new window:"
+mailto = "Mail to"
 </lang>
 
 ### German
@@ -399,6 +405,12 @@ today = "I dag"
 pagetitle1 = "[:channel] @ [:network] statistikker af [:maintainer]"
 pagetitle2 = "Statistikker genereret "
 pagetitle3 = "Igennem denne [:days]-dages periode, har der været <b>[:nicks]</b> forskellige nicks på [:channel]."
+
+# Mouse-over titles
+pisghomepage = "Gå til pisg hjemmesiden"
+authorhomepage = "Gå til forfatterens hjemmeside"
+newwindow = "Åben i nyt vindue:"
+mailto = "Mail til"
 </lang>
 
 ### French
