@@ -851,7 +851,7 @@ mostop2 = "<b>[:nick]</b> was ook erg beschaafd: <b>[:ops]</b> werden er uitgede
 mostop3 = "Totaal vreemd, Geen operator status gegeven op [:channel]!"
 
 mostdeop1 = "<b>[:nick]</b> is de chatbox agent met <b>[:deops]</b> deops..."
-mostdeop2 = "<b>[:nick]</b> probeerde <b>[:oldnick]</b> na te doen.[:Hij:Zij:] deopte <b>[:deops]</b> chatters."
+mostdeop2 = "<b>[:nick]</b> deopte <b>[:deops]</b> chatters."
 mostdeop3 = "Wow, geen op afgenomen op [:channel]!"
 
 question1 = "<b>[:nick]</b> is gewoon stom of verzint de vragen waar je bijstaat... <b>[:per]%</b> bevatte een vraag!"
