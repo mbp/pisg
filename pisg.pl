@@ -1169,8 +1169,8 @@ sub activetimes
 sub legend
 {
     html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
-    html("<td align=\"center\"><img src=\"blue-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 0-6</td>");
-    html("<td align=\"center\"><img src=\"green-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 7-11</td>");
+    html("<td align=\"center\"><img src=\"blue-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 0-5</td>");
+    html("<td align=\"center\"><img src=\"green-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 6-11</td>");
     html("<td align=\"center\"><img src=\"yellow-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 12-17</td>");
     html("<td align=\"center\"><img src=\"red-h.png\" width=\"40\" height=\"15\" align=\"middle\"> = 18-23</td>");
     html("</tr></table>\n");
