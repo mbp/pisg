@@ -232,3 +232,22 @@ link to the logfile)
 
   Example:
   15.57.40 # <elho> hello world! 
+
+* ViRC98:                                                                                      
+  - A client for Windows (http://www.hansprestige.com)                                         
+      at this time is ViRC2.0rc1                                                               
+      maybe the type of logs will change                                                       
+                                                                                               
+    Remember to timestamp your logs, or it wont work,                                          
+    active it checking                                                                         
+    "Client setup/ViRC '98 options/Chat logging/                                               
+     (Miscellaneous logging options)Stamp every message logged with current                    
+time"                                                                                          
+                                                                                               
+  - In order to use this, format must be set to 'virc98'.                                      
+                                                                                               
+  Examples:                                                                                    
+    01.15.39 [Fender]   this is a normal line writen by myself                             
+    00.55.38 <@jax1n0^O>   this is a normal line writen by another                                
+    22.24.27 * Fender says an action                                                  
+
