@@ -2,6 +2,8 @@ pisg (x.xx)
    * Added javabot support (thanks, Tobias Larsson)
    * Fix serious bug in mIRC/mIRC6 formats which caused lots of warnings to be
      outputted.
+   * Distribute rbot.pm with release tarball, apparently it was lost at
+   some stage.
 
 pisg (0.54) - Thu Apr, 1st 2004
    * Revert most of the performance improvement changes, they caused bugs.
