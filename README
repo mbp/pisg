@@ -17,24 +17,22 @@ SETTING UP PISG
 It's quite simple to set up pisg. You have 2 choices:
 
  * Set settings from commandline (try pisg.pl --help)
- * Set settings from inside the script
+ * Set settings from the pisg.cfg config file (more flexible)
 
-The most important this is the name of the logfile, the maintainers name,
+The most important here is the name of the logfile, the maintainers name,
 and then the format of your logfile.
 
 You cannot set everything up on the commandline, only the important things.
 
-The 'users.cfg' file control a lot of things, like connecting nicks
-together, ignoring nicks in the stats, adding user pictures etc. There is
-more documentation in the users.cfg file.
+The 'pisg.cfg' file control a lot of things, you should read CONFIG-README.
 
 NOTE: The stats will look best with a logfile which is a least a day-long.
 Some stats (like smilies, exclamation marks etc) doesn't get counted before
 a special amount of time.
 
 Also, pisg supports multiple languages so you're text will be in your own
-language; English, German, Danish, French, Spanish and Polish is supported
-at the moment and can be set with the $lang variable in the script.
+language: Look in lang.txt to see the supported languages. The language can
+be changed from within the pisg.cfg file.
 
 You're welcome to translate pisg to your own language, it's not very hard,
 look in the lang.txt file!
@@ -58,8 +56,8 @@ For example the following would work:
     
 Try it out.
 
-Setting settings on commandline, will override the relevant settings in the
-script.
+Setting settings on commandline, will override the relevant settings in
+pisg.cfg.
 
 CONTACT INFORMATION
 -------------------
