@@ -1656,8 +1656,10 @@ sub _mostnicks
 
         $self->_headline($self->_template_text('mostnickstopic'));
 
+        my $nick_txt = $self->_template_text('nick');
+        my $names_txt = $self->_template_text('names');
         _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
-        _html("<td>&nbsp;</td><td class=\"tdtop\"><b>Nick</b></td>");
+        _html("<td>&nbsp;</td><td class=\"tdtop\"><b>$names_txt</b></td>");
         _html("<td class=\"tdtop\"><b>Names Used</b></td></tr>");
 
         for(my $i = 0; $i < 5; $i++) {
