@@ -318,16 +318,16 @@ sub _activetimes
         $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmallcenter\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
     }
 
-    _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>\n");
+    _html("<table border=\"0\"><tr>\n");
 
     for ($b = 0; $b < 24; $b++) {
         $a = sprintf("%02d", $b);
 
         if (!defined($output{$a}) || $output{$a} eq "") {
-            _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">0%</td>");
+            _html("<td align=\"center\" valign=\"bottom\" class=\"asmallcenter\">0%</td>");
         } else {
             _html($output{$a});
         }
