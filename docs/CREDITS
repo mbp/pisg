@@ -37,8 +37,7 @@ Other contributors:
    | Found a few minor bugs. And added replace_links()
  * S. William Schulz <sws@astrum.com>
    | Better commandline arguments, --help and fixed indenting problems with
-     xchat logs, also fixed a critical thing with --format
-     --silent switch
+     xchat logs, also fixed a critical thing with --format, --silent switch
  * Tim Hunter <tim@quic.net>
    | 'shortest lines', 'most fouls', 'pageheader' and more. 
  * Kim Ingemann (KimI) <mail@pingvinland.dk>
@@ -50,7 +49,7 @@ Other contributors:
  * Gandalf the Grey <gandalf@irc.pl>
    | Polish translation and egg2mirc.awk script.
  * Andreas Blaafladt <coronel@dalnet.no>
-   | Norweigan translation
+   | Norwegian translation
  * Sascha Lüdecke <sascha@meta-x.de>
    | Compressed files, addition of --prefix, and sorting of files in logdirs
  * JaMiR0W <jamirow@ig.com.br>
@@ -58,7 +57,7 @@ Other contributors:
  * Hanno Hecker (Vetinari) <hanno-pisg@bee.de>
    | Lots of feature additions and code cleanups, thanks!
    | Updates to German translation, some patches for words and the feature
-   'most words'.
+     'most words'.
  * Pyrofikiemaan <gassman65@hotmail.com>
    | Dutch translation
  * Andreas Henriksson <gem@home.se>
@@ -105,6 +104,8 @@ Other contributors:
    | Ability to specify multiple LogFiles and LogDirs.
  * HM 2K <nfhm2k@gmail.com>
    | eggdrop-pisg.tcl for running pisg from eggdrop
+ * Tiniduske <tiniduske@telenet.be>
+   | updated Dutch translation
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)

@@ -2,11 +2,13 @@ pisg (0.60) - ??
    Changes by Christoph Berg:
    * Clean up loop code in _mostnicks() and fix warning about calls to
    is_ignored(undef).
-   * Added scripts/eggdrop-pisg.tcl for running pisg from eggdrop (Thanks,
+   * Added scripts/eggdrop-pisg.tcl for running pisg from eggdrop (thanks,
    HM2K).
    * Add total number of lines to status output.
    * Annotated all languages in lang.txt with charset; fixed some Russian and
    German strings.
+   * Updated Norwegian translation (thanks, Andreas Blaafladt).
+   * Updated Dutch translation (thanks, Tiniduske).
    Changes by Morten Brix Pedersen:
    * Renamed the Danish translation to its correct abbreviation, DA instead
    of DK.
