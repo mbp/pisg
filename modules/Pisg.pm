@@ -92,6 +92,7 @@ sub get_default_config_settings
         outputfile => 'index.html',
         maintainer => 'MAINTAINER',
         pagehead => 'none',
+        pagefoot => 'none',
         configfile => 'pisg.cfg',
         imagepath => '',
         default_pic => '',

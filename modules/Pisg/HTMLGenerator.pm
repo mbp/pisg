@@ -54,7 +54,9 @@ sub create_html
     }
     $self->{cfg}->{headwidth} = $self->{cfg}->{tablewidth} - 4;
     $self->_htmlheader();
-    $self->_pageheader();
+    $self->_pageheader()
+        if ($self->{cfg}->{pagehead} ne 'none');
+
     if ($self->{cfg}->{show_activetimes}) {
         $self->_activetimes();
     }
@@ -108,6 +110,9 @@ sub create_html
 
     my %hash = ( lines => $self->{stats}->{totallines} );
     _html($self->_template_text('totallines', %hash) . "<br /><br />");
+
+    $self->_pagefooter()
+        if ($self->{cfg}->{pagefoot} ne 'none');
 
     $self->_htmlfooter();
 
@@ -270,11 +275,18 @@ HTML
 sub _pageheader
 {
     my $self = shift;
-    if ($self->{cfg}->{pagehead} ne 'none') {
-        open(PAGEHEAD, $self->{cfg}->{pagehead}) or die("$0: Unable to open $self->{cfg}->{pagehead} for reading: $!\n");
-        while (<PAGEHEAD>) {
-            _html($_);
-        }
+    open(PAGEHEAD, $self->{cfg}->{pagehead}) or die("$0: Unable to open $self->{cfg}->{pagehead} for reading: $!\n");
+    while (<PAGEHEAD>) {
+        _html($_);
+    }
+}
+
+sub _pagefooter
+{
+    my $self = shift;
+    open(PAGEFOOT, $self->{cfg}->{pagefoot}) or die("$0: Unable to open $self->{cfg}->{pagefoot} for reading: $!\n");
+    while (<PAGEFOOT>) {
+        _html($_);
     }
 }
 
@@ -1570,6 +1582,7 @@ sub _replace_links
         $str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)/<a href="$1$2" target="_blank" title="Open in new window: $1$2">$1$2<\/a>/g;
         $str =~ s/([-a-zA-Z0-9._]+@[-a-zA-Z0-9_]+\.[-a-zA-Z0-9._]+)/<a href="mailto:$1" title="Mail to $1">$1<\/a>/g;
     }
+    $str =~ s/&/&amp;/g
     return $str;
 }
 

@@ -279,10 +279,11 @@ sub _parse_file
 
                     # Find URLs
                     if (my @urls = match_urls($saying)) {
-                        foreach (@urls) {
-                            if(!url_is_ignored($_)) {
-                                $stats->{urlcounts}{$_}++;
-                                $stats->{urlnicks}{$_} = $nick;
+                        foreach my $url (@urls) {
+                            if(!url_is_ignored($url)) {
+                                $url =~ s/&/&amp;/g;
+                                $stats->{urlcounts}{$url}++;
+                                $stats->{urlnicks}{$url} = $nick;
                             }
                         }
                     }
