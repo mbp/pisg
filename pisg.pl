@@ -1756,8 +1756,7 @@ sub get_cmdlineoptions
 
 my $usage = <<END_USAGE;
 Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma
-maintainer]  [-f format] [-n network] [-d logdir] [-a aliasfile]
-[-i ignorefile] [-mo moduledir] [-h]
+maintainer]  [-f format] [-n network] [-d logdir] [-mo moduledir] [-h]
 
 -ch --channel=xxx      : Set channel name
 -l  --logfile=xxx      : Log file to parse
