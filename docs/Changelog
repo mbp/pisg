@@ -17,6 +17,9 @@ pisg (0.60) - ??
    Changes by Morten Brix Pedersen:
    * Renamed the Danish translation to its correct abbreviation, DA instead
    of DK.
+   * Updated Danish translation.
+   * Fix problem with supybot log format, where the kick message became a
+   part of a users nick.
 
 pisg (0.59) - Sun Oct, 3rd 2004
    Changes by Morten Brix Pedersen:

@@ -81,7 +81,7 @@ sub thirdline
 	
         if (($4.$5) eq 'waskicked') {
             $hash{kicker} = $7;
-            $hash{nick} = $3;
+            $hash{kicker} =~ s/\s.*//;
 
         } elsif (($4.$5) eq 'changestopic') {
             $hash{newtopic} = $7;
