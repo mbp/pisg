@@ -376,8 +376,8 @@ sub do_channel
     my $self = shift;
     if (!$self->{cfg}->{channel}) {
         print "No channels defined.\n";
-    } elsif ($self->{cfg}->{channel} and !$self->{cfg}->{logfile}) {
-        print "No logfile defined for " . $self->{cfg}->{channel} . "\n";
+    } elsif ((!$self->{cfg}->{logfile}) && (!$self->{cfg}->{logdir})) {
+        print "No logfile or logdir defined for " . $self->{cfg}->{channel} . "\n";
     } else {
 
         $self->init_pisg();        # Init some general things
