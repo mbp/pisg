@@ -123,7 +123,7 @@ sub _parse_dir
         monocount  => 0,
         oldtime    => 24
     );
-    if (defined $self->{cfg}->{logsuffix}) {
+    if ($self->{cfg}->{logsuffix} ne '') {
         my @temparray;
         my %months = (
             'jan' => '0',
