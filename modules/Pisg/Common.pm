@@ -1,5 +1,11 @@
 package Pisg::Common;
 
+=head1 NAME
+
+Pisg::Common - some common functions of pisg.
+
+=cut
+
 use Exporter;
 @ISA = ('Exporter');
 @EXPORT = qw(add_alias add_aliaswild add_ignore is_ignored find_alias match_url match_email htmlentities);
@@ -7,13 +13,7 @@ use Exporter;
 use strict;
 $^W = 1;
 
-my ($conf, $debug);
 my (%aliases, %aliaswilds, %ignored, %aliasseen);
-
-sub init_common
-{
-    $debug = shift;
-}
 
 # add_alias assumes that the first argument is the true nick and the second is
 # the alias, but will accomidate other arrangements if necessary.
@@ -33,7 +33,7 @@ sub add_alias
     } elsif (not defined $aliases{$lcalias}) {
         $aliases{$lcalias} = $aliases{$lcnick};
     } elsif ($aliases{$lcnick} ne $aliases{$lcalias}) {
-	$debug->("Alias collision: alias $alias -> $aliases{$lcalias} but nick $nick -> $aliases{$lcnick}");
+        #$debug->("Alias collision: alias $alias -> $aliases{$lcalias} but nick $nick -> $aliases{$lcnick}");
     }
     #$debug->("Alias added: $alias -> $aliases{$lcalias}");
 }
@@ -48,7 +48,7 @@ sub add_aliaswild
         $aliases{$lcnick}  = $nick;
     }
     $aliaswilds{$lcalias} = $nick;
-    $debug->("Aliaswild added: $alias -> $aliaswilds{$lcalias}");
+    #$debug->("Aliaswild added: $alias -> $aliaswilds{$lcalias}");
 }
 
 sub add_ignore
