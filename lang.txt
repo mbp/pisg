@@ -25,6 +25,10 @@ mostop1 = "<b>[:nick]</b> donated [:ops] ops in the channel..."
 mostop2 = "<b>[:nick]</b> was also very polite: [:ops] from her/him"
 mostop3 = "Strange, no op was given on [:channel]!"
 
+action1 = "<b>[:nick]</b> always lets us know what he/she is doing: [:actions] actions!"
+action2 = "Also <b>[:nick]</b> tells us what's up with [:actions]"
+action3 = "No actions in [:channel] !"
+
 mostdeop1 = "<b>[:nick]</b> is the channel sheriff with [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> deoped [:deops] users"
 mostdeop3 = "Wow, no op was taken on [:channel]!"
@@ -228,6 +232,10 @@ pagetitle3 = "Während des Statistikzeitraums von [:days] Tage(n) wurden <b>[:nic
 mostop1 = "<b>[:nick]</b> gav [:ops] op status i kanalen..."
 mostop2 = "<b>[:nick]</b> var også venlig at gi': [:ops] fra sig"
 mostop3 = "Underligt, ingen har fået op på [:channel] endnu!"
+
+action1 = "<b>[:nick]</b> bruger /me meget tit, ialt [:actions] gange!"
+action2 = "Also <b>[:nick]</b> fortæller os også hvad han laver.. [:actions] /me's"
+action3 = "Ingen /me's i [:channel] !"
 
 mostdeop1 = "<b>[:nick]</b> holder orden på [:channel] med [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> deoppede [:deops] brugere"

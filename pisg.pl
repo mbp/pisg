@@ -532,6 +532,7 @@ sub parse_file
 
             unless (grep /^\Q$nick\E$/i, @ignore) {
                 $actions++;
+                $actions{$nick}++;
                 $line{$nick}++;
                 $line_time{$nick}[int($hour/6)]++;
 
@@ -1066,6 +1067,7 @@ sub create_html
     gotkicks();
     mostkicks();
     mostop();
+    mostactions();
     mostmonologues();
     mostjoins();
     mostfoul();
@@ -1994,6 +1996,40 @@ sub mostop
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text");
     }
 }
+
+sub mostactions
+{
+
+    # The person who did the most /me's
+
+    my @actions = sort { $actions{$b} <=> $actions{$a} } keys %actions;
+
+    if (@actions) {
+        my %hash = (
+            nick => $actions[0],
+            actions => $actions{$actions[0]}
+        );
+
+        my $text = template_text('action1', %hash);
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text");  
+
+        if (@actions >= 2) {
+            my %hash = (
+                nick => $actions[1],
+                actions => $actions{$actions[1]}
+            );
+
+            my $text = template_text('action2', %hash);
+            html("<br><span class=\"small\">$text</span>");
+        }
+        html("</td></tr>");
+    } else {
+        my $text = template_text('action3');
+        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
+    }
+
+}
+
 
 sub mostsmiles
 {
