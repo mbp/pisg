@@ -1374,6 +1374,8 @@ hours = "tuntia"
 minutes = "minuuttia"
 seconds = "sekuntia"
 and = "ja"
+names1 = "nickiä"
+names2 = "nick"
 
 # Mouse-over titles
 pisghomepage = "Siirry pisg:in kotisivuille"
