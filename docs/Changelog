@@ -7,7 +7,8 @@ pisg (0.63) - ??
    Christoph:
    * Updated translations:
      + German (thanks, Igge).
-     + Greek (thanks, Konstantinos Tzanidis)
+     + Greek (thanks, Konstantinos Tzanidis).
+     + Hebrew (thanks, shimi).
      + Swedish (thanks, Torbjörn Svensson).
    * Inhibit warning in _mostreferencednicks when a nick is referenced
      before being used first.

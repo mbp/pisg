@@ -3707,6 +3707,7 @@ urlstopic = "הכתובות שהוזכרו הכי הרבה פעמים"
 notopic = "מעולם לא שמו טופיק בערוץ זה."
 mostnickstopic = "המשתמשים עם הכי הרבה כינויים"
 bylinetopic = "על ידי [:nick] ב [:time]"
+dailyactivitytopic = "פעילות יומית ([:n] ימים אחרונים)"
 
 ## Other text
 
@@ -3745,10 +3746,10 @@ names1 = "שמות"
 names2 = "שם"
 
 # Mouse-over titles
-pisghomepage = "Go to the pisg homepage"
-authorhomepage = "Go to the authors homepage"
-newwindow = "Open in new window:"
-mailto = "Mail to"
+pisghomepage = "אתר הבית של pisg"
+authorhomepage = "אתר הבית של היוצר"
+newwindow = "פתח בחלון חדש:"
+mailto = "שלח דואר אל"
 </lang>
 
 ### Bulgarian
