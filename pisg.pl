@@ -1008,10 +1008,11 @@ sub debug
 
 sub find_alias
 {
-    my $nick = lc(shift());
+    my $nick = shift;
+    my $lcnick = lc($nick);
 
-    if ($alias{$nick}) {
-        return $alias{$nick};
+    if ($alias{$lcnick}) {
+        return $alias{$lcnick};
     } else {
         foreach (keys %alias) {
             if (($_ =~ /\.\*/) && ($nick =~ /^$_$/i)) {
