@@ -2158,11 +2158,11 @@ $T{PL}{question1} = "<b>[:nick]</b> jest glupi albo zadaje wiele pytan... [:per]
 $T{PL}{question2} = "<b>[:nick]</b> rowniez nie wie zbyt wiele, [:per]% linii bylo pytaniami";
 $T{PL}{question3} = "Nikt o nic nie pyta na kanale - czyzby sami geniusze?";
 
-$T{PL}{loud1} = "Najglosniejszym okazal/a sie <b>[:nick]</b> krzczac przez [:per]% czasu!";
+$T{PL}{loud1} = "Najglosniejszym okazal/a sie <b>[:nick]</b> krzyczac przez [:per]% czasu!";
 $T{PL}{loud2} = "Kolejnym krzykaczem byl <b>[:nick]</b> ktory wrzeszczal przez [:per]% czasu!";
 $T{PL}{loud3} = "Nikt nic nie wykrzykiwal na kanale, wow.";
 
-$T{PL}{gotkick1} = "<b>[:nick]</b> nie zalapal o co chodzilo operatorom za pierwszym razem i zostal skopany [:kicks] razy!";
+$T{PL}{gotkick1} = "<b>[:nick]</b> nie zalapal o co chodzilo operatorom za pierwszym razem i zostal wykopany [:kicks] razy!";
 $T{PL}{gotkick2} = "<b>[:nick]</b> nie jest tu chyba zbyt lubiany - wylatywal [:kicks] razy";
 
 $T{PL}{joins} = "<b>[:nick]</b> zastanawial sie nad \"byc albo nie byc\", [:joins] razy wchodzil na kanal!";
@@ -2172,13 +2172,13 @@ $T{PL}{kick2} = "<b>[:nick]</b> idac w slad za [:oldnick] wykopal [:kicked] osob
 $T{PL}{kick3} = "Mamy tutaj milych operatorow, nikt nie zostal wykopany!";
 
 $T{PL}{mono1} = "<b>[:nick]</b> uwielbia mowic sam do siebie, albo inni za nim nie nadazaja, pisal monologi [:monos] razy!";
-$T{PL}{mono2} = "Kolejny samotnikiem okazal sie <b>[:nick]</b>, ktory pisal bez towarzystwa [:monos] razy";
+$T{PL}{mono2} = "Kolejnym samotnikiem okazal sie <b>[:nick]</b>, ktory pisal bez towarzystwa [:monos] razy";
 
 $T{PL}{long1} = "<b>[:nick]</b> pisal najdluzsze linie, o sredniej dlugosci [:letters] liter...";
-$T{PL}{long2} = "Srednia dla kanalu [:channel] byla [:avg] liter w linii";
+$T{PL}{long2} = "Srednia dla kanalu [:channel] to [:avg] liter w linii";
 
 $T{PL}{short1} = "<b>[:nick]</b> staral sie pisac zwiezle, srednio [:letters] liter w linii...";
-$T{PL}{short2} = "[:nick] wybakiwal krotkie wypowiedzi srednio [:letters]";
+$T{PL}{short2} = "[:nick] wybakiwal krotkie wypowiedzi srednio po [:letters] liter";
 
 $T{PL}{foul1} = "<b>[:nick]</b> ma niewyparzona gebe, [:per]% linii zawieralo bluzgi";
 $T{PL}{foul2} = "<b>[:nick]</b> klnie jak szefc (albo i gorzej), przez [:per]% czasu";
@@ -2210,7 +2210,7 @@ $T{PL}{totallines} = "Calkowita liczba linii: [:lines]";
 $T{PL}{nick} = "Nick";
 $T{PL}{numberlines} = "Liczba linii";
 $T{PL}{randquote} = "Losowy cytat";
-$T{PL}{userpic} = "Userpic";
+$T{PL}{userpic} = "Obrazek";
 $T{PL}{nottop} = "Oni nie dostali sie do czolowki:";
 $T{PL}{word} = "Wyraz";
 $T{PL}{numberuses} = "Liczba uzyc";
