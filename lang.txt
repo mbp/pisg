@@ -175,7 +175,7 @@ mostdeop2 = "<b>[:nick]</b> nahm [:deops] Usern das @ wieder weg."
 mostdeop3 = "Wow, niemand wurde deopped in [:channel]!"
 
 mostvoice1 = "<b>[:nick]</b> hat [:voices] voices im Channel vergeben..."
-mostvoice2 = "<b>[:nick]</b> war auch sehr höflich:: [:voices] voices von [:him:her:]."
+mostvoice2 = "<b>[:nick]</b> war auch sehr höflich: [:voices] voices von [:ihm:ihr:]."
 mostvoice3 = "Seltsam, keine voices in [:channel] vergeben!"
 
 mostdevoice1 = "<b>[:nick]</b> ist der Wachtmeister des Channels mit  [:devoices] devoices."
@@ -192,7 +192,7 @@ question1 = "<b>[:nick]</b> hat wohl in der Schule nicht gut aufgepasst... [:per
 question2 = "<b>[:nick]</b> weiss wohl auch nicht viel, [:per]% [:seiner:ihrer:] Zeilen waren Fragen."
 question3 = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Genies sein? ;)"
 
-shout1 = "Am lautesten war <b>[:nick]</b> der/die [:per]% der Zeit geschrien hat!"
+shout1 = "Am lautesten war <b>[:nick]</b> [:der:die:] [:per]% der Zeit geschrien hat!"
 shout2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> [:der:die:] [:per]% der Zeit rumgeschrien hat!"
 shout3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
 
