@@ -1,8 +1,15 @@
 FORMATS - supported logfile formats by pisg
 ------------------
 
-This file contains a list of the different formats that pisg supports. It
-also includes a sample line for these formats.
+This file contains a list of the different logfile formats which pisg
+supports. It also includes a sample line for these formats.
+
+If you don't have access to any of the clients/bots or you use some other
+IRC client/bot which isn't supported, then it's fairly easy to add support
+for a new IRC log format if you have some Perl knowledge, take a look at
+modules/Pisg/Parser/Format/Template.pm. If you don't have any Perl
+knowledge, then mail a sample logfile to the mailinglist (preferred as a
+link to the logfile)
 
 * mIRC:
   - A client for Windows (www.mirc.com)
