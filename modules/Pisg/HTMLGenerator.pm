@@ -65,6 +65,9 @@ sub create_output
     open (OUTPUT, "> $fname") or
         die("$0: Unable to open outputfile($fname): $!\n");
 
+    if ($self->{cfg}->{showlines}) {
+        $self->{cfg}->{tablewidth} += 40;
+    }
     if ($self->{cfg}->{showtime}) {
         $self->{cfg}->{tablewidth} += 40;
     }
@@ -489,7 +492,7 @@ sub _activenicks
     _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
     _html("<td>&nbsp;</td>"
     . "<td class=\"tdtop\"><b>" . $self->_template_text('nick') . "</b></td>"
-    . "<td class=\"tdtop\"><b>" . $self->_template_text('numberlines') . "</b></td>"
+    . ($self->{cfg}->{showlines} ? "<td class=\"tdtop\"><b>" . $self->_template_text('numberlines') . "</b></td>" : "")
     . ($self->{cfg}->{showtime} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_time')."</b></td>" : "")
     . ($self->{cfg}->{showwords} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_words')."</b></td>" : "")
     . ($self->{cfg}->{showwpl} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_wpl')."</b></td>" : "")
@@ -578,9 +581,10 @@ sub _activenicks
        . ($sex ? ($sex eq 'm' ? " class=\"male\">"
        : ($sex eq 'f' ? " class=\"female\">" : " class=\"bot\">")) : ">")
        ."$visiblenick</td>"
-        . ($self->{cfg}->{showlinetime} ?
+        . ($self->{cfg}->{showlines} ? 
+         ($self->{cfg}->{showlinetime} ?
         "<td style=\"background-color: $color\" nowrap=\"nowrap\">".$self->_user_linetimes($nick,$active[0])."</td>"
-        : "<td style=\"background-color: $color\">$line</td>")
+        : "<td style=\"background-color: $color\">$line</td>") : "")
         . ($self->{cfg}->{showtime} ?
         "<td style=\"background-color: $color\">".$self->_user_times($nick)."</td>"
         : "")

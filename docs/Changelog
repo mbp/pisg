@@ -1,4 +1,6 @@
 pisg (0.63) - ??
+   * A new option, ShowLines, for disabling the column with the number of
+     lines in "Most Active Nicks" has been added.
    * Updated the Swedish foul1 template (thanks, Torbjörn Svensson).
 
 pisg (0.62) - Sat Dec, 11th 2004

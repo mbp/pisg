@@ -1140,6 +1140,42 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWLINES *** -->
+    <refentry id="ShowLines">
+
+    <refmeta> <refentrytitle>ShowLines</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowLines</refname>
+    <refpurpose>enable/disable "words per line"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowLines = "0"
+        </channel>
+
+        <set ShowLines="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The default behaviour is to add a column to the "Most Active Nicks"
+    section displaying the number of lines a user wrote. With this option it
+    can be disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWWPL *** -->
     <refentry id="ShowWpl">
 

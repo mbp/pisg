@@ -137,6 +137,7 @@ sub get_default_config_settings
         showtopics => 1,
         showlinetime => 0,
         showwordtime => 0,
+        showlines => 1,
         showtime => 1,
         showwords => 0,
         showwpl => 0,
@@ -193,7 +194,7 @@ sub get_default_config_settings
         violentwords => 'slaps beats smacks',
         ignorewords => '',
         noignoredquotes => 0,
-        tablewidth => 614,
+        tablewidth => 574,
         regexpaliases => 0,
 
         botnicks => '',            # Needed for DCpp format (non-irc)
