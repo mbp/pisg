@@ -394,13 +394,21 @@ pagetitle3 = "Igennem denne [:days]-dages periode, har der været <b>[:nicks]</b>
 
 ### French
 <lang name="FR">
-mostop1 = "<b>[:nick]</b> a donné [:ops] ops sur le channel..."
+mostop1 = "<b>[:nick]</b> a donné [:ops] ops sur le canal..."
 mostop2 = "<b>[:nick]</b> est aussi très poli : [:ops] ops de sa part"
 mostop3 = "Etrange, aucun op n'a été donné sur [:channel]!"
 
-mostdeop1 = "<b>[:nick]</b> est le shérif avec [:deops] deops..."
+mostdeop1 = "<b>[:nick]</b> est le shériff du canal avec [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs"
 mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> a donné [:voices] fois le +v sur le canal..."
+mostvoice2 = "<b>[:nick]</b> est aussi très poli: [:voices] +v de sa part."
+mostvoice3 = "C'est curieux, on n'a jamais donné un seul +v sur [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> est le shériff du canal avec [:devoices] -v."
+mostdevoice2 = "<b>[:nick]</b> a dévoicé [:devoices] personnes."
+mostdevoice3 = "Wow, aucun +v n'a été retiré sur [:channel]!"
 
 action1 = "<b>[:nick]</b> aime bien faire savoir ce qu'[:il:elle:]fait, avec [:actions] actions!"
 action2 = "Egalement <b>[:nick]</b> qui n'est pas en reste avec [:actions] actions!"
@@ -433,7 +441,7 @@ gotkick1 = "<b>[:nick]</b> n'est pas trés populaire, [:kické:kickée:]  [:kicks] 
 gotkick2 = "<b>[:nick]</b> n'a pas d'ami non plus, [:kicks] kicks reçus"
 kicktext = "<b>Exemple:</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-joins = "<b>[:nick]</b> ne sait pas s'[:il:elle:] doit rester ou partir, [:joins] visites durant cette période!"
+joins = "Rester ou partir est un choix difficile: <b>[:nick]</b> a fait [:joins] visites durant cette période!"
 
 kick1 = "<b>[:nick]</b> est malade ou alors aime bien jouer, son kick a sévi [:kicked] fois!"
 kick2 = "[:Un:Une:] disciple de [:oldnick], <b>[:nick]</b> a kické [:kicked] personnes"
@@ -451,6 +459,9 @@ long2 = "La moyenne sur [:channel] est de [:avg] lettres par ligne"
 
 wpl1 = "<b>[:nick]</b> écrit en moyenne [:wpl] mots par ligne..."
 wpl2 = "La moyenne du channel est de [:avg] mots par ligne."
+
+long1 = "<b>[:nick]</b> a écrit des lignes bien longues! [:letters] lettres par ligne!"
+long2 = "La moyenne de [:channel] est de [:avg] lettres par ligne."
 
 short1 = "<b>[:nick]</b> a écrit les lignes les plus courtes, avec en moyenne [:letters] lettres par ligne..."
 short2 = "[:nick] n'a pas grand chose a dire non plus, en moyenne [:letters]"
@@ -481,6 +492,7 @@ mostwordstopic = "Les mots les plus utilisés"
 referencetopic = "Les nicks les plus utilisés dans la conversation"
 urlstopic = "Les URLs les plus citées"
 notopic = "Il n'y a jamais eu de topic sur ce channel"
+bylinetopic = "par [:nick] à [:time]"
 
 ## Other text
 
@@ -489,17 +501,21 @@ totalnicks = "Il y a également eu [:totalnicks] autres nicks sur le channel"
 totaltopic = "Il y a eu [:total] Topic diférents sur le channel"
 nick = "Nick"
 url = "URL"
-numberlines = "Nombre de lignes"
+numberlines = "Nb de lignes"
 randquote = "Citation typique"
 userpic = "Image"
 nottop = "Ne sont pas dans le classement"
 word = "Mot"
-numberuses = "Nombre d'occurences"
-show_words = "Nombre de Mots"
+numberuses = "Nb d'occurences"
+show_words = "Nb de Mots"
 show_time = "Quand ?"
 show_wpl = "Mots par ligne"
 show_cpl = "Chars par ligne"
+show_lastseen = "Dernière venue"
 lastused = "Dernière utilisation par"
+lastseen1 = "jour"
+lastseen2 = "jours"
+today = "Aujourd'hui"
 pagetitle1 = "[:channel] @ [:network] stats par [:maintainer]"
 pagetitle2 = "Statistiques générées le "
 pagetitle3 = "Durant cette periode de [:days] jours, <b>[:nicks]</b> nicks différents sont apparus sur [:channel]."
