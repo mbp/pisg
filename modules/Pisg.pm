@@ -153,6 +153,7 @@ sub get_default_config_settings
         showmrn => 1,
         showmru => 1,
         showvoices => 0,
+        showhalfops => 0,
         showmostnicks => 0,
         showmostactivebyhour => 0,
         showmostactivebyhourgraph => 0,

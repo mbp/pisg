@@ -109,6 +109,7 @@ sub create_html
         $self->_gotkicks();
         $self->_mostkicks();
         $self->_mostop();
+        $self->_mosthalfop() if $self->{cfg}->{showhalfops};
         $self->_mostvoice() if $self->{cfg}->{showvoices};
         $self->_mostactions();
         $self->_mostmonologues();
@@ -1199,6 +1200,65 @@ sub _mostvoice
         _html("<tr><td class=\"hicell\">$text</td></tr>");
     }
 
+}
+
+sub _mosthalfop
+{
+    my $self = shift;
+
+    my @halfops   = sort { $self->{stats}->{gavehalfops}{$b} <=> $self->{stats}->{gavehalfops}{$a} }
+                     keys %{ $self->{stats}->{gavehalfops} };
+    my @dehalfops = sort { $self->{stats}->{tookhalfops}{$b} <=> $self->{stats}->{tookhalfops}{$a} }
+                     keys %{ $self->{stats}->{tookhalfops} };
+
+    if (@halfops) {
+        my %hash = (
+            nick => $halfops[0],
+            halfops  => $self->{stats}->{gavehalfops}{$halfops[0]}
+        );
+
+        my $text = $self->_template_text('mosthalfop1', %hash);
+
+        _html("<tr><td class=\"hicell\">$text");
+
+        if (@halfops >= 2) {
+            my %hash = (
+                nick => $halfops[1],
+                halfops  => $self->{stats}->{gavehalfops}{$halfops[1]}
+            );
+
+            my $text = $self->_template_text('mosthalfop2', %hash);
+            _html("<br /><span class=\"small\">$text</span>");
+        }
+        _html("</td></tr>");
+    } else {
+        my $text = $self->_template_text('mosthalfop3');
+        _html("<tr><td class=\"hicell\">$text</td></tr>");
+    }
+
+    if (@dehalfops) {
+        my %hash = (
+            nick  => $dehalfops[0],
+            dehalfops => $self->{stats}->{tookhalfops}{$dehalfops[0]}
+        );
+        my $text = $self->_template_text('mostdehalfop1', %hash);
+
+        _html("<tr><td class=\"hicell\">$text");
+
+        if (@dehalfops >= 2) {
+            my %hash = (
+                nick  => $dehalfops[1],
+                dehalfops => $self->{stats}->{tookhalfops}{$dehalfops[1]}
+            );
+            my $text = $self->_template_text('mostdehalfop2', %hash);
+
+            _html("<br /><span class=\"small\">$text</span>");
+        }
+        _html("</td></tr>");
+    } else {
+        my $text = $self->_template_text('mostdehalfop3');
+        _html("<tr><td class=\"hicell\">$text</td></tr>");
+    }
 }
 
 sub _mostactions

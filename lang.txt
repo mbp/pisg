@@ -46,6 +46,14 @@ mostdevoice1 = "<b>[:nick]</b> likes taking voice from people, [:devoices] devoi
 mostdevoice2 = "<b>[:nick]</b> was close to the same, devoiced [:devoices] users."
 mostdevoice3 = "No voices was taken on [:channel]!"
 
+mosthalfop1 = "<b>[:nick]</b> donated [:halfops] halfops in the channel..."
+mosthalfop2 = "<b>[:nick]</b> was also very polite: [:halfops] halfops from [:him:her:]."
+mosthalfop3 = "Strange, no halfop was given on [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> is the channel sheriff with [:dehalfops] dehalfops."
+mostdehalfop2 = "<b>[:nick]</b> dehalfoped [:dehalfops] users."
+mostdehalfop3 = "Wow, no halfop was taken on [:channel]!"
+
 action1 = "<b>[:nick]</b> always lets us know what [:he:she:]'s doing: [:actions] actions!"
 action2 = "Also, <b>[:nick]</b> tells us what's up with [:actions] actions."
 action3 = "No actions in [:channel]!"
@@ -468,6 +476,14 @@ mostop3 = "Etrange, aucun op n'a été donné sur [:channel]!"
 mostdeop1 = "<b>[:nick]</b> est le shériff du canal avec [:deops] deops..."
 mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs."
 mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> a donné [:halfops] halfops sur le canal..."
+mosthalfop2 = "<b>[:nick]</b> est aussi très poli : [:halfops] halfops de sa part."
+mosthalfop3 = "Etrange, aucun halfop n'a été donné sur [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> est le shériff du canal avec [:dehalfops] dehalfops..."
+mostdehalfop2 = "<b>[:nick]</b> a dehalfopé [:dehalfops] utilisateurs."
+mostdehalfop3 = "Wow, aucun halfop n'a été retiré sur [:channel]!"
 
 mostvoice1 = "<b>[:nick]</b> a donné [:voices] fois le +v sur le canal..."
 mostvoice2 = "<b>[:nick]</b> est aussi très poli: [:voices] +v de sa part."

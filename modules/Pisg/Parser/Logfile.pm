@@ -429,10 +429,12 @@ sub _modechanges
     my $newmode = shift;
     my $nick = shift;
 
-    my (@voice, @ops, $plus);
+    my (@voice, @halfops, @ops, $plus);
     foreach (split(//, $newmode)) {
         if ($_ eq "o") {
             $ops[$plus]++;
+        } elsif ($_ eq "h") {
+            $halfops[$plus]++;
         } elsif ($_ eq "v") {
             $voice[$plus]++;
         } elsif ($_ eq "+") {
@@ -443,6 +445,8 @@ sub _modechanges
     }
     $stats->{gaveops}{$nick} += $ops[0] if $ops[0];
     $stats->{tookops}{$nick} += $ops[1] if $ops[1];
+    $stats->{gavehalfops}{$nick} += $halfops[0] if $halfops[0];
+    $stats->{tookhalfops}{$nick} += $halfops[1] if $halfops[1];
     $stats->{gavevoice}{$nick} += $voice[0] if $voice[0];
     $stats->{tookvoice}{$nick} += $voice[1] if $voice[1];
 }

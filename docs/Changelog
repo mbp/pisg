@@ -4,7 +4,8 @@ pisg (x.xx)
    * RacBot logfile support added (thanks, Hanno Hecker)
    * kvirc logfile support added (thanks, wwp)
    * Correct pircbot.pm to work with !channel, &channel and +channel in 
-     addition to #channel (Hanno Hecker)
+     addition to #channel (thanks, Hanno Hecker)
+   * Half-op statistics (+h), enabled by ShowHalfops. (thanks, crazycat)
 
 pisg (0.39) - Tue May, 14th 2002
    * ShowFoulLine option added (thanks, Adam Spiers <adam@spiers.net>).

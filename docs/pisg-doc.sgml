@@ -1610,6 +1610,42 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWVOICES *** -->
+    <refentry id="ShowHalfops">
+
+    <refmeta> <refentrytitle>ShowHalfops</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowHalfops</refname>
+    <refpurpose>enable or disable halfop statistics</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowHalfops = "0"
+        </channel>
+
+        <set ShowHalfops="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg doesn't have halfop statistics (+h on some servers)
+    like it has op statistics. Enabling this option will add a section to
+    the "Most interesting numbers" displaying who gave most half-ops.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWMOSTNICKS *** -->
     <refentry id="ShowMostNicks">
 
