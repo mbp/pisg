@@ -1,0 +1,39 @@
+FORMATS - supported IRC logfile formats by pisg
+------------------
+
+pisg supports a variety of logfile formats, these are:
+
+* mIRC:
+  - A client for Windows (www.mirc.com)
+  
+  - If you want to create mIRC logfiles with your eggdrop, you can get some TCL
+    which does it all for you (also logrotating and much more).
+
+    MEL (mIRCStats Eggdrop Logger) can be downloaded from the following URL:
+
+    http://mel.angelbears.org/
+    
+  - In order to use this, format must be set to 'mIRC'.
+
+* X-Chat:
+  -  A client for Linux (www.xchat.org)
+    
+  -  In order to use this, format must be set to 'xchat'.
+
+* Eggdrop:
+  - A cool and advanced IRC bot for Linux (www.eggheads.org)
+
+  - In order to use this, format must be set to 'eggdrop'.
+     
+* Grufti:
+  - A bot which I'm not really familiar with (www.grufti.com)
+  - The author has actually made something like pisg called 'gruftistats',
+    but someone mailed me and told me that it hadn't been maintained for
+    over a year, and it had some problems..
+
+  - In order to use this, format must be set to 'grufti'
+
+* bxlog:
+  - A logging script for BitchX (console client - see scripts.bitchx.com)
+   
+  - In order to use this, format must be set to 'bxlog'

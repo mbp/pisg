@@ -1,0 +1,172 @@
+pisg (0.16) - 
+
+   * Danish translation (thanks to Kim Ingemann aka Tuxi)
+   * Fixed some unitialized values which came up in some situations
+   * Eggdrop log had 'last message repeated x times' - pisg didn't understood
+     this before, not it does! :) (thanks to Jamie Cheetham).
+   * French translation (thanks Molator)
+   * Also use the timeoffset in 'most active times'
+   * Started to distribute various scripts with pisg:
+     - 'dropegg.pl' - takes a bunch of eggdrop logs and converts them into
+       mIRC format (Emil Mikulic <darkmoon7@optushome.com.au>)
+     - 'addalias.pl' - webinterface for allowing users to add their own stuff
+       to the users.cfg file. (Doomshammer <doomshammer@doomshammer.yi.org>)
+     - 'crontab' - small file explaining how to use pisg with crontab
+     
+
+pisg (0.15) - Fri, July 20th 2001
+
+   * Fixed bug where grufti-logfiles wouldn't ignore oppers.
+   * Fixed pisg dying when there is no action and normallines in logfile
+   * Also strip mIRC bold and underline codes
+   * Nick tracking code optimized
+   * Eggdrop logs were logging server mode changes.. fixed.
+   * The 'active times' bars should now be more logical and always have a max
+     height of 100px
+   * Added new users.cfg file which obsoletes aliasfile and ignorefile
+   * New feature: ability to add user pictures to stats
+   * New feature: ability to add user links to stats (homepages, e-mail)
+   * Made a big code change so it now supports somekind of template system so
+     pisg can support more than one language
+   * German language support added (thanks Winfried aka Doomshammer)
+   * Now shows the time when the topic was changed in 'Latest topics'.
+   * Thousands of small things which I forgot.
+   * Removed the documentation for unnamed arguments on the commandline..
+     people should start using the named arguments (--logfile, -f etc.)
+
+pisg (0.14) - Mon, July 16th 2001
+
+   * 'Most referenced nicks' and 'most used words' now ignores the nicks in
+     ignore.txt
+   * 'Most used words' now ignores nicks
+   * Fixed critical bug; --format wasn't working. (thanks S. William Schulz)
+
+pisg (0.13) - Sun, July 15th 2001 
+
+   * New feature: Now supports 'grufti' (bot) logfiles.
+   * New feature: Now supports 'bxlog' (logging script for bitchx) logfiles
+   * Improved some debugging
+   * Cleaned up a lot of code, so it's structured better - less global
+     variables and everything is now in subs, also found some variables which
+     weren't used.. so it should be more correct and more efficient now
+   * Fix up some speed in the kicking stats... it was doing the same grep twice
+   * Fixed a stupid bug which caused pisg to die if the alias.txt wasn't
+     there.
+   * Really fix typo, sherif -> sheriff
+   * Added a FORMATS file explaining the supported fileformats, and updated
+     the README accordingly
+   * Added a new feature where one can specify a log directory, and then pisg
+     will run through all the files in the directory and combine them into one
+     big html file.
+   * -d on commandline now specifies logdir instead of debugging (removed)
+   * Also added --aliasfile and --ignorefile as commandline options.
+
+pisg (0.12) - Thu, July 12th 2001 
+
+   * Strip mIRC color codes (Sam Bingner)
+   * New feature: Support eggdrop logformats (Sam Bingner)
+   * Track nicks/aliases dynamically [as an option] (Sam Bingner)
+   * Added better commandline arguments (like --channel=#blah) and pisg now
+     has a cool usage --help option. (thanks S. William Schulz)
+   * xchat logformats which are indented should now be supported
+   * New feature: 'most fouls' (bad language)
+   * New feature: 'shortest lines' (as opposite to longest lines)
+   * Added $timeoffset so people can get times in their own time zones. 
+   * It's now possible to define a pageheader file which can be included on
+     the HTML page, with $pageheader
+   * Changed 'no topics' text 
+
+pisg (0.11) - Fri, June 29th 2001
+   * Before http:// didn't get counted as a smiley, now "all" protocols
+     doesn't get counted as smilies (ftp://, gohper://).
+   * Fixed typo, sherif -> sheriff
+   * Changed the appearence of 'most ref nicks/words', email me if you don't
+     like it.. :)
+   * Also add some fade stuff to the 'most active nicks'
+   * Topic history variable wasn't used, fixed.
+   * Replace & with &amp;
+   * Replace URLs and e-mail addys in 'random quote' and 'last topic' to HTML
+     hrefs
+   * Some other small changes which I forgot
+   
+pisg (0.10) - Fri, June 22th 2001
+   * The 'Im going on vacation'-release. Fixes very small things.
+   * Small bug in counting kicker/kicked person when using xchat - fixed.
+   * Fixed a bug where some lines didn't catch up the alias for a nick
+   * Join counting was broken.. fixed.
+   * Use 'px' to define font sizes instead of 'pt' in CSS.
+   * Fix some colors in the page which couldn't get set by variables in the
+     top
+   * Other small changes
+
+pisg (0.09) - Tue, June 5th 2001
+   * Some small improvements in the count of sadfaces/smilies
+   * New features:
+     - 'most used words'
+     - 'most referenced nick'
+   * Rewrote a LOT of the format dependent code, now it's very easy adding
+     new IRC log formats
+   * Fixed random bugs here and there
+   * The usual small, nice code enhancements.
+
+pisg (0.08) - Sat, April 14th 2001
+
+   * Documentation updates (remember to up the version number :))
+   * A lot of nice changes from Vetinary <iranitev@gmx.net>:
+     - 'op/deop stats'
+     - 'join stats'
+     - 'action counting'
+     - 'counting of :(, :-('
+   * use strict;
+
+pisg (0.07) - Sun, March 11th 2001
+
+   * New feature: Now supports xchat logfiles <:)
+   * Should render pages 100% HTML 4.01/CSS2 compatible now
+   * Some minor code cleanups (use strict; soon)
+
+pisg (0.06) - Wed, February 21th 2001
+
+   * Even more workarounds for small logfiles
+   * More customization options
+   * Now shows processtime
+   * You can now specify nicks to ignore in the logfile (bots etc)
+   * Now supports commandline arguments (./pisg.pl chan logfile outputfile)
+   * Some speedup improvements
+   * A bit more HTML 4 compliant :)
+
+pisg (0.05) - Thu, February 15th 2001
+
+    * New features:
+      - 'Runners-up to Big numbers'
+      - 'Latest topics'
+    * More fixes for small logfiles
+    * Enhanced 'Most active times' 
+    * Speedup improvements
+    * Added CREDITS file to the nice people who have contributed :)
+
+pisg (0.04) - Fri, January 26th 2001
+
+    * New features:
+      - 'the person that smiled the most'
+      - 'can now connect nicks together through alias file'
+      - 'person that wrote the most monologues (5 or more lines in a row)'
+    * Fixes for small logfiles
+    * Restrutured code
+    * More customization through variables in the top of the script
+
+pisg (0.03) - Thu, January 11rd 2001
+    
+    * Code cleanups
+    * New features:
+      - 'the op who kicked most'
+      - 'the one who got kicked the most'
+      - 'longest lines'
+    * Highlight most active hour
+    * New images, 'pipe-blue.png' and 'pipe-purple.png', removed 'pipe3v.gif'
+    * Updated README
+    * Added Changes file
+
+pisg (0.02) - Wed, January 3rd 2001
+    
+    * Initial release.

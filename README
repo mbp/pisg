@@ -1,0 +1,78 @@
+README, pisg - by me and others (see CREDITS file)
+------------------
+pisg - Perl IRC Statistics Generator, is a Perl script which takes IRC
+logfiles and makes nice looking stats of them, which can be amusing to show
+for the users of your channel.
+
+The supported logfile formats is explained in the FORMATS file included with
+this distribution.
+
+If you don't have access to any of the clients/bots or you use some other
+IRC client/bot which isn't supported, then it's fairly easy to add support
+for a new IRC log format. Take a look at the source code or send me an
+e-mail with the logfile format.
+
+SETTING UP PISG
+---------------
+It's quite simple to set up pisg. You have 2 choices:
+
+ * Set settings from commandline (try pisg.pl --help)
+ * Set settings from inside the script
+
+The most important this is the name of the logfile, the maintainers name,
+and then the format of your logfile.
+
+You cannot set everything up on the commandline, only the important things.
+
+The 'users.cfg' file control a lot of things, like connecting nicks
+together, ignoring nicks in the stats, adding user pictures etc. There is
+more documentation in the users.cfg file.
+
+NOTE: The stats will look best with a logfile which is a least a day-long.
+Some stats (like smilies, exclamation marks etc) doesn't get counted before
+a special amount of time.
+
+Also, pisg supports multiple languages so you're text will be in your own
+language; English, German, Danish and French is supported at the moment and
+can be set with the $lang variable in the script.
+
+You're welcome to translate pisg to your own language, it's not very hard,
+look in the bottom of pisg.pl!
+
+RUNNING PISG
+------------
+If you have setup everything inside the script, then you just need to run
+it. If you're on a Linux/Unix system, these steps should do the work:
+
+    $ chmod +x pisg.pl
+    $ ./pisg.pl
+
+If you have more than one channel, then you can also tell it to pisg on the
+commandline, the syntax is explained when doing:
+
+    $ ./pisg.pl --help
+
+For example the following would work:
+
+    $ ./pisg.pl -c \#channel -l logfile.log -f mIRC -o index.html
+    
+Try it out.
+
+Setting settings on commandline, will override the relevant settings in the
+script.
+
+CONTACT INFORMATION
+-------------------
+If you have any problems with setting up or running this script, please
+don't hesitate to contact me. I can either be via e-mail (morten@wtf.dk) or
+via ICQ (6681780).
+
+The pisg homepage is located at http://www.wtf.dk/hp/index.php?page=pisg.
+
+If you use this script, and have a permanent URL for the location of your
+generated stats, I would be delighted if you would send the url to me.  Just
+to see how many people uses it, and so I can link to it from my pisg page.
+
+Have fun :)
+
+ - Morten 'LostStar' Brix Pedersen <morten@wtf.dk>

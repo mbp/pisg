@@ -1,0 +1,43 @@
+CREDITS goes to...
+--
+
+ * Stefan aka Flyghost <flyghost@ghosthouse.cx>
+   | Code contribution and fixes
+ * P. Gnodde aka Shogun <peter@pcswebdesign.nl>
+   | Lots of feature enhancements and code cleanups, thanks!
+ * Steve Tibold aka T0mcat <t0mcat@chat.lu>
+   | Tons of ideas
+ * Markus Geiger <mail@markus-geiger.net>
+   | Alias/nick replacement
+ * Joakim Sandström <joose@nalle.puh.org>
+   | Ideas and bugfixes
+ * Ryan Ryttie <kesu@kesuki.dyndns.org>
+   | xchat logfiles request/help
+ * Martin Poulsen <xact@mail.dk>
+   | Suggestions and moral support
+ * Vetinary <iranitev@gmx.net>
+   | Lots of feature additions and code cleanups, thanks!
+ * Laocius <irish@rook.lug.usf.edu>
+   | The features 'most used words' and 'most referenced nicks'
+ * Luca (eni) <adsl.help@dada.it>
+   | Reported a very small, but stupid bug with the xchat fileformat :)
+ * kiss dess <duvet@mail.com>
+   | Found a few minor bugs. And added replace_links()
+ * Sam Bingner <sam@dhs.org>
+   | Added mIRC color stripping, eggdrop log format and nick/alias tracking.
+ * S. William Schulz <sws@astrum.com>
+   | Better commandline arguments, --help and fixed indenting problems with
+     xchat logs, also fixed a critical thing with --format
+ * Tim Hunter <tim@quic.net>
+   | 'shortest lines', 'most fouls', 'pageheader' and more. 
+ * Winfried (Doomshammer) <doomy@doomshammer.yi.org>
+   | grufti log format help, German translation and a ton of other things.
+ * Kim Ingemann (Tuxi) <tuxi@tuxi.dk>
+   | Danish translation
+ * Molator <molator@ifrance.com>
+   | French translation
+ * Jamie Cheetham <jamie@softham.co.uk>
+   | Eggdrop 'last messaged repeated x times' fix
+
+I probably forgot a lot of people here, _PLEASE_ notify me if I left you
+out.. because I have a bad habit of forgetting to maintain this list :)
