@@ -99,7 +99,7 @@ words1 = "<b>[:nick]</b> spoke a total of [:words] words!"
 words2 = "[:oldnick]'s faithful follower, <b>[:nick]</b>, didn't speak so much: [:words] words."
 words3 = "Nobody said anything...  What a strange channel..."
 
-mono1 = "<b>[:nick]</b> is talking to [:him:her:]self a lot.  [:He:She:] wrote over 5 lines in a row [:monos] times!"
+mono1 = "<b>[:nick]</b> talks to [:him:her:]self a lot.  [:He:She:] wrote over 5 lines in a row [:monos] times!"
 mono2 = "Another lonely one was <b>[:nick]</b>, who managed to hit [:monos] times."
 
 wpl1 = "<b>[:nick]</b> wrote an average of [:wpl] words per line."
