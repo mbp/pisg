@@ -1415,11 +1415,11 @@ sub mostwordsperline
      my %wpl = ();
      my ($numlines,$avg,$numwords);
      foreach my $n (keys %words) {
-         $wpl{$n} = sprintf("%.2f", $words{$n}/$line{$n});
+         $wpl{$n} = sprintf("%.2f", eval("$words{$n}/$line{$n}"));
          $numlines += $line{$n};
          $numwords += $words{$n};
      }
-     $avg = sprintf("%.2f", $numwords/$numlines);
+     $avg = sprintf("%.2f", eval("$numwords/$numlines"));
      my @wpl = sort { $wpl{$b} <=> $wpl{$a} } keys %wpl;
 
      if (@wpl) {
@@ -1530,7 +1530,7 @@ sub questions
 
     foreach my $nick (sort keys %question) {
         if ($line{$nick} > 100) {
-            $qpercent{$nick} = ($question{$nick} / $line{$nick}) * 100;
+            $qpercent{$nick} = eval("($question{$nick} / $line{$nick}) * 100");
             $qpercent{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
@@ -1609,7 +1609,7 @@ sub shoutpeople
 
     foreach my $nick (sort keys %shout) {
         if ($line{$nick} > 100) {
-            $spercent{$nick} = ($shout{$nick} / $line{$nick}) * 100;
+            $spercent{$nick} = eval("($shout{$nick} / $line{$nick}) * 100");
             $spercent{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
@@ -1877,7 +1877,7 @@ sub longlines
 
     foreach my $nick (sort keys %length) {
         if ($line{$nick} > 100) {
-            $len{$nick} = $length{$nick} / $line{$nick};
+            $len{$nick} = eval("$length{$nick} / $line{$nick}");
             $len{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
@@ -1889,7 +1889,7 @@ sub longlines
     my $totalaverage;
 
     if ($all_lines > 0) {
-        $totalaverage = $totallength / $all_lines;
+        $totalaverage = eval("$totallength / $all_lines");
         $totalaverage =~ s/(\.\d)\d+/$1/;
     }
 
@@ -1924,7 +1924,7 @@ sub shortlines
 
     foreach my $nick (sort keys %length) {
         if ($line{$nick} > 5) {
-            $len{$nick} = $length{$nick} / $line{$nick};
+            $len{$nick} = eval("$length{$nick} / $line{$nick}");
             $len{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
@@ -1959,7 +1959,7 @@ sub mostfoul
 
     foreach my $nick (sort keys %foul) {
         if ($line{$nick} > 15) {
-            $spercent{$nick} = ($foul{$nick} / $line{$nick}) * 100;
+            $spercent{$nick} = eval("($foul{$nick} / $line{$nick}) * 100");
             $spercent{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
@@ -2003,7 +2003,7 @@ sub mostsad
 
     foreach my $nick (sort keys %sadface) {
         if ($line{$nick} > 100) {
-            $spercent{$nick} = ($sadface{$nick} / $line{$nick}) * 100;
+            $spercent{$nick} = eval("($sadface{$nick} / $line{$nick}) * 100");
             $spercent{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
@@ -2140,7 +2140,7 @@ sub mostsmiles
 
     foreach my $nick (sort keys %smile) {
         if ($line{$nick} > 100) {
-            $spercent{$nick} = ($smile{$nick} / $line{$nick}) * 100;
+            $spercent{$nick} = eval("($smile{$nick} / $line{$nick}) * 100");
             $spercent{$nick} =~ s/(\.\d)\d+/$1/;
         }
     }
