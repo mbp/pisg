@@ -21,7 +21,7 @@ use Getopt::Long;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-my $config;
+my $conf;
 my $words;
 
 # Values that _MUST_ be set below (unless you pass them on commandline)
@@ -310,8 +310,10 @@ sub parse_dir
     }
 
     foreach my $file (@filesarray) {
-        $file = $conf->{logdir} . $file;
-        parse_file($file);
+        if (grep /^$conf->{prefix}/, $file) {
+            $file = $conf->{logdir} . $file;
+            parse_file($file);
+        }
     }
 
 }
