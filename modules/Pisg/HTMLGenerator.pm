@@ -108,7 +108,7 @@ sub create_html
     _html("</table>"); # Needed for sections
 
     my %hash = ( lines => $self->{stats}->{totallines} );
-    _html($self->_template_text('totallines', %hash) . "<br><br>");
+    _html($self->_template_text('totallines', %hash) . "<br /><br />");
 
     $self->_htmlfooter();
 
@@ -130,10 +130,10 @@ sub _htmlheader
         $bgpic = " background=\"$self->{cfg}->{bgpic}\"";
     }
     print OUTPUT <<HTML;
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=$self->{cfg}->{charset}">
+<meta http-equiv="Content-Type" content="text/html; charset=$self->{cfg}->{charset}" />
 <title>$title</title>
 <style type="text/css">
 a { text-decoration: none }
@@ -141,7 +141,6 @@ a:link { color: $self->{cfg}->{link}; }
 a:visited { color: $self->{cfg}->{vlink}; }
 a:hover { text-decoration: underline; color: $self->{cfg}->{hlink} }
 
-/* Colors for links not in td's */
 a.background { text-decoration: none }
 a.background:link { color: $self->{cfg}->{bg_link}; }
 a.background:visited { color: $self->{cfg}->{bg_vlink}; }
@@ -174,7 +173,7 @@ td {
 .tdtop { background-color: $self->{cfg}->{tdtop}; }
 .hicell { background-color: $self->{cfg}->{hicell}; }
 .rankc { background-color: $self->{cfg}->{rankc}; }
-.hirankc { background-color: $self->{cfg}->{hi_rankc}; }
+.hirankc { background-color: $self->{cfg}->{hi_rankc}; font-weight: bold; }
 .small { font-family: verdana, arial, sans-serif; font-size: 10px; }
 .asmall {
       font-family: arial narrow, sans-serif;
@@ -185,61 +184,60 @@ td {
 <body$bgpic>
 <div align="center">
 HTML
-    print OUTPUT "<span class=\"title\">$title</span><br>";
-    print OUTPUT "<br>";
-    print OUTPUT $self->_template_text('pagetitle2', %hash);
+    _html("<span class=\"title\">$title</span><br />");
+    _html("<br />");
+    _html($self->_template_text('pagetitle2', %hash) . " " . $self->get_time());
 
-    sub timefix
-    {
-        my $self = shift;
-        my ($timezone, $sec, $min, $hour, $mday, $mon, $year, $wday, $month, $day, $tday, $wdisplay, @month, @day, $timefixx, %hash);
-
-        $month = $self->_template_text('month', %hash);
-        $day = $self->_template_text('day', %hash);
-
-        @month = split(" ", $month);
-        @day = split(" ", $day);
-
-        # Get the Date from the users computer
-        $timezone = $self->{cfg}->{timeoffset} * 3600;
-        ($sec,$min,$hour,$mday,$mon,$year,$wday) = localtime(time+$timezone);
-
-        $year += 1900;                    # Y2K Patch
-
-        $min =~ s/^(.)$/0$1/;             # Fixes the display of mins/secs below
-        $sec =~ s/^(.)$/0$1/;             # it displays 03 instead of 3
-
-        if ($hour > '23') {               # Checks to see if it Midnight
-            $hour = 12;                   # Makes it display the hour 12
-            $tday = "AM";                 # Display AM
-        } elsif($hour > '12') {           # Get rid of the Military time and
-            $hour -= 12;                  # put it into normal time
-            $tday = "PM";                 # If past Noon and before Midnight set
-        } else {
-            $tday = "AM";                 # If it's past Midnight and before Noon
-        }                                 # set the time as AM
-
-        # Use 24 hours pr. day
-        if ($tday eq "PM" && $hour < '12') {
-            $hour += 12;
-        }
-
-        print OUTPUT "$day[$wday] $mday $month[$mon] $year - $hour:$min:$sec\n";
-    }
-
-    $self->timefix();
-
-    print OUTPUT "<br>" . $self->_template_text('pagetitle3', %hash) . "<br><br>";
+    _html("<br />" . $self->_template_text('pagetitle3', %hash) . "<br /><br />");
 
 }
+
+sub get_time
+{
+    my $self = shift;
+    my ($tday, %hash);
+
+    my $month = $self->_template_text('month', %hash);
+    my $day = $self->_template_text('day', %hash);
+
+    my @month = split(" ", $month);
+    my @day = split(" ", $day);
+
+    # Get the Date from the users computer
+    my $timezone = $self->{cfg}->{timeoffset} * 3600;
+    my ($sec,$min,$hour,$mday,$mon,$year,$wday) = localtime(time+$timezone);
+
+    $year += 1900;                    # Y2K Patch
+
+    $min =~ s/^(.)$/0$1/;             # Fixes the display of mins/secs below
+    $sec =~ s/^(.)$/0$1/;             # it displays 03 instead of 3
+
+    if ($hour > '23') {               # Checks to see if it Midnight
+        $hour = 12;                   # Makes it display the hour 12
+        $tday = "AM";                 # Display AM
+    } elsif($hour > '12') {           # Get rid of the Military time and
+        $hour -= 12;                  # put it into normal time
+        $tday = "PM";                 # If past Noon and before Midnight set
+    } else {
+        $tday = "AM";                 # If it's past Midnight and before Noon
+    }                                 # set the time as AM
+
+    # Use 24 hours pr. day
+    if ($tday eq "PM" && $hour < '12') {
+        $hour += 12;
+    }
+
+    return "$day[$wday] $mday $month[$mon] $year - $hour:$min:$sec";
+}
+
 
 sub _htmlfooter
 {
     my $self = shift;
     print OUTPUT <<HTML;
 <span class="small">
-Stats generated by <a href="http://pisg.sourceforge.net/" title="Go to the pisg homepage" class="background">pisg</a> $self->{cfg}->{version}<br>
-pisg by <a href="http://www.wtf.dk/hp/" title="Go to the authors homepage" class="background">Morten Brix Pedersen</a> and others<br>
+Stats generated by <a href="http://pisg.sourceforge.net/" title="Go to the pisg homepage" class="background">pisg</a> $self->{cfg}->{version}<br />
+pisg by <a href="http://www.wtf.dk/hp/" title="Go to the authors homepage" class="background">Morten Brix Pedersen</a> and others<br />
 Stats generated in $self->{stats}->{processtime}
 </span>
 </div>
@@ -253,7 +251,7 @@ sub _headline
     my $self = shift;
     my ($title) = (@_);
     print OUTPUT <<HTML;
-   <br>
+   <br />
    <table width="$self->{cfg}->{headwidth}" cellpadding="1" cellspacing="0" border="0">
     <tr>
      <td style="background-color: $self->{cfg}->{headline}">
@@ -326,7 +324,7 @@ sub _activetimes
         $image = $self->{cfg}->{$image};
         $self->{debug}->("Image: $image");
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br><img src=\"$self->{cfg}->{pic_loc}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\"></td>\n";
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{pic_loc}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
     }
 
     _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>\n");
@@ -345,7 +343,7 @@ sub _activetimes
 
     for ($b = 0; $b < 24; $b++) {
         if ($now[2] == $b) { $class = 'hirankc'; } else { $class = 'rankc'; }
-        _html("<td class=\"$class small\" align=\"center\">$b</td>");
+        _html("<td class=\"$class\" style=\"font-size: 10px\" align=\"center\">$b</td>");
 }
 
     _html("</tr></table>");
@@ -474,19 +472,19 @@ sub _activenicks
         my $width = $self->{cfg}->{pic_width};
         if ($self->{users}->{userpics}{$nick} && $self->{cfg}->{userpics} !~ /n/i) {
             if ($width ne '') {
-                _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\"></td>");
+                _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" width=\"$width\" height=\"$height\" /></td>");
             } else {
-                _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\"></td>");
+                _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{users}->{userpics}{$nick}\" /></td>");
             }
         } elsif ($self->{cfg}->{default_pic} ne '' && $self->{cfg}->{userpics} !~ /n/i)  {
-            _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{default_pic}\"></td>");
+            _html("<td style=\"background-color:#$col_r$col_g$col_b\" align=\"center\"><img valign=\"middle\" src=\"$self->{cfg}->{imagepath}$self->{cfg}->{default_pic}\" /></td>");
         }
 
         _html("</tr>");
         $i++;
     }
 
-    _html("</table><br>");
+    _html("</table><br />");
 
     # Almost as active nicks ('These didn't make it to the top..')
 
@@ -500,22 +498,20 @@ sub _activenicks
         }
 
         if ($self->{cfg}->{activenicks} <  $remain) {
-            _html("<br><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
+            _html("<br /><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
             for (my $c = $self->{cfg}->{activenicks}; $c < $remain; $c++) {
-                unless ($c % 5) { unless ($c == $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
-                _html("<td class=\"rankc small\">");
-                my $nick = $active[$c];
+                unless ($c % 5) { if ($c != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
                 my $lines = $self->{stats}->{lines}{$nick};
-                _html("$nick ($lines)</td>");
+                _html("<td class=\"rankc\" style=\"font-size: 10px\">$active[$c] ($lines)</td>");
             }
 
-            _html("</table>");
+            _html("</tr></table>");
         }
     }
 
     $hash{totalnicks} = $nicks - $remain;
     if ($hash{totalnicks} > 0) {
-        _html("<br><b>" . $self->_template_text('totalnicks', %hash) . "</b><br>");
+        _html("<br /><b>" . $self->_template_text('totalnicks', %hash) . "</b><br />");
     }
 }
 
@@ -556,7 +552,7 @@ sub _questions
             );
 
             my $text = $self->_template_text('question2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
 
@@ -596,7 +592,7 @@ sub _shoutpeople
             );
 
             my $text = $self->_template_text('shout2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
 
@@ -633,7 +629,7 @@ sub _capspeople
         my $text = $self->_template_text('allcaps1', %hash);
         if($self->{cfg}->{show_shoutline}) {
             my $exttext = $self->_template_text('allcapstext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br><span class=\"small\">$exttext</span><br>");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -644,7 +640,7 @@ sub _capspeople
             );
 
             my $text = $self->_template_text('allcaps2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
 
@@ -673,7 +669,7 @@ sub _violent
         my $text = $self->_template_text('violent1', %hash);
         if($self->{cfg}->{show_violentlines}) {
             my $exttext = $self->_template_text('violenttext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br><span class=\"small\">$exttext</span><br>");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -684,7 +680,7 @@ sub _violent
             );
 
             my $text = $self->_template_text('violent2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -707,7 +703,7 @@ sub _violent
         my $text = $self->_template_text('attacked1', %hash);
         if($self->{cfg}->{show_violentlines}) {
             my $exttext = $self->_template_text('attackedtext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br><span class=\"small\">$exttext</span><br>");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -718,7 +714,7 @@ sub _violent
             );
 
             my $text = $self->_template_text('attacked2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     }
@@ -743,7 +739,7 @@ sub _gotkicks
 
         if ($self->{cfg}->{show_kickline}) {
             my $exttext = $self->_template_text('kicktext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br><span class=\"small\">$exttext</span><br>");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -755,7 +751,7 @@ sub _gotkicks
             );
 
             my $text = $self->_template_text('gotkick2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     }
@@ -805,7 +801,7 @@ sub _mostwords
             );
 
             my $text = $self->_template_text('words2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -839,7 +835,7 @@ sub _mostkicks
             );
 
             my $text = $self->_template_text('kick2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -871,7 +867,7 @@ sub _mostmonologues
             );
 
             my $text = $self->_template_text('mono2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     }
@@ -914,7 +910,7 @@ sub _linelengths
         );
 
         my $text = $self->_template_text('long1', %hash);
-        _html("<tr><td class=\"hicell\">$text<br>");
+        _html("<tr><td class=\"hicell\">$text<br />");
 
         if (@len >= 2) {
             %hash = (
@@ -935,7 +931,7 @@ sub _linelengths
         );
 
         my $text = $self->_template_text('short1', %hash);
-        _html("<tr><td class=\"hicell\">$text<br>");
+        _html("<tr><td class=\"hicell\">$text<br />");
 
         if (@len >= 2) {
             %hash = (
@@ -983,7 +979,7 @@ sub _mostfoul
             );
 
             my $text = $self->_template_text('foul2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
 
         _html("</td></tr>");
@@ -1028,7 +1024,7 @@ sub _mostsad
 
             my $text = $self->_template_text('sad2', %hash);
 
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -1064,7 +1060,7 @@ sub _mostop
             );
 
             my $text = $self->_template_text('mostop2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -1088,12 +1084,12 @@ sub _mostop
             );
             my $text = $self->_template_text('mostdeop2', %hash);
 
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
         my $text = $self->_template_text('mostdeop3');
-        _html("<tr><td class=\"hicell\">$text");
+        _html("<tr><td class=\"hicell\">$text</td></tr>");
     }
 }
 
@@ -1123,7 +1119,7 @@ sub _mostvoice
             );
 
             my $text = $self->_template_text('mostvoice2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -1147,7 +1143,7 @@ sub _mostvoice
             );
             my $text = $self->_template_text('mostdevoice2', %hash);
 
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -1174,7 +1170,7 @@ sub _mostactions
         my $text = $self->_template_text('action1', %hash);
         if($self->{cfg}->{show_actionline}) {
             my $exttext = $self->_template_text('actiontext', %hash);
-            _html("<tr><td class=\"hicell\">$text<br><span class=\"small\">$exttext</span><br>");
+            _html("<tr><td class=\"hicell\">$text<br /><span class=\"small\">$exttext</span><br />");
         } else {
             _html("<tr><td class=\"hicell\">$text");
         }
@@ -1186,7 +1182,7 @@ sub _mostactions
             );
 
             my $text = $self->_template_text('action2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
     } else {
@@ -1229,7 +1225,7 @@ sub _mostsmiles
             );
 
             my $text = $self->_template_text('smiles2', %hash);
-            _html("<br><span class=\"small\">$text</span>");
+            _html("<br /><span class=\"small\">$text</span>");
         }
         _html("</td></tr>");
 
@@ -1366,7 +1362,7 @@ sub _mostusedword
         _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
         _html("<td>&nbsp;</td><td class=\"tdtop\"><b>" . $self->_template_text('word') . "</b></td>");
         _html("<td class=\"tdtop\"><b>" . $self->_template_text('numberuses') . "</b></td>");
-        _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td>");
+        _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td></tr>");
 
 
         my $count = 0;
@@ -1386,7 +1382,7 @@ sub _mostusedword
             } else {
                 $class = 'rankc';
             }
-            _html("<tr><td class=\"$class\"><b>$a</b>");
+            _html("<tr><td class=\"$class\">$a</td>");
             _html("<td class=\"hicell\">$popular</td>");
             _html("<td class=\"hicell\">$wordcount</td>");
             _html("<td class=\"hicell\">$lastused</td>");
@@ -1431,7 +1427,7 @@ sub _mostwordsperline
         );
 
         $text = $self->_template_text('wpl2', %hash);
-        _html("<br><span class=\"small\">$text</span>");
+        _html("<br /><span class=\"small\">$text</span>");
         _html("</td></tr>");
     }
 }
@@ -1458,7 +1454,7 @@ sub _mostreferencednicks
         _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
         _html("<td>&nbsp;</td><td class=\"tdtop\"><b>" . $self->_template_text('nick') . "</b></td>");
         _html("<td class=\"tdtop\"><b>" . $self->_template_text('numberuses') . "</b></td>");
-        _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td>");
+        _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td></tr>");
 
         for(my $i = 0; $i < 5; $i++) {
             last unless $i < $#popular;
@@ -1473,7 +1469,7 @@ sub _mostreferencednicks
             } else {
                 $class = 'rankc';
             }
-            _html("<tr><td class=\"$class\"><b>$a</b>");
+            _html("<tr><td class=\"$class\">$a</td>");
             _html("<td class=\"hicell\">$popular</td>");
             _html("<td class=\"hicell\">$wordcount</td>");
             _html("<td class=\"hicell\">$lastused</td>");
@@ -1498,7 +1494,7 @@ sub _mosturls
         _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
         _html("<td>&nbsp;</td><td class=\"tdtop\"><b>" . $self->_template_text('url') . "</b></td>");
         _html("<td class=\"tdtop\"><b>" . $self->_template_text('numberuses') . "</b></td>");
-        _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td>");
+        _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td></tr>");
 
         for(my $i = 0; $i < $self->{cfg}->{urlhistory}; $i++) {
             last unless $i < @sorturls;
@@ -1515,7 +1511,7 @@ sub _mosturls
             } else {
                 $class = 'rankc';
             }
-            _html("<tr><td class=\"$class\"><b>$a</b>");
+            _html("<tr><td class=\"$class\">$a</td>");
             _html("<td class=\"hicell\"><a href=\"$sorturls[$i]\">$sorturl</a></td>");
             _html("<td class=\"hicell\">$urlcount</td>");
             _html("<td class=\"hicell\">$lastused</td>");
@@ -1530,10 +1526,10 @@ sub _legend
     # A legend showing the timebars and their associated time.
     my $self = shift;
     _html("<table align=\"center\" border=\"0\" width=\"520\"><tr>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 0-5</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 6-11</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 12-17</td>");
-    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"\"> = 18-23</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_0}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"0-5\" /> = 0-5</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"6-11\" /> = 6-11</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"12-17\" /> = 12-17</td>");
+    _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"18-23\" /> = 18-23</td>");
     _html("</tr></table>\n");
 }
 
@@ -1572,7 +1568,7 @@ sub _user_linetimes
         $debuglen += $w;
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\">";
+            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />";
         }
     }
     $self->{debug}->("Length='$len', Sum='$debuglen'");
@@ -1591,7 +1587,7 @@ sub _user_times
         my $w = int(($self->{stats}->{line_times}{$nick}[$i] / $self->{stats}->{lines}{$nick}) * 40);
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
-            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\">";
+            $bar .= "<img src=\"$self->{cfg}->{pic_loc}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" alt=\"\" />";
         }
     }
     return $bar;
