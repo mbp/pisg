@@ -1,0 +1,2016 @@
+<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+
+<book id="pisg-documentation">
+  <bookinfo>
+    <date>2002-01-23</date>
+    <title>pisg documentation</title>
+    <subtitle>How to install and configure pisg</subtitle>
+  </bookinfo>
+  <toc></toc>
+  <!-- <lot></lot> -->
+  <chapter id="what-is-pisg">
+    <title>What is pisg?</title>
+    <para>
+     pisg is an IRC statistics generator. It takes IRC logfiles and turns
+     them into nice looking stats.
+    </para>
+
+    <para>
+    In general, you would do something like this to get it running:
+
+    <itemizedlist mark="bullet">
+     <listitem>
+       <para>
+        Enable logging in an IRC bot, or in your IRC client. The log will be
+        outputted into a file.
+       </para>
+      </listitem>
+     <listitem>
+       <para>
+        You set up pisg, you define the channel name, and the path to the
+        logfile you created.
+       </para>
+      </listitem>
+     <listitem>
+       <para>
+        You run pisg, pisg runs the log through and create statistics, it
+        then creates a HTML page which you can upload to a server.
+       </para>
+      </listitem>
+    </itemizedlist>
+
+    </para>
+
+    <sect1 id="requirements">
+     <title>What are the requirements to run pisg?</title>
+
+     <para>
+
+    <itemizedlist mark="bullet">
+     <listitem>
+       <para>
+        An IRC client or bot where pisg supports the output logfile.
+       </para>
+      </listitem>
+     <listitem>
+       <para>
+        Any operating system which Perl runs at, this includes popular OS'es
+        such as Linux, FreeBSD, Windows and Mac. You will have a hard time
+        finding an OS where Perl isn't supported.
+       </para>
+      </listitem>
+     <listitem>
+       <para>
+       <emphasis>Optional</emphasis> - a system to host the statistics page
+       24 hours a day, 7 days a week.
+       </para>
+      </listitem>
+     <listitem>
+       <para>
+       <emphasis>Optional</emphasis> - a system to log the channel, 24 hours
+       a day, 7 days a week.
+       </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter id="setting-up-pisg">
+   <title>Setting up pisg for the first time</title>
+
+   <para>
+   Most configuration happens through the <filename>pisg.cfg</filename>
+   file, the file format is made to be easy to read, and easy to extend for
+   further use. It uses an XML-like format, with elements and attributes.
+   </para>
+
+   <sect1 id="setting-up-a-channel">
+   <title>Setting up a channel</title>
+
+   <para>
+   An element called <command>channel</command> is made for defining
+   channels, a quick example of a channel is this:
+
+   <programlisting>
+   <![CDATA[
+    <channel="#channel" logfile="channel.log">
+     format = "mIRC"
+     maintainer = "John"
+    </channel>
+   ]]>
+   </programlisting>
+
+   The above will define a channel called <command>#channel</command>, the
+   logfile pisg will look for is called <command>channel.log</command> and
+   the format of the logfile will be <command>mIRC</command>. The
+   maintainer (which will be stated on the output page) is
+   <command>John</command>.
+   </para>
+
+   <para>
+   That is basically it! Now, there is a lot more options you can use for
+   your channels, for this please refer to the reference documentation.
+   </para>
+   </sect1>
+   <sect1 id="user-options">
+    <title>Specifying user options</title>
+
+    <para>
+    User options are set with a simple XML-like syntax in the form:
+
+   <programlisting>
+   <![CDATA[<user nick="NICK" option="VALUE">]]>
+   </programlisting>
+
+    Remember, the nick is always required.
+
+    For example to add aliases to a nick, then you could do this:
+    <programlisting>
+    <![CDATA[<user nick="Joe" alias="Joe^*">]]>
+    </programlisting>
+
+    The asterix (*) means that it will match all nicks starting with 'Joe^'. So
+    it will add all Joe^'s to 'Joe' in the stats.
+
+    Another thing you can do is to add a picture to a user:
+    <programlisting>
+    <![CDATA[<user nick="Ben" pic="ben_holiday.jpg">]]>
+    </programlisting>
+
+    If you have a larger picture of the user as well, you can make the picture
+    on the stats page link to it:
+    <programlisting>
+     <![CDATA[<user nick="Ben" pic="ben_holiday.jpg" bigpic="ben-big.jpg">]]>
+    </programlisting>
+
+    You can also set a user's sex:
+    <programlisting>
+    <![CDATA[<user nick="Ben" sex="m">]]>
+    </programlisting>
+
+    Also you can add links to URLs and e-mails:
+    <programlisting>
+    <![CDATA[<user nick="Christine" link="http://www.christine.com">]]>
+    </programlisting>
+
+        or
+
+    <programlisting>
+    <![CDATA[<user nick="Chris" link="chris@host.com">]]>
+    </programlisting>
+
+    The last thing you can do is to ignore nicks (for example bots):
+    <programlisting>
+    <![CDATA[<user nick="nameofbot" ignore="y">]]>
+    </programlisting>
+
+    You don't have to do all this in many lines, you could just as easily do:
+    <programlisting>
+    <![CDATA[<user nick="Joe" alias="Joe^away Joe^work" pic="joe.jpg" link="joe@joe.com" sex="m">]]>
+    </programlisting>
+
+    (Here the aliases is a space separated list of nicks, that also works! But *
+    as a wildcard is smarter, but also slower).
+    </para>
+
+   </sect1>
+   <sect1 id="global-options">
+    <title>Setting global options</title>
+
+    <para>
+     Many times, it will be useful to set up global options, global options
+     are set like this:
+
+     <programlisting>
+     <![CDATA[<set option="VALUE">]]>
+     </programlisting>
+
+     Any global option will override anything defined with in channel
+     elements (see <xref linkend="setting-up-a-channel">)
+     </para>
+
+     <para>
+     For example, to change the background color of the stats page, you
+     could do:
+
+     <programlisting>
+     <![CDATA[<set bgcolor="black">]]>
+     </programlisting>
+
+     You can set many options in a single <command>set</command>:
+
+     <programlisting>
+     <![CDATA[<set lang="DE" timeoffset="+1">]]>
+     </programlisting>
+
+     The above will set the language on the statistics page to DE (Deutch,
+     German) and set the timeoffset to +1.
+
+     All options available are mentioned in the reference documentation.
+   </sect1>
+   <sect1 id="ignoring-links">
+    <title>Ignoring links</title>
+
+    <para>
+    It's possible to ignore links in the "Most referenced URLs" section:
+
+
+    <programlisting>
+    <![CDATA[
+     <link url="http://www.slashdot.org" ignore="y">
+    ]]>
+    </programlisting>
+    </para>
+
+   </sect1>
+   
+  </chapter>
+  <chapter id="reference">
+   <title>Reference for configuration options</title>
+
+    <!-- *** CHANNEL *** -->
+    <refentry id="channel">
+
+    <refmeta> <refentrytitle>channel</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>channel</refname>
+    <refpurpose>define channel name</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         maintainer = "John"
+        </channel>
+
+
+        <set channel="#channelname">
+      ]]>
+     </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>channel</command> is used in two contexts, globally when using
+    &lt;set&gt; and when defining new channels. It sets the name of the
+    channel.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> Unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LOGSUFFIX *** -->
+    <refentry id="logsuffix">
+
+    <refmeta> <refentrytitle>logsuffix</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>logsuffix</refname>
+    <refpurpose>Regex to sort logfiles by format month|day|year</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set logsuffix="\.\d\d([A-Za-z]+)\d\d\d\d||\.(\d\d)[A-Za-z]+\d\d\d\d||\.\d\d[A-Za-z]+(\d\d\d\d)">
+      ]]>
+     </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>logsuffix</command> is used to define the suffix of a logfile,
+    it only works when <command>logdir</command> is defined. The example in
+    the synopsis is for the eggdrop bots default foramt.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> Unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** FORMAT *** -->
+    <refentry id="format">
+
+    <refmeta> <refentrytitle>format</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>format</refname>
+    <refpurpose>the logfile format</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "eggdrop"
+         maintainer = "John"
+        </channel>
+
+        <set format="mIRC">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>format</command> is used to define the format of the logfile,
+    pisg supports a various number of different logfiles, see the FORMATS
+    file included with the pisg distribution.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> mIRC </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** NETWORK *** -->
+    <refentry id="network">
+
+    <refmeta> <refentrytitle>network</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>network</refname>
+    <refpurpose>the IRC network of the channel</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "eggdrop"
+         network = "Undernet"
+        </channel>
+
+        <set network="Quakenet">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>network</command> is used to set the network which the channel
+    resides on, this name is displayed on the stats page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> SomeIRCNetwork </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** NETWORK *** -->
+    <refentry id="outputfile">
+
+    <refmeta> <refentrytitle>outputfile</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>outputfile</refname>
+    <refpurpose>name of the generated HTML page</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "eggdrop"
+         outputfile = "mychan.html"
+        </channel>
+
+        <set outputfile="mychan.html">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>outputfile</command> is used to define the name of the
+    generated statistics page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> index.html </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** MAINTAINER *** -->
+    <refentry id="maintainer">
+
+    <refmeta> <refentrytitle>maintainer</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>maintainer</refname>
+    <refpurpose>name of the maintainer</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         maintainer = "Benny"
+        </channel>
+
+        <set maintainer="Benny">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>maintainer</command> is used to define the name of the
+    maintaner of the statistics page, this can be either the person
+    generating the stats or the bot/client doing the logging.
+    The maintainer is displayed in the outputted stats page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> MAINTAINER </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LANG *** -->
+    <refentry id="lang">
+
+    <refmeta> <refentrytitle>lang</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>lang</refname>
+    <refpurpose>define the language / translation to use</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         lang = "DE"
+        </channel>
+
+        <set lang="FR">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>lang</command> is used to define the language translation to
+    use, if the language support is there, the text on the stats page will
+    be outputted in that language. All supported languages is mentioned in
+    the lang.txt file with the pisg distribution. Some of the languages
+    supported is: EN | DE | DK | FR | ES | PL | PT | NO | NL | SE | EE | IT
+    | HU | SI | FI
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> EN (English) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** PAGEHEAD *** -->
+    <refentry id="pagehead">
+
+    <refmeta> <refentrytitle>pagehead</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>pagehead</refname>
+    <refpurpose>define a file as page header</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         outputfile = "stats.html"
+         pagehead = "myheader.txt"
+        </channel>
+
+        <set pagehead="someheader.txt">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>pagehead</command> is used to include a file in the stats page,
+    for example an introduction text, a link to an image or a banner. The
+    file can hold anything, it will be included raw in the stats page -
+    so HTML should be preferred. The file will be included in the top of
+    the page. This option is the opposite of <command>pagefoot</command>.
+
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> none </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** PAGEFOOT *** -->
+    <refentry id="pagefoot">
+
+    <refmeta> <refentrytitle>pagefoot</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>pagefoot</refname>
+    <refpurpose>define a file as page footer</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         outputfile = "stats.html"
+         pagefoot = "myfooter.txt"
+        </channel>
+
+        <set pagefoot="somefooter.txt">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>pagefoot</command> is used to include a file in the stats page,
+    for example an introduction text, a link to an image or a banner. The
+    file can hold anything, it will be included raw in the stats page -
+    so HTML should be preferred. The file will be included in the bottom of
+    the page. This option is the opposite of <command>pagehead</command>.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> none </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** IMAGEPATH *** -->
+    <refentry id="imagepath">
+
+    <refmeta> <refentrytitle>imagepath</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>imagepath</refname>
+    <refpurpose>path to user pictures</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         imagepath = "userpics/"
+        </channel>
+
+        <set imagepath="alt_users/">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>imagepath</command> defines an alternative path to where user
+    pictures is located. The default is that user pictures is located in the
+    same directory as the HTML page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> current directory </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** DEFAULT_PIC *** -->
+    <refentry id="defaultpic">
+
+    <refmeta> <refentrytitle>default_pic</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>default_pic</refname>
+    <refpurpose>use a default user picture</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         default_pic = "not_available.jpg"
+        </channel>
+
+        <set default_pic="unknown.gif">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>default_pic</command> defines a picture to be displayed for all
+    users which have no other picture defined in the <command>user</command>
+    element. This is good for showing "No picture available" or something.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LOGDIR *** -->
+    <refentry id="logdir">
+
+    <refmeta> <refentrytitle>logdir</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>logdir</refname>
+    <refpurpose>parse a directory full of logs</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logdir="/home/foo/eggdrop/logs/">
+         format = "eggdrop"
+        </channel>
+
+        <set logdir="dailylogs/">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    When <command>logdir</command> is defined to valid path to a directory,
+    then pisg will run through that directory, parse all logfiles in it and
+    create 1 HTML from it. Useful with for example eggdrop logs.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** PREFIX *** -->
+    <refentry id="prefix">
+
+    <refmeta> <refentrytitle>prefix</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>prefix</refname>
+    <refpurpose>only parse logs prefixed with a userdefined string</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logdir="/home/foo/eggdrop/logs/">
+         format = "eggdrop"
+         prefix = "logjun"
+        </channel>
+
+        <set prefix="logjanuary">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    When using the <command>logdir</command> option and you only want to use
+    a slew of the files in it, you can have pisg choose only files which are
+    prefixed with a special string.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** TIMEOFFSET *** -->
+    <refentry id="timeoffset">
+
+    <refmeta> <refentrytitle>timeoffset</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>timeoffset</refname>
+    <refpurpose>use a different time zone than the local machine</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         maintainer = "John"
+         timeoffset = "+5"
+        </channel>
+
+        <set timeoffset="+2">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg uses the time of the local machine to display the time
+    of the generated stats. Sometimes when you have a shell on an external
+    box, and it's in another country, you want to use another time. This is
+    accomplished by the <command>timeoffset</command> command.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> +0 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_ACTIVETIMES *** -->
+    <refentry id="showactivetimes">
+
+    <refmeta> <refentrytitle>show_activetimes</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_activetimes</refname>
+    <refpurpose>enable/disable "Most Active Times"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_activetimes = "0"
+        </channel>
+
+        <set show_activetimes="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can disable the "Most Active Times" section on the
+    stats page. It will simply disappear when specifying 0.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_BIGNUMBERS *** -->
+    <refentry id="showbignumbers">
+
+    <refmeta> <refentrytitle>show_bignumbers</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_bignumbers</refname>
+    <refpurpose>enable/disable "Big Numbers" sections</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_bignumbers = "0"
+        </channel>
+
+        <set show_bignumbers="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can disable the "Big Numbers" and "Other
+    Interesting numbers" sections on the stats page. They will simply
+    disappear when specifying 0.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_TOPICS *** -->
+    <refentry id="showtopics">
+
+    <refmeta> <refentrytitle>show_topics</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_topics</refname>
+    <refpurpose>enable/disable "Latest topics" sections</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_topics = "0"
+        </channel>
+
+        <set show_topics="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can disable the "Latest topics" section on the
+    stats page. It will simply disappear when specifying 0.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_WPL *** -->
+    <refentry id="showwpl">
+
+    <refmeta> <refentrytitle>show_wpl</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_wpl</refname>
+    <refpurpose>enable/disable "words per line"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_wpl = "0"
+        </channel>
+
+        <set show_wpl="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can enable the "words per line" coloumn in the
+    "Most Active Nicks" section. It will add a column describing the average
+    words per line for a person.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_CPL *** -->
+    <refentry id="showcpl">
+
+    <refmeta> <refentrytitle>show_cpl</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_cpl</refname>
+    <refpurpose>enable/disable "characters per line"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_cpl = "0"
+        </channel>
+
+        <set show_cpl="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can enable the "characters per line" coloumn in the
+    "Most Active Nicks" section. It will add a column describing the average
+    number of characters per line for a person.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_WORDS *** -->
+    <refentry id="showwords">
+
+    <refmeta> <refentrytitle>show_words</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_words</refname>
+    <refpurpose>enable/disable "number of words"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_words = "0"
+        </channel>
+
+        <set show_words="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The <command>show_words</command> option adds a column to the "Most
+    Active Nicks" list which list the total number of words a user has
+    typed.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_LASTSEEN *** -->
+    <refentry id="showlastseen">
+
+    <refmeta> <refentrytitle>show_lastseen</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_lastseen</refname>
+    <refpurpose>show when a user was last seen on a channel</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_lastseen = "0"
+        </channel>
+
+        <set show_lastseen="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option enabled, a column will be added to the "Most Active
+    Nicks" section to display when a user was last seen. Eg. "2 days ago".
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_TIME *** -->
+    <refentry id="showtime">
+
+    <refmeta> <refentrytitle>show_time</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_time</refname>
+    <refpurpose>show when a nick was active</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_time = "0"
+        </channel>
+
+        <set show_time="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The default behaviour is to add a column to the "Most Active Nicks"
+    section displaying a fancy timebar to show when a user was active. With
+    this option it can be disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_LINETIME *** -->
+    <refentry id="showlinetime">
+
+    <refmeta> <refentrytitle>show_linetime</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_linetime</refname>
+    <refpurpose>mIRCStats like behaviour of timebar</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "bobot"
+         show_linetime = "0"
+        </channel>
+
+        <set show_linetime="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The default behaviour is to add a column to the "Most Active Nicks"
+    section displaying a fancy linetimebar to show when a user was active.
+    With this option it can be done the same way as mIRCStats does it; that
+    is, by putting that timebar next to the number of lines, in the same
+    column.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_RANDQUOTE *** -->
+    <refentry id="showrandquote">
+
+    <refmeta> <refentrytitle>show_randquote</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_randquote</refname>
+    <refpurpose>enable or disable the random quotes</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "bobot"
+         show_randquote = "0"
+        </channel>
+
+        <set show_randquote="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The default behaviour is to add a column to the "Most Active Nicks"
+    section displaying a users random quote. With this option it can be
+    disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_LEGEND *** -->
+    <refentry id="showlegend">
+
+    <refmeta> <refentrytitle>show_legend</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_legend</refname>
+    <refpurpose>enable or disable the legend of the timebars</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "bobot"
+         show_legend = "0"
+        </channel>
+
+        <set show_legend="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg shows a legend below the "Most Active Times" displaying
+    what the different colors means. With this option it can be disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_KICKLINE *** -->
+    <refentry id="showkickline">
+
+    <refmeta> <refentrytitle>show_kickline</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_kickline</refname>
+    <refpurpose>enable or disable the kickline</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "bobot"
+         show_kickline = "0"
+        </channel>
+
+        <set show_kickline="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg shows an example kickline in the "Most kicked"-stats.
+    With this option it can be disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_ACTIONLINE *** -->
+    <refentry id="showactionline">
+
+    <refmeta> <refentrytitle>show_actionline</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_actionline</refname>
+    <refpurpose>enable or disable the actionline</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "bobot"
+         show_actionline = "0"
+        </channel>
+
+        <set show_actionline="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg shows an example actionline in the "Most actions"-stats.
+    With this option it can be disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_SHOUTLINE *** -->
+    <refentry id="showshoutline">
+
+    <refmeta> <refentrytitle>show_shoutline</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_shoutline</refname>
+    <refpurpose>enable or disable the shoutline</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "bobot"
+         show_shoutline = "0"
+        </channel>
+
+        <set show_shoutline="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg shows an example shoutline in the "Most shouting
+    people"-stats.  With this option it can be disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_VIOLENTLINES *** -->
+    <refentry id="showviolentlines">
+
+    <refmeta> <refentrytitle>show_violentlines</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_violentlines</refname>
+    <refpurpose>enable or disable the violentlines</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "bobot"
+         show_violentlines = "0"
+        </channel>
+
+        <set show_violentlines="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg shows example violentlines in the "Most aggresive"
+    and "Most attacked"-stats.  With this option it can be disabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_MUW *** -->
+    <refentry id="showmuw">
+
+    <refmeta> <refentrytitle>show_muw</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_muw</refname>
+    <refpurpose>enable or disable "Most used words"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_muw = "0"
+        </channel>
+
+        <set show_muw="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default,  pisg adds an "Most used words" section to the stats page.
+    With this option you can disable it from being shown.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_MRN *** -->
+    <refentry id="showmrn">
+
+    <refmeta> <refentrytitle>show_mrn</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_mrn</refname>
+    <refpurpose>enable or disable "Most referenced nicks"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_mrn = "0"
+        </channel>
+
+        <set show_mrn="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default,  pisg adds an "Most referenced nicks" section to the stats
+    page.  With this option you can disable it from being shown.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_MRU *** -->
+    <refentry id="showmru">
+
+    <refmeta> <refentrytitle>show_mru</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_mru</refname>
+    <refpurpose>enable or disable "Most referenced URLs"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_mru = "0"
+        </channel>
+
+        <set show_mru="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default,  pisg adds an "Most referenced URLs" section to the stats
+    page.  With this option you can disable it from being shown.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 1 (enabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_VOICES *** -->
+    <refentry id="showvoices">
+
+    <refmeta> <refentrytitle>show_voices</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_voices</refname>
+    <refpurpose>enable or disable voice statistics</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_voices = "0"
+        </channel>
+
+        <set show_voices="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg doesn't have voice statistics like it has op
+    statistics. Enabling this option will add a section to the "Most
+    interesting numbers" displaying who got most voices.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SHOW_MOSTNICKS *** -->
+    <refentry id="showmostnicks">
+
+    <refmeta> <refentrytitle>show_mostnicks</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>show_mostnicks</refname>
+    <refpurpose>show who changed nick most often</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         show_mostnicks = "0"
+        </channel>
+
+        <set show_mostnicks="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By enabling this option, pisg will add a section to the stats showing
+    who had the most nicks, and what the nicks were. This option only works
+    properly when <command>nicktracking</command> is enabled.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** IGNOREWORDS *** -->
+    <refentry id="ignorewords">
+
+    <refmeta> <refentrytitle>ignorewords</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ignorewords</refname>
+    <refpurpose>ignore specified words</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         ignorewords = "foo bar"
+        </channel>
+
+        <set ignorewords="you me">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Sometimes words in the "most used words" appears which you don't want to
+    see, with this option you can ignore these words. It also applies to the
+    "most referenced nicks" section. It's a space seperated list of words.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** FOUL *** -->
+    <refentry id="foul">
+
+    <refmeta> <refentrytitle>foul</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>foul</refname>
+    <refpurpose>specify words considered to be bad/foul language</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         foul = "ass bitch"
+        </channel>
+
+        <set foul="slaps beats kick">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    There is a section in the "Most interesting numbers" which tells who had
+    a "dirty mouth" - here you can define which words are considered being
+    bad/foul. It is a space seperated list of words.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> ass fuck bitch shit scheisse scheiﬂe kacke arsch ficker ficken schlampe </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** REGEXP_ALIASES *** -->
+    <refentry id="regexpaliases">
+
+    <refmeta> <refentrytitle>regexp_aliases</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>regexp_aliases</refname>
+    <refpurpose>use regular expressions in user aliases</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <user nick="Joe" alias="Joe\d+">
+
+        <set regexp_aliases="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Enabling this option will make all aliases in &lt;user&gt; lines be
+    parsed as regular expressions.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SILENT *** -->
+    <refentry id="silent">
+
+    <refmeta> <refentrytitle>silent</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>silent</refname>
+    <refpurpose>make pisg silent, suppress messages</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set silent="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    This option is useful mainly from commandline when invoking pisg with
+    <command>--silent 1</command>. But it can also used in the configuration
+    file. It will suppress all standard output from pisg. Error messages
+    will still be sent.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** CHARSET *** -->
+    <refentry id="charset">
+
+    <refmeta> <refentrytitle>charset</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>charset</refname>
+    <refpurpose>charset to use for stats page</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         charset = "utf-8"
+        </channel>
+
+        <set charset="iso-8859-15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The pisg stats page defines a charset in a meta tag, this can be used if
+    your country is using a different one than the default.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> iso-8859-1 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** USE_ACTIVETIME_ALT *** -->
+    <refentry id="useactivetimealt">
+
+    <refmeta> <refentrytitle>use_activetime_alt</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>use_activetime_alt</refname>
+    <refpurpose>alternative highlighting for "Most Active Times"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         use_activetime_alt = "1"
+        </channel>
+
+        <set use_activetime_alt="0">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Use an alternative way to highlight the number under the time bars, if
+    set to 1, will highlight the hour in which the stats were generated
+    instead of the default where the most active hour is highlighted.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** MINQUOTE *** -->
+    <refentry id="minquote">
+
+    <refmeta> <refentrytitle>minquote</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>minquote</refname>
+    <refpurpose>minimum numbers of letters for a random quote</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         minquote = "10"
+        </channel>
+
+        <set minquote="5">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The random quotes displayed in the "Most Active Nicks" section has a
+    certain range specified. With this option you can change the minimum
+    number of letters required for a random quote. Also see the
+    <command>maxquote</command> option.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 25 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** MAXQUOTE *** -->
+    <refentry id="maxquote">
+
+    <refmeta> <refentrytitle>maxquote</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>maxquote</refname>
+    <refpurpose>maximum numbers of letters for a random quote</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         maxquote = "70"
+        </channel>
+
+        <set maxquote="100">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The random quotes displayed in the "Most Active Nicks" section has a
+    certain range specified. With this option you can change the maximum
+    number of letters required for a random quote. Also see the
+    <command>minquote</command> option.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 65 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** WORDLENGTH *** -->
+    <refentry id="wordlength">
+
+    <refmeta> <refentrytitle>wordlength</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>wordlength</refname>
+    <refpurpose>minimum number of characters in an interesting word</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "xchat"
+         wordlength = "10"
+        </channel>
+
+        <set wordlength="2">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The "Most Used Words" section on the stats page display the most used
+    words. The default is that a word only appears if it is longer than 5
+    characters. With this option you can change that minimum.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 5 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** ACTIVENICKS *** -->
+    <refentry id="activenicks">
+
+    <refmeta> <refentrytitle>activenicks</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>activenicks</refname>
+    <refpurpose>nicks to show in "Most Active Nicks"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         activenicks = "50"
+        </channel>
+
+        <set activenicks="10">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many nicks you want to appear in the
+    "Most Active Nicks" section on the stats page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 25 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** ACTIVENICKS2 *** -->
+    <refentry id="activenicks2">
+
+    <refmeta> <refentrytitle>activenicks2</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>activenicks2</refname>
+    <refpurpose>nicks to show in "These didn't make it.."</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         activenicks2 = "25"
+        </channel>
+
+        <set activenicks2="10">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many nicks you want to appear in the
+    "These didn't make it" section on the stats page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 30 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** TOPICHISTORY *** -->
+    <refentry id="topichistory">
+
+    <refmeta> <refentrytitle>topichistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>topichistory</refname>
+    <refpurpose>maximum number of topics to show</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         topichistory = "2"
+        </channel>
+
+        <set topichistory="10">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many topics you want to appear in
+    the "Latest topics" section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 3 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** URLHISTORY *** -->
+    <refentry id="urlhistory">
+
+    <refmeta> <refentrytitle>urlhistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>urlhistory</refname>
+    <refpurpose>maximum number of urls to show</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         urlhistory = "2"
+        </channel>
+
+        <set urlhistory="10">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many urls you want to appear in
+    the "Most referenced URLs" section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 5 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** WORDHISTORY *** -->
+    <refentry id="wordhistory">
+
+    <refmeta> <refentrytitle>wordhistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>wordhistory</refname>
+    <refpurpose>maximum number of words to show</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         wordhistory = "5"
+        </channel>
+
+        <set wordhistory="15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many words you want to appear in
+    the "Most used words" section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 10 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** NICKHISTORY *** -->
+    <refentry id="nickhistory">
+
+    <refmeta> <refentrytitle>nickhistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>nickhistory</refname>
+    <refpurpose>maximum number of nicks to show</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel" logfile="channel.log">
+         format = "mIRC"
+         nickhistory = "3"
+        </channel>
+
+        <set nickhistory="15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you can define how many nicks you want to appear in
+    the "Most referenced nicks" section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 5 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LANGFILE *** -->
+    <refentry id="langfile">
+
+    <refmeta> <refentrytitle>langfile</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>langfile</refname>
+    <refpurpose>filename of language file</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set langfile="mylang.txt">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option you have an alternative way to define the name and/or
+    path to the language file. Usually you don't have to touch this option.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> lang.txt </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** NICKTRACKING *** -->
+    <refentry id="nicktracking">
+
+    <refmeta> <refentrytitle>nicktracking</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>nicktracking</refname>
+    <refpurpose>track nickchanges and create aliases</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set nicktracking="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Enabling this option will track nickchanges as well as it can. It will
+    then automatically create aliases for these nicks.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LOGTYPE *** -->
+    <refentry id="logtype">
+
+    <refmeta> <refentrytitle>logtype</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>logtype</refname>
+    <refpurpose>type of log (not the format of the log)</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set logtype="Logfile">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The type of logs kept for your channel. Currently only "Logfile" is
+    supported, so you don't need to change this option.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> Logfile </para>
+    </refsect1>
+
+</chapter>
+
+</book>
