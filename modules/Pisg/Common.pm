@@ -13,7 +13,7 @@ use Exporter;
 use strict;
 $^W = 1;
 
-my (%aliases, %aliaswilds, %ignored, %aliasseen, %ignored_urls);
+my (%aliases, %aliaswilds, %ignored, %aliasseen, %ignored_urls, %url_seen);
 
 # add_alias assumes that the first argument is the true nick and the second is
 # the alias, but will accomidate other arrangements if necessary.
@@ -111,8 +111,21 @@ sub match_url
 
     if ($str =~ /(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_]+\.[-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/) {
         my $url = "$1$2";
-        $url =~ s/\/$//;
-        return $url;
+        if ($url_seen{$url}) {
+            return $url;
+        } elsif ($url =~ s/\/$//) {
+            if ($url_seen{$url}) {
+                return $url;
+            } else {
+                $url_seen{"$url/"} = 1;
+                return "$url/";
+            }
+        } elsif ($url_seen{"$url/"}) {
+            return "$url/";
+        } else {
+            $url_seen{$url} = 1;
+            return $url;
+        }
     }
     return undef;
 }
