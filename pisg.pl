@@ -91,7 +91,7 @@ $config->{timeoffset} = "+0";	# A time offset on the stats page - if your
 $words->{foul} = "ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe"; # If not set in pisg.cfg set your Foulwords here.
 
 # You shouldn't care about anything below this point
-$config->{debug} = 1;			# 0 = Debugging off, 1 = Debugging on
+$config->{debug} = 0;			# 0 = Debugging off, 1 = Debugging on
 $config->{debugfile} = "debug.log";	# Path to debug file(must be set if $debug == 1)
 $config->{version} = "v0.18-cvs";
 
@@ -244,7 +244,7 @@ sub init_config
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
                     my $var = lc($1); # Make the string lowercase
-                    unless ($config->{$var} eq $2) {
+                    unless (($config->{$var} eq $2) || $config->{cmdl}{$var}) {
                         $config->{$var} = $2;
                     }
                     debug("Conf: $var = $2");
@@ -294,22 +294,21 @@ sub init_debug
 sub parse_dir
 {
     print "Going into $config->{logdir} and parsing all files there...\n\n";
-    my $files = `ls $config->{logdir}`;
-
-    my @filesarray = split(/\n/, $files);
+    my @filesarray;
+    opendir(LOGDIR, $config->{logdir}) || die("can't opendir $config->{logdir}: $!");
+    unless (@filesarray = readdir(LOGDIR)) {
+        die("No files in $config->{logdir}!");
+    }
+    close(LOGDIR);
 
     # Add trailing slash when it's not there..
     if (substr($config->{logdir}, -1) ne '/') {
         $config->{logdir} =~ s/(.*)/$1\//;
     }
 
-    if (@filesarray < 1) { die("No files in that dir!\n"); }
-
     foreach my $file (@filesarray) {
-        if ($config->{prefix} eq "" || $file =~ /^$config->{prefix}/) {
-            $file = $config->{prefix} . $file;
-            parse_file($file);
-        }
+        $file = $config->{logdir} . $file;
+        parse_file($file);
     }
 
 }
@@ -1789,14 +1788,14 @@ sub get_cmdlineoptions
 {
     my $tmp;
     # Commandline options
-    my $help;
+    my ($channel, $logfile, $format, $network, $maintainer, $outputfile, $logdir, $prefix, $configfile, $help);
 
 my $usage = <<END_USAGE;
 Usage: pisg.pl [-c channel] [-l logfile] [-o outputfile] [-m
 maintainer]  [-f format] [-n network] [-d logdir] [-a aliasfile]
 [-i ignorefile] [-h]
 
--c --channel=xxx       : Set channel name
+-ch --channel=xxx      : Set channel name
 -l --logfile=xxx       : Log file to parse
 -o --outfile=xxx       : Name of html file to create
 -m --maintainer=xxx    : Channel/statistics maintainer
@@ -1805,7 +1804,7 @@ maintainer]  [-f format] [-n network] [-d logdir] [-a aliasfile]
 -d --dir=xxx           : Analyze all files in this dir. Ignores logfile.
 -p --prefix=xxx        : Analyse only files starting with xxx in dir.
                          Only works with --dir
--u --configfile=xxx    : Config file
+-co --configfile=xxx   : Config file
 -h --help              : Output this message and exit (-? also works).
 
 Example:
@@ -1817,17 +1816,17 @@ pisg without arguments.
 
 END_USAGE
 
-    if (GetOptions('channel=s'    => \$config->{channel},
-                   'logfile=s'    => \$config->{logfile},
-                   'format=s'     => \$config->{format},
-                   'network=s'    => \$config->{network},
-                   'maintainer=s' => \$config->{maintainer},
-                   'outfile=s'    => \$config->{outputfile},
-                   'dir=s'        => \$config->{logdir},
-                   'prefix=s'     => \$config->{prefix},
+    if (GetOptions('channel=s'    => \$channel,
+                   'logfile=s'    => \$logfile,
+                   'format=s'     => \$format,
+                   'network=s'    => \$network,
+                   'maintainer=s' => \$maintainer,
+                   'outfile=s'    => \$outputfile,
+                   'dir=s'        => \$logdir,
+                   'prefix=s'     => \$prefix,
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
-                   'configfile=s' => \$config->{configfile},
+                   'configfile=s' => \$configfile,
                    'help|?'       => \$help
                ) == 0 or $help) {
                    die($usage);
@@ -1843,6 +1842,51 @@ END_USAGE
     if ($tmp) {
         die("The aliasfile and ignorefile has been obsoleted by the new
         pisg.cfg, please use that instead [look in pisg.cfg]\n");
+    }
+
+    if ($channel) {
+        $config->{channel} = $channel;
+        $config->{cmdl}{channel} = 1;
+    }
+
+    if ($logfile) {
+        $config->{logfile} = $logfile;
+        $config->{cmdl}{logfile} = 1;
+    }
+
+    if ($format) {
+        $config->{format} = $format;
+        $config->{cmdl}{format} = 1;
+    }
+
+    if ($network) {
+        $config->{network} = $network;
+        $config->{cmdl}{network} = 1;
+    }
+
+    if ($maintainer) {
+        $config->{maintainer} = $maintainer;
+        $config->{cmdl}{maintainer} = 1;
+    }
+
+    if ($outputfile) {
+        $config->{outputfile} = $outputfile;
+        $config->{cmdl}{outputfile} = 1;
+    }
+
+    if ($logdir) {
+        $config->{logdir} = $logdir;
+        $config->{cmdl}{logdir} = 1;
+    }
+
+    if ($prefix) {
+        $config->{prefix} = $prefix;
+        $config->{cmdl}{prefix} = 1;
+    }
+
+    if ($configfile) {
+        $config->{configfile} = $configfile;
+        $config->{cmdl}{configfile} = 1;
     }
 
 }
