@@ -1,3 +1,40 @@
+# Config file for pisg
+#
+# This file is used for two things:
+# - Setting pisg config options
+# - Setting user options
+#
+# You can set all pisg config options from here, syntax is as follows:
+# <settings variable="value">
+#
+# For example:
+# <settings channel="#channel">
+#
+# You can also combine settings into one line such as:
+# <settings channel="#channel" logfile="/var/log/channel.log">
+#
+# User options allow you to:
+# - Setting aliases for nicks
+# - Setting nicks to be ignored
+# - Setting user pictures
+# - Setting links to users homepages/e-mails
+#
+# The format is quite simple.
+#
+# To add aliases to a user:
+# <user nick="Joe" alias="Joe^away Joe^work">
+#
+# To add a picture to a user:
+# <user nick="Joe" pic="joe.jpg">
+#
+# To ignore a nick:
+# <user nick="nameofbot" ignore="y">
+#
+# You don't have to make it over many lines, you could just as easily do:
+# <user nick="Joe" alias="Joe^away Joe^work" pic="joe.jpg" link="http://www.joe.com">
+#
+# Have fun.. :)
+
 #!/usr/bin/perl -w
 
 use strict;
@@ -21,8 +58,15 @@ use Getopt::Long;
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+my @options = ("channel", "logfile", "format", "network", "outputfile", "maintainer",
+"pagehead", "configfile", "imagepath", "logdir", "lang", "langfile", "bgcolor",
+"text", "hbgcolor", "hcolor", "hicell", "hicell2", "tdcolor", "tdtop", "link",
+"vlink", "hlink", "headline", "rankc", "minquote", "maxquote", "wordlength",
+"activenicks", "activenicks2", "topichistory", "pic1", "pic2", "nicktracking",
+"timeoffset", "version", "debug", "debugfile");
+
 my ($channel, $logfile, $format, $network, $outputfile, $maintainer,
-$pagehead, $usersfile, $imagepath, $logdir, $lang, $langfile, $bgcolor,
+$pagehead, $configfile, $imagepath, $logdir, $lang, $langfile, $bgcolor,
 $text, $hbgcolor, $hcolor, $hicell, $hicell2, $tdcolor, $tdtop, $link,
 $vlink, $hlink, $headline, $rankc, $minquote, $maxquote, $wordlength,
 $activenicks, $activenicks2, $topichistory, $pic1, $pic2, $nicktracking,
@@ -38,8 +82,8 @@ $maintainer = "MAINTAINER";	# The maintainer or bot which makes the logfile
 $pagehead = "none";		# Some 'page header' file which you want to
 				# include in top of the stats
 
-$usersfile = "users.cfg";	# Path to users config file (aliases, ignores,
-				# pics and more, see users.cfg for examples)
+$configfile = "pisg.cfg";	# Path to config file (aliases, ignores,
+				# pics and more, see pisg.cfg for examples)
 
 $imagepath = "";		# If your user pictures is located
 				# some special directory, set the path here.
@@ -102,10 +146,10 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 
 sub main
 {
+    init_config();      # Init config. (Aliases, ignores, other options etc.)
     init_pisg();        # Init commandline arguments and other things
     init_lineformats(); # Attempt to set line formats in compliance with user specification (--format)
 
-    init_users_config();        # Init users config. (Aliases, ignores etc.)
     init_debug(); 	        # Init the debugging file
 
     if ($logdir) {
@@ -195,13 +239,13 @@ sub init_lineformats {
 
 }
 
-sub init_users_config
+sub init_config
 {
 
-    if (open(USERS, $usersfile)) {
+    if (open(CONFIG, $configfile)) {
 
         my $lineno = 0;
-        while (<USERS>)
+        while (<CONFIG>)
         {
             $lineno++;
             my $line = $_;
@@ -213,7 +257,7 @@ sub init_users_config
                 if ($line =~ /nick="([^"]+)"/) {
                     $nick = $1;
                 } else {
-                    print STDERR "Warning: no nick specified in $usersfile on line $lineno\n";
+                    print STDERR "Warning: no nick specified in $configfile on line $lineno\n";
                     next;
                 }
 
@@ -232,6 +276,15 @@ sub init_users_config
 
                 if ($line =~ /ignore="Y"/i) {
                     push(@ignore, $nick);
+                }
+
+            } elsif ($line =~ /<settings.*>/) {
+
+                foreach (@options) {
+                    if ($line =~ /$_="([^"]+)"/) {
+                        $_ = "\$" . $_;
+                        eval("$_ = \$1");
+                    }
                 }
 
             }
@@ -1739,7 +1792,7 @@ maintainer]  [-f format] [-n network] [-d logdir] [-a aliasfile]
 -f --format=xxx        : Logfile format [see FORMATS file]
 -n --network=xxx       : IRC Network this channel is on.
 -d --dir=xxx           : Analyze all files in this dir. Ignores logfile.
--u --usersfile=xxx     : Users config file
+-u --configfile=xxx    : Config file
 -h --help              : Output this message and exit (-? also works).
 
 Example:
@@ -1760,7 +1813,7 @@ END_USAGE
                    'dir=s'        => \$logdir,
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
-                   'usersfile=s'  => \$usersfile,
+                   'configfile=s'  => \$configfile,
                    'help|?'       => \$help
                ) == 0 or $help) {
                    die($usage);
@@ -1775,7 +1828,7 @@ END_USAGE
 
     if ($tmp) {
         die("The aliasfile and ignorefile has been obsoleted by the new
-        userscfg, please use that instead [look in users.cfg]\n");
+        pisg.cfg, please use that instead [look in pisg.cfg]\n");
     }
 
 }
