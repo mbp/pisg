@@ -351,7 +351,7 @@ sub _parse_file
                         }
                     }
 
-                    _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword}, $hour);
+                    _parse_words($stats, $saying, $nick, $self->{cfg}->{ignorewords}, $hour);
                 }
             }
             $lastnormal = $line;
@@ -413,7 +413,7 @@ sub _parse_file
 
                 $stats->{lengths}{$nick} += length($saying);
 
-                _parse_words($stats, $saying, $nick, $self->{cfg}->{ignoreword}, $hour);
+                _parse_words($stats, $saying, $nick, $self->{cfg}->{ignorewords}, $hour);
             }
         }
 
@@ -536,7 +536,7 @@ sub _modechanges
 
 sub _parse_words
 {
-    my ($stats, $saying, $nick, $ignoreword, $hour) = @_;
+    my ($stats, $saying, $nick, $ignorewords, $hour) = @_;
     # Cache time of day
     my $tod = int($hour/6);
 
@@ -544,7 +544,7 @@ sub _parse_words
         $stats->{words}{$nick}++;
         $stats->{word_times}{$nick}[$tod]++;
         # remove uninteresting words
-        next if ($ignoreword->{$word});
+        next if $ignorewords and $word =~ m/$ignorewords/i;
 
         # ignore contractions
         next if ($word =~ m/'.{1,2}$/o);
@@ -572,7 +572,7 @@ sub _random_line
 {
     my ($self, $stats, $lines, $key, $nick, $count) = @_;
     my $random = ${ $lines->{$key}{$nick} }[rand@{ $lines->{$key}{$nick} }];
-    if ($self->{cfg}->{noignoredquotes} && $random =~ /$self->{cfg}->{ignorewordsregex}/io) {
+    if ($self->{cfg}->{noignoredquotes} && $random =~ /$self->{cfg}->{ignorewords}/io) {
         return '' if ($count > 20);
         return $self->_random_line($stats, $lines, $key, $nick, ++$count);
     } else {

@@ -7,6 +7,14 @@ pisg (x.xx)
    fixed.
    * Multiple LogDirs and LogFiles can now be specified (thanks, Nathan
    Poznick)
+   * Foul words no longer matches at the beginning or the end of the word. Eg.
+   "ass" won't match "assembler" or "asshole" anymore. (thanks, Christoph
+   Berg)
+   * Support for wildcards/asterix in IgnoreWords, FoulWords and ViolentWords
+   has been implemented. Eg. use "ass*" to accomplish the behaviour that was
+   changed in the above entry. (thanks, Christoph Berg)
+   * RegexpAliases now also applies to IgnoreWords, FoulWords and
+   ViolentWords. (thanks, Christoph Berg)
 
 pisg (0.51) - Wed Jan, 21st 2004
    * Fixed a bug in the irssi format where an action could be recognized as a

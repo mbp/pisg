@@ -8,7 +8,7 @@ Pisg::Common - some common functions of pisg.
 
 use Exporter;
 @ISA = ('Exporter');
-@EXPORT = qw(add_alias add_aliaswild add_ignore add_url_ignore is_ignored url_is_ignored find_alias store_aliases restore_aliases match_urls match_email htmlentities is_nick randomglob);
+@EXPORT = qw(add_alias add_aliaswild add_ignore add_url_ignore is_ignored url_is_ignored find_alias store_aliases restore_aliases match_urls match_email htmlentities is_nick randomglob wordlist_regexp);
 
 use strict;
 $^W = 1;
@@ -222,6 +222,22 @@ sub randomglob
     }
     $return =~ s/^$globpath//;
     return $return;
+}
+
+sub wordlist_regexp
+{
+    my $list = shift;
+    $list =~ s/^\s+//; # split ignores trailing empty fields
+    my @words = split(/\s+/, $list);
+    my $regexpaliases = shift;
+    unless($regexpaliases) {
+        map {
+            $_ = /^\*(.*)/ ? $1 : "\\b$_";
+            $_ = /(.*)\*$/ ? $1 : "$_\\b";
+            s/\*/.*/g;
+        } @words;
+    }
+    return join '|', @words;
 }
 
 1;

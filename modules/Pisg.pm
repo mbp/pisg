@@ -244,21 +244,9 @@ sub get_language_templates
 sub init_words
 {
     my $self = shift;
-    $self->{cfg}->{foulwords} =~ s/(^\s+|\s+$)//g;
-    my @foulwords = split(/\s+/, $self->{cfg}->{foulwords});
-    $self->{cfg}->{foulwords} = '\b' . join('|\b', @foulwords) . '|' . join('\b|', @foulwords) . '\b';
-    $self->{cfg}->{ignorewords} =~ s/(^\s+|\s+$)//g;
-    foreach (split(/\s+/, $self->{cfg}->{ignorewords})) {
-        $self->{cfg}->{ignoreword}{$_} = 1;
-    }
-    if ($self->{cfg}->{noignoredquotes}) {
-        my $igntmp = $self->{cfg}->{ignorewords};
-        $igntmp =~ s/(\[|\]|\(|\)|\/|\\)/\\$1/g;
-        my @ignorewords = split(/\s+/, $igntmp);
-        $self->{cfg}->{ignorewordsregex} = '\b' . join('|\b', @ignorewords) . '|' . join('\b|', @ignorewords) . '\b';
-    }
-    $self->{cfg}->{violentwords} =~ s/(^\s+|\s+$)//g;
-    $self->{cfg}->{violentwords} =~ s/\s+/|/g;
+    $self->{cfg}->{foulwords} = wordlist_regexp($self->{cfg}->{foulwords}, $self->{cfg}->{regexpaliases});
+    $self->{cfg}->{ignorewords} = wordlist_regexp($self->{cfg}->{ignorewords}, $self->{cfg}->{regexpaliases});
+    $self->{cfg}->{violentwords} = wordlist_regexp($self->{cfg}->{violentwords}, $self->{cfg}->{regexpaliases});
 }
 
 sub init_config
@@ -267,7 +255,7 @@ sub init_config
     my $fh   = shift;
     while (my $line = <$fh>)
     {
-        next if ($line =~ /^#/);
+        next if ($line =~ /^\s*#/);
         chomp $line;
 
         if ($line =~ /<user.*>/) {
@@ -359,6 +347,7 @@ sub init_config
                 }
             }
             while (<$fh>) {
+                next if /^\s*#/;
                 last if ($_ =~ /<\/*channel>/i);
                 if ($_ =~ /^\s*(\w+)\s*=\s*(["'])(.+?)\2/) {
                     my $var = lc($1);

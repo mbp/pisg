@@ -100,7 +100,8 @@ And all the other contributors:
  * "Travis Roy" <travis@scootz.net>
    | perlbot logfile support
  * Christoph Berg <cb@df7cb.de>
-   | NFiles and UserPics options, wildcards for random user pictures
+   | NFiles and UserPics options, wildcards for random user pictures,
+   | wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords.
  * Nathan Poznick
    | Ability to specify multiple LogFiles and LogDirs.
 

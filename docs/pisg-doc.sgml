@@ -1949,7 +1949,7 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set IgnoreWords="you me">
+        <set IgnoreWords="there about">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -1958,7 +1958,8 @@
     <para>
     Sometimes words in the "most used words" appears which you don't want to
     see, with this option you can ignore these words. It also applies to the
-    "most referenced nicks" section. It's a space seperated list of words.
+    "most referenced nicks" section. It's a space separated list of words.
+    You can use * like in nick aliases.
     Can not be used in a channel-only context.
     </para>
     </refsect1>
@@ -2018,7 +2019,8 @@
     <para>
     There is a section in the "Most interesting numbers" which tells who had
     a "dirty mouth" - here you can define which words are considered being
-    bad/foul. It is a space seperated list of words.
+    bad/foul. It is a space separated list of words.
+    You can use * like in nick aliases.
     Can not be used in a channel-only context.
     </para>
     </refsect1>
@@ -2049,8 +2051,8 @@
     <para>
     There is a section in the "Most interesting numbers" which tells who is
     most "aggressive" - here you can define which words are considered being
-    "violent". It is a space seperated list of words.  Can not be used in a
-    channel-only context.
+    "violent". It is a space separated list of words. You can use * like in
+    nick aliases. Can not be used in a channel-only context.
     </para>
     </refsect1>
     <refsect1>
@@ -2942,7 +2944,9 @@
     <title>Description</title>
     <para>
     Enabling this option will make all aliases in &lt;user&gt; lines be
-    parsed as regular expressions.
+    parsed as regular expressions; this setting also applies to the
+    <command>IgnoreWords<command>, </command>FoulWords</command>, and
+    <command>ViolentWords</command> settings.
     </para>
     </refsect1>
     <refsect1>
