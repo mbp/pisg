@@ -580,7 +580,7 @@ short1 = "<b>[:nick]</b> a écrit les lignes les plus courtes, avec en moyenne [:
 short2 = "<b>[:nick]</b> n'a pas grand chose à dire non plus, en moyenne [:letters]."
 
 foul1 = "<b>[:nick]</b> est bien vulgaire, [:per]% de ses lignes contiennent des gros mots."
-foul2 = "<b>[:nick]</b> parle aussi comme un chartier, [:per]% du temps."
+foul2 = "<b>[:nick]</b> parle aussi comme un charretier, [:per]% du temps."
 foul3 = "Personne n'est grossier sur [:channel] ! Pendant combien de temps encore ?"
 foultext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
