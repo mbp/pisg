@@ -72,12 +72,12 @@ my $conf = {
 
     # Less important things
 
-    minquote => "25",
-    maxquote => "65",
-    wordlength => "5",
-    activenicks => "25",
-    activenicks2 => "30",
-    topichistory => "3",
+    minquote => 25,
+    maxquote => 65,
+    wordlength => 5,
+    activenicks => 25,
+    activenicks2 => 30,
+    topichistory => 3,
     nicktracking => 0,
     timeoffset => "+0",
 
@@ -92,7 +92,8 @@ my $conf = {
 
     # Misc settings
 
-    foul => "ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe",
+    foul => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
+    ignorewords => '',
     tablewidth => 614,
 
     # Developer stuff
@@ -370,6 +371,7 @@ sub init_config
 
 sub init_words {
     $conf->{foul} =~ s/\s+/|/g;
+    $conf->{ignorewords} =~ s/\s+/|/g;
 }
 
 sub init_debug
@@ -502,6 +504,8 @@ sub parse_file
                         $words{$nick}++;
                         # remove uninteresting words
                         next unless (length($word) >= $conf->{wordlength});
+                        next if ($word =~ /$conf->{ignorewords}/);
+
                         # ignore contractions
                         next if ($word =~ m/'..?$/);
 

@@ -18,6 +18,8 @@ pisg (0.20)
    * New feature: 'Most actions'
    * Add option 'show_legend' which can be used if you want to show the legend
      for the different times..
+   * New option 'ignorewords' which is to be used if you want to ignore some
+     words in the stats.
    * Usual cleanups and improvements
 
 pisg (0.19) - Tue, Aug 7th 2001
