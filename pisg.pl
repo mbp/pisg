@@ -92,9 +92,9 @@ $normalline, $actionline, $thirdline, @ignore, $line, $processtime, @topics,
 %monologue, %kicked, %gotkick, %line, %length, %qpercent, %lpercent, %sadface,
 %smile, $nicks, %longlines, %mono, %times, %question, %loud, $totallength,
 %gaveop, %tookop, %joins, %actions, %sayings, %wordcount, %lastused,
-$colorcode, $boldcode, $underlinecode, %gotban, %setban, %foul, $days,
-$oldtime, $lastline, $actions, $normals, %userpics, %userlinks, %T,
-$repeated, $lastnormal);
+$colorcode, $boldcode, $underlinecode, $reversecode, $plaincode, %gotban,
+%setban, %foul, $days, $oldtime, $lastline, $actions, $normals, %userpics,
+%userlinks, %T, $repeated, $lastnormal);
 
 sub main
 {
@@ -142,8 +142,10 @@ sub init_pisg
     $lastline = "";
     $actions = "0";
     $normals = "0";
-    $colorcode = chr(3);
     $boldcode = chr(2);
+    $colorcode = chr(3);
+    $plaincode = chr(15);
+    $reversecode = chr(22);
     $underlinecode = chr(31);
     $time = localtime($timestamp);
     $repeated = 0;
@@ -282,8 +284,8 @@ sub parse_file
         # Strip mIRC color codes
         $line =~ s/$colorcode\d{1,2},\d{1,2}//g;
         $line =~ s/$colorcode\d{0,2}//g;
-        # Strip mIRC bold and underline codes
-        $line =~ s/[$boldcode$underlinecode]//g;
+        # Strip mIRC bold, plain, reverse and underline codes
+        $line =~ s/[$boldcode$underlinecode$reversecode$plaincode]//g;
 
         my $hashref;
 
