@@ -2065,4 +2065,78 @@ $T{FR}{pagetitle1} = "[:channel] @ [:network] stats par [:maintainer]";
 $T{FR}{pagetitle2} = "Statistiques générées le [:time]";
 $T{FR}{pagetitle3} = "Durant cette periode de [:days] jours, <b>[:nicks]</b> nicks différents sont apparus sur [:channel].";
 
+### Spanish
+$T{ES}{mostop1} = "<b>[:nick]</b> ha dado [:ops] ops en el canal...";
+$T{ES}{mostop2} = "<b>[:nick]</b> también reparte ensaimadas: [:ops] nada menos";
+$T{ES}{mostop3} = "Es raro, pero ningún op ha sido dado en [:channel]!";
+
+$T{ES}{mostdeop1} = "<b>[:nick]</b> es el malo del canal, le ha quitado la @ a [:deops] personas";
+$T{ES}{mostdeop2} = "<b>[:nick]</b> le ha quitado la @ a [:deops] personas";
+$T{ES}{mostdeop3} = "Increible, pero nadie ha tenido @ en el canal [:channel]!";
+
+$T{ES}{question1} = "<b>[:nick]</b> necesitaba más horas de guardería cuando era pequeño, el [:per]% de sus lineas contienen una pregunta!";
+$T{ES}{question2} = "<b>[:nick]</b> tampoco se entera de mucho, el [:per]% de sus lineas son preguntas";
+$T{ES}{question3} = "Nadie hace preguntas aquí, esto parece un canal de genios";
+
+$T{ES}{loud1} = "La persona que grita más es <b>[:nick]</b> que escribe con exclamaciones el [:per]% del tiempo!";
+$T{ES}{loud2} = "Quien no se queda atrás gritando es <b>[:nick]</b> lo hace el [:per]% del tiempo!";
+$T{ES}{loud3} = "Nadie ha escrito frases con exclamaciones.";
+
+$T{ES}{gotkick1} = "<b>[:nick]</b> ha sido algo capullo y por eso lo echamos [:kicks] veces!";
+$T{ES}{gotkick2} = "<b>[:nick]</b> tambien nos toca bastante las narices, por eso lo echamos [:kicks] veces";
+
+$T{ES}{joins} = "<b>[:nick]</b> no sabe si irse o quedarse, lo he visto [:joins] veces entrando en el canal!";
+
+$T{ES}{kick1} = "<b>[:nick]</b> actua como operador con mano dura, ha echado a [:kicked] personas!";
+$T{ES}{kick2} = "[:oldnick] tiene un seguidor aferrimo, <b>[:nick]</b>, ha echado a [:kicked] personas";
+$T{ES}{kick3} = "Es maja la gente de aquí, nadie ha sido kikeado!";
+
+$T{ES}{mono1} = "<b>[:nick]</b> no tiene amigos, ha escrito más de 5 lineas seguidas en [:monos] ocasiones!";
+$T{ES}{mono2} = "Otra persona solitaria es <b>[:nick]</b>, que ha echo lo mismo [:monos] veces";
+
+$T{ES}{long1} = "<b>[:nick]</b> escribe más que Cervantes con unas [:letters] letras por linea...";
+$T{ES}{long2} = "La media de [:channel] es de [:avg] letras por linea";
+
+$T{ES}{short1} = "<b>[:nick]</b> es la persona más vaga escribiendo, con una media de [:letters] letras por linea...";
+$T{ES}{short2} = "[:nick] no se queda atrás, con una media de [:letters]";
+
+$T{ES}{foul1} = "<b>[:nick]</b> necesita que le laven la boca con jabón lagarto, un [:per]% de sus lineas contienen palabrotas y tacos";
+$T{ES}{foul2} = "<b>[:nick]</b> tambien es algo bestia, dice tacos el [:per]% del tiempo";
+$T{ES}{foul3} = "Parece que todo el mundo habla correctamente en [:channel]! Se desahogan fuera?";
+
+$T{ES}{smiles1} = "<b>[:nick]</b> parece que se hubiera fumado una compresa usada, el [:per]% de sus lineas contienen caritas sonrientes :)";
+$T{ES}{smiles2} = "<b>[:nick]</b> habrá fumado otra cosa, está sonriendo el [:per]% del tiempo";
+$T{ES}{smiles3} = "Nadie ha sonrreido en [:channel]! Arriba esos animos!!.";
+
+$T{ES}{sad1} = "<b>[:nick]</b> parece disgustado, el [:per]% de sus lineas contienen caras tristes :(";
+$T{ES}{sad2} = "<b>[:nick]</b> tambien está triste el [:per]% del tiempo";
+$T{ES}{sad3} = "Nadie está triste en [:channel]! Aquí somos todos felices :-)";
+
+$T{ES}{notopic} = "Nunca se ha utilizado el topic en el canal";
+
+## Topics
+
+$T{ES}{bignumtopic} = "Acerca de nuestra gente";
+$T{ES}{othernumtopic} = "Otras cosas interesantes";
+$T{ES}{latesttopic} = "Últimos Topics";
+$T{ES}{activetimestopic} = "Horas más frecuentadas";
+$T{ES}{activenickstopic} = "La gente que más habla";
+$T{ES}{mostwordstopic} = "Las palabras más utilizadas";
+$T{ES}{referencetopic} = "Las personas de las que más se habla";
+
+## Other text
+
+$T{ES}{totallines} = "Número total de lineas: [:lines]";
+$T{ES}{nick} = "Nick";
+$T{ES}{numberlines} = "Número de lineas";
+$T{ES}{randquote} = "Frase al azar";
+$T{ES}{userpic} = "Foto";
+$T{ES}{nottop} = "Ellos tambien están, aunque hablan menos:";
+$T{ES}{word} = "Palabra";
+$T{ES}{numberuses} = "Número de usos";
+$T{ES}{lastused} = "Usada por última vez";
+$T{ES}{pagetitle1} = "[:channel] @ [:network] estadisticas por [:maintainer]";
+$T{ES}{pagetitle2} = "Estadisticas generadas en [:time]";
+$T{ES}{pagetitle3} = "Durante los [:days] dias de estadisticas, [:nicks] nicks distintos han pasado por[:channel].";
+
 &main();        # Run the script
