@@ -82,7 +82,11 @@ sub thirdline
 
         } elsif (($4.$5) eq 'nowknown') {
             $hash{newnick} = $7;
+
+        } elsif (($4.$5) eq 'nowknow') { # To fix an error in some axur's
+            $hash{newnick} = $7;
         }
+
 
         return \%hash;
 
