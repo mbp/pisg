@@ -836,9 +836,6 @@ sub mostwordsperline {
         $text = template_text('wpl2', %hash);
         html("<br><span class=\"small\">$text</span>");
         html("</td></tr>");
-    } else {
-        my $text = template_text('wpl3');
-        html("<tr><td bgcolor=\"$conf->{hicell}\">$text</td></tr>");
     }
 }
 
