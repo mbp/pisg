@@ -13,6 +13,7 @@ pisg (0.63) - ??
      before being used first.
    * Links for users in "These didn't make it to the top" (thanks, Edward
      Pinski).
+   * irssi.pm: Recognize joins even when autorealname.pl is loaded.
 
 pisg (0.62) - Sat Dec, 11th 2004
    Changes by Christoph Berg:

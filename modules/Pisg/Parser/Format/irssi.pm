@@ -79,7 +79,8 @@ sub thirdline
             $hash{nick} = $8 || $7;
             $hash{nick} =~ s/.* (\S+)$/$1/; # Get the last word of the string
 
-        } elsif (($5.$6) eq 'hasjoined') {
+        # when autorealname.pl is loaded, "has joined" moves to $6 $7
+        } elsif (($5.$6) eq 'hasjoined' or ($6.$7) eq 'hasjoined') {
             $hash{newjoin} = $3;
 
         } elsif (($5.$6) eq 'nowknown') {
