@@ -1,3 +1,7 @@
+pisg (x.xx)
+   * Fixed a bug in the irssi format where an action could be recognized as a
+     normal line (thanks, Emil Mikulic)
+
 pisg (0.50) - Mon Nov, 17th 2003
    * Added NFiles option, which can be used for LogDirs to only parse the last
      N files (thanks, Christoph Berg)
@@ -11,7 +15,7 @@ pisg (0.50) - Mon Nov, 17th 2003
    * Distribute raw docbook (SGML) documentation (docs/pisg-doc.sgml)
    * Add half-op (+h) support to the xchat format (thanks, Jaff Har Har)
    * Fix a problem with irssi logs, where a topic was understood as a saying.
-   (thanks, jikuja)
+     (thanks, jikuja)
    * Add support for IRCAP logs (thanks, ArCePi)
    * Fix parsing of dircproxy logs (thanks, s-schwardt)
 
