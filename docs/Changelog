@@ -1,4 +1,4 @@
-pisg (0.29)
+pisg (0.29) - Sat, Nov 10th 2001
    * When using multiple channels, and not all channels have user pics, it was
      showing a big empty coloumn with no userpics. Now it checks whether any
      users in top xx has a userpic, and if yes, add the coloumn.
@@ -24,6 +24,8 @@ pisg (0.29)
      <andreas.henriksson@linux.se>)
    * Fix bug where when you had less than 5 urls in 'most referenced urls',
      one wasn't being shown. (thanks Hanno Hecker)
+   * 'Hello' and 'hello' are no longer treated as seperate words in 'Most
+     Referenced Words'
    * Added Estonian translation by comcute <comcute@surfdata.ee>
    * Added Italian translation by Pascal Brax <god@pascalbrax.com>
    * Added Catalan translatino by Roger Utgés (Nikoru) <nikoru@menta.net>

@@ -64,21 +64,21 @@ sub run
     $self->get_default_config_settings();
 
     print "pisg $self->{cfg}->{version} - Perl IRC Statistics Generator\n\n"
-        unless ($self->{cfg}->{silent});
+    unless ($self->{cfg}->{silent});
 
     # Init the configuration file (aliases, ignores, channels, etc)
     my $r = $self->init_config()
-        if ($self->{use_configfile});
+    if ($self->{use_configfile});
 
     print "Using config file: $self->{cfg}->{configfile}\n\n"
-        if ($r && !$self->{cfg}->{silent});
+    if ($r && !$self->{cfg}->{silent});
 
     $self->init_words()       # Init words. (Foulwords, ignorewords, etc.)
-        if ($self->{use_configfile});
+    if ($self->{use_configfile});
 
     # Init the debugging file.
     $self->init_debug()
-        unless ($self->{cfg}->{debugstarted});
+    unless ($self->{cfg}->{debugstarted});
 
     # Get translations from langfile
     $self->get_language_templates();
@@ -88,7 +88,7 @@ sub run
 
     # Optionaly parse the channel we were given in override_cfg.
     $self->do_channel()
-        unless ($self->{cfg}->{chan_done}{$self->{cfg}->{channel}});
+    unless ($self->{cfg}->{chan_done}{$self->{cfg}->{channel}});
 
     # Close the debugging file.
     $self->close_debug();
@@ -199,7 +199,7 @@ sub get_default_config_settings
 
         debug => 0,
         debugfile => 'debug.log',
-        version => "v0.29-cvs",
+        version => "v0.30-cvs",
     };
 
     # Parse the optional overriden configuration variables
