@@ -20,7 +20,7 @@
 # (SE) Swedish - Andreas Henriksson <andreas.henriksson@linux.se>
 # (FI) Finnish - Kirler@paincreators <kirler@letku.net>
 # (SI) Slovenian - Ales Tepina <ales.tepina@guest.arnes.si>
-# (HU) Hungarian - Gyuri Horak <dyuri@dyuri.org>
+# (HU) Hungarian - Gyuri Horak <dyuri@dyuri.sch.bme.hu>
 
 <lang name="EN">
 ### English
