@@ -59,9 +59,7 @@
         Any operating system which Perl runs on, this includes popular OSes
         such as Linux, FreeBSD, Windows and Mac. You will have a hard time
         finding an OS where Perl isn't supported. For Windows this means
-        that you need to download <ulink
-        url="http://activestate.com/Products/ASPN_Perl/">Active State Perl
-        (ASPN Perl)</ulink>.
+        that you need to download <ulink url="http://activestate.com/Products/ActivePerl/">ActivePerl</ulink>.
        </para>
       </listitem>
      <listitem>
@@ -326,13 +324,6 @@
     <para>
     Using Windows:
     <screen>
-    <prompt>c:\perl\bin&gt;</prompt> <userinput>perl c:\pisg\pisg</userinput>
-    </screen>
-    </para>
-
-    <para>
-    Or alternatively:
-    <screen>
     <prompt>c:\pisg&gt;</prompt> <userinput>perl pisg</userinput>
     </screen>
     </para>
@@ -343,10 +334,10 @@
     </para>
 
     <para>
-    If you are using Linux and want run pisg
-    automatically several times a day, then see the
-    <filename>crontab</filename> file in the
-    <filename>scripts/</filename> directory.
+    If you are using Linux, BSD or another UNIX-like system and want run
+    pisg automatically several times a day, then see the
+    <filename>crontab</filename> file in the <filename>scripts/</filename>
+    directory.
     </para>
 
     <para>

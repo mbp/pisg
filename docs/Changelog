@@ -2,6 +2,8 @@ pisg (x.xx)
    Changes by Morten Brix Pedersen:
    * Fix problem with number of rows shown when a nick has been ignored.
    (thanks, Chris Thornhill)
+   * Update Windows documentation. Hopefully people will have less problems
+   now.
    Changes by Christoph Berg:
    * Make BigNumbersThreshold a perl expression; defaults to sqrt($lines).
 
