@@ -312,7 +312,9 @@ sub init_config
                 if ($line =~ /alias="([^"]+)"/) {
                     my @thisalias = split(/\s+/, lc($1));
                     foreach (@thisalias) {
-                        $_ =~ s/\*/\.\*/g;
+                        if ($_ =~ s/\*/\.\*/g) {
+                            $_ =~ s/([\[\]\{\}\-\^])/\\$1/g; # quote it if it is a wildcard
+                        }
                         $alias{$_} = $nick;
                     }
                 }
@@ -2113,7 +2115,7 @@ print OUTPUT template_text('pagetitle2', %hash);
 
 sub timefix {
 
-    my ($timezone, $sec, $min, $hour, $mday, $mon, $year, $wday, $yyear, $month, $day, $tday, $wdisplay, @month, @day, $timefixx, %hash);
+    my ($timezone, $sec, $min, $hour, $mday, $mon, $year, $wday, $month, $day, $tday, $wdisplay, @month, @day, $timefixx, %hash);
 
     $month = template_text('month', %hash);
     $day = template_text('day', %hash);
@@ -2125,34 +2127,29 @@ sub timefix {
     $timezone = $conf->{timeoffset} * 3600;
     ($sec,$min,$hour,$mday,$mon,$year,$wday) = localtime(time+$timezone);
 
-    $yyear = 1900 + $year;            # Y2K Patch
+    $year += 1900;                    # Y2K Patch
 
-    if($min < '10') {                  # Fixes the display of Minutes below
-        $min = "0$min\n";              # it displays 03 instead of 3
-    }
-
-    if($sec < '10'){                  # Fixes the display of Seconds below
-        $sec = "0$sec\n";              # it displays 03 instead of 3
-    }
+    $min =~ s/^(.)$/0$1/;             # Fixes the display of mins/secs below
+    $sec =~ s/^(.)$/0$1/;             # it displays 03 instead of 3
 
     if($hour > '23'){                 # Checks to see if it Midnight
-        $hour = 12;                    # Makes it display the hour 12
-        $tday = "AM";                  # Display AM
+        $hour = 12;                   # Makes it display the hour 12
+        $tday = "AM";                 # Display AM
     }
     elsif($hour > '12'){              # Get rid of the Military time and
-        $hour = $hour - 12;            # put it into normal time
-        $tday = "PM";                  # If past Noon and before Midnight set
-    }                              # the time as PM
+        $hour -= 12;                  # put it into normal time
+        $tday = "PM";                 # If past Noon and before Midnight set
+    }                                 # the time as PM
     else {
-        $tday = "AM";                # If it's past Midnight and before Noon
-    }                            # set the time as AM
+        $tday = "AM";                 # If it's past Midnight and before Noon
+    }                                 # set the time as AM
 
     # Use 24 hours pr. day
     if($tday eq "PM" && $hour < '12'){
-        $hour = $hour + 12;
+        $hour += 12;
     }
 
-    print OUTPUT "$day[$wday] $mday $month[$mon] $yyear - $hour:$min:$sec\n";
+    print OUTPUT "$day[$wday] $mday $month[$mon] $year - $hour:$min:$sec\n";
 
 }
 
