@@ -520,6 +520,7 @@ mostwordstopic = "Les mots les plus utilisés"
 referencetopic = "Les nicks les plus utilisés dans la conversation"
 urlstopic = "Les URLs les plus citées"
 notopic = "Il n'y a jamais eu de topic sur ce channel"
+mostnickstopic = "Ceux qui ont le plus de nicks"
 bylinetopic = "par [:nick] à [:time]"
 
 ## Other text
@@ -547,6 +548,12 @@ today = "Aujourd'hui"
 pagetitle1 = "[:channel] @ [:network] stats par [:maintainer]"
 pagetitle2 = "Statistiques générées le "
 pagetitle3 = "Durant cette periode de [:days] jours, <b>[:nicks]</b> nicks différents sont apparus sur [:channel]."
+
+# Mouse-over titles
+pisghomepage = "Aller sur le site de pisg"
+authorhomepage = "Aller sur le site de l'auteur"
+newwindow = "Ouvrir dans une nouvelle fenêtre:"
+mailto = "Envoyer un mail"
 </lang>
 
 ### Spanish
