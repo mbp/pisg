@@ -1445,12 +1445,11 @@ sub _lasttopics
         }
 
         for (my $i = $ltopic; $i >= $tlimit; $i--) {
-            my $topic = $self->_format_line($self->{stats}->{topics}[$i]{topic});
+            my $topic = $self->{stats}->{topics}[$i]{topic};
             # This code makes sure that we don't see the same topic twice
             next if ($topic_seen{$topic});
             $topic_seen{$topic} = 1;
 
-            $topic = $self->_replace_links($topic);
             # Strip off the quotes (')
             $topic =~ s/^\'(.*)\'$/$1/;
 
