@@ -1,6 +1,7 @@
 pisg (0.61) - ??
    Changes by Christoph Berg:
    * Fix warning when running on empty logs.
+   * Fix &amp; conversion.
    * More nick sanitizing.
    * Remove whitespace around user pictures, border="0", title.
    * docs/:

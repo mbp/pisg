@@ -186,6 +186,9 @@ sub htmlentities
     my $str = shift;
     my $charset = shift;
 
+    $str =~ s/\&/\&amp;/go;
+    $str =~ s/\</\&lt;/go;
+    $str =~ s/\>/\&gt;/go;
     if ($charset =~ /iso-8859-1/i) { # this is for people without Text::Iconv
         $str =~ s/ü/&uuml;/go;
         $str =~ s/ö/&ouml;/go;
@@ -199,10 +202,6 @@ sub htmlentities
         $str =~ s/Ø/&Oslash;/go;
         $str =~ s/\x95/\&bull;/go;
     }
-    $str =~ s/\&/\&amp;/go;
-    $str =~ s/\</\&lt;/go;
-    $str =~ s/\>/\&gt;/go;
-
     return $str;
 }
 
