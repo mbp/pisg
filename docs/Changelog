@@ -8,6 +8,10 @@ pisg (x.xx)
      directory to URL
    * Look for a nick that has been referenced before in attacks, if one is not
      in the line fall back to using word following attack word
+   * Chop lines added to sayings to the length of maxquote (so we don't have
+     super long quotes showing up - BugID#594618)
+
+
 
 pisg (0.43) - Fri Nov, 22th 2002
    * Add "ShowOnlyTop" option which can be used if you only want to have stats
