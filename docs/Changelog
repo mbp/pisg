@@ -5,6 +5,7 @@ pisg (0.64) - ??
    Christoph:
    * Updated translations:
      + Finnish (thanks, Sami Karuaho).
+     + Estonian (thanks, Hannes Tarien).
    * Modified the CSS files containing .male/.female classes to show sex color
      also for <a href>s (SF tracker #1088382 by Jeroen - tux2020).
    * Applied patch by Torbjörn Svensson for using alternate CSS files - thanks

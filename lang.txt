@@ -21,7 +21,7 @@
 #      last update: 2005-01-12 by Sami Karuaho <sami.karuaho@kanetti.fi>
 # (SI) Slovenian - Ales Tepina <??> (2005-01-09: bounces)
 # (HU) Hungarian - Gyuri Horak <??> (2005-01-09: bounces)
-# (EE) Estonian - comcute <??> (2005-01-09: bounces)
+# (EE) Estonian - Hannes Tarien <comcute@users.sf.net>
 # (IT) Italian - Venom Team <??> (2005-01-09: bounces)
 # (CA) Catalan - Nikoru Kimochi <??> (2005-01-09: bounces)
 # (TR) Turkish - cti- <??> (2005-01-09: bounces)
@@ -1950,7 +1950,7 @@ question2 = "<b>[:nick]</b> ei teadnud ka kuigi palju: [:per]% ridadest olid küs
 question3 = "Keegi ei esitanud küsimusi, tundub et siin kanalis käivad ainult targad inimesed"
 
 shout1 = "Kõige suurem kisakõri oli <b>[:nick]</b>, [:per]% ajast ainult lõugas ja näitas hambaid teistele."
-shout2 = "Teine kõvema häälega tüüp oli <b>[:nick]</b>, tema karjumise koefitsent oli [:per]%."
+shout2 = "Teine kõvema häälega tüüp oli <b>[:nick]</b>, tema valju hääle osakaal oli [:per]%."
 shout3 = "Lahe! Kõik rääkisid vaikse häälega."
 
 allcaps1 = "Tundub et <b>[:nick]</b> shift'i nupp vajub iseenesest alla: [:per]% ajast kirjutas SUURTE TÄHTEDEGA."
@@ -2008,8 +2008,7 @@ sad3 = "Lahe! Kõik [:channel] tegelased on heas tujus :-)"
 month = "Jaanuaril Veebruaril Märtsil Aprillil Mail Juunil Juulil Augustil Septembril Oktoobril Novembril Detsembril"
 day = "Pühapäeval Esmaspäeval Teisipäeval Kolmapäeval Neljapäeval Reedel Laupäeval"
 
-## Topics
-
+# Topics
 bignumtopic = "Suured numbrid"
 othernumtopic = "Teisi huvitavaid numbreid"
 latesttopic = "Hiljutised teemad"
@@ -2018,10 +2017,13 @@ activenickstopic = "Kõige aktiivsemad kasutajad"
 activenickbyhourtopic = "Aktiivseimad kasutajad tundide järgi võetuna"
 mostwordstopic = "Eelistatuimad sõnad"
 referencetopic = "Enim mainitud nimed"
+karmatopic = "[:channel] karma"
 urlstopic = "Kõige enam mainitud viited"
 notopic = "Kanali teemat ei muudetud kordagi."
 mostnickstopic = "Kasutajad, kes armastavad tihti oma nime muuta"
 bylinetopic = "muutis [:nick] kell [:time]"
+dailyactivitytopic = "Päevane aktiivsus (viimased [:n] päeva)"
+activegenderstopic = "Kõige aktiivsem sugu"
 
 # Other text
 totallines = "Ridade arv kokku: [:lines]"
@@ -2042,6 +2044,9 @@ show_wpl = "Sõnade arv reas"
 show_cpl = "Tähtede arv reas"
 show_lastseen = "Viimati ajas juttu"
 lastused = "Viimati kasutas"
+karma = "Karma"
+goodkarma = "Hea karma pani"
+badkarma = "Halva karma pani"
 lastseen1 = "päev tagasi"
 lastseen2 = "päeva tagasi"
 today = "Täna"
@@ -2057,6 +2062,10 @@ seconds = "sekund(it)"
 and = "ja"
 names1 = "nime"
 names2 = "nimi"
+gender = "Sugu"
+gender_f = "Naine"
+gender_m = "Mees"
+gender_b = "Robot"
 
 # Mouse-over titles
 pisghomepage = "pisg kodulehele"
