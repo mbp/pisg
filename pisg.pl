@@ -141,7 +141,8 @@ sub do_channel
         parse_file($conf->{logfile});   # Run through the whole logfile
     }
 
-    create_html();      # Create the HTML
+    create_html()
+        if ($lines > 0);# Create the HTML
                         # (look here if you want to remove some of the
                         # stats which you don't care about)
 
@@ -169,7 +170,6 @@ sub init_pisg
     # Reset all variables
 
     undef $lastnormal;
-    undef $lines;
     undef $smile;
 
     undef $normalline;
@@ -242,6 +242,7 @@ sub init_pisg
     $normals = "0";
     $time = localtime($timestamp);
     $repeated = 0;
+    $lines = 0;
 
     print "Using language template: $conf->{lang}\n\n" if ($conf->{lang} ne 'EN');
 
