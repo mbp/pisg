@@ -338,8 +338,8 @@ sub activetimes
 
 sub activenicks
 {
-    my $self = shift;
     # The most active nicks (those who wrote most lines)
+    my $self = shift;
     my ($stats) = @_;
 
     $self->headline($self->template_text('activenickstopic'));
@@ -1214,7 +1214,7 @@ sub template_text
     }
 
     if ($text =~ /\[:.*?:.*?:\]/o) {
-        $text =~ s/\[:(.*?):(.*?):\]/get_subst($1,$2,\%hash)/geo;
+        $text =~ s/\[:(.*?):(.*?):\]/$self->get_subst($1,$2,\%hash)/geo;
     }
     return $text;
 
