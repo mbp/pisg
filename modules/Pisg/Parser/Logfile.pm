@@ -239,8 +239,10 @@ sub _parse_file
                     }
 
                     if (my $url = match_url($saying)) {
-                        $stats->{urlcounts}{$url}++;
-                        $stats->{urlnicks}{$url} = $nick;
+                        unless(url_is_ignored($url)) {
+                            $stats->{urlcounts}{$url}++;
+                            $stats->{urlnicks}{$url} = $nick;
+                        }
                     }
 
                     $self->_parse_words($stats, $saying, $nick);
