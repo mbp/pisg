@@ -2,7 +2,6 @@
 
 <book id="pisg-documentation">
   <bookinfo>
-    <date>2002-01-23</date>
     <title>pisg documentation</title>
     <subtitle>How to install and configure pisg</subtitle>
   </bookinfo>
@@ -281,7 +280,7 @@
    
   </chapter>
   <chapter id="reference">
-   <title>Reference for configuration options</title>
+   <title>General pisg options</title>
 
     <!-- *** CHANNEL *** -->
     <refentry id="Channel">
@@ -312,36 +311,6 @@
     <command>Channel</command> is used in two contexts, globally when using
     &lt;set&gt; and when defining new channels. It sets the name of the
     channel.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> Unset </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** LOGSUFFIX *** -->
-    <refentry id="LogSuffix">
-
-    <refmeta> <refentrytitle>LogSuffix</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>LogSuffix</refname>
-    <refpurpose>Regex to sort logfiles by format month||day||year</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <set LogSuffix="\.\d\d([A-Za-z]+)\d\d\d\d||\.(\d\d)[A-Za-z]+\d\d\d\d||\.\d\d[A-Za-z]+(\d\d\d\d)">
-      ]]>
-     </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    <command>LogSuffix</command> is used to define the suffix of a logfile,
-    it only works when <command>LogDir</command> is defined. The example in
-    the synopsis is for the eggdrop bots default foramt.
     </para>
     </refsect1>
     <refsect1>
@@ -383,71 +352,6 @@
     <refsect1>
     <title>Default</title>
     <para> mIRC </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** COLORSCHEME *** -->
-    <refentry id="ColorScheme">
-
-    <refmeta> <refentrytitle>ColorScheme</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>ColorScheme</refname>
-    <refpurpose>use a different colorscheme for stats page</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <channel="#channel">
-         Logfile = "channel.log"
-         ColorScheme = "darkgalaxy"
-         Maintainer = "John"
-        </channel>
-
-        <set ColorScheme="default">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    <command>ColorScheme</command> is used to define the colorscheme used
-    for the statistics page. Actually it's the CSS file being included.
-    Available options are: default, darkgalaxy.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> default </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** CSSDIR *** -->
-    <refentry id="CssDir">
-
-    <refmeta> <refentrytitle>CssDir</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>CssDir</refname>
-    <refpurpose>path to directory with css files</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <set CssDir="/usr/share/pisg/layout/">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    <command>CssDir</command> is used to define the paths to the CSS files
-    (the colorschemes). Usually you don't need to change this.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> layout/ (in current directory) </para>
     </refsect1>
     </refentry>
 
@@ -521,6 +425,76 @@
     </refsect1>
     </refentry>
 
+    <!-- *** LOGFILE *** -->
+    <refentry id="Logfile">
+
+    <refmeta> <refentrytitle>Logfile</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>Logfile</refname>
+    <refpurpose>name of logfile to parse</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile="/home/foo/eggdrop/logs/mylog.txt"
+         Format = "eggdrop"
+        </channel>
+
+        <set Logfile="foo.log">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    This defines the filename of the logfile to parse for the channel. If
+    you want to parse a directory full of logfiles, you should use the
+    <command>LogDir</command> option instead.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** LOGDIR *** -->
+    <refentry id="LogDir">
+
+    <refmeta> <refentrytitle>LogDir</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>LogDir</refname>
+    <refpurpose>parse a directory full of logs</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         LogDir="/home/foo/eggdrop/logs/"
+         Format = "eggdrop"
+        </channel>
+
+        <set LogDir="dailylogs/">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    When <command>LogDir</command> is defined to valid path to a directory,
+    then pisg will run through that directory, parse all logfiles in it and
+    create 1 HTML from it. Useful with for example eggdrop logs.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** MAINTAINER *** -->
     <refentry id="Maintainer">
 
@@ -555,6 +529,42 @@
     <refsect1>
     <title>Default</title>
     <para> MAINTAINER </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** COLORSCHEME *** -->
+    <refentry id="ColorScheme">
+
+    <refmeta> <refentrytitle>ColorScheme</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ColorScheme</refname>
+    <refpurpose>use a different colorscheme for stats page</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         ColorScheme = "darkgalaxy"
+         Maintainer = "John"
+        </channel>
+
+        <set ColorScheme="default">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>ColorScheme</command> is used to define the colorscheme used
+    for the statistics page. Actually it's the CSS file being included.
+    Available options are: default, darkgalaxy.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> default </para>
     </refsect1>
     </refentry>
 
@@ -676,112 +686,6 @@
     </refsect1>
     </refentry>
 
-    <!-- *** IMAGEPATH *** -->
-    <refentry id="ImagePath">
-
-    <refmeta> <refentrytitle>ImagePath</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>ImagePath</refname>
-    <refpurpose>path to user pictures</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <channel="#channel">
-         Logfile = "channel.log"
-         Format = "mIRC"
-         ImagePath = "userpics/"
-        </channel>
-
-        <set ImagePath="alt_users/">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    <command>ImagePath</command> defines an alternative path to where user
-    pictures is located. The default is that user pictures is located in the
-    same directory as the HTML page.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> current directory </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** DEFAULTPIC *** -->
-    <refentry id="DefaultPic">
-
-    <refmeta> <refentrytitle>DefaultPic</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>DefaultPic</refname>
-    <refpurpose>use a default user picture</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <channel="#channel">
-         Logfile = "channel.log"
-         Format = "mIRC"
-         DefaultPic = "not_available.jpg"
-        </channel>
-
-        <set DefaultPic="unknown.gif">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    <command>DefaultPic</command> defines a picture to be displayed for all
-    users which have no other picture defined in the <command>user</command>
-    element. This is good for showing "No picture available" or something.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> unset </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** LOGDIR *** -->
-    <refentry id="LogDir">
-
-    <refmeta> <refentrytitle>LogDir</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>LogDir</refname>
-    <refpurpose>parse a directory full of logs</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <channel="#channel">
-         LogDir="/home/foo/eggdrop/logs/"
-         Format = "eggdrop"
-        </channel>
-
-        <set LogDir="dailylogs/">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    When <command>LogDir</command> is defined to valid path to a directory,
-    then pisg will run through that directory, parse all logfiles in it and
-    create 1 HTML from it. Useful with for example eggdrop logs.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> unset </para>
-    </refsect1>
-    </refentry>
 
     <!-- *** LogPrefix *** -->
     <refentry id="LogPrefix">
@@ -819,44 +723,71 @@
     </refsect1>
     </refentry>
 
-    <!-- *** TIMEOFFSET *** -->
-    <refentry id="TimeOffset">
 
-    <refmeta> <refentrytitle>TimeOffset</refentrytitle> </refmeta>
+    <!-- *** LOGSUFFIX *** -->
+    <refentry id="LogSuffix">
+
+    <refmeta> <refentrytitle>LogSuffix</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>TimeOffset</refname>
-    <refpurpose>use a different time zone than the local machine</refpurpose>
+    <refname>LogSuffix</refname>
+    <refpurpose>Regex to sort logfiles by format month||day||year</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <channel="#channel">
-         Logfile = "channel.log"
-         Format = "mIRC"
-         Maintainer = "John"
-         TimeOffset = "+5"
-        </channel>
+        <set LogSuffix="\.\d\d([A-Za-z]+)\d\d\d\d||\.(\d\d)[A-Za-z]+\d\d\d\d||\.\d\d[A-Za-z]+(\d\d\d\d)">
+      ]]>
+     </programlisting></refsynopsisdiv>
 
-        <set TimeOffset="+2">
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>LogSuffix</command> is used to define the suffix of a logfile,
+    it only works when <command>LogDir</command> is defined. The example in
+    the synopsis is for the eggdrop bots default foramt.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> Unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SILENT *** -->
+    <refentry id="Silent">
+
+    <refmeta> <refentrytitle>Silent</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>Silent</refname>
+    <refpurpose>make pisg silent, suppress messages</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set Silent="1">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    By default, pisg uses the time of the local machine to display the time
-    of the generated stats. Sometimes when you have a shell on an external
-    box, and it's in another country, you want to use another time. This is
-    accomplished by the <command>TimeOffset</command> command.
+    This option is useful mainly from commandline when invoking pisg with
+    <command>--silent 1</command>. But it can also used in the configuration
+    file. It will suppress all standard output from pisg. Error messages
+    will still be sent.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> +0 </para>
+    <para> 0 (disabled) </para>
     </refsect1>
     </refentry>
 
+  </chapter>
+  <chapter id="reference-stats">
+   <title>Options for various statistics features</title>
     <!-- *** SHOWACTIVETIMES *** -->
     <refentry id="ShowActiveTimes">
 
@@ -1661,103 +1592,6 @@
     </refsect1>
     </refentry>
 
-    <!-- *** REGEXPALIASES *** -->
-    <refentry id="RegexpAliases">
-
-    <refmeta> <refentrytitle>RegexpAliases</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>RegexpAliases</refname>
-    <refpurpose>use regular expressions in user aliases</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <user nick="Joe" alias="Joe\d+">
-
-        <set RegexpAliases="1">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    Enabling this option will make all aliases in &lt;user&gt; lines be
-    parsed as regular expressions.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> 0 (disabled) </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** SILENT *** -->
-    <refentry id="Silent">
-
-    <refmeta> <refentrytitle>Silent</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>Silent</refname>
-    <refpurpose>make pisg Silent, suppress messages</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <set Silent="1">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    This option is useful mainly from commandline when invoking pisg with
-    <command>--silent 1</command>. But it can also used in the configuration
-    file. It will suppress all standard output from pisg. Error messages
-    will still be sent.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> 0 (disabled) </para>
-    </refsect1>
-    </refentry>
-
-    <!-- *** CHARSET *** -->
-    <refentry id="Charset">
-
-    <refmeta> <refentrytitle>Charset</refentrytitle> </refmeta>
-
-    <refnamediv>
-    <refname>Charset</refname>
-    <refpurpose>Charset to use for stats page</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv><programlisting>
-      <![CDATA[
-        <channel="#channel">
-         Logfile = "channel.log"
-         Format = "xchat"
-         Charset = "utf-8"
-        </channel>
-
-        <set Charset="iso-8859-15">
-      ]]>
-    </programlisting></refsynopsisdiv>
-
-    <refsect1>
-    <title>Description</title>
-    <para>
-    The pisg stats page defines a charset in a meta tag, this can be used if
-    your country is using a different one than the default.
-    </para>
-    </refsect1>
-    <refsect1>
-    <title>Default</title>
-    <para> iso-8859-1 </para>
-    </refsect1>
-    </refentry>
-
     <!-- *** MinQuote *** -->
     <refentry id="MinQuote">
 
@@ -2113,6 +1947,319 @@
     </refsect1>
     </refentry>
 
+    <!-- *** NICKTRACKING *** -->
+    <refentry id="NickTracking">
+
+    <refmeta> <refentrytitle>NickTracking</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>NickTracking</refname>
+    <refpurpose>track nickchanges and create aliases</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set NickTracking="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Enabling this option will track nickchanges as well as it can. It will
+    then automatically create aliases for these nicks.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+  <chapter id="reference-pictures">
+   <title>Picture options</title>
+
+    <!-- *** PICLOCATION *** -->
+    <refentry id="PicLocation">
+
+    <refmeta> <refentrytitle>PicLocation</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>PicLocation</refname>
+    <refpurpose>path to images on stats page</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <set PicLocation="userpics/">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The location to the pictures used on the stats page - not the user
+    pictures but the different bars in "Most Active Times".
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> Current directory </para>
+    </refsect1>
+
+    <!-- *** IMAGEPATH *** -->
+    <refentry id="ImagePath">
+
+    <refmeta> <refentrytitle>ImagePath</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ImagePath</refname>
+    <refpurpose>path to user pictures</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         ImagePath = "userpics/"
+        </channel>
+
+        <set ImagePath="alt_users/">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>ImagePath</command> defines an alternative path to where user
+    pictures is located. The default is that user pictures is located in the
+    same directory as the HTML page.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> current directory </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** DEFAULTPIC *** -->
+    <refentry id="DefaultPic">
+
+    <refmeta> <refentrytitle>DefaultPic</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>DefaultPic</refname>
+    <refpurpose>use a default user picture</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         DefaultPic = "not_available.jpg"
+        </channel>
+
+        <set DefaultPic="unknown.gif">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>DefaultPic</command> defines a picture to be displayed for all
+    users which have no other picture defined in the <command>user</command>
+    element. This is good for showing "No picture available" or something.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** PICWIDTH *** -->
+    <refentry id="PicWidth">
+
+    <refmeta> <refentrytitle>PicWidth</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>PicWidth</refname>
+    <refpurpose>define a standard width for user pictures</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         PicWidth = "not_available.jpg"
+        </channel>
+
+        <set PicWidth="unknown.gif">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>PicWidth</command> defines the standard width for user
+    pictures. Setting the 'width' attribute of image-elements on the
+    outputted stats page. See also <command>PicHeight</command>
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** PICHEIGHT *** -->
+    <refentry id="PicHeight">
+
+    <refmeta> <refentrytitle>PicHeight</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>PicHeight</refname>
+    <refpurpose>define a standard height for user pictures</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         PicHeight = "not_available.jpg"
+        </channel>
+
+        <set PicHeight="unknown.gif">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    <command>PicHeight</command> defines the standard height for user
+    pictures. Setting the 'height' attribute of image-elements on the
+    outputted stats page. See also <command>PicHeight</command>
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> unset </para>
+    </refsect1>
+    </refentry>
+
+    </chapter>
+    <chapter id="reference-misc">
+     <title>Misc options</title>
+
+    <!-- *** CHARSET *** -->
+    <refentry id="Charset">
+
+    <refmeta> <refentrytitle>Charset</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>Charset</refname>
+    <refpurpose>Charset to use for stats page</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         Charset = "utf-8"
+        </channel>
+
+        <set Charset="iso-8859-15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    The pisg stats page defines a charset in a meta tag, this can be used if
+    your country is using a different one than the default.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> iso-8859-1 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** TIMEOFFSET *** -->
+    <refentry id="TimeOffset">
+
+    <refmeta> <refentrytitle>TimeOffset</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>TimeOffset</refname>
+    <refpurpose>use a different time zone than the local machine</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "mIRC"
+         Maintainer = "John"
+         TimeOffset = "+5"
+        </channel>
+
+        <set TimeOffset="+2">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    By default, pisg uses the time of the local machine to display the time
+    of the generated stats. Sometimes when you have a shell on an external
+    box, and it's in another country, you want to use another time. This is
+    accomplished by the <command>TimeOffset</command> command.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> +0 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** REGEXPALIASES *** -->
+    <refentry id="RegexpAliases">
+
+    <refmeta> <refentrytitle>RegexpAliases</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>RegexpAliases</refname>
+    <refpurpose>use regular expressions in user aliases</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <user nick="Joe" alias="Joe\d+">
+
+        <set RegexpAliases="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    Enabling this option will make all aliases in &lt;user&gt; lines be
+    parsed as regular expressions.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
+
     <!-- *** LANGFILE *** -->
     <refentry id="LangFile">
 
@@ -2142,32 +2289,32 @@
     </refsect1>
     </refentry>
 
-    <!-- *** NICKTRACKING *** -->
-    <refentry id="NickTracking">
+    <!-- *** CSSDIR *** -->
+    <refentry id="CssDir">
 
-    <refmeta> <refentrytitle>NickTracking</refentrytitle> </refmeta>
+    <refmeta> <refentrytitle>CssDir</refentrytitle> </refmeta>
 
     <refnamediv>
-    <refname>NickTracking</refname>
-    <refpurpose>track nickchanges and create aliases</refpurpose>
+    <refname>CssDir</refname>
+    <refpurpose>path to directory with css files</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set NickTracking="1">
+        <set CssDir="/usr/share/pisg/layout/">
       ]]>
     </programlisting></refsynopsisdiv>
 
     <refsect1>
     <title>Description</title>
     <para>
-    Enabling this option will track nickchanges as well as it can. It will
-    then automatically create aliases for these nicks.
+    <command>CssDir</command> is used to define the paths to the CSS files
+    (the colorschemes). Usually you don't need to change this.
     </para>
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> 0 (disabled) </para>
+    <para> layout/ (in current directory) </para>
     </refsect1>
     </refentry>
 
@@ -2198,7 +2345,6 @@
     <title>Default</title>
     <para> Logfile </para>
     </refsect1>
-
 </chapter>
 
 </book>
