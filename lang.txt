@@ -1090,17 +1090,17 @@ mostdeop2 = "<b>[:nick]</b> deopte <b>[:deops]</b> chatters."
 mostdeop3 = "Wow, geen ops afgepakt in [:channel]!"
 
 question1 = "<b>[:nick]</b> is gewoon stom of verzint de vragen waar je bijstaat... <b>[:per]%</b> bevatte een vraag!"
-question2 = "<b>[:nick]</b> is bijna net zo stom/blond, <b>[:per]%</b> van [:zijn:haar:] regels eindigde ook met een?."
-question3 = "Niemand vroeg wat hiero, ze denken zeker allemaal dat ze slim zijn .... ~NOT?"
+question2 = "<b>[:nick]</b> is bijna net zo stom/blond, <b>[:per]%</b> van [:zijn:haar:] regels eindigde ook met een "?"."
+question3 = "Niemand vroeg wat hier, ze denken zeker allemaal dat ze slim zijn .... ~NOT?"
 
-action1 = "<b>[:nick]</b> laat ook weten wat [:hij:ze:] doet: <b>[:actions]</b> actie's!"
+action1 = "<b>[:nick]</b> laat ook weten wat [:hij:ze:] doet: met <b>[:actions]</b> actie's!"
 action2 = "Ook <b>[:nick]</b> vertelt ons wat [:hij:zij:] doet met <b>[:actions]</b> actie's."
 action3 = "Er was niet zoveel actie in [:channel]!"
 actiontext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 shout1 = "Degene die het meest schreeuwde was <B>[:nick]</B>, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid!"
 shout2 = "Ook had <b>[:nick]</b> een grote smoel, [:hij:zij:] schreeuwde <b>[:per]%</b> tijdens [:zijn:haar:] aanwezigheid."
-shout3 = "Hmm niet veel geschreeuw hiero, stil zooitje zeg."
+shout3 = "Hmm niet veel geschreeuw hier, wat een zelfbeheersing :)."
 
 allcaps1 = "Het lijkt dat <b>[:nick]</b>'s [:zijn:haar:] shift-key kapot is, met een CAPS-percentage van <b>[:per]%</b>."
 allcaps2 = "Ook <b>[:nick]</b> is het niet gelukt om [:zijn:haar:] Caps-Lock onder controle te krijgen, <b>[:per]%</b> CAPS."
@@ -1109,29 +1109,29 @@ allcapstext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 
 violent1 = "<b>[:nick]</b> is een agressief persoon, die veel in het rond slaat. Deze keer wel <b>[:attacks]</b> keer."
 violent2 = "<b>[:nick]</b> [:zijn:haar:] pilletjes helpen niet. [:Hij:Zij:] sloeg <b>[:attacks]</b> keer."
-violent3 = "Geen slaps uitgedeeld hiero, wat een vriendelijk ongeregeld zooitje."
+violent3 = "Geen slaps uitgedeeld hier, wat vriendelijke mense hier. :p"
 violenttext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Zielige <b>[:nick]</b>, niemand mag [:hem:haar:]. [:Hij:Zij:] werd <b>[:attacks]</b> keer aangevallen."
 attacked2 = "<b>[:nick]</b> is nog zo'n ongewenst zieltje, [:hij:zij:] werd <b>[:attacks]</b> keer gepijnigt."
 attackedtext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-gotkick1 = "<b>[:nick]</b> was gewoon niet populair genoeg, en werd <b>[:kicks]</b> keer gekickt !"
+gotkick1 = "<b>[:nick]</b> was gewoon niet populair genoeg, en werd <b>[:kicks]</b> keer gekickt!"
 gotkick2 = "<b>[:nick]</b> werd ook niet echt gewaardeerd, met <b>[:kicks]</b> kicks."
 kicktext = "<b>Bijvoorbeeld zoals dit:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-joins = "<b>[:nick]</b> wist niet of ie nou moest komen of gaan en kwam <b>[:joins]</b> keer binnen in deze periode!"
+joins = "<b>[:nick]</b> wist niet of [:hij:zij:] nu moest komen of gaan en kwam <b>[:joins]</b> keer binnen in deze periode!"
 
 kick1 = "<b>[:nick]</b> is vreemd in het hoofd of is gewoon eerlijk. [:Hij:Zij:] kickte een totaal van [:kicked] chatters!"
 kick2 = "[:oldnick]'s wannabe , <b>[:nick]</b>, kickte <b>[:kicked]</b> mensjes."
-kick3 = "Vriendelijke Ops hiero, totaal geen kicks!"
+kick3 = "Vriendelijke Ops hier, totaal geen kicks!"
 
 words1 = "<b>[:nick]</b> sprak <b>[:words]</b> woorden in totaal!"
 words2 = "[:oldnick]'s wannabe, <b>[:nick]</b>, sprak gelukkig iets minder, maar toch nog <b>[:words]</b> woorden."
-words3 = "Stilte, wat een rust zeg :)"
+words3 = "Is het niet de bedoeling dat men spreekt in [:channel] of ben ik verkeerd?"
 
-mono1 = "<b>[:nick]</b> praat veel in zichzelf, schreef over de 5 regels achter elkaar! En wel <b>[:monos]</b> keer!"
-mono2 = "Nog zo'n simpel, eenzaam zieltje was <b>[:nick]</b>, die het voor elkaar kreeg <b>[:monos]</b> regels in [:zijn:haar:] eentje te lullen."
+mono1 = "<b>[:nick]</b> praat veel in zichzelf. [:Hij:Zij:] schreef meer dan 5 lijnen achter elkaar en deed dit <b>[:monos]</b> keer!"
+mono2 = "Nog zo'n simpel, eenzaam zieltje was <b>[:nick]</b>, die het voor elkaar kreeg om meer dan 5 lijnen achter elkaar te schrijve voor <b>[:monos]</b> keer!"
 
 wpl1 = "<b>[:nick]</b> schreef een gemiddelde van <b>[:wpl]</b> woorden per regel..."
 wpl2 = "<b>[:channel]</b> gemiddelde was <b>[:avg]</b> woorden per regel."
@@ -1140,32 +1140,37 @@ long1 = "<b>[:nick]</b> schreef de langste regels, gemiddelde van <b>[:letters]<
 long2 = "<b>[:channel]</b> gemiddelde was <b>[:avg]</b> letters per regel."
 
 short1 = "<b>[:nick]</b> schreef de kortste regels, gemiddelde van maar <b>[:letters]</b> letters per regel..."
-short2 = "<b>[:nick]</b> had ook [:zijn:haar:] typgeit-dag niet, gemiddeld maar <b>[:letters]</b> letters per regel."
+short2 = "<b>[:nick]</b> is maar een stil zieltje, gemiddeld maar <b>[:letters]</b> letters per regel."
 
-foul1 = "<b>[:nick]</b> is een ASO, <b>[:per]%</b> regels bevatte lelijke woorden."
+foul1 = "<b>[:nick]</b> moet [:zijn:haar:] mond wassen, <b>[:per]%</b> van de regels bevatte lelijke woorden."
 foul2 = "<b>[:nick]</b> kan er ook wat van, en scheld <b>[:per]%</b> van de tijd."
-foul3 = "Iedereen is vriendelijk in [:channel]! Leven ze zich veel uit op hun werk ofzow?"
+foul3 = "Iedereen is vriendelijk in [:channel]! Leven ze zich teveel uit op hun werk ofzow?"
+foultext = "<b>Een voorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-smiles1 = "<b>[:nick]</b> maakt de wereld weer vrolijk , <b>[:per]%</b> regels bevatte een smiley :o)"
+
+smiles1 = "<b>[:nick]</b> maakt de wereld weer vrolijk , <b>[:per]%</b> van de regels bevatte een smiley :o)"
 smiles2 = "<b>[:nick]</b> heeft het ook wel naar [:zijn:haar:] zin, en lachte <b>[:per]%</b> van de tijd."
-smiles3 = "Niemand lachte op [:channel]! Doe maar ff lachen."
+smiles3 = "Niemand lachte op [:channel]! Bende citroenen :p."
 
-sad1 = "<b>[:nick]</b> is niet echt vrolijk , <b>[:per]%</b> regels bevatte een sad face :("
+sad1 = "<b>[:nick]</b> is niet echt vrolijk , <b>[:per]%</b> van de regels bevatte een sad face :("
 sad2 = "<b>[:nick]</b> is ook al niet te vrolijk met een sad percentage van <b>[:per]%</b>."
-sad3 = "Niemand is "Bedroefd" [:channel]! What a happy channel :-)."
+sad3 = "Niemand is "Bedroefd" op [:channel]! What a happy channel :-)."
 
 ## Topics
 
 bignumtopic = "Grote Getallen"
 othernumtopic = "Andere interessante getallen"
 latesttopic = "Laatste topics"
+activenickbyhourtopic = "Meest actieve nick per uur"
 activetimestopic = "Meest actieve tijden"
 activenickstopic = "Meest actieve nicks"
 mostwordstopic = "Meest genoemde woorden"
 referencetopic = "Meest genoemde nicks"
 urlstopic = "Meest genoemde URLs"
-notopic = "De mensen hiero weten nog steeds niet hoe ze +t moeten gebruiken."
+notopic = "De mensen hier weten nog steeds niet hoe ze +t moeten gebruiken."
 bylinetopic = "door [:nick] op [:time]"
+mostnickstopic = "Gebruiker met de meeste nicks"
+
 
 ## Other text
 
@@ -1176,7 +1181,7 @@ nick = "Nick"
 url = "URL"
 numberlines = "Aantal regels"
 randquote = "Willekeurig citaat"
-userpic = "Plaatje"
+userpic = "Foto"
 nottop = "Deze behoorden gewoon niet tot "The Elite":"
 word = "Woord"
 numberuses = "Aantal keren genoemd"
@@ -1201,6 +1206,9 @@ hours = "uren"
 minutes = "minuten"
 seconds = "seconden"
 and = "en"
+names = "Gebruikte nicks"
+names1 = "Nicks"
+names2 = "Nick"
 
 # Mouse-over titles
 pisghomepage = "Ga naar de pisg homepage"
@@ -3251,7 +3259,7 @@ allcapstext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:li
 
 violent1 = "<b>[:nick]</b> очень агрессивная личность. Он(а) атаковал(а) других <b>[:attacks]</b> раз."
 violent2 = "<b>[:nick]</b> тоже не может контролировать свою агрессию.  Наезжал(а) на других <b>[:attacks]</b> раз."
-violent3 = "Geen klappen uitgedeeld hiero, wat een vriendelijk zooitje."
+violent3 = "Geen klappen uitgedeeld hier, wat een vriendelijk zooitje."
 violenttext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Бедный(ая) <b>[:nick]</b>, никто его(её) не любит.  Его/её атаковали  <b>[:attacks]</b> раз."
