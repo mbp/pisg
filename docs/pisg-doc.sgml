@@ -318,6 +318,13 @@
     </para>
 
     <para>
+    Or alternatively:
+    <screen>
+    <prompt>c:\pisg&gt;</prompt> <userinput>perl pisg</userinput>
+    </screen>
+    </para>
+
+    <para>
     The program will run and parse the logfiles you specified in the
     configuration file.
     </para>
