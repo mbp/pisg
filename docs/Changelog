@@ -5,6 +5,9 @@ pisg (x.xx)
      (see documentation). (thanks, Christoph Berg)
    * Improve addalias.pl, allow upper case letters in nicknames. (thanks,
      Christoph Berg)
+   * Emil Mikulic used 'pngcrush' on the .png files in gfx/ to make their size
+     much smaller, thanks. You should overwrite your old png files with these
+     new ones.
    * Distribute raw docbook (SGML) documentation (docs/pisg-doc.sgml)
 
 pisg (0.49) - Sun Sep, 14th 2003
