@@ -68,6 +68,8 @@ sub thirdline
 
         if ($#line >= 4 && ($line[1].$line[2]) eq 'waskicked') {
             $hash{kicker} = $line[4];
+            $hash{kicktext} = $3;
+            $hash{kicktext} =~ s/^[^\(]+\((.+)\)$/$1/;
 
         } elsif ($#line >= 4 && ($line[1].$line[2]) eq 'changestopic') {
             $hash{newtopic} = join(' ', @line[4..$#line]);

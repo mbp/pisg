@@ -1,3 +1,6 @@
+pisg (x.xx)
+   * Fix parsing of energymech kick messages (thanks, optika81)
+
 pisg (0.55) - Sun May, 30th 2004
    * Added javabot support (thanks, Tobias Larsson)
    * Fix serious bug in mIRC/mIRC6 formats which caused lots of warnings to be
