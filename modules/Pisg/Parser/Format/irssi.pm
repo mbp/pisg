@@ -24,15 +24,15 @@ sub normalline
     my %hash;
 
     if ($line =~ /$normalline/) {
-	$debug->("[$lines] Normal: $1 $2 $3");
+        $debug->("[$lines] Normal: $1 $2 $3");
 
-	$hash{hour}   = $1;
-	$hash{nick}   = $2;
-	$hash{saying} = $3;
+        $hash{hour}   = $1;
+        $hash{nick}   = $2;
+        $hash{saying} = $3;
 
-	return \%hash;
+        return \%hash;
     } else {
-	return;
+        return;
     }
 }
 
@@ -43,15 +43,15 @@ sub actionline
     my %hash;
 
     if ($line =~ /$actionline/) {
-	$debug->("[$lines] Action: $1 $2 $3");
+        $debug->("[$lines] Action: $1 $2 $3");
 
-	$hash{hour}   = $1;
-	$hash{nick}   = $2;
-	$hash{saying} = $3;
+        $hash{hour}   = $1;
+        $hash{nick}   = $2;
+        $hash{saying} = $3;
 
-	return \%hash;
+        return \%hash;
     } else {
-	return;
+        return;
     }
 }
 
@@ -73,36 +73,39 @@ sub thirdline
     my %hash;
 
     if ($line =~ /$thirdline/) {
-	if (defined $8) {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8");
-	} else {
-	    $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
-	}
+        if (defined $8) {
+            $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7 $8");
+        } else {
+            $debug->("[$lines] ***: $1 $2 $3 $4 $5 $6 $7");
+        }
 
-	$hash{hour} = $1;
-	$hash{min}  = $2;
-	$hash{nick} = $3;
+        $hash{hour} = $1;
+        $hash{min}  = $2;
+        $hash{nick} = $3;
 
-	if (($4.$5) eq 'waskicked') {
-	    $hash{kicker} = $7;
+        if (($4.$5) eq 'waskicked') {
+            $hash{kicker} = $8;
+            $hash{kicker} =~ s/.* by (\w+) .*/$1/;
 
-	} elsif ($4 eq 'changed') {
-	    $hash{newtopic} = "$7 $8";
+        } elsif ($4 eq 'changed') {
+            $hash{newtopic} = $8;
 
-	} elsif (substr($3, 0, 4) eq 'mode') {
-	    $hash{newmode} = substr($4, 1);
+        } elsif (substr($3, 0, 4) eq 'mode') {
+            $hash{newmode} = substr($4, 1);
+            $hash{nick} = $8;
+            $hash{nick} =~ s/.* (\w+)$/$1/; # Get the last word of the string
 
-	} elsif (($5.$6) eq 'hasjoined') {
-	    $hash{newjoin} = $3;
+        } elsif (($5.$6) eq 'hasjoined') {
+            $hash{newjoin} = $3;
 
-	} elsif (($4.$5) eq 'nowknown') {
-	    $hash{newnick} = $8;
-	}
+        } elsif (($4.$5) eq 'nowknown') {
+            $hash{newnick} = $8;
+        }
 
-	return \%hash;
+        return \%hash;
 
     } else {
-	return;
+        return;
     }
 }
 
