@@ -516,7 +516,7 @@ sub checkname {
     my ($nick, $newnick, $stats) = @_;
 
     foreach (@{ $stats->{nicks}{$newnick}}) {
-        if ($_ eq $nick) {
+        if (lc($_) eq lc($nick)) {
             return;
         } 
     }
