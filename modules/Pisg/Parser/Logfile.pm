@@ -405,7 +405,7 @@ sub _parse_file
             }
             $lastnormal = $line;
             $repeated = 0;
-        }
+        } # normal lines
 
         # Match action lines.
         elsif ($hashref = $self->{parser}->actionline($line, $.)) {
@@ -468,7 +468,7 @@ sub _parse_file
 
                 _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
             }
-        }
+        } # action lines
 
         # Match *** lines.
         elsif (($hashref = $self->{parser}->thirdline($line, $.)) and $hashref->{nick}) {
@@ -530,8 +530,19 @@ sub _parse_file
                     checkname($nick, $newnick, $stats) if ($self->{cfg}->{showmostnicks});
                 }
             }
+        } # *** lines
+
+        unless ($stats->{parsedlines} % 10000) { # keep only recent quotes to same mem
+            foreach my $n (keys %{$lines->{sayings}}) {
+                my $x = @{$lines->{sayings}->{$n}};
+                splice(@{$lines->{sayings}->{$n}}, 0, ($x - 50)) if ($x > 75);
+            }
+            foreach my $n (keys %{$lines->{actionlines}}) {
+                my $y = @{$lines->{actionlines}->{$n}};
+                splice(@{$lines->{actionlines}->{$n}}, 0, ($y - 50)) if ($y > 75);
+            }
         }
-    }
+    } # while(my $line = <LOGFILE>)
 
     $stats->{totallines} = $.;
 
