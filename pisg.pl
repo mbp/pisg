@@ -332,7 +332,7 @@ sub parse_file
                     my $l = length($saying);
 
                     if ($l > $minquote && $l < $maxquote) {
-                        $saying = htmlentities($saying);
+                        my $saying = htmlentities($saying);
 
                         # Creates $hash{nick}[n] - a hash of an array.
                         push (@{ $sayings{$nick} }, $saying);
@@ -366,8 +366,8 @@ sub parse_file
                         # ignore contractions
                         next if ($word =~ m/'..?$/);
 
-                        $wordcount{$word}++ unless (grep /^\Q$word\E$/i, @ignore);
-                        $lastused{$word} = $nick;
+                        $wordcount{htmlentities($word)}++ unless (grep /^\Q$word\E$/i, @ignore);
+                        $lastused{htmlentities($word)} = $nick;
                     }
 
 
