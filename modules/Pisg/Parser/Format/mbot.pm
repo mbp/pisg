@@ -11,9 +11,9 @@ sub new
     my $self = {
         cfg => $args{cfg},
         debug => $args{debug},
-        normalline => '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> (?!\001ACTION)(.*)',
-        actionline => '^\S+ \S+ \d+ (\d+):\d+:\d+ \d+ <([^>]+)> \001ACTION (.*)\001$',
-        thirdline  => '^\S+ \S+ \d+ (\d+):(\d+):\d+ \d+ (\S+) (\S+) ?(\S*) ?(\S*) ?(.*)',
+        normalline => '^\S+ \S+ [ \d]\d (\d+):\d+:\d+ \d+ <([^>]+)> (?!\001ACTION)(.*)',
+        actionline => '^\S+ \S+ [ \d]\d (\d+):\d+:\d+ \d+ <([^>]+)> \001ACTION (.*)\001$',
+        thirdline  => '^\S+ \S+ [ \d]\d (\d+):(\d+):\d+ \d+ (\S+) (\S+) ?(\S*) ?(\S*) ?(.*)',
     };
 
     bless($self, $type);
