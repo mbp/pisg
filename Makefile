@@ -17,9 +17,10 @@ FILES = pisg \
 DOCS = docs/FORMATS \
 	 docs/Changelog \
 	 docs/CREDITS \
-	 docs/html/ \
+	 docs/pisg-doc.html \
 	 docs/pisg-doc.txt \
 	 docs/pisg-doc.xml \
+	 docs/pisg.1 \
 
 DEVDOCS = docs/dev/API
 

@@ -1,4 +1,4 @@
-pisg (0.61) - ??
+pisg (0.61) - Sat Oct, 30th 2004
    Changes by Christoph Berg:
    * Fix warning when running on empty logs.
    * Fix &amp; conversion.
