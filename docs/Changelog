@@ -28,6 +28,8 @@ pisg (x.xx)
      increase.
    * When using the TimeOffset option, the wrong hours was highlighted both in
      the vertical and horizontal bars - fixed. (thanks, Mircea Ionut Bardac)
+   * When nicktracking is on, if a nick was changed but also appeared as an
+     alias, an errornous new alias would be created (thanks, Phil Gregory)
    * Support for muh-bouncer logs (thanks, Sebastian Erlhofer & Bastian
      Friedrich)
    * Support for dancer-bot logs (thanks, Elmar Hoffmann)
