@@ -128,6 +128,10 @@ pagetitle3 = "During this [:days]-days reporting period, a total number of <b>[:
 ### German
 
 <lang name="DE">
+action1 = "<b>[:nick]</b> hält uns immer auf dem Laufenden was er/sie gerade macht: [:actions] Actions!"
+action2 = "Auch <b>[:nick]</b> verät uns was los ist: [:actions] Actions von ihm/ihr"
+action3 = "Keine Actions in [:channel] !"
+
 mostop1 = "<b>[:nick]</b> vergab [:ops] ops im Channel..."
 mostop2 = "<b>[:nick]</b> war auch sehr zuvorkommend: [:ops] von ihm/ihr."
 mostop3 = "Komisch, kein op wurde in [:channel] vergeben!"
