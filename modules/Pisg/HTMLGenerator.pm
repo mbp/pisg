@@ -469,13 +469,17 @@ sub _activenicks
             $class = 'hirankc';
         } 
 
-        my $lastseen = $self->{stats}->{days} - $self->{stats}->{lastvisited}{$nick};
-        if ($lastseen == 0) {
-            $lastseen = $self->_template_text('today');
-        } elsif ($lastseen == 1) {
-            $lastseen = "$lastseen " .$self->_template_text('lastseen1');
-        } else {
-            $lastseen = "$lastseen " .$self->_template_text('lastseen2');
+        my $lastseen;
+
+        if ($self->{cfg}->{show_lastseen}) {
+            my $lastseen = $self->{stats}->{days} - $self->{stats}->{lastvisited}{$nick};
+            if ($lastseen == 0) {
+                $lastseen = $self->_template_text('today');
+            } elsif ($lastseen == 1) {
+                $lastseen = "$lastseen " .$self->_template_text('lastseen1');
+            } else {
+                $lastseen = "$lastseen " .$self->_template_text('lastseen2');
+            }
         }
         
         _html("<tr><td class=\"$class\" align=\"left\">");
