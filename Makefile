@@ -7,20 +7,32 @@ DIRNAME = pisg-$(VERSION)
 TARFILE = pisg-$(VERSION).tar.gz
 ZIPFILE = pisg-$(VERSION).zip
 
+FILES = pisg.pl \
+	 Changelog \
+	 COPYING \
+	 CREDITS \
+	 README \
+	 CONFIG-README \
+	 gfx/pipe-purple.png \
+	 gfx/pipe-blue.png \
+	 pisg.cfg \
+	 lang.txt
+
+SCRIPTS = scripts/crontab \
+	   scripts/dropegg.pl \
+	   scripts/egg2mirc.awk
+
+ADDALIAS = scripts/addalias/addalias.htm \
+	    scripts/addalias/addalias.pl \
+	    scripts/addalias/README
+
 pisg:
 	mkdir $(DIRNAME)
-	cp pisg.pl $(DIRNAME)
-	cp Changelog $(DIRNAME)
-	cp COPYING $(DIRNAME)
-	cp CREDITS $(DIRNAME)
-	cp README $(DIRNAME)
-	cp CONFIG-README $(DIRNAME)
-	cp FORMATS $(DIRNAME)
-	cp gfx/pipe-purple.png $(DIRNAME)
-	cp gfx/pipe-blue.png $(DIRNAME)
-	cp pisg.cfg $(DIRNAME)
-	cp lang.txt $(DIRNAME)
-	cp -r scripts $(DIRNAME)
+	cp $(FILES) $(DIRNAME)
+	mkdir $(DIRNAME)/scripts
+	cp $(SCRIPTS) $(DIRNAME)/scripts
+	mkdir $(DIRNAME)/scripts/addalias
+	cp $(ADDALIAS) $(DIRNAME)/scripts/addalias
 	tar zcfv newrelease/pisg-$(VERSION).tar.gz $(DIRNAME)
 	zip -r pisg $(DIRNAME)
 	mv pisg.zip newrelease/$(ZIPFILE)
