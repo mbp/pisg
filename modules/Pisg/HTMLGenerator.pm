@@ -1538,6 +1538,8 @@ sub _replace_links
     my $nick = shift;
     my ($url, $email, $replaced, $return_str);
 
+
+    $str =~ s/(http:\/\/)?www\./http:\/\/www\./ig;
     $return_str = $str;
     $replaced = 0;
      if ($nick) {
@@ -1551,11 +1553,7 @@ sub _replace_links
         while ($replaced < 1) {
             $replaced = 1;
             if ($url = match_url($str)) {
-                if ($url =~ /^www\./i) {
-                    $return_str =~ s/(\Q$url\E)/<a href="http:\/\/$1" target="_blank" title="Open in new window: $1">$1<\/a>/g;
-                } else {
-                    $return_str =~ s/(\Q$url\E)/<a href="$1" target="_blank" title="Open in new window: $1">$1<\/a>/g;
-                }
+                $return_str =~ s/(?<!(<a href="))(\Q$url\E)(?![-a-zA-Z0-9.,_~=:;&@%?#\/+]+)/<a href="$2" target="_blank" title="Open in new window: $2">$2<\/a>/g;
                 $str =~ s/(\Q$url\E)//g;
                 $replaced--;
             }

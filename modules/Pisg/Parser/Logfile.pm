@@ -286,11 +286,20 @@ sub _parse_file
                         $stats->{frowns}{$nick}++;
                     }
 
-                    if (my $url = match_url($saying)) {
-                        unless(url_is_ignored($url)) {
-                            $stats->{urlcounts}{$url}++;
-                            $stats->{urlnicks}{$url} = $nick;
-                        }
+                    # Find URLs
+                    my $check_str = $saying;                                                   
+                    $check_str =~ s/(http:\/\/)?www\./http:\/\/www\./ig;                       
+                    my $replaced = 0;                                                          
+                    while ($replaced < 1) {                                                    
+                        $replaced = 1;                                                         
+                        if (my $url = match_url($check_str)) {                                 
+                            unless(url_is_ignored($url)) {                                     
+                                $stats->{urlcounts}{$url}++;                                   
+                                $stats->{urlnicks}{$url} = $nick;                              
+                            }                                                                  
+                            $check_str =~ s/(\Q$url\E)//g;                                     
+                            $replaced--;                                                       
+                        }                                                                      
                     }
 
                     $self->_parse_words($stats, $saying, $nick);
