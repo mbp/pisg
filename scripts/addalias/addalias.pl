@@ -58,9 +58,9 @@ my $txtfoot1    = "To update your settings, just enter your nickname and click S
 my $txthelp     = "For help on this form click <a href=\"$url/addalias.pl/help\" target=\"_blank\">here</a>.";
 my $txtlist     = "For a complete list of known nicks please click <a href=\"$url/addalias.pl/list\">here</a>.";
 my $txtupdate   = "These are your current settings. Edit them where needed and click Update to update your info.";
-my $txtaddok    = "Your nickname was successfully added.:";
+my $txtaddok    = "Your nickname was successfully added.";
 my $txtignoreon = "You activated ignore and will not appear in the stats.";
-my $txtupdateok = "Your info was successfully updated.:";
+my $txtupdateok = "Your info was successfully updated.";
 
 # Helptext:
 
@@ -118,33 +118,34 @@ if (!$path) {
            if ($fnd eq "1") {
                $submitbtn = $btnupdate;
                $frmaction="\"update\"";
-               if ($old_sex eq "m" or $old_sex eq "M"){
-                   $old_sexm = "checked";
-               }
-               elsif ($old_sex eq "f" or $old_sex eq "F"){
-                   $old_sexf = "checked";
-               }
-               if ($old_ignore eq "1"){
-                   $old_ignr = "checked";
-               }
                $txtfoot1="";
                mainpage();
            }
            else {
+               $submitbtn = $btnupdate;
+               $frmaction="\"update\"";
                addinfo();
+               mainpage();
            }
        }
        else {
+           $submitbtn = $btnupdate;
+           $frmaction="\"update\"";
            addinfo();
+           mainpage();
        }
     }
 } elsif ($path eq 'update') {
     readparams();
     if ($frm_nick eq "") {
        no_nick();
+       mainpage();
     } else {
        $cfg = read_config();
+       $submitbtn = $btnupdate;
+       $frmaction="\"update\"";
        updateinfo();
+       mainpage();
     }
 } else {
     print "Illegal calling of script<br>\n";
@@ -214,8 +215,10 @@ print <<HTML
      <td><input type="checkbox" name="ignore" $old_ignr></td>
     </tr>
     <tr>
-     <td colspan="2" align="center">
+     <td></td>
+     <td>
       <input type="submit" value="$submitbtn">
+      <input type="reset" value="Reset form">
      </td>
     </tr>
    </table>
@@ -276,7 +279,7 @@ sub list
     foreach (@users) {
         if ($users[$i] =~ /nick=.*/) {
             if ($users[$i] =~ /nick="(\S+)"(.*)/) {
-                $nick = lc($1);
+                $nick = $1;
             }
             if ($users[$i] =~ /alias="(\S+)".*/ or $users[$i] =~ /alias="(.*)"\s.*/ or $users[$i] =~ /alias="(.*)">/ ) {
                 $alias = $1;
@@ -306,23 +309,19 @@ sub read_config
         if ($users[$i] =~ /nick=/) {
             if ($users[$i] =~ /nick="(\S+)"(.*)/) {
                 $nick[$i] = lc($1);
-                $oldnicks{$nick[$i]}{'nick'} = $nick[$i];
+                $oldnicks{$nick[$i]}{'nick'} = $1;
             }
             if ($users[$i] =~ /alias="(\S+)".*/ or $users[$i] =~ /alias="(.*)"\s.* / or $users[$i] =~ /alias="(.*)">/ ) {
-                my $alias = $1;
-                $oldnicks{$nick[$i]}{'alias'} = $alias;
+                $oldnicks{$nick[$i]}{'alias'} = $1;
             }
             if ($users[$i] =~ /link="(\S+)"(.*)/) {
-                my $link = $1;
-                $oldnicks{$nick[$i]}{'link'} = $link;
+                $oldnicks{$nick[$i]}{'link'} = $1;
             }
             if ($users[$i] =~ /pic="(\S+)"(.*)/) {
-                my $pic = $1;
-                $oldnicks{$nick[$i]}{'pic'} = $pic;
+                $oldnicks{$nick[$i]}{'pic'} = $1;
             }
             if ($users[$i] =~ /sex="(\S+)"(.*)/) {
-                my $sex = $1;
-                $oldnicks{$nick[$i]}{'sex'} = $sex;
+                $oldnicks{$nick[$i]}{'sex'} = $1;
             }
             if ($users[$i] =~ /ignore="(\S+)"(.*)/) {
                 my $ignore = $1;
@@ -345,7 +344,7 @@ sub read_config
 sub no_nick
 {
     print <<HTML
-<font color="red" size="+1"><b>Warning:</b> Nick needs to be declared !</font><br>
+<font color="red" size="+1"><b>Error:</b> No Nickname given!</font><br>
 HTML
 ;
 }
@@ -354,18 +353,29 @@ sub check_if_found
 {
 
     my $found = 0;
+    my $lcnick = lc($frm_nick);
     foreach (@nick) {
-        if ($oldnicks{$_}{'nick'} eq $frm_nick) {
+        if (lc($oldnicks{$_}{'nick'}) eq $lcnick) {
             $found = 1;
+            last;
         }
     }
     if ($found eq "1") {
-        $old_nick = $oldnicks{$frm_nick}{'nick'};
-        $old_alias = $oldnicks{$frm_nick}{'alias'};
-        $old_link = $oldnicks{$frm_nick}{'link'};
-        $old_pic = $oldnicks{$frm_nick}{'pic'};
-        $old_sex = $oldnicks{$frm_nick}{'sex'};
-        $old_ignore = $oldnicks{$frm_nick}{'ignore'};
+        $old_nick = $oldnicks{$lcnick}{'nick'};
+        $old_alias = $oldnicks{$lcnick}{'alias'};
+        $old_link = $oldnicks{$lcnick}{'link'};
+        $old_pic = $oldnicks{$lcnick}{'pic'};
+        $old_sex = $oldnicks{$lcnick}{'sex'};
+        $old_ignore = $oldnicks{$lcnick}{'ignore'};
+        if ($old_sex eq "m" or $old_sex eq "M"){
+            $old_sexm = "checked";
+        }
+        elsif ($old_sex eq "f" or $old_sex eq "F"){
+            $old_sexf = "checked";
+        }
+        if ($old_ignore eq "1"){
+            $old_ignr = "checked";
+        }
     }
     return $found;
 }
@@ -393,57 +403,27 @@ sub addinfo
     }
 
     $line_to_add .= ">";
-    
+
     open(FILE, ">>$pisg_config") or die("Error writing to configfile: $!");
     print FILE "$line_to_add\n";
     close(FILE);
 
-print <<HTML
-$txtaddok<br><br>\n
-<table>
- <tr>
-  <td>$txtnick:</td><td>$frm_nick</td>
- </tr>
-HTML
-;
-    if ($frm_alias) {
-        print " <tr>\n";
-        print "  <td>$txtalias:</td><td>$frm_alias</td>\n";
-        print " </tr>\n";
+    $old_nick = $frm_nick;
+    $old_alias = $frm_alias;
+    $old_link = $frm_link;
+    $old_pic = $frm_pic;
+    $old_sex = $frm_sex;
+    $old_ignore = $frm_ignore;
+    if ($old_sex eq "m" or $old_sex eq "M"){
+        $old_sexm = "checked";
     }
-    if ($frm_link) {
-        print " <tr>\n";
-        if($frm_link =~ /^http:|ftp:/) {
-            print "  <td>$txturl:</td><td><a href=\"$frm_link\">$frm_link</a></td>\n";
-        }
-        elsif ($frm_link =~ /(.*)@(.*).(.*)/) {
-            print "  <td>$txturl:</td><td><a href=\"mailto:$frm_link\">$frm_link</a></td>\n";
-        }
-        else {
-            print "  <td>$txturl:</td><td>$frm_link</td>\n";
-        }
-        print " </tr>\n";
+    elsif ($old_sex eq "f" or $old_sex eq "F"){
+        $old_sexf = "checked";
     }
-    if ($frm_pic) {
-        print " <tr>\n";
-        print "  <td>$txtpic:</td><td><img src=\"$frm_pic\"></td>\n";
-        print " </tr>\n";
+    if ($old_ignore eq "1"){
+        $old_ignr = "checked";
     }
-    if ($frm_sex eq "m") {
-        print " <tr>\n";
-        print "  <td>$txtsex:</td><td>$txtmale</td>\n";
-        print " </tr>\n";
-    }
-    if ($frm_sex eq "f") {
-        print " <tr>\n";
-        print "  <td>$txtsex:</td><td>$txtfemale</td>\n";
-        print " </tr>\n";
-    }
-    if ($frm_ignore eq "on") {
-        print " <tr>\n";
-        print "  <td>$txtignore:</td><td>$txtignoreon</td>\n";
-        print " </tr>\n";
-    }
+    print "<font color=\"green\">$txtaddok</font><p>\n";
 }
 
 sub updateinfo
@@ -485,50 +465,24 @@ sub updateinfo
        }
     }
     close (NEWFILE);
-print <<HTML
-$txtupdateok<br><br>\n
-<table>
- <tr>
-  <td>$txtnick:</td><td>$frm_nick</td>
- </tr>
-HTML
-;
-    if ($frm_alias) {
-        print " <tr>\n";
-        print "  <td>$txtalias:</td><td>$frm_alias</td>\n";
-        print " </tr>\n";
+
+    $old_nick = $frm_nick;
+    $old_alias = $frm_alias;
+    $old_link = $frm_link;
+    $old_pic = $frm_pic;
+    $old_sex = $frm_sex;
+    $old_ignore = $frm_ignore;
+    if ($old_sex eq "m" or $old_sex eq "M"){
+        $old_sexm = "checked";
     }
-    if ($frm_link) {
-        print " <tr>\n";
-        if ($frm_link =~ /^http:|ftp:/) {
-            print "  <td>$txturl:</td><td><a href=\"$frm_link\">$frm_link</a></td>\n";
-        } elsif ($frm_link =~ /(.*)@(.*).(.*)/) {
-            print "  <td>$txturl:</td><td><a href=\"mailto:$frm_link\">$frm_link</a></td>\n";
-        } else {
-            print "  <td>$txturl:</td><td>$frm_link</td>\n";
-        }
-        print " </tr>\n";
+    elsif ($old_sex eq "f" or $old_sex eq "F"){
+        $old_sexf = "checked";
     }
-    if ($frm_pic) {
-        print " <tr>\n";
-        print "  <td>$txtpic:</td><td><img src=\"$frm_pic\"></td>\n";
-        print " </tr>\n";
+    if ($old_ignore eq "1"){
+        $old_ignr = "checked";
     }
-    if ($frm_sex eq "m") {
-        print " <tr>\n";
-        print "  <td>$txtsex:</td><td>$txtmale</td>\n";
-        print " </tr>\n";
-    }
-    if ($frm_sex eq "f") {
-        print " <tr>\n";
-        print "  <td>$txtsex:</td><td>$txtfemale</td>\n";
-        print " </tr>\n";
-    }
-    if ($frm_ignore eq "on") {
-        print " <tr>\n";
-        print "  <td>$txtignore:</td><td>$txtignoreon</td>\n";
-        print " </tr>\n";
-    }
+
+    print "<font color=\"green\">$txtupdateok</font><p>\n";
 }
 
 sub lock_file {
