@@ -73,11 +73,17 @@ sub thirdline
         } elsif (($4.$5) eq 'haschanged') {
             $hash{newtopic} = $9;
 
-        } elsif (($4.$5) eq 'giveschannel') {
+        } elsif (($4.$5.$6) eq 'giveschanneloperator') {
             $hash{newmode} = '+o';
 
-        } elsif (($4.$5) eq 'removeschannel') {
+        } elsif (($4.$5.$6) eq 'removeschanneloperator') {
             $hash{newmode} = '-o';
+
+        } elsif (($4.$5.$6) eq 'giveschannelhalf-operator') {
+            $hash{newmode} = '+h';
+
+        } elsif (($4.$5.$6) eq 'removeschannelhalf-operator') {
+            $hash{newmode} = '-h';
 
         } elsif (($4.$5) eq 'givesvoice') {
             $hash{newmode} = '+v';

@@ -9,6 +9,7 @@ pisg (x.xx)
      much smaller, thanks. You should overwrite your old png files with these
      new ones.
    * Distribute raw docbook (SGML) documentation (docs/pisg-doc.sgml)
+   * Add half-op (+h) support to the xchat format (thanks, Jaff Har Har)
 
 pisg (0.49) - Sun Sep, 14th 2003
    * Make the HTML output XHTML compliant again (thanks, Stian Jordet)
