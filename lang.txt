@@ -2267,7 +2267,7 @@ mostdeop2 = "<b>[:nick]</b> deopet [:deops] brukere."
 mostdeop3 = "Wow, ingen er deopet på [:channel]!"
 
 mostvoice1 = "<b>[:nick]</b> donerte [:voices] voicer i kanalen.."
-mostvoice2 = "<b>[:nick]</b> var også veldig hyggelig: [:voices] voicer fra [:han:henne:]."
+mostvoice2 = "<b>[:nick]</b> var også veldig hyggelig: [:voices] voicer fra [:ham:henne:]."
 mostvoice3 = "Merkelig, ingen voice er delt ut på  [:channel]!"
 
 mostdevoice1 = "<b>[:nick]</b> er kanalens sheriff med  [:devoices] devoices."
@@ -2279,7 +2279,7 @@ action2 = "<b>[:nick]</b> forteller oss også hva som skjer med [:actions] action
 action3 = "Ingen action på [:channel]!"
 actiontext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-question1 = "Er <b>[:nick]</b> dum, eller spør [:han:hun:] bare mange spørsmål?  [:per]% linjer med spørsmål!"
+question1 = "Er <b>[:nick]</b> dum, eller stiller [:han:hun:] bare mange spørsmål?  [:per]% linjer med spørsmål!"
 question2 = "<b>[:nick]</b> spør også mye.  [:per]% av [:hans:hennes:] linjer er spørsmål!" 
 question3 = "Ingen på denne kanalen stillte spørsmål. Jøss."
 
@@ -2293,12 +2293,12 @@ allcaps3 = "Alle hadde caps lock under kontroll. Kjekt.  :)"
 allcapstext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 
-violent1 = "<b>[:nick]</b> er en aggresiv person.  [:Han:Hun:] angrep andre <b>[:attacks]</b> ganger."
+violent1 = "<b>[:nick]</b> er en aggressiv person.  [:Han:Hun:] angrep andre <b>[:attacks]</b> ganger."
 violent2 = "<b>[:nick]</b> kan heller ikke kontrollere sin aggresjon.  [:Han:Hun:] plaget andre <b>[:attacks]</b> ganger."
 violent3 = "Ingen slår hverandre.  Alle er vennlige."
 violenttext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-attacked1 = "Stakkars <b>[:nick]</b>, ingen liker [:han:henne:].  [:Han:Hun:] ble angrepet <b>[:attacks]</b> ganger."
+attacked1 = "Stakkars <b>[:nick]</b>, ingen liker [:ham:henne:].  [:Han:Hun:] ble angrepet <b>[:attacks]</b> ganger."
 attacked2 = "<b>[:nick]</b> er heller ikke likt.  [:Han:Hun:] ble banket <b>[:attacks]</b> ganger."
 attackedtext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -2341,8 +2341,8 @@ sad1 = "<b>[:nick]</b> er trist for øyeblikket:  [:per]% linjer inneholdt :(!"
 sad2 = "<b>[:nick]</b> er heller ikke særlig blid. [:per]% av tiden."
 sad3 = "Ingen er triste på [:channel]!  For en koselig kanal.  :-)"
 
-month = "Januar Februar Mars April May Juni Juli August September Oktober November Desember"
-day = "Søndag Mandag Tirsdag Onsdag Torsdag Fredag Lørdag"
+month = "januar februar mars april may juni juli august september oktober november desember"
+day = "søndag mandag tirsdag onsdag torsdag fredag lørdag"
 
 names1 = "nicks"
 names2 = "nick" 
@@ -2384,7 +2384,7 @@ show_lastseen = "Sist sett"
 lastused = "Sist brukt av"
 lastseen1 = "dag siden"
 lastseen2 = "dager siden"
-today = "Idag"
+today = "I dag"
 pagetitle1 = "[:channel] @ [:network] stats av [:maintainer]"
 pagetitle2 = "Statistikk generert"
 pagetitle3 = "I løpet av denne [:days]-dagers perioden var totalt <b>[:nicks]</b> forskjellige nick representert på [:channel]."
