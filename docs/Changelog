@@ -3,6 +3,7 @@ pisg (x.xx)
      N files (thanks, Christoph Berg)
    * Added OutputTag option, which enables users to have variable output names
      (see documentation). (thanks, Christoph Berg)
+   * Distribute raw docbook (SGML) documentation (docs/pisg-doc.sgml).
 
 pisg (0.49) - Sun Sep, 14th 2003
    * Make the HTML output XHTML compliant again (thanks, Stian Jordet)

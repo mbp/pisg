@@ -19,6 +19,7 @@ DOCS = docs/FORMATS \
 	 docs/CREDITS \
 	 docs/html/ \
 	 docs/pisg-doc.txt \
+	 docs/pisg-doc.sgml \
 
 DEVDOCS = docs/dev/API
 
