@@ -55,6 +55,7 @@ slapped3 = "Nobody got slapped in Channel :)"
 
 gotkick1 = "<b>[:nick]</b> wasn't very popular, got kicked [:kicks] times!"
 gotkick2 = "<b>[:nick]</b> seemed to be hated too, [:kicks] kicks were received"
+kicktext = "<b>For example like this:</b><br><dd>[:line]</dd>"
 
 joins = "<b>[:nick]</b> couldn't decide to stay or to go, [:joins] joins during this reporting period!"
 
@@ -165,6 +166,7 @@ slapped3 = "Niemand wurde geschlagen."
 
 gotkick1 = "<b>[:nick]</b> war wohl der Channelclown, er/sie wurde [:kicks] mal gekickt!"
 gotkick2 = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für ihn/sie."
+kicktext = "<b>Zum Beispiel so:</b><br><dd>[:line]</dd>"
 
 joins = "<b>[:nick]</b> konnte sich nicht entscheiden im Channel zu bleiben oder zu gehen, [:joins] joins während des Statistik-Zeitraums!"
 
