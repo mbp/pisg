@@ -238,7 +238,10 @@ kick3 = "Venlige operatører må man sige. Ingen har fået sparket!"
 mono1 = "<b>[:nick]</b> snakker meget med sig selv. Han har skrevet over 5 linjer på en gang, [:monos] gange!"
 mono2 = "En anden ensom person var <b>[:nick]</b>, som snakkede til sig selv [:monos] gange"
 
-long1 = "<b>[:nick]</b> skriver meget lange sætninger. Gennemsnittet er [:letters] bogstaver pr. linje..."
+wpl1 = "<b>[:nick]</b> skrev i gennemsnit [:wpl] ord pr. linje.."
+wpl2 = "Kanalens gennemsnit var [:avg] ord pr. linje."
+
+long1 = "<b>[:nick]</b> skriver meget lange sætninger. Gennemsnittet var [:letters] bogstaver pr. linje..."
 long2 = "Gennemsnittet på [:channel] er [:avg] bogstaver pr. linje"
 
 short1 = "<b>[:nick]</b> skrev de korteste linjer. Gennemsnittet er [:letters] bogstaver pr. linje..."
