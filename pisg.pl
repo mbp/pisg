@@ -2,7 +2,6 @@
 
 use strict;
 use Getopt::Long;
-use FindBin;
 
 # pisg - Perl IRC Statistics Generator
 #
@@ -24,7 +23,9 @@ use FindBin;
 
 sub main
 {
-    my $cfg = get_cmdline_options();
+    my $script_dir = $0;
+    $script_dir =~ s/\/[^\/]*$//;
+    my $cfg = get_cmdline_options($script_dir);
     push(@INC, $cfg->{modules_dir});
 
     my $pisg;
@@ -34,7 +35,8 @@ use Pisg;
 
 \$pisg = new Pisg(
     use_configfile => '1',
-    override_cfg => \$cfg
+    override_cfg => \$cfg,
+    search_path => \$script_dir,
 );
 \$pisg->run();
 END
@@ -49,8 +51,10 @@ END
 
 sub get_cmdline_options
 {
+    my $script_dir = shift;
+
     my $cfg = {
-        modules_dir => $FindBin::Bin . "/modules",     # Module search path
+        modules_dir => "$script_dir/modules/",     # Module search path
     };
 
     my $tmp;

@@ -28,6 +28,7 @@ sub new
     my $self = {
         override_cfg => $args{override_cfg},
         use_configfile => $args{use_configfile},
+        search_path => $args{search_path},
         chans => {},
         users => {},
         cfg => {},
@@ -200,7 +201,7 @@ sub get_language_templates
 {
     my $self = shift;
 
-    open(FILE, $self->{cfg}->{langfile}) or open (FILE, $FindBin::Bin . "/$self->{cfg}->{langfile}") or die("$0: Unable to open language file($self->{cfg}->{langfile}): $!\n");
+    open(FILE, $self->{cfg}->{langfile}) or open (FILE, $self->{search_path} . "/$self->{cfg}->{langfile}") or die("$0: Unable to open language file($self->{cfg}->{langfile}): $!\n");
 
     while (my $line = <FILE>)
     {
@@ -267,7 +268,7 @@ sub init_config
 {
     my $self = shift;
 
-    if ((open(CONFIG, $self->{cfg}->{configfile}) or open(CONFIG, $FindBin::Bin . "/$self->{cfg}->{configfile}"))) {
+    if ((open(CONFIG, $self->{cfg}->{configfile}) or open(CONFIG, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
 
         my $lineno = 0;
         while (my $line = <CONFIG>)
@@ -489,6 +490,8 @@ configuration file, defined by the configuration option 'configfile'.
 B<override_cfg> - This defines whichever configuration variables you want to
 override from the configuration file. If you set use_configfile to 0, then
 you'll have to set at least channel and logfile here.
+
+B<search_path> - This defines an optional search path. It's used when you want to hardcode an alternative path where pisg should look after its language and config file.
 
 =back
 
