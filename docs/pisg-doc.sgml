@@ -230,6 +230,28 @@
     </para>
 
    </sect1>
+   <sect1 id="including-config">
+    <title>Including common settings for various channels</title>
+    
+    <para>
+    If you have, for example, more than one channel, where the users are the
+    same, or you don't want to maintain more than one user file, you can use
+    the "include" setting in the main config file:
+
+    <programlisting>
+    <![CDATA[
+     <include="/home/vetinari/pisg/users.cfg">
+    ]]>
+    </programlisting>
+
+    This will include the file /home/vetinari/pisg/users.cfg in the config
+    at the place where the include statement is set.
+    </para>
+
+    <para>
+    Note, that you can NOT include a file from an included file!
+    </para>
+   </sect1>
    <sect1 id="using-css">
     <title>Changing the layout of your stats page</title>
 

@@ -16,6 +16,8 @@ pisg (x.xx)
    * A problem with multiple mode changes (+vv, +oo) in Trillian format has
      been fixed.
    * README has been polished/modified
+   * It's now possible to include different configuration files using a new
+     <include ... > syntax (thanks, Hanno Hecker <hanno-pisg@bee.de>)
    * Changes thanks to Matthew "Cheetah" Gabeler-Lee (<msg2@po.cwru.edu>):
     * A ShowWordTime option now exists that works the same as ShowLineTime,
       but uses word stats

@@ -55,8 +55,13 @@ sub run
         unless ($self->{cfg}->{silent});
 
     # Init the configuration file (aliases, ignores, channels, etc)
-    my $r = $self->init_config()
-        if ($self->{use_configfile});
+    my $r;
+    if ($self->{use_configfile}) {
+        if ((open(CONFIG, $self->{cfg}->{configfile}) 
+            or open(CONFIG, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
+            $r = $self->init_config(\*CONFIG)
+        }
+    }
 
     print "Using config file: $self->{cfg}->{configfile}\n\n"
         if ($r && !$self->{cfg}->{silent});
@@ -274,137 +279,146 @@ sub init_words
 sub init_config
 {
     my $self = shift;
+    my $fh   = shift;
+    while (my $line = <$fh>)
+    {
+        next if ($line =~ /^#/);
+        chomp $line;
 
-    if ((open(CONFIG, $self->{cfg}->{configfile}) or open(CONFIG, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
+        if ($line =~ /<user.*>/) {
+            my $nick;
 
-        while (my $line = <CONFIG>)
-        {
-            next if ($line =~ /^#/);
-            chomp $line;
+            if ($line =~ /nick="([^"]+)"/) {
+                $nick = $1;
+                add_alias($nick, $nick);
+            } else {
+                print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No nick specified\n";
+                next;
+            }
 
-            if ($line =~ /<user.*>/) {
-                my $nick;
-
-                if ($line =~ /nick="([^"]+)"/) {
-                    $nick = $1;
-                    add_alias($nick, $nick);
-                } else {
-                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No nick specified\n";
-                    next;
-                }
-
-                if ($line =~ /alias="([^"]+)"/) {
-                    my @thisalias = split(/\s+/, lc($1));
-                    foreach (@thisalias) {
-                        if ($self->{cfg}->{regexpaliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
-                            add_aliaswild($nick, $_);
-                        } elsif (not $self->{cfg}->{regexpaliases} and s/\*/\.\*/g) {
-                            # quote it if it is a wildcard
-                            s/([\|\[\]\{\}\(\)\?\+\^\\])/\\$1/g;
-                            add_aliaswild($nick, $_);
-                        } else {
-                            add_alias($nick, $_);
-                        }
+            if ($line =~ /alias="([^"]+)"/) {
+                my @thisalias = split(/\s+/, lc($1));
+                foreach (@thisalias) {
+                    if ($self->{cfg}->{regexpaliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
+                        add_aliaswild($nick, $_);
+                    } elsif (not $self->{cfg}->{regexpaliases} and s/\*/\.\*/g) {
+                        # quote it if it is a wildcard
+                        s/([\|\[\]\{\}\(\)\?\+\^\\])/\\$1/g;
+                        add_aliaswild($nick, $_);
+                    } else {
+                        add_alias($nick, $_);
                     }
                 }
+            }
 
-                if ($line =~ /pic="([^"]+)"/) {
-                    $self->{users}->{userpics}{$nick} = $1;
-                }
+            if ($line =~ /pic="([^"]+)"/) {
+                $self->{users}->{userpics}{$nick} = $1;
+            }
 
-                if ($line =~ /bigpic="([^"]+)"/) {
-                    $self->{users}->{biguserpics}{$nick} = $1;
-                }
+            if ($line =~ /bigpic="([^"]+)"/) {
+                $self->{users}->{biguserpics}{$nick} = $1;
+            }
 
-                if ($line =~ /link="([^"]+)"/) {
-                    $self->{users}->{userlinks}{$nick} = $1;
-                }
+            if ($line =~ /link="([^"]+)"/) {
+                $self->{users}->{userlinks}{$nick} = $1;
+            }
 
+            if ($line =~ /ignore="Y"/i) {
+                add_ignore($nick);
+            }
+
+            if ($line =~ /sex="([MmFf])"/i) {
+                $self->{users}->{sex}{$nick} = lc($1);
+            }
+        } elsif ($line =~ /<link(.*)>/) {
+
+            if ($line =~ /url="([^"]+)"/) {
+                my $url = $1;
                 if ($line =~ /ignore="Y"/i) {
-                    add_ignore($nick);
+                    add_url_ignore($url);
                 }
-
-                if ($line =~ /sex="([MmFf])"/i) {
-                    $self->{users}->{sex}{$nick} = lc($1);
-                }
-            } elsif ($line =~ /<link(.*)>/) {
-
-                if ($line =~ /url="([^"]+)"/) {
-                    my $url = $1;
-                    if ($line =~ /ignore="Y"/i) {
-                        add_url_ignore($url);
-                    }
-                } else {
-                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No URL specified\n";
-                }
+            } else {
+                print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No URL specified\n";
+            }
 
 
-            } elsif ($line =~ /<set(.*)>/) {
+        } elsif ($line =~ /<set(.*)>/) {
 
-                my $settings = $1;
-                if ($settings !~ /=["'](.*)["']/ || $settings =~ /(\w)>/ ) {
-                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing or wrong quotes near $1\n";
-                }
+            my $settings = $1;
+            if ($settings !~ /=["'](.*)["']/ || $settings =~ /(\w)>/ ) {
+                print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing or wrong quotes near $1\n";
+            }
 
-                while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
-                    my $var = lc($1);
-                    $var =~ s/ //; # Remove whitespace
-                    if (!defined($self->{cfg}->{$var})) {
-                        if (defined($self->{bwd}->{$var})) {
-                            print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                            unless (($self->{cfg}->{lc($self->{bwd}->{$var})} eq $2) || $self->{override_cfg}->{lc($self->{bwd}->{$var})}) {
-                                $self->{cfg}->{$self->{bwd}->{$var}} = $2;
-                            }
-                            next;
-                        } else {
-                            print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
-                            next;
-                        }
-                    }
-                    unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
-                        $self->{cfg}->{$var} = $2;
-                    }
-                }
-
-            } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
-                my ($channel, $settings) = ($1, $2);
-                $self->{chans}->{$channel}->{channel} = $channel;
-                $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
-                while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
-                    my $var = lc($1);
+            while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
+                my $var = lc($1);
+                $var =~ s/ //; # Remove whitespace
+                if (!defined($self->{cfg}->{$var})) {
                     if (defined($self->{bwd}->{$var})) {
                         print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                        $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
-                    } else {
-                        $self->{chans}->{$channel}{$var} = $2;
-                    }
-                }
-                while (<CONFIG>) {
-                    last if ($_ =~ /<\/*channel>/i);
-                    if ($_ =~ /^\s*(\w+)\s*=\s*["']([^"']*)["']/) {
-                        my $var = lc($1);
-                        unless ($self->{override_cfg}->{$var}) {
-                            if (defined($self->{bwd}->{$var})) {
-                                print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
-                                $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
-                            } else {
-                                $self->{chans}->{$channel}{$var} = $2;
-                            }
+                        unless (($self->{cfg}->{lc($self->{bwd}->{$var})} eq $2) || $self->{override_cfg}->{lc($self->{bwd}->{$var})}) {
+                            $self->{cfg}->{$self->{bwd}->{$var}} = $2;
                         }
-                    } elsif ($_ !~ /^$/) {
-                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
+                        next;
+                    } else {
+                        print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
+                        next;
                     }
                 }
-            } elsif ($line =~ /<(\w+)?.*[^>]$/) {
-                print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing end on element <$1 (probably multi-line?)\n";
-            } elsif ($line =~ /\S/) {
-                $line =~ s/\n//;
-                print "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
+                unless (($self->{cfg}->{$var} eq $2) || $self->{override_cfg}->{$var}) {
+                    $self->{cfg}->{$var} = $2;
+                }
             }
-        }
 
-        close(CONFIG);
+        } elsif ($line =~ /<channel=['"]([^'"]+)['"](.*)>/i) {
+            my ($channel, $settings) = ($1, $2);
+            $self->{chans}->{$channel}->{channel} = $channel;
+            $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
+            while ($settings =~ s/\s([^=]+)=["']([^"']*)["']//) {
+                my $var = lc($1);
+                if (defined($self->{bwd}->{$var})) {
+                    print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
+                    $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
+                } else {
+                    $self->{chans}->{$channel}{$var} = $2;
+                }
+            }
+            while (<$fh>) {
+                last if ($_ =~ /<\/*channel>/i);
+                if ($_ =~ /^\s*(\w+)\s*=\s*["']([^"']*)["']/) {
+                    my $var = lc($1);
+                    unless ($self->{override_cfg}->{$var}) {
+                        if (defined($self->{bwd}->{$var})) {
+                            print "Using backwards compatibility option '$var'; you should change it to '$self->{bwd}->{$var}'\n";
+                            $self->{chans}->{$channel}{lc($self->{bwd}->{$var})} = $2;
+                        } else {
+                            $self->{chans}->{$channel}{$var} = $2;
+                        }
+                    }
+                } elsif ($_ !~ /^$/) {
+                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
+                }
+            }
+        } elsif ($line =~ /<include\s*=\s*(["'])(.*)\1\s*>/) {
+            my $include_cfg = $2;
+            my $backup_cfg = $self->{cfg}->{configfile};
+            $self->{cfg}->{configfile} = $include_cfg;
+            my $r;
+            if ((open(INCLUDE, $self->{cfg}->{configfile}) 
+                or open(INCLUDE, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
+                $r = $self->init_config(\*INCLUDE);
+            }
+            print "Included config file: $self->{cfg}->{configfile}\n\n"
+                if ($r && !$self->{cfg}->{silent});
+            $self->{cfg}->{configfile} = $backup_cfg;
+        } elsif ($line =~ /<(\w+)?.*[^>]$/) {
+            print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing end on element <$1 (probably multi-line?)\n";
+        } elsif ($line =~ /\S/) {
+            $line =~ s/\n//;
+            print "Warning: $self->{cfg}->{configfile}, line $.: Unrecognized line\n";
+        }
     }
+
+    close($fh);
 }
 
 sub init_pisg
