@@ -91,7 +91,7 @@ $config->{timeoffset} = "+0";	# A time offset on the stats page - if your
 $words->{foul} = "ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe"; # If not set in pisg.cfg set your Foulwords here.
 
 # You shouldn't care about anything below this point
-$config->{debug} = 0;			# 0 = Debugging off, 1 = Debugging on
+$config->{debug} = 1;			# 0 = Debugging off, 1 = Debugging on
 $config->{debugfile} = "debug.log";	# Path to debug file(must be set if $debug == 1)
 $config->{version} = "v0.18-cvs";
 
@@ -302,6 +302,8 @@ sub parse_dir
     if (substr($config->{logdir}, -1) ne '/') {
         $config->{logdir} =~ s/(.*)/$1\//;
     }
+
+    if (@filesarray < 1) { die("No files in that dir!\n"); }
 
     foreach my $file (@filesarray) {
         if ($config->{prefix} eq "" || $file =~ /^$config->{prefix}/) {
