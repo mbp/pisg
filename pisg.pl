@@ -475,15 +475,17 @@ sub parse_file
                         $kicked{$kicker}++;
                     }
                 } elsif (defined($newtopic)) {
-                    my $tcount = @topics;
+                    unless ($newtopic eq '') {
+                        my $tcount = @topics;
 
-                    $topics[$tcount]{topic} = htmlentities($newtopic);
-                    $topics[$tcount]{nick} = $nick;
-                    $topics[$tcount]{hour} = $hour;
-                    $topics[$tcount]{min} = $min;
+                        $topics[$tcount]{topic} = htmlentities($newtopic);
+                        $topics[$tcount]{nick} = $nick;
+                        $topics[$tcount]{hour} = $hour;
+                        $topics[$tcount]{min} = $min;
 
-                    # Strip off the quotes (')
-                    $topics[$tcount]{topic} =~ s/^\'(.*)\'$/$1/;
+                        # Strip off the quotes (')
+                        $topics[$tcount]{topic} =~ s/^\'(.*)\'$/$1/;
+                    }
                 } elsif (defined($newmode)) {
                     my @opchange = opchanges($newmode);
                     $gaveop{$nick} += $opchange[0] if $opchange[0];
