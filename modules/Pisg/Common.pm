@@ -88,7 +88,9 @@ sub is_nick
     my $lcnick = lc($nick);
 
     if ($aliases{$lcnick}) {
-        return 1;
+        return $aliases{$lcnick};
+    } elsif ($aliasseen{$lcnick}) {
+        return $aliasseen{$lcnick}
     }
     return 0;
 }
