@@ -265,6 +265,7 @@ short2 = "<b>[:nick]</b> war auch sehr kurzfassend, durchschnittlich [:letters] 
 foul1 = "<b>[:nick]</b> hat in [:seiner:ihrer:] Jugend keine Erziehung genossen, [:per]% [:seiner:ihrer:] S&auml;tze enthielten Schimpfworte!"
 foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman noch kommt?)"
 foul3 = "Alle gut erzogen in [:channel], niemand hat Schimpfworte benutzt!"
+foultext = "<b>Zum Beispiel so:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> ist ein fröhlicher Mensch, [:per]% [:seiner:ihrer:] Zeilen enthielt ein fröhliches Smily :)"
 smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. [:Er:Sie:] lächelte [:per]% der Zeit."
