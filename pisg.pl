@@ -152,6 +152,11 @@ sub init_pisg
     $repeated = 0;
     $lastnormal = "";
 
+    # Add trailing slash when it's not there..
+    if (substr($imagepath, -1) ne '/') {
+        $imagepath =~ s/(.*)/$1\//;
+    }
+
     print "Statistics for channel $channel \@ $network by $maintainer\n\n";
     print "Using language template: $lang\n\n" if ($lang ne 'EN');
 
