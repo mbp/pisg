@@ -14,7 +14,7 @@ sub new
         cfg => $args{cfg},
         normalline => '(\d+):\d+:\d+ <([^>\s]+)>\s+(.*)',
         actionline => '(\d+):\d+:\d+ \*{1,}\s+(\S+) (.*)',
-        thirdline  => '(\d+):(\d+):\d+ .{1,}--\s+(\S+) (\S+) (\S+) (\S+) (\S+) ?(\S+)? ?(.*)?',
+        thirdline  => '(\d+):(\d+):\d+ [<-]-[->]\s+(\S+) (\S+) (\S+) (\S+) (\S+) ?(\S+)? ?(.*)?',
     };
 
     bless($self, $type);

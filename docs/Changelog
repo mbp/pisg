@@ -7,6 +7,7 @@ pisg (x.xx)
      (Will now accept <set foo="you're"> correctly, before it would have parsed
      it as <set foo="you">. Will now NOT work with mis-matched quotes... which
      it probably never should have. EG: <set foo="bar'>)
+   * Fix bug in xchat format - was not recognizing joins
 
 
 pisg (0.46) - Tue Feb, 11th 2003
