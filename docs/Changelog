@@ -1,6 +1,7 @@
 pisg (0.61) - ??
    Changes by Christoph Berg:
    * More nick sanitizing.
+   * Remove whitespace around user pictures, border="0", title.
    * docs/:
      + Nicer Makefile.
      + Write a single HTML file.

@@ -1948,24 +1948,27 @@ sub _user_pic
     return unless $self->{users}->{userpics}{$nick} or $self->{cfg}->{defaultpic};
 
     my $rowspan = $self->{cfg}->{userpics} ? " rowspan=\"$self->{cfg}->{userpics}\"" : "";
-    _html("<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"$rowspan>");
+    my $output = "<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"$rowspan>";
 
     my $biguserpic = $self->{users}->{biguserpics}{$nick};
-    $biguserpic = $self->{cfg}->{imagepath} . randomglob($biguserpic, $self->{cfg}->{imageglobpath})
-        if $biguserpic and $biguserpic !~ /^http:\/\//i;
-    $biguserpic = "<a href=\"$biguserpic\">" if $biguserpic;
-    _html($biguserpic) if $biguserpic;
+    if ($biguserpic) {
+        $biguserpic = $self->{cfg}->{imagepath} .
+            randomglob($biguserpic, $self->{cfg}->{imageglobpath})
+                if $biguserpic !~ /^http:\/\//i;
+        $output .= "<a href=\"$biguserpic\">";
+    }
 
     my $pic = $self->{users}->{userpics}{$nick} || $self->{cfg}->{defaultpic};
     $pic = $self->{cfg}->{imagepath} . randomglob($pic, $self->{cfg}->{imageglobpath})
         unless $pic =~ /^http:\/\//i;
     my $height = $self->{cfg}->{picheight} ? " height=\"$self->{cfg}->{picheight}\"" : "";
     my $width = $self->{cfg}->{picwidth} ? " width=\"$self->{cfg}->{picwidth}\"" : "";
-    my $alt = $self->{users}->{userpics}{$nick} ? " alt=\"$nick\"" : "";
-    _html("<img src=\"$pic\"$width$height$alt />");
+    my $alt = $self->{users}->{userpics}{$nick} ? " alt=\"$nick\" title=\"$nick\"" : "";
+    my $border = $biguserpic ? ' border="0"' : '';
+    $output .= "<img src=\"$pic\"$width$height$alt$border />";
 
-    _html("</a>") if $biguserpic;
-    _html("</td>");
+    $output .= "</a>" if $biguserpic;
+    _html("$output</td>");
 }
 
 sub _mostnicks
