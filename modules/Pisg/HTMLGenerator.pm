@@ -1496,16 +1496,19 @@ sub _template_text
 
     foreach my $key (sort keys %hash) {
         $text =~ s/\[:$key\]/$hash{$key}/;
-        $text =~ s/ü/&uuml;/go;
-        $text =~ s/ö/&ouml;/go;
-        $text =~ s/ä/&auml;/go;
-        $text =~ s/ß/&szlig;/go;
-        $text =~ s/å/&aring;/go;
-        $text =~ s/æ/&aelig;/go;
-        $text =~ s/ø/&oslash;/go;
-        $text =~ s/Å/&Aring;/go;
-        $text =~ s/Æ/&AElig;/go;
-        $text =~ s/Ø/&Oslash;/go;
+
+        if ($self->{cfg}->{charset} eq "iso-8859-1" or $self->{cfg}->{charset} eq "iso-8859-15") {
+            $text =~ s/ü/&uuml;/go;
+            $text =~ s/ö/&ouml;/go;
+            $text =~ s/ä/&auml;/go;
+            $text =~ s/ß/&szlig;/go;
+            $text =~ s/å/&aring;/go;
+            $text =~ s/æ/&aelig;/go;
+            $text =~ s/ø/&oslash;/go;
+            $text =~ s/Å/&Aring;/go;
+            $text =~ s/Æ/&AElig;/go;
+            $text =~ s/Ø/&Oslash;/go;
+        }
     }
 
     if ($text =~ /\[:[^:]*?:[^:]*?:[^:]*?:\]/o) {
@@ -1523,7 +1526,7 @@ sub _format_word
     # This function formats a word -- should ONLY be called on words used alone (EG: not whole line printed)
     my ($self, $word) = @_;
 
-    $word = htmlentities($word);
+    $word = htmlentities($word, $self->{cfg}->{charset});
     $word = $self->_replace_links($word);
     return $word;
 }
@@ -1557,7 +1560,7 @@ sub _format_line
             $line = '*** ' . $hashref->{nick} . ' changes topic to: ' . $hashref->{newtopic};
         }
     }
-    $line = htmlentities($line);
+    $line = htmlentities($line, $self->{cfg}->{charset});
     $line = $self->_replace_links($line);
     return $line;
 }

@@ -184,20 +184,23 @@ sub match_email
 sub htmlentities
 {
     my $str = shift;
+    my $charset = shift;
 
-    $str =~ s/\&/\&amp;/go;
-    $str =~ s/\</\&lt;/go;
-    $str =~ s/\>/\&gt;/go;
-    $str =~ s/ü/&uuml;/go;
-    $str =~ s/ö/&ouml;/go;
-    $str =~ s/ä/&auml;/go;
-    $str =~ s/ß/&szlig;/go;
-    $str =~ s/å/&aring;/go;
-    $str =~ s/æ/&aelig;/go;
-    $str =~ s/ø/&oslash;/go;
-    $str =~ s/Å/&Aring;/go;
-    $str =~ s/Æ/&AElig;/go;
-    $str =~ s/Ø/&Oslash;/go;
+    if ($charset eq "iso-8859-1" or $charset eq "iso-8859-15") {
+        $str =~ s/\&/\&amp;/go;
+        $str =~ s/\</\&lt;/go;
+        $str =~ s/\>/\&gt;/go;
+        $str =~ s/ü/&uuml;/go;
+        $str =~ s/ö/&ouml;/go;
+        $str =~ s/ä/&auml;/go;
+        $str =~ s/ß/&szlig;/go;
+        $str =~ s/å/&aring;/go;
+        $str =~ s/æ/&aelig;/go;
+        $str =~ s/ø/&oslash;/go;
+        $str =~ s/Å/&Aring;/go;
+        $str =~ s/Æ/&AElig;/go;
+        $str =~ s/Ø/&Oslash;/go;
+    }
 
     return $str;
 }
