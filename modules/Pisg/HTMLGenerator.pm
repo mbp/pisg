@@ -63,7 +63,7 @@ sub create_html
     $self->activenicks($self->{stats});
 
     $self->headline($self->template_text('bignumtopic'));
-    $self->html("<table width=\"$self->{conf}->{tablewidth}\">\n"); # Needed for sections
+    html("<table width=\"$self->{conf}->{tablewidth}\">\n"); # Needed for sections
     $self->questions($self->{stats});
     $self->shoutpeople($self->{stats});
     $self->capspeople($self->{stats});
@@ -73,7 +73,7 @@ sub create_html
     $self->linelengths($self->{stats});
     $self->mostwords($self->{stats});
     $self->mostwordsperline($self->{stats});
-    $self->html("</table>"); # Needed for sections
+    html("</table>"); # Needed for sections
 
     $self->mostusedword($self->{stats});
 
@@ -82,7 +82,7 @@ sub create_html
     $self->mosturls($self->{stats});
 
     $self->headline($self->template_text('othernumtopic'));
-    $self->html("<table width=\"$self->{conf}->{tablewidth}\">\n"); # Needed for sections
+    html("<table width=\"$self->{conf}->{tablewidth}\">\n"); # Needed for sections
     $self->gotkicks($self->{stats});
     $self->mostkicks($self->{stats});
     $self->mostop($self->{stats});
@@ -90,15 +90,15 @@ sub create_html
     $self->mostmonologues($self->{stats});
     $self->mostjoins($self->{stats});
     $self->mostfoul($self->{stats});
-    $self->html("</table>"); # Needed for sections
+    html("</table>"); # Needed for sections
 
     $self->headline($self->template_text('latesttopic'));
-    $self->html("<table width=\"$self->{conf}->{tablewidth}\">\n"); # Needed for sections
+    html("<table width=\"$self->{conf}->{tablewidth}\">\n"); # Needed for sections
     $self->lasttopics($self->{stats});
-    $self->html("</table>"); # Needed for sections
+    html("</table>"); # Needed for sections
 
     my %hash = ( lines => $self->{stats}->{totallines} );
-    $self->html($self->template_text('totallines', %hash) . "<br><br>");
+    html($self->template_text('totallines', %hash) . "<br><br>");
 
     $self->htmlfooter($self->{stats});
 
