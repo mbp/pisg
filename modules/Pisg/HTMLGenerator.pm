@@ -1711,7 +1711,7 @@ sub _mostnicks
 
 sub _mostactivebyhour
 {
-    # List showing the user with most used nicks
+    # Charts for most active nicks by hour (0-5, 6-11, 12-17, 18-23)
     my $self = shift;
 
     my $sortnicks;
@@ -1727,9 +1727,10 @@ sub _mostactivebyhour
               <=>
               (defined $self->{stats}->{line_times}{$a}[$period]?$self->{stats}->{line_times}{$a}[$period]:0)
         }
-        keys %{ $self->{stats}->{nicks} } ;
+        keys %{ $self->{stats}->{line_times} } ;
 
         for(my $i = 0; $i < $self->{cfg}->{activenicksbyhour}; $i++) {
+            next if ! $sortnicks[$i];
             next if is_ignored($sortnicks[$i]);
             last unless $i < @sortnicks;
 
