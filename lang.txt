@@ -95,7 +95,7 @@ long1 = "<b>[:nick]</b> wrote the longest lines, averaging [:letters] letters pe
 long2 = "[:channel] average was [:avg] letters per line."
 
 short1 = "<b>[:nick]</b> wrote the shortest lines, averaging [:letters] characters per line."
-short2 = "[:nick] was tight-lipped, too, averaging [:letters] characters."
+short2 = "<b>[:nick]</b> was tight-lipped, too, averaging [:letters] characters."
 
 foul1 = "<b>[:nick]</b> has quite a potty mouth.  [:per]% lines contained foul language."
 foul2 = "<b>[:nick]</b> also makes sailors blush, [:per]% of the time."
@@ -213,7 +213,7 @@ long1 = "<b>[:nick]</b> ist die Labertasche im Channel. [:Er:Sie:] schrieb die l
 long2 = "Channel-Durchschnitt in [:channel] war [:avg] Buchstaben pro Zeile."
 
 short1 = "<b>[:nick]</b> ist nicht sehr Mitteilungsbedürftig. [:Er:Sie:] schrieb die kürzeste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile..."
-short2 = "[:nick] war auch sehr kurzfassend, durchschnittlich [:letters] Buchstaben pro Zeile."
+short2 = "<b>[:nick]</b> war auch sehr kurzfassend, durchschnittlich [:letters] Buchstaben pro Zeile."
 
 foul1 = "<b>[:nick]</b> hat in [:seiner:ihrer:] Jugend keine Erziehung genossen, [:per]% seiner/ihrer S&auml;tze enthielten Schimpfworte!"
 foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman noch kommt?)"
@@ -317,7 +317,7 @@ long1 = "<b>[:nick]</b> skriver meget lange sætninger. Gennemsnittet var [:lette
 long2 = "Gennemsnittet på [:channel] er [:avg] bogstaver pr. linje"
 
 short1 = "<b>[:nick]</b> skrev de korteste linjer. Gennemsnittet er [:letters] bogstaver pr. linje..."
-short2 = "[:nick] skriver også korte linjer, med et gennesnit på [:letters]"
+short2 = "<b>[:nick]</b> skriver også korte linjer, med et gennesnit på [:letters]"
 
 foul1 = "<b>[:nick]</b> er lidt stor i munden, [:per]% af linjerne indeholdte uhøfligt sprog"
 foul2 = "<b>[:nick]</b> burde også vaske munden med sæbe med alt det han fyrer af, [:per]% af tiden"
@@ -464,7 +464,7 @@ long1 = "<b>[:nick]</b> a écrit des lignes bien longues! [:letters] lettres par 
 long2 = "La moyenne de [:channel] est de [:avg] lettres par ligne."
 
 short1 = "<b>[:nick]</b> a écrit les lignes les plus courtes, avec en moyenne [:letters] lettres par ligne..."
-short2 = "[:nick] n'a pas grand chose a dire non plus, en moyenne [:letters]"
+short2 = "<b>[:nick]</b> n'a pas grand chose a dire non plus, en moyenne [:letters]"
 
 foul1 = "<b>[:nick]</b> a du mal a s'exprimer, [:per]% de ses lignes contiennent des mots incompréhensibles"
 foul2 = "<b>[:nick]</b> parle aussi comme un chartier, [:per]% du temps"
@@ -582,7 +582,7 @@ long1 = "<b>[:nick]</b> escribe las lineas más largas: [:letters] letras por lin
 long2 = "La media de [:channel] es de [:avg] letras por linea"
 
 short1 = "<b>[:nick]</b> es la persona más vaga escribiendo, con una media de [:letters] letras por linea..."
-short2 = "[:nick] no se queda atrás, con una media de [:letters]"
+short2 = "<b>[:nick]</b> no se queda atrás, con una media de [:letters]"
 
 foul1 = "<b>[:nick]</b> necesita que le laven la boca con jabón lagarto, un [:per]% de sus lineas contienen palabrotas y tacos"
 foul2 = "<b>[:nick]</b> tambien es algo bestia, dice tacos el [:per]% del tiempo"
@@ -666,7 +666,7 @@ long1 = "<b>[:nick]</b> pisal najdluzsze linie, o sredniej dlugosci [:letters] l
 long2 = "Srednia dla kanalu [:channel] to [:avg] liter w linii"
 
 short1 = "<b>[:nick]</b> staral sie pisac zwiezle, srednio [:letters] liter w linii..."
-short2 = "[:nick] wybakiwal krotkie wypowiedzi srednio po [:letters] liter"
+short2 = "<b>[:nick]</b> wybakiwal krotkie wypowiedzi srednio po [:letters] liter"
 
 foul1 = "<b>[:nick]</b> ma niewyparzona gebe, [:per]% linii zawieralo bluzgi"
 foul2 = "<b>[:nick]</b> klnie jak szefc (albo i gorzej), przez [:per]% czasu"
@@ -742,7 +742,7 @@ long1 = "<b>[:nick]</b> skrev de lengste (og kjedeligste?) linjene, gjennomsnitt
 long2 = "Gjennomsnittet på [:channel] var [:avg] bokstaver pr linje"
 
 short1 = "<b>[:nick]</b> skrev de korteste (og beste?) linjene, med gjennomsnittlig [:letters] bokstaver pr linje."
-short2 = "[:nick] var også rimelig kort, med sine gjennomsnittlige [:letters] bokstaver pr linje."
+short2 = "<b>[:nick]</b> var også rimelig kort, med sine gjennomsnittlige [:letters] bokstaver pr linje."
 
 foul1 = "<b>[:nick]</b> er ganske stor i kjeften, [:per]% av [:hans:hennes:] linjer inneholdt et uhøflig språk."
 foul2 = "<b>[:nick]</b> er heller ikke svigemors drøm, [:per]% av [:hans:hennes:] linjer må kategoriseres som uhøffelig språk."
@@ -818,7 +818,7 @@ long1 = "<b>[:nick]</b> escreve grandes linhas, em média [:letters] letras por l
 long2 = "A média de [:channel] é de [:avg] letras por linha"
 
 short1 = "<b>[:nick]</b> é a pessoa q escreve menos linhas, com uma média de [:letters] letras por linha..."
-short2 = "[:nick] não fica atrás, com uma média de [:letters]"
+short2 = "<b>[:nick]</b> não fica atrás, com uma média de [:letters]"
 
 foul1 = "<b>[:nick]</b> necessita que lavem a sua boca com sabão, [:per]% de sua linhas contém 1 palavrão"
 foul2 = "<b>[:nick]</b> também é um Boca-Suja, fala palavrões em [:per]% do tempo"
