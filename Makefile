@@ -35,6 +35,7 @@ GFX = gfx/green-h.png \
 SCRIPTS = scripts/crontab \
 	   scripts/dropegg.pl \
 	   scripts/egg2mirc.awk \
+	   scripts/eggdrop-pisg.tcl \
 	   scripts/mirc2egg.sed \
 	   scripts/sirc-timestamp.pl \
 	   scripts/windows-ftp-upload.txt
