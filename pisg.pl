@@ -118,6 +118,7 @@ sub load_modules {
     push @INC, $conf->{modules_dir};
     require Pisg::Common;
     Pisg::Common->import();
+    Pisg::Common::init_common($debug);
 }
 
 sub main {
