@@ -72,7 +72,7 @@ sub thirdline
         } elsif ($#line >= 3 && ($line[1].$line[2]) eq 'setsmode:') {
             $hash{newmode} = $line[3];
 
-        } elsif ($#line == 3 && ($line[1].$line[2]) eq 'hasjoined') {
+        } elsif ($#line == 4 && ($line[2].$line[3]) eq 'hasjoined') {
             $hash{newjoin} = $line[0];
 
         } elsif ($#line == 5 && ($line[2].$line[3]) eq 'nowknown') {
@@ -86,6 +86,8 @@ sub thirdline
                 ($hash{saying} =~ /^Disconnected/) ||  
                 ($hash{saying} =~ /^\S+ has quit IRC \(.+\)/) ||  
                 ($hash{saying} =~ /^\S+ has left \#\S+/) ||  
+                ($hash{saying} =~ /^\S+\s\S+ has left \#\S+/) ||
+                ($hash{saying} =~ /^\S+\s\S+ Quit \S+/) ||
                 ($hash{saying} eq "You're not channel operator") ||
                 ($hash{nick} eq 'Attempting' && $hash{saying} =~ /^to rejoin channel/) ||  
                 ($hash{nick} eq 'Rejoined' && $hash{saying} =~ /^channel/) ||  

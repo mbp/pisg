@@ -1,5 +1,6 @@
 pisg (x.xx)
    * Fixed a bug in the energymech format, it did not recognize join lines.
+   * Fixed some bugs in the mIRC6 format.
 
 pisg (0.51) - Wed Jan, 21st 2004
    * Fixed a bug in the irssi format where an action could be recognized as a
