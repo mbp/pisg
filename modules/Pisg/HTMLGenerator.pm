@@ -318,7 +318,7 @@ sub _activetimes
         $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmallcenter\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$percent\" /></td>\n";
     }
 
     _html("<table border=\"0\"><tr>\n");
@@ -327,7 +327,7 @@ sub _activetimes
         $a = sprintf("%02d", $b);
 
         if (!defined($output{$a}) || $output{$a} eq "") {
-            _html("<td align=\"center\" valign=\"bottom\" class=\"asmallcenter\">0%</td>");
+            _html("<td align=\"center\" valign=\"bottom\" class=\"asmall\">0%</td>");
         } else {
             _html($output{$a});
         }
@@ -1296,7 +1296,7 @@ sub _lasttopics
             _html("<tr><td class=\"hicell\"><i>$topic</i></td>");
             _html("<td class=\"hicell\"><b>" . $self->_template_text('bylinetopic', %hash) ."</b></td></tr>");
         }
-        _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmallcenter\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
+        _html("<tr><td align=\"center\" colspan=\"2\" class=\"asmall\">" . $self->_template_text('totaltopic', %hash) . "</td></tr>");
     } else {
         _html("<tr><td class=\"hicell\">" . $self->_template_text('notopic') ."</td></tr>");
     }
