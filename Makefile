@@ -35,6 +35,7 @@ SCRIPTS = scripts/crontab \
 	   scripts/dropegg.pl \
 	   scripts/egg2mirc.awk \
 	   scripts/mirc2egg.sed \
+	   scripts/sirc-timestamp.pl \
 	   scripts/windows-ftp-upload.txt
 
 ADDALIAS = scripts/addalias/addalias.pl \
