@@ -191,7 +191,7 @@ sub get_default_config_settings
 
         botnicks => '',            # Needed for DCpp format (non-irc)
 
-        version => "0.45",
+        version => "0.46-cvs",
     };
 
     # Backwards compatibility with old option names:
