@@ -186,9 +186,12 @@ hicell              Background color in highlighted cells
 hicell2             Background color in highlighted cells
 tdcolor             Color of text in tables
 tdtop               Top color in some tables.
-link                Color of links
-vlink               Color of visited links
-hlink               Color of hovered links
+link                Color of links in tables
+vlink               Color of visited links in tables
+hlink               Color of hovered links in tables
+bg_link                Color of links on background
+bg_vlink               Color of visited links on background
+bg_hlink               Color of hovered links on background
 headline            Border color of headlines
 rankc               Colors of 'ranks' (1,2,3,4) and active times
 hi_rankc            Highlighted ranks
