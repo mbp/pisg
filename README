@@ -24,42 +24,39 @@ and then the format of your logfile.
 
 You cannot set everything up on the commandline, only the important things.
 
-The 'pisg.cfg' file control a lot of things, you should read CONFIG-README.
+The 'pisg.cfg' file controls a lot of things, you should read CONFIG-README.
 
 NOTE: The stats will look best with a logfile which is a least a day-long.
 Some stats (like smilies, exclamation marks etc) doesn't get counted before
 a special amount of time.
 
-Also, pisg supports multiple languages so you're text will be in your own
-language; look in lang.txt to see the supported languages. The language can
-be changed from within the pisg.cfg file.
+Also, pisg supports multiple languages so the texts on the stats page will
+be in your own language; look in lang.txt to see the supported languages.
+The language can be changed from within the pisg.cfg file.
 
 You're welcome to translate pisg to your own language, it's not very hard,
 look in the lang.txt file!
 
 And a last note: there is some graphics in the gfx/ folder which pisg uses,
-you should put these in the same directory as your stats files.
+you should put these in the same directory as your stats file(s).
 
 RUNNING PISG
 ------------
-If you have setup everything inside the script, then you just need to run
-it. If you're on a Linux/Unix system, these steps should do the work:
+If you have setup everything inside the config file, then you just need to
+run it. If you're on a Linux/Unix system, this should do the work:
 
-    $ chmod +x pisg.pl
     $ ./pisg.pl
 
 Running pisg like this will just use the settings in pisg.cfg.
 
-If you have more than one channel, then you can also tell it to pisg on the
-commandline, the syntax is explained when doing:
-
-    $ ./pisg.pl --help
-
-For example the following would work:
+If you want to specify things on commandline instead of in the config file,
+you could do:
 
     $ ./pisg.pl -ch \#channel -l logfile.log -f mIRC -o index.html
-    
-Try it out.
+   
+The syntax and options is explained when doing:
+
+    $ ./pisg.pl --help
 
 Setting settings on commandline, will override the relevant settings in
 pisg.cfg.
@@ -67,7 +64,7 @@ pisg.cfg.
 CONTACT INFORMATION
 -------------------
 If you have any problems with setting up or running this script. Then you
-can either send a mail to the pisg mailing list:
+can send a mail to the pisg mailing list:
 
 http://lists.sourceforge.net/mailman/listinfo/pisg-general
 
@@ -77,7 +74,7 @@ The pisg homepage is located at http://pisg.sourceforge.net/.
 
 If you use this script, and have a permanent URL for the location of your
 generated stats, I would be delighted if you would send the url to me.  Just
-to see how many people uses it, and so I can link to it from my pisg page.
+to see how many people uses it, and so I can link to it from the pisg page.
 
 Have fun :)
 
