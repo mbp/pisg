@@ -55,7 +55,10 @@
        <para>
         Any operating system which Perl runs on, this includes popular OS'es
         such as Linux, FreeBSD, Windows and Mac. You will have a hard time
-        finding an OS where Perl isn't supported.
+        finding an OS where Perl isn't supported. For Windows this means
+        that you need to download <ulink
+        url="http://activestate.com/Products/ASPN_Perl/">Active State Perl
+        (ASPN Perl)</ulink>.
        </para>
       </listitem>
      <listitem>
