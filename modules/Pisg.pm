@@ -1,6 +1,6 @@
 package Pisg;
 
-# POD for this module is found at the end of the file.
+# Documentation(POD) for this module is found at the end of the file.
 
 # Copyright (C) 2001  <Morten Brix Pedersen> - morten@wtf.dk
 #
@@ -401,7 +401,13 @@ _END
         my $generator;
         eval <<_END;
 use Pisg::HTMLGenerator;
-\$generator = new Pisg::HTMLGenerator(\$self->{cfg}, \$self->{debug}, \$stats, \$self->{users}, \$self->{tmps});
+\$generator = new Pisg::HTMLGenerator(
+    cfg => \$self->{cfg},
+    debug => \$self->{debug},
+    stats => \$stats,
+    users => \$self->{users},
+    tmps => \$self->{tmps}
+);
 _END
 
         if ($@) {
