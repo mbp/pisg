@@ -274,7 +274,7 @@ sub _parse_file
                     }
 
                     $stats->{foul}{$nick}++
-                        if ($saying =~ /$self->{cfg}->{foul}/i);
+                        if ($saying =~ /$self->{cfg}->{foul}/io);
 
                     # Who smiles the most?
                     # A regex matching al lot of smilies
@@ -326,7 +326,7 @@ sub _parse_file
                 $stats->{lastvisited}{$nick} = $stats->{days};
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
-                if ($saying =~ /^($self->{cfg}->{violent}) (\S+)/) {
+                if ($saying =~ /^($self->{cfg}->{violent}) (\S+)/o) {
                     my $victim = find_alias($2);
                     if (!is_ignored($victim)) {
                         $stats->{violence}{$nick}++;
