@@ -112,6 +112,12 @@ show_wpl             1 or 0, this enables pisg to show 'words per line' for
 
 show_cpl             Same as above, this is just 'chars per line'
 
+show_words           1 or 0, this will enable/disable both of the 2 above
+                     options.
+
+show_time            1 or 0, this will enable/disable the showing of the
+                     fancy timebars indicating when a nick was active.
+
   * Colors for your stats page *
 
 bgcolor              Background color of the page
