@@ -76,6 +76,19 @@ sub add_url_ignore
     $ignored_urls{$url} = 1;
 }
 
+# Sub to do a -cheap- check on wether or not a word is a nick
+# This will only match if it has seen it used as a nick
+sub is_nick
+{
+    my ($nick) = @_;
+    my $lcnick = lc($nick);
+
+    if ($aliases{$lcnick}) {
+        return 1;
+    }
+    return 0;
+}
+
 # For efficiency reasons, find_alias() caches aliases when it finds them,
 # because the regexp search through %aliaswilds is *really* expensive.
 # %aliasseen is used to mark nicks for which nothing matches--we can't add
