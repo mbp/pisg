@@ -10,6 +10,8 @@ pisg (x.xx)
      new ones.
    * Distribute raw docbook (SGML) documentation (docs/pisg-doc.sgml)
    * Add half-op (+h) support to the xchat format (thanks, Jaff Har Har)
+   * Fix a problem with irssi logs, where a topic was understood as a saying.
+   (thanks, jikuja)
 
 pisg (0.49) - Sun Sep, 14th 2003
    * Make the HTML output XHTML compliant again (thanks, Stian Jordet)
