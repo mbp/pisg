@@ -528,13 +528,7 @@ sub checkname {
     # when nicktracking is enabled)
     my ($nick, $newnick, $stats) = @_;
 
-    foreach (@{ $stats->{nicks}{$newnick}}) {
-        if (lc($_) eq lc($nick)) {
-            return;
-        } 
-    }
-
-    push (@{ $stats->{nicks}{$newnick} }, $nick);
+    $stats->{nicks}{$newnick}{lc($nick)} = $nick;
 }
 
 sub _adjusttimeoffset

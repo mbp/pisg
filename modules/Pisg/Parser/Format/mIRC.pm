@@ -93,11 +93,9 @@ sub thirdline
 
 sub remove_prefix
 {
-    my $str = shift;
+    my ($str) = @_;
 
-    $str =~ s/^@//;
-    $str =~ s/^\+//;
-    $str =~ s/^%//;
+    $str =~ s/^[@%\+]//o;
 
     return $str;
 }

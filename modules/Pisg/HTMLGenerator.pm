@@ -1770,10 +1770,10 @@ sub _mostnicks
     # List showing the user with most used nicks
     my $self = shift;
 
-    my @sortnicks = sort { @{ $self->{stats}->{nicks}->{$b} } <=> @{ $self->{stats}->{nicks}->{$a} } } 
+    my @sortnicks = sort { keys %{ $self->{stats}->{nicks}->{$b} } <=> keys %{ $self->{stats}->{nicks}->{$a} } } 
                                 keys %{ $self->{stats}->{nicks} };
 
-    if (@{ $self->{stats}->{nicks}->{$sortnicks[0]} } > 1) {
+    if (keys %{ $self->{stats}->{nicks}->{$sortnicks[0]} } > 1) {
 
         $self->_headline($self->_template_text('mostnickstopic'));
 
@@ -1788,8 +1788,8 @@ sub _mostnicks
         for(my $i = 0; $i < $self->{cfg}->{mostnickshistory}; $i++) {
             next if is_ignored($sortnicks[$i]);
             last unless $i < @sortnicks;
-            my $nickcount = scalar(@{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
-            my $nickused = join(", ", @{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
+            my $nickcount = keys %{ $self->{stats}->{nicks}->{$sortnicks[$i]} };
+            my $nickused = join(", ", values %{ $self->{stats}->{nicks}->{$sortnicks[$i]} });
 
             next unless ($nickcount > 1);
 

@@ -57,8 +57,12 @@ sub add_ignore
 sub is_ignored
 {
     my $nick = shift;
-    if ($ignored{$nick} or $ignored{find_alias($nick)}) {
+    if ($ignored{$nick}) {
         return 1;
+    } elsif ($ignored{find_alias($nick)}) {
+        $ignored{$nick} = 1;
+    } else {
+        $ignored{$nick} = 0;
     }
 }
 
@@ -140,10 +144,10 @@ sub match_urls
     my $str = shift;
 
     # Interpret 'www.' as 'http://www.'
-    $str =~ s/(http:\/\/)?www\./http:\/\/www\./ig;
+    $str =~ s/(http:\/\/)?www\./http:\/\/www\./igo;
 
     my @urls;
-    while ($str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)//i) { 
+    while ($str =~ s/(http|https|ftp|telnet|news)(:\/\/[-a-zA-Z0-9_\/~]+\.[-a-zA-Z0-9.,_~=:&amp;@%?#\/+]+)//io) { 
         my $url = "$1$2";
         if ($url_seen{$url}) {
             push(@urls, $url);
