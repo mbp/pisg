@@ -592,11 +592,11 @@ sub _parse_words
 
 	# uniquify nicks
 	if (my $realnick = is_nick($word)) {
-		$stats->{wordcounts}{$realnick}++;
-		$stats->{wordnicks}{$realnick} = $nick;
+            $stats->{wordcounts}{$realnick}++;
+            $stats->{wordnicks}{$realnick} = $nick;
 	} else {
-		$stats->{wordcounts}{$word}++;
-		$stats->{wordnicks}{$word} = $nick;
+            $stats->{wordcounts}{$word}++;
+            $stats->{wordnicks}{$word} = $nick;
 	}
     }
 }
