@@ -2,13 +2,15 @@ pisg (0.63) - ??
    Morten:
    * A new option, ShowLines, for disabling the column with the number of
      lines in "Most Active Nicks" has been added.
+   * Choose locally-installed pisg versions ahead of system-installed pisg
+     versions. (thanks, Bruce W. Murphy)
    Christoph:
    * Updated the Swedish foul1 template (thanks, Torbjörn Svensson).
    * Updated some German strings (thanks, Igge).
    * Inhibit warning in _mostreferencednicks when a nick is referenced
      before being used first.
-   * Choose locally-installed pisg versions ahead of system-installed pisg
-   versions. (thanks, Bruce W. Murphy)
+   * Links for users in "These didn't make it to the top" (thanks, Edward
+     Pinski).
 
 pisg (0.62) - Sat Dec, 11th 2004
    Changes by Christoph Berg:

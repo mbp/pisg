@@ -631,8 +631,15 @@ sub _activenicks
         if ($self->{cfg}->{activenicks} <  $remain) {
             _html("<br /><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
             for (my $i = $self->{cfg}->{activenicks}; $i < $remain; $i++) {
+                my $visiblenick;
+                my $nick = $active[$i];
                 unless ($i % 5) { if ($i != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
                 my $items;
+                if ($self->{users}->{userlinks}{$nick}) {
+                    $visiblenick = $self->_format_word($self->{users}->{userlinks}{$nick}, $nick);
+                } else {
+                    $visiblenick = $self->_format_word($nick);
+                }
                 if ($self->{cfg}->{sortbywords}) {
                     $items = $self->{stats}->{words}{$active[$i]};
                 } else {
@@ -642,7 +649,7 @@ sub _activenicks
                 _html("<td class=\"rankc10\">"
                 . ($sex ? ($sex eq 'm' ? "<span class=\"male\">"
                 : ($sex eq 'f' ? "<span class=\"female\">" : "<span class=\"bot\">")) : "")
-                ."$active[$i] ($items)"
+                ."$visiblenick ($items)"
                 . ($sex ? "</span>" : "")
                 ."</td>");
             }
