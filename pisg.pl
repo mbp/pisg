@@ -296,7 +296,13 @@ sub parse_file
     # This parses the file..
     print "Analyzing log($file) in '$format' format...\n";
 
-    open (LOGFILE, $file) or die("$0: Unable to open logfile($file): $!\n");
+    if ($file =~ /.bz$/ || $file =~ /.bz2$/) {
+        open (LOGFILE, "bunzip2 -c $file |") or die("$0: Unable to open logfile($file): $!\n");
+    } elsif ($file =~ /.gz$/) {
+        open (LOGFILE, "gunzip -c $file |") or die("$0: Unable to open logfile($file): $!\n");
+    } else {
+        open (LOGFILE, $file) or die("$0: Unable to open logfile($file): $!\n");
+    }
 
     while($line = <LOGFILE>) {
         $lines++; # Increment number of lines.
