@@ -7,6 +7,7 @@ pisg (0.18)
      dir/#mychan* files. (Sascha Lüdecke)
    * Fix op tracking with bx logs
    * Added Foulwords-Variable to pisg.cfg
+   * Make pisg die when there is no files in logdir
 
 pisg (0.17) - Sat, July 28th 2001
 
