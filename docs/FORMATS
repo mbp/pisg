@@ -79,7 +79,9 @@ link to the logfile)
         Thu Aug 23 12:59:40 2001 <John> Hello world
 
 * irssi:
-  - console IRC client (www.irssi.org)
+  - Console IRC client (www.irssi.org)
+  
+  - Logfiles must be using the default theme in irssi.
 
   - In order to use this, format must be set to 'irssi'
 
