@@ -42,6 +42,12 @@ link to the logfile)
 
   - In order to use this, format must be set to 'eggdrop'.
 
+  You might want to change the logfile-suffix in order for pisg to parse the
+  files in the correct order when using 'logdir':
+  set logfile-suffix ".%Y%m%d" instead of the standard format
+  set logfile-suffix ".%d%b%Y".
+  
+
   Example:
         [00:02] <Jenny> Hello world
      
