@@ -5,7 +5,7 @@ use Getopt::Long;
 
 # pisg - Perl IRC Statistics Generator
 #
-# Copyright (C) 2001  <Morten Brix Pedersen> - morten@wtf.dk
+# Copyright (C) 2001-2002  <Morten Brix Pedersen> - morten@wtf.dk
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,6 +37,12 @@ sub main
     my $cfg = get_cmdline_options($script_dir);
     push(@INC, $cfg->{modules_dir});
 
+    my $version;
+    if ($cfg->{version}) {
+        $version = 1;
+        undef $cfg->{version};
+    }
+
     my $pisg;
     eval <<END;
 
@@ -47,7 +53,12 @@ use Pisg;
     override_cfg => \$cfg,
     search_path => \$script_dir,
 );
-\$pisg->run();
+
+if (\$version) {
+    print \$pisg->{cfg}->{version} . "\n";
+} else {
+    \$pisg->run();
+}
 END
     if ($@) {
         print $@;
@@ -71,7 +82,7 @@ sub get_cmdline_options
 
 my $usage = <<END_USAGE;
 Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
-[-f format] [-n network] [-d logdir] [-mo moduledir] [-s] [-h]
+[-f format] [-n network] [-d logdir] [-mo moduledir] [-s] [-v] [-h]
 
 -ch --channel=xxx      : Set channel name
 -l  --logfile=xxx      : Log file to parse
@@ -79,13 +90,14 @@ Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 -ma --maintainer=xxx   : Channel/statistics maintainer
 -f  --format=xxx       : Logfile format [see FORMATS file]
 -n  --network=xxx      : IRC network for the channel
--d  --dir=xxx          : Analyze all files in this dir. Ignores logfile 
+-d  --dir=xxx          : Analyze all files in this dir. Ignores logfile
 -p  --prefix=xxx       : Analyse only files prefixed by xxx in dir
                          Only works with --dir
 -cf --cfg opt=value    : Specify configuration options, eg. -cf show_wpl=1
 -co --configfile=xxx   : Configuration file
 -mo --moduledir=xxx    : Directory containing pisg modules
 -s  --silent           : Suppress output (except error messages)
+-v  --version          : Show version
 -h  --help             : Output this message and exit.
 
 Example:
@@ -109,6 +121,7 @@ END_USAGE
                    'ignorefile=s' => \$tmp,
                    'aliasfile=s'  => \$tmp,
                    'silent'       => \$silent,
+                   'version'      => \$cfg{version},
                    'cfg=s'        => \@cfg,
                    'help|?'       => \$help
                ) == 0 or $help) {
@@ -117,7 +130,7 @@ END_USAGE
 
     if ($tmp) {
         die("The aliasfile and ignorefile has been obsoleted by the new
-        pisg.cfg, please use that instead [look in pisg.cfg]\n");
+        pisg.cfg, please use that instead [see pisg.cfg]\n");
     }
 
     if ($silent) { $cfg{silent} = 1; }
