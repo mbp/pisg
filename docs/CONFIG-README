@@ -131,6 +131,9 @@ show_wpl            1 or 0, this enables pisg to show 'words per line' for
 
 show_cpl            Same as above, this is just 'characters per line'
 
+show_lastseen       1 or 0, display a coloumn showing when the user was last
+                    on the channel (how many days ago)
+
 show_words          1 or 0, this will enable/disable both of the 2 above
                     options.
 

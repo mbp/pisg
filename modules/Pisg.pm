@@ -164,6 +164,7 @@ sub get_default_config_settings
         show_words => 0,
         show_wpl => 0,
         show_cpl => 0,
+        show_lastseen => 0,
         show_legend => 1,
         show_kickline => 1,
         show_actionline => 1,
@@ -294,7 +295,7 @@ sub init_config
                     $nick = $1;
                     add_alias($nick, $nick);
                 } else {
-                    print STDERR "Warning: no nick specified in $self->{cfg}->{configfile} on line $lineno\n";
+                    print STDERR "Warning: No nick specified in $self->{cfg}->{configfile} on line $lineno\n";
                     next;
                 }
 
@@ -375,7 +376,6 @@ sub init_config
         }
 
         close(CONFIG);
-
     }
 }
 

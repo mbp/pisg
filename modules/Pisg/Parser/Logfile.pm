@@ -152,7 +152,6 @@ sub _parse_file
     my $lastnormal = "";
     my $repeated;
 
-
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
         $linecount++;
@@ -192,6 +191,7 @@ sub _parse_file
                     $stats->{times}{$hour}++;
 
                     $stats->{lines}{$nick}++;
+                    $stats->{lastvisited}{$nick} = $stats->{days};
                     $stats->{line_times}{$nick}[int($hour/6)]++;
 
                     # Count up monologues
@@ -275,6 +275,7 @@ sub _parse_file
                 $stats->{actions}{$nick}++;
                 push @{ $lines->{actionlines}{$nick} }, $line;
                 $stats->{lines}{$nick}++;
+                $stats->{lastvisited}{$nick} = $stats->{days};
                 $stats->{line_times}{$nick}[int($hour/6)]++;
 
                 if ($saying =~ /^($self->{cfg}->{violent}) (\S+)/) {
@@ -319,6 +320,8 @@ sub _parse_file
             unless (is_ignored($nick)) {
                 # Timestamp collecting
                 $stats->{times}{$hour}++;
+
+                $stats->{lastvisited}{$nick} = $stats->{days};
 
                 if (defined($kicker)) {
                     unless (is_ignored($kicker)) {
