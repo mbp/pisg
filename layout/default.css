@@ -32,20 +32,20 @@ a.background:hover {
 
 body {
     background-color: #dedeee;
-    font-family: verdana, arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     font-size: 13px;
     color: black;
 }
 
 td {
-    font-family: verdana, arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     font-size: 13px;
     color: black;
     text-align: left;
 }
 
 .title {
-    font-family: tahoma, arial, sans-serif;
+    font-family: Tahoma, Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
 }
@@ -102,13 +102,13 @@ td {
 }
 
 .small {
-    font-family: verdana, arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     font-size: 10px;
 }
 
 
 .asmall {
-      font-family: arial narrow, sans-serif;
+      font-family: "Arial narrow", Arial, sans-serif;
       font-size: 10px;
       color: black;
       text-align: center;
