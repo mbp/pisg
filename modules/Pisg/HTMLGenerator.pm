@@ -1811,12 +1811,14 @@ sub _mosturls
         for(my $i = 0; $i < $self->{cfg}->{urlhistory}; $i++) {
             last unless $i < @sorturls;
             my $a = $i + 1;
-            my $sorturl  = $sorturls[$i];
             my $urlcount = $self->{stats}->{urlcounts}{$sorturls[$i]};
             my $lastused = $self->{stats}->{urlnicks}{$sorturls[$i]};
-            if (length($sorturl) > 60) {
-                $sorturl = substr($sorturl, 0, 60);
+            my $printurl = $sorturls[$i];
+            if (length($printurl) > 60) {
+                $printurl = substr($printurl, 0, 60);
             }
+            $printurl = htmlentities($printurl, $self->{cfg}->{charset});
+            my $linkurl = urlencode($sorturls[$i]);
             my $class;
             if ($a == 1) {
                 $class = 'hirankc';
@@ -1824,7 +1826,7 @@ sub _mosturls
                 $class = 'rankc';
             }
             _html("<tr><td class=\"$class\">$a</td>");
-            _html("<td class=\"hicell\"><a href=\"$sorturls[$i]\">$sorturl</a></td>");
+            _html("<td class=\"hicell\"><a href=\"$linkurl\">$printurl</a></td>");
             _html("<td class=\"hicell\">$urlcount</td>");
             _html("<td class=\"hicell\">$lastused</td>");
             _html("</tr>");

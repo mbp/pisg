@@ -390,7 +390,6 @@ sub _parse_file
                     if (my @urls = match_urls($saying)) {
                         foreach my $url (@urls) {
                             if(!url_is_ignored($url)) {
-                                $url =~ s/&/&amp;/g;
                                 $stats->{urlcounts}{$url}++;
                                 $stats->{urlnicks}{$url} = $nick;
                             }
