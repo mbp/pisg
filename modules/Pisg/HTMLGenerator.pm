@@ -445,13 +445,14 @@ sub _activenicks
 
     # Almost as active nicks ('These didn't make it to the top..')
 
-    my $nickstoshow = $self->{cfg}->{activenicks} + $self->{cfg}->{activenicks2};
-    $hash{totalnicks} = $nicks - $nickstoshow;
+    my $toshow = $self->{cfg}->{activenicks2} - $self->{cfg}->{activenicks};
+    my $remain = $self->{cfg}->{activenicks} + $toshow;
 
-    unless ($nickstoshow > $nicks) {
+    unless ($toshow > $nicks) {
+        print "\ttest\n";
 
         _html("<br><b><i>" . $self->_template_text('nottop') . "</i></b><table><tr>");
-        for (my $c = $self->{cfg}->{activenicks}; $c < $nickstoshow; $c++) {
+        for (my $c = $self->{cfg}->{activenicks}; $c < $remain; $c++) {
             unless ($c % 5) { unless ($c == $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
             _html("<td bgcolor=\"$self->{cfg}->{rankc}\" class=\"small\">");
             my $nick = $active[$c];
@@ -462,7 +463,8 @@ sub _activenicks
         _html("</table>");
     }
 
-    if($hash{totalnicks} > 0) {
+    $hash{totalnicks} = $nicks - $remain;
+    if ($hash{totalnicks} > 0) {
         _html("<br><b>" . $self->_template_text('totalnicks', %hash) . "</b><br>");
     }
 }
