@@ -82,7 +82,7 @@ Usage: pisg.pl [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 -d  --dir=xxx          : Analyze all files in this dir. Ignores logfile 
 -p  --prefix=xxx       : Analyse only files prefixed by xxx in dir
                          Only works with --dir
--cf --cfg              : Specify configuration options, eg. -cf show_wpl=1
+-cf --cfg opt=value    : Specify configuration options, eg. -cf show_wpl=1
 -co --configfile=xxx   : Configuration file
 -mo --moduledir=xxx    : Directory containing pisg modules
 -s  --silent           : Suppress output (except error messages)
@@ -94,7 +94,6 @@ Example:
 
 All options may also be defined by editing the configuration file and
 calling pisg without arguments.
-
 END_USAGE
 
     if (GetOptions('channel=s'    => \$cfg{channel},
