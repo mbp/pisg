@@ -58,7 +58,7 @@ my $conf = {
     vlink => "#0b407a",
     hlink => "#0b407a",
     headline => "#000000",
-    rankc => "#CCCCCC",  
+    rankc => "#CCCCCC",
 
     pic_v_0 => "blue-v.png",
     pic_v_6 => "green-v.png",
@@ -130,7 +130,7 @@ sub do_channel
     init_debug()
         unless ($conf->{debugstarted});       # Init the debugging file
     init_pisg();        # Init commandline arguments and other things
-    init_words();	# Init words. (Foulwords etc)
+    init_words();       # Init words. (Foulwords etc)
     init_lineformats(); # Attempt to set line formats in compliance with user specification (--format)
 
 
@@ -197,21 +197,21 @@ sub init_pisg
     undef %tookop;
     undef %joins;
     undef %actions;
-    undef %sayings; 
-    undef %wordcount; 
-    undef %lastused; 
-    undef %gotban; 
+    undef %sayings;
+    undef %wordcount;
+    undef %lastused;
+    undef %gotban;
 
-    undef %setban; 
-    undef %foul; 
+    undef %setban;
+    undef %foul;
 
-    undef $lastnormal; 
-    undef %shout; 
+    undef $lastnormal;
+    undef %shout;
 
-    undef %slap; 
-    undef %slapped; 
-    undef %words; 
-    undef %line_time; 
+    undef %slap;
+    undef %slapped;
+    undef %words;
+    undef %line_time;
 
 
     $timestamp = time();
@@ -291,18 +291,16 @@ sub init_config
         print "Using config file: $conf->{configfile}\n";
 
         my $lineno = 0;
-        while (<CONFIG>)
+        while (my $line = <CONFIG>)
         {
             $lineno++;
-            my $line = $_;
             next if /^#/;
 
             if ($line =~ /<user.*>/) {
                 my $nick;
 
                 if ($line =~ /nick="([^"]+)"/) {
-                    $nick = $1;
-                    $alias{lc($nick)} = $nick;
+                    $alias{lc($1)} = $1;
                 } else {
                     print STDERR "Warning: no nick specified in $conf->{configfile} on line $lineno\n";
                     next;
@@ -409,7 +407,7 @@ sub parse_file
 {
     my $file = shift;
     my $foulwords = $conf->{foul};
-	my $urlcount = 0;
+    my $urlcount = 0;
 
     # This parses the file..
     print "Analyzing log($file) in '$conf->{format}' format...\n";
@@ -533,7 +531,7 @@ sub parse_file
                 $line{$nick}++;
                 $line_time{$nick}[int($hour/6)]++;
 
-                if($saying =~ /^slaps (\S+)/) {
+                if ($saying =~ /^slaps (\S+)/) {
                     $slap{$nick}++;
                     $slapped{$1}++;
                 }
@@ -569,7 +567,7 @@ sub parse_file
                     unless (grep /^\Q$kicker\E$/i, @ignore) {
                         $gotkick{$nick}++;
                         $kicked{$kicker}++;
-						$kickline{$nick} = $line;
+                        $kickline{$nick} = $line;
                     }
                 } elsif (defined($newtopic)) {
                     unless ($newtopic eq '') {
@@ -936,7 +934,7 @@ sub htmlentities
 sub html
 {
     my $html = shift;
-    print OUTPUT $html . "\n";
+    print OUTPUT "$html\n";
 }
 
 sub template_text
@@ -1074,7 +1072,7 @@ sub create_html
 
     mostreferenced();
 
-	mosturls();
+    mosturls();
 
     headline(template_text('othernumtopic'));
     html("<table width=\"$conf->{tablewidth}\">\n"); # Needed for sections
@@ -1120,14 +1118,14 @@ sub activetimes
 
     for my $hour (sort keys %times) {
         debug("Time: $hour => ". $times{$hour});
-	$image = "pic_v_".(int($hour/6)*6);
-	$image = $conf->{$image};
-	debug("Image: $image");
+        $image = "pic_v_".(int($hour/6)*6);
+        $image = $conf->{$image};
+        debug("Image: $image");
 
         my $size = ($times{$hour} / $highest_value) * 100;
         my $percent = ($times{$hour} / $lines) * 100;
         $percent =~ s/(\.\d)\d+/$1/;
-        
+
         if ($size < 1 && $size != 0) {
             # Opera doesn't understand '0.xxxx' in the height="xx" attr,
             # so we simply round up to 1.0 here.
@@ -1173,7 +1171,7 @@ sub activetimes
     html("</tr></table>");
 
     if($conf->{show_legend} == 1) {
-	&legend();
+        &legend();
     }
 }
 
@@ -1194,15 +1192,15 @@ sub activenicks
     headline(template_text('activenickstopic'));
 
     html("<table border=\"0\" width=\"$conf->{tablewidth}\"><tr>");
-    html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>" 
-        . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
-	. template_text('numberlines') 
-        . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
-	. ($conf->{show_time} ? template_text('show_time')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
-	. ($conf->{show_words} ? template_text('show_words')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
-	. ($conf->{show_wpl} ? template_text('show_wpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
-	. ($conf->{show_cpl} ? template_text('show_cpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "") 
-        . template_text('randquote') ."</b></td>");
+    html("<td>&nbsp;</td><td bgcolor=\"$conf->{tdtop}\"><b>"
+    . template_text('nick') . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
+    . template_text('numberlines')
+    . "</b></td><td bgcolor=\"$conf->{tdtop}\"><b>"
+    . ($conf->{show_time} ? template_text('show_time')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "")
+    . ($conf->{show_words} ? template_text('show_words')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "")
+    . ($conf->{show_wpl} ? template_text('show_wpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "")
+    . ($conf->{show_cpl} ? template_text('show_cpl')."</b></td><td bgcolor=\"$conf->{tdtop}\"><b>" : "")
+    . template_text('randquote') ."</b></td>");
     if (scalar keys %{$users->{userpics}} > 0) {
         html("<td bgcolor=\"$conf->{tdtop}\"><b>" . template_text('userpic') ."</b></td>");
     }
@@ -1260,21 +1258,21 @@ sub activenicks
         my $ch   = $length{$nick};
         html("$i</td><td bgcolor=\"#$col_r$col_g$col_b\">$visiblenick</td>"
         . ($conf->{show_linetime} ?
-           "<td bgcolor=\"$col_r$col_g$col_b\">".user_linetimes($nick,$active[0])."</td>"
-           : "<td bgcolor=\"#$col_r$col_g$col_b\">$line</td>")
-	. ($conf->{show_time} ?
-	 "<td bgcolor=\"$col_r$col_g$col_b\">".user_times($nick)."</td>"
-	 : "")
-	. ($conf->{show_words} ? 
-	 "<td bgcolor=\"#$col_r$col_g$col_b\">$w</td>"
-	 : "")
-	. ($conf->{show_wpl} ? 
-	 "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$w/$line)."</td>"
-	 : "")
-	. ($conf->{show_cpl} ? 
-	 "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$ch/$line)."</td>"
-	 : "")
-	."<td bgcolor=\"#$col_r$col_g$col_b\">");
+        "<td bgcolor=\"$col_r$col_g$col_b\">".user_linetimes($nick,$active[0])."</td>"
+        : "<td bgcolor=\"#$col_r$col_g$col_b\">$line</td>")
+        . ($conf->{show_time} ?
+        "<td bgcolor=\"$col_r$col_g$col_b\">".user_times($nick)."</td>"
+        : "")
+        . ($conf->{show_words} ?
+        "<td bgcolor=\"#$col_r$col_g$col_b\">$w</td>"
+        : "")
+        . ($conf->{show_wpl} ?
+        "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$w/$line)."</td>"
+        : "")
+        . ($conf->{show_cpl} ?
+        "<td bgcolor=\"#$col_r$col_g$col_b\">".sprintf("%.1f",$ch/$line)."</td>"
+        : "")
+        ."<td bgcolor=\"#$col_r$col_g$col_b\">");
         html("\"$randomline\"</td>");
 
         if ($users->{userpics}{$nick}) {
@@ -1320,7 +1318,7 @@ sub user_linetimes {
     for (my $i = 0; $i <= 3; $i++) {
         next if not defined $line_time{$nick}[$i];
         my $w = int(($line_time{$nick}[$i] / $line{$nick}) * $len);
-	$debuglen += $w;
+        $debuglen += $w;
         if ($w) {
             my $pic = 'pic_h_'.(6*$i);
             $bar .= "<img src=\"$conf->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\">";
@@ -1393,7 +1391,7 @@ sub mostwordsperline
      foreach my $n (keys %words) {
          $wpl{$n} = sprintf("%.2f", $words{$n}/$line{$n});
          $numlines += $line{$n};
-	 $numwords += $words{$n};
+         $numwords += $words{$n};
      }
      $avg = sprintf("%.2f", $numwords/$numlines);
      my @wpl = sort { $wpl{$b} <=> $wpl{$a} } keys %wpl;
@@ -1460,15 +1458,15 @@ sub mostreferenced
 
 sub mosturls
 {
-	my %toll;
-	my $k = 0;
-	foreach(@urls) {
-		if($_ eq $urls[$k]) {
-			$toll{$_}++;
-		}
-		$k++;
-	}
-	my @sorturls = sort { $toll{$b} <=> $toll{$a} } keys %toll;
+    my %toll;
+    my $k = 0;
+    foreach(@urls) {
+        if($_ eq $urls[$k]) {
+            $toll{$_}++;
+        }
+        $k++;
+    }
+    my @sorturls = sort { $toll{$b} <=> $toll{$a} } keys %toll;
 
     if (@sorturls) {
 
@@ -1484,11 +1482,11 @@ sub mosturls
            my $a = $i + 1;
            my $sorturl = $sorturls[$i];
            my $urlcount = $toll{$sorturls[$i]};
-		   my $lastused = $urlnick{$sorturls[$i]};
+           my $lastused = $urlnick{$sorturls[$i]};
            html("<tr><td bgcolor=\"$conf->{rankc}\"><b>$a</b>");
            html("<td bgcolor=\"$conf->{hicell}\"><a href=\"$sorturl\">$sorturl</a></td>");
            html("<td bgcolor=\"$conf->{hicell}\">$urlcount</td>");
-		   html("<td bgcolor=\"$conf->{hicell}\">$lastused</td>");
+           html("<td bgcolor=\"$conf->{hicell}\">$lastused</td>");
            html("</tr>");
        }
    html("</table>");
@@ -1685,11 +1683,11 @@ sub gotkicks
         my %hash = (
             nick => $gotkick[0],
             kicks => $gotkick{$gotkick[0]},
-			line => $kickline{$gotkick[0]}
+            line => $kickline{$gotkick[0]}
         );
 
         my $text = template_text('gotkick1', %hash);
-		my $exttext = template_text('kicktext', %hash);
+        my $exttext = template_text('kicktext', %hash);
 
         html("<tr><td bgcolor=\"$conf->{hicell}\">$text<br><span class=\"small\">$exttext</span><br>");
         if (@gotkick >= 2) {
@@ -2429,9 +2427,8 @@ sub get_language_templates
     open(FILE, $conf->{langfile}) or open (FILE, $FindBin::Bin . "/$conf->{langfile}") or die("$0: Unable to open language file($conf->{langfile}): $!\n");
 
 
-    while (<FILE>)
+    while (my $line = <FILE>)
     {
-        my $line = $_;
         next if /^#/;
 
         if ($line =~ /<lang name=\"([^"]+)\">/) {
@@ -2447,7 +2444,6 @@ sub get_language_templates
                 }
             }
 
-                    
         }
 
     }
@@ -2456,5 +2452,5 @@ sub get_language_templates
 
 
 }
-    
+
 &main();        # Run the script
