@@ -312,8 +312,10 @@ sub init_config
                     foreach (@thisalias) {
                         if ($_ =~ s/\*/\.\*/g) {
                             $_ =~ s/([\[\]\{\}\-\^])/\\$1/g; # quote it if it is a wildcard
+                            $conf->{aliaswilds}{$_} = $nick;
+                        } else {
+                            $alias{$_} = $nick;
                         }
-                        $alias{$_} = $nick;
                     }
                 }
 
@@ -1016,10 +1018,10 @@ sub find_alias
 
     if ($alias{$lcnick}) {
         return $alias{$lcnick};
-    } else {
-        foreach (keys %alias) {
-            if (($_ =~ /\.\*/) && ($nick =~ /^$_$/i)) {
-                return $alias{$_};
+    } elsif ($conf->{aliaswilds}) {
+        foreach (keys %{ $conf->{aliaswilds} }) {
+            if ($nick =~ /^$_$/i) {
+                return $conf->{aliaswilds}{$_};
             }
         }
     }
