@@ -212,3 +212,15 @@ link to the logfile)
 
  Example:
         [Sat 16 Mar 21:24:09] <pete> hello everybody
+
+* Energymech:
+  - An irc bot written in C which is currently beeing developed.
+
+  - In order to use this, format must be set to 'energymech'.
+
+  - Energymech is available at http://www.energymech.net or (better)
+    at http://cvs.energymech.net 
+
+  Example:
+        [00:02] <Jenny> Hello world
+	[00:04] Joins: vjaway (vector@p5086F6EF.dip.t-dialin.net)
