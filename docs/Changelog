@@ -1,4 +1,4 @@
-pisg (0.62) - ??
+pisg (0.62) - Sat Dec, 11th 2004
    Changes by Christoph Berg:
    * Update mIRC script for the mIRC6hack format (thanks, coaster).
    * Warnings about missing Text::Iconv are suppressed by 'silent'.
