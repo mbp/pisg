@@ -239,6 +239,11 @@ sub init_config
 
                 my $settings = $1;
                 while ($settings =~ s/[ \t]([^=]+)=["']([^"']*)["']//) {
+					my $vars = $1;
+					my $keys = $2;
+					while ($vars =~ s/([A-Z])/\l$1/s) {
+						$config->{$vars} = $keys;
+					}
                     $config->{$1} = $2;
                     debug("Conf: $1 = $2");
                 }
