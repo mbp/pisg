@@ -1781,7 +1781,7 @@ sub _mostactivebyhour
                         if ($self->{cfg}->{showmostactivebyhourgraph}) {
                             my $pic = 'pic_h_'.(6*$period);
                             my $w = int(($count / $maxlines) * 100);
-                            _html("<br><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />");
+                            _html("<br /><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{$pic}\" border=\"0\" width=\"$w\" height=\"15\" align=\"middle\" alt=\"\" />");
                         }
                         _html("</td>");
                     } else {
