@@ -1,4 +1,5 @@
-pisg (x.xx)
+pisg (0.40) - Thu Jul, 4th 2002
+   * The "It's Summer And The Sun Is Shining"-release.
    * When ShowMostAtiveByHour was enabled, unitialized values could appear
      which caused the HTML file not to be created. (thanks, Gissehel)
    * RacBot logfile support added (thanks, Hanno Hecker)
