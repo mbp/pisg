@@ -550,7 +550,8 @@ sub parse_file
             $hour = $hashref->{hour};
             $min = $hashref->{min};
             $nick = find_alias($hashref->{nick});
-            $kicker = $hashref->{kicker};
+            $kicker = find_alias($hashref->{kicker})
+                if ($hashref->{kicker});
             $newtopic = $hashref->{newtopic};
             $newmode = $hashref->{newmode};
             $newjoin = $hashref->{newjoin};
