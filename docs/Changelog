@@ -1,4 +1,4 @@
-pisg (x.xx)
+pisg (0.37) - Mon Apr, 8th 2002
    * The "lets clean up and move things around"-release
    * pisg.pl has been renamed to pisg
    * Colors/layout options has been removed. You now control the HTML page
@@ -28,8 +28,9 @@ pisg (x.xx)
      increase.
    * When using the TimeOffset option, the wrong hours was highlighted both in
      the vertical and horizontal bars - fixed. (thanks, Mircea Ionut Bardac)
-   * When nicktracking is on, if a nick was changed but also appeared as an
-     alias, an errornous new alias would be created (thanks, Phil Gregory)
+   * When nicktracking is on, if a nick was changed but also appeared as a                     
+     regex-alias, an errornous new alias would be created (thanks,
+     Phil Gregory) 
    * mIRC-logfiles were not recognizing nick-changes, fixed (Sam Bingner)
    * Support for muh-bouncer logs (thanks, Sebastian Erlhofer & Bastian
      Friedrich)
