@@ -151,16 +151,22 @@ sub _parse_dir
                 push @month, $month;
             } else {
                 splice(@filesarray,$#month + 1, 1);
-                $file = $filesarray[$#month + 1];
-                goto LOOPSTART;
+                if ($file = $filesarray[$#month + 1]) {
+                    goto LOOPSTART;
+                } else {
+                    last;
+                }
             }
             if ($file =~ /$dreg/) {
                 push @day, $1;
             } else {
                 splice(@filesarray,$#day + 1, 1);
                 splice(@month,$#day + 1);
-                $file = $filesarray[$#day + 1];
-                goto LOOPSTART;
+                if ($file = $filesarray[$#day + 1]) {
+                    goto LOOPSTART;
+                } else {
+                    last;
+                }
             }
             if ($file =~ /$yreg/) {
                 push @year, $1;
@@ -168,8 +174,11 @@ sub _parse_dir
                 splice(@filesarray,$#year + 1, 1);
                 splice(@month,$#year + 1);
                 splice(@day,$#year + 1);
-                $file = $filesarray[$#year + 1];
-                goto LOOPSTART;
+                if ($file = $filesarray[$#year + 1]) {
+                    goto LOOPSTART;
+                } else {
+                    last;
+                }
             }
         }
         my @newarray = @filesarray[ sort {
