@@ -13,6 +13,7 @@ pisg (0.18)
    * Portugese translation (thanks to JaMiR0W <jamirow@ig.com.br>)
    * Norweigan translation (thanks to Andreas Blaafladt)
    * New feature 'Those who couldnt control the shift key and wrote UPPERCASE'
+   * Stop copying CVS dirs with distribution
    * Updated a lot of documentation (README and CONFIG-README), you should
      reread it ;)
    * The usual small improvements (and bug additions)
