@@ -1054,8 +1054,8 @@
 
     <refsynopsisdiv><programlisting>
       <![CDATA[
-        <set Cache="pisg_cache">
-        <set Cache="/path/to/pisg_cache">
+        <set CacheDir="pisg_cache">
+        <set CacheDir="/path/to/pisg_cache">
       ]]>
     </programlisting></refsynopsisdiv>
 
