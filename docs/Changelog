@@ -1,5 +1,6 @@
 pisg (0.23)
    * Support irssi logfiles
+   * Topics in mIRC format wasn't being recognized. Fixed.
 
 pisg (0.22) - Sat, Sep 15th 2001
    * pisg.cfg now supports regexs in user.cfg when 'regexp_aliases' is
