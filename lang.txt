@@ -1931,10 +1931,15 @@ mailto = "e-post"
 
 ### Italian
 <lang name="IT">
+names1 = "nomi"
+names2 = "nome"
+names = "Nick Usati"
+mostnickstopic = "Utenti con più nick"
+foultext = "<b>Ad esempio come questo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 mostop1 = "<b>[:nick]</b> ha oppato [:ops] persone..."
-mostop2 = "Anche <b>[:nick]</b> e' stato gentile: [:ops] persone sono state oppate da [:him:her:]."
+mostop2 = "Anche <b>[:nick]</b> e' stato gentile: [:ops] persone sono state oppate da lui/lei."
 mostop3 = "Strano, nessuno e' stato oppato su [:channel]!"
-
+activenickbyhourtopic = "Nick più attivi divisi per ora"
 mostdeop1 = "<b>[:nick]</b> e' lo sceriffo del canale con [:deops] deop."
 mostdeop2 = "<b>[:nick]</b> ha deoppato [:deops] persone."
 mostdeop3 = "Wow, nessuno e' stato deoppato su [:channel]!"
@@ -1943,7 +1948,7 @@ action1 = "<b>[:nick]</b> vuole sempre farci sapere cosa sta facendo: [:actions]
 action2 = "Inoltre, <b>[:nick]</b> ci spiffera [:actions] actions."
 action3 = "Niente actions in [:channel]!"
 actiontext = "<b>Ad esempio:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
+show_lastseen = "Ultima Visita"
 question1 = "Ma <b>[:nick]</b> e' stupido o semplicemente fa troppe domande?! Ben [:per]% linee contengono una domanda!"
 question2 = "<b>[:nick]</b> non e' da meno. [:per]% di linee erano domande."
 question3 = "Nessuno ha posto una domanda nel canale, tutti geni?"
@@ -1993,7 +1998,7 @@ long2 = "La media di [:channel] e' di [:avg] lettere per linea."
 short1 = "<b>[:nick]</b> ha scritto le righe piu' corte con [:letters] lettere di media."
 short2 = "Anche [:nick] e' di poche parole, con [:letters] lettere di media."
 
-foul1 = "<b>[:nick]</b> e' un essere volgare.  [:per]% di righe contiene parolacce."
+foul1 = "<b>[:nick]</b> e' un essere volgare. Ben il [:per]% delle sue righe contiene parolacce."
 foul2 = "Anche <b>[:nick]</b> shockerebbe uno scaricatore di porto, [:per]% del tempo."
 foul3 = "Nessuna parolaccia? porkavacca!"
 
@@ -2007,6 +2012,12 @@ sad3 = "Nessuno e' triste in [:channel]!  What a happy channel.  :-)"
 
 month = "Gennaio Febbraio Marzo Aprile Maggio Giugno Luglio Agosto Settembre Ottobre Novembre Dicembre"
 day = "Domenica Lunedi Martedi Mercoledi Giovedi Venerdi Sabato"
+mostvoice2 = "<b>[:nick]</b> è stato fortunato con i voice: [:voices] voices da [:him:her:]."
+mostvoice3 = "Male, nessun voice è stato dato su [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> ama togliere il voice alle persone, [:devoices] devoices."
+mostdevoice2 = "<b>[:nick]</b> iniziare anche lui ad amare il devoice infatti, ha tolto il voice a [:devoices] utenti."
+mostdevoice3 = "Nessun devoice su [:channel]!"
 
 ## Topics
 
@@ -2030,7 +2041,7 @@ nick = "Nick"
 url = "URL"
 numberlines = "Numero di linee"
 randquote = "Una frase a caso..."
-userpic = "Userpic"
+userpic = "Foto Utente"
 nottop = "Questi non ce l'hanno fatta a finire nella hit parade:"
 word = "Parola"
 numberuses = "Numero di utilizzi"
@@ -2041,7 +2052,7 @@ show_cpl = "Lettere per linea"
 lastused = "Usato l'ultima volta da"
 today = "oggi"
 pagetitle1 = "[:channel] @ [:network] stats by [:maintainer]"
-pagetitle2 = "Statistiche generate il "
+pagetitle2 = "Statistiche generate "
 pagetitle3 = "Durante questi [:days] giorni di analisi, un totale di <b>[:nicks]</b> nick differenti si sono visti su [:channel]."
 hours = "ore"
 minutes = "minuti"
@@ -2050,6 +2061,8 @@ and = "e"
 stats_gen_by = "Statistiche generate tramite [:pisg_url] v[:version]"
 author = "pisg by [:author_url] e altri :)"
 stats_gen_in = "Statistiche generate in [:time]"
+lastseen1 = "giorno fa"
+lastseen2 = "giorni fa"
 
 # Mouse-over titles
 pisghomepage = "Vai all'homepage di pisg"
