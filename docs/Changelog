@@ -7,6 +7,7 @@ pisg (x.xx)
      Likewise with PicWidth.
    * Quote < and > to &lt; and &gt; even in non-default character set
    * Ignore more 'actions' in mIRC6 format that are actually status messages
+   * Fix problem with muh format and action lines (thanks, Kevin Bralten)
 
 pisg (0.47) - Wed Feb, 26th 2003
    * Fix bug where multiple URLs in same line would have save name as first URL

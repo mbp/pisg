@@ -13,7 +13,7 @@ sub new
     my $self = {
         cfg => $args{cfg},
         normalline => '^\[\w\w\w \d\d \w\w\w (\d+):\d+:\d+\] <([^>\s]+)>\s+(.*)',
-        actionline => '^\[\w\w\w \d\d \w\w\w (\d+):\d+:\d+\] \*\s+(\S+) (.*)',
+        actionline => '^\[\w\w\w \d\d \w\w\w (\d+):\d+:\d+\] <([^>\s]+)>\sACTION\s+(.*)',
         #thirdline  => '^\[\w\w\w \d\d \w\w\w (\d+):(\d+):\d+\] \*\*\*\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (.*)',
         thirdline  => '^\[\w\w\w \d\d \w\w\w (\d+):(\d+):\d+\] \*\*\*\s+(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S*)(.*)',
     };
@@ -27,7 +27,7 @@ sub normalline
     my ($self, $line, $lines) = @_;
     my %hash;
 
-    if ($line =~ /$self->{normalline}/o) {
+    if ($line =~ /$self->{normalline}/o and !($line =~ /$/)) {
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
@@ -48,6 +48,7 @@ sub actionline
 
         $hash{hour}   = $1;
         $hash{nick}   = $2;
+
         $hash{saying} = $3;
 
         return \%hash;
