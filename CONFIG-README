@@ -118,6 +118,9 @@ show_words           1 or 0, this will enable/disable both of the 2 above
 show_time            1 or 0, this will enable/disable the showing of the
                      fancy timebars indicating when a nick was active.
 
+show_linetime        1 or 0, the same as above, except this will show the
+                     bar next to the number of lines like in mIRCStats
+
   * Colors for your stats page *
 
 bgcolor              Background color of the page
@@ -134,8 +137,15 @@ vlink                Color of visited links
 hlink                Color of hovered links
 headline             Border color of headlines
 rankc                Colors of 'ranks' (1,2,3,4)
-pic1                 Bar-graphic-file for normal times
-pic2                 Bar-graphic-file for top-times
+
+pic_v_0              Below settings are the filenames of the images to be
+pic_v_6              shown on thepage on timebars, the names should be 
+pic_v_12             self-explainable.
+pic_v_18
+pic_h_0
+pic_h_6
+pic_h_12
+pic_h_18
 
   * Small things, useful for some people *
 
