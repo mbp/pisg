@@ -99,7 +99,7 @@ my $conf = {
 
     debug => 0,
     debugfile => "debug.log",
-    version => "v0.20-cvs",
+    version => "v0.20",
 };
 
 my ($chans, $users);
