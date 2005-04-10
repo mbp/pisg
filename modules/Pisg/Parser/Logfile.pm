@@ -118,6 +118,8 @@ sub analyze
     %stats = (
         oldtime => 24,
         days => 0,
+        lastnick   => '',
+        monocount  => 0,
         day_lines => [ undef ],
         day_times => [ undef ],
     );
@@ -127,7 +129,10 @@ sub analyze
         print "Analyzing log $logfile... " unless ($self->{cfg}->{silent});
 
         my $s = {
+            oldtime => 24,
             days => 0,
+            firsttime => 0,
+            lastnick => '',
             parsedlines => 0,
             totallines => 0,
         };
@@ -278,13 +283,6 @@ sub _parse_file
         die("$0: Unable to open logfile($file): $!\n");
     }
 
-    my $lastnormal = '';
-    my $state = { # we are not tracking these across logfiles (except oldtime)
-        lastnick   => '',
-        monocount  => 0,
-        oldtime    => 24
-    };
-
     while(my $line = <LOGFILE>) {
         $line = _strip_mirccodes($line);
         $line =~ s/\r+$//;       # Strip DOS Formatting
@@ -317,7 +315,7 @@ sub _parse_file
             for ($i = 0; $i <= $repeated; $i++) {
 
                 if ($i > 0) {
-                    $hashref = $self->{parser}->normalline($lastnormal, $.);
+                    $hashref = $self->{parser}->normalline($stats->{lastnormal}, $.);
                     #Increment number of lines for repeated lines
                 }
 
@@ -326,13 +324,13 @@ sub _parse_file
                 checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
                 $saying = $hashref->{saying};
 
-                if ($hour < $state->{oldtime}) {
-                    $stats->{firsttime} = $hour if $state->{oldtime} == 24; # save stamp for merging
+                if ($hour < $stats->{oldtime}) {
+                    $stats->{firsttime} = $hour if $stats->{oldtime} == 24; # save stamp for merging
                     $stats->{days}++;
                     @{$stats->{day_times}[$stats->{days}]} = (0, 0, 0, 0);
                     $stats->{day_lines}->[$stats->{days}] = 0;
                 }
-                $state->{oldtime} = $hour;
+                $stats->{oldtime} = $hour;
 
                 if (!is_ignored($nick)) {
                     $stats->{parsedlines}++;
@@ -347,16 +345,16 @@ sub _parse_file
                     $stats->{line_times}{$nick}[int($hour/6)]++;
 
                     # Count up monologues
-                    if ($state->{lastnick} eq $nick) {
-                        $state->{monocount}++;
+                    if ($stats->{lastnick} eq $nick) {
+                        $stats->{monocount}++;
 
-                        if ($state->{monocount} == 5) {
+                        if ($stats->{monocount} == 5) {
                             $stats->{monologues}{$nick}++;
                         }
                     } else {
-                        $state->{monocount} = 0;
+                        $stats->{monocount} = 0;
                     }
-                    $state->{lastnick} = $nick;
+                    $stats->{lastnick} = $nick;
 
                     my $len = length($saying);
                     if ($len > $self->{cfg}->{minquote} && $len < $self->{cfg}->{maxquote}) {
@@ -430,7 +428,7 @@ sub _parse_file
                     _parse_words($stats, $saying, $nick, $self->{ignorewords_regexp}, $hour);
                 } # ignored
             } # repeated
-            $lastnormal = $line;
+            $stats->{lastnormal} = $line;
             $repeated = 0;
         } # normal lines
 
@@ -445,14 +443,14 @@ sub _parse_file
             checkname($hashref->{nick}, $nick, $stats) if ($self->{cfg}->{showmostnicks});
             $saying = $hashref->{saying};
 
-            if ($hour < $state->{oldtime}) {
-                $stats->{firsttime} = $hour if $state->{oldtime} == 24; # save stamp for merging
+            if ($hour < $stats->{oldtime}) {
+                $stats->{firsttime} = $hour if $stats->{oldtime} == 24; # save stamp for merging
                 $stats->{days}++;
                 @{$stats->{day_times}[$stats->{days}]} = (0, 0, 0, 0);
                 $stats->{day_lines}->[$stats->{days}] = 0;
             }
 
-            $state->{oldtime} = $hour;
+            $stats->{oldtime} = $hour;
 
             if (!is_ignored($nick)) {
                 # Timestamp collecting
@@ -517,14 +515,14 @@ sub _parse_file
             $newjoin  = $hashref->{newjoin};
             $newnick  = $hashref->{newnick};
 
-            if ($hour < $state->{oldtime}) {
-                $stats->{firsttime} = $hour if $state->{oldtime} == 24; # save stamp for merging
+            if ($hour < $stats->{oldtime}) {
+                $stats->{firsttime} = $hour if $stats->{oldtime} == 24; # save stamp for merging
                 $stats->{days}++;
                 @{$stats->{day_times}[$stats->{days}]} = (0, 0, 0, 0);
                 $stats->{day_lines}->[$stats->{days}] = 0;
             }
 
-            $state->{oldtime} = $hour;
+            $stats->{oldtime} = $hour;
 
             if (!is_ignored($nick)) {
                 # Timestamp collecting
@@ -582,7 +580,6 @@ sub _parse_file
     }
 
     $stats->{totallines} = $.;
-    $stats->{oldtime} = $state->{oldtime};
 
     close(LOGFILE);
 }
@@ -809,9 +806,12 @@ sub _merge_stats
     $stats->{days} += $s->{days} - 1 + $days_rollover;
 
     foreach my $key (keys %$s) {
-        next if $key =~ /^(logfile|firsttime|oldtime|days|version)/; # don't merge these
         #print "$key -> $s->{$key}\n";
-        if ($key =~ /^(parsedlines|totallines)$/) { # {key} = int: add
+        if ($key =~ /^(logfile|firsttime|days|version)/) { # don't merge these
+            next;
+        } elsif ($key =~ /^(oldtime|lastnick|lastnormal|monocount)$/) { # {key} = int/str: copy
+            $stats->{$key} = $s->{$key};
+        } elsif ($key =~ /^(parsedlines|totallines)$/) { # {key} = int: add
             $stats->{$key} += $s->{$key};
         } elsif ($key =~ /^(wordnicks|word_upcase|urlnicks|chartnicks)$/) { # {key}->{} = str: copy
             foreach my $subkey (keys %{$s->{$key}}) {
@@ -865,8 +865,6 @@ sub _merge_stats
             die "unknown key format $key -> $s->{$key}";
         }
     }
-
-    $stats->{oldtime} = $s->{oldtime};
 }
 
 sub _merge_lines
