@@ -109,6 +109,9 @@ sub thirdline
         } elsif ($#line == 4 && ($line[2].$line[3]) eq 'hasjoined') {
             $hash{newjoin} = $line[0];
 
+        } elsif ($line[0] eq 'Joins:') { # Alt+O -> IRC -> Options -> Short join/parts
+            $hash{newjoin} = $line[1];
+
         } elsif ($#line == 5 && ($line[2].$line[3]) eq 'nowknown') {
             $hash{newnick} = $line[5];
 
