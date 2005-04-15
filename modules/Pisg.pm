@@ -211,7 +211,7 @@ sub get_default_config_settings
 
         statsdump => '',           # Debug option
 
-        version => "0.64",
+        version => "0.65",
     };
 
     # This enables us to use the search_path in other modules

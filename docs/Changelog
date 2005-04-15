@@ -1,4 +1,4 @@
-pisg (0.65) - ??
+pisg (0.65) - Fri Apr, 15th 2005
    Christoph:
    * Karma didn't work well with nick aliases. It's still far from perfect,
      though (thanks to Nico for the test log).
