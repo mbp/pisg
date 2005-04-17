@@ -2427,10 +2427,11 @@
     <refsect1>
     <title>Description</title>
     <para>
-    The random quotes displayed in the "Most Active Nicks" section has a
-    certain range specified. With this option you can change the minimum
+    The random quotes displayed in the "Most Active Nicks" section will be
+    picked from a length range. With this option you can change the minimum
     number of letters required for a random quote. Also see the
-    <xref linkend="MaxQuote" /> option.
+    <xref linkend="MaxQuote" /> option. Note that pisg will still choose a
+    short quote if it cannot find a longer one.
     </para>
     </refsect1>
     <refsect1>
@@ -2464,8 +2465,8 @@
     <refsect1>
     <title>Description</title>
     <para>
-    The random quotes displayed in the "Most Active Nicks" section has a
-    certain range specified. With this option you can change the maximum
+    The random quotes displayed in the "Most Active Nicks" section will be
+    picked from a length range. With this option you can change the maximum
     number of letters required for a random quote. Also see the
     <xref linkend="MinQuote" /> option.
     </para>

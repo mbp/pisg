@@ -685,13 +685,19 @@ sub _random_line
 {
     my ($self, $lines, $key, $nick) = @_;
     my $count = 0;
-    my $random;
+    my ($random, $out, $out2) = ("", "", "");
     #warn "$nick did not say anything" unless @{ $lines->{$key}{$nick} };
-    do {
+    while (++$count < 20) {
         $random = ${ $lines->{$key}{$nick} }[rand @{ $lines->{$key}{$nick} }];
-        return '' if ++$count > 20;
-    } while ($self->{cfg}->{noignoredquotes} and $self->{ignorewords_regexp} and $random =~ /$self->{ignorewords_regexp}/i);
-    return $random;
+        if (length($random) < $self->{cfg}->{minquote} or length($random) > $self->{cfg}->{maxquote}) {
+            $out2 = $random; # 2nd best choice
+            next;
+        }
+        next if ($self->{cfg}->{noignoredquotes} and $self->{ignorewords_regexp} and
+                 $random =~ /$self->{ignorewords_regexp}/i);
+        $out = $random;
+    }
+    return $out || $out2;
 }
 
 sub _uniquify_nicks {
