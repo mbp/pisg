@@ -210,6 +210,8 @@ sub get_default_config_settings
         botnicks => '',            # Needed for DCpp format (non-irc)
 
         statsdump => '',           # Debug option
+        modules_dir => '',         # set in get_cmdline_options
+        cchannels => '',           # set in get_cmdline_options
 
         version => "0.65",
     };
@@ -220,6 +222,10 @@ sub get_default_config_settings
     # Parse the optional overriden configuration variables
     foreach my $key (keys %{$self->{override_cfg}}) {
         if ($self->{override_cfg}->{$key}) {
+            unless (defined($self->{cfg}->{$key})) {
+                print STDERR "Warning: No such configuration option: -cfg $key\n";
+                next;
+            }
             $self->{cfg}->{$key} = $self->{override_cfg}->{$key};
         }
     }

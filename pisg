@@ -147,7 +147,7 @@ END_USAGE
     if (@cfg) {
         foreach (@cfg) {
             if (/(.*)=(.*)/) {
-                $cfg{$1} = $2;
+                $cfg{lc $1} = $2;
             } else {
                 print STDERR "Warning: Couldn't parse -cfg option\n";
             }
