@@ -82,7 +82,7 @@ sub get_cmdline_options
 
 my $usage = <<END_USAGE;
 Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
-[-f format] [-n network] [-d logdir] [-mo moduledir] [-s] [-v] [-h]
+[-f format] [-ne network] [-d logdir] [-mo moduledir] [-s] [-v] [-h]
 
 -ch --channel=xxx      : Set channel name
 -cc --cchannels=xxx    : Only do this channel from cfg file, give multiple
@@ -93,7 +93,7 @@ Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 -t  --tag=xxx          : Replace \%t in --outfile by xxx
 -ma --maintainer=xxx   : Channel/statistics maintainer
 -f  --format=xxx       : Logfile format [see FORMATS file]
--n  --network=xxx      : IRC network for the channel
+-ne --network=xxx      : IRC network for the channel
 -d  --dir=xxx          : Analyze all files in this dir. Ignores logfile.
                          Give multiple times to use multiple directories.
 -nf --nfiles=xxx       : Analyze the last xxx files if used with --dir
@@ -108,7 +108,7 @@ Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 
 Example:
 
- \$ pisg -n IRCnet -f xchat -o suid.html -ch \\#channel -l logfile.log
+ \$ pisg -ne IRCnet -f xchat -o suid.html -ch \\#channel -l logfile.log
 
 All options may also be defined by editing the configuration file and
 calling pisg without arguments.
