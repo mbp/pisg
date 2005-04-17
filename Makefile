@@ -96,13 +96,10 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \
 
-doc-version:
-	perl -i -pe 's/(<title>pisg ).*(documentation<\/title>)/$${1}$(VERSION) $${2}/' docs/pisg-doc.xml
-
 docs:
 	$(MAKE) -C docs
 
-release: doc-version docs
+release: docs
 	mkdir -p newrelease
 
 	mkdir $(DIRNAME)
@@ -146,4 +143,4 @@ clean:
 	rm -rf newrelease/
 	rm -rf $(DIRNAME)
 
-.PHONY: all release doc-version docs clean
+.PHONY: all release docs clean
