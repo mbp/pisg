@@ -124,6 +124,11 @@ sub analyze
         day_times => [ undef ],
     );
 
+    if ($self->{cfg}->{cachedir} and not -d $self->{cfg}->{cachedir}) {
+        print STDERR "CacheDir \"$self->{cfg}->{cachedir}\" not found. Skipping caching.\n";
+        delete $self->{cfg}->{cachedir};
+    }
+
     foreach my $logfile (@logfiles) {
         # Run through the logfile
         print "Analyzing log $logfile... " unless ($self->{cfg}->{silent});

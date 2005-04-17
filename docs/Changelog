@@ -1,3 +1,9 @@
+pisg (0.66) - ??
+   Christoph:
+   * Cache:
+     + Complain if CacheDir does not exist.
+     + Note that caching does not work for "one big logfile" setups.
+
 pisg (0.65) - Fri Apr, 15th 2005
    Christoph:
    * Karma didn't work well with nick aliases. It's still far from perfect,

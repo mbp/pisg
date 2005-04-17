@@ -1065,8 +1065,12 @@
     Setting this option makes pisg dump the results of log parsing into cache
     files. The next time pisg is run, it compares the timestamp of the log(s)
     with the timestamp stored in the cache file. When the log was not changed,
-    the cached data is used.
+    the cached data is used. (This means that it does not work if you only
+    have a single big logfile. Split the log at arbitrary points and use
+    <xref linkend="LogDir" /> or <xref linkend="Logfile" />="dir/*".)
+    </para>
 
+    <para>
     Note that the cache files should be deleted when the pisg config file is
     changed since the cache data uses the old config settings.
     <xref linkend="NickTracking" /> does not work especially well with the
