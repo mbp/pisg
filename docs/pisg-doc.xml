@@ -2886,7 +2886,7 @@
         <channel="#channel">
          Logfile = "channel.log"
          Format = "mIRC"
-         ChartsRegexp = "(?:np:|np - |playing )\s*"
+         ChartsRegexp = "(?:np:|(?:now )?playing:? (?:MPEG stream from)?)\s*(.*)"
         </channel>
       ]]>
     </programlisting></refsynopsisdiv>
@@ -2901,7 +2901,7 @@
     </refsect1>
     <refsect1>
     <title>Default</title>
-    <para> "(?:np:|np - |playing )\s*" </para>
+    <para> "(?:np:|(?:now )?playing:? (?:MPEG stream from)?)\s*(.*)" </para>
     </refsect1>
     </refentry>
 

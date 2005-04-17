@@ -3,6 +3,7 @@ pisg (0.66) - ??
    * Cache:
      + Complain if CacheDir does not exist.
      + Note that caching does not work for "one big logfile" setups.
+   * Add correct ChartsRegexp to documentation.
 
 pisg (0.65) - Fri Apr, 15th 2005
    Christoph:
