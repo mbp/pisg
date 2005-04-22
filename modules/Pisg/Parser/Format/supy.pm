@@ -1,7 +1,7 @@
 package Pisg::Parser::Format::supy;
 
 # pisg log parser for supybot bot
-# http://supybot.sf.net
+# http://supybot.com/
 # Copyright Jerome Kerdreux / Licence GPL 
 # contact Jerome.Kerdreux@finix.eu.org for more information
 
@@ -14,14 +14,19 @@ $^W = 1;
 sub new
 {
     my ($type, %args) = @_;
+    my $timestamp = '\d+-[\d\w]+-\d+[ T](\d+):\d+:\d+';
+    my $thirdtimestamp = '\d+-[\d\w]+-\d+[ T](\d+):(\d+):\d+';
     my $self = {
         cfg => $args{cfg},
+	# Old default timestamp format
 	# [12-Feb-2004 16:59:42]  <philipss> plop
-	normalline => '^\[\d+-\w+-\d+ (\d+):\d+:\d+]  <(\S+)> (.*)',
+	# New default timestamp format
+	# 2004-02-12T16:59:42  <philipss> plop
+	normalline => '^\[?'.$timestamp.']?  <(\S+)> (.*)',
 	# [05-Mar-2004 17:28:10]  * Jkx|home bon je vais pas trainer ..
-        actionline => '^\[\d+-\w+-\d+ (\d+):\d+:\d+]  \* (\S+) (.*)',
+        actionline => '^\[?'.$timestamp.']?  \* (\S+) (.*)',
 	# [17-Feb-2004 08:13:47]  *** Jkx changes topic to "Oh my god of topic"
-        thirdline  => '\[\d+-\w+-\d+ (\d+):(\d+):\d+]  \*\*\* (\S+) (\S+) (\S+) (\S+) ?(.*)?',
+        thirdline  => '\[?'.$thirdtimestamp.']?  \*\*\* (\S+) (\S+) (\S+) (\S+) ?(.*)?',
     };
 
     bless($self, $type);
@@ -76,22 +81,22 @@ sub thirdline
 	
 	# print "*** 1/$1 2/$2 3/$3 4/$4 5/$5 6/$6 7/$7 ***\n";
 
-	# all action are catched except nick change because 
-	# there aren't in the logfile :( 
-	
         if (($4.$5) eq 'waskicked') {
             $hash{kicker} = $7;
+            ($hash{kicktext} = $hash{kicker}) =~ s/\S+\s*//;
             $hash{kicker} =~ s/\s.*//;
-
+            $hash{kicktext} =~ s/^\((.*)\)$/$1/;
         } elsif (($4.$5) eq 'changestopic') {
             $hash{newtopic} = $7;
 	} elsif (($4.$5) eq 'setsmode:') {
             $hash{newmode} = $6;
-
+            $hash{modechanges} = $7;
         } elsif (($4.$5) eq 'hasjoined') {
             $hash{newjoin} = $3;
-
-        } 
+        } elsif (($5,$6) eq 'nowknown') {
+            $hash{newnick} = $6;
+            $hash{newnick} =~ s/^as\s*//;
+        }
 	
 	
 

@@ -10,6 +10,7 @@ pisg (0.66) - ??
      nandmaster).
    * Fix picking MinQuote-length quotes (closes SF tracker #1183177 by
      nandmaster).
+   * Update supy.pm for new log format (thanks to James Vega for the patch).
 
 pisg (0.65) - Fri Apr, 15th 2005
    Christoph:
