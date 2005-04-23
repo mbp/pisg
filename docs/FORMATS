@@ -107,8 +107,8 @@ on ^*:ACTION:*:*:{
 
 * bxlog:
   - A logging script for BitchX (console client - see scripts.bitchx.com)
-   
   - In order to use this, format must be set to 'bxlog'
+  - The bxlog-pisg.bx file in the scripts directory might be useful.
 
   Example:
         [31 Dec/11:26] <John> Hello world
