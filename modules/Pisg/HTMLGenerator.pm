@@ -1786,8 +1786,9 @@ sub _mostreferencednicks
     my %usages;
 
     foreach my $word (sort keys %{ $self->{stats}->{wordcounts} }) {
-        next if !exists $self->{stats}->{lines}{$word};
         next if is_ignored($word);
+        my $nick = is_nick($word) or next;
+        next if !exists $self->{stats}->{lines}{$nick};
         $usages{$word} = $self->{stats}->{wordcounts}{$word};
     }
 
@@ -1805,8 +1806,7 @@ sub _mostreferencednicks
         for(my $i = 0; $i < $self->{cfg}->{nickhistory}; $i++) {
             last if $i >= @popular;
             my $a = $i + 1;
-            my $popular   = is_nick($popular[$i]) || $self->{stats}->{word_upcase}{$popular[$i]} || $popular[$i];
-            $popular      = $self->_format_word($popular[$i]);
+            my $popular   = $self->_format_word(is_nick($popular[$i]));
             my $wordcount = $self->{stats}->{wordcounts}{$popular[$i]};
             my $lastused  = $self->_format_word($self->{stats}->{wordnicks}{$popular[$i]} || "");
             # this is undefined when a nick is referenced before being used

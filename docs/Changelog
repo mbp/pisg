@@ -15,6 +15,8 @@ pisg (0.66) - ??
    * Continue after empty directories were found (closes SF tracker #1184874
      by nandmaster).
    * Latest topic was sometimes set -1 days ago (reported by Jarkko Seppelin).
+   * Most referenced nicks now works for nicks containing upper case chars
+     again (reported by Triper in SF tracker #1167424 and Scelt).
 
 pisg (0.65) - Fri Apr, 15th 2005
    Christoph:
