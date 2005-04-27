@@ -396,13 +396,19 @@ sub _parse_file
                     }
 
                     # Who smiles the most?
-                    # A regex matching al lot of smilies
-                    $stats->{smiles}{$nick}++
-                        if ($saying =~ /[8;:=][ ^-o]?[)pPD\}\]>]/o);
+                    # smileys including asian-style (^^ ^_^' ^^; ^_____^ ^o^)
+                    if ($saying =~ /(>?[8;:=%]'?[-o*^][\)pPD\}\]>]|[;:]\)|\^[_o-]*\^[';])/o) {
+                        $stats->{smiles}{$nick}++;
+                        $stats->{smileys}{$1}++;
+                        $stats->{smileynicks}{$1} = $nick;
+                    }
 
-                    if ($saying =~ /[8;:=][ ^-]?[\(\[\\\/\{]/o and
+                    # asian frown: ;_;
+                    if ($saying =~ /([8;:=%]'?[-o*^][\(\[\\\/\{|]|:\(|;_+;|T_+T|-[._]+-)/o and
                         $saying !~ /\w+:\/\//o) {
                         $stats->{frowns}{$nick}++;
+                        $stats->{smileys}{$1}++;
+                        $stats->{smileynicks}{$1} = $nick;
                     }
 
                     if ($self->{cfg}->{showkarma}) {
@@ -828,7 +834,7 @@ sub _merge_stats
             $stats->{$key} = $s->{$key};
         } elsif ($key =~ /^(parsedlines|totallines)$/) { # {key} = int: add
             $stats->{$key} += $s->{$key};
-        } elsif ($key =~ /^(wordnicks|word_upcase|urlnicks|chartnicks)$/) { # {key}->{} = str: copy
+        } elsif ($key =~ /^(wordnicks|word_upcase|urlnicks|chartnicks|smileynicks)$/) { # {key}->{} = str: copy
             foreach my $subkey (keys %{$s->{$key}}) {
                 $stats->{$key}->{$subkey} = $s->{$key}->{$subkey};
             }

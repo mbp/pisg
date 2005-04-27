@@ -2128,6 +2128,41 @@
     </refsect1>
     </refentry>
 
+    <!-- *** SHOWSMILEYS *** -->
+    <refentry id="ShowSmileys">
+
+    <refmeta> <refentrytitle>ShowSmileys</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>ShowSmileys</refname>
+    <refpurpose>show most used smileys</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         ShowSmileys = "0"
+        </channel>
+
+        <set ShowSmileys="1">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    With this option, pisg will make a list of the most used smileys in the
+    channel. See also <xref linkend="SmileyHistory" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWKARMA *** -->
     <refentry id="ShowKarma">
 
@@ -2973,6 +3008,41 @@
     <refsect1>
     <title>Default</title>
     <para> 5 </para>
+    </refsect1>
+    </refentry>
+
+    <!-- *** SmileyHistory *** -->
+    <refentry id="SmileyHistory">
+
+    <refmeta> <refentrytitle>SmileyHistory</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>SmileyHistory</refname>
+    <refpurpose>maximum number of smileys to show in smiley stats</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         logfile = "channel.log"
+         format = "mIRC"
+         SmileyHistory = "3"
+        </channel>
+
+        <set SmileyHistory="15">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    At most this many smileys will appear in smiley stats.
+    See also <xref linkend="ShowSmileys" />.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 10 </para>
     </refsect1>
     </refentry>
 

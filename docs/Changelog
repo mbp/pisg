@@ -1,22 +1,30 @@
 pisg (0.66) - ??
    Christoph:
+   * Features:
+     + Finally added support for 'asian' smiles ^^ (requested by Christian
+       Garbs), improved the smiley regexps, and implemented new most used
+       smileys stats.
+     + Complain about invalid -cfg options (closes SF tracker #1183072 by
+       nandmaster).
    * Cache:
      + Complain if CacheDir does not exist.
      + Note that caching does not work for "one big logfile" setups.
-   * Add correct ChartsRegexp to documentation.
-   * Change -n to -ne in --help output (thanks to Thomas Matthijs for the
-     patch).
-   * Complain about invalid -cfg options (closes SF tracker #1183072 by
-     nandmaster).
-   * Fix picking MinQuote-length quotes (closes SF tracker #1183177 by
-     nandmaster).
-   * Update supy.pm for new log format (thanks to James Vega for the patch).
-   * Add bxlog script supplied by Hannes Tarien.
-   * Continue after empty directories were found (closes SF tracker #1184874
-     by nandmaster).
-   * Latest topic was sometimes set -1 days ago (reported by Jarkko Seppelin).
-   * Most referenced nicks now works for nicks containing upper case chars
-     again (reported by Triper in SF tracker #1167424 and Scelt).
+     + Latest topic was sometimes set -1 days ago (reported by Jarkko
+       Seppelin).
+   * Parser:
+     + Update supy.pm for new log format (thanks to James Vega for the patch).
+     + Add bxlog script supplied by Hannes Tarien.
+   * Documentation:
+     + Add correct ChartsRegexp.
+   * Bugfixes:
+     + Change -n to -ne in --help output (thanks to Thomas Matthijs for the
+       patch).
+     + Fix picking MinQuote-length quotes (closes SF tracker #1183177 by
+       nandmaster).
+     + Continue after empty directories were found (closes SF tracker #1184874
+       by nandmaster).
+     + Most referenced nicks now works for nicks containing upper case chars
+       again (reported by Triper in SF tracker #1167424 and Scelt).
 
 pisg (0.65) - Fri Apr, 15th 2005
    Christoph:

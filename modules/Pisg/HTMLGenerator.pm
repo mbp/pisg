@@ -141,6 +141,10 @@ sub create_output
         $self->_mostreferencednicks();
     }
 
+    if ($self->{cfg}->{showsmileys}) {
+        $self->_smileys();
+    }
+
     if ($self->{cfg}->{showkarma}) {
         $self->_karma();
     }
@@ -1826,6 +1830,41 @@ sub _mostreferencednicks
         }
         _html("</table>");
     }
+}
+
+sub _smileys
+{
+    my $self = shift;
+
+    my %usages;
+    foreach my $smiley (sort keys %{ $self->{stats}->{smileys} }) {
+        $usages{$smiley} = $self->{stats}->{smileys}{$smiley};
+    }
+    my @popular = sort { $usages{$b} <=> $usages{$a} } keys %usages;
+    return unless @popular;
+
+    $self->_headline($self->_template_text('smileytopic'));
+
+    _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
+    _html("<td>&nbsp;</td><td class=\"tdtop\"><b>" . $self->_template_text('smiley') . "</b></td>");
+    _html("<td class=\"tdtop\"><b>" . $self->_template_text('numberuses') . "</b></td>");
+    _html("<td class=\"tdtop\"><b>" . $self->_template_text('lastused') . "</b></td></tr>");
+
+    for(my $i = 0; $i < $self->{cfg}->{smileyhistory}; $i++) {
+        last if $i >= @popular;
+        my $a = $i + 1;
+        my $popular   = $self->_format_word($popular[$i]);
+        my $count     = $self->{stats}->{smileys}{$popular[$i]};
+        my $lastused  = $self->_format_word($self->{stats}->{smileynicks}{$popular[$i]} || "");
+
+        my $class = ($a == 1) ? 'hirankc' : 'rankc';
+        _html("<tr><td class=\"$class\">$a</td>");
+        _html("<td class=\"hicell\">$popular</td>");
+        _html("<td class=\"hicell\">$count</td>");
+        _html("<td class=\"hicell\">$lastused</td>");
+        _html("</tr>");
+    }
+    _html("</table>");
 }
 
 sub _karma
