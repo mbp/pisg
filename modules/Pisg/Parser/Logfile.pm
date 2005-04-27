@@ -398,8 +398,8 @@ sub _parse_file
                     # Who smiles the most?
                     my $e = '[8;:=%]'; # eyes
                     my $n = '[-oc*^]'; # nose
-                    # smileys including asian-style (^^ ^_^' ^^; ^_____^ ^o^)
-                    if ($saying =~ /(>?$e'?$n[\)pPD\}\]>]|[\(\{\[<]$n'?$e<?|[;:]\)|\([;:]|\^[_o-]*\^[';])/o) {
+                    # smileys including asian-style (^^ ^_^' ^^; \o/)
+                    if ($saying =~ /(>?$e'?$n[\)pPD\}\]>]|[\(\{\[<]$n'?$e<?|[;:]\)|\([;:]|\^[_o-]*\^[';]|\\[o.]\/)/o) {
                         $stats->{smiles}{$nick}++;
                         $stats->{smileys}{$1}++;
                         $stats->{smileynicks}{$1} = $nick;
