@@ -122,6 +122,8 @@ sub analyze
         monocount  => 0,
         day_lines => [ undef ],
         day_times => [ undef ],
+        parsedlines => 0,
+        totallines => 0,
     );
 
     if ($self->{cfg}->{cachedir} and not -d $self->{cfg}->{cachedir}) {
@@ -193,10 +195,12 @@ sub _parse_dir
         my @filesarray;
         opendir(LOGDIR, $logdir) or
         die("Can't opendir ${logdir}: $!");
-        @filesarray = grep {
+        unless(@filesarray = grep {
             /^[^\.]/ && /^$self->{cfg}->{logprefix}/ && -f "$logdir/$_"
-        } readdir(LOGDIR) or
-        die("No files in \"$logdir\" matched prefix \"$self->{cfg}->{logprefix}\"");
+            } readdir(LOGDIR)) {
+                print ("No files in \"$logdir\" matched prefix \"$self->{cfg}->{logprefix}\"\n");
+                return;
+        }
         closedir(LOGDIR);
 
         if ($self->{cfg}->{logsuffix} ne '') {
@@ -853,7 +857,7 @@ sub _merge_stats
             }
         } elsif ($key =~ /^topics$/) { # {key}->[] = topic hash: append
             push @{$stats->{$key}}, map {
-                my %a = %$_; $a{days} += $days_offset; \%a; # make new hash
+                my %a = %$_; $a{days} += $days_offset - 1 + $days_rollover; \%a; # make new hash
             } @{$s->{$key}};
         } elsif ($key =~ /^day_lines$/) { # {key}->[] = int: append
             my @list = @{$s->{day_lines}};
