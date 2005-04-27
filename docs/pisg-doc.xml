@@ -1086,6 +1086,43 @@
   </chapter>
   <chapter id="reference-stats">
    <title>Options for various statistics features</title>
+
+    <!-- *** DailyActivity *** -->
+    <refentry id="DailyActivity">
+
+    <refmeta> <refentrytitle>DailyActivity</refentrytitle> </refmeta>
+
+    <refnamediv>
+    <refname>DailyActivity</refname>
+    <refpurpose>number of days to show in "Daily Actitity"</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv><programlisting>
+      <![CDATA[
+        <channel="#channel">
+         Logfile = "channel.log"
+         Format = "xchat"
+         DailyActivity = "0"
+        </channel>
+
+        <set DailyActivity="31">
+      ]]>
+    </programlisting></refsynopsisdiv>
+
+    <refsect1>
+    <title>Description</title>
+    <para>
+    This option sets the number of days to show in the "Daily activity"
+    section. Pisg will generate a graph that shows the actitivy during
+    this timeframe. Setting the option to 0 disables the section.
+    </para>
+    </refsect1>
+    <refsect1>
+    <title>Default</title>
+    <para> 0 (disabled) </para>
+    </refsect1>
+    </refentry>
+
     <!-- *** SHOWACTIVETIMES *** -->
     <refentry id="ShowActiveTimes">
 
@@ -1234,7 +1271,7 @@
 
     <refnamediv>
     <refname>ShowLines</refname>
-    <refpurpose>enable/disable "words per line"</refpurpose>
+    <refpurpose>enable/disable "number of lines"</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv><programlisting>

@@ -16,6 +16,8 @@ pisg (0.66) - ??
      + Add bxlog script supplied by Hannes Tarien.
    * Documentation:
      + Add correct ChartsRegexp.
+     + Correct synopsis for ShowLines (thanks, Scelt).
+     + Document DailyActivity (thanks coaster for spotting).
    * Bugfixes:
      + Change -n to -ne in --help output (thanks to Thomas Matthijs for the
        patch).
@@ -25,6 +27,8 @@ pisg (0.66) - ??
        by nandmaster).
      + Most referenced nicks now works for nicks containing upper case chars
        again (reported by Triper in SF tracker #1167424 and Scelt).
+     + foul1 should talk about words instead of lines; fixed in Danish and
+       French.
 
 pisg (0.65) - Fri Apr, 15th 2005
    Christoph:

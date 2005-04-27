@@ -20,7 +20,7 @@
 # (NL) Dutch - Jeroen van Nimwegen <jeroen.van.nimwegen@gmail.com> (2005-02-17)
 # (SE) Swedish - Andreas Henriksson <andreas@fjortis.info> (2005-01-12)
 # (FI) Finnish - Kirler@paincreators <kirler@paincreators.net>
-#      last update: Sami Karuaho <sami.karuaho@kanetti.fi>( 2005-03-19)
+#      last update: Sami Karuaho <sami.karuaho@kanetti.fi> (2005-03-19)
 # (SI) Slovenian - Ales Tepina <??> (2005-01-09: bounces)
 # (HU) Hungarian - Gyuri Horak <??> (2005-01-09: bounces)
 # (EE) Estonian - Hannes Tarien <comcute@users.sf.net>
@@ -441,7 +441,7 @@ long2 = "Gennemsnittet på [:channel] er [:avg] bogstaver pr. linje"
 short1 = "<b>[:nick]</b> skrev de korteste linjer. Gennemsnittet er [:letters] bogstaver pr. linje..."
 short2 = "<b>[:nick]</b> skriver også korte linjer, med et gennesnit på [:letters]"
 
-foul1 = "<b>[:nick]</b> er lidt stor i munden, [:per]% af linjerne indeholdte uhøfligt sprog"
+foul1 = "<b>[:nick]</b> er lidt stor i munden, [:per]% af ordene var uhøfligt sprog"
 foul2 = "<b>[:nick]</b> burde også vaske munden med sæbe med alt det han/hun fyrer af, [:per]% af tiden"
 foul3 = "Ingen rapkæftede på [:channel]!"
 foultext = "<b>For eksempel sådan her:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
@@ -622,7 +622,7 @@ long2 = "La moyenne sur [:channel] est de [:avg] lettres par ligne."
 short1 = "<b>[:nick]</b> a écrit les lignes les plus courtes, avec en moyenne [:letters] lettres par ligne..."
 short2 = "<b>[:nick]</b> n'a pas grand chose à dire non plus, en moyenne [:letters]."
 
-foul1 = "<b>[:nick]</b> est bien vulgaire, [:per]% de ses lignes contiennent des gros mots."
+foul1 = "<b>[:nick]</b> est bien vulgaire, [:per]% de ses mots etaient des gros mots."
 foul2 = "<b>[:nick]</b> parle aussi comme un charretier, [:per]% du temps."
 foul3 = "Personne n'est grossier sur [:channel] ! Pendant combien de temps encore ?"
 foultext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
