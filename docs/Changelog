@@ -2,8 +2,8 @@ pisg (0.66) - ??
    Christoph:
    * Features:
      + Finally added support for 'asian' smiles ^^ (requested by Christian
-       Garbs), improved the smiley regexps, and implemented new most used
-       smileys stats.
+       Garbs) and left-handed smiles (-8, improved the smiley regexps, and
+       implemented new most used smileys stats.
      + Complain about invalid -cfg options (closes SF tracker #1183072 by
        nandmaster).
    * Cache:

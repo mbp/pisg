@@ -396,15 +396,17 @@ sub _parse_file
                     }
 
                     # Who smiles the most?
+                    my $e = '[8;:=%]'; # eyes
+                    my $n = '[-oc*^]'; # nose
                     # smileys including asian-style (^^ ^_^' ^^; ^_____^ ^o^)
-                    if ($saying =~ /(>?[8;:=%]'?[-o*^][\)pPD\}\]>]|[;:]\)|\^[_o-]*\^[';])/o) {
+                    if ($saying =~ /(>?$e'?$n[\)pPD\}\]>]|[\(\{\[<]$n'?$e<?|[;:]\)|\([;:]|\^[_o-]*\^[';])/o) {
                         $stats->{smiles}{$nick}++;
                         $stats->{smileys}{$1}++;
                         $stats->{smileynicks}{$1} = $nick;
                     }
 
                     # asian frown: ;_;
-                    if ($saying =~ /([8;:=%]'?[-o*^][\(\[\\\/\{|]|:\(|;_+;|T_+T|-[._]+-)/o and
+                    if ($saying =~ /($e'?$n[\(\[\\\/\{|]|[\)\]\\\/\}|]$n'?$e|[;:]\(|\):|;_+;|T_+T|-[._]+-)/o and
                         $saying !~ /\w+:\/\//o) {
                         $stats->{frowns}{$nick}++;
                         $stats->{smileys}{$1}++;
