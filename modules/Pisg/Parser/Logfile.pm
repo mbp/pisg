@@ -434,7 +434,7 @@ sub _parse_file
                     }
 
                     if ($saying =~ /$self->{chartsregexp}/i) {
-                        $self->_charts($1, $nick);
+                        $self->_charts($stats, $1, $nick);
                     }
 
                     if (my $s = $self->{users}->{sex}{$nick}) {
@@ -500,7 +500,7 @@ sub _parse_file
                 }
 
                 if ($saying =~ /$self->{chartsregexp}/i) {
-                    $self->_charts($1, $nick);
+                    $self->_charts($stats, $1, $nick);
                 }
 
                 $stats->{lengths}{$nick} += length($saying);
@@ -656,7 +656,7 @@ sub _parse_words
 
 sub _charts
 {
-    my ($stats, $Song, $nick) = @_;
+    my ($self, $stats, $Song, $nick) = @_;
     $Song =~ s/_/ /g;
     $Song =~ s/\d+ ?- ?//;
     $Song =~ s/\.mp3//g;

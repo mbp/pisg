@@ -29,6 +29,7 @@ pisg (0.66) - ??
        again (reported by Triper in SF tracker #1167424 and Scelt).
      + foul1 should talk about words instead of lines; fixed in Danish and
        French.
+     + Fix music charts (reported by Daniel Jensen in SF #1195919).
    * Translations:
      + Updated Italian translation (thanks, Michele Venturi)
 
