@@ -24,7 +24,7 @@
 # (SI) Slovenian - Ales Tepina <??> (2005-01-09: bounces)
 # (HU) Hungarian - Gyuri Horak <??> (2005-01-09: bounces)
 # (EE) Estonian - Hannes Tarien <comcute@users.sf.net>
-# (IT) Italian - Venom Team <??> (2005-01-09: bounces)
+# (IT) Italian - Michele Venturi (2005-04-29)
 # (CA) Catalan - Nikoru Kimochi <??> (2005-01-09: bounces)
 # (TR) Turkish - cti- <??> (2005-01-09: bounces)
 # (RO) Romanian - Parcalabior Vald <vlad@ifrance.com>
@@ -2285,9 +2285,7 @@ mailto = "Postita kiri aadressile"
 </lang>
 
 ### Italian
-<lang name="IT" charset="iso-8859-15">
-foultext = "<b>Ad esempio come questo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
-
+<lang name="IT" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> ha fatto [:ops] operatori..."
 mostop2 = "Anche <b>[:nick]</b> è stato molto gentile: [:ops] operatori da [:him:her:]."
 mostop3 = "Strano, nessuno è stato reso operatore su [:channel]!"

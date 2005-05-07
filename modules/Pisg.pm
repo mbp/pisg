@@ -253,7 +253,8 @@ sub get_language_templates
 
                 # Get 'template = "Text"' in language file:
                 if ($_ =~ /^(\w+)\s*=\s*"(.*)"\s*$/) {
-                    warn "duplicate translation $1 -> $2" if $self->{tmps}->{$current_lang}{$1};
+                    warn "duplicate translation $1 -> $2"
+                        if $self->{tmps}->{$current_lang}{$1} and !$self->{cfg}->{silent};
                     $self->{tmps}->{$current_lang}{$1} = $2;
                 }
             }
