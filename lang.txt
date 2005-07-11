@@ -20,7 +20,7 @@
 # (NL) Dutch - Jeroen van Nimwegen <jeroen.van.nimwegen@gmail.com> (2005-02-17)
 # (SE) Swedish - Andreas Henriksson <andreas@fjortis.info> (2005-01-12)
 # (FI) Finnish - Kirler@paincreators <kirler@paincreators.net>
-#      last update: Sami Karuaho <sami.karuaho@kanetti.fi> (2005-03-19)
+#      last update: Mikko Nissinen <gwadj79@gmail.com> (2005-07-10)
 # (SI) Slovenian - Ales Tepina <??> (2005-01-09: bounces)
 # (HU) Hungarian - Gyuri Horak <??> (2005-01-09: bounces)
 # (EE) Estonian - Hannes Tarien <comcute@users.sf.net>
@@ -1778,6 +1778,9 @@ notopic = "Kanavalle ei koskaan vaivauduttu laittamaan topikia..."
 mostnickstopic = "Eniten nikkiään vaihtavat irkkaajat"
 bylinetopic = "[:date] asettanut <b>[:nick]</b> klo <b>[:time]</b>"
 dailyactivitytopic = "Päivittäinen aktiivisuus (viimeiset [:n] päivää)"
+smileytopic = "Hymiöt :-)"
+chartstopic = "[:channel]:n soittolista"
+activegenderstopic = "Aktiivisuus sukupuolen mukaan"
 
 ## Other text (Muuta sälää)
 
@@ -1817,6 +1820,14 @@ seconds = "sekuntia"
 and = "ja"
 names1 = "nickiä"
 names2 = "nick"
+smiley = "Hymiö"
+song = "Kappale"
+numberplayed = "Soitettu (kertaa)"
+playedby = "Viimeksi soittanut"
+gender = "Sukupuoli"
+gender_b = "Botti"
+gender_m = "Mies"
+gender_f = "Nainen"
 
 # Mouse-over titles
 pisghomepage = "Siirry pisg:in kotisivuille"
@@ -2350,7 +2361,7 @@ kick3 = "Sono carini gli operatori qui, nessuno è stato cacciato!"
 words1 = "<b>[:nick]</b> ha detto un totale di [:words] parole!"
 words2 = "Il fedele seguace di [:oldnick], <b>[:nick]</b>, non parla così tanto: [:words] parole."
 words3 = "Nessuno ha detto nulla... Che strano canale..."
-	
+
 mono1 = "<b>[:nick]</b> parla con sè un bel po'.  Ha scritto più di 5 linee di fila [:monos] volte!"
 mono2 = "Un'altro solitario è <b>[:nick]</b>, che è riuscito a raggiungere le [:monos] volte."
 
