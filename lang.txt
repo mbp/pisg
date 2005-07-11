@@ -1375,7 +1375,7 @@ question1 = "Is <b>[:nick]</b> stom of stelt [:hij:zij:] gewoon te veel vragen? 
 question2 = "<b>[:nick]</b> wist ook al niet zoveel.  [:per]% van [:zijn:haar:] regels waren vragen."
 question3 = "Niemand stelde hier vragen; alleen maar genieën in dit kanaal?"
 
-shout1 = "De luidste was <b>[:nick]</b>, die geschreeuwde [:per]% van de tijd!"
+shout1 = "De luidste was <b>[:nick]</b>, die schreeuwde [:per]% van de tijd!"
 shout2 = "Een andere <i>beruchte schreeuwer</i> was <b>[:nick]</b>, die schreeuwde [:per]% van de tijd!"
 shout3 = "Er schreeuwde helemaal niemand, wow."
 
