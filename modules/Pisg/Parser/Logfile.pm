@@ -659,7 +659,7 @@ sub _charts
     my ($self, $stats, $Song, $nick) = @_;
     $Song =~ s/_/ /g;
     $Song =~ s/\d+ ?- ?//;
-    $Song =~ s/\.mp3//g;
+    $Song =~ s/\.(mp3|ogg|wma)//ig;
     $Song =~ s/ \.\.\.$//;
     $Song =~ s/ [^\w]+$//;
     my $song = lc $Song;

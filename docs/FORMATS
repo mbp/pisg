@@ -22,13 +22,17 @@ link to the logfile)
 
   - In order to use this, format must be set to 'mIRC6'.
 
+    Remember to timestamp your logs, or it wont work, the timestamp must be
+    in [HH:MM] or [HH:MM:SS] format. (logging options -> timestamp logs)
+
 * mIRC6hack:
   - Version 6.x of mIRC using a logging script to produce a saner output
 
   - Same as mIRC6 except it uses '**' for actions
 
   - In order to use this, format must be set to 'mIRC6hack', and the following
-    be added to mIRC's remote script section: (thanks to virtuall and coaster)
+    be added to mIRC's remote script section (Alt-R -> Remote): (thanks to
+    virtuall and coaster)
 
 ------------------------------8<------------------------------
 alias me {
