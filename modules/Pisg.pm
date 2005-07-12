@@ -30,7 +30,7 @@ sub new
         override_cfg => $args{override_cfg},
         use_configfile => $args{use_configfile},
         search_path => $args{search_path},
-        chans => {},
+        chans => [],
         users => {},
         cfg => {},
         tmps => {},
@@ -352,28 +352,31 @@ sub init_config
             }
 
         } elsif ($line =~ /<channel=(['"])(.+?)\1(.*)>/i) {
-            my ($channel, $settings) = ($2, $3);
-            $self->{chans}->{$channel}->{channel} = $channel;
+            my ($channel, $settings, $tmp) = ($2, $3, {});
+            $tmp->{$channel}->{channel} = $channel;
             $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
             while ($settings =~ s/\s([^=]+)=(["'])(.+?)\2//) {
                 my $var = lc($1);
                 if ($var eq "logdir" || $var eq "logfile") {
-                    push(@{$self->{chans}->{$channel}{$var}}, $3);
+                    push(@{$tmp->{$channel}{$var}}, $3);
                 } else {
-                    $self->{chans}->{$channel}{$var} = $3;
+                    $tmp->{$channel}{$var} = $3;
                 }
             }
             while (<$fh>) {
                 next if /^\s*#/;
-                last if ($_ =~ /<\/*channel>/i);
+                if ($_ =~ /<\/*channel>/i) {
+                    push @{ $self->{chans} }, $tmp;
+                    last;
+                }
                 if ($_ =~ /^\s*(\w+)\s*=\s*(["'])(.+?)\2/) {
                     my $var = lc($1);
                     unless ((($var eq "logdir" || $var eq "logfile") && scalar(@{$self->{override_cfg}->{$var}}) > 0) || (($var ne "logdir" && $var ne "logfile") && $self->{override_cfg}->{$var})) {
 
                         if($var eq "logdir" || $var eq "logfile") {
-                            push @{$self->{chans}->{$channel}{$var}}, $3;
+                            push @{$tmp->{$channel}{$var}}, $3;
                         } else {
-                            $self->{chans}->{$channel}{$var} = $3;
+                            $tmp->{$channel}{$var} = $3;
                         }
 
                     }
@@ -530,18 +533,26 @@ sub parse_channels
     # make a list of channels to do
     my @chanlist;
     if (scalar @ {$self->{cfg}->{cchannels} } > 0) {
-        @chanlist = @{ $self->{cfg}->{cchannels} };
+        foreach my $channel (@{ $self->{cfg}->{cchannels} }) {
+            my $hits = 0;
+            foreach ( @{ $self->{chans} }) {
+                my $chan = (keys %{ $_ })[0];
+                if ($channel =~ m/^$chan$/i) {
+                    push @chanlist, $_;
+                    $hits++;
+                }
+            }
+            if ($hits < 1) {
+                print STDERR "Channel $channel not in config file, ignoring\n";
+            }
+        }
     } else {
-        @chanlist = keys %{ $self->{chans} };
+        push @chanlist, $_ foreach (@{ $self->{chans} });
     }
 
     foreach my $channel (@chanlist) {
-        if (!defined $self->{chans}->{$channel}) {
-            print STDERR "Channel $channel not in config file, ignoring\n";
-            next;
-        }
-        foreach (keys %{ $self->{chans}->{$channel} }) { # import channel specific config
-            $self->{cfg}->{$_} = $self->{chans}->{$channel}{$_};
+        foreach my $chan (keys %{ $channel }) { # import channel specific config
+            $self->{cfg}->{$_} = $channel->{$chan}->{$_} foreach (keys %{ $channel->{$chan} });
         }
         $self->do_channel();
         $origcfg{chan_done} = $self->{cfg}->{chan_done};

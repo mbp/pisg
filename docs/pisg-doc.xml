@@ -5,7 +5,7 @@
 
 <book id="pisg-documentation">
   <bookinfo>
-    <title>pisg 0.65 documentation</title>
+    <title>pisg 0.66 documentation</title>
     <subtitle>How to install and configure pisg</subtitle>
   </bookinfo>
   <toc></toc>
@@ -206,7 +206,7 @@
      <![CDATA[<set option="VALUE">]]>
      </programlisting>
 
-     Any global option will override anything defined within channel
+     Any global option will be overriden by anything defined within channel
      elements (see <xref linkend="setting-up-a-channel" />)
      </para>
 
