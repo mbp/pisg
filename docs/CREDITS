@@ -110,7 +110,8 @@ Other contributors:
  * Julien Danjou <acid@debian.org>
    | pisg(1) manpage
  * Torbjörn Svensson <azoff@se.linux.org>
-   | ShowFoulDecimals and AltColorScheme options
+   | ShowFoulDecimals and AltColorScheme options, multiple channels with same
+   | name
  * coaster
    | improved mirc6hack.mrc
  * Vianney Lecroart <acemtp@free.fr>
@@ -121,6 +122,8 @@ Other contributors:
    | updated Dutch translation
  * James Vega (jamessan)
    | Update for supy.pm
+ * Tjavdar Ivanov <ivtj@ing.hj.se>
+   | Update for Bulgarian
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
