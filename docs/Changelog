@@ -15,6 +15,7 @@ pisg (0.67) - ??
      + Finnish: new strings added (thanks, Mikko Nissinen and Matti Peltola).
      + Danish/Norwegian/Swedish:·completed by Torbjörn Svensson.
      + Bulgarian: thanks, Tjavdar Ivanov.
+     + Polish: fix attacked1 (thanks kot_czarny, SF #1222407).
 
 pisg (0.66) - Thu May, 13th 2005
    Christoph:

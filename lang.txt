@@ -924,7 +924,7 @@ violent2 = "<b>[:nick]</b> nie potrafi kontrolowaæ swojej agresji. Zaczepia³[::a
 violent3 = "Nikt nikogo nie atakowa³, wszyscy zachowywali siê przyja¼nie."
 violenttext = "<b>Na przyk³ad co¶ takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-attacked1 = "Biedny <b>[:nick]</b>, nikt [:go:jej:] nie lubi. By³[::a:] atakowan[:y:a:] <b>[:attacks]</b> razy."
+attacked1 = "Biedn[:y:a:] <b>[:nick]</b>, nikt [:go:jej:] nie lubi. By³[::a:] atakowan[:y:a:] <b>[:attacks]</b> razy."
 attacked2 = "<b>[:nick]</b> wydaje siê te¿ nie byæ zbyt lubian[:y:a:], zaczepiali [:go:j±:] <b>[:attacks]</b> razy."
 attackedtext = "<b>Na przyk³ad co¶ takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
