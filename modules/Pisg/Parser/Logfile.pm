@@ -413,14 +413,12 @@ sub _parse_file
                         $stats->{smileynicks}{$1} = $nick;
                     }
 
-                    if ($self->{cfg}->{showkarma}) {
-                        # require 2 chars (catches C++), nick must not end in [+=-]
-                        if ($saying =~ /^(\S*\w\S*\w\S*(?<![+=-]))(\+\+|==|--)$/o) {
-                            my $thing = lc $1;
-                            my $k = $2 eq "++" ? 1 : ($2 eq "==" ? 0 : -1);
-                            $stats->{karma}{$thing}{$nick} = $k
-                                if !is_ignored($thing) and $thing ne lc($nick);
-                        }
+                    # require 2 chars (catches C++), nick must not end in [+=-]
+                    if ($saying =~ /^(\S*\w\S*\w\S*(?<![+=-]))(\+\+|==|--)$/o) {
+                        my $thing = lc $1;
+                        my $k = $2 eq "++" ? 1 : ($2 eq "==" ? 0 : -1);
+                        $stats->{karma}{$thing}{$nick} = $k
+                            if !is_ignored($thing) and $thing ne lc($nick);
                     }
 
                     # Find URLs
@@ -657,6 +655,10 @@ sub _parse_words
 sub _charts
 {
     my ($self, $stats, $Song, $nick) = @_;
+    unless (defined $Song) {
+        warn "Your ChartsRegexp is b0rked. Read the manual! This happened";
+        return;
+    }
     $Song =~ s/_/ /g;
     $Song =~ s/\d+ ?- ?//;
     $Song =~ s/\.(mp3|ogg|wma)//ig;

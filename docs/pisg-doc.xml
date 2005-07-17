@@ -2968,8 +2968,9 @@
     <title>Description</title>
     <para>
     This option is a perl regexp that is used to recognize songs played. Please
-    tell the pisg mailing list if you have a better default. See also
-    <xref linkend="ShowCharts" /> and <xref linkend="ChartsHistory" />.
+    tell the pisg mailing list if you have a better default. The regexp MUST
+    contain a single () pair to extract the song name. See also the perlre(1)
+    manpage, <xref linkend="ShowCharts" /> and <xref linkend="ChartsHistory" />.
     </para>
     </refsect1>
     <refsect1>

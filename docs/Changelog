@@ -1,7 +1,8 @@
 pisg (0.67) - ??
    Christoph:
    * Features:
-     + Recognize ogg and wma suffixes in song stats.
+     + Recognize ogg and wma suffixes in song stats, complain about invalid
+       ChartsRegexp.
      + Added support for multiple channels in config with the same name.
        Even multiple channel directives for the very same channel are
        supported (closes SF tracker #967404, patch by Torbjörn Svensson).
