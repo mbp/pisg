@@ -662,8 +662,7 @@ sub _charts
     $Song =~ s/_/ /g;
     $Song =~ s/\d+ ?- ?//;
     $Song =~ s/\.(mp3|ogg|wma)//ig;
-    $Song =~ s/ \.\.\.$//;
-    $Song =~ s/ [^\w]+$//;
+    $Song =~ s/^ *[^\w]* *| *[^\w]* *$//g;
     my $song = lc $Song;
     $stats->{word_upcase}{$song} = $Song;
     $stats->{chartcounts}{$song}++;
