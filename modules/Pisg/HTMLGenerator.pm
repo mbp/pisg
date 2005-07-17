@@ -226,7 +226,8 @@ sub _htmlheader
     my $title = $self->_template_text('pagetitle1', %hash);
     if($self->{cfg}->{colorscheme} ne "none") {
         print OUTPUT <<HTML;
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" 
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$self->{cfg}->{charset}" />
