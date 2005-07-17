@@ -249,6 +249,7 @@ sub get_language_templates
             $self->{tmps}->{$current_lang}{lang_charset} = lc($2);
 
             while (<FILE>) {
+                next if ($_ =~ /^#/);
                 last if ($_ =~ /<\/lang>/i);
 
                 # Get 'template = "Text"' in language file:
