@@ -1293,6 +1293,8 @@ bylinetopic = "[:date] door [:nick] op [:time]"
 dailyactivitytopic = "Dagelijkse activiteit (afgelopen [:n] dagen)"
 mostnickstopic = "Gebruiker met de meeste nicks"
 activegenderstopic = "Meest actieve geslacht"
+smileytopic = "Smileys :-)"
+chartstopic = "[:channel] Muziek Hitlijsten"
 
 ## Other text
 
@@ -1338,6 +1340,10 @@ gender = "Geslacht"
 gender_f = "Vrouwelijk"
 gender_m = "Mannelijk"
 gender_b = "Bot"
+smiley = "Smiley"
+song = "Nummer"
+numberplayed = "Hoe Vaak Gedraaid"
+playedby = "Laatst Gedraaid door"
 
 # Mouse-over titles
 pisghomepage = "Ga naar de pisg homepage"
@@ -1458,6 +1464,8 @@ mostnickstopic = "Gebruiker met de meeste nicks"
 bylinetopic = "[:date] om [:time] door [:nick] "
 dailyactivitytopic = "Dagelijkse activiteit (afgelopen [:n] dagen)"
 activegenderstopic = "Meest actieve geslacht"
+smileytopic = "Smileys :-)"
+chartstopic = "[:channel] Muziek Hitlijsten"
 
 ## Other text
 
@@ -1501,6 +1509,10 @@ gender = "Geslacht"
 gender_f = "Vrouwelijk"
 gender_m = "Mannelijk"
 gender_b = "Bot"
+smiley = "Smiley"
+song = "Nummer"
+numberplayed = "Hoe Vaak Gedraaid"
+playedby = "Laatst Gedraaid door"
 
 # Mouse-over titles
 pisghomepage = "Ga naar de pisg homepage"

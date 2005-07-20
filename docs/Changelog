@@ -13,8 +13,9 @@ pisg (0.67) - ??
      + Notes on using mIRC.
    * Languages:
      + Dutch: small update to shout1 (thanks, Søren Jensen).
+     + Dutch/Flemish: new strings added (thanks, Jeroen van Nimwegen).
      + Finnish: new strings added (thanks, Mikko Nissinen and Matti Peltola).
-     + Danish/Norwegian/Swedish:·completed by Torbjörn Svensson.
+     + Danish/Norwegian/Swedish: completed by Torbjörn Svensson.
      + Bulgarian: thanks, Tjavdar Ivanov.
      + Polish: fix attacked1 (thanks kot_czarny, SF #1222407).
 
