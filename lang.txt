@@ -32,7 +32,7 @@
 # (CZ) Czech - Jaroslav Ostadal <??> (2005-01-14: bounces)
 # (SK) Slovak - Gabriel Svajko <snowman@ew.sk>
 # (RU) Russian - Anton Tretiakov <manager@ykt.ru>
-# (GR) Greek - Konstantinos Tzanidis <erebus@irc.gr>
+# (GR) Greek - Konstantinos Tzanidis <erebus@irc.gr> (2005-07-22)
 # (HE) Hebrew - Shimi <shimi@shimi.net>
 # (BG) Bulgarian - Dimitar <m9ck@sofiaclub.com> (2005-01-24)
 #      last update: elseif <elseif@mail.bg> (2005-02-19)
@@ -3870,11 +3870,15 @@ activenickstopic = "Οι πιο ενεργοί χρήστες"
 activenickbyhourtopic = "Οι πιο ενεργοί χρήστες ανά ώρα"
 mostwordstopic = "Οι πιο δημοφιλείς λέξεις"
 referencetopic = "Το πιο δημοφιλές ψευδώνυμο"
+smileytopic = "Smileys :-)"
+karmatopic = "Του κάρμα του [:channel]"
 urlstopic = "Οι πιο δημοφιλείς διευθύνσεις"
+chartstopic = "Μουσικές επιτυχίες στο [:channel]"
 notopic = "Δεν δηλώθηκε κάποιο topic στο κανάλι."
 mostnickstopic = "Χρήστες με τα περισσότερα ψευδώνυμα"
 bylinetopic = "[:date] από [:nick] στις [:time]"
 dailyactivitytopic = "Ημερήσια δραστηριότητα (τις τελευταίες [:n] ημέρες)"
+activegenderstopic = "Το πιο ενεργό φύλο"
 
 ## Other text
 
@@ -3896,6 +3900,10 @@ show_wpl = "Λέξεις ανά γραμμή"
 show_cpl = "Χαρακτήρες ανά γραμμή"
 show_lastseen = "Τελευταία είσοδος"
 lastused = "Τελευταία χρησιμοποιήθηκε από"
+smiley = "Smiley"
+karma = "Κάρμα"
+goodkarma = "Καλό κάρμα από"
+badkarma = "Κακό κάρμα από"
 lastseen1 = "[:days] ημέρα πριν"
 lastseen2 = "[:days] ημέρες πριν"
 today = "Σήμερα"
@@ -3911,6 +3919,13 @@ seconds = "δευτερόλεπτα"
 and = "και"
 names1 = "ονόματα"
 names2 = "όνομα"
+gender = "Φύλο"
+gender_f = "Θηλυκό"
+gender_m = "Αρσενικό"
+gender_b = "Bot"
+song = "Τραγούδι"
+numberplayed = "Πόσο συχνά παίχτηκε"
+playedby = "Τελευταία παίχτηκε από"
 
 # Mouse-over titles
 pisghomepage = "Πηγαίνετε στη σελίδα του pisg"
