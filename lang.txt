@@ -7,7 +7,7 @@
 # Translations in this file with current maintainers:
 #
 # (EN) English
-# (DE) German - Christoph Berg <cb@df7cb.de>
+# (DE) German - Christoph Berg <cb@df7cb.de> (2005-07-28)
 # (NO) Norwegian - Andreas Blaafladt <andreas@blaafladt.no>
 # (PT) Portuguese - MrWho <mrwho@softhome.net>
 # (PT_BR) Portuguese/BR(Brazil) - francisco lopes <falmp@terra.com.br>
@@ -248,7 +248,7 @@ question3 = "Niemand hat hier was gefragt, sollte das etwa ein Channel voller Ge
 
 shout1 = "Am lautesten war <b>[:nick]</b> [:der:die:] [:per]% der Zeit geschrien hat!"
 shout2 = "Ein anderer <i>Schreihals</i> war <b>[:nick]</b> [:der:die:] [:per]% der Zeit rumgeschrien hat!"
-shout3 = "Niemand hat ein Ausrufungszeichen benutzt, wow... Zurückhaltende User im Channel ;)"
+shout3 = "Niemand hat ein Ausrufezeichen benutzt, wow... Zurückhaltende User im Channel ;)"
 
 allcaps1 = "Anscheinend klemmte die Shift-Taste von <b>[:nick]</b>, denn [:per]% der Zeit schrieb [:er:sie:] in GROSSBUCHSTABEN."
 allcaps2 = "<b>[:nick]</b> hat auch wohl vergessen CAPS-Lock auszuschalten, von [:ihm:ihr:] kamen [:per]% der Zeit GROSSBUCHSTABEN."
@@ -268,14 +268,14 @@ gotkick1 = "<b>[:nick]</b> war wohl der Channelclown, [:er:sie:] wurde [:kicks] 
 gotkick2 = "<b>[:nick]</b> konnte sich scheinbar auch nicht benehmen, [:kicks] kicks für [:ihn:sie:]."
 kicktext = "<b>Zum Beispiel so:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-joins = "<b>[:nick]</b> konnte sich nicht entscheiden im Channel zu bleiben oder zu gehen, [:joins] joins während des Statistik-Zeitraums!"
+joins = "<b>[:nick]</b> konnte sich nicht entscheiden im Channel zu bleiben oder zu gehen, [:joins] Joins während des Statistik-Zeitraums!"
 
 kick1 = "Ist <b>[:nick]</b> jetzt einfach nur ein fairer Op oder macht [:ihm:ihr:] das Spass? [:Er:Sie:] kickte [:kicked] User!"
-kick2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, [:er:sie:] kickte [:kicked] User."
+kick2 = "[:oldnick]s würdiger Nachfolger, <b>[:nick]</b>, [:er:sie:] kickte [:kicked] User."
 kick3 = "Nette Opper hier, niemand wurde gekickt!"
 
 words1 = "<b>[:nick]</b> war mit [:words] Worten sehr mitteilungsbedürftig!"
-words2 = "[:oldnick]'s würdiger Nachfolger, <b>[:nick]</b>, schaffte es auf immerhin [:words] Worte."
+words2 = "[:oldnick]s würdiger Nachfolger, <b>[:nick]</b>, schaffte es auf immerhin [:words] Worte."
 words3 = "Niemand hat etwas gesagt? Seltsamer Channel..."
 
 mono1 = "<b>[:nick]</b> spricht viel mit sich selbst, [:er:sie:] schrieb über 5 Zeilen in einer Reihe und das [:monos] mal!"
@@ -284,11 +284,11 @@ mono2 = "Ein anderes einsames Herz ist <b>[:nick]</b>, [:der:die:] [:monos] mal 
 wpl1 = "<b>[:nick]</b> schrieb im Schnitt [:wpl] Worte pro Zeile..."
 wpl2 = "Der Channeldurchschnitt lag bei [:avg] Worten/Zeile."
 
-long1 = "<b>[:nick]</b> ist die Labertasche im Channel. [:Er:Sie:] schrieb die längste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile..."
+long1 = "<b>[:nick]</b> ist die Labertasche im Channel. [:Er:Sie:] schrieb die längste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile."
 long2 = "Channel-Durchschnitt in [:channel] war [:avg] Buchstaben pro Zeile."
 
-short1 = "<b>[:nick]</b> ist nicht sehr Mitteilungsbedürftig. [:Er:Sie:] schrieb die kürzeste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile..."
-short2 = "<b>[:nick]</b> war auch sehr kurzfassend, durchschnittlich [:letters] Buchstaben pro Zeile."
+short1 = "<b>[:nick]</b> ist nicht sehr mitteilungsbedürftig. [:Er:Sie:] schrieb die kürzeste Zeile mit durchschnittlich [:letters] Buchstaben pro Zeile."
+short2 = "<b>[:nick]</b> fasste sich auch sehr kurz, durchschnittlich [:letters] Buchstaben pro Zeile."
 
 foul1 = "<b>[:nick]</b> hat in [:seiner:ihrer:] Jugend keine Erziehung genossen, [:per]% von dem was [:er:sie:] sagte waren Schimpfworte!"
 foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman noch kommt?)"
@@ -297,7 +297,7 @@ foultext = "<b>Zum Beispiel so:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 smiles1 = "<b>[:nick]</b> ist ein fröhlicher Mensch, [:per]% [:seiner:ihrer:] Zeilen enthielt ein fröhliches Smily :)"
 smiles2 = "<b>[:nick]</b> scheint auch glücklich zu sein. [:Er:Sie:] lächelte [:per]% der Zeit."
-smiles3 = "Niemand lächelt in [:channel]! Los Leute legt mal wieder ein Lächeln auf :)"
+smiles3 = "Niemand lächelt in [:channel]! Los Leute, legt mal wieder ein Lächeln auf :)"
 
 sad1 = "<b>[:nick]</b> scheint im Moment nicht gut drauf zu sein, [:per]% [:seiner:ihrer:] Zeilen enthielten ein trauriges Smily :("
 sad2 = "<b>[:nick]</b> ist auch eine traurige Person, die [:per]% der Zeit geweint hat."

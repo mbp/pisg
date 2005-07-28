@@ -19,6 +19,7 @@ pisg (0.67) - ??
      + Bulgarian: thanks, Tjavdar Ivanov.
      + Polish: fix attacked1 (thanks, kot_czarny, SF #1222407).
      + Greek: new strings (thanks, Konstantinos Tzanidis).
+     + German: some minor tweaks.
 
 pisg (0.66) - Thu May, 13th 2005
    Christoph:
