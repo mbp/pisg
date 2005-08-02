@@ -2,6 +2,11 @@ package Pisg::Parser::Format::Trillian;
 
 # Documentation for the Pisg::Parser::Format modules is found in Template.pm
 
+# old format:
+# [hh:mm] <nick> says something
+# new v3 format:
+# [hh:mm] nick: says something
+
 use strict;
 $^W = 1;
 
@@ -10,7 +15,7 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^\[(\d+):\d+[^ ]+ <([^>]+)> (.*)',
+        normalline => '^\[(\d+):\d+[^ ]+ <?([^*:>]+)[^ ]+ (.*)',
         actionline => '^\[(\d+):\d+[^ ]+ \* (\S+) (.*)',
         thirdline  => '^\[(\d+):(\d+)[^ ]+ \*{3}\s(.+)',
     };
@@ -29,7 +34,7 @@ sub normalline
         $hash{hour}   = $1;
         ($hash{nick}  = $2) =~ s/^[@%\+~&]//o; # Remove prefix
         $hash{saying} = $3;
-        $hash{saying} =~ s/\(Link: ((http|https|ftp|telnet|news):\/\/.*?)\)\1/$1/;
+        $hash{saying} =~ s/\(Link: (((http|https|ftp|telnet|news):\/\/|).*?)\)\1/$1/;
 
         return \%hash;
     } else {
@@ -47,7 +52,7 @@ sub actionline
         $hash{hour}   = $1;
         ($hash{nick}  = $2) =~ s/^[@%\+~&]//o; # Remove prefix
         $hash{saying} = $3;
-        $hash{saying} =~ s/\(Link: ((http|https|ftp|telnet|news):\/\/.*?)\)\1/$1/;
+        $hash{saying} =~ s/\(Link: (((http|https|ftp|telnet|news):\/\/|).*?)\)\1/$1/;
 
         return \%hash;
     } else {

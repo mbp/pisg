@@ -6,11 +6,11 @@ pisg (0.67) - ??
      + Added support for multiple channels in config with the same name.
        Even multiple channel directives for the very same channel are
        supported (closes SF tracker #967404, patch by Torbjörn Svensson).
-     + Change DTD to XHTML 1.1 Strict (suggested by Torbjörn).
    * Documentation:
      + Local options override global ones, not vice-versa.
    * Formats:
      + Notes on using mIRC.
+     + support the new Trillian format (thanks, Torbjörn).
    * Languages:
      + Dutch: small update to shout1 (thanks, Søren Jensen).
      + Dutch/Flemish: new strings added (thanks, Jeroen van Nimwegen).
