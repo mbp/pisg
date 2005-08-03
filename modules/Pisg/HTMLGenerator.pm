@@ -357,6 +357,7 @@ sub _pageheader
         return;
     }
     while (<PAGEHEAD>) {
+        chomp;
         _html($_);
     }
     close(PAGEHEAD);
@@ -370,6 +371,7 @@ sub _pagefooter
         return;
     }
     while (<PAGEFOOT>) {
+        chomp;
         _html($_);
     }
     close(PAGEFOOT);
