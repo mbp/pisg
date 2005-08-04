@@ -51,6 +51,7 @@ my $txtpic      = "Userpic";
 my $txtsex      = "Sex";
 my $txtmale     = "M";
 my $txtfemale   = "F";
+my $txtbot      = "B";
 my $txtignore   = "Ignore me";
 my $btnsubmit   = "Submit";
 my $btnupdate   = "Update";
@@ -68,7 +69,7 @@ my $nickhelp    = "Enter the name you want to use in the stats here.";
 my $aliashelp   = "Add all aliases you use here, seperated by spaces, so they will be joined in the stats. A * is allowed as a wildcard. For example: MyNick[Zzz], MyNick-afk and MyNick-work could be entered as 'MyNick[Zzz] MyNick-*' or just as 'MyNick*'";
 my $urlhelp     = "You can enter a webpage or e-mail adress here to be linked to your nick in the stats.";
 my $pichelp     = "If you enter a link to a picture here it will be added to your stats on the page.";
-my $sexhelp     = "This setting is used to determine if lines in the stats should read 'his' or 'her' when referring to you.";
+my $sexhelp     = "This setting is used to determine if lines in the stats should read 'his' or 'her' or 'bot' when referring to you.";
 my $ignorehelp  = "If you don't want to be included in the stats, select this option.";
 
 
@@ -84,7 +85,7 @@ $path =~ s!^/!!;
 my (%oldnicks, @users, @nick);
 my ($frm_nick, $frm_alias, $frm_link, $frm_pic, $frm_sex, $frm_ignore);
 my ($old_nick, $old_alias, $old_link, $old_pic, $old_sex, $old_ignore);
-my ($old_sexm, $old_sexf, $old_ignr);
+my ($old_sexm, $old_sexf, $old_sexb, $old_ignr);
 my ($cfg, $fnd);
 my ($submitbtn, $frmaction);
 
@@ -208,7 +209,7 @@ print <<HTML
     </tr>
     <tr>
      <td><b>$txtsex</b></td>
-     <td>$txtmale<input type="radio" name="sex" value="m" $old_sexm>$txtfemale<input type="radio" name="sex" value="f" $old_sexf></td>
+     <td>$txtmale<input type="radio" name="sex" value="m" $old_sexm>$txtfemale<input type="radio" name="sex" value="f" $old_sexf>$txtbot<input type="radio" name="sex" value="b" $old_sexb></td>
     </tr>
     <tr>
      <td><b>$txtignore</B></td>
@@ -373,6 +374,9 @@ sub check_if_found
         elsif ($old_sex eq "f" or $old_sex eq "F"){
             $old_sexf = "checked";
         }
+        elsif ($old_sex eq "b" or $old_sex eq "B"){
+            $old_sexb = "checked";
+        }
         if ($old_ignore eq "1"){
             $old_ignr = "checked";
         }
@@ -419,6 +423,9 @@ sub addinfo
     }
     elsif ($old_sex eq "f" or $old_sex eq "F"){
         $old_sexf = "checked";
+    }
+    elsif ($old_sex eq "b" or $old_sex eq "B"){
+        $old_sexb = "checked";
     }
     if ($old_ignore eq "1"){
         $old_ignr = "checked";
@@ -477,6 +484,9 @@ sub updateinfo
     }
     elsif ($old_sex eq "f" or $old_sex eq "F"){
         $old_sexf = "checked";
+    }
+    elsif ($old_sex eq "b" or $old_sex eq "B"){
+        $old_sexb = "checked";
     }
     if ($old_ignore eq "1"){
         $old_ignr = "checked";

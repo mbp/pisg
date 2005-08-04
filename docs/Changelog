@@ -1,18 +1,16 @@
 pisg (0.67) - ??
    Christoph:
-   * Features:
      + Recognize ogg and wma suffixes in song stats, complain about invalid
        ChartsRegexp.
+     + Documentation: Local options override global ones, not vice-versa.
+     + Notes on using mIRC.
+   Torbjörn Svensson:
      + Added support for multiple channels in config with the same name.
        Even multiple channel directives for the very same channel are
-       supported (closes SF tracker #967404, patch by Torbjörn Svensson).
-   * Fixes:
-     + chomp PageHead and PageFoot files (thanks, Torbjörn).
-   * Documentation:
-     + Local options override global ones, not vice-versa.
-   * Formats:
-     + Notes on using mIRC.
-     + support the new Trillian format (thanks, Torbjörn).
+       supported (closes SF tracker #967404).
+     + Support 'bot' in addalias.pl.
+     + Support the new Trillian format.
+     + Chomp PageHead and PageFoot files.
    * Languages:
      + Dutch: small update to shout1 (thanks, Søren Jensen).
      + Dutch/Flemish: new strings added (thanks, Jeroen van Nimwegen).
