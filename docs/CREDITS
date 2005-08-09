@@ -111,7 +111,7 @@ Other contributors:
    | pisg(1) manpage
  * Torbjörn Svensson <azoff@se.linux.org>
    | ShowFoulDecimals and AltColorScheme options, multiple channels with same
-   | name, lots of other fixes
+   | name, lots of other fixes, pum.pl
  * coaster
    | improved mirc6hack.mrc
  * Vianney Lecroart <acemtp@free.fr>
@@ -124,6 +124,8 @@ Other contributors:
    | Update for supy.pm
  * Tjavdar Ivanov <ivtj@ing.hj.se>
    | Update for Bulgarian
+ * Axel 'XTaran' Beckert <abe@deuxchevaux.org>
+   | pum.pl
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
