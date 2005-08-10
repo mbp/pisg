@@ -1,5 +1,7 @@
 package Pisg::HTMLGenerator;
 
+# $Id$
+#
 # Copyright and license, as well as documentation(POD) for this module is
 # found at the end of the file.
 
@@ -559,7 +561,7 @@ sub _activenicks
             $visiblenick = $self->_format_word($nick);
         }
 
-        my $style = '';;
+        my $style = '';
         if ($self->{cfg}->{colorscheme} ne 'none') {
             $style = "style=\"background-color: ". $self->generate_colors($c) ."\"";
         }
