@@ -15,6 +15,8 @@ pisg (0.67) - ??
      + Chomp PageHead and PageFoot files.
      + Pisg User Manager (pum): replacement for addalias.pl (with Axel
        Beckert).
+     + ColorScheme 'none' will now suppress the background color in "most
+       active nicks (closes SF #1255234).
    * Languages:
      + Dutch: small update to shout1 (thanks, Søren Jensen).
      + Dutch/Flemish: new strings added (thanks, Jeroen van Nimwegen).

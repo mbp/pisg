@@ -559,7 +559,11 @@ sub _activenicks
             $visiblenick = $self->_format_word($nick);
         }
 
-        my $color = $self->generate_colors($c);
+        my $style = '';;
+        if ($self->{cfg}->{colorscheme} ne 'none') {
+            $style = "style=\"background-color: ". $self->generate_colors($c) ."\"";
+        }
+
         my $class = 'rankc';
         if ($c == 1) {
             $class = 'hirankc';
@@ -585,39 +589,39 @@ sub _activenicks
         my $w = $self->{stats}->{words}{$nick} ? $self->{stats}->{words}{$nick} : 0;
         my $ch   = $self->{stats}->{lengths}{$nick};
        my $sex = $self->{users}->{sex}{$nick};
-       _html("<td style=\"background-color: $color\""
+       _html("<td $style"
        . ($sex ? ($sex eq 'm' ? " class=\"male\">"
        : ($sex eq 'f' ? " class=\"female\">" : " class=\"bot\">")) : ">")
        ."$visiblenick</td>"
         . ($self->{cfg}->{showlines} ? 
          ($self->{cfg}->{showlinetime} ?
-        "<td style=\"background-color: $color\" nowrap=\"nowrap\">".$self->_user_linetimes($nick,$active[0])."</td>"
-        : "<td style=\"background-color: $color\">$line</td>") : "")
+        "<td $style nowrap=\"nowrap\">".$self->_user_linetimes($nick,$active[0])."</td>"
+        : "<td $style>$line</td>") : "")
         . ($self->{cfg}->{showtime} ?
-        "<td style=\"background-color: $color\">".$self->_user_times($nick)."</td>"
+        "<td $style>".$self->_user_times($nick)."</td>"
         : "")
         . ($self->{cfg}->{showwords} ?
            ($self->{cfg}->{showwordtime} ?
-           "<td style=\"background-color: $color\" nowrap=\"nowrap\">".$self->_user_wordtimes($nick,$active[0])."</td>"
-           : "<td style=\"background-color: $color\">$w</td>")
+           "<td $style nowrap=\"nowrap\">".$self->_user_wordtimes($nick,$active[0])."</td>"
+           : "<td $style>$w</td>")
         : "")
         . ($self->{cfg}->{showwpl} ?
-        "<td style=\"background-color: $color\">".sprintf("%.1f",$w/$line)."</td>"
+        "<td $style>".sprintf("%.1f",$w/$line)."</td>"
         : "")
         . ($self->{cfg}->{showcpl} ?
-        "<td style=\"background-color: $color\">".sprintf("%.1f",$ch/$line)."</td>"
+        "<td $style>".sprintf("%.1f",$ch/$line)."</td>"
         : "")
         . ($self->{cfg}->{showlastseen} ?
-        "<td style=\"background-color: $color\">$lastseen</td>"
+        "<td $style>$lastseen</td>"
         : "")
         . ($self->{cfg}->{showrandquote} ?
-        "<td style=\"background-color: $color\">\"$randomline\"</td>"
+        "<td $style>\"$randomline\"</td>"
         : "")
         );
         if ($self->{cfg}->{userpics} && $i % $self->{cfg}->{userpics} == 0) {
             for my $ii (0 .. $self->{cfg}->{userpics} - 1) {
                 last if $i + $ii >= $self->{cfg}->{activenicks};
-                $self->_user_pic($active[$i + $ii], $color);
+                $self->_user_pic($active[$i + $ii], $style);
             }
         }
         _html("</tr>");
@@ -2157,12 +2161,12 @@ sub _user_pic
 {
     my $self = shift;
     my $nick  = shift;
-    my $color  = shift;
+    my $style  = shift;
 
     return unless $self->{users}->{userpics}{$nick} or $self->{cfg}->{defaultpic};
 
     my $rowspan = $self->{cfg}->{userpics} ? " rowspan=\"$self->{cfg}->{userpics}\"" : "";
-    my $output = "<td style=\"background-color: $color\" align=\"center\" valign=\"middle\"$rowspan>";
+    my $output = "<td $style align=\"center\" valign=\"middle\"$rowspan>";
 
     my $biguserpic = $self->{users}->{biguserpics}{$nick};
     if ($biguserpic) {
