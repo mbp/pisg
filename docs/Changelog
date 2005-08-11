@@ -17,6 +17,8 @@ pisg (0.67) - ??
        Beckert).
      + ColorScheme 'none' will now suppress the background color in "most
        active nicks" (closes SF #1255234).
+     + Die if output cannot be written (closes SF #1207883); remove some
+       redundant newlines.
    * Languages:
      + Dutch: small update to shout1 (thanks, Søren Jensen).
      + Dutch/Flemish: new strings added (thanks, Jeroen van Nimwegen).

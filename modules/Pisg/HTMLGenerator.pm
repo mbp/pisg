@@ -114,7 +114,7 @@ sub create_output
 
     if ($self->{cfg}->{showbignumbers}) {
         $self->_headline($self->_template_text('bignumtopic'));
-        _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
+        _html("<table width=\"$self->{cfg}->{tablewidth}\">"); # Needed for sections
         $self->_questions();
         $self->_shoutpeople();
         $self->_capspeople();
@@ -161,7 +161,7 @@ sub create_output
 
     if ($self->{cfg}->{showbignumbers}) {
         $self->_headline($self->_template_text('othernumtopic'));
-        _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
+        _html("<table width=\"$self->{cfg}->{tablewidth}\">"); # Needed for sections
         $self->_gotkicks();
         $self->_mostkicks();
         $self->_mostop() if $self->{cfg}->{showops};
@@ -176,7 +176,7 @@ sub create_output
 
     if ($self->{cfg}->{showtopics}) {
         $self->_headline($self->_template_text('latesttopic'));
-        _html("<table width=\"$self->{cfg}->{tablewidth}\">\n"); # Needed for sections
+        _html("<table width=\"$self->{cfg}->{tablewidth}\">"); # Needed for sections
 
         $self->_lasttopics();
 
@@ -227,7 +227,7 @@ sub _htmlheader
 
     my $title = $self->_template_text('pagetitle1', %hash);
     if($self->{cfg}->{colorscheme} ne "none") {
-        print OUTPUT <<HTML;
+        _html( <<HTML );
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -314,7 +314,7 @@ sub _htmlfooter
     my $author_text = $self->_template_text('author', %hash);
     my $stats_text = $self->_template_text('stats_gen_in', %hash);
 
-    print OUTPUT <<HTML;
+    _html( <<HTML );
 <span class="small">
 $stats_gen<br />
 $author_text<br />
@@ -323,7 +323,7 @@ $stats_text
 HTML
 
     if($self->{cfg}->{colorscheme} ne "none") {
-        print OUTPUT <<HTML;
+        _html( <<HTML );
 </div>
 </body>
 </html>
@@ -335,7 +335,7 @@ sub _headline
 {
     my $self = shift;
     my ($title) = (@_);
-    print OUTPUT <<HTML;
+    _html( <<HTML );
    <br />
    <table width="$self->{cfg}->{headwidth}" cellpadding="1" cellspacing="0" border="0">
     <tr>
@@ -404,7 +404,7 @@ sub _activedays
     );
     $self->_headline($self->_template_text('dailyactivitytopic', %hash));
 
-    _html("<table border=\"0\"><tr>\n");
+    _html("<table border=\"0\"><tr>");
 
     for (my $day = $days - $ndays + 1; $day <= $days ; $day++) {
         my $lines = $self->{stats}->{day_lines}[$day];
@@ -419,7 +419,7 @@ sub _activedays
 
             }
         }
-        _html("</td>\n");
+        _html("</td>");
     }
 
     _html("</tr><tr>");
@@ -458,10 +458,10 @@ sub _activetimes
         my $image = "pic_v_".(int($hour/6)*6);
         $image = $self->{cfg}->{$image};
 
-        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines_per_hour\" title=\"$lines_per_hour\"/></td>\n" if $size;
+        $output{$hour} = "<td align=\"center\" valign=\"bottom\" class=\"asmall\">$percent%<br /><img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines_per_hour\" title=\"$lines_per_hour\"/></td>" if $size;
     }
 
-    _html("<table border=\"0\"><tr>\n");
+    _html("<table border=\"0\"><tr>");
 
     for ($b = 0; $b < 24; $b++) {
         $a = sprintf("%02d", $b);
@@ -705,7 +705,7 @@ sub generate_colors
 sub _html
 {
     my $html = shift;
-    print OUTPUT "$html\n";
+    print OUTPUT "$html\n" or die "Could not write to disk: $!\n";
 }
 
 sub _questions
@@ -2044,7 +2044,7 @@ sub _legend
     _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{pic_h_6}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"6-11\" /> = 6-11</td>");
     _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{pic_h_12}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"12-17\" /> = 12-17</td>");
     _html("<td align=\"center\" class=\"asmall\"><img src=\"$self->{cfg}->{piclocation}/$self->{cfg}->{pic_h_18}\" width=\"40\" height=\"15\" align=\"middle\" alt=\"18-23\" /> = 18-23</td>");
-    _html("</tr></table>\n");
+    _html("</tr></table>");
 }
 
 
