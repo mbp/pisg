@@ -12,7 +12,7 @@ sub new
         cfg => $args{cfg},
         normalline => '^\d+-\d+-\d+-(\d+)-\d+-\d+:[^:]+::([^!]+)[^:]+ PRIVMSG [^:]+:([^\001]+)',
         actionline => '^\d+-\d+-\d+-(\d+)-\d+-\d+:[^:]+::([^!]+)[^:]+:\001ACTION ([^\001]*)',
-        thirdline  => '^\d+-\d+-\d+-(\d+)-(\d+)-\d+:[^:]+::([^!]+)[^ ]+ (\w+) (.*)',
+        thirdline  => '^\d+-\d+-\d+-(\d+)-(\d+)-\d+:[^:]+::([^! .]+)[^ ]* (\w+) [#\w]+ :?((\S*)\s*(.*))',
     };
 
     bless($self, $type);
@@ -64,22 +64,22 @@ sub thirdline
         $hash{min}  = $2;
         $hash{nick} = $3;
 
-        my @arr = split(" ", $5);
         if ($4 eq 'KICK') {
             $hash{kicker} = $hash{nick};
-            $hash{nick} = $arr[1];
+            $hash{nick} = $6;
 
         } elsif ($4 eq 'TOPIC') {
-            $hash{newtopic} = join(" ", @arr[1..@arr]);
+            print "TOPIC\n";
+            $hash{newtopic} = $5;
 
         } elsif ($4 eq 'MODE') {
-            $hash{newmode} = $arr[1];
+            $hash{newmode} = $5;
 
         } elsif ($4 eq 'JOIN') {
             $hash{newjoin} = $3;
 
-        } elsif ($4 eq 'NICK') {
-            $hash{newnick} = $arr[1];;
+        } elsif ($4 eq 'NICK') { # does this work?
+            $hash{newnick} = $6;
         }
 
         return \%hash;

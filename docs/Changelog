@@ -4,8 +4,8 @@ pisg (0.67) - ??
        ChartsRegexp.
      + Documentation: Local options override global ones, not vice-versa.
      + Notes on using mIRC.
-     + psybnc.pm: Fix ACTION pattern, require PRIVMSG on normal lines
-       (SF #1251680).
+     + psybnc.pm: Fix ACTION pattern, require PRIVMSG on normal lines,
+       fix thirdline pattern (SF #1251680).
    Torbjörn Svensson:
      + Added support for multiple channels in config with the same name.
        Even multiple channel directives for the very same channel are
