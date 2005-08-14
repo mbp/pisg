@@ -311,8 +311,8 @@ sub show_data_form {
     my $this = $data{$nick};
     my $pp = $config->get('cgi_pics_prefix');
     print _start_form('GET', $script_uri);
-    print _hidden( -name  => 'op', -value => ( $nick ? 'save' : 'create' ),
-            -override => 1);
+    print _hidden( -name  => 'op', -value => ( $nick or param('op') eq
+	    'create' ? 'save' : 'create' ), -override => 1);
     print _hidden('old_nick', $nick);
     print _table(_Tr(_td('Nickname'), _td(textfield('nick',$this->{nick},9))),
         _Tr(_td('Alias(ses)'), _td(textfield('alias',$this->{alias},30))),
