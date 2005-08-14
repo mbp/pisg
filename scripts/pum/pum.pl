@@ -56,7 +56,7 @@ my $VERSION = '3.1';
 my $title_prefix = "pisg IRC Statistics User Manager $VERSION";
 my $script_uri = $ENV{SCRIPT_NAME};
 my %data = ();
-my @attributes = qw(nick alias link sex pic bigpic);
+my @attributes = qw(nick alias link sex pic bigpic ignore);
 
 param( -name => 'op', -value => 'list' ) unless defined param('op');
 # print the default css
@@ -90,7 +90,9 @@ $config->define('cgi_debug', { DEFAULT => 0 });
 $config->define('cgi_alias_disp', { DEFAULT => 30 });
 $config->define('cgi_user_del', { DEFAULT => 0 });
 $config->define('cgi_pics_prefix', { DEFAULT => '' });
-$config->define('cgi_backup', { DEFAULT => '1' });
+$config->define('backup_enable', { DEFAULT => '1' });
+$config->define('backup_dir', { DEFAULT => '/tmp' });
+$config->define('backup_suffix', { DEFAULT => '%t' });
 $config->define('pisg_user_config', { DEFAULT => 'users.conf' });
 
 -e $config_file or die "Configuration file $config_file doesn't exist";
@@ -193,9 +195,20 @@ sub read_config {
 sub write_config {
     my $filename = &get_user_config;
 
-    if ($config->get('cgi_backup')) {
-        rename($filename, "$filename.backup") or 
-            warn "Couldn't copy '$filename' to $filename.backup': $!";
+    if ($config->get('backup_enable')) {
+        use File::Basename;
+        use File::Copy;
+
+        my $time = time();
+        my $dir = $config->get('backup_dir');
+        my $name = basename($filename);
+        my $suffix = $config->get('backup_suffix');
+        
+        my $newfile = "$dir/$name.$suffix";
+        $newfile =~ s/\%t/$time/;
+
+        copy($filename, $newfile) or 
+            warn "Couldn't copy '$filename' to $newfile': $!";
     }
 
     open(CFG, '>', $filename) or 
@@ -229,6 +242,8 @@ sub save_data {
     foreach my $attr (@attributes) {
         my $value = param($attr);
         next unless $value;
+
+        next if $attr eq 'sex' and $value eq '-';
 
         die "No double quotes allowed in data: '$value'" 
             if $value =~ /\"/;
@@ -264,26 +279,30 @@ sub show_data {
     }
 
     my $pp = $config->get('cgi_pics_prefix');
-    print table(_Tr(_th('Nickname'), _th($this->{nick})),
-        _Tr(_td('Alias(ses)'), _td($this->{alias})),
-        _Tr(_td('Link'), _td(defined($this->{link}) and 
+    print start_table;
+    print _Tr(_th('Nickname'), _th($this->{nick}));
+    print _Tr(_td('Alias(ses)'), _td($this->{alias}));
+    print _Tr(_td('Link'), _td(defined($this->{link}) and 
                         $this->{link} =~ m(^http://)i ?
                   a({ href => $this->{link}}, $this->{link}) :
                   $this->{link} ?
                   a({ href => "mailto:$this->{link}"}, 
-                    $this->{link}) : '(unset)')),
-        _Tr(_td('Sex'), _td($this->{sex} eq 'm' ? 'male' :
-                 $this->{sex} eq 'f' ? 'female' :
-                 $this->{sex} eq 'b' ? 'bot' : 
-                 '(unset)')),
-        _Tr(_td('Picture'), _td($this->{pic} ? 
+                    $this->{link}) : '(unset)'));
+    print _Tr(_td('Sex'), _td(defined $this->{sex} ? 
+                $this->{sex} eq 'm' ? 'male' :
+                $this->{sex} eq 'f' ? 'female' :
+                $this->{sex} eq 'b' ? 'bot' : '(unset)' :
+                 '(unset)'));
+    print _Tr(_td('Picture'), _td($this->{pic} ? 
                      img({ src => $pp.$this->{pic},
                            alt => $this->{pic} }) : 
-                     '(unset)')),
-        _Tr(_td('Big picture'), _td($this->{bigpic} ? 
+                     '(unset)'));
+    print _Tr(_td('Big picture'), _td($this->{bigpic} ? 
                      a({href => $pp.$this->{bigpic}}, 
                        $this->{bigpic}) : 
-                     '(unset)')));
+                     '(unset)'));
+    print _Tr(_td('Ignore'), _td($this->{ignore} ? 'True' : 'False'));
+    print end_table;
 }
 
 sub show_data_form {
@@ -305,7 +324,9 @@ sub show_data_form {
                            b => 'bot',
                          '-' => 'unspecified' }))),
         _Tr(_td('Picture'), _td(textfield('pic',$this->{pic},30))),
-        _Tr(_td('Big picture'), _td(textfield('bigpic',$this->{bigpic},30))));
+        _Tr(_td('Big picture'), _td(textfield('bigpic',$this->{bigpic},30))),
+        _Tr(_td('Ignore'), _td(checkbox('ignore',
+            ($this->{ignore} ? 'checked' : ''), 'y', ''))));
     print _submit('submit', 'Save data set');
     print _reset('reset', 'Reset form');
     print _end_form();
@@ -335,7 +356,7 @@ sub show_nicks {
         my $alias = $data{$nick}{alias} || '';
         $nick = $data{$nick}{nick};
         if (length($alias) > $alias_disp) {
-            $alias = substr($alias, 1, $alias_disp) . '...';
+            $alias = substr($alias, 0, $alias_disp) . '...';
         }
 
         print _Tr(
