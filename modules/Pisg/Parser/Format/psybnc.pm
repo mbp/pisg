@@ -69,7 +69,6 @@ sub thirdline
             $hash{nick} = $6;
 
         } elsif ($4 eq 'TOPIC') {
-            print "TOPIC\n";
             $hash{newtopic} = $5;
 
         } elsif ($4 eq 'MODE') {
