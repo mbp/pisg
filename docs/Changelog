@@ -19,6 +19,7 @@ pisg (0.67) - ??
        active nicks" (closes SF #1255234).
      + Die if output cannot be written (closes SF #1207883); remove some
        redundant newlines.
+     * Fix minor typo in 'justgrey' colorscheme
    * Languages:
      + Dutch: small update to shout1 (thanks, Søren Jensen).
      + Dutch/Flemish: new strings added (thanks, Jeroen van Nimwegen).
