@@ -46,6 +46,9 @@ SCRIPTS = scripts/crontab \
 ADDALIAS = scripts/addalias/addalias.pl \
 	    scripts/addalias/README
 
+PUM = scripts/pum/pum.pl \
+	    scripts/pum/pum.conf
+
 MODULESDIR = modules
 
 MAIN_MODULE = $(MODULESDIR)/Pisg.pm
@@ -122,6 +125,9 @@ release: docs
 
 	mkdir $(DIRNAME)/scripts/addalias
 	cp $(ADDALIAS) $(DIRNAME)/scripts/addalias
+
+	mkdir $(DIRNAME)/scripts/pum
+	cp $(PUM) $(DIRNAME)/scripts/pum
 
 	mkdir $(DIRNAME)/$(MODULESDIR)
 

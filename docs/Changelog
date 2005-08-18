@@ -1,4 +1,4 @@
-pisg (0.67) - ??
+pisg (0.67) - Thu Aug, 18th 2005
    Christoph:
      + Recognize ogg and wma suffixes in song stats, complain about invalid
        ChartsRegexp.
