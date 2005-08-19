@@ -111,7 +111,7 @@ Other contributors:
    | pisg(1) manpage
  * Torbjörn Svensson <azoff@se.linux.org>
    | ShowFoulDecimals and AltColorScheme options, multiple channels with same
-   | name, lots of other fixes, pum.pl
+   | name, multiple languages per run, lots of other fixes, pum.pl
  * coaster
    | improved mirc6hack.mrc
  * Vianney Lecroart <acemtp@free.fr>

@@ -1,3 +1,7 @@
+pisg (0.68) - ??
+   Torbjörn:
+     + Generate stats in multiple languages in a single run.
+
 pisg (0.67) - Thu Aug, 18th 2005
    Christoph:
      + Recognize ogg and wma suffixes in song stats, complain about invalid

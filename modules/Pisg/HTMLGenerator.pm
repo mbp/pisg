@@ -29,17 +29,6 @@ sub new
     require Pisg::Common;
     Pisg::Common->import();
 
-    my $lang_charset = $self->{tmps}->{$self->{cfg}->{lang}}{lang_charset};
-    if($lang_charset and $lang_charset ne $self->{cfg}->{charset}) {
-        if($have_iconv) {
-            # convert from template charset to our
-            $self->{iconv} = Text::Iconv->new($lang_charset, $self->{cfg}->{charset});
-        } else {
-            print "Text::Iconv is not installed, skipping charset conversion of language templates\n"
-                unless ($self->{cfg}->{silent});
-        }
-    }
-
     bless($self, $type);
     return $self;
 }
@@ -52,6 +41,18 @@ sub create_output
     # sub itself.
 
     my $self = shift;
+    $self->{cfg}->{lang} = shift;
+
+    my $lang_charset = $self->{tmps}->{$self->{cfg}->{lang}}{lang_charset};
+    if($lang_charset and $lang_charset ne $self->{cfg}->{charset}) {
+        if($have_iconv) {
+            # convert from template charset to our
+            $self->{iconv} = Text::Iconv->new($lang_charset, $self->{cfg}->{charset});
+        } else {
+            print "Text::Iconv is not installed, skipping charset conversion of language templates\n"
+                unless ($self->{cfg}->{silent});
+        }
+    }
 
     $self->_topactive();
 
@@ -61,7 +62,8 @@ sub create_output
 
     my $fname = $self->{cfg}->{outputfile};
     $fname =~ s/\%t/$self->{cfg}->{outputtag}/g;
-    print "Now generating HTML in $fname...\n"
+    $fname =~ s/\%l/$self->{cfg}->{lang}/g;
+    print "Now generating HTML ($self->{cfg}->{lang}) in $fname...\n"
         unless ($self->{cfg}->{silent});
 
     open (OUTPUT, "> $fname") or

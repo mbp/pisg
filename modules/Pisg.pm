@@ -103,7 +103,7 @@ sub get_default_config_settings
         defaultpic => '',
         logdir => [],
         nfiles => 0,
-        lang => 'EN',
+        langlist => [qw/EN/],
         langfile => 'lang.txt',
         cssdir => 'layout/',
         colorscheme => 'default',
@@ -342,13 +342,20 @@ sub init_config
 
             while ($settings =~ s/[ \t]([^=]+?)=(["'])(.*?)\2//) {
                 my $var = lc($1);
+                my $val = $3;
                 $var =~ s/ //; # Remove whitespace
                 if (!defined($self->{cfg}->{$var})) {
                     print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
                     next;
                 }
-                unless (($self->{cfg}->{$var} eq $3) || $self->{override_cfg}->{$var}) {
-                    $self->{cfg}->{$var} = $3;
+
+                if ($var eq "lang") {
+                    @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
+                    next;
+                }
+
+                unless (($self->{cfg}->{$var} eq $val) || $self->{override_cfg}->{$var}) {
+                    $self->{cfg}->{$var} = $val;
                 }
             }
 
@@ -358,10 +365,13 @@ sub init_config
             $self->{cfg}->{chan_done}{$self->{cfg}->{channel}} = 1; # don't parse channel in $self->{cfg}->{channel} if a channel statement is present
             while ($settings =~ s/\s([^=]+)=(["'])(.+?)\2//) {
                 my $var = lc($1);
+                my $val = $3;
                 if ($var eq "logdir" || $var eq "logfile") {
-                    push(@{$tmp->{$channel}{$var}}, $3);
+                    push(@{$tmp->{$channel}{$var}}, $val);
+                } elsif ($var eq "lang") {
+                    @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
                 } else {
-                    $tmp->{$channel}{$var} = $3;
+                    $tmp->{$channel}{$var} = $val;
                 }
             }
             while (<$fh>) {
@@ -372,12 +382,16 @@ sub init_config
                 }
                 if ($_ =~ /^\s*(\w+)\s*=\s*(["'])(.+?)\2/) {
                     my $var = lc($1);
+                    my $val = $3;
                     unless ((($var eq "logdir" || $var eq "logfile") && scalar(@{$self->{override_cfg}->{$var}}) > 0) || (($var ne "logdir" && $var ne "logfile") && $self->{override_cfg}->{$var})) {
 
                         if($var eq "logdir" || $var eq "logfile") {
-                            push @{$tmp->{$channel}{$var}}, $3;
+                            push @{$tmp->{$channel}{$var}}, $val;
+                        } elsif ($var eq "lang") {
+                            @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
+                            next;
                         } else {
-                            $tmp->{$channel}{$var} = $3;
+                            $tmp->{$channel}{$var} = $val;
                         }
 
                     }
@@ -427,9 +441,6 @@ sub init_pisg
     }
     $self->{cfg}->{timestamp} = $timestamp;
 
-    $self->{cfg}->{lang} = uc $self->{cfg}->{lang};
-    $self->{cfg}->{lang} =~ s/-/_/g; # PT_BR was called PT-BR before
-
     # convert wordlists
     $self->{cfg}->{foulwords} = wordlist_regexp($self->{cfg}->{foulwords}, $self->{cfg}->{regexpaliases});
     $self->{cfg}->{ignorewords} = wordlist_regexp($self->{cfg}->{ignorewords}, $self->{cfg}->{regexpaliases});
@@ -452,9 +463,6 @@ sub init_pisg
 
     unless ($self->{cfg}->{silent}) {
         print "Statistics for channel $self->{cfg}->{channel} \@ $self->{cfg}->{network} by $self->{cfg}->{maintainer}\n\n";
-        die sprintf "No such language: %s\n", $self->{cfg}->{lang}
-            unless $self->{tmps}->{$self->{cfg}->{lang}};
-        print "Using language template: $self->{cfg}->{lang}\n\n" if $self->{cfg}->{lang} ne 'EN';
     }
 }
 
@@ -510,7 +518,11 @@ _END
         # Create our HTML page if the logfile has any data.
         if (defined $stats) {
             if ($stats->{parsedlines} > 0) {
-                $generator->create_output();
+                foreach (@{ $self->{cfg}->{langlist} }) {
+                    s/-/_/g; # PT_BR was called PT-BR before
+                    die sprintf "No such language: %s\n", $_ unless $self->{tmps}->{$_};
+                    $generator->create_output($_);
+                }
             } else {
                 print STDERR <<_END unless $self->{cfg}->{silent};
 No parseable lines found in logfile ($stats->{totallines} total lines). Skipping.

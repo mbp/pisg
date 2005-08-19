@@ -815,9 +815,10 @@
          Logfile = "channel.log"
          Format = "mIRC"
          Lang = "DE"
+         OutputFile = "mychan-%l.html"
         </channel>
 
-        <set Lang="FR">
+        <set Lang="FR,SE">
       ]]>
     </programlisting></refsynopsisdiv>
 
@@ -855,7 +856,9 @@
     SQ    (Albanian),
     TR    (Turkish),
     YU    (Serbian).
-    See also <xref linkend="LangFile" />.
+    Output in several languages can be generated at the same time, separate the
+    languages by comma. The tag %l in the output file name will be replaced by
+    the language name. See also <xref linkend="LangFile" />.
     </para>
     </refsect1>
     <refsect1>
