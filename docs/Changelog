@@ -3,6 +3,7 @@ pisg (0.68) - ??
      + ColorScheme 'none' will generate the color gradient again, the gradient
        is dropped with HiCell="".
      + More smileys (SF #1264834).
+     + Fix English preposition (thanks, Barry Suridge).
    Torbjörn:
      + Generate stats in multiple languages in a single run.
 

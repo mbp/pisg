@@ -152,7 +152,7 @@ urlstopic = "Most referenced URLs"
 chartstopic = "[:channel] Music Charts"
 notopic = "A topic was never set on this channel."
 mostnickstopic = "Users with most nicknames"
-bylinetopic = "[:date] on [:time] by [:nick]"
+bylinetopic = "[:date] at [:time] by [:nick]"
 dailyactivitytopic = "Daily activity (last [:n] days)"
 activegenderstopic = "Most active gender"
 
