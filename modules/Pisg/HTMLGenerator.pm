@@ -563,10 +563,7 @@ sub _activenicks
             $visiblenick = $self->_format_word($nick);
         }
 
-        my $style = '';
-        if ($self->{cfg}->{colorscheme} ne 'none') {
-            $style = "style=\"background-color: ". $self->generate_colors($c) ."\"";
-        }
+        my $style = $self->generate_colors($c);
 
         my $class = 'rankc';
         if ($c == 1) {
@@ -685,10 +682,10 @@ sub generate_colors
     my $self = shift;
     my $c = shift;
 
-    my $h = $self->{cfg}->{hicell};
+    my $h = $self->{cfg}->{hicell} or return "class=\"hicell\"";
     $h =~ s/^#//;
     $h = hex $h;
-    my $h2 = $self->{cfg}->{hicell2};
+    my $h2 = $self->{cfg}->{hicell2} or return "class=\"hicell\"";
     $h2 =~ s/^#//;
     $h2 = hex $h2;
     my $f_b = $h & 0xff;
@@ -701,7 +698,7 @@ sub generate_colors
     my $green  = sprintf "%0.2x", abs int(((($t_g - $f_g) / $self->{cfg}->{activenicks}) * +$c) + $f_g);
     my $red  = sprintf "%0.2x", abs int(((($t_r - $f_r) / $self->{cfg}->{activenicks}) * +$c) + $f_r);
 
-    return "#$red$green$blue";
+    return "style=\"background-color: #$red$green$blue\"";
 }
 
 sub _html
