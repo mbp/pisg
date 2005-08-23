@@ -4,6 +4,7 @@ pisg (0.68) - ??
        is dropped with HiCell="".
      + More smileys (SF #1264834).
      + Fix English preposition (thanks, Barry Suridge).
+     + Add pointer to "compatibility" theme for XChat to FORMATS.
    Torbjörn:
      + Generate stats in multiple languages in a single run.
 

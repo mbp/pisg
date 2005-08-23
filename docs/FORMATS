@@ -69,7 +69,7 @@ on ^*:ACTION:*:*:{
   Example:
         [23:44] <Christina> Hello world
 
-* X-Chat:
+* XChat:
   -  A client for Linux (www.xchat.org)
     
   -  In order to use this, format must be set to 'xchat'.
@@ -83,6 +83,12 @@ on ^*:ACTION:*:*:{
   Example of new logformat:
         jan 13 04:39:42 <Ben> Hello World
 
+  XChat has changed its logformat again in early 2005. The "brand new" format
+  is broken in the same way as the mIRC6 format in that it is now impossible to
+  tell actions from real events. Additionally, the format of the lines in the
+  log changed. It is possible to revert to the previous format (the one that
+  pisg understands) by using the old text theme:
+    http://xchat.org/files/themes/blacktheme.zip
 
 * Eggdrop:
   - A cool and advanced IRC bot for Linux (www.eggheads.org)
