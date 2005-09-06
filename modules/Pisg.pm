@@ -344,13 +344,13 @@ sub init_config
                 my $var = lc($1);
                 my $val = $3;
                 $var =~ s/ //; # Remove whitespace
-                if (!defined($self->{cfg}->{$var})) {
-                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
+                if ($var eq "lang") {
+                    @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
                     next;
                 }
 
-                if ($var eq "lang") {
-                    @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
+                if (!defined($self->{cfg}->{$var})) {
+                    print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
                     next;
                 }
 
