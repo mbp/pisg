@@ -23,7 +23,7 @@
 #      last update: Mikko Nissinen <gwadj79@gmail.com> (2005-07-10)
 # (SI) Slovenian - Ales Tepina <??> (2005-01-09: bounces)
 # (HU) Hungarian - Gyuri Horak <??> (2005-01-09: bounces)
-# (EE) Estonian - Hannes Tarien <comcute@users.sf.net>
+# (EE) Estonian - Hannes Tarien <comcute@perses.net> (2005-09-06)
 # (IT) Italian - Michele Venturi (2005-04-29)
 # (CA) Catalan - Nikoru Kimochi <??> (2005-01-09: bounces)
 # (TR) Turkish - cti- <??> (2005-01-09: bounces)
@@ -291,7 +291,7 @@ short1 = "<b>[:nick]</b> ist nicht sehr mitteilungsbedürftig. [:Er:Sie:] schrieb
 short2 = "<b>[:nick]</b> fasste sich auch sehr kurz, durchschnittlich [:letters] Buchstaben pro Zeile."
 
 foul1 = "<b>[:nick]</b> hat in [:seiner:ihrer:] Jugend keine Erziehung genossen, [:per]% von dem was [:er:sie:] sagte waren Schimpfworte!"
-foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsman noch kommt?)"
+foul2 = "<b>[:nick]</b> war [:per]% der Zeit unartig (Ob da der Weihnachtsmann noch kommt?)"
 foul3 = "Alle gut erzogen in [:channel], niemand hat Schimpfworte benutzt!"
 foultext = "<b>Zum Beispiel so:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -2299,11 +2299,11 @@ karma = "Karma"
 goodkarma = "Hea karma pani"
 badkarma = "Halva karma pani"
 lastseen1 = "[:days] päev tagasi"
-lastseen2 = "[:days] päeva tagasi"
+lastseen2 = "Eile"
 today = "Täna"
 pagetitle1 = "[:channel] @ [:network] statistika koostas [:maintainer]"
 pagetitle2 = "Statistika on koostatud"
-pagetitle3 = "Selle [:days]-päevase perioodi jooksul külastas [:channel] kanalit <b>[:nicks]</b> erinevat tegelast."
+pagetitle3 = "[:days]-päevase perioodi jooksul külastas [:channel] kanalit <b>[:nicks]</b> erinevat tegelast."
 stats_gen_by = "Statistika genereeris [:pisg_url] v[:version]"
 author = "pisg'i autor on [:author_url] ja teised"
 stats_gen_in = "Statistika koostamine võttis aega [:time]"

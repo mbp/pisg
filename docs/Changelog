@@ -7,8 +7,10 @@ pisg (0.68) - ??
      + Add pointer to "compatibility" theme for XChat to FORMATS.
    Torbjörn:
      + Generate stats in multiple languages in a single run.
-   Languages:
-     + French completed by Yoda.
+   Language Updates:
+     + French: completed by Yoda.
+     + Estonian: Hannes Tarien.
+     + German: Michael Weyershäuser.
 
 pisg (0.67) - Thu Aug, 18th 2005
    Christoph:
