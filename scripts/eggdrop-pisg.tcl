@@ -1,5 +1,16 @@
 #pisg.tcl v0.15 by HM2K - auto stats script for pisg (perl irc statistics generator)
 #based on a script by Arganan
+
+# WARNING - READ THIS
+#
+# If you use this script, PLEASE read the documentation about the "Silent"
+# option. If you get the message "an error occured: Pisg v0.67 - perl irc
+# statistics generator" in the channel, you are NOT running silent. Fix it.
+# Don't complain to the pisg authors, or you will be flamed.
+#
+# IF YOU DON'T GET THIS RIGHT, PLEASE CONSIDER LETTING SOMEONE ELSE
+# ADMINISTRATE YOUR BOT.
+
 set pisgver "0.15"
 
 #Location of pisg execuitable perl script

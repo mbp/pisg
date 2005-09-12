@@ -5,6 +5,7 @@ pisg (0.68) - ??
      + More smileys (SF #1264834).
      + Fix English preposition (thanks, Barry Suridge).
      + Add pointer to "compatibility" theme for XChat to FORMATS.
+     + Add BIG FAT warning to eggdrop-pisg.tcl.
    Torbjörn:
      + Generate stats in multiple languages in a single run.
    Language Updates:
