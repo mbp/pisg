@@ -12,7 +12,7 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '(\d+):\d+:\d+ <([^>\s]+)>\s+(.*)',
+        normalline => '(\d+):\d+:\d+ <[@%+~&]?([^>\s]+)>\s+(.*)',
         actionline => '(\d+):\d+:\d+ \*{1,}\s+(\S+) (.*)',
         thirdline  => '(\d+):(\d+):\d+ [<-]-[->]\s+(\S+) (\S+) (\S+) (\S+) ((\S+)\s*(\S+)?\s*(.*)?)',
     };
