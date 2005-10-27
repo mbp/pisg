@@ -406,7 +406,7 @@ sub _parse_file
                     }
 
                     # asian frown: ;_;
-                    if ($saying =~ /($e'?$n[\(\[\\\/\{|]|[\)\]\\\/\}|]$n'?$e|[;:][\(\/]|\):|;_+;|T_+T|-[._]+-)/o and
+                    if ($saying =~ /($e'?$n[\(\[\\\/\{|]|[\)\]\\\/\}|]$n'?$e|[;:][\(\/]|[\)D]:|;_+;|T_+T|-[._]+-)/o and
                         $saying !~ /\w+:\/\//o) {
                         $stats->{frowns}{$nick}++;
                         $stats->{smileys}{$1}++;
