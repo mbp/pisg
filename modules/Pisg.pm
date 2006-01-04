@@ -103,7 +103,7 @@ sub get_default_config_settings
         defaultpic => '',
         logdir => [],
         nfiles => 0,
-        langlist => [qw/EN/],
+        lang => 'EN',
         langfile => 'lang.txt',
         cssdir => 'layout/',
         colorscheme => 'default',
@@ -344,10 +344,6 @@ sub init_config
                 my $var = lc($1);
                 my $val = $3;
                 $var =~ s/ //; # Remove whitespace
-                if ($var eq "lang") {
-                    @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
-                    next;
-                }
 
                 if (!defined($self->{cfg}->{$var})) {
                     print STDERR "Warning: $self->{cfg}->{configfile}, line $.: No such configuration option: '$var'\n";
@@ -368,8 +364,6 @@ sub init_config
                 my $val = $3;
                 if ($var eq "logdir" || $var eq "logfile") {
                     push(@{$tmp->{$channel}{$var}}, $val);
-                } elsif ($var eq "lang") {
-                    @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
                 } else {
                     $tmp->{$channel}{$var} = $val;
                 }
@@ -387,9 +381,6 @@ sub init_config
 
                         if($var eq "logdir" || $var eq "logfile") {
                             push @{$tmp->{$channel}{$var}}, $val;
-                        } elsif ($var eq "lang") {
-                            @{ $self->{cfg}->{langlist} } = split /\s*,\s*/, uc $val;
-                            next;
                         } else {
                             $tmp->{$channel}{$var} = $val;
                         }
@@ -518,10 +509,10 @@ _END
         # Create our HTML page if the logfile has any data.
         if (defined $stats) {
             if ($stats->{parsedlines} > 0) {
-                foreach (@{ $self->{cfg}->{langlist} }) {
-                    s/-/_/g; # PT_BR was called PT-BR before
-                    die sprintf "No such language: %s\n", $_ unless $self->{tmps}->{$_};
-                    $generator->create_output($_);
+                foreach my $lang (split /\s*,\s*/, uc $self->{cfg}->{lang}) {
+                    $lang =~ s/-/_/g; # PT_BR was called PT-BR before
+                    die sprintf "No such language: %s\n", $_ unless $self->{tmps}->{$lang};
+                    $generator->create_output($lang);
                 }
             } else {
                 print STDERR <<_END unless $self->{cfg}->{silent};
