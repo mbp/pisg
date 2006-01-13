@@ -2,11 +2,12 @@ pisg (0.68) - ??
    Christoph:
      + ColorScheme 'none' will generate the color gradient again, the gradient
        is dropped with HiCell="".
+     + Fix <user> parsing.
      + More smileys (SF #1264834).
      + Fix English preposition (thanks, Barry Suridge).
      + Add pointer to "compatibility" theme for XChat to FORMATS.
-     + Add warning on silent option to eggdrop-pisg.tcl.
      + Strip nick modes in xchat format (SF #1304262).
+     + Add warning on silent option to eggdrop-pisg.tcl.
    Torbjörn:
      + Generate stats in multiple languages in a single run.
    Language Updates:

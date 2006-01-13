@@ -279,7 +279,7 @@ sub init_config
         if ($line =~ /<user.*>/) {
             my $nick;
 
-            if ($line =~ /nick=(["'])(.+?)\1/) {
+            if ($line =~ /\bnick=(["'])(.+?)\1/) {
                 $nick = $2;
                 add_alias($nick, $nick);
             } else {
@@ -287,7 +287,7 @@ sub init_config
                 next;
             }
 
-            if ($line =~ /alias=(["'])(.+?)\1/) {
+            if ($line =~ /\balias=(["'])(.+?)\1/) {
                 my @thisalias = split(/\s+/, lc($2));
                 foreach (@thisalias) {
                     if ($self->{cfg}->{regexpaliases} and /[\|\[\]\{\}\(\)\?\+\.\*\^\\]/) {
@@ -302,28 +302,28 @@ sub init_config
                 }
             }
 
-            if ($line =~ /pic=(["'])(.+?)\1/) {
+            if ($line =~ /\bpic=(["'])(.+?)\1/) {
                 $self->{users}->{userpics}{$nick} = $2;
             }
 
-            if ($line =~ /bigpic=(["'])(.+?)\1/) {
+            if ($line =~ /\bbigpic=(["'])(.+?)\1/) {
                 $self->{users}->{biguserpics}{$nick} = $2;
             }
 
-            if ($line =~ /link=(["'])(.+?)\1/) {
+            if ($line =~ /\blink=(["'])(.+?)\1/) {
                 $self->{users}->{userlinks}{$nick} = $2;
             }
 
-            if ($line =~ /ignore=(["'])Y\1/i) {
+            if ($line =~ /\bignore=(["'])Y\1/i) {
                 add_ignore($nick);
             }
 
-            if ($line =~ /sex=(["'])([MmFfBb])\1/) {
+            if ($line =~ /\bsex=(["'])([MmFfBb])\1/) {
                 $self->{users}->{sex}{$nick} = lc($2);
             }
         } elsif ($line =~ /<link(.*)>/) {
 
-            if ($line =~ /url=(["'])(.+?)\1/) {
+            if ($line =~ /\burl=(["'])(.+?)\1/) {
                 my $url = $2;
                 if ($line =~ /ignore="Y"/i) {
                     add_url_ignore($url);
