@@ -3,7 +3,7 @@ package Pisg;
 # Documentation(POD) for this module is found at the end of the file.
 
 # Copyright (C) 2001-2005  <Morten Brix Pedersen> - morten@wtf.dk
-# Copyright (C) 2003-2005  Christoph Berg <cb@df7cb.de>
+# Copyright (C) 2003-2006  Christoph Berg <cb@df7cb.de>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -57,14 +57,18 @@ sub run
     # Init the configuration file (aliases, ignores, channels, etc)
     my $r;
     if ($self->{use_configfile}) {
-        if ((open(CONFIG, $self->{cfg}->{configfile}) 
-            or open(CONFIG, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
-            $r = $self->init_config(\*CONFIG)
+        foreach my $c ($self->{cfg}->{configfile}, $self->{search_path} . "/$self->{cfg}->{configfile}") {
+            if (open(CONFIG, $c)) {
+                $self->{cfg}->{configfile} = $c;
+                print "Using config file: $self->{cfg}->{configfile}\n\n"
+                    unless ($self->{cfg}->{silent});
+                $r = $self->init_config(\*CONFIG);
+                last;
+            } else {
+                print STDERR "Warning: $c: $!\n\n" if -e $c;
+            }
         }
     }
-
-    print "Using config file: $self->{cfg}->{configfile}\n\n"
-        if ($r && !$self->{cfg}->{silent});
 
     # Get translations from langfile
     $self->get_language_templates();
@@ -395,14 +399,20 @@ sub init_config
             my $backup_cfg = $self->{cfg}->{configfile};
             $self->{cfg}->{configfile} = $include_cfg;
             my $r;
-            if ((open(INCLUDE, $self->{cfg}->{configfile}) 
-                or open(INCLUDE, $self->{search_path} . "/$self->{cfg}->{configfile}"))) {
-                $r = $self->init_config(\*INCLUDE);
-            } else {
-                print STDERR "Warning: $backup_cfg, line $.: $self->{cfg}->{configfile}: $!\n";
+            foreach my $c ($self->{cfg}->{configfile}, $self->{search_path} . "/$self->{cfg}->{configfile}") {
+                if (open(INCLUDE, $c)) {
+                    $self->{cfg}->{configfile} = $c;
+                    $r = $self->init_config(\*INCLUDE);
+                    last;
+                } else {
+                    print STDERR "Warning: $backup_cfg, line $.: $c: $!\n"
+                        if -e $c;
+                }
             }
             print "Included config file: $self->{cfg}->{configfile}\n\n"
                 if ($r && !$self->{cfg}->{silent});
+            print STDERR "Warning: $backup_cfg, line $.: $self->{cfg}->{configfile} not found\n"
+                if (!$r);
             $self->{cfg}->{configfile} = $backup_cfg;
         } elsif ($line =~ /<(\w+)?.*[^>]$/) {
             print STDERR "Warning: $self->{cfg}->{configfile}, line $.: Missing end on element <$1 (probably multi-line?)\n";
