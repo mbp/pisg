@@ -442,7 +442,7 @@ short1 = "<b>[:nick]</b> skrev de korteste linjer. Gennemsnittet er [:letters] b
 short2 = "<b>[:nick]</b> skriver også korte linjer, med et gennesnit på [:letters]"
 
 foul1 = "<b>[:nick]</b> er lidt stor i munden, [:per]% af ordene var uhøfligt sprog"
-foul2 = "<b>[:nick]</b> burde også vaske munden med sæbe med alt det han/hun fyrer af, [:per]% af tiden"
+foul2 = "<b>[:nick]</b> burde også vaske munden med sæbe med alt det [:han:hun:] fyrer af, [:per]% af tiden"
 foul3 = "Ingen rapkæftede på [:channel]!"
 foultext = "<b>For eksempel sådan her:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
@@ -454,18 +454,18 @@ sad1 = "<b>[:nick]</b> er meget ked af det for tiden, [:per]% af linjerne havde 
 sad2 = "<b>[:nick]</b> er også en trist person, som græd [:per]% af tiden"
 sad3 = "Ingen er kede af det på [:channel]! Sikke en glad kanal :-)"
 
-allcaps1 = "Ser ud til at <b>[:nick]</b> har en voldsom trang til at råbe konstant, [:per]% af de gange han skrev var med stort" 
-allcaps2 = "<b>[:nick]</b> glemte vidst at Caps-Lock var slået til, [:per]% af de gange han skrev var med stort"
+allcaps1 = "Ser ud til at <b>[:nick]</b> har en voldsom trang til at råbe konstant, [:per]% af de gange [:han:hun:] skrev var med stort" 
+allcaps2 = "<b>[:nick]</b> glemte vidst at Caps-Lock var slået til, [:per]% af de gange [:han:hun:]han skrev var med stort"
 allcaps3 = "Ser ud til at alle har deres shift under kontrol :)"
 allcapstext = "<b>For eksempel sådan her: </b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-violent1 = "<b>[:nick]</b> er en meget aggresiv person, han delte <b>[:attacks]</b> slaps ud."
+violent1 = "<b>[:nick]</b> er en meget aggresiv person, [:han:hun:] delte <b>[:attacks]</b> slaps ud."
 violent2 = "<b>[:nick]</b> er ude af kontrol. [:Han:Hun:] slog andre folk <b>[:attacks]</b> gang(e)."
 violent3 = "Alle er glade ... endnu 8)"
 violenttext = "<b>For eksempel sådan her:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 attacked1 = "Ærgeligt. Ingen kan li' <b>[:nick]</b>. [:Han:Hun:] blev banket <b>[:attacks]</b> gange."
-attacked2 = "<b>[:nick]</b> er vidst heller ikke for polulær, han/hun fik tæsk <b>[:attacks]</b> gang(e)."
+attacked2 = "<b>[:nick]</b> er vidst heller ikke for polulær, [:han:hun:] fik tæsk <b>[:attacks]</b> gang(e)."
 attackedtext = "<b>For eksempel sådan her:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 words1 = "<b>[:nick]</b> er meget aktiv med [:words] skrevne ord!"
