@@ -7,6 +7,7 @@ pisg (0.68) - ??
      + More smileys (SF #1264834).
      + Suppress output when not writing to a terminal.
      + Print full path when config file comes from the search path.
+     + Strip [brackets] from chart titles.
    * Parsers:
      + Strip nick modes in xchat format (SF #1304262).
      + Add pointer to "compatibility" theme for XChat to FORMATS.
