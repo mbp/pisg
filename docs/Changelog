@@ -12,6 +12,7 @@ pisg (0.68) - ??
      + Strip nick modes in xchat format (SF #1304262).
      + Add pointer to "compatibility" theme for XChat to FORMATS.
      + Add warning on silent option to eggdrop-pisg.tcl.
+     + Note that the irssi format also works for ii (wmii).
    Torbjörn:
    * Features:
      + Generate stats in multiple languages in a single run.

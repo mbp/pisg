@@ -134,14 +134,14 @@ on ^*:ACTION:*:*:{
 
 * irssi:
   - Console IRC client (www.irssi.org)
-  
   - Logfiles must be using the default theme in irssi.
-
-  - In order to use this, format must be set to 'irssi'
+    (The "(real name)" added by autorealname.pl is ok.)
+  - In order to use this, format must be set to 'irssi'.
+  - This format also works for ii (wmii) logs.
 
   Example:
         17:40 <@John> Hello world
-        
+
 * psybnc:
   - IRC bouncer (http://www.psychoid.lam3rz.de/)
 
