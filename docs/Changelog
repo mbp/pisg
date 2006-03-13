@@ -1,4 +1,4 @@
-pisg (0.68) - ??
+pisg (0.68) - Mon Mar, 13th 2006
    Christoph:
    * Bug fixes:
      + ColorScheme 'none' will generate the color gradient again, the gradient
