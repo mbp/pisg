@@ -646,7 +646,9 @@ sub _activenicks
             for (my $i = $self->{cfg}->{activenicks}; $i < $remain; $i++) {
                 my $visiblenick;
                 my $nick = $active[$i];
-                unless ($i % 5) { if ($i != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); } }
+                unless (($i - $self->{cfg}->{activenicks}) % 5) {
+                    if ($i != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); }
+                }
                 my $items;
                 if ($self->{users}->{userlinks}{$nick}) {
                     $visiblenick = $self->_format_word($self->{users}->{userlinks}{$nick}, $nick);

@@ -1,3 +1,9 @@
+pisg (0.69) - ??
+   Christoph:
+   * Bug fixes:
+     + Fix ActiveNicks2 display when ActiveNicks is not divisible by 5
+       (thanks to Ian Rutson).
+
 pisg (0.68) - Mon Mar, 13th 2006
    Christoph:
    * Bug fixes:
