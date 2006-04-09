@@ -78,6 +78,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/lulubot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/oer.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mbot.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/miau.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC6.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC6hack.pm \
