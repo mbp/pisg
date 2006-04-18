@@ -5,6 +5,9 @@ pisg (0.69) - ??
        (thanks to Ian Rutson).
    * Parsers:
      + Finally add miau parser by Kresten Kjeldgaard.
+   Torbjörn:
+   * Bug fixes:
+     + Fix urlencode to encode '&' (thanks to Thomas Whaples).
 
 pisg (0.68) - Mon Mar, 13th 2006
    Christoph:

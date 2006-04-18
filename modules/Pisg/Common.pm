@@ -204,7 +204,7 @@ sub htmlentities
 sub urlencode
 {
     my $str = shift;
-    $str =~ s/([^\w_.\/?&=:+-])/sprintf "%%%02X", ord($1)/ge;
+    $str =~ s/([^\w_.\/?=:+-])/sprintf "%%%02X", ord($1)/ge;
     return $str;
 }
 
