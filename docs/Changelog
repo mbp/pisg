@@ -8,6 +8,8 @@ pisg (0.69) - ??
    Torbjörn:
    * Bug fixes:
      + Fix urlencode to encode '&' (thanks to Thomas Whaples).
+   Language Updates:
+     + Portuguese: completed by DarkForce72.
 
 pisg (0.68) - Mon Mar, 13th 2006
    Christoph:
