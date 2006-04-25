@@ -8,6 +8,8 @@ pisg (0.69) - ??
    Torbjörn:
    * Bug fixes:
      + Fix urlencode to encode '&' (thanks to Thomas Whaples).
+     + Fix double class if hicell/hicell2 is set to "" (thanks RaZ for
+       spotting this).
    Language Updates:
      + Portuguese: completed by DarkForce72.
 
