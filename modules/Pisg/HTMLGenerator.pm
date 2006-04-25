@@ -685,7 +685,7 @@ sub generate_colors
     my $c = shift;
 
 	# if hicell or hicell2 is "", do not print the class as it could mess up the gendercode
-    return "" if not length $self->{cfg}->{hicell} . $self->{cfg}->{hicell2};
+    return "" if not (length $self->{cfg}->{hicell} and length $self->{cfg}->{hicell2});
 
     my $h = $self->{cfg}->{hicell} or return "class=\"hicell\"";
     $h =~ s/^#//;
