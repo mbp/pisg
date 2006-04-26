@@ -1154,6 +1154,7 @@ mostnickstopic = "Utilizadores com mais nicks"
 bylinetopic = "[:date] por [:nick] às [:time]"
 dailyactivitytopic = "Actividade diária (últimos [:n] dias)"
 activegenderstopic = "Sexo mais activo"
+chartstopic = "[:channel] Exitos musicales"
 
 ## Other text
 
