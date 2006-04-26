@@ -830,6 +830,8 @@ bylinetopic = "por [:nick] a las [:time]"
 dailyactivitytopic = "Actividad diaria ([:n] últimos días)""
 mostnickstopic = "La gente que más nicks usa"
 activegenderstopic = "Sexo más activo"
+smileytopic = "Emoticonos :-)"
+chartstopic = "[:channel] Éxitos musicales"
 
 ## Other text
 
@@ -873,6 +875,10 @@ gender = "Sexo"
 gender_f = "Mujer"
 gender_m = "Hombre"
 gender_b = "Bot"
+smiley = "Emoticono"
+numberplayed = "Veces escuchada"
+song = "Canción"
+playedby = "Tocada última vez por"
 
 # Mouse-over titles
 pisghomepage = "Página de pisg"
