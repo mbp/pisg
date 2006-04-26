@@ -43,6 +43,9 @@ sub create_output
     my $self = shift;
     $self->{cfg}->{lang} = shift;
 
+    # remove old iconv if it exist as it could mess up recode.
+    delete $self->{iconv} if $self->{iconv};
+
     my $lang_charset = $self->{tmps}->{$self->{cfg}->{lang}}{lang_charset};
     if($lang_charset and $lang_charset ne $self->{cfg}->{charset}) {
         if($have_iconv) {
@@ -99,7 +102,7 @@ sub create_output
         if ($self->{cfg}->{pagehead} ne 'none');
 
     if ($self->{cfg}->{dailyactivity}) {
-	$self->_activedays();
+        $self->_activedays();
     }
 
     if ($self->{cfg}->{showactivetimes}) {
@@ -500,17 +503,20 @@ sub _activenicks
 
     $self->_headline($self->_template_text('activenickstopic'));
 
-    _html("<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>");
-    _html("<td>&nbsp;</td>"
-    . "<td class=\"tdtop\"><b>" . $self->_template_text('nick') . "</b></td>"
-    . ($self->{cfg}->{showlines} ? "<td class=\"tdtop\"><b>" . $self->_template_text('numberlines') . "</b></td>" : "")
-    . ($self->{cfg}->{showtime} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_time')."</b></td>" : "")
-    . ($self->{cfg}->{showwords} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_words')."</b></td>" : "")
-    . ($self->{cfg}->{showwpl} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_wpl')."</b></td>" : "")
-    . ($self->{cfg}->{showcpl} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_cpl')."</b></td>" : "")
-    . ($self->{cfg}->{showlastseen} ? "<td class=\"tdtop\"><b>".$self->_template_text('show_lastseen')."</b></td>" : "")
-    . ($self->{cfg}->{showrandquote} ? "<td class=\"tdtop\"><b>".$self->_template_text('randquote')."</b></td>" : "")
-    );
+    my $output = "";
+    $output .= "<table border=\"0\" width=\"$self->{cfg}->{tablewidth}\"><tr>";
+    $output .= "<td>&nbsp;</td>";
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('nick') . "</b></td>";
+
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('numberlines') . "</b></td>"   if ($self->{cfg}->{showlines});
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('show_time') . "</b></td>"     if ($self->{cfg}->{showtime});
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('show_words') . "</b></td>"    if ($self->{cfg}->{showwords});
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('show_wpl') . "</b></td>"      if ($self->{cfg}->{showwpl});
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('show_cpl') . "</b></td>"      if ($self->{cfg}->{showcpl});
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('show_lastseen') . "</b></td>" if ($self->{cfg}->{showlastseen});
+    $output .= "<td class=\"tdtop\"><b>" . $self->_template_text('randquote') . "</b></td>"     if ($self->{cfg}->{showrandquote});
+    
+    $output .= "\n";
 
     my @active;
     my $nicks;
@@ -528,13 +534,16 @@ sub _activenicks
         last unless $self->{cfg}->{userpics};
         my $nick = $active[$c];
         if ($self->{users}->{userpics}{$nick} or $self->{cfg}->{defaultpic}) {
-            _html("<td class=\"tdtop\"" .
-                ($self->{cfg}->{userpics} > 1 ? " colspan=\"$self->{cfg}->{userpics}\"" : "") .
-                "><b>" . $self->_template_text('userpic') ."</b></td>");
+            $output .= "<td class=\"tdtop\"";
+            $output .= " colspan=\"$self->{cfg}->{userpics}\""  if ($self->{cfg}->{userpics} > 1);
+            $output .= "><b>" . $self->_template_text('userpic') ."</b></td>";
             last;
         }
     }
-    _html("</tr>");
+
+    $output .= "\n</tr>";
+    _html($output);
+    undef $output;
 
     for (my $i = 0; $i < $self->{cfg}->{activenicks}; $i++) {
         my $c = $i + 1;
@@ -589,36 +598,51 @@ sub _activenicks
         my $line = $self->{stats}->{lines}{$nick};
         my $w = $self->{stats}->{words}{$nick} ? $self->{stats}->{words}{$nick} : 0;
         my $ch   = $self->{stats}->{lengths}{$nick};
-       my $sex = $self->{users}->{sex}{$nick};
-       _html("<td $style"
-       . ($sex ? ($sex eq 'm' ? " class=\"male\">"
-       : ($sex eq 'f' ? " class=\"female\">" : " class=\"bot\">")) : ">")
-       ."$visiblenick</td>"
-        . ($self->{cfg}->{showlines} ? 
-         ($self->{cfg}->{showlinetime} ?
-        "<td $style nowrap=\"nowrap\">".$self->_user_linetimes($nick,$active[0])."</td>"
-        : "<td $style>$line</td>") : "")
-        . ($self->{cfg}->{showtime} ?
-        "<td $style>".$self->_user_times($nick)."</td>"
-        : "")
-        . ($self->{cfg}->{showwords} ?
-           ($self->{cfg}->{showwordtime} ?
-           "<td $style nowrap=\"nowrap\">".$self->_user_wordtimes($nick,$active[0])."</td>"
-           : "<td $style>$w</td>")
-        : "")
-        . ($self->{cfg}->{showwpl} ?
-        "<td $style>".sprintf("%.1f",$w/$line)."</td>"
-        : "")
-        . ($self->{cfg}->{showcpl} ?
-        "<td $style>".sprintf("%.1f",$ch/$line)."</td>"
-        : "")
-        . ($self->{cfg}->{showlastseen} ?
-        "<td $style>$lastseen</td>"
-        : "")
-        . ($self->{cfg}->{showrandquote} ?
-        "<td $style>\"$randomline\"</td>"
-        : "")
-        );
+        my $sex = $self->{users}->{sex}{$nick};
+        
+        my $output = "";
+        $output .= "<td $style>";
+
+        # Hilight nick with gendercolors
+        if ($sex and $sex eq 'm') {
+            $output .= "<span class=\"male\">";
+        } elsif ($sex and $sex eq 'f') {
+            $output .= "<span class=\"female\"";
+        } elsif ($sex and $sex eq 'b') {
+            $output .= "<span class=\"bot\"";
+        } else {
+            $output .= "<span>";
+        }
+        $output .= $visiblenick;
+        $output .= "</span></td>";
+
+        if ($self->{cfg}->{showlines}) {
+            if ($self->{cfg}->{showlinetime}) {
+                $output .= "<td $style nowrap=\"nowrap\">" . $self->_user_linetimes($nick,$active[0]) . "</td>";
+            } else {
+                $output .= "<td $style>$line</td>";
+            }
+        }
+
+        $output .= "<td $style>" . $self->_user_times($nick) . "</td>" if ($self->{cfg}->{showtime});
+
+        if ($self->{cfg}->{showwords}) {
+            if ($self->{cfg}->{showwordtime}) {
+                $output .= "<td $style nowrap=\"nowrap\">" . $self->_user_wordtimes($nick,$active[0]) . "</td>";
+            } else {
+                $output .= "<td $style>$w</td>";
+            }
+        }
+        
+        $output .= "<td $style>" . sprintf("%.1f", $w/$line) . "</td>"  if ($self->{cfg}->{showwpl});
+        $output .= "<td $style>" . sprintf("%.1f", $ch/$line) . "</td>" if ($self->{cfg}->{showcpl});
+        $output .= "<td $style>$lastseen</td>"                          if ($self->{cfg}->{showlastseen});
+        $output .= "<td $style>\"$randomline\"</td>"                    if ($self->{cfg}->{showrandquote});
+
+        _html($output);
+        undef $output;
+
+
         if ($self->{cfg}->{userpics} && $i % $self->{cfg}->{userpics} == 0) {
             for my $ii (0 .. $self->{cfg}->{userpics} - 1) {
                 last if $i + $ii >= $self->{cfg}->{activenicks};
@@ -646,8 +670,8 @@ sub _activenicks
             for (my $i = $self->{cfg}->{activenicks}; $i < $remain; $i++) {
                 my $visiblenick;
                 my $nick = $active[$i];
-                unless (($i - $self->{cfg}->{activenicks}) % 5) {
-                    if ($i != $self->{cfg}->{activenicks}) { _html("</tr><tr>"); }
+                if ($i != $self->{cfg}->{activenicks} and ($i - $self->{cfg}->{activenicks}) % 5 != 0) {
+                    _html("</tr><tr>");
                 }
                 my $items;
                 if ($self->{users}->{userlinks}{$nick}) {
@@ -660,13 +684,26 @@ sub _activenicks
                 } else {
                     $items = $self->{stats}->{lines}{$active[$i]};
                 }
-               my $sex = $self->{users}->{sex}{$active[$i]};
-                _html("<td class=\"rankc10\">"
-                . ($sex ? ($sex eq 'm' ? "<span class=\"male\">"
-                : ($sex eq 'f' ? "<span class=\"female\">" : "<span class=\"bot\">")) : "")
-                ."$visiblenick ($items)"
-                . ($sex ? "</span>" : "")
-                ."</td>");
+                my $sex = $self->{users}->{sex}{$active[$i]};
+
+                my $output = "";
+                $output .= "<td class=\"rankc10\">";
+
+                if ($sex and $sex eq 'm') {
+                    $output .= "<span class=\"male\">";
+                } elsif ($sex and $sex eq 'f') {
+                    $output .= "<span class=\"female\"";
+                } elsif ($sex and $sex eq 'b') {
+                    $output .= "<span class=\"bot\"";
+                } else {
+                    $output .= "<span>";
+                }
+                $output .= "$visiblenick ($items)";
+                $output .= "</span></td>";
+
+                _html($output);
+                undef $output;
+
             }
             _html("</tr></table>");
         }
@@ -684,7 +721,7 @@ sub generate_colors
     my $self = shift;
     my $c = shift;
 
-	# if hicell or hicell2 is "", do not print the class as it could mess up the gendercode
+    # if hicell or hicell2 is "", do not print the class as it could mess up the gendercode
     return "" if not (length $self->{cfg}->{hicell} and length $self->{cfg}->{hicell2});
 
     my $h = $self->{cfg}->{hicell} or return "class=\"hicell\"";
@@ -1170,7 +1207,7 @@ sub _mostfoul
         if ($self->{topactive}{$nick} || !$self->{cfg}->{showonlytop}) {
           if ($self->{stats}->{lines}{$nick} > 15) {
               $spercent{$nick} = $self->{stats}->{foul}{$nick} / $self->{stats}->{words}{$nick} * 100;
-	      
+      
               my $dec = $self->{cfg}->{showfouldecimals};
               $dec = 1 if($dec < 0); # default to 1
               $spercent{$nick} =~ s/(\.\d{$dec})\d+/$1/;

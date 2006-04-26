@@ -10,6 +10,8 @@ pisg (0.69) - ??
      + Fix urlencode to encode '&' (thanks to Thomas Whaples).
      + Fix double class if hicell/hicell2 is set to "" (thanks RaZ for
        spotting this).
+     + Fix bug when having multiplie languages defined and they use
+       different charsets (iconv left to next language).
    Language Updates:
      + Portuguese: completed by DarkForce72.
      + Portuguese/Brazil: completed by Guilherme Barile.
