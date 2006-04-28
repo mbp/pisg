@@ -777,7 +777,7 @@ kick3 = "Es maja la gente de aquí, ¡nadie ha sido kickeado!"
 kicktext = "<b>Aquí está la prueba:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 action1 = "<b>[:nick]</b> quiere mantenernos informados de lo que hace en todo momento. ¡Ha escrito [:actions] acciones!"
-action2 = "Y por supuesto <b>[:nick]</b> también no los ha dicho [:actions] veces."
+action2 = "Y por supuesto <b>[:nick]</b> también nos los ha dicho [:actions] veces."
 action3 = "¡No se han mostrado acciones en [:channel]!"
 actiontext = "<b>Aquí va un ejemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
