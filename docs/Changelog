@@ -5,7 +5,7 @@ pisg (0.69) - ??
        (thanks to Ian Rutson).
    * Parsers:
      + Finally add miau parser by Kresten Kjeldgaard.
-   Torbjörn:
+   TorbjÃ¶rn:
    * Bug fixes:
      + Fix urlencode to encode '&' (thanks to Thomas Whaples).
      + Fix double class if hicell/hicell2 is set to "" (thanks RaZ for
@@ -17,6 +17,10 @@ pisg (0.69) - ??
      + Portuguese/Brazil: completed by Guilherme Barile.
      + Spanish: completed by Sentence.
      + Hebrew: competed by goldan.
+     + Polish: competed by Antoni GrzymaÅ‚a.
+     + Italian: completed by X-Drum.
+     + Russian: compeled by NonExistenT.
+     + Romanian: completed by Silviu Foca.
 
 pisg (0.68) - Mon Mar, 13th 2006
    Christoph:
@@ -33,14 +37,14 @@ pisg (0.68) - Mon Mar, 13th 2006
      + Add pointer to "compatibility" theme for XChat to FORMATS.
      + Add warning on silent option to eggdrop-pisg.tcl.
      + Note that the irssi format also works for ii (wmii).
-   Torbjörn:
+   TorbjÃ¶rn:
    * Features:
      + Generate stats in multiple languages in a single run.
    Language Updates:
      + English: Fix preposition (thanks, Barry Suridge).
      + French: completed by Yoda.
      + Estonian: Hannes Tarien.
-     + German: Michael Weyershäuser.
+     + German: Michael WeyershÃ¤user.
      + Danish: more han/hun (he/she, thanks b0m).
 
 pisg (0.67) - Thu Aug, 18th 2005
@@ -51,7 +55,7 @@ pisg (0.67) - Thu Aug, 18th 2005
      + Notes on using mIRC.
      + psybnc.pm: Fix ACTION pattern, require PRIVMSG on normal lines,
        fix thirdline pattern (SF #1251680).
-   Torbjörn Svensson:
+   TorbjÃ¶rn Svensson:
      + Added support for multiple channels in config with the same name.
        Even multiple channel directives for the very same channel are
        supported (closes SF tracker #967404).
@@ -66,10 +70,10 @@ pisg (0.67) - Thu Aug, 18th 2005
        redundant newlines.
      * Fix minor typo in 'justgrey' colorscheme
    * Languages:
-     + Dutch: small update to shout1 (thanks, Søren Jensen).
+     + Dutch: small update to shout1 (thanks, SÃ¸ren Jensen).
      + Dutch/Flemish: new strings added (thanks, Jeroen van Nimwegen).
      + Finnish: new strings added (thanks, Mikko Nissinen and Matti Peltola).
-     + Danish/Norwegian/Swedish: completed by Torbjörn Svensson.
+     + Danish/Norwegian/Swedish: completed by TorbjÃ¶rn Svensson.
      + Bulgarian: thanks, Tjavdar Ivanov.
      + Polish: fix attacked1 (thanks, kot_czarny, SF #1222407).
      + Greek: new strings (thanks, Konstantinos Tzanidis).
@@ -115,7 +119,7 @@ pisg (0.65) - Fri Apr, 15th 2005
    Christoph:
    * Karma didn't work well with nick aliases. It's still far from perfect,
      though (thanks to Nico for the test log).
-   * Fixed breakage when multiple LogDirs were given (thanks to Toni Viemerö
+   * Fixed breakage when multiple LogDirs were given (thanks to Toni ViemerÃ¶
      for the report, SF tracker #1155433).
    * Add channel owner (~) and admin (&) chars in various parsers (reported by
      Scelt in SF tracker #1170470).
@@ -131,13 +135,13 @@ pisg (0.65) - Fri Apr, 15th 2005
    * Most active nicks timebars have mouse-over titles.
    * Update copyright years and add copyright and license to documentation.
    Updated translations:
-   * French (thanks, Sébastien Bourgeois).
+   * French (thanks, SÃ©bastien Bourgeois).
    * Finnish (thanks, Sami Karuaho).
 
 pisg (0.64) - Thu Feb, 24th 2005
    Morten:
    * Updated translations:
-     + Swedish (thanks, Torbjörn Svensson)
+     + Swedish (thanks, TorbjÃ¶rn Svensson)
      + Danish
    Christoph:
    * Updated translations:
@@ -150,7 +154,7 @@ pisg (0.64) - Thu Feb, 24th 2005
      + Norwegian (thanks, Andreas Blaafladt).
    * Modified the CSS files containing .male/.female classes to show sex color
      also for <a href>s (SF tracker #1088382 by Jeroen - tux2020).
-   * Applied patch by Torbjörn Svensson for using alternate CSS files - thanks
+   * Applied patch by TorbjÃ¶rn Svensson for using alternate CSS files - thanks
      (AltColorScheme option).
    * Made Logfile accept wildcards, sanitized NFiles behaviour on multiple
      LogDirs.
@@ -181,7 +185,7 @@ pisg (0.63) - Wed Jan, 12th 2005
      + German (thanks, Igge).
      + Greek (thanks, Konstantinos Tzanidis).
      + Hebrew (thanks, shimi).
-     + Swedish (thanks, Torbjörn Svensson).
+     + Swedish (thanks, TorbjÃ¶rn Svensson).
    * Inhibit warning in _mostreferencednicks when a nick is referenced
      before being used first.
    * Links for users in "These didn't make it to the top" (thanks, Edward
@@ -266,7 +270,7 @@ pisg (0.59) - Sun Oct, 3rd 2004
 pisg (0.58) - Thu Sep, 9th 2004
    Changes by Morten Brix Pedersen:
    * Added new option, ShowFoulDecimals which configures the number of
-   decimals used in statistics in foul numbers. (thanks, Torbjörn Svensson)
+   decimals used in statistics in foul numbers. (thanks, TorbjÃ¶rn Svensson)
    * Fix wrong references of nicks (thanks, Sascha Wessel)
    * HTML documentation now has sane filenames.
    * Documentation has been cleaned up for typos/spelling errors.
@@ -281,7 +285,7 @@ pisg (0.57) - Sat Aug, 28th 2004
    shr3kst3r@hushmail.com/Andreas Blaafladt).
    * Added option BigNumbersThreshold to make previously undocumented behavior
    configurable.
-   * Fixed warning when users didn't say any words. Thanks, Torbjörn Svensson.
+   * Fixed warning when users didn't say any words. Thanks, TorbjÃ¶rn Svensson.
 
 pisg (0.56) - Sat Jun, 19th 2004
    * Fix parsing of energymech kick messages and modes (thanks, optika81)
@@ -351,7 +355,7 @@ pisg (0.51) - Wed Jan, 21st 2004
    * User pictures and DefaultPic may now contain * and ? to choose a random
      picture from ImageGlobPath. (Christoph Berg)
    * Made all picture heights integer. (Christoph Berg)
-   * Add support for Vision logs (thanks, Vegard Wærp)
+   * Add support for Vision logs (thanks, Vegard WÃ¦rp)
    * Timebars in "Most active users" now have a hover text which shows how
    many lines a used wrote in that period of a time (thanks, oxman)
 
@@ -495,7 +499,7 @@ pisg (0.43) - Fri Nov, 22th 2002
      another for females etc.) (thanks, Olivier 'Babar' Raginel)
    * For languages which have a general unknown-sex verb, this can now be
      specified. E.g. French has 'un' for male, 'une' for females and 'un(e)'
-     as a general unknown-sex verb. (thanks, Gaël Roualland)
+     as a general unknown-sex verb. (thanks, GaÃ«l Roualland)
 
 pisg (0.42) - Fri Nov, 1st 2002
    * ircII logfile support added (thanks, James Andrewartha)
@@ -590,7 +594,7 @@ pisg (0.38) - Thu Apr, 25th 2002
      registered properly (thanks, comcute <comcute@blastnet.ee>)
    * A dutch translation appeared in the English version of pisg; fixed.
    * Nicktracking wasn't working with the irssi logfile format, fixed (thanks,
-     Matthäus Wander <jonny_b.good@gmx.de>)
+     MatthÃ¤us Wander <jonny_b.good@gmx.de>)
    * Time-bars are now centered properly
    * Czech translation added (thanks, Jaroslav Ostadal <s98704@tacheon.dkm.cz>)
 
@@ -773,7 +777,7 @@ pisg (0.29) - Sat, Nov 10th 2001
      Referenced Words'
    * Added Estonian translation by comcute <comcute@surfdata.ee>
    * Added Italian translation by Pascal Brax
-   * Added Catalan translatino by Roger Utgés (Nikoru) <nikoru@menta.net>
+   * Added Catalan translatino by Roger UtgÃ©s (Nikoru) <nikoru@menta.net>
 
 pisg (0.28) - Sun, Oct 21th 2001
    * Added Hungarian translation by Gyuri Horak <dyuri@dyuri.org>
@@ -870,7 +874,7 @@ pisg (0.22) - Sat, Sep 15th 2001
    * pisg.cfg now supports regexs in user.cfg when 'regexp_aliases' is
      enabled. (thanks, Phil Gregory)
    * When using logdirs, files is now sorted properly, so files are read in the
-     right order (thanks, Sascha Lüdecke)
+     right order (thanks, Sascha LÃ¼decke)
    * A bunch of English grammar corrections (thanks, Phil Gregory)
    * Words like //www is now being ignored as they should.
    * Instead of 'slaps' we now have 'violence', so one can define their own
@@ -959,10 +963,10 @@ pisg (0.18) - Mon, Aug 6th 2001
      everything should be set, instead of in the script - this makes it easier
      upgrading pisg. Read CONFIG-README in order to "understand" it.
    * Commandline option -c is now -ch
-   * Uncompress files with *.gz and *.bz2 automatically (Sascha Lüdecke)
+   * Uncompress files with *.gz and *.bz2 automatically (Sascha LÃ¼decke)
    * Add new feature --prefix, this works on commandline so you only get logs
      starting with what you specify, for example -p '#mychan' will only get
-     dir/#mychan* files. (Sascha Lüdecke)
+     dir/#mychan* files. (Sascha LÃ¼decke)
    * Fix op tracking with bxlog logs
    * Added Foulwords-Variable to pisg.cfg
    * Make pisg die when there is no files in logdir

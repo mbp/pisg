@@ -15,7 +15,7 @@ Major contributors:
      wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords,
      charset conversion support, BigNumbersThreshold option, karma, music
      charts, parser cache ...
- * Torbjörn Svensson <azoff@se.linux.org>
+ * TorbjÃ¶rn Svensson <azoff@se.linux.org>
    | ShowFoulDecimals and AltColorScheme options, multiple channels with same
    | name, multiple languages per run, lots of other fixes, pum.pl
 
@@ -29,7 +29,7 @@ Other contributors:
    | Tons of ideas
  * Markus Geiger <mail@markus-geiger.net>
    | Alias/nick replacement
- * Joakim Sandström <joose@nalle.puh.org>
+ * Joakim SandstrÃ¶m <joose@nalle.puh.org>
    | Ideas and bugfixes
  * Ryan Ryttie <kesu@kesuki.dyndns.org>
    | xchat logfiles request/help
@@ -54,7 +54,7 @@ Other contributors:
    | Polish translation and egg2mirc.awk script.
  * Andreas Blaafladt <coronel@dalnet.no>
    | Norwegian translation
- * Sascha Lüdecke <sascha@meta-x.de>
+ * Sascha LÃ¼decke <sascha@meta-x.de>
    | Compressed files, addition of --prefix, and sorting of files in logdirs
  * JaMiR0W <jamirow@ig.com.br>
    | Portugese translation
@@ -130,6 +130,12 @@ Other contributors:
    | miau parser
  * Guilherme Barile <guigouz@gmail.com>
    | updated Portuguese/Brazil translation
+ * Antoni GrzymaÅ‚a <antoni@chopin.edu.pl>
+   | updated Polish translation
+ * NonExistenT <non3x@non3x.net>
+   | updated Russian translation
+ * | Silviu Foca <silviu.foca@gmail.com>
+   | updated Romanian translation
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
