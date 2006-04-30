@@ -30,6 +30,7 @@
 # (RO) Romanian - Parcalabior Vald <vlad@ifrance.com>
 # (IS) Icelandic - Birkir Hreinsson <dkf@visir.is>
 # (CZ) Czech - Jaroslav Ostadal <??> (2005-01-14: bounces)
+#      last update: Pavel Kouril <paulway@gmail.com> (2006-04-30)
 # (SK) Slovak - Gabriel Svajko <snowman@ew.sk>
 # (RU) Russian - Anton Tretiakov <manager@ykt.ru>
 # (GR) Greek - Konstantinos Tzanidis <erebus@irc.gr> (2005-07-22)
@@ -3444,6 +3445,14 @@ mostdeop1 = "<b>[:nick]</b> bránil kanál [:deops] deopnutími."
 mostdeop2 = "<b>[:nick]</b> deopnul [:deops] uivatelù."
 mostdeop3 = "Wow, nikomu nebyl na [:channel] odebran op!"
 
+mosthalfop1 = "[:nick] daroval [:halfops] halfopù na kanále…"
+mosthalfop2 = "[:nick] byl také velmi slušnı: [:halfops] halfopù od [:him:her:]."
+mosthalfop3 = "Zvláštní, ádní halfopové nebyly dáni na kanálu [:channel]!"
+
+mostdehalfop1 = "[:nick] je kanálovı šerif s [:dehalfops] dehalfops."
+mostdehalfop2 = "[:nick] odejmul halfopa [:dehalfops] uivatelùm."
+mostdehalfop3 = "Wow, ádnı halfop nebyl odejmut na [:channel]!"
+
 mostvoice1 = "<b>[:nick]</b> dal [:voices]x voice na kanale..."
 mostvoice2 = "<b>[:nick]</b> byl také docela pozornı. Udìlil [:voices]x voice."
 mostvoice3 = "Hmm divné, ádnı voice nebyl na [:channel] udìlen!"
@@ -3533,6 +3542,12 @@ urlstopic = "Nejpouívanìjší odkazy"
 notopic = "Topic na tomto kanále nebyl ještì zadán."
 mostnickstopic = "Uivatelé s více nicky"
 bylinetopic = "[:date] podle [:nick] na [:time]"
+chartstopic = "[:channel] Hudební hitparáda"
+smileytopic = "Smajlíci :-) "
+dailyactivitytopic = "Denní aktivita (posledních [:n] dnù"
+activegenderstopic = "Nejvíce aktivní pohlaví"
+activenickbyhourtopic = "Nejvíce aktivní nicky podle hodin"
+karmatopic = "[:channel] karma"
 
 ## Other text
 
@@ -3569,6 +3584,18 @@ seconds = "sekundy"
 and = "a"
 names1 = "Jména"
 names2 = "Jméno"
+karma = "Karma"
+badkarma = "Zlá karma od"
+goodkarma = "Dobrá karma od"
+smiley = "Smajlíci"
+foultext = "Napøíklad, jako toto: [:line]"
+gender = "Pohlaví"
+gender_b = "Bot"
+gender_f = "ena"
+gender_m = "Mu"
+song = "Písen"
+playedby = "Naposledny hrál"
+numberplayed = "Jak èasto pøehráváno"
 
 # Mouse-over titles
 pisghomepage = "Go to the pisg homepage"
@@ -3586,6 +3613,14 @@ mostop3 = "Zaujímavé, nikto nebol opnutı na [:channel] :)"
 mostdeop1 = "<b>[:nick]</b> bránil[::a:] kanál [:deops] deopmi."
 mostdeop2 = "<b>[:nick]</b> deop[:ol:la:] [:deops] uívate¾ov."
 mostdeop3 = "Wow, nikmu nebol odobranı op na [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> daroval [:halfops] halfop-ov na kanali..."
+mosthalfop2 = "<b>[:nick]</b> bol tie ve¾mi slušnı: [:halfops] halfop-y od [:him:her:]."
+mosthalfop3 = "Divné, iadny halfop nebol danı na [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> je kanálovı šerif s [:dehalfops] dehalfop-mi."
+mostdehalfop2 = "<b>[:nick]</b> dehalfop-nutıch [:dehalfops] pouívate¾ov."
+mostdehalfop3 = "Wau, iadny halfop nebol zobranı na [:channel]!"
 
 mostvoice1 = "<b>[:nick]</b> dal[::a:] [:voices] hlas(ov) na kanale..."
 mostvoice2 = "<b>[:nick]</b> bol[::a:] tie ve¾mi zdvoril[:ı:á:]. Rozdal[::a:] [:voices] hlas(ov)."
@@ -3676,6 +3711,12 @@ urlstopic = "Najpouívanejšie odkazy"
 notopic = "Topic na tomto kanále ešte nebol nastavenı."
 mostnickstopic = "Uívatelia s viacerımi prezıvkami"
 bylinetopic = "[:date] nastavil [:nick] [:time]"
+smileytopic = "Smajlíci :-)"
+chartstopic = "[:channel] Hudobné rebríèky"
+karmatopic = "[:channel] karma"
+activenickbyhourtopic = "Najaktívnejšie prezıvky pod¾a hodín"
+dailyactivitytopic = "Denná aktivita (last [:n] dní)"
+activegenderstopic = "Najaktívnejšie pohlavie"
 
 ## Other text
 
@@ -3692,7 +3733,7 @@ nottop = "Títo neboli dos ukecaní:"
 word = "Slovo"
 numberuses = "Poèet pouití"
 show_words = "Poèet slov"
-show_time = "Kedy?"
+show_time = "Kedy"
 show_wpl = "Slov na riadok"
 show_cpl = "Znakov na riadok"
 show_lastseen = "Naposledy videnı"
@@ -3712,6 +3753,18 @@ seconds = "sek."
 and = "a"
 names1 = "Mená"
 names2 = "Meno"
+karma = "Karma"
+badkarma = "Zlá karma od"
+goodkarma = "Dobrá karma od"
+smiley = "Smajlík"
+foultext = "<b>Napríklad, ako toto:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+gender = "Pohlavie"
+gender_f = "ena"
+gender_m = "Mu"
+gender_b = "Bot"
+song = "Pieseò"
+numberplayed = "Ako èasto hraná"
+playedby = "Naposledy hraná od"
 
 # Mouse-over titles
 pisghomepage = "Choï na domácu stránku programu pisg"
