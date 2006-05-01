@@ -2541,6 +2541,14 @@ mostdeop1 = "<b>[:nick]</b> és el dolent de la pel·lícula, ha tret l'@ a [:deops
 mostdeop2 = "<b>[:nick]</b> li ha tret l'@ a [:deops] persones"
 mostdeop3 = "Per ara no se li ha tret l'arroba a ningú a [:channel]!"
 
+mosthalfop1 = "<b>[:nick]</b> ha donat [:halfops] mig-ops en el canal..."
+mosthalfop2 = "<b>[:nick]</b> va anar també molt cortès: %[:halfops] mig-ops des de %[:him:her:]."
+mosthalfop3 = "Extrany,  ningú ha donat mig-op en [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> és el sheriff del canal amb  [:dehalfops] mig-ops."
+mostdehalfop2 = "<b>[:nick]</b>  ha retirat  [:dehalfops] mig-ops als usuaris."
+mostdehalfop3 = "Uau, ningú mig-op va ser pres en [:channel]!"
+
 question1 = "<b>[:nick]</b> necessitava més hores de guarderia quan era petit/a, el [:per]% de les seves linies contenen una pregunta!"
 question2 = "<b>[:nick]</b> tampoc s'entera gaire el [:per]% de les seves linies són preguntes"
 question3 = "Ningú fa preguntes aquí, sembla un canal de savis"
@@ -2585,7 +2593,7 @@ words3 = "Ningú diu res... quin canal més misterióso..."
 wpl1 = "<b>[:nick]</b> Ha escrit una mitjana de [:wpl] paraules per linia..."
 wpl2 = "La mitjana del canal és de [:avg] paraules per linia."
 
-mono1 = "La gent pasa un mica de <b>[:nick]</b>, ha escrit més de 5 linies seguides en [:monos] ocasions!"
+mono1 = "La gent passa un mica de <b>[:nick]</b>, ha escrit més de 5 linies seguides en [:monos] ocasions!"
 mono2 = "Una altra persona solitaria és <b>[:nick]</b>, que ha fet el mateix [:monos] vegades"
 
 long1 = "<b>[:nick]</b> escriu les linies més llargues: [:letters] lletres per linia..."
@@ -2622,6 +2630,11 @@ urlstopic = "URLs més freqüentment mencionades"
 notopic = "Encara no s'ha utilitzat el topic del canal"
 bylinetopic = "[:date] per [:nick] a les [:time]"
 mostnickstopic = "Usuaris i nicks usats"
+dailyactivitytopic = "Activitat diària (últims [:n] dies)"
+activegenderstopic = "Gènere més actiu"
+smileytopic = "Emoticones :-)"
+chartstopic = "[:channel] Èxits musicals"
+karmatopic = "[:channel] karma"
 
 ## Other text
 
@@ -2664,6 +2677,19 @@ hours = "hores"
 minutes = "minuts"
 seconds = "segons"
 and = "i"
+karma = "Karma"
+badkarma = "Malament karma per "
+goodkarma = "Bon kerma per"
+today = "Avui"
+show_lastseen = "Darrera visita"
+smiley = "Emoticona"
+gender = "Gènere"
+gender_b = "Bot"
+gender_f = "Femení"
+gender_m = "Masculí"
+song = "Cançó"
+playedby = "Última vegada reproduïda per"
+numberplayed = "Vegades escoltada"
 
 # Mouse-over titles
 pisghomepage = "Anar a la pàgina del pisg"
