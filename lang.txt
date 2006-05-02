@@ -2050,7 +2050,7 @@ mailto = "Poslji mail na:"
 </lang>
 
 ### Hungarian (Magyar lengvidzsu szovegek)
-<lang name="HU" charset="us-ascii">
+<lang name="HU" charset="iso-8859-2">
 mostop1 = "<b>[:nick]</b> [:ops] opot adott a csatin..."
 mostop2 = "<b>[:nick]</b> szinten nagylelku: [:ops] opot adomanyozott."
 mostop3 = "Erdekes, senki nem kapott opot a [:channel] csatin!"
@@ -2094,7 +2094,7 @@ allcaps3 = "Mindenki ugyelt a shiftre."
 allcapstext = "<b>Peldaul:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 
-violent1 = "<b>[:nick]</b> meglehetosen agressiv. <b>[:attacks]</b>-szer/szor bantott masokat."
+violent1 = "<b>[:nick]</b> meglehetosen agressziv. <b>[:attacks]</b>-szer/szor bantott masokat."
 violent2 = "<b>[:nick]</b> sem tudott uralkodni magan <b>[:attacks]</b> alkalommal."
 violent3 = "Senki sem bantott senkit."
 violenttext = "<b>Peldaul igy:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
@@ -2159,6 +2159,11 @@ urlstopic = "Legtobbet emlitett URL-ek"
 notopic = "A topic sosem valtozott."
 mostnickstopic = "Legtobb nicknevet hasznalo csetelok"
 bylinetopic = "[:date] [:nick] allitotta be [:time]-kor."
+smileytopic = "Szmájlik"
+chartstopic = "[:channel] Slagerlista"
+karmatopic = "[:channel] karma"
+dailyactivitytopic = "Napi aktivitás (utolsó [:n] nap)"
+activegenderstopic = "Nemek szerinti aktivitas"
 
 ## Other text
 
@@ -2180,7 +2185,7 @@ show_cpl = "Betu/sor"
 show_lastseen = "Utoljara itt:"
 lastused = "Utoljara hasznalta:"
 pagetitle1 = "[:channel] @ [:network] statisztika [:maintainer] segitsegevel"
-pagetitle2 = "A statisztika generalodott: "
+pagetitle2 = "A statisztika: "
 pagetitle3 = "Ezalatt a [:days] napos idoszak alatt <b>[:nicks]</b> kulonbozo nick-u emberke tevekenykedett a [:channel]-n."
 today = "Ma"
 lastseen1 = "[:days] nappal ezelott"
@@ -2194,6 +2199,18 @@ seconds = "masodperc"
 and = "es"
 names1 = "nevek"
 names2 = "nev"
+names = "Használt nevek"
+karma = "Karma"
+badkarma = "Rossz karma ... miatt/által"
+goodkarma = "Jó karma ... miatt/által"
+smiley = "Szmájli"
+gender = "Neme"
+gender_b = "Robot"
+gender_f = "Nõ"
+gender_m = "Férfi"
+numberplayed = "Milyen gyakran játszott"
+song = "Dal"
+playedby = "Utoljára játszott"
 
 # Mouse-over titles
 pisghomepage = "A pisg honlapja"
@@ -2312,6 +2329,8 @@ mostnickstopic = "Kasutajad, kes armastavad tihti oma nime muuta"
 bylinetopic = "[:date] muutis [:nick] kell [:time]"
 dailyactivitytopic = "Päevane aktiivsus (viimased [:n] päeva)"
 activegenderstopic = "Kõige aktiivsem sugu"
+smileytopic = "Smailid :-)"
+chartstopic = "[:channel] muusika edetabelid"
 
 # Other text
 totallines = "Ridade arv kokku: [:lines]"
@@ -2354,6 +2373,10 @@ gender = "Sugu"
 gender_f = "Naine"
 gender_m = "Mees"
 gender_b = "Robot"
+smiley = "Smaili"
+song = "laul"
+numberplayed = "kui tihti mängitud"
+playedby = "viimati mängis"
 
 # Mouse-over titles
 pisghomepage = "pisg kodulehele"
@@ -3017,6 +3040,14 @@ mostdeop1 = "<b>[:nick]</b> [:deops] deop ile kanal serifi olmaya hak kazandi."
 mostdeop2 = "<b>[:nick]</b> TAM [:deops] kullaniciyi deop etmis."
 mostdeop3 = "Hey, [:channel] kanalinda hic deop olayi olmamis!"
 
+mosthalfop1 = "<b>[:nick]</b> bagislandi [:halfops] kanaldaki halfoplar..."
+mosthalfop2 = "<b>[:nick]</b> da cok nazik idi: [:halfops] den halfop [:him:her:]."
+mosthalfop3 = "Tuhaf,hiç halfop verilmedi [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> kanal serifi [:dehalfops] dehalfops ile."
+mostdehalfop2 = "<b>[:nick]</b> dehalfoplandi [:dehalfops] users." 
+mostdehalfop3 = "Wow, kimsenin halfopu alýnmadý [:channel]!"
+
 mostvoice1 = "<b>[:nick]</b> TAM [:voices] kere kanalda + verdi..."
 mostvoice2 = "<b>[:nick]</b> cok iyi bir operator. [:voices] defa + verdi... "
 mostvoice3 = "Ilginc... [:channel] kanalinda hic + verilmiyor!"
@@ -3094,6 +3125,9 @@ sad3 = "[:channel] kanalinda uzgun kimse yok! Ne kadar mutlu bir kanal  :-)"
 month = "Ocak Subat Mart Nisan Mayis Haziran Temmuz Agustos Eylul Ekim Kasim Aralik"
 day = "Pazar Pazartesi Sali Carsamba Persembe Cuma Cumartesi"
 
+names1 = "isimler"
+names2 = "isim"
+
 ## Topics
 
 bignumtopic = "Rekorlar"
@@ -3107,6 +3141,12 @@ urlstopic = "En çok ugranan Internet Adresleri"
 notopic = "Bu kanala hic baslik konmadi."
 mostnickstopic = "En çok rumuz degistiren kullanicilar"
 bylinetopic = "[:date] degistiren [:nick] zaman [:time]"
+karmatopic = "[:channel] karma"
+smileytopic = "Smileyler :-)"
+chartstopic = "[:channel] Müzik haritalarý"
+activenickbyhourtopic = "En aktif nickler"
+dailyactivitytopic = "Günlük faaliyet (last [:n] days)"
+activegenderstopic = "En aktif cinsiyet"
 
 ## Other text
 
@@ -3141,6 +3181,18 @@ hours = "saat"
 minutes = "dakika"
 seconds = "saniye"
 and = "ve"
+karma = "Karma"
+goodkarma = "Tarafýndan iyi karma"
+badkarma = "Tarafýndan kötü karma"
+smiley = "Smiley"
+foultext = "<b>Örnegin, bunun gibi:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+gender = "cinsiyet"
+gender_b = "Bot"
+gender_f = "Bayan"
+gender_m = "Bay"
+playedby = "Tarafindan en son calindi"
+numberplayed = "Hangi sýklýkta caldý"
+song = "Þarki"
 
 # Mouse-over titles
 pisghomepage = "pisg web sayfasina git"
