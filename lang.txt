@@ -554,27 +554,27 @@ mailto = "Mail til"
 <lang name="FR" charset="iso-8859-1">
 mostop1 = "<b>[:nick]</b> a donné [:ops] ops sur le canal..."
 mostop2 = "<b>[:nick]</b> est aussi très poli[::e:(e):] : [:ops] ops de sa part."
-mostop3 = "Etrange, aucun op n'a été donné sur [:channel]!"
+mostop3 = "Étrange, aucun op n'a été donné sur [:channel] !"
 
 mostdeop1 = "<b>[:nick]</b> est l[:e:a:e:] sherif du canal avec [:deops] deops..."
-mostdeop2 = "<b>[:nick]</b> a deopé [:deops] utilisateurs."
-mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel]!"
+mostdeop2 = "<b>[:nick]</b> a déopé [:deops] utilisateurs."
+mostdeop3 = "Wow, aucun op n'a été retiré sur [:channel] !"
 
 mosthalfop1 = "<b>[:nick]</b> a donné [:halfops] halfops sur le canal..."
 mosthalfop2 = "<b>[:nick]</b> est aussi très poli[::e:(e):] : [:halfops] halfops de sa part."
-mosthalfop3 = "Etrange, aucun halfop n'a été donné sur [:channel]!"
+mosthalfop3 = "Étrange, aucun halfop n'a été donné sur [:channel] !"
 
 mostdehalfop1 = "<b>[:nick]</b> est l[:e:a:] sherif du canal avec [:dehalfops] dehalfops..."
 mostdehalfop2 = "<b>[:nick]</b> a dehalfopé [:dehalfops] utilisateurs."
-mostdehalfop3 = "Wow, aucun halfop n'a été retiré sur [:channel]!"
+mostdehalfop3 = "Wow, aucun halfop n'a été retiré sur [:channel] !"
 
 mostvoice1 = "<b>[:nick]</b> a donné [:voices] fois le +v sur le canal..."
 mostvoice2 = "<b>[:nick]</b> est aussi très poli[::e:(e):]: [:voices] +v de sa part."
-mostvoice3 = "C'est curieux, on n'a jamais donné un seul +v sur [:channel]!"
+mostvoice3 = "C'est curieux, on n'a jamais donné un seul +v sur [:channel] !"
 
 mostdevoice1 = "<b>[:nick]</b> est l[:e:a:] sherif du canal avec [:devoices] -v."
 mostdevoice2 = "<b>[:nick]</b> a dévoicé [:devoices] personnes."
-mostdevoice3 = "Wow, aucun +v n'a été retiré sur [:channel]!"
+mostdevoice3 = "Wow, aucun +v n'a été retiré sur [:channel] !"
 
 action1 = "<b>[:nick]</b> aime bien faire savoir ce qu'[:il:elle:] fait, avec [:actions] actions !"
 action2 = "Egalement <b>[:nick]</b> qui n'est pas en reste avec [:actions] actions !"
@@ -594,13 +594,13 @@ allcaps2 = "<b>[:nick]</b> a oublié de désactiver son CAPS-LOCK, qui écrit en ma
 allcaps3 = "Tous les CAPS-LOCK sont sous contrôle :)"
 allcapstext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-violent1 = "<b>[:nick]</b> est une personne agressive, qui a déja slappé <b>[:attacks]</b> fois quelqu'un."
-violent2 = "<b>[:nick]</b> ne peut controller son agressivité, en slappant <b>[:attacks]</b> fois quelqu'un."
-violent3 = "Personne ne slappe, tout le monde est sympa."
+violent1 = "<b>[:nick]</b> est une personne agressive, qui a déja donné <b>[:attacks]</b> tapes à quelqu'un."
+violent2 = "<b>[:nick]</b> ne peut controller son agressivité, en tappant <b>[:attacks]</b> fois quelqu'un."
+violent3 = "Personne ne se donne des tapes, tout le monde est sympa."
 violenttext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
-attacked1 = "Pôvre <b>[:nick]</b>, personne ne l'aime, en étant slappé[::e:(e):] <b>[:attacks]</b> fois."
-attacked2 = "<b>[:nick]</b> n'as pas l'air apprécié[::e:(e):] non plus, qui a déjà été slappé[::e:(e):] <b>[:attacks]</b> fois."
+attacked1 = "Pôvre <b>[:nick]</b>, personne ne l'aime, en étant tappé[::e:(e):] <b>[:attacks]</b> fois."
+attacked2 = "<b>[:nick]</b> n'as pas l'air apprécié[::e:(e):] non plus, qui a déjà été tappé[::e:(e):] <b>[:attacks]</b> fois."
 attackedtext = "<b>Exemple :</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
 
 gotkick1 = "<b>[:nick]</b> n'est pas très populaire, kické[::e:(e):] [:kicks] fois !"
