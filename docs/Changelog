@@ -12,6 +12,9 @@ pisg (0.69) - ??
        spotting this).
      + Fix bug when having multiplie languages defined and they use
        different charsets (iconv left to next language).
+     + Fix tablewidthbug when running with multiplie outputs (thanks Daeron
+       for this note).
+     + Fix minortypo in HTMLGenerator.pm (thanks Daeron).
    Language Updates:
      + Portuguese: completed by DarkForce72.
      + Portuguese/Brazil: completed by Guilherme Barile.

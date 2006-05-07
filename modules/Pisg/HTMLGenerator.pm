@@ -43,6 +43,9 @@ sub create_output
     my $self = shift;
     $self->{cfg}->{lang} = shift;
 
+    # save table width as multiplie files would just increase tablewidth
+    my $tablewidth_original = $self->{cfg}->{tablewidth};
+    
     # remove old iconv if it exist as it could mess up recode.
     delete $self->{iconv} if $self->{iconv};
 
@@ -197,6 +200,9 @@ sub create_output
     $self->_htmlfooter();
 
     close(OUTPUT);
+
+    # restore tablewidth
+    $self->{cfg}->{tablewidth} = $tablewidth_original;
 }
 
 sub _htmlheader
@@ -1046,7 +1052,7 @@ sub _mostwords
         }
         _html("</td></tr>");
     } else {
-        my $text = $self->_template_text('kick3');
+        my $text = $self->_template_text('wprds3');
         _html("<tr><td class=\"hicell\">$text</td></tr>");
     }
 }
