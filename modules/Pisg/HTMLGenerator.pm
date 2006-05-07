@@ -1052,7 +1052,7 @@ sub _mostwords
         }
         _html("</td></tr>");
     } else {
-        my $text = $self->_template_text('wprds3');
+        my $text = $self->_template_text('words3');
         _html("<tr><td class=\"hicell\">$text</td></tr>");
     }
 }
