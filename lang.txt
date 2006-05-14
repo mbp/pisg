@@ -4833,6 +4833,10 @@ notopic = "Ky kanal nuk ka patur asnjëherë ndonjë Temë."
 mostnickstopic = "Personat me më shumë nofka"
 bylinetopic = "[:date] nga [:nick] në [:time]"
 dailyactivitytopic = "Veprimtaria ditore ([:n] ditët e fundit)"
+smileytopic = "Buzëqeshje :-)"
+chartstopic = "[:channel] Renditja Muzikore"
+karmatopic = "karma e [:channel]"
+activegenderstopic = "Gjinia më aktive"
 
 
 ## Other text
@@ -4870,6 +4874,17 @@ seconds = "sekonda"
 and = "dhe"
 names1 = "emrat"
 names2 = "emri"
+karma = "Karma"
+badkarma = "Karma e keqe nga"
+goodkarma = "Karma e mirë nga"
+smiley = "Buzëqeshje"
+gender = "Gjinia"
+gender_b = "Bot"
+gender_f = "Femër"
+gender_m = "Mashkull"
+numberplayed = "Sa shpesh është luajtur"
+song = "Kënga"
+playedby = "Luajtur së fundi nga"
 
 # Mouse-over titles
 pisghomepage = "Vizito faqen e pisg"
