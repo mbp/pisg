@@ -634,6 +634,9 @@ sub _parse_words
     my $tod = int($hour/6);
 
     foreach my $word (split(/[\s,!?.:;)(\"]+/o, $saying)) {
+        # ignore if $word is empty
+        next if $word eq "";
+
         $stats->{words}{$nick}++;
         $stats->{word_times}{$nick}[$tod]++;
         # remove uninteresting words

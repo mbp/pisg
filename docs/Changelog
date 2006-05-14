@@ -15,6 +15,7 @@ pisg (0.69) - ??
      + Fix tablewidthbug when running with multiplie outputs (thanks Daeron
        for this note).
      + Fix minortypo in HTMLGenerator.pm (thanks Daeron).
+     + Fix wordcount (thanks Daeron).
    Language Updates:
      + Portuguese: completed by DarkForce72.
      + Portuguese/Brazil: completed by Guilherme Barile.
