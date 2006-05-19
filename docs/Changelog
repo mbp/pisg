@@ -16,6 +16,10 @@ pisg (0.69) - ??
        for this note).
      + Fix minortypo in HTMLGenerator.pm (thanks Daeron).
      + Fix wordcount (thanks Daeron).
+     + Use nested HTML comments in CSS to cheat XML error having "<set ..>"
+       in the CSS file.
+   * Features:
+     + Add "+CVS" to versionstring if ./CVS is found
    Language Updates:
      + Portuguese: completed by DarkForce72.
      + Portuguese/Brazil: completed by Guilherme Barile.

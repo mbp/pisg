@@ -224,6 +224,8 @@ sub _htmlheader
         {
             local $/; # enable "slurp" mode
             $CSS = "<style type=\"text/css\" title=\"$self->{cfg}->{colorscheme}\">\n". <FILE>. "</style>";
+			$CSS =~ s/\/\*/\/\* <!--/g;
+			$CSS =~ s/\*\//--> \*\//g;
         }
         close FILE;
     }

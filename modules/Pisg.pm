@@ -219,7 +219,7 @@ sub get_default_config_settings
         modules_dir => '',         # set in get_cmdline_options
         cchannels => '',           # set in get_cmdline_options
 
-        version => "0.68",
+        version => "0.68" . (-d "$self->{search_path}/CVS" ? '+CVS' : ''),
     };
 
     # This enables us to use the search_path in other modules
