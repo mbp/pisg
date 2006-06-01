@@ -428,7 +428,7 @@ sub _activedays
 
                 my $image = "pic_v_".$time*6;
                 $image = $self->{cfg}->{$image};
-                _html("<img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$lines\" title=\"$lines\" /><br />") if $size;
+                _html("<img src=\"$self->{cfg}->{piclocation}/$image\" width=\"15\" height=\"$size\" alt=\"$size\" title=\"$size\" /><br />") if $size;
 
             }
         }

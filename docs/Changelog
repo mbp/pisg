@@ -18,6 +18,7 @@ pisg (0.69) - ??
      + Fix wordcount (thanks Daeron).
      + Use nested HTML comments in CSS to cheat XML error having "<set ..>"
        in the CSS file.
+     + Fix title tooltip (SF #1492153).
    * Features:
      + Add "+CVS" to versionstring if ./CVS is found
    Language Updates:
