@@ -551,7 +551,7 @@ sub parse_channels
             my $hits = 0;
             foreach ( @{ $self->{chans} }) {
                 my $chan = (keys %{ $_ })[0];
-                if ($channel =~ m/^$chan$/i) {
+                if (lc($channel) eq lc($chan)) {
                     push @chanlist, $_;
                     $hits++;
                 }
