@@ -2031,7 +2031,7 @@ sub _mosturls
             my $urlcount = $self->{stats}->{urlcounts}{$sorturls[$i]};
             my $lastused = $self->{stats}->{urlnicks}{$sorturls[$i]};
             my $printurl = $sorturls[$i];
-            if (length($printurl) > 60) {
+            if ($printurl and length($printurl) > 60) {
                 $printurl = substr($printurl, 0, 60);
             }
             $printurl = htmlentities($printurl, $self->{cfg}->{charset});

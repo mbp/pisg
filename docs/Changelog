@@ -1,5 +1,8 @@
 pisg (0.69) - ??
    Axel:
+   * PISG Bug fixes:
+     + Fixing several occurences of "Use of uninitialized
+       value in substitution (s///)" (SF #1354920)
    * PUM Bug fixes:
      + Missing and unclear documentation in pum.conf
    * PUM Features:
