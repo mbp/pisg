@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 ###
-### pisg user manager version 3.1
+### pisg user manager version 3.2
 ###
 ### Copyleft (C) 2005 by Axel 'XTaran' Beckert <abe@deuxchevaux.org>
 ### Copyleft (C) 2005 by Torbjörn 'Azoff' Svensson <azoff@se.linux.org>
@@ -18,6 +18,13 @@
 # the GNU General Public License (GPL) version 2 or later. See
 # http://www.gnu.org/copyleft/gpl.txt or the file COPYING for the full
 # license text.
+#
+# Version History:
+#
+#   3.0: Initial program by XTaran
+#   3.1: First released version with a lot of patches by Azoff
+#   3.2: Action buttons instead of links since search engines follow
+#        links and therefore deleted nicks (XTaran)
 #
 # Credits from XTaran to
 # + Christoph 'Myon' Berg for motivating me to rewrite addalias.pl
@@ -52,7 +59,7 @@ my $config_file = "pum.conf";
 ### BEGIN INIT
 ###
 
-my $VERSION = '3.1';
+my $VERSION = '3.2';
 my $title_prefix = "pisg IRC Statistics User Manager $VERSION";
 my $script_uri = $ENV{SCRIPT_NAME};
 my %data = ();
@@ -93,6 +100,7 @@ $config->define('cgi_pics_prefix', { DEFAULT => '' });
 $config->define('backup_enable', { DEFAULT => '1' });
 $config->define('backup_dir', { DEFAULT => '/tmp' });
 $config->define('backup_suffix', { DEFAULT => '%t' });
+$config->define('list_buttons', { DEFAULT => 0 });
 $config->define('pisg_user_config', { DEFAULT => 'users.conf' });
 
 -e $config_file or die "Configuration file $config_file doesn't exist";
@@ -346,7 +354,15 @@ sub _get_op($$) {
     my $op = shift;
     my $nick = shift;
 
-    return a({ href => "$script_uri?op=$op&nick=".escapeHTML($nick) }, $op);
+    return ($config->get('list_buttons') 
+	    ?
+	    _start_form('GET').
+	    _hidden('nick', $nick).
+	    _submit('op', $op).
+	    _end_form() 
+	    :
+	    a({ href => "$script_uri?op=$op&nick=".escapeHTML($nick) }, $op)
+	    );
 }
 
 sub show_nicks {
@@ -375,29 +391,31 @@ sub show_nicks {
 
 
 sub del_nick {
-    die "No nick given" unless param('nick');
+    my $nick = param('nick');
+    die "No nick given" unless $nick;
 
     if (param('confirm')) {
         &read_config;
 
-        die "No such nick '".param('nick')."'." 
-            unless defined $data{lc(param('nick'))};
+        die "No such nick '$nick'." 
+            unless defined $data{lc($nick)};
 
-        delete $data{lc(param('nick'))};
+        delete $data{lc($nick)};
 
         &write_config;
 
-        print _p('Data successfully updated.');
-
-        &show_nicks;
+        print _p("User '$nick' successfully deleted.");
+    } elsif (param('no')) {
+	&show_nicks;
     } else {
-        print _p("Are you sure you want to delete the user '".
-            param('nick')."'?");
+        print _p("Are you sure you want to delete the user '$nick'?");
 
-        print _p(a({href => "$script_uri?op=del&confirm=1&nick=".
-                            escapeHTML(param('nick'))}, 'Yes'), 
-            a({href => ($ENV{HTTP_REFERER} ? $ENV{HTTP_REFERER} :
-                       "$script_uri?op=edit&nick=".
-                       escapeHTML(param('nick')))}, 'No'));
+        print _p(_start_form('GET'),
+		 _hidden('nick',$nick),
+		 _hidden('op','del'),
+		 _submit('confirm', 'Yes'),
+		 # Not all CGI.pm version know -onclick, so it's hardcoded here
+		 '<input type="submit" name="no" value="No" onclick="history.back(); return false" />',
+		 _end_form());
     }
 }

@@ -1,4 +1,12 @@
 pisg (0.69) - ??
+   Axel:
+   * PUM Bug fixes:
+     + Missing and unclear documentation in pum.conf
+   * PUM Features:
+     + Acknowledging the deletion of a user now with buttons instead
+       of links so search engines won't follow the links and delete 
+       all users.
+     + Raising PUM version to 3.2
    Christoph:
    * Bug fixes:
      + Fix ActiveNicks2 display when ActiveNicks is not divisible by 5
