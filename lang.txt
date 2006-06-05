@@ -1583,7 +1583,7 @@ mostdevoice2 = "<b>[:nick]</b> var inte heller snäll, tog bort voicestatus från 
 mostdevoice3 = "Ingen blev av med sin voicestatus i [:channel]!"
 
 mosthalfop1 = "<b>[:nick]</b> gav [:halfops] halvoperatörsstatus i kanalen..."
-mosthalfop2 = "<b>[:nick]</b> var också väldigt snäll: [:halfops] halvoperatörsstatus från [:him:her:]."
+mosthalfop2 = "<b>[:nick]</b> var också väldigt snäll: [:halfops] halvoperatörsstatus från [:honom:henne:]."
 mosthalfop3 = "Konstigt, inga halvoperatörer i [:channel]!"
 
 mostdehalfop1 = "<b>[:nick]</b> är kanalens sheriff och tog ifrån [:dehalfops] deras halvoperatörsstatus."

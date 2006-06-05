@@ -433,6 +433,8 @@ time"
   - Currently does not recognize nick changes - apparently it logs nick changes
     to a separate file.  As a result, nick tracking will not work.
 
+  - This parser recognize both the 1.0.5 and the 1.1.0 log format.
+
  * blootbot (http://blootbot.sourceforge.net/)
   - supports multiple channels, though the log will be parsed once for each
     channel

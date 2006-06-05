@@ -33,6 +33,9 @@ pisg (0.69) - ??
      + Fix -cchannels option (SF #1369457).
    * Features:
      + Add "+CVS" to versionstring if ./CVS is found
+   * Parsers:
+     + Add support for both the 1.0.5(stable) and the 1.1.0(devel) log format 
+       of dircproxy.
    Language Updates:
      + Portuguese: completed by DarkForce72.
      + Portuguese/Brazil: completed by Guilherme Barile.
@@ -52,6 +55,7 @@ pisg (0.69) - ??
      + Slovenian: completed by HeadRoom.
      + French: updated by pam_.
      + Albanian: completed by Elian.
+     + Swedish: minor update.
 
 pisg (0.68) - Mon Mar, 13th 2006
    Christoph:
