@@ -37,6 +37,7 @@ pisg (0.69) - ??
    * Parsers:
      + Add support for both the 1.0.5(stable) and the 1.1.0(devel) log format 
        of dircproxy.
+     + Fix parser for psyBNC (SF #1490957).
    Language Updates:
      + Portuguese: completed by DarkForce72.
      + Portuguese/Brazil: completed by Guilherme Barile.

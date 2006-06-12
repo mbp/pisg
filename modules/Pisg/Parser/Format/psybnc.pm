@@ -12,7 +12,7 @@ sub new
         cfg => $args{cfg},
         normalline => '^\d+-\d+-\d+-(\d+)-\d+-\d+:[^:]+::([^!]+)[^:]+ PRIVMSG [^:]+:([^\001]+)',
         actionline => '^\d+-\d+-\d+-(\d+)-\d+-\d+:[^:]+::([^!]+)[^:]+:\001ACTION ([^\001]*)',
-        thirdline  => '^\d+-\d+-\d+-(\d+)-(\d+)-\d+:[^:]+::([^! .]+)[^ ]* (\w+) [#\w]+ :?((\S*)\s*(.*))',
+        thirdline  => '^\d+-\d+-\d+-(\d+)-(\d+)-\d+:[^:]+::([^! .]+)[^ ]* (\w+) \S+ :?((\S*)\s*(.*))',
     };
 
     bless($self, $type);
@@ -72,7 +72,7 @@ sub thirdline
             $hash{newtopic} = $5;
 
         } elsif ($4 eq 'MODE') {
-            $hash{newmode} = $5;
+            $hash{newmode} = $6;
 
         } elsif ($4 eq 'JOIN') {
             $hash{newjoin} = $3;
