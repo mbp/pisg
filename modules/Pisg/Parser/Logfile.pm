@@ -588,6 +588,7 @@ sub _parse_file
     my $wordcount = sqrt(sqrt(keys %{$stats->{wordcounts}})); # remove less frequent words
     foreach my $word (keys %{$stats->{wordcounts}}) {
         if ($stats->{wordcounts}->{$word} < $wordcount) {
+            next if defined $stats->{chartcounts}{$word};
             delete $stats->{wordcounts}->{$word};
             delete $stats->{wordnicks}->{$word};
             delete $stats->{word_upcase}->{$word};
