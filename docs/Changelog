@@ -32,6 +32,7 @@ pisg (0.69) - ??
      + Fix title tooltip (SF #1492153).
      + Fix -cchannels option (SF #1369457).
      + Fix uninitialised values in charts (SF #1354920 and #1498999)
+     + Fix Makefile to support the +CVS string and include it in releasename
    * Features:
      + Add "+CVS" to versionstring if ./CVS is found
    * Parsers:

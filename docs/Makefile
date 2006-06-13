@@ -1,6 +1,6 @@
 all: pisg-doc.txt pisg-doc.html pisg.1
 
-VERSION = $(shell grep "version =>" ../modules/Pisg.pm | sed 's/.*\"\(.*\)\".*/\1/')
+VERSION = $(shell grep "version =>" modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)".*/\1/')$(shell test -d ./CVS && echo "+CVS_$$(date +%Y%m%d)")
 
 pisg-doc.xml: .version
 .version: ../modules/Pisg.pm
