@@ -3,7 +3,7 @@
 all: release
 
 # Ugly hack to get the version number from Pisg.pm
-VERSION = $(shell grep "version =>" modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)".*/\1/')$(shell test -d ./CVS && echo "+CVS_$$(date +%Y%m%d)")
+VERSION := $(shell grep "version =>" modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)".*/\1/')
 
 DIRNAME = pisg-$(VERSION)
 
@@ -101,7 +101,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \
 
 docs:
-	$(MAKE) -C docs
+	$(MAKE) -C docs VERSION=$(VERSION)
 
 release: docs
 	mkdir -p newrelease
