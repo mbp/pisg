@@ -148,6 +148,8 @@ Other contributors:
    | updated Turkish translation
  * Zoran <zoran@infoklub.net>
    | updated Serbian translation
+ * Teemu Koskinen
+   | patch to speed up karma parsing
 
 I probably forgot a lot of people here, _PLEASE_ notify me if I left you
 out.. because I have a bad habit of forgetting to maintain this list :)
