@@ -668,6 +668,9 @@ sub _charts
     $Song =~ s/\.(mp3|ogg|wma)//ig;
     $Song =~ s/\[[^\] ]*\]/ /g; # strip stuff in brackets [44kbps]
     $Song =~ s/^ *[^\w]* *| *[^\w]* *$//g;
+
+    return unless length $Song;
+    
     my $song = lc $Song;
     $stats->{word_upcase}{$song} = $Song;
     $stats->{chartcounts}{$song}++;
