@@ -156,7 +156,12 @@ release: docs
 
 clean:
 	cd docs && make clean
-	rm -rf newrelease/
+	rm -rf newrelease/$(TARFILE)
+	rm -rf newrelease/$(ZIPFILE)
+	rm -rf newrelease/$(DIRNAME)
 	rm -rf $(DIRNAME)
 
-.PHONY: all release docs clean
+distclean: clean
+	rm -rf newrelease/
+
+.PHONY: all release docs clean distclean
