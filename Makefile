@@ -3,7 +3,14 @@
 all: release
 
 # Ugly hack to get the version number from Pisg.pm
-VERSION := $(shell grep "version =>" modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)".*/\1/')
+VER = $(shell grep "version =>" modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)+CVS".*/\1/')
+
+# append +CVS.. if SNAPSHOT is defined
+ifeq ($(SNAPSHOT),)
+	VERSION = $(VER)
+else
+	VERSION = $(VER)+CVS_$(shell date +%Y%m%d)
+endif
 
 DIRNAME = pisg-$(VERSION)
 
@@ -139,6 +146,8 @@ release: docs
 	cp $(PISG_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/
 	cp $(PARSER_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/Parser
 	cp $(FORMAT_MODULES) $(DIRNAME)/$(MODULESDIR)/Pisg/Parser/Format
+
+	perl -i -pe 's/^(.*version => ")[^"]*(".*)/$${1}$(VERSION)$${2}/' $(DIRNAME)/$(MODULESDIR)/Pisg.pm
 
 	tar zcfv newrelease/$(TARFILE) $(DIRNAME)
 	zip -r pisg $(DIRNAME)

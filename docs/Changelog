@@ -36,7 +36,8 @@ pisg (0.69) - ??
      + Fix Makefile to support the +CVS string and include it in releasename
      + Fix charts to not include "NULL" tracks. 
    * Features:
-     + Add "+CVS" to versionstring if ./CVS is found
+     + Add "+CVS" to versionstring and remove it in Makefile when running
+       'make release'. This makes snapshot easier.
    * Parsers:
      + Add support for both the 1.0.5(stable) and the 1.1.0(devel) log format 
        of dircproxy.
