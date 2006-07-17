@@ -335,6 +335,20 @@ $stats_text
 </span>
 HTML
 
+    _html( sprintf( qq(<!-- NFiles = "%s"; Format = "%s"; Lang = "%s"; LangFile = "%s"; Charset = "%s"; LogCharset = "%s"; LogCharsetFallback = "%s"; LogPrefix = "%s"; LogSuffix = "%s"; NickTracking = "%s"; TimeOffset = "%s" -->),
+        $self->{cfg}->{nfiles},
+        $self->{cfg}->{format},
+        $self->{cfg}->{lang},
+        $self->{cfg}->{langfile},
+        $self->{cfg}->{charset},
+        $self->{cfg}->{logcharset},
+        $self->{cfg}->{logcharsetfallback},
+        $self->{cfg}->{logprefix},
+        $self->{cfg}->{logsuffix},
+        $self->{cfg}->{nicktracking},
+        $self->{cfg}->{timeoffset}
+    ));
+    
     if($self->{cfg}->{colorscheme} ne "none") {
         _html( <<HTML );
 </div>

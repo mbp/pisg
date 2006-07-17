@@ -38,6 +38,7 @@ pisg (0.69) - ??
    * Features:
      + Add "+CVS" to versionstring and remove it in Makefile when running
        'make release'. This makes snapshot easier.
+     + Added some information about options pisg is run with to outputfile.
    * Parsers:
      + Add support for both the 1.0.5(stable) and the 1.1.0(devel) log format 
        of dircproxy.
