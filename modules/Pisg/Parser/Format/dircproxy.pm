@@ -1,4 +1,4 @@
-package Pisg::Parser::Format::dircproxy2;
+package Pisg::Parser::Format::dircproxy;
 
 # Documentation for the Pisg::Parser::Format modules is found in Template.pm
 
