@@ -37,8 +37,8 @@
 # (HE) Hebrew - Shimi <shimi@shimi.net>
 # (BG) Bulgarian - Dimitar <m9ck@sofiaclub.com> (2005-01-24)
 #      last update: elseif <elseif@mail.bg> (2005-02-19)
-# (SR-EC) Serbian cyrillic - Sasa Stefanovic <djevrek@gmail.com> (2006-07-22)
-# (SR-EL) Serbian latin - Sasa Stefanovic <djevrek@gmail.com> (2006-07-22)
+# (SR_EC) Serbian cyrillic - Sasa Stefanovic <djevrek@gmail.com> (2006-07-22)
+# (SR_EL) Serbian latin - Sasa Stefanovic <djevrek@gmail.com> (2006-07-22)
 # (SQ) Albanian - h3li0s <elbo_79@yahoo.it>
 #
 # A list of charsets is at http://www.w3.org/International/O-charset-list.html.
@@ -1905,7 +1905,7 @@ mailto = "L�het� s�hk�postia"
 </lang>
 
 ### Slovenian
-<lang name="SI" charset="us-ascii">
+<lang name="SI" charset="iso-8859-2">
 mostop1 = "<b>[:nick]</b> je [:podaril:podarila:] [:ops] opov na kanalu..."
 mostop2 = "<b>[:nick]</b> je [:bil:bila:] tudi zelo [:radodaren:radodarna:]. [:ops] opov od [:njega:nje:]."
 mostop3 = "Cudno, nikomur ni bil dan op na [:channel]!"
@@ -4556,7 +4556,7 @@ mailto = "���� ��"
 </lang>
 
 ### Serbian (Cyrillic)
-<lang name="SR-EC" charset="utf-8">
+<lang name="SR_EC" charset="utf-8">
 mostop1 = "<b>[:nick]</b> је оповао [:ops] особа на каналу..."
 mostop2 = "<b>[:nick]</b> је такође био баш дарежљив и оповао је [:ops] особа на каналу"
 mostop3 = "Чудно, није било оповања на каналу [:channel]!"
@@ -4725,7 +4725,7 @@ mailto = "Е-пошта"
 </lang>
 
 ### Serbian (Latin)
-<lang name="SR-EL" charset="utf-8">
+<lang name="SR_EL" charset="utf-8">
 mostop1 = "<b>[:nick]</b> je opovao [:ops] osoba na kanalu..."
 mostop2 = "<b>[:nick]</b> je takođe bio baš darežljiv i opovao je [:ops] osoba na kanalu"
 mostop3 = "Čudno, nije bilo opovanja na kanalu [:channel]!"
