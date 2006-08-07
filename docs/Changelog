@@ -35,6 +35,7 @@ pisg (0.69) - ??
      + Fix uninitialised values in charts (SF #1354920 and #1498999)
      + Fix Makefile to support the +CVS string and include it in releasename
      + Fix charts to not include "NULL" tracks. 
+     + Add note about compressed files (SF #1536186)
    * Features:
      + Add "+CVS" to versionstring and remove it in Makefile when running
        'make release'. This makes snapshot easier.

@@ -434,7 +434,9 @@
     <para>
     <command>Format</command> is used to define the format of the logfile,
     pisg supports a various number of different logfiles, see the FORMATS
-    file included with the pisg distribution.
+    file included with the pisg distribution. If yourogfiles have the
+    suffix .gz or .bz2, they will automatically be decompressed and read by
+    pisg.
     See also <xref linkend="Maintainer" />.
     </para>
     </refsect1>
