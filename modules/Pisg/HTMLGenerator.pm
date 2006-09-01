@@ -631,7 +631,7 @@ sub _activenicks
         } elsif ($sex and $sex eq 'f') {
             $output .= "<span class=\"female\">";
         } elsif ($sex and $sex eq 'b') {
-            $output .= "<span class=\"bot\"";
+            $output .= "<span class=\"bot\">";
         } else {
             $output .= "<span>";
         }
@@ -714,9 +714,9 @@ sub _activenicks
                 if ($sex and $sex eq 'm') {
                     $output .= "<span class=\"male\">";
                 } elsif ($sex and $sex eq 'f') {
-                    $output .= "<span class=\"female\"";
+                    $output .= "<span class=\"female\">";
                 } elsif ($sex and $sex eq 'b') {
-                    $output .= "<span class=\"bot\"";
+                    $output .= "<span class=\"bot\">";
                 } else {
                     $output .= "<span>";
                 }
