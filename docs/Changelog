@@ -1,3 +1,9 @@
+pisg (0.70) - ??
+   Torbjörn:
+   * Bug fixes:
+     + Added missing '>' (SF #1550312).
+     + Fix typo in docs (SF #1550765).
+   
 pisg (0.69) - Wed Aug, 31st 2006
    Axel:
    * PISG Bug fixes:
