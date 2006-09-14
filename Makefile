@@ -29,6 +29,7 @@ DOCS = docs/FORMATS \
 	 docs/pisg-doc.html \
 	 docs/pisg-doc.txt \
 	 docs/pisg-doc.xml \
+	 docs/pisg.sgml \
 	 docs/pisg.1 \
 
 DEVDOCS = docs/dev/API
@@ -78,6 +79,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/hydra.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircle.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/infobot.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/IRCAP.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/irssi.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircII.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/javabot.pm \
