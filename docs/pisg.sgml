@@ -20,7 +20,7 @@ manpage.1: manpage.sgml
   <!ENTITY dhfirstname "<firstname>Julien</firstname>">
   <!ENTITY dhsurname   "<surname>Danjou</surname>">
   <!-- Please adjust the date whenever revising the manpage. -->
-  <!ENTITY dhdate      "<date>2002 april 22</date>">
+  <!ENTITY dhdate      "<date>2006 September 14</date>">
   <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
        allowed: see man(7), man(1). -->
   <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
@@ -61,14 +61,9 @@ manpage.1: manpage.sgml
   <refsect1>
     <title>DESCRIPTION</title>
 
-    <para>This manual page documents briefly <command>&dhpackage;</command></para>
-
-    <para>This manual page was written for the &debian; distribution
-      because the original program does not have a manual page.</para>
-
-    <para><command>&dhpackage;</command> is a program which takes IRC logiles and turns
+    <para><command>&dhpackage;</command> is a program which takes IRC logfiles and turns
   the into nice looking stats, which can be amusing to show to the users
-  og your channel. It's quite simple to set up using command line or
+  of your channel. It's quite simple to set up using command line or
   configuration file (more flexible and configurable</para>
 
   </refsect1>
@@ -76,14 +71,14 @@ manpage.1: manpage.sgml
     <title>OPTIONS</title>
 
     <para>These programs follow the usual GNU command line syntax,
-      with long options starting with two dashes (`-').  A summary of
+      with long options starting with two dashes (`--').  A summary of
       options is included below.</para>
 
     <variablelist>
 
       <varlistentry><term><option>-ch --channel=</option></term><listitem><para>Set channel name</para></listitem></varlistentry>
 
-      <varlistentry><term><option>-cc --cchannels=</option></term><listitem><para>Only do this channel from cfg file, give multiple times to do multiple channels</para></listitem></varlistentry>
+      <varlistentry><term><option>-cc --cchannels=</option></term><listitem><para>Only do this channel from configuration file, give multiple times to do multiple channels</para></listitem></varlistentry>
 
       <varlistentry><term><option>-l --logfile=</option></term><listitem><para>Log file to parse</para></listitem></varlistentry>
 
@@ -98,13 +93,13 @@ manpage.1: manpage.sgml
       <varlistentry><term><option>-n --network=</option></term><listitem><para>IRC network of the
       channel</para></listitem></varlistentry>
 
-      <varlistentry><term><option>-d --dir=</option></term><listitem><para>Analyse all files in this
+      <varlistentry><term><option>-d --dir=</option></term><listitem><para>Analyze all files in this
       directory. Ignores --logfile. Give multiple times to use multiple
       directories.</para></listitem></varlistentry>
 
       <varlistentry><term><option>-nf --nfiles=</option></term><listitem><para>Analyze the last n files if used with --dir</para></listitem></varlistentry>
 
-      <varlistentry><term><option>-p --prefix=</option></term><listitem><para>Analyse only files prefixed
+      <varlistentry><term><option>-p --prefix=</option></term><listitem><para>Analyze only files prefixed
       by something in dir. Only works with
       --dir</para></listitem></varlistentry>
 

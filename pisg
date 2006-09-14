@@ -101,7 +101,7 @@ Usage: pisg [-ch channel] [-l logfile] [-o outputfile] [-ma maintainer]
 -d  --dir=xxx          : Analyze all files in this dir. Ignores logfile.
                          Give multiple times to use multiple directories.
 -nf --nfiles=xxx       : Analyze the last xxx files if used with --dir
--p  --prefix=xxx       : Analyse only files prefixed by xxx in dir
+-p  --prefix=xxx       : Analyze only files prefixed by xxx in dir
                          Only works with --dir
 -cf --cfg opt=value    : Specify configuration options, eg. -cf ShowWpl=1
 -co --configfile=xxx   : Configuration file

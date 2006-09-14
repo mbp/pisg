@@ -1,9 +1,13 @@
-pisg (0.70) - ??
+pisg (0.70) - Thu Sep, 14th 2006
    Torbjörn:
    * Bug fixes:
      + Added missing '>' (SF #1550312).
      + Fix typo in docs (SF #1550765).
-   
+   Christoph:
+     + The manpage file released with 0.69 was empty, sorry.
+       Thanks to Julien Danjou for spotting.
+     + Fix some typos in manpage and --help text.
+
 pisg (0.69) - Wed Aug, 31st 2006
    Axel:
    * PISG Bug fixes:
