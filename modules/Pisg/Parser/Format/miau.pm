@@ -7,6 +7,8 @@ package Pisg::Parser::Format::miau;
 # This is a version of the muh2 parser that supports the log file format of the
 # miau bouncer, mostly topic changes that are handled differently.
 
+# 2006-10-26 adapted to miau logfile-format 0.6.x by mnh, jha and Myon 
+
 use strict;
 $^W = 1;
 
@@ -15,9 +17,9 @@ sub new
     my ($type, %args) = @_;
     my $self = {
         cfg => $args{cfg},
-        normalline => '^\[(\d+):\d+\S+ <([^>]+)> (.*)$',
-        actionline => '^\[(\d+):\d+\S+ \* (\S+) (.*)$',
-        thirdline  => '^\[(\d+):(\d+)\S+ [\-><\*][\-\*]{2} (.+)$'
+        normalline => '^[a-zA-Z]{3} \d{1,2} (\d+):\d+\S+ <([^>]+)> (.*)$',
+        actionline => '^[a-zA-Z]{3} \d{1,2} (\d+):\d+\S+ \* (\S+) (.*)$',
+        thirdline  => '^[a-zA-Z]{3} \d{1,2} (\d+):(\d+)\S+ [\-><\*][\-\*]{2} (.+)$'
     };
 
     bless($self, $type);

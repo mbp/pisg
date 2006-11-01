@@ -3,6 +3,9 @@ pisg (0.71) - ??
      + Ship manpage source pisg.sgml in release.
      + IRCAP.pm has been in CVS for 3 years but wasn't shipped in the
        releases.
+    Torbjörn:
+    * Parsers:
+      + Update for miau.pm for miau 0.6.x (mnh, jha)
 
 pisg (0.70) - Thu Sep, 14th 2006
    Torbjörn:
