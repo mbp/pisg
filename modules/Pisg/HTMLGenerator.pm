@@ -217,7 +217,7 @@ sub _htmlheader
 
     my $CSS;
     if($self->{cfg}->{colorscheme} =~ /([^\/.]+)\.[^\/]+$/) { # use external CSS file
-        $CSS = "<link rel=\"stylesheet\" type=\"text/css\" title=\"$1\" href=\"$self->{cfg}->{colorscheme}\">";
+        $CSS = "<link rel=\"stylesheet\" type=\"text/css\" title=\"$1\" href=\"$self->{cfg}->{colorscheme}\" />";
     } elsif($self->{cfg}->{colorscheme} ne "none") { # read the chosen CSS file
         my $css_file = $self->{cfg}->{cssdir} . $self->{cfg}->{colorscheme} . ".css";
         open(FILE, $css_file) or open (FILE, $self->{cfg}->{search_path} . "/$css_file") or die("$0: Unable to open stylesheet $css_file: $!\n");
@@ -234,7 +234,7 @@ sub _htmlheader
     if($self->{cfg}->{altcolorscheme} ne "none" and $self->{cfg}->{altcolorscheme} =~ /[^\w]/) {
         foreach (split /\s+/, $self->{cfg}->{altcolorscheme}) {
             /([^\/.]+)\.[^\/]+$/;
-            $CSS .= "\n<link rel=\"alternate stylesheet\" type=\"text/css\" title=\"$1\" href=\"$_\">";
+            $CSS .= "\n<link rel=\"alternate stylesheet\" type=\"text/css\" title=\"$1\" href=\"$_\" />";
         }
     }
 
