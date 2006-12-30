@@ -103,13 +103,23 @@ sub add_url_ignore
 # This will only match if it has seen it used as a nick
 sub is_nick
 {
-    my ($nick) = @_;
+    my ($nick, $wilds) = @_;
     my $lcnick = lc($nick);
 
     if ($aliases{$lcnick}) {
         return $aliases{$lcnick};
     } elsif ($aliasseen{$lcnick}) {
         return $aliasseen{$lcnick}
+    }
+
+    # check aliaswilds if were are in _mostusedword()
+    if (defined $wilds) {
+        foreach (keys %aliaswilds) {
+            if ($lcnick =~ /^$_$/i) {
+                add_alias($aliaswilds{$_}, $lcnick);
+                return $aliaswilds{$_};
+            }
+        }
     }
     return 0;
 }

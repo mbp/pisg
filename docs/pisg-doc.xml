@@ -2308,7 +2308,8 @@
     By enabling this option, stats in the "Big Numbers" and "Interesting
     Numbers" section will only be counted for users who were the most
     active. E.g. users who appear in the "Most Active Nicks" section, as
-    respected by the ActiveNicks and ActiveNicks2 options. See also
+    respected by the <xref linkend="ActiveNicks" /> and 
+    <xref linkend="ActiveNicks2" /> options. See also
     <xref linkend="BigNumbersThreshold" />.
     </para>
     </refsect1>

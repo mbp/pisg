@@ -6,6 +6,8 @@ pisg (0.71) - ??
     Torbjörn:
     * Parsers:
       + Update for miau.pm for miau 0.6.x (mnh, jha)
+      + Fix ShowOnlyTop to use only ActiveNicks (SF #1604942).
+      + Add links in documentation on ShowOnlyTop.
 
 pisg (0.70) - Thu Sep, 14th 2006
    Torbjörn:

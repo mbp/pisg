@@ -1769,7 +1769,7 @@ sub _mostusedword
 
     foreach my $word (keys %{ $self->{stats}->{wordcounts} }) {
         # Skip people's nicks.
-        next if is_nick($word);
+        next if is_nick($word, $self->{cfg}->{cachedir});
         next if (length($word) < $self->{cfg}->{wordlength});
         $usages{$word} = $self->{stats}->{wordcounts}{$word};
     }
@@ -2413,7 +2413,7 @@ sub _topactive {
         $self->{cfg}->{activenicks2} = $top_nicks-$self->{cfg}->{activenicks};
     }
             
-    (@top_active) = @top_active[0..($self->{cfg}->{activenicks}+$self->{cfg}->{activenicks2}-1)];
+    (@top_active) = @top_active[0..($self->{cfg}->{activenicks}-1)];
     $self->{stats}->{topactive_lines} = @top_active ? $self->{stats}->{lines}{$top_active[0]} : 1;
             
     foreach (@top_active) {

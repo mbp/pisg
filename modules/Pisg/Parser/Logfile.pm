@@ -145,7 +145,12 @@ sub analyze
         };
         my $l = {};
 
-        unless ($self->{cfg}->{cachedir} and $self->_read_cache(\$s, \$l, $logfile)) {
+        if ($self->{cfg}->{cachedir} and $self->_read_cache(\$s, \$l, $logfile)) {
+            # take care of false nicks/words, this only happens with cache
+            foreach (keys %{$s->{lastvisited}}) {
+                find_alias($_);
+            }
+        } else {
             $self->_parse_file($s, $l, $logfile);
             if ($self->{cfg}->{cachedir}) {
                 $self->_update_cache($s, $l, $logfile);
