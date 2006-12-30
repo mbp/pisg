@@ -8,6 +8,7 @@ pisg (0.71) - ??
       + Update for miau.pm for miau 0.6.x (mnh, jha)
       + Fix ShowOnlyTop to use only ActiveNicks (SF #1604942).
       + Add links in documentation on ShowOnlyTop.
+      + Correct most used word/most referenced nick with cache (SF #1424050).
 
 pisg (0.70) - Thu Sep, 14th 2006
    Torbjörn:
