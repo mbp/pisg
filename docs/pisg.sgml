@@ -20,7 +20,7 @@ manpage.1: manpage.sgml
   <!ENTITY dhfirstname "<firstname>Julien</firstname>">
   <!ENTITY dhsurname   "<surname>Danjou</surname>">
   <!-- Please adjust the date whenever revising the manpage. -->
-  <!ENTITY dhdate      "<date>2006 September 14</date>">
+  <!ENTITY dhdate      "<date>2007 February 14</date>">
   <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
        allowed: see man(7), man(1). -->
   <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
@@ -63,8 +63,8 @@ manpage.1: manpage.sgml
 
     <para><command>&dhpackage;</command> is a program which takes IRC logfiles and turns
   the into nice looking stats, which can be amusing to show to the users
-  of your channel. It's quite simple to set up using command line or
-  configuration file (more flexible and configurable</para>
+  of your channel. It's quite simple to set up using command line parameters or
+  a configuration file.</para>
 
   </refsect1>
   <refsect1>
@@ -117,6 +117,12 @@ manpage.1: manpage.sgml
       <varlistentry><term><option>-h --help</option></term><listitem><para>Show help</para></listitem></varlistentry>
 
     </variablelist>
+  </refsect1>
+  <refsect1>
+    <title>SEE ALSO</title>
+
+    <para>The pisg manual is located in /usr/share/doc/pisg/.</para>
+
   </refsect1>
   <refsect1>
     <title>AUTHOR</title>

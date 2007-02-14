@@ -1,6 +1,6 @@
 pisg (0.71) - ??
    Christoph:
-     + Ship manpage source pisg.sgml in release.
+     + Ship manpage source pisg.sgml in release, fix first paragraph.
      + IRCAP.pm has been in CVS for 3 years but wasn't shipped in the
        releases.
     Torbjörn:
