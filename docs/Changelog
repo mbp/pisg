@@ -11,6 +11,7 @@ pisg (0.71) - ??
       + Correct most used word/most referenced nick with cache (SF #1424050).
     Language Updates:
       + Finnish: updated by Matti Peltola with help from atheos and Daeron.
+      + Estonian: fix lastseen1,2 (thanks Hannes Tarien).
 
 pisg (0.70) - Thu Sep, 14th 2006
    Torbjörn:
