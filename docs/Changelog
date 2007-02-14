@@ -1,4 +1,5 @@
-pisg (0.71) - ??
+pisg (0.71) - Wed Feb, 14th 2007
+   The Valentine's Day Release.
    Christoph:
      + Ship manpage source pisg.sgml in release, fix first paragraph.
      + IRCAP.pm has been in CVS for 3 years but wasn't shipped in the
