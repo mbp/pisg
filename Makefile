@@ -83,6 +83,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/irssi.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/ircII.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/javabot.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/konversation.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/kvirc.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/lulubot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/oer.pm \
