@@ -78,8 +78,12 @@ sub thirdline
 			$hash{newnick} =~ s/^.*\s+(\S+)$/$1/;
 
 		} elsif ($3 eq 'Kick') {
-			if ($5 =~ /(\S+) from the channel \((.+)\).$/ ) {
+			if ($5 =~ /^have kicked (\S+) from the channel \((.+)\).$/ ) {
 				$hash{kicker} = $1;
+				$hash{kicktext} = $2;
+			} elsif ($5 =~ /^has been kicked from the channel by (\S+) \((.+)\).$/ ) {
+				$hash{kicker} = $hash{nick};
+				$hash{nick} = $1;
 				$hash{kicktext} = $2;
 			} else {
 				return;
