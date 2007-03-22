@@ -88,9 +88,6 @@ sub thirdline
 			} else {
 				return;
 			}
-			print $line;
-			print Dumper \%hash;
-			print "\n\n";
 
 		} elsif ($3 eq 'Topic') {
 			if ($5 =~ /the channel topic to "(.*)"\.$/) {
