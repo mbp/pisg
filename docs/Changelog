@@ -1,6 +1,7 @@
 pisg (0.72) - ??
     Language Updates:
       + Spanish: remove extra quote char (thanks Angel Olivera).
+      + German: included some patches by Alexander Schuch.
     Torbjörn:
     * Parsers:
       + New parser for Konversation. Thanks ehein for the log.
