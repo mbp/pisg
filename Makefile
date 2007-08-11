@@ -92,6 +92,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC6.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/mIRC6hack.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/mozbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/muh.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/muh2.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/moobot.pm \
@@ -108,6 +109,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/rbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/xchat.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/weechat.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \
 
 docs:

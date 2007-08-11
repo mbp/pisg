@@ -6,6 +6,7 @@ pisg (0.72) - ??
     * Parsers:
       + New parser for Konversation. Thanks ehein for the log.
       + New parser for Mozbot. Thanks Jon^ and Daeron for your work!
+      + New parser for weechat. Thanks kelnoky for the log.
 
 pisg (0.71) - Wed Feb, 14th 2007
    The Valentine's Day Release.
