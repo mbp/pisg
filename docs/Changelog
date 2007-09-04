@@ -7,6 +7,8 @@ pisg (0.72) - ??
       + New parser for Konversation. Thanks ehein for the log.
       + New parser for Mozbot. Thanks Jon^ and Daeron for your work!
       + New parser for weechat. Thanks kelnoky for the log.
+    Christoph:
+    * Fix -ne option in manpage (thanks Justin Piszcz, Debian #430946).
 
 pisg (0.71) - Wed Feb, 14th 2007
    The Valentine's Day Release.

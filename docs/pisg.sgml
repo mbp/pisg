@@ -90,7 +90,7 @@ manpage.1: manpage.sgml
 
       <varlistentry><term><option>-f --format=</option></term><listitem><para>Logfile format</para></listitem></varlistentry>
 
-      <varlistentry><term><option>-n --network=</option></term><listitem><para>IRC network of the
+      <varlistentry><term><option>-ne --network=</option></term><listitem><para>IRC network of the
       channel</para></listitem></varlistentry>
 
       <varlistentry><term><option>-d --dir=</option></term><listitem><para>Analyze all files in this
