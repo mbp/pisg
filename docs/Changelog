@@ -1,4 +1,5 @@
-pisg (0.72) - ??
+pisg (0.72) - Wed Feb, 13th 2008
+    The Not Quite Valentine's Day Release.
     Language Updates:
       + Spanish: remove extra quote char (thanks Angel Olivera).
       + German: included some patches by Alexander Schuch.
