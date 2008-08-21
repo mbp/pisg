@@ -207,7 +207,7 @@ sub get_default_config_settings
 
         foulwords => 'ass fuck bitch shit scheisse scheiße kacke arsch ficker ficken schlampe',
         violentwords => 'slaps beats smacks',
-        chartsregexp => '(?:np:|(?:now )?playing:? (?:MPEG stream from)?)\s*(.*)',
+        chartsregexp => '(?:is )?(?:np:|(?:now )?playing:? |listening to:? )(?:MPEG stream from)?\s*(.*)',
         ignorewords => '',
         noignoredquotes => 0,
         tablewidth => 574,
