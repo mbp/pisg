@@ -535,3 +535,8 @@ preferences you
 [22-11-2004/15:00] <ace> morning
 [22-11-2004/15:01] * ace is back
   - Parser written by Vianney Lecroart <acemtp@free.fr>
+
+* weechat, weechat3
+  - http://weechat.flashtux.org/
+  - There are two parsers, one for the old log format ("weechat"), and one for
+    the new format starting from version 0.3 ("weechat3").
