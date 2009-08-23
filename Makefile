@@ -110,6 +110,7 @@ FORMAT_MODULES = $(MODULESDIR)/Pisg/Parser/Format/axur.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/xchat.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/winbot.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/weechat.pm \
+		 $(MODULESDIR)/Pisg/Parser/Format/weechat3.pm \
 		 $(MODULESDIR)/Pisg/Parser/Format/zcbot.pm \
 
 docs:
