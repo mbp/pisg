@@ -1,0 +1,18 @@
+Pisg FAQ
+========
+
+My stats only show lots of numbers instead of colored bars
+----------------------------------------------------------
+
+You forgot to copy the .png files from the gfx directory (blue-h.png etc) to
+your web server, or put them in the wrong location. If you right-click on the
+numbers, and select "View Image", you will most likely see a 404 error message.
+Put the .png files in that location.
+
+Alternatively, you can use <set PicLocation="gfx/"> to set other path.
+
+Can I use pisg as bot for my channel?
+-------------------------------------
+
+No. Pisg will only read log files that some other program has written. Pick an
+IRC client or bot from the list of supported formats.

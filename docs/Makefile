@@ -1,6 +1,7 @@
-all: pisg-doc.txt pisg-doc.html pisg.1
-
+TARGETS := pisg-doc.txt pisg-doc.html pisg-faq.html pisg-formats.html pisg.1
 VERSION := $(shell grep "version =>" ../modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)+CVS".*/\1/')
+
+all: $(TARGETS)
 
 pisg-doc.xml: .version
 .version: ../modules/Pisg.pm
@@ -16,12 +17,19 @@ pisg-doc.txt: pisg-doc.xml
 pisg-doc.html: pisg-doc.xml
 	docbook2html pisg-doc.xml -V "%use-id-as-filename%" -V nochunks
 
+pisg-faq.html: pisg-faq.txt
+	a2x -f xhtml pisg-faq.txt
+
+pisg-formats.html: FORMATS
+	a2x -f xhtml FORMATS
+	mv FORMATS.html pisg-formats.html
+
 pisg.1: pisg.sgml
 	docbook-to-man $< > $@
 
 clean:
-	rm -f pisg-doc.txt pisg-doc.html pisg.1 .version
+	rm -f $(TARGETS) .version
 
-.PHONY: clean
+.PHONY: all clean
 
 # vim:noexpandtab:

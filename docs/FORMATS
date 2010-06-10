@@ -1,5 +1,5 @@
-FORMATS - supported logfile formats by pisg
-------------------
+Supported logfile formats by pisg
+=================================
 
 This file contains a list of the different logfile formats which pisg
 supports. It also includes a sample line for these formats.
@@ -11,7 +11,8 @@ modules/Pisg/Parser/Format/Template.pm. If you don't have any Perl
 knowledge, then mail a sample logfile to the mailinglist (preferred as a
 link to the logfile)
 
-* mIRC6:
+mIRC6
+-----
   - Version 6.x of mIRC
 
   - Same as mIRC except it uses a retarded logging format that makes modes
@@ -22,10 +23,11 @@ link to the logfile)
 
   - In order to use this, format must be set to 'mIRC6'.
 
-    Remember to timestamp your logs, or it wont work, the timestamp must be
+  - Remember to timestamp your logs, or it wont work, the timestamp must be
     in [HH:MM] or [HH:MM:SS] format. (logging options -> timestamp logs)
 
-* mIRC6hack:
+mIRC6hack
+---------
   - Version 6.x of mIRC using a logging script to produce a saner output
 
   - Same as mIRC6 except it uses '**' for actions
@@ -34,88 +36,93 @@ link to the logfile)
     be added to mIRC's remote script section (Alt-R -> Remote): (thanks to
     virtuall and coaster)
 
-------------------------------8<------------------------------
-alias me {
-  if ($1) {
-    .describe $active $1-
-    echo $color(own) -qt $active ** $me $1-
-  }
-  else {
-    echo $color(info) $active * /me: insufficient parameters
-  }
-}
+   ------------------------------8<------------------------------
+   alias me {
+     if ($1) {
+       .describe $active $1-
+       echo $color(own) -qt $active ** $me $1-
+     }
+     else {
+       echo $color(info) $active * /me: insufficient parameters
+     }
+   }
 
-on ^*:ACTION:*:*:{
-  echo $color(action) -lt $iif($chan,$chan,$nick) ** $nick $1-
-  haltdef
-}
------------------------------->8------------------------------
+   on ^*:ACTION:*:*:{
+     echo $color(action) -lt $iif($chan,$chan,$nick) ** $nick $1-
+     haltdef
+   }
+   ------------------------------>8------------------------------
 
-* mIRC:
+mIRC
+----
   - A client for Windows (www.mirc.com)
-  
   - If you want to create mIRC logfiles with your eggdrop, you can get some TCL
     which does it all for you (also logrotating and much more).
 
-    MEL (mIRCStats Eggdrop Logger) can be downloaded from the following URL:
-
+  - MEL (mIRCStats Eggdrop Logger) can be downloaded from the following URL:
     http://mel.angelbears.org/
 
-    Remember to timestamp your logs, or it wont work, the timestamp must be
+  - Remember to timestamp your logs, or it wont work, the timestamp must be
     in [HH:MM] or [HH:MM:SS] format.
-    
   - In order to use this, format must be set to 'mIRC'.
 
-  Example:
+Example:
+
         [23:44] <Christina> Hello world
 
-* XChat:
+XChat
+-----
   -  A client for Linux (www.xchat.org)
-    
   -  In order to use this, format must be set to 'xchat'.
+  -  Both the old logformat, and the new logformat from 1.8.7 and above is
+     supported.
 
-  Both the old logformat, and the new logformat from 1.8.7 and above is
-  supported.
+Example of old logformat:
 
-  Example of old logformat:
         18:01:43 <Ben> Hello world
 
-  Example of new logformat:
+Example of new logformat:
+
         jan 13 04:39:42 <Ben> Hello World
 
-  XChat has changed its logformat again in early 2005. The "brand new" format
-  is broken in the same way as the mIRC6 format in that it is now impossible to
-  tell actions from real events. Additionally, the format of the lines in the
-  log changed. It is possible to revert to the previous format (the one that
-  pisg understands) by using the old text theme:
+XChat has changed its logformat again in early 2005. The "brand new" format
+is broken in the same way as the mIRC6 format in that it is now impossible to
+tell actions from real events. Additionally, the format of the lines in the
+log changed. It is possible to revert to the previous format (the one that
+pisg understands) by using the old text theme:
     http://xchat.org/files/themes/blacktheme.zip
 
-* Eggdrop:
+Eggdrop
+-------
   - A cool and advanced IRC bot for Linux (www.eggheads.org)
 
   - In order to use this, format must be set to 'eggdrop'.
 
-  You might want to change the logfile-suffix in order for pisg to parse the
-  files in the correct order when using 'logdir':
+You might want to change the logfile-suffix in order for pisg to parse the
+files in the correct order when using 'logdir':
+
   set logfile-suffix ".%Y%m%d" instead of the standard format
   set logfile-suffix ".%d%b%Y".
-  
 
-  Example:
+Example:
+
         [00:02] <Jenny> Hello world
-     
-* Grufti:
+
+Grufti
+------
   - A bot which I'm not really familiar with (www.grufti.com)
   - The author has actually made something like pisg called 'gruftistats',
     but someone mailed me and told me that it hadn't been maintained for
     over a year, and it had some problems..
 
   - In order to use this, format must be set to 'grufti'
-  
-  Example:
+
+Example:
+
         [00:17] <John> Hello world
 
-* bxlog:
+bxlog
+-----
   - A logging script for BitchX (console client - see scripts.bitchx.com)
   - In order to use this, format must be set to 'bxlog'
   - The bxlog-pisg.bx file in the scripts directory might be useful.
@@ -123,104 +130,123 @@ on ^*:ACTION:*:*:{
   Example:
         [31 Dec/11:26] <John> Hello world
 
-* mbot:
+mbot
+----
   - C-Based IRC Bot (http://darksun.com.pt/mbot/)
   - In the configuration file, timemode must be set to '1'
 
   - In order to use this, format must be set to 'mbot'
 
-  Example:
+Example:
+
         Thu Aug 23 12:59:40 2001 <John> Hello world
 
-* irssi:
+irssi
+-----
   - Console IRC client (www.irssi.org)
   - Logfiles must be using the default theme in irssi.
     (The "(real name)" added by autorealname.pl is ok.)
   - In order to use this, format must be set to 'irssi'.
   - This format also works for ii (wmii) logs.
 
-  Example:
+Example:
+
         17:40 <@John> Hello world
 
-* psybnc:
+psybnc
+------
   - IRC bouncer (http://www.psychoid.lam3rz.de/)
 
   - In order to use this, format must be set to 'psybnc'
 
-  Example:
+Example:
+
   2001-08-19-23-14-06:#LINUX.DE::stelb!user@host.org PRIVMSG #linux.de :hi!
-    
-* winbot:
+
+winbot
+------
   - Windows-based IRC bot (http://www.winbot.co.uk/)
 
   - In order to use this, format must be set to 'winbot'
 
-  Example:
+Example:
+
   15:32.58 17/10/2001  <Azhrarn/#darkgalaxy> This is a normal line.
 
-* zbot:
+zbot
+----
   - Bot written in C++ (http://zcbot.sourceforge.net/)
 
   - In order to use this, format must be set to 'zcbot'
 
-  Example:
+Example:
+
   12/11/01 22:05:42 :Keitaro!KOala_v5@EVYRV4A4.ipt.aol.com PRIVMSG #alsa-station :Re all :-)
 
-* ircle:
+ircle
+-----
   - IRC client for Mac OS X
 
   - Support for this format is not completely done yet.
 
   - In order to use this, format must be set to 'ircle'
 
-  Example:
+Example:
+
   6:35 PM:   Sinnikal: thats gross
 
-* infobot:
+infobot
+-------
   - bot written in Perl (http://www.infobot.org)
 
   - In order to use this, format must be set to 'infobot'
 
-* Trillian:
+Trillian
+--------
   - Trillian's IRC component. (http://www.trillian.cc)
 
-  Note: Your Logs must be timestamped in the format [%h:%m] or [%h:%m:%s]
-  This is set in Preferences -> General -> Windows -> Display in your Trillian Client
-  Tested with Trillian Version 0.70
+  - Note: Your Logs must be timestamped in the format [%h:%m] or [%h:%m:%s]
+    This is set in Preferences -> General -> Windows -> Display in your Trillian Client
+  - Tested with Trillian Version 0.70
 
   - In order to use this, format must be set to 'Trillian'
 
-* bobot++:
+bobot++
+-------
   - IRC bot written in C++. (http://pltplp.net/bobot++/)
 
   - In order to use this, format must be set to 'bobot'
 
-  Example:
+Example:
+
   [13/12/2001 - 20:38] <NazoZzz> hello world
 
-* axur/epic:
+axur/epic
+---------
   - A unix shell client similar to bitchx but not quite.
 
   - EPIC is available at http://www.epicsol.org/
 
   - AXUR script for EPIC is available at
-    http://www.asciifun.com/images/axur-2000.tar.gz or ax- b12r2.tar.gz
+    http://www.asciifun.com/images/axur-2000.tar.gz or ax-b12r2.tar.gz
 
-  axur/epic logs with two formats at once, one for normal users
-  and one for the actual client doing the logging.  Why?  no idea.
+axur/epic logs with two formats at once, one for normal users
+and one for the actual client doing the logging.  Why?  no idea.
 
-  The normal format is of:
+The normal format is of:
+
   [MM/DD/YYYY @ HH:MM:SS] <nick> saying
   [MM/DD/YYYY @ HH:MM:SS] * nick does some action here
 
+The loggers format is of:
 
-  The loggers format is of:
   [MM/DD/YYYY @ HH:MM:SS] >(logger) saying
   [MM/DD/YYYY @ HH:MM:SS] >* logger does some action here
 
-  Both is supported.
+Both are supported.
 
-* Perlbot:
+Perlbot
+-------
   - A bot which written in perl that supports loadable modules
     (http://perlbot.sourceforge.net)
   - It also has some modules for searching logs and some perl scripts
@@ -231,15 +257,17 @@ on ^*:ACTION:*:*:{
 
   - In order to use this, format must be set to 'perlbot'
 
-  Example:
+Example:
+
         13:22:57 <Sc00ter> bah, gotta run to the store
 
-* oer / oer+MySQL:
+oer / oer+MySQL
+---------------
   - Bot written in C (http://oer.equnet.org/)
 
   - In order to use this, format must be set to 'oer'
 
-    oer support isn't finished, the example lines won't work so I suggest you
+  - oer support isn't finished, the example lines won't work so I suggest you
     set the following options in your config:
 
     <set show_kickline="0">
@@ -248,77 +276,86 @@ on ^*:ACTION:*:*:{
     <set show_violentlines="0">
 
   - For a detailed description see:
-
   http://faq.equnet.org/?area=b2VyIGFuZCBvZXIrTXlTUUwgRkFR&id=35&lang=en
 
-  Example:
+Example:
+
   1010866756 :EQU!equ@mira.equnet.org PRIVMSG #oer :test for mbrix
 
-* muh
+muh
+---
  - A bouncer for unix/linux (http://mind.riot.org/muh/)
 
  - In order to use this, format must be set to 'muh'.
 
- Since you can configure the log-format as you want to, the standard-format
- is used for parsing.
- In order to set it correctly add this to you muhrc:
+Since you can configure the log-format as you want to, the standard-format
+is used for parsing.
+In order to set it correctly add this to you muhrc:
+
         timestamptemplate = "[%a %d %b %H:%M:%S]";
 
- Example:
+Example:
+
         [Sat 16 Mar 21:24:09] <pete> hello everybody
 
-* muh2:
+muh2
+----
   - muh is a bouncer from muh.sf.net
   - muh2 is for the new version 2.2, see 'muh' for older versions.
   - In order to use this, format must be set to 'muh2'.
 
 Example:
+
    [11:23] <boitl> Hello world
    [11:24] * carmen means that she is nice
 
-
-* Energymech:
+Energymech
+----------
   - An irc bot written in C which is currently beeing developed.
 
   - In order to use this, format must be set to 'energymech'.
 
   - Energymech is available at http://www.energymech.net or (better)
-    at http://cvs.energymech.net 
+    at http://cvs.energymech.net
 
-  Example:
+Example:
+
         [00:02] <Jenny> Hello world
-	[00:04] Joins: vjaway (vector@p5086F6EF.dip.t-dialin.net)
+        [00:04] Joins: vjaway (vector@p5086F6EF.dip.t-dialin.net)
 
-* Dancer:
+Dancer
+------
   - Bot written in C (http://dancer.sourceforge.net/)
 
   - In order to use this, format must be set to 'dancer'
 
-  Example:
-  15.57.40 # <elho> hello world! 
+Example:
 
-* ViRC98:                                                                                      
-  - A client for Windows (http://www.hansprestige.com)                                         
-      at this time is ViRC2.0rc1                                                               
-      maybe the type of logs will change                                                       
-                                                                                               
-    Remember to timestamp your logs, or it wont work,                                          
-    active it checking                                                                         
-    "Client setup/ViRC '98 options/Chat logging/                                               
-     (Miscellaneous logging options)Stamp every message logged with current                    
-time"                                                                                          
-                                                                                               
-  - In order to use this, format must be set to 'virc98'.                                      
-                                                                                               
-  Examples:                                                                                    
-    01.15.39 [Fender]   this is a normal line writen by myself                             
-    00.55.38 <@jax1n0^O>   this is a normal line writen by another                                
-    22.24.27 * Fender says an action                                                  
+  15.57.40 # <elho> hello world!
 
-* pircbot
+ViRC98
+------
+  - A client for Windows (http://www.hansprestige.com)
+      at this time is ViRC2.0rc1
+      maybe the type of logs will change
+
+  - Remember to timestamp your logs, or it wont work, activate it by checking
+    "Client setup/ViRC '98 options/Chat logging/ (Miscellaneous logging
+    options) Stamp every message logged with current time"
+
+  - In order to use this, format must be set to 'virc98'.
+
+Examples:
+
+    01.15.39 [Fender]   this is a normal line writen by myself
+    00.55.38 <@jax1n0^O>   this is a normal line writen by another
+    22.24.27 * Fender says an action
+
+pircbot
+-------
   - PircBot is a framework for an IRC Bot written in Java.  It allows you to
       create your own custom IRC Bots using Java by building on the framework
-      that is already provided by the PircBot. 
+      that is already provided by the PircBot.
 
   - Homepage: http://www.jibble.org/pircbot.php
 
@@ -328,11 +365,12 @@ time"
 
   - Logs are timestamped with MILISECONDS since the epoch
 
-  Example:
+Example:
+
     1013630386748 :nick!ident@hostname PRIVMSG #channel :Hello world.
 
-
-* Eggdrop RacBot
+Eggdrop RacBot
+--------------
   - the Eggdrop RacBot is an IRC bot, which dreived from the original eggdrop
     sources (see http://www.eggheads.org)
 
@@ -340,24 +378,27 @@ time"
 
   - In order to use this, format must be set to 'RacBot'.
 
-* KVIrc:
+KVIrc
+-----
   - A KDE client for Linux (http://www.kvirc.net/)
 
   - Support for this format is not completely done yet, actions and -/+o
     modes are not detected, so you should add to you config file:
-    <set show_actionline="0">                                                                   
+    <set show_actionline="0">
   - Supports logs from version 2.x.x. v3.x.x or former versions has
     not been tested.
 
   - In order to use this, format must be set to 'kvirc'.
 
-  Example:
+Example:
+
 	### Log session started at Thu Aug 23 17:25:36 2001 ###
 	[17:25:36] wwp [anonymous@AMontpellier-201-2-1-77.abo.wanadoo.fr] has joined #ECI
 	[17:25:47] <wwp> yop
 	### Log session terminated at Sun Sep 9 22:56:51 2001 ###
 
-* moobot
+moobot
+------
   - Python-based, modular IRC bot.  <http://sourceforge.net/projects/moobot>
 
   - Turn on logging by adding an entry to the data table with type = 'logtype'
@@ -382,7 +423,8 @@ time"
       2002-07-04 12:02:42 :Leebert!~lsherida@host JOIN :#space
       2002-07-04 18:24:18 :mike_lap!~emag@host NICK :Cathy
 
-* ircII
+ircII
+-----
   - The original IRC client (http://www.eterna.com.au/ircii/)
 
   - In order to use this, format must be set to 'ircII'
@@ -396,15 +438,16 @@ time"
 
   - The config option "Maintainer" needs to be set to the maintainer's nick
 
-  Example:
+Example:
+
     22:40
     *** sonnlich (sonnloki@202.72.122.25348) has joined channel #unisfa
     * sonnlich waves.
     > evening rae
     <sonnlich> Evening.
 
-
-* DC++
+DC++
+----
   - Direct Connect Hub
 
   - In order to use this, format must be set to 'DCpp'
@@ -413,11 +456,12 @@ time"
 
   - You MUST put botnicks into botnicks variable if you want to see kicks
 
-  Example:
+Example:
+
     <set botnicks="bot1 bot2 MainBot">
 
-
-* sirc
+sirc
+----
   - Simple IRC Client (http://www.iagora.com/~espel/sirc.html)
 
   - In order to use this, format must be set to 'sirc'
@@ -425,23 +469,26 @@ time"
   - You must also load the sirc-timestamp.pl script in the scripts subdirectory
     into sirc (/load sirc-timestamp.pl after copying to appropriate location)
 
-* dircproxy
+dircproxy
+---------
   - Detachable IRC Proxy Server (http://www.dircproxy.net/)
 
   - In order to use this, format must be set to 'dircproxy'
-  
+
   - Currently does not recognize nick changes - apparently it logs nick changes
     to a separate file.  As a result, nick tracking will not work.
 
   - This parser recognize both the 1.0.5 and the 1.1.0 log format.
 
- * blootbot (http://blootbot.sourceforge.net/)
+blootbot
+--------
   - supports multiple channels, though the log will be parsed once for each
     channel
-            
+  - http://blootbot.sourceforge.net/
   - In order to use this, format must be set to 'blootbot'
-        
-  Example: (also in the parser module)
+
+Example: (also in the parser module)
+
         01:02.03 <nick/#channel> normal
         01:02.03 * nick/#channel action
         01:02.03 >>> topic/#channel by nick -> topic...
@@ -450,93 +497,98 @@ time"
         01:02.03 >>> kick/#channel [nick!~user@example.com] by nick (reason)
         01:02.03 >>> nick_ materializes into nick
 
-* HydraIRC (http://hydrairc.sourceforge.net/)
+HydraIRC
+--------
   - HydraIRC is an open-source IRC client with an attractive and easy to use
     interface
-    
+  - http://hydrairc.sourceforge.net/
+
   - In order to use this, format must be set to 'hydra'
-  
-  Example:
+
+Example:
+
     [2003-02-22 16:49:18] *** Alexander changed topic to wibble
-		[2003-02-22 16:52:29] <Alexander> Sorry about the delay.
-		[2003-02-22 16:52:33] <Eien> Slow.  Waking.  Up.
-		[2003-02-22 16:52:34] *** Melody sets channel #ar-roleplay mode +v Alexander
-		[2003-02-22 16:58:57] *** Kemmy|ZZZ changed nick to Kemayo
-		[2003-02-22 17:03:34] * Alexander stirs Eien's brain.  "Cooooooool..."
+    [2003-02-22 16:52:29] <Alexander> Sorry about the delay.
+    [2003-02-22 16:52:33] <Eien> Slow.  Waking.  Up.
+    [2003-02-22 16:52:34] *** Melody sets channel #ar-roleplay mode +v Alexander
+    [2003-02-22 16:58:57] *** Kemmy|ZZZ changed nick to Kemayo
+    [2003-02-22 17:03:34] * Alexander stirs Eien's brain.  "Cooooooool..."
 
-
-* rbot (http://linuxbrit.co.uk/rbot/)
+rbot
+----
   - rbot is a ruby IRC bot. Think of him as a ruby
     infobot, with more and different features, and a nicer plugin scheme.
+  - http://linuxbrit.co.uk/rbot/
 
   - In order to use this, format must be set to 'rbot'
 
-  Example:
-  [2003/07/22 22:02:59] <Rathnor> well, i'm
-  considering setting up a cronjob or something to watch it
+Example:
+
+  [2003/07/22 22:02:59] <Rathnor> well, i'm considering setting up a cronjob or something to watch it
   [2003/07/22 22:03:11] <ak|ra> hehe
   [2003/07/22 22:03:24] @ Mode +o Rathnor by ChanServ
-  [2003/07/22 22:03:25] @ Quit: oddbudman: Remote
-  closed the connection
+  [2003/07/22 22:03:25] @ Quit: oddbudman: Remote closed the connection
   [2003/07/22 22:03:29] <FluxBot> Rathnor: :(
- 
-* IRCAP
-                                                                                
+
+IRCAP
+-----
  - Version 7.5 or 7.51 of IRCAP (www.ircap.com or www.ircap.net).
-                                                                                
  - mIRC version 6.03 or 6.12 (this are the mIRC versions required by IRCAP, so not really a parser requirement).
-                                                                                
  - Timestamp logs activated in mIRC:
    Enter Options (inside File -mIRC6.03- or Tools -mIRC6.12-), IRC->Logging and check Timestamp Logs.
-                                                                                
  - To use this, format must be set to 'IRCAP'.
- Example:
+
+Example:
+
  [2:51] <Lawy> a las wenassssssssss
  [2:51] <Lawy> [ArCePi] nas nas
  [2:51] <Lawy> [BruJo] wenas
  [2:51] <Danaita> lawyyyy
 
-* Vision
-  - An irc client for BeOS ( http://vision.sourceforge.net and http://
-www.bebits.com/app/2623 )
-                                                                                
- - Timestamping has to be enabled in the preferences
-                                                                                
- - The messages Vision displays for joins/parts/topic changes etc, is
-fully user configurable,
-   this parses the default messages. If you have changed them in the
-preferences you
-   have to edit the parser to reflect the changes.
-                                                                                
- - In order to use this, format must be set to 'Vision'
+Vision
+------
+  - An irc client for BeOS ( http://vision.sourceforge.net and http://www.bebits.com/app/2623 )
+  - Timestamping has to be enabled in the preferences
+  - The messages Vision displays for joins/parts/topic changes etc, is fully
+    user configurable, this parses the default messages. If you have changed
+    them in the preferences you have to edit the parser to reflect the changes.
+  - In order to use this, format must be set to 'Vision'
 
-* Supybot:
+Supybot
+-------
   - http://supybot.sf.net
   - Version tested with 0.77
   - Log format :
+
    normal msg:  [05-Mar-2004 17:28:10]  * Jkx|home bon je vais pas trainer ..
    channel msg: [17-Feb-2004 08:13:47]  *** Jkx changes topic to "Oh my god of topic
 
-* JavaBot
+JavaBot
+-------
   - http://javabot.sourceforge.net
   - Version has to be 0.3.3 or newer
   - To use this, format must be set to javabot
   - Example:
+
      maj 07 21:11:44 <CreoN> a regular line
      maj 07 21:12:02 ---     CreoN sets mode +o scalldog
      maj 07 21:12:05 <--     CreoN has kicked JavaBot (JavaBot)
      maj 07 21:12:06 -->     JavaBot (~javabot@host.com) has joined #channel
 
-* lulubot
+lulubot
+-------
   - http://lulubot.berlios.de
   - Version tested with the CVS the 12/04/04
   - Log format :
-[22-11-2004/14:42] *** Joined ace (~ace@154.25.145.85)
-[22-11-2004/15:00] <ace> morning
-[22-11-2004/15:01] * ace is back
+
+    [22-11-2004/14:42] *** Joined ace (~ace@154.25.145.85)
+    [22-11-2004/15:00] <ace> morning
+    [22-11-2004/15:01] * ace is back
+
   - Parser written by Vianney Lecroart <acemtp@free.fr>
 
-* weechat, weechat3
+weechat, weechat3
+-----------------
   - http://weechat.flashtux.org/
   - There are two parsers, one for the old log format ("weechat"), and one for
     the new format starting from version 0.3 ("weechat3").
