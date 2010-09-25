@@ -3,6 +3,8 @@ pisg (0.73) - ??
     * Add "listening to" to the default ChartsRegexp.
     Parsers:
     * New parser "weechat3" for weechat >= 0.3.
+    * Update eggdrop parser for new logformat in 1.6.20 (timestamps with
+      seconds). From http://buster-net.ru/.
 
 pisg (0.72) - Wed Feb, 13th 2008
     The Not Quite Valentine's Day Release.
