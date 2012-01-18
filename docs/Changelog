@@ -1,4 +1,7 @@
-pisg (0.73) - ??
+pisg (0.73) - Wed Jan, 18th 2012
+    The "Long Awaited" Release.
+    HM2K:
+    * Migrated away from CVS to Git
     Christoph:
     * Add "listening to" to the default ChartsRegexp.
     Parsers:

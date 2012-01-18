@@ -3,13 +3,13 @@
 all: release
 
 # Ugly hack to get the version number from Pisg.pm
-VER = $(shell grep "version =>" modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)+CVS".*/\1/')
+VER = $(shell grep "version =>" modules/Pisg.pm | sed 's/[^"]*"\([^"]*\)".*/\1/')
 
-# append +CVS.. if SNAPSHOT is defined
+# append date if SNAPSHOT is defined
 ifeq ($(SNAPSHOT),)
 	VERSION = $(VER)
 else
-	VERSION = $(VER)+CVS_$(shell date +%Y%m%d)
+	VERSION = $(VER)_$(shell date +%Y%m%d)
 endif
 
 DIRNAME = pisg-$(VERSION)
