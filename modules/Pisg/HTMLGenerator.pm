@@ -2132,7 +2132,7 @@ sub _replace_links
     my (@str) = split(/ /,$str);
 
     foreach (@str) {
-        s/((?:(?:https?|ftp|telnet|news):\/\/|(?:(?:(www)|(ftp))[\w-]*\.))[-\w\/~\@:]+\.\S+[\w\/])/$self->_replace_url($1, $2, $3, $nick || $1)/egio
+        s/((?:(?:https?|ftp|telnet|news):\/\/|(?:(?:(www)|(ftp))[\w-]*\.))[-\w\/~\@:]+\.\S+[^\s]+)/$self->_replace_url($1, $2, $3, $nick || $1)/egio
             or s/(mailto:)?([-\w.]+)@([-\w]+\.[-\w.]+)/$self->_replace_email($1, $2, $3, $nick)/egio
             or $_ = $self->_split_long_text($_);
      }
