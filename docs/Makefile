@@ -25,7 +25,7 @@ pisg-formats.html: FORMATS
 	mv FORMATS.html pisg-formats.html
 
 pisg.1: pisg.sgml
-	docbook-to-man $< > $@
+	docbook2man $< > $@
 
 clean:
 	rm -f $(TARGETS) .version
