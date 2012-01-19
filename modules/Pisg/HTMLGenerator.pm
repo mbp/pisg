@@ -2237,7 +2237,7 @@ sub _user_pic
         unless $pic =~ /^http:\/\//i;
     my $height = $self->{cfg}->{picheight} ? " height=\"$self->{cfg}->{picheight}\"" : "";
     my $width = $self->{cfg}->{picwidth} ? " width=\"$self->{cfg}->{picwidth}\"" : "";
-    my $alt = $self->{users}->{userpics}{$nick} ? " alt=\"$nick\" title=\"$nick\"" : "";
+    my $alt = $self->{users}->{userpics}{$nick} ? " alt=\"$nick\" title=\"$nick\"" : ' alt=""';
     my $border = $biguserpic ? ' border="0"' : '';
     $output .= "<img src=\"$pic\"$width$height$alt$border />";
 
