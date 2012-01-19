@@ -619,21 +619,21 @@ sub _activenicks
         my $ch   = $self->{stats}->{lengths}{$nick};
         my $sex = $self->{users}->{sex}{$nick};
         
-        my $output = "";
+        my $output = '';
         $output .= "<td $style>";
 
         # Hilight nick with gendercolors
         if ($sex and $sex eq 'm') {
-            $output .= "<span class=\"male\">";
+            $output .= '<span class="male">';
         } elsif ($sex and $sex eq 'f') {
-            $output .= "<span class=\"female\">";
+            $output .= '<span class="female">';
         } elsif ($sex and $sex eq 'b') {
-            $output .= "<span class=\"bot\">";
+            $output .= '<span class="bot">';
         } else {
-            $output .= "<span>";
+            $output .= '<span>';
         }
         $output .= $visiblenick;
-        $output .= "</span></td>";
+        $output .= '</span></td>';
 
         if ($self->{cfg}->{showlines}) {
             if ($self->{cfg}->{showlinetime}) {
