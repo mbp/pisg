@@ -64,7 +64,10 @@ sub thirdline
         $hash{min}  = $2;
 	$hash{nick} = $3;
 	
-	if ($3 and (($3) eq 'Quit')) {
+	if ($3 and (($3) eq 'quit')) {
+	    $hash{nick} = undef;
+
+	} elsif ($3 and (($3) eq 'Quit')) {
 	    $hash{nick} = $4;
 
 	} elsif (($3) eq 'Mode') {
@@ -94,9 +97,9 @@ sub thirdline
 	}elsif (($4.$5) eq 'settopic') {
             my $newtopic;
             if ($8 and $7 and $6) {
-                $newtopic = $6.$7.$8;
+                $newtopic = "$6 $7 $8";
             } elsif ($7 and $6) {
-                $newtopic = $6.$7;
+                $newtopic = "$6 $7";
             } else {
                 $newtopic = $6;
             }
