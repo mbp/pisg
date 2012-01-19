@@ -9,9 +9,9 @@ use strict;
 $^W = 1;
 
 # test for Text::Iconv
-my $have_iconv = 1;
+my $has_iconv = 1;
 eval 'use Text::Iconv';
-$have_iconv = 0 if $@;
+$has_iconv = 0 if $@;
 
 sub new
 {
@@ -51,7 +51,7 @@ sub create_output
 
     my $lang_charset = $self->{tmps}->{$self->{cfg}->{lang}}{lang_charset};
     if($lang_charset and $lang_charset ne $self->{cfg}->{charset}) {
-        if($have_iconv) {
+        if($has_iconv) {
             # convert from template charset to our
             $self->{iconv} = Text::Iconv->new($lang_charset, $self->{cfg}->{charset});
         } else {
