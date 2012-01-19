@@ -1776,7 +1776,7 @@ sub _mostusedword
 
         my $count = 0;
         for(my $i = 0; $count < $self->{cfg}->{wordhistory}; $i++) {
-            last unless $i < $#popular;
+            last unless $i < $#popular+1;
             # Skip nicks.  It's far more efficient to do this here than when
             # @popular is created.
             next if is_ignored($popular[$i]);
