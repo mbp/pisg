@@ -252,10 +252,9 @@ $CSS
 <div align="center">
 HTML
     }
-    _html("<h1 class=\"title\">$title</h1>");
-    _html($self->_template_text('pagetitle2', %hash) . " " . $self->get_time());
-
-    _html("<br />" . $self->_template_text('pagetitle3', %hash) . "<br /><br />");
+    _html('<h1 class="title" id="pagetitle1">' . $title . '</h1>');
+    _html('<p class="subtitle"><span id="pagetitle2">' . $self->_template_text('pagetitle2', %hash) . ' ' . $self->get_time() . '</span><br />');
+    _html('<span id="pagetitle3">' . $self->_template_text('pagetitle3', %hash) . '</span></p>');
 
 }
 
