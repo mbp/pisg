@@ -101,3 +101,8 @@ td {
 	color: black;
 	text-align: center;
 }
+#footer {
+	width: 400px;
+	height: 32px;
+	background: url('http://pisg.sourceforge.net/favicon.png') no-repeat 0 50%;
+}
