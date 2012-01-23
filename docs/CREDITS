@@ -1,161 +1,99 @@
-CREDITS go to...
---
+Project management:
 
-Original author and leading developer:
---
-Morten Brix Pedersen <morten@wtf.dk>
+  - Morten Brix Pedersen <morten(at)wtf.dk>
+  - Christoph Berg <cb(at)df7cb.de>
+  - James "HM2K" <james(at)hm2k.org>
 
-Major contributors:
---
- * Winfried Nessen <doomy@doomshammer.yi.org>
- * Jamie Cheetham <jamie@softham.co.uk>
- * Sam Bingner <sam@dhs.org>
- * Christoph Berg <cb@df7cb.de>
-   | NFiles and UserPics options, wildcards for random user pictures,
-     wildcard and regexp support for IgnoreWords, FoulWords, ViolentWords,
-     charset conversion support, BigNumbersThreshold option, karma, music
-     charts, parser cache ...
- * Torbjörn Svensson <azoff@se.linux.org>
-   | ShowFoulDecimals and AltColorScheme options, multiple channels with same
-   | name, multiple languages per run, lots of other fixes, pum.pl
+Major contributions:
+
+  - Winfried Nessen <doomy(at)doomshammer.yi.org>
+  - Jamie Cheetham <jamie(at)softham.co.uk>
+  - Sam Bingner <sam(at)dhs.org>
+  - Torbjörn Svensson <azoff(at)se.linux.org>: ShowFoulDecimals and AltColorScheme
+    options, multiple channels with same name, multiple languages per run,
+    lots of other fixes, pum.pl
 
 Other contributors:
 
- * Stefan aka Flyghost <flyghost@ghosthouse.cx>
-   | Code contribution and fixes
- * P. Gnodde aka Shogun <peter@pcswebdesign.nl>
-   | Lots of feature enhancements and code cleanups, thanks!
- * Steve Tibold aka T0mcat <t0mcat@chat.lu>
-   | Tons of ideas
- * Markus Geiger <mail@markus-geiger.net>
-   | Alias/nick replacement
- * Joakim Sandström <joose@nalle.puh.org>
-   | Ideas and bugfixes
- * Ryan Ryttie <kesu@kesuki.dyndns.org>
-   | xchat logfiles request/help
- * Laocius <irish@rook.lug.usf.edu>
-   | The features 'most used words' and 'most referenced nicks'
- * Luca (eni) <adsl.help@dada.it>
-   | Reported a very small, but stupid bug with the xchat fileformat :)
- * kiss dess <duvet@mail.com>
-   | Found a few minor bugs. And added replace_links()
- * S. William Schulz <sws@astrum.com>
-   | Better commandline arguments, --help and fixed indenting problems with
-     xchat logs, also fixed a critical thing with --format, --silent switch
- * Tim Hunter <tim@quic.net>
-   | 'shortest lines', 'most fouls', 'pageheader' and more. 
- * Kim Ingemann (KimI) <mail@pingvinland.dk>
-   | Danish translation
- * Molator <molator@ifrance.com>
-   | French translation
- * Sheuron Azxe <xeron@cfutura.com>
-   | Spanish translation
- * Gandalf the Grey <gandalf@irc.pl>
-   | Polish translation and egg2mirc.awk script.
- * Andreas Blaafladt <coronel@dalnet.no>
-   | Norwegian translation
- * Sascha Lüdecke <sascha@meta-x.de>
-   | Compressed files, addition of --prefix, and sorting of files in logdirs
- * JaMiR0W <jamirow@ig.com.br>
-   | Portugese translation
- * Hanno Hecker (Vetinari) <vetinari@ankh-morp.org>
-   | Lots of feature additions and code cleanups, thanks!
-   | Updates to German translation, some patches for words and the feature
-     'most words'.
- * Pyrofikiemaan <gassman65@hotmail.com>
-   | Dutch translation
- * Andreas Henriksson <gem@home.se>
-   | Swedish translation
- * Anders Rune Jensen (Superduck) <daserver@sol.dk>
-   | Language specific dates on stats page
- * Christian Legler <capt@capt.de>
-   | New images for pisg
- * Phil Gregory <phil_g@pobox.com>
-   | Regex support in user aliases, grammar corrections, huge changes to
-     modularize pisg into packages/objects.
-   | 'bigpic' user option
- * Patrick Aussems aka Zyk <zyk@bugfactory.org>
-   | New options: show_mrn, show_mru, show_muw, show_randquote
- * David Leadbeater
-   | Flexibility to irssi logfiles.
- * Mouky <mouky@m6net.fr>
-   | Updates to French template, grammar/gender/spelling corrections.
- * Kirler@paincreators <kirler@letku.net>
-   | Finnish translation.
- * Ales Tepina <ales.tepina@guest.arnes.si>
-   | Slovenian translation
- * Gyuri Horak <dyuri@dyuri.sch.bme.hu>
-   | Hungarian translation
- * Pascal Brax <god@pascalbrax.com>
-   | Italian translation
- * deadlock <deadlock@cheeseheadz.net>
-   | addalias.pl version 2, handling of users already in config file,
-     obsoletin of addalias.htm and more configurable script.
- * Nicholas Frampton <whyrl@avians.net>
-   | infobot logfile support
- * Mo-Ize <mo-ize@pas-tres.net>
-   | zcbot logfile support
- * Azhrarn <Azhrarn@winbot.co.uk>
-   | winbot logfile support, Trillian logfile support
+  - Stefan aka Flyghost <flyghost(at)ghosthouse.cx>: Code contribution and fixes
+  - P. Gnodde aka Shogun <peter(at)pcswebdesign.nl>: Lots of feature enhancements and code cleanups, thanks!
+  - Steve Tibold aka T0mcat <t0mcat(at)chat.lu>: Tons of ideas
+  - Markus Geiger <mail(at)markus-geiger.net>: Alias/nick replacement
+  - Joakim Sandström <joose(at)nalle.puh.org>: Ideas and bugfixes
+  - Ryan Ryttie <kesu(at)kesuki.dyndns.org>: xchat logfiles request/help
+  - Laocius <irish(at)rook.lug.usf.edu>: The features 'most used words' and 'most referenced nicks'
+  - Luca (eni) <adsl.help(at)dada.it>: Reported a very small, but stupid bug with the xchat fileformat :)
+  - kiss dess <duvet(at)mail.com>: Found a few minor bugs. And added replace_links()
+  - S. William Schulz <sws(at)astrum.com>:
+    Better commandline arguments, --help and fixed indenting problems with
+    xchat logs, also fixed a critical thing with --format, --silent switch
+  - Tim Hunter <tim(at)quic.net>: 'shortest lines', 'most fouls', 'pageheader' and more. 
+  - Sascha Lüdecke <sascha(at)meta-x.de>: Compressed files, addition of --prefix, and 
+    sorting of files in logdirs
+  - Gandalf the Grey <gandalf(at)irc.pl>: egg2mirc.awk script.
+  - Hanno Hecker (Vetinari) <vetinari(at)ankh-morp.org>:
+    Lots of feature additions and code cleanups, thanks!
+    Updates to German translation, some patches for words and the feature 'most words'.
+  - Anders Rune Jensen (Superduck) <daserver(at)sol.dk>: Language specific dates on stats page
+  - Christian Legler <capt(at)capt.de>: New images for pisg
+  - Phil Gregory <phil_g(at)pobox.com>: Regex support in user aliases, grammar
+    corrections, huge changes to modularize pisg into packages/objects.: 'bigpic' user option
+  - Patrick Aussems aka Zyk <zyk(at)bugfactory.org>:
+    New options: show_mrn, show_mru, show_muw, show_randquote
+  - David Leadbeater: Flexibility to irssi logfiles.
+  - Mouky <mouky(at)m6net.fr>:
+    Updates to French template, grammar/gender/spelling corrections.
+  - deadlock <deadlock(at)cheeseheadz.net>: addalias.pl version 2, handling of users
+    already in config file, obsoletin of addalias.htm and more configurable script.
+  - Nicholas Frampton <whyrl(at)avians.net>: infobot logfile support
+  - Mo-Ize <mo-ize(at)pas-tres.net>: zcbot logfile support
+  - Azhrarn <Azhrarn(at)winbot.co.uk>: winbot logfile support, Trillian logfile support
      windows-ftp-upload.txt addition
- * Andrew <andy@lewman.com>
-   | axur logfile support
- * EQU <equ@equnet.org>
-   | oer logfile support
- * "Travis Roy" <travis@scootz.net>
-   | perlbot logfile support
- * Nathan Poznick
-   | Ability to specify multiple LogFiles and LogDirs.
- * HM 2K <nfhm2k@gmail.com>
-   | eggdrop-pisg.tcl for running pisg from eggdrop
- * Tiniduske <tiniduske@telenet.be>
-   | updated Dutch translation
- * Julien Danjou <acid@debian.org>
-   | pisg(1) manpage
- * coaster
-   | improved mirc6hack.mrc
- * Vianney Lecroart <acemtp@free.fr>
-   | lulubot parser
- * Christian Garbs (mastermitch)
-   | "Latest Topics" displays date
- * Jeroen van Nimwegen <jeroen.van.nimwegen@gmail.com>
-   | updated Dutch translation
- * James Vega (jamessan)
-   | Update for supy.pm
- * Tjavdar Ivanov <ivtj@ing.hj.se>
-   | Update for Bulgarian
- * Axel 'XTaran' Beckert <abe@deuxchevaux.org>
-   | pum.pl
- * Kresten Kjeldgaard <gathond@gathond.dk>
-   | miau parser
- * Guilherme Barile <guigouz@gmail.com>
-   | updated Portuguese/Brazil translation
- * Antoni Grzymała <antoni@chopin.edu.pl>
-   | updated Polish translation
- * NonExistenT <non3x@non3x.net>
-   | updated Russian translation
- * Silviu Foca <silviu.foca@gmail.com>
-   | updated Romanian translation
- * Michal Stano <mikezzsta@gmail.com>
-   | updated Slovak translation
- * Pavel Kouril <paulway@gmail.com>
-   | updated Czech translation
- * Sentence <Sentence@unencanto.es>
-   | updated Catalan translation
- * Lajos Galambosi <contact@utp.hu>
-   | updated Hungarian translation
- * Gökhan <eaqle@msn.com>
-   | updated Turkish translation
- * Zoran <zoran@infoklub.net>
-   | updated Serbian translation
- * Teemu Koskinen
-   | patches to speed up karma parsing and code cleanup
- * Matti Peltola <aqvalar@gmail.com>
-   | Finish translation
- * skiidoo
-   | updated French translation
- * KenjiE20
-   | weechat3 parser
+  - Andrew <andy(at)lewman.com>: axur logfile support
+  - EQU <equ(at)equnet.org>: oer logfile support
+  - "Travis Roy" <travis(at)scootz.net>: perlbot logfile support
+  - Nathan Poznick: Ability to specify multiple LogFiles and LogDirs.
+  - HM 2K <nfhm2k(at)gmail.com>: eggdrop-pisg.tcl for running pisg from eggdrop
+  - Julien Danjou <acid(at)debian.org>: pisg(1) manpage
+  - coaster: improved mirc6hack.mrc
+  - Vianney Lecroart <acemtp(at)free.fr>: lulubot parser
+  - Christian Garbs (mastermitch): "Latest Topics" displays date
+  - James Vega (jamessan): Update for supy.pm
+  - Axel 'XTaran' Beckert <abe(at)deuxchevaux.org>: pum.pl
+  - Kresten Kjeldgaard <gathond(at)gathond.dk>: miau parser
+  - Teemu Koskinen: patches to speed up karma parsing and code cleanup
+  - KenjiE20: weechat3 parser
 
-I probably forgot a lot of people here, _PLEASE_ notify me if I left you
-out.. because I have a bad habit of forgetting to maintain this list :)
+Translators:
+
+  - Kim Ingemann (KimI) <mail(at)pingvinland.dk>: Danish translation
+  - Molator <molator(at)ifrance.com>: French translation
+  - Sheuron Azxe <xeron(at)cfutura.com>: Spanish translation
+  - Gandalf the Grey <gandalf(at)irc.pl>: Polish translation
+  - Andreas Blaafladt <coronel(at)dalnet.no>: Norwegian translation
+  - JaMiR0W <jamirow(at)ig.com.br>: Portugese translation
+  - Pyrofikiemaan <gassman65(at)hotmail.com>: Dutch translation
+  - Andreas Henriksson <gem(at)home.se>: Swedish translation
+  - Kirler(at)paincreators <kirler(at)letku.net>: Finnish translation.
+  - Ales Tepina <ales.tepina(at)guest.arnes.si>: Slovenian translation
+  - Gyuri Horak <dyuri(at)dyuri.sch.bme.hu>: Hungarian translation
+  - Pascal Brax <god(at)pascalbrax.com>: Italian translation
+  - Tiniduske <tiniduske(at)telenet.be>: updated Dutch translation
+  - Jeroen van Nimwegen <jeroen.van.nimwegen(at)gmail.com>: updated Dutch translation
+  - Tjavdar Ivanov <ivtj(at)ing.hj.se>: Update for Bulgarian translation
+  - Guilherme Barile <guigouz(at)gmail.com>: updated Portuguese/Brazil translation
+  - Antoni Grzymała <antoni(at)chopin.edu.pl>: updated Polish translation
+  - NonExistenT <non3x(at)non3x.net>: updated Russian translation
+  - Silviu Foca <silviu.foca(at)gmail.com>: updated Romanian translation
+  - Michal Stano <mikezzsta(at)gmail.com>: updated Slovak translation
+  - Pavel Kouril <paulway(at)gmail.com>: updated Czech translation
+  - Sentence <Sentence(at)unencanto.es>: updated Catalan translation
+  - Lajos Galambosi <contact(at)utp.hu>: updated Hungarian translation
+  - Gökhan <eaqle(at)msn.com>: updated Turkish translation
+  - Zoran <zoran(at)infoklub.net>: updated Serbian translation
+  - Matti Peltola <aqvalar(at)gmail.com>: Finish translation
+  - skiidoo: updated French translation
+
+  If your name is not here, and you've contributed, it's just an oversight.
+  Please mail us and we'll add you to the list:
+  <pisg-general(at)lists.sourceforge.net>
