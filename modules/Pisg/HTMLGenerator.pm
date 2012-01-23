@@ -192,7 +192,7 @@ sub create_output
     }
 
     my %hash = ( lines => $self->{stats}->{parsedlines} );
-    _html($self->_template_text('totallines', %hash) . "<br /><br />");
+    _html('<div id="totallines">' . $self->_template_text('totallines', %hash) . '</div>');
 
     $self->_pagefooter()
         if ($self->{cfg}->{pagefoot} ne 'none');
@@ -304,10 +304,7 @@ sub _htmlfooter
     my %hash;
 
     my $pisg_hp = $self->_template_text('pisghomepage');
-    $hash{pisg_url} = "<a href=\"http://pisg.sourceforge.net/\" title=\"$pisg_hp\" class=\"background\">pisg</a>";
-
-    my $author_hp = $self->_template_text('authorhomepage');
-    $hash{author_url} = "<a href=\"http://mbrix.dk/\" title=\"$author_hp\" class=\"background\">Morten Brix Pedersen</a>";
+    $hash{pisg_url} = '<a href="http://pisg.sourceforge.net/" title="' . $pisg_hp . '" class="background">pisg</a>';
 
     $hash{version} = $self->{cfg}->{version};
 
@@ -322,15 +319,13 @@ sub _htmlfooter
     $hash{time} = "$h $hours $m $mins $and $s $secs";
 
     my $stats_gen = $self->_template_text('stats_gen_by', %hash);
-    my $author_text = $self->_template_text('author', %hash);
     my $stats_text = $self->_template_text('stats_gen_in', %hash);
 
     _html( <<HTML );
-<span class="small">
-$stats_gen<br />
-$author_text<br />
-$stats_text
-</span>
+<div id="footer" class="small">
+	<div id="stats_gen">$stats_gen</div>
+	<div id="stats_text">$stats_text</div>
+</div>
 HTML
 
     _html( sprintf( qq(<!-- NFiles = "%s"; Format = "%s"; Lang = "%s"; LangFile = "%s"; Charset = "%s"; LogCharset = "%s"; LogCharsetFallback = "%s"; LogPrefix = "%s"; LogSuffix = "%s"; NickTracking = "%s"; TimeOffset = "%s" -->),
