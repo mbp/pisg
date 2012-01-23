@@ -1,6 +1,4 @@
-README, pisg - by me and others (see CREDITS file)
-------------------
-pisg - Perl IRC Statistics Generator, is a Perl script which takes IRC
+Perl IRC Statistics Generator (pisg) is a Perl script which takes IRC
 logfiles and turns them into nice looking stats, which can be amusing to
 show for the users of your channel.
 
@@ -77,4 +75,4 @@ The pisg homepage is located at http://pisg.sourceforge.net/.
 
 Have fun :)
 
- - Morten Brix Pedersen
+ - The pisg project

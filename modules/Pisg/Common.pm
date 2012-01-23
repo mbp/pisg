@@ -2,8 +2,7 @@ package Pisg::Common;
 
 # pisg - Perl IRC Statistics Generator
 #
-# Copyright (C) 2001-2005  <Morten Brix Pedersen> - morten@wtf.dk
-# Copyright (C) 2003-2005  Christoph Berg <cb@df7cb.de>
+# Copyright (C) 2001-2012  The pisg project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

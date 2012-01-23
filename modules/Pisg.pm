@@ -2,8 +2,7 @@ package Pisg;
 
 # Documentation(POD) for this module is found at the end of the file.
 
-# Copyright (C) 2001-2005  <Morten Brix Pedersen> - morten@wtf.dk
-# Copyright (C) 2003-2006  Christoph Berg <cb@df7cb.de>
+# Copyright (C) 2001-2012  The pisg project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -622,10 +621,12 @@ B<search_path> - This defines an optional search path. It's used when you want t
 =head1 AUTHOR
 
 Morten Brix Pedersen <morten@wtf.dk>
+Christoph Berg <cb@df7cb.de>
+James "HM2K" <james@hm2k.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2001 Morten Brix Pedersen. All rights resereved.
+Copyright (C) 2001-2012 The pisg project. All rights reserved.
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GPL, license is included with the distribution of
 this file.
