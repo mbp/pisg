@@ -1,127 +1,103 @@
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 a:link {
-    color: #0b407a;
+	color: #0b407a;
 }
 a:visited {
-    color: #0b407a;
+	color: #0b407a;
 }
-
 a:hover {
-    text-decoration: underline;
-    color: #0b407a;
+	text-decoration: underline;
+	color: #0b407a;
 }
-
 a.background {
-    text-decoration: none;
+	text-decoration: none;
 }
-
 a.background:link {
-    color: #0b407a;
+	color: #0b407a;
 }
-
 a.background:visited {
-    color: #0b407a;
+	color: #0b407a;
 }
-
 a.background:hover {
-    text-decoration: underline;
-    color: #0b407a;
+	text-decoration: underline;
+	color: #0b407a;
 }
-
 body {
-    background-color: #dedeee;
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 13px;
-    color: black;
+	background-color: #dedeee;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 13px;
+	color: black;
 }
-
 td {
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 13px;
-    color: black;
-    text-align: left;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 13px;
+	color: black;
+	text-align: left;
 }
-
 .male, .male a {
-    color: #0000DD;
+	color: #0000DD;
 }
-
 .female, .female a {
-    color: #DD3366;
+	color: #DD3366;
 }
-
 .bot, .bot a {
-    color: #00FFFF;
+	color: #00FFFF;
 }
-
 .title {
-    font-family: Tahoma, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
 }
-
 .headtext {
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    background-color: #666699;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	background-color: #666699;
 }
-
 .headlinebg {
-    background-color: #000000;
+	background-color: #000000;
 }
-
 .tdtop {
-    background-color: #C8C8DD;
+	background-color: #C8C8DD;
 }
-
 .hicell {
-    background-color: #BABADD;
+	background-color: #BABADD;
 }
-
 .hicell10 {
-    background-color: #BABADD;
-    font-size: 10px;
+	background-color: #BABADD;
+	font-size: 10px;
 }
-
 .rankc {
-    background-color: #CCCCCC;
+	background-color: #CCCCCC;
 }
-
 .hirankc {
-    background-color: #AAAAAA;
-    font-weight: bold;
+	background-color: #AAAAAA;
+	font-weight: bold;
 }
-
 .rankc10 {
-    background-color: #CCCCCC;
-    font-size: 10px;
+	background-color: #CCCCCC;
+	font-size: 10px;
 }
-
 .rankc10center {
-    background-color: #CCCCCC;
-    font-size: 10px;
-    text-align: center;
+	background-color: #CCCCCC;
+	font-size: 10px;
+	text-align: center;
 }
-
 .hirankc10center {
-    background-color: #AAAAAA;
-    font-weight: bold;
-    font-size: 10px;
-    text-align: center;
+	background-color: #AAAAAA;
+	font-weight: bold;
+	font-size: 10px;
+	text-align: center;
 }
-
 .small {
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 10px;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 10px;
 }
-
-
 .asmall {
-      font-family: "Arial narrow", Arial, sans-serif;
-      font-size: 10px;
-      color: black;
-      text-align: center;
+	font-family: "Arial narrow", Arial, sans-serif;
+	font-size: 10px;
+	color: black;
+	text-align: center;
 }
