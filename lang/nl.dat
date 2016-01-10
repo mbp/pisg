@@ -1,0 +1,167 @@
+<lang name="NL" charset="iso-8859-1">
+mostop1 = "<b>[:nick]</b> gaf [:ops] ops in het kanaal..."
+mostop2 = "<b>[:nick]</b> was ook erg beleefd: [:ops] ops van [:hem:haar:]."
+mostop3 = "Vreemd, er werd geen op gegeven in [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> is de kanaalagent met [:deops] deops."
+mostdeop2 = "<b>[:nick]</b> deopte [:deops] gebruikers."
+mostdeop3 = "Wow, er werd geen op afgepakt in [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> gaf [:voices] voices in het kanaal..."
+mostvoice2 = "<b>[:nick]</b> was ook erg beleefd: [:voices] voices van [:hem:haar:]."
+mostvoice3 = "Vreemd, er werden geen voices gegeven in [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> houdt ervan om mensen de voice af te pakken, [:devoices] devoices."
+mostdevoice2 = "<b>[:nick]</b> zat er dicht bij, devoicede [:devoices] gebruikers."
+mostdevoice3 = "Er werden geen voices afgepakt in [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> gaf [:halfops] halfops in het kanaal..."
+mosthalfop2 = "<b>[:nick]</b> was ook erg vriendelijk: [:halfops] halfops van [:hem:haar:]."
+mosthalfop3 = "Vreemd, er werd geen halfop gegeven in [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> is de kanaalagent met [:dehalfops] dehalfops."
+mostdehalfop2 = "<b>[:nick]</b> dehalfopte [:dehalfops] gebruikers."
+mostdehalfop3 = "Wow, er werd geen halfop afgepakt in [:channel]!"
+
+action1 = "<b>[:nick]</b> laat ons altijd weten wat [:hij:zij:] aan het doen is: [:actions] acties!"
+action2 = "Ook, <b>[:nick]</b> verteld ons wat er aan de hand is met [:actions] acties."
+action3 = "Geen acties in [:channel]!"
+actiontext = "<b>Zoals dit bijvoorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "Is <b>[:nick]</b> stom of stelt [:hij:zij:] gewoon te veel vragen?  [:per]% regels bevatten een vraag!"
+question2 = "<b>[:nick]</b> wist ook al niet zoveel.  [:per]% van [:zijn:haar:] regels waren vragen."
+question3 = "Niemand stelde hier vragen; alleen maar genieën in dit kanaal?"
+
+shout1 = "De luidste was <b>[:nick]</b>, die schreeuwde [:per]% van de tijd!"
+shout2 = "Een andere <i>beruchte schreeuwer</i> was <b>[:nick]</b>, die schreeuwde [:per]% van de tijd!"
+shout3 = "Er schreeuwde helemaal niemand, wow."
+
+allcaps1 = "Het schijnt dat <b>[:nick]</b>'s shift-toets blijft hangen:  [:per]% van de tijd schreef [:hij:zij:] IN HOOFDLETTERS."
+allcaps2 = "<b>[:nick]</b> vergat gewoon [:zijn:haar:] Caps-Lock uit te zetten.  [:Hij:Zij:] schreef IN HOOFDLETTERS [:per]% van de tijd."
+allcaps3 = "Iedereen had hun shift-toets onder controle.  :)"
+allcapstext = "<b>Zoals dit bijvoorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> is een zeer agressief persoon.  [:Hij:Zij:] viel andere <b>[:attacks]</b> keer aan."
+violent2 = "<b>[:nick]</b> kan ook [:zijn:haar:] agressie niet onder controle houden.  [:Hij:Zij:] pestte andere <b>[:attacks]</b> keer."
+violent3 = "Niemand sloeg iemand in elkaar.  Iedereen was vriendelijk."
+violenttext = "<b>Zoals dit bijvoorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Arme <b>[:nick]</b>, niemand mag [:hem:haar:].  [:Hij:Zij:] werd <b>[:attacks]</b> keer aangevallen."
+attacked2 = "<b>[:nick]</b> schijnt ook niet aardig gevonden te worden.  [:Hij:Zij:] kreeg <b>[:attacks]</b> keer een pak slaag."
+attackedtext = "<b>Zoals dit bijvoorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> was niet erg populair, werd [:kicks] keer geschopt!"
+gotkick2 = "<b>[:nick]</b> Schijnt ook gehaat te worden:  [:kicks] schoppen ontvangen."
+kicktext = "<b>Zoals dit bijvoorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> kon maar niet beslissen om te blijven of om te gaan.  [:joins] entrees tijdens deze rapportageperiode!"
+
+kick1 = "<b>[:nick]</b> is of krankzinnig of gewoon een eerlijke op, schopte een totaal van [:kicked] mensen!"
+kick2 = "[:oldnick]'s trouwe volger, <b>[:nick]</b>, schopte ongeveer [:kicked] mensen."
+kick3 = "Vriendelijke opers hier, niemand werd geschopt!"
+
+words1 = "<b>[:nick]</b> sprak in totaal [:words] woorden!"
+words2 = "[:oldnick]'s trouwe volger, <b>[:nick]</b>, sprak niet zo veel: [:words] woorden."
+words3 = "Niemand zei er wat...  Wat een vreemd kanaal..."
+
+mono1 = "<b>[:nick]</b> praat veel met [:zich:haar:]zelf.  [:Hij:Zij:] schreef meer dan 5 regels achter elkaar en dat [:monos] keer!"
+mono2 = "Een andere eenzame was <b>[:nick]</b>, die er [:monos] keer in slaagde."
+
+wpl1 = "<b>[:nick]</b> schreef gemiddeld [:wpl] woorden per regel."
+wpl2 = "Kanaal gemiddelde was [:avg] woorden per regel."
+
+long1 = "<b>[:nick]</b> schreef de langste regels, gemiddeld [:letters] letters per regel."
+long2 = "[:channel] gemiddelde was [:avg] letters per regel."
+
+short1 = "<b>[:nick]</b> schreef de kortste regels, gemiddeld [:letters] karakters per regel."
+short2 = "<b>[:nick]</b> hield ook de lippen op elkaar, gemiddeld [:letters] karakters."
+
+foul1 = "<b>[:nick]</b> heeft een behoorlijke brutale mond.  [:per]% van de woorden waren ongepast."
+foul2 = "<b>[:nick]</b>  laat zelfs zeelieden blozen, [:per]% van de tijd."
+foul3 = "Niemand heeft een grote mond in [:channel]!  Komt men wel eens buiten?"
+foultext = "<b>Zoals dit bijvoorbeeld:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> brengt geluk in de wereld.  [:per]% regels bevatte lachende gezichten.  :)"
+smiles2 = "<b>[:nick]</b> is ook geen somber persoon, lachte [:per]% van de tijd."
+smiles3 = "Niemand lacht in [:channel]!  Kop op jongens en meiden."
+
+sad1 = "<b>[:nick]</b> schijnt op het ogenblik somber te zijn:  [:per]% regels bevatte sombere gezichten.  :("
+sad2 = "<b>[:nick]</b> is ook een somber persoon, huilde [:per]% van de tijd."
+sad3 = "Niemand is somber in [:channel]!  Wat een gelukkig kanaal.  :-)"
+
+month = "Januari Februari Maart April Mei Juni Juli Augustus September Oktober November December"
+day = "Zondag Maandag Dinsdag Woensdag Donderdag Vrijdag Zaterdag"
+
+## Topics
+
+bignumtopic = "Grote getallen"
+othernumtopic = "Andere interessante getallen"
+latesttopic = "Laatste onderwerpen"
+activetimestopic = "Meest actieve tijden"
+activenickstopic = "Meest actieve nicks"
+activenickbyhourtopic = "Meest actieve personen per uur"
+mostwordstopic = "Meest gebruikte woorden"
+referencetopic = "Meest genoemde nicks"
+karmatopic = "[:channel] karma"
+urlstopic = "Meest genoemde URLs"
+notopic = "Er is in dit kanaal nooit een onderwerp vastgesteld."
+mostnickstopic = "Gebruiker met de meeste nicks"
+bylinetopic = "[:date] om [:time] door [:nick] "
+dailyactivitytopic = "Dagelijkse activiteit (afgelopen [:n] dagen)"
+activegenderstopic = "Meest actieve geslacht"
+smileytopic = "Smileys :-)"
+chartstopic = "[:channel] Muziek Hitlijsten"
+
+## Other text
+
+totallines = "Totaal aantal regels: [:lines]"
+totalnicks = "Trouwens, er waren ook nog [:totalnicks] andere nicks."
+totaltopic = "Het onderwerp is [:total] keer veranderd."
+nick = "Nick"
+names = "Gebruikte namen"
+url = "URL"
+numberlines = "Aantal regels"
+randquote = "Willekeurig citaat"
+userpic = "Gebruikersfoto"
+nottop = "Deze haalden de top niet:"
+word = "Woord"
+numberuses = "Aantal keren gebruikt"
+show_words = "Aantal woorden"
+show_time = "Wanneer?"
+show_wpl = "Woorden per regel"
+show_cpl = "Karakters per regel"
+show_lastseen = "Laatst gezien"
+lastused = "Laatst gebruikt door"
+karma = "Karma"
+goodkarma = "Goed karma door"
+badkarma = "Slecht karma door"
+lastseen1 = "gisteren"
+lastseen2 = "[:days] dagen geleden"
+today = "vandaag"
+pagetitle1 = "[:channel] @ [:network] statistieken door [:maintainer]"
+pagetitle2 = "Statistieken gegenereerd op "
+pagetitle3 = "Tijdens deze [:days]-daagse rapporterings periode waren er in totaal <b>[:nicks]</b> verschillende nicks te vinden op [:channel]."
+stats_gen_by = "Stats gegenereerd door [:pisg_url] v[:version]"
+author = "pisg door [:author_url] en anderen"
+stats_gen_in = "Stats gegenereerd in [:time]"
+hours = "uren"
+minutes = "minuten"
+seconds = "seconden"
+and = "en"
+names1 = "namen"
+names2 = "naam"
+gender = "Geslacht"
+gender_f = "Vrouwelijk"
+gender_m = "Mannelijk"
+gender_b = "Bot"
+smiley = "Smiley"
+song = "Nummer"
+numberplayed = "Hoe Vaak Gedraaid"
+playedby = "Laatst Gedraaid door"
+
+# Mouse-over titles
+pisghomepage = "Ga naar de pisg homepage"
+authorhomepage = "Ga naar de homepage van de auteur"
+newwindow = "Openen in nieuw scherm:"
+mailto = "Mail naar"
+</lang>

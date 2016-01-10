@@ -1,0 +1,167 @@
+<lang name="PT" charset="iso-8859-1">
+mostop1 = "<b>[:nick]</b> deu [:ops] ops no canal..."
+mostop2 = "<b>[:nick]</b> também foi [:simpático:simpática:]: [:ops] ops [:dele:dela:]."
+mostop3 = "Estranho, nenhum op foi dado no [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> é [:o:a:] policia do canal com [:deops] ops retirados."
+mostdeop2 = "<b>[:nick]</b> retirou o op a [:deops] utilizadores."
+mostdeop3 = "Ena, ninguém tirou ops no [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> doou [:voices] voices no canal..."
+mostvoice2 = "<b>[:nick]</b> também foi [:simpático:simpática:]: [:voices] voices [:dele:dela:]."
+mostvoice3 = "Estranho, não foram entregues voices no [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> gosta de tirar voices às pessoas, [:devoices] voices retirados."
+mostdevoice2 = "<b>[:nick]</b> também não andou longe, retirou [:devoices] voices."
+mostdevoice3 = "Não houve voices retirados no [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> doou [:halfops] halfops no canal..."
+mosthalfop2 = "<b>[:nick]</b> was also very polite: [:halfops] halfops from [:him:her:]."
+mosthalfop3 = "Strange, no halfop was given on [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> is the channel sheriff with [:dehalfops] dehalfops."
+mostdehalfop2 = "<b>[:nick]</b> dehalfoped [:dehalfops] users."
+mostdehalfop3 = "Wow, no halfop was taken on [:channel]!"
+
+action1 = "<b>[:nick]</b> gosta de nos manter informados sobre o que está a fazer: [:actions] acções!"
+action2 = "Também [:o:a:] <b>[:nick]</b> nos diz o que anda a tramar com [:actions] acções."
+action3 = "Não houve acções no [:channel]!"
+actiontext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "<b>[:nick]</b> é muito [:curioso:curiosa:]:  [:per]% das suas linhas contém uma pergunta!"
+question2 = "Também [:o:a:] <b>[:nick]</b> não anda longe:  [:per]% das suas linhas foram interrogativas."
+question3 = "Ninguém perguntou nada. Ninguém quer saber de nada?"
+
+shout1 = "[:O:A:] mais estridente foi [:o:a:] <b>[:nick]</b>, que gritou [:per]% do tempo!"
+shout2 = "Outra <i>corneta</i> foi [:o:a:] <b>[:nick]</b>, que berrou [:per]% do tempo!"
+shout3 = "Ninguém grita no canal, ena!"
+
+allcaps1 = "Parece que a tecla shift [:do:da:] <b>[:nick]</b> está presa:  Em [:per]% do tempo escreveu em MAIÚSCULAS!"
+allcaps2 = "<b>[:nick]</b> esqueceu-se de desligar o caps-lock. [:Ele:Ela:] escreveu em MAIÚSCULAS [:per]% do tempo."
+allcaps3 = "Toda a gente manteve as suas teclas shift sob controlo.  :)"
+allcapstext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> é uma pessoa muito agressiva. [:Ele:Ela:] atacou outros <b>[:attacks]</b> vezes!"
+violent2 = "<b>[:nick]</b> também não controla a sua agressão. [:Ele:Ela:] pegou-se com outra pessoa <b>[:attacks]</b> vezes."
+violent3 = "Ninguém agrediu ninguém no canal. Todos são amigos."
+violenttext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Pobre <b>[:nick]</b>, ninguém gosta [:dele:dela:].  Foi [:atacado:atacada:] <b>[:attacks]</b> vezes."
+attacked2 = "<b>[:nick]</b> também parece ser [:odiado:odiada:]. Recebeu <b>[:attacks]</b> ataques."
+attackedtext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> não é lá muito popular, sendo [:kickado:kickada:] [:kicks] vezes!"
+gotkick2 = "<b>[:nick]</b> também não recebe muita estima:  [:kicks] kicks recebidos."
+kicktext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> não sabe se fica ou se sai. [:joins] joins relatados!"
+
+kick1 = "<b>[:nick]</b> ou é [:doido:doida:] ou é [:um:uma:] excelente op, kickando um total de [:kicked] utilizadores!"
+kick2 = "<b>[:nick]</b> parece ser aprendiz de [:oldnick], distribuindo [:kicked] kicks."
+kick3 = "Os ops são simpáticos neste canal, ninguém foi kickado!"
+
+words1 = "<b>[:nick]</b> teclou um total de [:words] palavras!"
+words2 = "<b>[:nick]</b> não teclou tanto: [:words] palavras."
+words3 = "Ninguém diz nada? Que raio de canal..."
+
+mono1 = "<b>[:nick]</b> fala muito [:sózinho:sózinha:]. Mais de 5 linhas seguidas [:monos] vezes!"
+mono2 = "[:Outro:Outra:] [:solitário:solitária:], <b>[:nick]</b>, que conseguiu chegar às [:monos] vezes."
+
+wpl1 = "<b>[:nick]</b> escreveu uma média de [:wpl] palavras por linha."
+wpl2 = "A média do canal é de [:avg] palavras por linha."
+
+long1 = "<b>[:nick]</b> escreveu as linhas mais compridas, [:letters] letras por linha."
+long2 = "A média do [:channel] é de [:avg] letras por linha."
+
+short1 = "<b>[:nick]</b> escreveu as linhas mais curtas, com uma média de [:letters] letras por linha."
+short2 = "<b>[:nick]</b> também tecla pouco, com uma média de [:letters] letras."
+
+foul1 = "<b>[:nick]</b> tem uma boca suja.  [:per]% das suas palavras eram palavrões."
+foul2 = "<b>[:nick]</b> também faz corar um pedreiro, praguejando [:per]% do tempo."
+foul3 = "Ninguém diz asneiras no [:channel]! Incrível!"
+foultext = "<b>Por exemplo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> é muito feliz.  [:per]% das linhas contém caras sorridentes.  :)"
+smiles2 = "<b>[:nick]</b> também não é nada triste, sorrindo [:per]% do tempo."
+smiles3 = "Ninguém sorri no [:channel]! Animem-se!"
+
+sad1 = "<b>[:nick]</b> parece estar triste:  [:per]% contém caras tristes.  :("
+sad2 = "<b>[:nick]</b> também não anda longe, chorando [:per]% do tempo."
+sad3 = "Ninguém chora no [:channel]! Que canal alegre!  :)"
+
+month = "Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro"
+day = "Domingo Segunda Terça Quarta Quinta Sexta Sabado"
+
+## Topics
+
+bignumtopic = "Alguns números"
+othernumtopic = "Outros números interessantes"
+latesttopic = "Tópicos recentes"
+activetimestopic = "Horas mais activas"
+activenickstopic = "Nicks mais activos"
+activenickbyhourtopic = "Nicks mais activos por horas"
+mostwordstopic = "Palavras mais usadas"
+referencetopic = "Nicks mais referênciados"
+smileytopic = "Caras :-)"
+karmatopic = "[:channel] disposição"
+urlstopic = "URLs mais referênciados"
+notopic = "Nenhum tópico foi colocado neste canal."
+mostnickstopic = "Utilizadores com mais nicks"
+bylinetopic = "[:date] por [:nick] às [:time]"
+dailyactivitytopic = "Actividade diária (últimos [:n] dias)"
+activegenderstopic = "Sexo mais activo"
+chartstopic = "[:channel] Exitos musicales"
+
+## Other text
+
+totallines = "Número total de linhas: [:lines]."
+totalnicks = "Ainda houve mais [:totalnicks] nicks."
+totaltopic = "O tópico foi modificado [:total] vezes."
+nick = "Nick"
+names = "Nomes usados"
+url = "URL"
+numberlines = "Número de linhas"
+randquote = "Citação aleatória"
+userpic = "Foto do utilizador"
+nottop = "Estes não chegaram ao topo:"
+word = "Palavra"
+numberuses = "Número de Utilizações"
+show_words = "Número de Palavras"
+show_time = "Quando?"
+show_wpl = "Palavras por linha"
+show_cpl = "Letras por linha"
+show_lastseen = "Visto pela última vez"
+lastused = "Utilizado pela última vez por"
+smiley = "Caras"
+karma = "Disposição"
+goodkarma = "Boa disposição por"
+badkarma = "Má disposição por"
+lastseen1 = "[:days] dia atrás"
+lastseen2 = "[:days] dias atrás"
+today = "Hoje"
+pagetitle1 = "[:channel] @ [:network] estatisticas por [:maintainer]"
+pagetitle2 = "Estatisticas geradas "
+pagetitle3 = "Durante este periodo de [:days] dias, um total de <b>[:nicks]</b> nicks diferentes foram vistos no [:channel]."
+stats_gen_by = "Estatísticas geradas pelo [:pisg_url] v[:version]"
+author = "pisg por [:author_url] e outros"
+stats_gen_in = "Estatisticas geradas em [:time]"
+hours = "horas"
+minutes = "minutos"
+seconds = "segundos"
+and = "e"
+names1 = "nomes"
+names2 = "nome"
+gender = "Sexo"
+gender_f = "Feminino"
+gender_m = "Masculino"
+gender_b = "Bot"
+song = "Canção"
+numberplayed = "Tocada quantas vezes"
+playedby = "Tocada pela ultima vez por"
+
+# Mouse-over titles
+pisghomepage = "Ir para a página do pisg"
+authorhomepage = "Ir para a página do autor"
+newwindow = "Abrir uma nova janela:"
+mailto = "Enviar mail para"
+</lang>

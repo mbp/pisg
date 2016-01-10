@@ -119,6 +119,9 @@ docs:
 release: docs
 	mkdir -p newrelease
 
+	cat lang/readme.txt >> lang.txt
+	cat lang/*.dat >> lang.txt
+
 	mkdir $(DIRNAME)
 	cp $(FILES) $(DIRNAME)
 
@@ -162,6 +165,7 @@ release: docs
 
 clean:
 	cd docs && make clean
+	rm -f lang.txt
 	rm -rf newrelease/$(TARFILE)
 	rm -rf newrelease/$(ZIPFILE)
 	rm -rf newrelease/$(DIRNAME)

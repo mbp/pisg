@@ -1,0 +1,168 @@
+<lang name="SQ" charset="iso-8859-1">
+mostop1 = "<b>[:nick]</b> dhuroi [:ops] OP në kanal..."
+mostop2 = "<b>[:nick]</b> ishte gjithashtu i sjellshëm: [:ops] OP nga [:ai:ajo:]."
+mostop3 = "E çuditshme, asnjë OP nuk u dha në [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> është polici i kanalit me [:deops] DEOP-erime."
+mostdeop2 = "<b>[:nick]</b> DEOP-eroi [:deops] përdorues."
+mostdeop3 = "Wow, nuk u dha asnjë OP në [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> dhuroi [:voices] VOICE në kanal..."
+mostvoice2 = "<b>[:nick]</b> ishte gjithashtu i sjellshëm: [:voices] VOICE nga [:ai:ajo:]."
+mostvoice3 = "E çuditshme, nuk është dhënë asnjë VOICE në [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> i pëlqen të heqi VOICE të tjerëve, [:devoices] DEVOICES."
+mostdevoice2 = "<b>[:nick]</b> ishte afër të sipërpërmendurit, i hoqi VOICE [:devoices] përdoruesve."
+mostdevoice3 = "Nuk ndodhi asnjë DEVOICE në [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> Dhuroi [:halfops] HALFOPS në kanal..."
+mosthalfop2 = "<b>[:nick]</b> ishte gjithashtu shumë i sjellshëm: [:halfops] HALFOP nga [:ai:ajo:]."
+mosthalfop3 = "E çuditshme, nuk është dhënë asnjë HALFOP në [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> është polici i kanalit me [:dehalfops] DEHALFOP."
+mostdehalfop2 = "<b>[:nick]</b> i hoqi HALFOP [:dehalfops] përdoruesve."
+mostdehalfop3 = "Wow, nuk u dha asnjë HALFOP në [:channel]!"
+
+action1 = "<b>[:nick]</b> na tregon gjithmonë çfarë [:ai:ajo:] është duke bërë me: [:actions] veprime!"
+action2 = "Gjithashtu, <b>[:nick]</b> na tregon çfarë bën me [:actions] veprime."
+action3 = "Asnjë veprim në [:channel]!"
+actiontext = "<b>Përshembull, si ky:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "A është <b>[:nick]</b> budalla apo vetëm pyet?  [:per]% e rreshtave përmbanin një pyetje!"
+question2 = "<b>[:nick]</b> nuk dinte kush e di se çfarë as ai.  [:per]% e rreshtave të tij/saj ishin pyetje."
+question3 = "Asnjëri nuk bëri pyetje këtu; a thua janë të gjithë gjeni në këtë kanal?"
+
+shout1 = "Ai që bërtiste më shumë ishte <b>[:nick]</b>, që ulëriti [:per]% të kohës!"
+shout2 = "Një tjetër<i>gërthitës</i> ishte <b>[:nick]</b>, ulëriti [:per]% të kohës!"
+shout3 = "Wow, asnjë nuk bërtiti."
+
+allcaps1 = "Më duket se tasti Shift i <b>[:nick]</b> ka ngecur:  [:per]% të kohës së [:tij:saj:] shkruajti me GËRMA TË MËDHA."
+allcaps2 = "<b>[:nick]</b> vetëm sa harroi të çaktivizojë Caps-Lock e [:tij:saj:].  [:Ai:Ajo:] shkruajti ME TË MADHE [:per]% të kohës."
+allcaps3 = "Të gjithë e kishin nën kontroll tastin Caps-Lock.  :)"
+allcapstext = "<b>Përshembull, si kjo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> është një person i dhunshëm.  [:Ai:Ajo:] sulmoi të tjerët <b>[:attacks]</b> herë."
+violent2 = "Sido që të jetë, edhe <b>[:nick]</b> nuk i kontrollon dot sulmet e [:tij:saj:].  [:Ai:Ajo:] ngacmoi të tjerët <b>[:attacks]</b> herë."
+violent3 = "Asnjëri nuk ngacmoi të tjerët. Çdokush qe miqësor."
+violenttext = "<b>Përshembull, si kjo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "I gjori <b>[:nick]</b>, asnjëri nuk e pëlqen. [:Ai:Ajo:] u sulmua <b>[:attacks]</b> herë."
+attacked2 = "<b>[:nick]</b> ngjan të jetë i padëshiruar gjithashtu.  [:Ai:Ajo:] u ngacmua <b>[:attacks]</b> herë."
+attackedtext = "<b>Përshembull, si kjo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> nuk qe shumë popullor, mori shqelma(kicked) [:kicks] herë!"
+gotkick2 = "<b>[:nick]</b> ngjan të ketë qenë i urryer gjithashtu:  mori [:kicks] dëbime."
+kicktext = "<b>Përshembull, si ky:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> nuk dinte ç'të bënte, të ikte apo të rrinte.  [:joins] hyrje të raportuara në këtë periudhë!"
+
+kick1 = "<b>[:nick]</b> është një OP i çmendur(apo vetëm i drejtë?), ka përzënë [:kicked] person/a!"
+kick2 = "<b>[:nick]</b> e ndjek pas, zboi [:kicked] person/a."
+kick3 = "Paska operatorë të mirë këtu, asnjëri nuk ka marrë shqelma!"
+
+words1 = "<b>[:nick]</b> shkruajti një total prej [:words] fjalësh!"
+words2 = "<b>[:nick]</b> e ndjek pas, nuk foli dhe aq shume: [:words] fjalë."
+words3 = "Asnjeri nuk foli...  Kanal i çuditshëm..."
+
+mono1 = "<b>[:nick]</b> flet shumë me vetveten.  [:Ai:Ajo:] shkruajti mbi 5 herë nga një rresht [:monos] herë!"
+mono2 = "Një i vetmuar tjetër ishte <b>[:nick]</b>, që qëlloi të fliste vetëm [:monos] herë."
+
+wpl1 = "<b>[:nick]</b> shkruajti mesatarisht [:wpl] fjalë për rresht."
+wpl2 = "Mesatarja e kanalit ishte [:avg] fjalë për rresht."
+
+long1 = "<b>[:nick]</b> shkruajti rreshtat më të gjatë, mesatarisht [:letters] shkronja për rresht."
+long2 = "Mesatarja e [:channel] ishte [:avg] gërma për rresht."
+
+short1 = "<b>[:nick]</b> shkruajti rreshtat më të shkurtër, mesatarisht [:letters] gërma për rresht."
+short2 = "Edhe <b>[:nick]</b> ishte përtac, gjithashtu, mesatarisht [:letters] gërma."
+
+foul1 = "<b>[:nick]</b> ishte llapazan.  [:per]% e fjalëve ishin të tepërta."
+foul2 = "<b>[:nick]</b> gjithashtu mërzit të tjerët, [:per]% të kohës."
+foul3 = "Asnjëri nuk foli keq në [:channel]! Shumë përjashtime?"
+foultext = "<b>Përshembull, si kjo:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> lumturon botën.  [:per]% e rreshtave përmbante buzëqeshje.  :)"
+smiles2 = "As <b>[:nick]</b> nuk është i mërzitur, duke buzëqeshur [:per]% të kohës."
+smiles3 = "Asnjeri nuk buzëqeshi në [:channel]! Gëzohuni djem dhe vajza!"
+
+sad1 = "<b>[:nick]</b> ngjan i mërzitur për momentin:  [:per]% e rreshtave përmbante mërzitje.  :("
+sad2 = "Edhe <b>[:nick]</b> është i mërzitur, duke u qarë [:per]% të kohës."
+sad3 = "Asnjeri nuk është i mërzitur në [:channel]!  Sa kanal i qeshur!  :-)"
+
+month = "Janar Shkurt Mars Prill Maj Qershor Korrik Gusht Shtator Tetor Nëntor Dhjetor"
+day = "Dielën, Hënën, Martën, Mërkurën, Enjten, Premten, Shtunën,"
+
+## Topics
+
+bignumtopic = "Shifra të mëdha"
+othernumtopic = "Statistika të tjera"
+latesttopic = "Tema e fundit"
+activetimestopic = "Periudhat më aktive"
+activenickstopic = "Personat më aktivë"
+activenickbyhourtopic = "Më aktivët sipas orës"
+mostwordstopic = "Fjalët më të përdorshme"
+referencetopic = "Më të përmendurit"
+urlstopic = "Adresat më të përmendura"
+notopic = "Ky kanal nuk ka patur asnjëherë ndonjë Temë."
+mostnickstopic = "Personat me më shumë nofka"
+bylinetopic = "[:date] nga [:nick] në [:time]"
+dailyactivitytopic = "Veprimtaria ditore ([:n] ditët e fundit)"
+smileytopic = "Buzëqeshje :-)"
+chartstopic = "[:channel] Renditja Muzikore"
+karmatopic = "karma e [:channel]"
+activegenderstopic = "Gjinia më aktive"
+
+
+## Other text
+
+totallines = "Numri i përgjithshëm i rreshtave: [:lines]."
+totalnicks = "Meqë ra fjala, pati [:totalnicks] nofka të tjera."
+totaltopic = "Tema është vendosur [:total] herë."
+nick = "Nofka"
+names = "Emrat e Përdorur"
+url = "URL"
+numberlines = "Numrat e Rreshtave"
+randquote = "Citim i rastit"
+userpic = "Foto"
+nottop = "Këta nuk arritën të dalin në 'tabelë të nderit':"
+word = "Fjalë"
+numberuses = "Numri i Përdoruesve"
+show_words = "Numri i Fjalëve"
+show_time = "Kur?"
+show_wpl = "Fjalë për Rresht"
+show_cpl = "Gërma për Rresht"
+show_lastseen = "Parë së fundi"
+lastused = "I përdorur së fundi nga"
+lastseen1 = "[:days] ditë më parë"
+lastseen2 = "[:days] ditë më parë"
+today = "Sot"
+pagetitle1 = "Statistikat e [:channel] @ [:network] [:maintainer]"
+pagetitle2 = "Të dhënat u nxorrën të "
+pagetitle3 = "Gjatë këtyre [:days] ditëve raportimi, një total prej <b>[:nicks]</b> nofkash të ndryshme u prezantuan në [:channel]."
+stats_gen_by = "Statistikat, nxjerrë me [:pisg_url] v[:version]"
+author = "pisg nga [:author_url] dhe të tjerë"
+stats_gen_in = "Statistikat, nxjerrë në [:time]"
+hours = "orë"
+minutes = "minuta"
+seconds = "sekonda"
+and = "dhe"
+names1 = "emrat"
+names2 = "emri"
+karma = "Karma"
+badkarma = "Karma e keqe nga"
+goodkarma = "Karma e mirë nga"
+smiley = "Buzëqeshje"
+gender = "Gjinia"
+gender_b = "Bot"
+gender_f = "Femër"
+gender_m = "Mashkull"
+numberplayed = "Sa shpesh është luajtur"
+song = "Kënga"
+playedby = "Luajtur së fundi nga"
+
+# Mouse-over titles
+pisghomepage = "Vizito faqen e pisg"
+authorhomepage = "Shko tek faqja e autorit"
+newwindow = "Hape në dritare të re:"
+mailto = "Dërgoi një email"
+</lang>

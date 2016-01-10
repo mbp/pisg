@@ -1,0 +1,168 @@
+<lang name="SR_EL" charset="utf-8">
+mostop1 = "<b>[:nick]</b> je opovao [:ops] osoba na kanalu..."
+mostop2 = "<b>[:nick]</b> je takođe bio baš darežljiv i opovao je [:ops] osoba na kanalu"
+mostop3 = "Čudno, nije bilo opovanja na kanalu [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> je šerif kanala sa [:deops] deopovanja."
+mostdeop2 = "<b>[:nick]</b> je deopovao [:deops] korisnika."
+mostdeop3 = "Vao, nije bilo deopovanja na [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> je podelio [:voices] plusića na kanalu..."
+mostvoice2 = "<b>[:nick]</b> je takođe bio veoma darežljiv i podelio je [:voices] plusića."
+mostvoice3 = "Čudno, nisu deljeni plusići na kanalu [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> voli da oduzima plusiće. Oduzeo je [:devoices] plusića."
+mostdevoice2 = "<b>[:nick]</b> je bio blizu sa oduzetih [:devoices] plusića."
+mostdevoice3 = "Nije bilo oduzimanja plusića na kanalu [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> je podelio [:halfops] statusa pomoćnog opa na kanalu..."
+mosthalfop2 = "<b>[:nick]</b> je takođe bio veoma darežljiv i podelio je [:halfops] pomoćnih opova ."
+mosthalfop3 = "Čudno, nije bilo pomoćnih opova na kanalu [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> je šerif kanala oduzimajući [:dehalfops] pomoćnih opova."
+mostdehalfop2 = "<b>[:nick]</b> je skinuo [:dehalfops] pomoćna opa."
+mostdehalfop3 = "Čudno, nije bilo skidanja pomoćnih opova na kanalu [:channel]!"
+
+action1 = "<b>[:nick]</b> nam uvek stavlja do znanja šta radi. [:actions] Akcija!"
+action2 = "Takođe i <b>[:nick]</b> nam je saopštavao šta radi sa [:actions] akcija."
+action3 = "Nije bilo akcija na [:channel]!"
+actiontext = "<b>Na primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = " Da li <b>[:nick]</b> nema pojma ili previše postavlja pitanja? [:per]% njegovih redova završava sa upitnikom!"
+question2 = "<b>[:nick]</b> takođe mnogo toga nije znao. [:per]% redova sa upitnikom na kraju."
+question3 = "Niko ništa nije pitao. Jesmo li to svi genijalci?"
+
+shout1 = "Najglasniji je bio <b>[:nick]</b>, koji je vikao [:per]% vremena provedenog na kanalu!"
+shout2 = "Drugi <i>galamdžija</i> je bio <b>[:nick]</b>, koji je vikao [:per]% vremena provedenog na kanalu!"
+shout3 = "Niko nije bio glasan."
+
+allcaps1 = "Izgleda da se <b>[:nick]</b>-u zaglavio šift:  [:per]% vremena je pisao VELIKIM SLOVIMA."
+allcaps2 = "<b>[:nick]</b> je zaboravio da ugasi [:his:her:] Caps-Lock. Kucao je VELIKIM SLOVIMA [:per]% vremena provedenog na kanalu."
+allcaps3 = "Svi su imali svoju šift tipku pod kontrolom  :)"
+allcapstext = "<b>Na primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b> [:nick] </b> je bio veoma agresivan. Napadao je druge <b>[:attacks]</b> puta."
+violent2 = "<b>[:nick]</b> nije mogao da kontroliše [:his:her:] svoj bes. Izabrao je druge <b>[:attacks]</b> da napada za svoje vreme provedeno na kanalu."
+violent3 = "Niko nije napadao ostale. Svi su bili prijateljski raspoloženi."
+violenttext = "<b>Kao na ovom primeru:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Niko nije voleo korisnika <b>[:nick]</b>. Napadnut je <b>[:attacks]</b> puta."
+attacked2 = "Izgleda da ni korisnika <b>[:nick]</b> nisu voleli. Udaren je <b>[:attacks]</b> puta."
+attackedtext = "<b>Kao na primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> nije bio baš popularan, izbačen je sa kanala [:kicks] puta!"
+gotkick2 = "Mrzeli su i korisnika <b>[:nick]</b>. Izbačen je [:kicks] puta."
+kicktext = "<b>Kao na primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> nije mogao da se odluči da li da ostane ili da ode.  [:joins] puta je ušao na kanal!"
+
+kick1 = "<b>[:nick]</b> je ili lud ili samo fer. Izbacio je samo [:kicked] korisnika!"
+kick2 = "Verni pratilac statusa operatora [:oldnick],  <b>[:nick]</b>, kikovao je [:kicked] korisnika."
+kick3 = "Ovde su opovi divni. Niko nije kikovan!"
+
+words1 = "<b>[:nick]</b> je rekao ukupno [:words] reči!"
+words2 = "Verni pratilac korisnika [:oldnick], <b>[:nick]</b>, takođe ne priča mnogo: samo [:words] reči."
+words3 = "Niko ništa nije rekao...  Zaista čudan kanal..."
+
+mono1 = "<b>[:nick]</b> je pričao sam sa sobom. [:monos] puta je ispisao više od 5 redova uzastopno!"
+mono2 = "Takođe usamljen bio je i <b>[:nick]</b>. Vodio je monolog [:monos] puta."
+
+wpl1 = "<b>[:nick]</b> je pisao prosečno [:wpl] reči po redu."
+wpl2 = "Prosek na kanalu je bio [:avg] reči po redu."
+
+long1 = "<b>[:nick]</b> je pisao najduže redove sa prosečno [:letters] slova."
+long2 = "Na [:channel] prosečno je pisano [:avg] slova po redu."
+
+short1 = "<b>[:nick]</b> je pisao najkraće redove sa prosečno [:letters] slova."
+short2 = "<b>[:nick]</b> je takođe držao usta zatvorena. Prosečno [:letters] ispisanih slova."
+
+foul1 = "<b>[:nick]</b> baš voli da psuje.  [:per]% onoga što je pisao su bile psovke! Sram te bilo!"
+foul2 = "<b>[:nick]</b> je takođe psovao [:per]% vremena provedenog na kanalu."
+foul3 = "Niko nije psovao na [:channel]! :-)) Kakvi su to ljudi?"
+foultext = "<b>Kao na primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> donosti svetu sreću :). U [:per]% njegovih redova ima smajli :)"
+smiles2 = "<b>[:nick]</b> je takođe bio veseo. Smešio se [:per]% vremena provedenog na kanalu."
+smiles3 = "Niko se ne smeši na kanalu [:channel]! Razvedrite se BRE !."
+
+sad1 = "Izgleda da je <b>[:nick]</b> bio mnogo tužan. [:per]% redova završavao je tužnim licem :("
+sad2 = "<b>[:nick]</b> je takođe bio tužan. Plakao je [:per]% vremena provedenog na kanalu."
+sad3 = "Na [:channel] niko nije tužan! Baš veseo kanal. :-)"
+
+month = "januara februara marta aprila maja juna jula avgusta septembra oktobra novembra decembra"
+day = "nedelju ponedeljak utorak sredu četvrtak petak subotu"
+
+## Topics
+
+bignumtopic = "Ostale zanimljive aktivnosti:"
+othernumtopic = "Ostale zanimljivosti"
+latesttopic = "Poslednjih nekoliko topika"
+activetimestopic = "Intervali sa najviše aktivnisti"
+activenickstopic = "Najaktivniji korisnici"
+activenickbyhourtopic = "Najaktivniji korisnici po satu"
+mostwordstopic = "Najčešće upotrebljivane reči"
+referencetopic = "Najčešće pomenut nadimak"
+smileytopic = "Smajliji :o)"
+karmatopic = "[:channel] karma"
+urlstopic = "Najčešće pomenuta Internet adresa"
+chartstopic = "[:channel] Muzičke liste"
+notopic = "Na ovom kanalu niko nije postavio topik"
+mostnickstopic = "Korisnici sa najviše nadimaka"
+bylinetopic = "[:date] od [:nick] u [:time]"
+dailyactivitytopic = "Aktivnosti po danu (poslednjih [:n] dana)"
+activegenderstopic = "Najčešći pol"
+
+## Other text
+
+totallines = "Ukupan broj redova: [:lines]."
+totalnicks = "Usput budi rečeno, bilo je još [:totalnicks] drugih nadimaka."
+totaltopic = "Topik je postavan [:total] puta."
+nick = "Nadimak"
+names = "Pominjana imena"
+url = "URL"
+numberlines = "Broj redova"
+randquote = "Nasumični citat"
+userpic = "Slika korisnika"
+nottop = "Nisu mogli da uđu u grupu od 35 najaktivnijih:"
+word = "Reč"
+numberuses = "Broj korisnika"
+show_words = "Broj reči"
+show_time = "Kada?"
+show_wpl = "Reči po redu"
+show_cpl = "Slova po redu"
+show_lastseen = "Poslednji put viđen"
+lastused = "Zadnji upotrebljen od"
+smiley = "Smajli"
+karma = "Karma"
+goodkarma = "Dobra karmao d"
+badkarma = "Loša karma od"
+lastseen1 = "juče"
+lastseen2 = "pre [:days] dana"
+today = "danas"
+pagetitle1 = "[:channel] @ [:network] statistike napravio [:maintainer]"
+pagetitle2 = "Statistika je obnovljena u"
+pagetitle3 = "Za vreme ovog [:days]-dnevnog perioda, pojavilo se ukupno <b>[:nicks]</b> različitih nadimaka na [:channel]."
+stats_gen_by = "Statistike generisao [:pisg_url] v[:version]"
+author = "pisg od autora [:author_url] i ostalih"
+stats_gen_in = "Statistike izrađene za [:time]"
+hours = "časova"
+minutes = "minuta"
+seconds = "sekundi"
+and = "i"
+names1 = "imena"
+names2 = "ime"
+gender = "Pol"
+gender_f = "Žensko"
+gender_m = "Muško"
+gender_b = "Bot"
+song = "Pesma"
+numberplayed = "Koliko često puštana"
+playedby = "Poslednji je pustio"
+
+
+# Mouse-over titles
+pisghomepage = "Idi na pisg stranicu"
+authorhomepage = "Idi na autorovu stranicu"
+newwindow = "Otvara u novom prozoru:"
+mailto = "E-pošta"
+</lang>

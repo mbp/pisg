@@ -1,0 +1,168 @@
+<lang name="SI" charset="iso-8859-2">
+mostop1 = "<b>[:nick]</b> je [:podaril:podarila:] [:ops] opov na kanalu..."
+mostop2 = "<b>[:nick]</b> je [:bil:bila:] tudi zelo [:radodaren:radodarna:]. [:ops] opov od [:njega:nje:]."
+mostop3 = "Cudno, nikomur ni bil dan op na [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> je [:bil:bila:] serif tega kanala z [:deops] deopi."
+mostdeop2 = "<b>[:nick]</b> je [:odvzel:odvzela:] op [:deops] uporabnikom kanala."
+mostdeop3 = "Wooo...nikomu ni bil odvzet op na kanalu [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> podelil [:halfops] halfop-ov na kanalu..."
+mosthalfop2 = "<b>[:nick]</b> je bil zelo vljuden: [:halfops] podeljenih halfop-ov."
+mosthalfop3 = "Zaèuda, ni halfop-ov na [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> je erif na kanalu z [:dehalfops] odvzetih halfop-ov."
+mostdehalfop2 = "<b>[:nick]</b> je odvzel halfop  [:dehalfops] uporabnikom."
+mostdehalfop3 = "Wow, nobenih halfop-ov odvzetih na [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> je [:podaril:podarila:] [:voices] voicev na kanalu..."
+mostvoice2 = "<b>[:nick]</b> je [:bil:bila:] tudi zelo [:radodaren:radodarna:]. [:voices] voicev od [:njega:nje:]."
+mostvoice3 = "Cudno, nikomur ni bil dan voice na [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> [:rad:rada:] jemlje voice ljudem... [:devoices] ljudi je ostalo brez voice-a zaradi [:njega:nje:]."
+mostdevoice2 = "<b>[:nick]</b> tesno sledi... [:Odvzela:Odvzel:] voice [:devoices] ljudem."
+mostdevoice3 = "Nihce ni nikomur odvzel voice-a na [:channel]!"
+
+action1 = "<b>[:nick]</b> nam je vedno [:povedal:povedala:] kaj pocne: [:actions] dejanj!"
+action2 = "Tudi <b>[:nick]</b> nam je vedno [:povedal:povedala:] kaj se je dogajalo z [:njim:njo:], [:actions] dejanj."
+action3 = "Nobenih dejanj na kanalu [:channel]!"
+actiontext = "<b>Najbolj izstopa primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "Je <b>[:nick]</b> res najbolj [:neumen:neumna:] na tem kanalu ali samo sprasuje veliko vprasanj? [:per]% [:njegovih:njenih:] vrstic so bila vprasanja!"
+question2 = "<b>[:nick]</b> ni [:imel:imela:] pojma o nicemer.  [:per]% [:njegovih:njenih:] vrstic so bila vprasanja."
+question3 = "Nihce ni nic vprasal na tem kanalu; ocitno so sami geniji na tem kanalu?"
+
+shout1 = "Najbolj [:glasen:glasna:] je [:bil:bila:] <b>[:nick]</b>, ki se je [:drl:drla:] kar [:per]% svojega govorjenja na kanalu!"
+shout2 = "Naziv <i>Hripav cucek</i> pa dobi: <b>[:nick]</b>, ki je z nami [:delil:delila:] [:per]% svojega lajanja na kanalu!"
+shout3 = "Nihce ni nikoli krical."
+
+allcaps1 = " <b>[:nick]</b> je [:imel:imela:] zataknjeno tipko shift:  [:per]% svojega pisanja je [:pisal:pisalaa:] z VELIKIMI CRKAMI!"
+allcaps2 = "<b>[:nick]</b> je [:pozabil:pozabila:] ponovno pritisniti svojo Caps-Lock tipko. Z VELIKIMI CRKAMI je [:pisal:pisala:] kar [:per]% svojega besedicenja na kanalu."
+allcaps3 = "Vsi so imeli svojo shift tipko pod kontrolo.  :)"
+allcapstext = "<b>Ce si pogledamo tale primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+
+violent1 = "<b>[:nick]</b> je zelo [:agresiven:agresivna:]. <b>[:attacks]</b>-krat je [:napadel:napadla:] druge ljudi na kanalu."
+violent2 = "<b>[:nick]</b> tudi ni [:znal:znala:] kontorlirati svoje jeze. Na druge se je [:spravil:spravila:] <b>[:attacks]</b>-krat!" 
+violent3 = "Nihce ni nikogar napadel.  Vsi so bili prijazni."
+violenttext = "<b>Vzemimo primer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "[:Bogi:Boga:] <b>[:nick]</b>. Nihce [:ga:je:] ne mara. [:Bil:Bila:] je [:napaden:napadena:] <b>[:attacks]</b>-krat."
+attacked2 = "Tudi <b>[:nick]</b> ni [:bil:bila:] najbolj [:priljubljen:priljubljena:]. <b>[:attacks]</b>-krat je [:dobil:dobila:] buske!."
+attackedtext = "<b>Naprimer:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> je [:bil:bila:] ocitno zelo [:morec:moreca:], saj so [:ga:jo:] brcnili iz kanala kar [:kicks]-krat!"
+gotkick2 = "Tudi <b>[:nick]</b> je [:bil:bila:] na spisku osovrazenih ljudi, [:kicks]-krat je [:dobil:dobila:] brco."
+kicktext = "<b>Kot naprimer tole:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> se ni [:mogel:morala:] odlociti ali naj ostane na kanalu ali naj gre dol. [:joins]-krat je [:prisel:prisla:] na kanal med tem casom, ko smo belezili statistiko!"
+
+kick1 = "<b>[:nick]</b> je [:bil:bila:] [:nor:nora:] [:operater:operaterka:], saj je [:brcnil:brcnila:] iz kanala [:kicked] ljudi!"
+kick2 = "[:Zvesti:Zvesta:] [:naslednik:naslednica:] na kanalu,  <b>[:nick]</b>, pa je [:brcnil:brcnila:] [:kicked] ljudi iz kanala."
+kick3 = "Kaksni dobri operaterji, nikogar niso brcnili iz kanala!"
+
+words1 = "<b>[:nick]</b> je [:povedal:povedala:] vsega skupaj [:words] besed!"
+words2 = "Sledi mu <b>[:nick]</b>, ki pa ni kaj dosti manj [:govoril:govorila:]: [:words] besed."
+words3 = "Nihce ni nic rekel...  Kaksen cuden kanal..."
+
+mono1 = "<b>[:nick]</b> je veliko [:govoril:govorila:] [:sam:sama:] s sabo. [:Napisal:Napisala:] je 5 vrstic naenkrat, kar [:monos]-krat!"
+mono2 = "Tudi <b>[:nick]</b> spada med osamljene osebe, saj je [:pisal:pisala:] [:samemu:sami:] sebi kar [:monos] krat."
+
+wpl1 = "<b>[:nick]</b> je [:napisal:napisala:] povprecno [:wpl] besed na vrstico."
+wpl2 = "Povprecje kanala [:channel] je [:avg] besed na vrstico."
+
+long1 = "<b>[:nick]</b> je [:pisal:pisala:] najdaljse vrstice, dolge povprecno [:letters] znakov na vrstico."
+long2 = "Povprecje kanala [:channel] je bilo [:avg] znakov na vrstico."
+
+short1 = "<b>[:nick]</b> je [:pisal:pisala:] najkrajse vrstice, ki so vsebovale samo [:letters] znakov na vrsico."
+short2 = "[:nick] mu je [:sledil:sledila:] z [:letters] znaki na vrstico."
+
+foul1 = "<b>[:nick]</b> je [:imel:imela:] umazana usta.  [:per]% [:njegovih:njenih:] vrstic je vsebovalo grde besede."
+foul2 = "<b>[:nick]</b> pa ni [:zaostajal:zaostajala:] dosti, [:per]% [:njegovih:njenih:] besed so bile kletvice."
+foul3 = "Nihce ni grdo govoril na kanalu [:channel]!  A sploh kej ven hod'te?"
+foultext = "Cisti primer je: </b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> je [:prinasal:prinasala:] sreco na ta svet.  [:per]% [:njegovih:njenih:] vrstic so bili smeskoti.  :)"
+smiles2 = "<b>[:nick]</b> tudi ni zalostna oseba, saj se smeje [:per]% vsega svojega casa."
+smiles3 = "Nihce se ni smejal na kanalu[:channel]!  Razveseliti vas bo treba fantje in punce."
+
+sad1 = "<b>[:nick]</b> je verjetno zelo [:zalosten:zalostna:] ta trenuek, ker je:  [:per]% vrstic vsebovalo zalostne smeskote.  :("
+sad2 = "<b>[:nick]</b> je tudi zalostna oseba, saj je [:jokal:jokala:] [:per]% svojega govorjenja."
+sad3 = "Nihce ni zalosten na kanalu [:channel]!  Kaksen vesel kanal.  :-)"
+
+month = "Januar Februar Marec April Maj Junij Julij Avgust September Oktober November December"
+day = "Nedelja Ponedeljek Torek Sreda Cetrtek Petek Sobota"
+
+## Topics
+
+bignumtopic = "Najvecji rekordi"
+othernumtopic = "Druge zanimivosti"
+latesttopic = "Zadnji topici"
+activetimestopic = "Najbolj aktivni casi"
+activenickstopic = "Najbolj aktivni nicki"
+activenickbyhourtopic = "Najbolj aktivni nicki sortirani po casu"
+mostwordstopic = "Najveckrat izrecene besede"
+referencetopic = "Najveckrat omenjen nick"
+urlstopic = "Najveckrat povedan URL naslov"
+notopic = "Na tem kanalu ni nihce nikoli postavil topica."
+mostnickstopic = "Uporabniki z najvec nicki"
+bylinetopic = "[:date] [:Povedal:Povedala:] [:nick] ob [:time]"
+smileytopic = "Smekoti :-)"
+dailyactivitytopic = "Dnevna Aktivnost (zadnjih [:n] dni)"
+activegenderstopic = "Najbolj Aktiven Spol"
+chartstopic = "[:channel] Glasbene Lestvice"
+karmatopic = "[:channel] karma"
+
+## Other text
+
+totallines = "Stevilo vseh vrstic znasa: [:lines]."
+totalnicks = "Ce koga zanima, je bilo se [:totalnicks] drugih nickov na tem kanalu, ki pa niso dovolj pomembni da bi bili vpisani na tej strani."
+totaltopic = "Topic je bil postavljen [:total]-krat."
+nick = "Nick"
+names = "Imena uporabljena"
+url = "URL"
+numberlines = "Stevilo vrstic"
+randquote = "Nakljucni citat"
+userpic = "Slika"
+nottop = "Vsi ti, pa niso prisli med najboljse:"
+word = "Beseda"
+numberuses = "Stevilo uporab"
+show_words = "Stevilo besed"
+show_time = "Kdaj?"
+show_wpl = "Stevilo besed na vrstico"
+show_cpl = "Stevilo znakov na vrstico"
+show_lastseen = "Zadnjic viden/a"
+lastused = "Zadnjic uporabljal/a"
+lastseen1 = "[:days] dan nazaj"
+lastseen2 = "[:days] dni nazaj"
+today = "Danes"
+pagetitle1 = "Statistika kanala [:channel] na [:network]-u, ki jo vodi [:maintainer]"
+pagetitle2 = "Statistika generirana na dan: "
+pagetitle3 = "Med tem [:days]-dnevnim casom, ko je bil kanal logiran, je sestevek nickov, ki so si prisli ogledat kanal [:channel] <b>[:nicks]</b>"
+stats_gen_by = "Statistika narejena s programom [:pisg_url] v[:version]"
+author = "pisg napisal [:author_url] in drugi"
+stats_gen_in = "Statistika narejena v [:time]"
+hours = "urah"
+minutes = "minutah"
+seconds = "sekundah"
+and = "in"
+names1 = "imena"
+names2 = "ime"
+karma = "Karma"
+badkarma = "Slaba karma od"
+goodkarma = "Dobra karma od"
+smiley = "Smeko"
+gender = "Spol"
+gender_b = "Bot"
+gender_f = "enski"
+gender_m = "Moki"
+numberplayed = "Koliko Pogosto Zaigran"
+song = "Pesem"
+playedby = "Zadnje Zaigrana od"
+
+# Mouse-over titles
+pisghomepage = "Pojdi na domaco stran programa pisg"
+authorhomepage = "Pojdi na avtorjevo domaco stran"
+newwindow = "Odpri v novem oknu:"
+mailto = "Poslji mail na:"
+</lang>

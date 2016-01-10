@@ -1,0 +1,168 @@
+<lang name="RU" charset="CP1251">
+mostop1 = "<b>[:nick]</b> раздал [:ops] опов на канале..."
+mostop2 = "<b>[:nick]</b> тоже очень добр: [:ops] опов."
+mostop3 = "Странно, никто опа не давал на [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> - шериф канала с [:deops] деопами."
+mostdeop2 = "<b>[:nick]</b> отнял опа у [:deops] юзеров."
+mostdeop3 = "Вау, ни у кого опа не отбирали на [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> сделал [:halfops] полу-операторами..."
+mosthalfop2 = "<b>[:nick]</b> was also very polite: [:halfops] halfops from [:him:her:]."
+mosthalfop3 = "Странно, ни одного полу-оператора на [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> шерифф канала для [:dehalfops] полу-операторов."
+mostdehalfop2 = "<b>[:nick]</b> снял статус полу-оператора с [:dehalfops] юзеров."
+mostdehalfop3 = "Ухх, ни у кого не забрали права полу-оператора на [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> раздал [:voices] войсов на канале..."
+mostvoice2 = "<b>[:nick]</b> тоже очень добр: [:voices] войсов."
+mostvoice3 = "Странно, ни одного войса на [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> любит отбирать войсы у людей - [:devoices] девойсов."
+mostdevoice2 = "<b>[:nick]</b> тоже жаден, девойснул [:devoices] юзеров."
+mostdevoice3 = "Ни у кого не отбирали войсы на [:channel]!"
+
+action1 = "<b>[:nick]</b> всегда даёт нам знать, что делает: [:actions]!"
+action2 = "Также, <b>[:nick]</b> говорит нам, что делает - [:actions]."
+action3 = "Ничего никто не делает на [:channel]!"
+actiontext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "<b>[:nick]</b> глуп или просто задаёт слишком много вопросов?  [:per]% его (её) строк содержали вопрос!"
+question2 = "<b>[:nick]</b> не намного умнее.  [:per]% его(её) строк были вопросительными."
+question3 = "Никто не задавал здесь вопросов; одни гении на канале, что ли?"
+
+shout1 = "Самым громким был <b>[:nick]</b>, который(ая) вопил(а) [:per]% времени, проведённого на канале!"
+shout2 = "Ещё одним <i>старым крикуном</i> был <b>[:nick]</b>, - кричал [:per]% времени!"
+shout3 = "Вау, никто тут не орал совсем."
+
+allcaps1 = "Похоже, клавиша Shift у <b>[:nick]</b>запала:  [:per]% времени он(а) писал(а) БОЛЬШИМИ БУКВАМИ."
+allcaps2 = "<b>[:nick]</b> просто забыл(а) отключить свой Caps-Lock.  Писал(а) БОЛЬШИМИ БУКВАМИ [:per]% времени."
+allcaps3 = "У всех клавиша Shift была под контролем.  :)"
+allcapstext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> очень агрессивная личность. Он(а) атаковал(а) других <b>[:attacks]</b> раз."
+violent2 = "<b>[:nick]</b> тоже не может контролировать свою агрессию.  Наезжал(а) на других <b>[:attacks]</b> раз."
+violent3 = "Никто не наезжает, все ведут себя дружественно."
+violenttext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Бедный(ая) <b>[:nick]</b>, никто его(её) не любит.  Его/её атаковали  <b>[:attacks]</b> раз."
+attacked2 = "<b>[:nick]</b> тоже похоже не любят.  Били <b>[:attacks]</b> раз."
+attackedtext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> не очень популярен(на) - кикнули [:kicks] раз!"
+gotkick2 = "<b>[:nick]</b> видимо тоже ненавидят:  [:kicks] получил(а)."
+kicktext = "<b>Например, вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> не мог(ла) принять решение - остаться или уйти.  [:joins] входов на канал за отчётный период!"
+
+kick1 = "<b>[:nick]</b> либо сошёл с ума, либо просто честный оп - кикнул всего [:kicked] юзеров!"
+kick2 = "Верный последователь [:oldnick], <b>[:nick]</b>, кикнул [:kicked] юзеров."
+kick3 = "Хорошие опы здесь - никого не кикали!"
+
+words1 = "<b>[:nick]</b> произнёс всего [:words] слов!"
+words2 = "Верный друг и соратник [:oldnick], <b>[:nick]</b>, говорил не так много: [:words] слов."
+words3 = "Никто ничего не говорил...  Что за странный канал..."
+
+mono1 = "<b>[:nick]</b> много разговаривает с собой.  Писал(а) более 5 строк подряд [:monos] раз!"
+mono2 = "Ещё одна одинокая особа - <b>[:nick]</b>, говоривший(ая) сам(а) с собой [:monos] раз."
+
+wpl1 = "<b>[:nick]</b> писал(а) в среднем [:wpl] слов в строке."
+wpl2 = "Среднее по каналу количество слов в строке - [:avg]."
+
+long1 = "<b>[:nick]</b> писал(а) самые длинные строки, в среднем по [:letters] букв в строке."
+long2 = "[:channel] Среднее количество букв в строке по каналу - [:avg]."
+
+short1 = "<b>[:nick]</b> писал(а) кратчайшие строки, в среднем [:letters] символов в строке."
+short2 = "<b>[:nick]</b> тоже краток, в среднем [:letters] символов."
+
+foul1 = "<b>[:nick]</b> часто сквернословит.  [:per]% строк содержат брань."
+foul2 = "<b>[:nick]</b> также вгоняет матросов в краску, [:per]% времени."
+foul3 = "Никто не бранится на [:channel]!  Да ну вас!?"
+
+smiles1 = "<b>[:nick]</b> несёт миру счастье.  [:per]% строк содержали улыбку.  :)"
+smiles2 = "<b>[:nick]</b> тоже не печалится - улыбается [:per]% времени."
+smiles3 = "Нет улыбок на [:channel]!  Не унывайте, девочки и мальчики."
+
+sad1 = "<b>[:nick]</b> кажись, печалится:  [:per]% строк выражают печаль.  :("
+sad2 = "Ещё одна печальная персона - <b>[:nick]</b>, плачет [:per]% времени."
+sad3 = "Нет печали на [:channel]!  Какой счастливый канал.  :-)"
+
+month = "Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь"
+day = "Воскресенье Понедельник Вторник Среда Четверг Пятница Суббота "
+
+## Topics
+
+bignumtopic = "Большие цифры"
+othernumtopic = "Другие интересные цифры"
+latesttopic = "Последние топики"
+activetimestopic = "Когда мы тут чаще болтаем"
+activenickstopic = "Самые активные пользователи"
+activenickbyhourtopic = "Самые активные пользователи по часам"
+mostwordstopic = "Наиболее часто используемые слова"
+referencetopic = "Наиболее популярный ник"
+urlstopic = "Наиболее популярный URL"
+notopic = "На этом канале никогда не было топика."
+mostnickstopic = "Пользователи с наибольшим количеством ников"
+bylinetopic = "[:date] Автор - [:nick] от [:time]"
+dailyactivitytopic = "Активность за день (за последние [:n] дней)"
+smileytopic = "Smileys :-)"
+chartstopic = "[:channel] Музыкальный Чарт"
+karmatopic = "[:channel] карма"
+activegenderstopic = "Самые активные темы"
+
+
+## Other text
+
+totallines = "Общее количество строк: [:lines]."
+totalnicks = "Кстати, ещё было [:totalnicks] других ников."
+totaltopic = "Топик устанавливался [:total] раз."
+nick = "Ник"
+names = "Используемые имена"
+url = "URL"
+numberlines = "Количество строк"
+randquote = "Случайная фраза"
+userpic = "Фото юзера"
+nottop = "Эти не попали в топ:"
+word = "Слово"
+numberuses = "Количество использований"
+show_words = "Количество слов"
+show_time = "Когда?"
+show_wpl = "Слов в строке"
+show_cpl = "Символов в строке"
+show_lastseen = "Последний раз видели"
+lastused = "Последний раз использовался"
+lastseen1 = "[:days] дней назад"
+lastseen2 = "[:days] дней назад"
+today = "сегодня"
+pagetitle1 = "Статистика [:channel] @ [:network] [:maintainer]"
+pagetitle2 = "Статистика сгенерирована "
+pagetitle3 = "За этот [:days]-дневный отчётный период, всего <b>[:nicks]</b> различных ников было представлено на [:channel]."
+stats_gen_by = "Статистика сгенеррирована [:pisg_url] v[:version]"
+author = "pisg by [:author_url] и другие. Перевод <a href="mailto:re@kursor.ru">HUGO</a>"
+stats_gen_in = "Статистика сгенерирована за [:time]"
+hours = "часов"
+minutes = "минут"
+seconds = "секунд"
+and = "и"
+names1 = "имена"
+names2 = "имя"
+karma = "Карма"
+badkarma = "Плохая карма"
+goodkarma = "Хорошая карма"
+smiley = "Smiley"
+foultext = "<b>Например вот так:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+gender = "Пол"
+gender_b = "Bot"
+gender_f = "Женский"
+gender_m = "Мужской"
+song = "Песня"
+playedby = "Прослушал последний раз"
+numberplayed = "Сколько раз прослушано"
+
+# Mouse-over titles
+pisghomepage = "Посетить домашнюю страницу pisg"
+authorhomepage = "Посетить домашнюю страницу авторов"
+newwindow = "Открыть в новом окне:"
+mailto = "Мыльнуть"
+</lang>

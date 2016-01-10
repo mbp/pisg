@@ -1,0 +1,169 @@
+<lang name="RO" charset="iso-8859-1">
+mostop1 = "<b>[:nick]</b> a dat op de [:ops] ori..."
+mostop2 = "<b>[:nick]</b> a fost deasemenea politicos: [:ops] ops de la el."
+mostop3 = "Bizar, nu s-a dat nici un op pe [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> e sheriff-ul canalului cu [:deops] deop-uri."
+mostdeop2 = "<b>[:nick]</b> a deop-at [:deops] useri."
+mostdeop3 = "Wow, nici un deop nu s-a dat pe [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> este sheriff-ul canalului cu [:dehalfops] dehalfops."
+mostdehalfop2 = "<b>[:nick]</b> dehalfoped [:dehalfops] utilizatori."
+mostdehalfop3 = "Wow, nici un halfop nu a fost luat in [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> a donat [:halfops] halfops in canal..."
+mosthalfop2 = "<b>[:nick]</b> de asemenea au fost foarte politicosi: [:halfops] halfops de la [:him:her:]."
+mosthalfop3 = "Ciudat, nu s-a acordat nici un halfop in [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> a dat [:voices] voices pe canal..."
+mostvoice2 = "<b>[:nick]</b> a fost politicos, de asemenea: [:voices] voices de la el/ea."
+mostvoice3 = "Bizar, nu s-a dat nici un voice pe [:channel]!"
+
+mostdevoice1 = "Lui <b>[:nick]</b> ii place sa de-voice lumea: [:devoices] devoices."
+mostdevoice2 = "<b>[:nick]</b> a fost pe aproape: a dat devoice la [:devoices] useri."
+mostdevoice3 = "Nu s-a dat devoice pe [:channel]!"
+
+action1 = "<b>[:nick]</b> intotdeauna ne zice ce face: [:actions] actiuni!"
+action2 = "De asemenea, si <b>[:nick]</b> foloseste mult '/me': [:actions] actiuni."
+action3 = "No actions in [:channel]!"
+actiontext = "<b>De exemplu:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "E <b>[:nick]</b> nestiutor, sau pune prea multe intrebari? [:per]% din liniile sale contin o intrebare!"
+question2 = "Nici <b>[:nick]</b> nu stie prea multe.  [:per]% din liniile sale au fost intrebari."
+question3 = "Nimeni nu a intrebat nimic pe canal."
+
+shout1 = "Recordul la exclamatii e detinut de <b>[:nick]</b>: [:per]% !"
+shout2 = "Alt excitat a fost <b>[:nick]</b>, care a strigat doar [:per]% din timp!"
+shout3 = "Nimeni nu a strigat, wow."
+
+allcaps1 = "Se pare ca tasta SHIFT a lui <b>[:nick]</b> e blocata: [:per]% din linii le-a scris cu LITERE MARI!"
+allcaps2 = "<b>[:nick]</b> a uitat sa-si dezactiveze Caps-Lockul.  A scris doar [:per]% din linii cu CAPS."
+allcaps3 = "Nimeni n-a scris cu litere mari."
+allcapstext = "<b>De exemplu:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+
+violent1 = "<b>[:nick]</b> e o persoana foarte agresiva.  I-a atacat pe altii de <b>[:attacks]</b> ori."
+violent2 = "Nici <b>[:nick]</b> nu se poate controla. <b>[:attacks]</b> atacuri."
+violent3 = "Nimeni n-a batut pe nimeni. Toata lumea a fost pasnica!"
+violenttext = "<b>De exemplu:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "<b>[:nick]</b> a fost tinta a <b>[:attacks]</b> atacuri."
+attacked2 = "<b>[:nick]</b> a fost batut doar de <b>[:attacks]</b> ori."
+attackedtext = "<b>De exemplu:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> n-a fost foarte cuminte si a fost dat afara de [:kicks] ori!"
+gotkick2 = "<b>[:nick]</b> a primit doar [:kicks] kick-uri."
+kicktext = "<b>De exemplu:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> nu a hotarat daca sta sau pleaca. A intrat pe canal de [:joins] ori!"
+
+kick1 = "<b>[:nick]</b> este sau nebun, sau doar un OP bun: a dat afara [:kicked] persoane!"
+kick2 = "Complicele lui [:oldnick], <b>[:nick]</b>, a dat kick la doar [:kicked] persoane."
+kick3 = "Operatorii au fost simpatici, nici un kick pe canal!"
+
+words1 = "<b>[:nick]</b> a scris un total de [:words] cuvinte!"
+words2 = "<b>[:nick]</b> incearca sa-l ajunga din urma pe [:oldnick], cu doar [:words] cuvinte."
+words3 = "Nimeni n-a zis nimic.. bizar canal..."
+
+mono1 = "<b>Lui [:nick]</b> îi place sa vorbeasca singur. A scris mai mult de 5 linii in sir de [:monos] ori!"
+mono2 = "Alt(a) singuratic(a) a fost <b>[:nick]</b>, de doar [:monos] ori."
+
+wpl1 = "<b>[:nick]</b> a scris o medie de [:wpl] cuvinte pe linie."
+wpl2 = "Media canalului a fost de [:avg] cuvinte pe linie."
+
+long1 = "<b>[:nick]</b> a scris cele mai lungi linii, cu o medie de [:letters] litere pe linie."
+long2 = "Media canalului [:channel] a fost de [:avg] litere pe linie."
+
+short1 = "<b>[:nick]</b> a scris cele mai scurte linii: [:letters] litere pe linie."
+short2 = "<b>[:nick]</b> scrie la fel de putin, co u medie de [:letters] caractere."
+
+foul1 = "<b>[:nick]</b> are o gura cam spurcata.  [:per]% din liniile sale contin obscenitati."
+foul2 = "<b>[:nick]</b> vorbeste ca birjarii doar [:per]% din timp."
+foul3 = "Nimeni nu vorbeste urat pe canal! Sunteti sanatosi?!"
+
+smiles1 = "<b>[:nick]</b> aduce fericire in lume. Zambeste in [:per]% din linii :)"
+smiles2 = "Nici <b>[:nick]</b> nu e o persoana trista, zambind [:per]% din timp."
+smiles3 = "Nimeni n-a zambit."
+
+sad1 = "<b>[:nick]</b> pare sa fie trist(a):  [:per]% din linii contin ':('"
+sad2 = "<b>[:nick]</b> e la fel de trist(a) [:per]% din timp."
+sad3 = "Nimeni nu e trist pe [:channel]!  Ce canal fericit.  :-)"
+
+month = "Ianuarie Februarie Martie Aprilie Mai Iunie Iulie August Septembrie Octombrie Noiembrie Decembrie"
+day = "Duminica Luni Marti Miercuri Joi Vineri Sambata"
+
+names1 = "nume"
+names2 = "nume"
+
+## Topics
+
+bignumtopic = "Recorduri"
+othernumtopic = "Alte cifre interesante"
+latesttopic = "Ultimele topic-uri"
+activetimestopic = "Perioadele cele mai active"
+activenickstopic = "Persoanele cele mai active"
+mostwordstopic = "Cuvintele cele mai des folosite"
+referencetopic = "Nick-ul chemat cel mai des"
+urlstopic = "Adresele cele mai frecvente"
+notopic = "Nu are topic."
+mostnickstopic = "Utilizatori cu cele mai multe nick-uri"
+bylinetopic = "[:date] de [:nick] la [:time]"
+dailyactivitytopic = "Activitate zilnica (ultimele [:n] zile)"
+activegenderstopic = "Cel mai activ sex"
+activenickbyhourtopic = "Cele mai active nick-uri pe ore"
+smileytopic = "Zambareti :-)"
+chartstopic = "[:channel] Topuri Muzicale"
+karmatopic = "[:channel] karma"
+
+## Other text
+
+totallines = "Numarul total de linii: [:lines]."
+totalnicks = "Au mai fost inca [:totalnicks] alte nick-uri."
+totaltopic = "Topicul a fost pus de [:total] ori."
+nick = "Nick"
+names = "Nume folosite"
+url = "URL"
+numberlines = "Numarul de linii"
+randquote = "Citat personal"
+userpic = "Userpic"
+nottop = "Acestia n-au intrat in top:"
+word = "Cuvant"
+numberuses = "Numarul de folosiri"
+show_words = "Numarul de cuvinte"
+show_time = "Cand?"
+show_wpl = "Cuvinte pe linie"
+show_cpl = "Caractere pe linie"
+show_lastseen = "Ultima vizita"
+lastused = "Ultima folosire de catre"
+lastseen1 = "[:days] zi in urma"
+lastseen2 = "[:days] zile in urma"
+today = "Azi"
+pagetitle1 = "Statisticile canalului [:channel] de [:maintainer]"
+pagetitle2 = "Pagina generata pe data de "
+pagetitle3 = "In timpul acestei perioade de [:days] zile, un total de <b>[:nicks]</b> nick-uri diferite au fost pe [:channel]."
+stats_gen_by = "Statistici generate de [:pisg_url] v[:version]"
+author = "pisg de [:author_url] si altii"
+stats_gen_in = "Statistici generate in [:time]"
+hours = "ore"
+minutes = "minute"
+seconds = "secunde"
+and = "si"
+karma = "Karma"
+badkarma = "Karma negativa de"
+goodkarma = "Karma pozitiva de"
+smiley = "Zambaret"
+gender = "Sexul"
+gender_b = "Bot"
+gender_f = "Feminin"
+gender_m = "Masculin"
+foultext = "<b>De exemplu, ca aceasta:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+numberplayed = "Frecventa ascultarii"
+song = "Melodie"
+playedby = "Ultima data ascultata de"
+
+# Mouse-over titles
+pisghomepage = "Mergeti la pagina oficiala pisg"
+authorhomepage = "Mergeti la pagina autorului"
+newwindow = "Deschide in fereastra noua:"
+mailto = "Email catre"
+</lang>

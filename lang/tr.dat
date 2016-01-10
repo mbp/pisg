@@ -1,0 +1,169 @@
+<lang name="TR" charset="iso-8859-9">
+mostop1 = "<b>[:nick]</b> kanalda [:ops] defa op verdi..."
+mostop2 = "<b>[:nick]</b> TAM [:ops] defa baskasina op verdi ."
+mostop3 = "Ilginc... [:channel] kanalinda hic op verilmemis!"
+
+mostdeop1 = "<b>[:nick]</b> [:deops] deop ile kanal serifi olmaya hak kazandi."
+mostdeop2 = "<b>[:nick]</b> TAM [:deops] kullaniciyi deop etmis."
+mostdeop3 = "Hey, [:channel] kanalinda hic deop olayi olmamis!"
+
+mosthalfop1 = "<b>[:nick]</b> bagislandi [:halfops] kanaldaki halfoplar..."
+mosthalfop2 = "<b>[:nick]</b> da cok nazik idi: [:halfops] den halfop [:him:her:]."
+mosthalfop3 = "Tuhaf,hiç halfop verilmedi [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> kanal serifi [:dehalfops] dehalfops ile."
+mostdehalfop2 = "<b>[:nick]</b> dehalfoplandi [:dehalfops] users." 
+mostdehalfop3 = "Wow, kimsenin halfopu alýnmadý [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> TAM [:voices] kere kanalda + verdi..."
+mostvoice2 = "<b>[:nick]</b> cok iyi bir operator. [:voices] defa + verdi... "
+mostvoice3 = "Ilginc... [:channel] kanalinda hic + verilmiyor!"
+
+mostdevoice1 = "<b>[:nick]</b> kullanicilardan voice almayi seviyor... [:devoices] devoice."
+mostdevoice2 = "<b>[:nick]</b> tam  [:devoices] kisiyi devoice etti.."
+mostdevoice3 = "[:channel] kanalinda devoice olayi olmadi!"
+
+action1 = "<b>[:nick]</b> her zaman bize ne yaptigini söylüyor: [:actions] aksiyon!"
+action2 = "Ayni zamanda, <b>[:nick]</b> [:actions] aksiyonla herseyini paylasanlardan."
+action3 = " [:channel] kanalinda aksiyon olmuyor!"
+actiontext = "<b>Mesela:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "<b>[:nick]</b> aptal mi yoksa cok mu soru soruyor? Yazdiklarinin [:per]% gibi bir bölümünde soru soruyor."
+question2 = "<b>[:nick]</b> fazla bir sey bilmiyor. Yazdiklarinin [:per]%'si soru iceriyor."
+question3 = "Bu kanalda kimse birsey sormuyor. Bütün zekiler burada sanirim?"
+
+shout1 = "En cok bagiran<b>[:nick]</b>, Yazdiklarinin [:per]% gibi bir kisminda bagiriyor!"
+shout2 = "Bagirmada <i>eski rekortmen</i> <b>[:nick]</b>, [:per]% gibi bir kisimda bagiriyor!"
+shout3 = "Kanalda kimse bagirmiyor...Süper!"
+
+allcaps1 = "Sanirim <b>[:nick]</b>'in SHIFT tusu basili kalmis: yazdiklarinin [:per]% gibi bir kismi BUYUK HARF."
+allcaps2 = "<b>[:nick]</b> Caps-Lock tusunu kapamayi unutmus. [:per]% ortalama ile BUYUK HARF yaziyor."
+allcaps3 = "Herkes SHIFT tusunu kontrol altinda tutuyor... :)"
+allcapstext = "<b>Mesela:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+
+violent1 = "<b>[:nick]</b> tam bir manyak. Digerlerine tam <b>[:attacks]</b> defa saldirdi."
+violent2 = "<b>[:nick]</b> cok agresif... Digerlerine <b>[:attacks]</b>defa saldirdi." 
+violent3 = "Herkes birbirini cok seviyor. "
+violenttext = "<b>Mesela:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Zavalli <b>[:nick]</b>, kimse onu sevmiyor. Ona toplam <b>[:attacks]</b> defa saldirdilar."
+attacked2 = "<b>[:nick]</b> de cok sevilmiyor. Tam <b>[:attacks]</b> defa tokatlandi."
+attackedtext = "<b>Mesela:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> pek sevilmiyor. [:kicks] kere kanaldan atildi!"
+gotkick2 = "<b>[:nick]</b> de sevilenlerden degil:  [:kicks] defa kanaldan atildi."
+kicktext = "<b>Mesela:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> kalmak ya da gitmek arasinda tercih yapamadi. [:joins] kere giris/cikis yapti!"
+
+kick1 = "<b>[:nick]</b> ya deli ya da adil bir op, [:kicked] kisiyi kanaldan atmis.!"
+kick2 = "[:oldnick] <b>[:nick]</b> tarafindan takip ediliyor, o da [:kicked] kisiyi kanaldan atmis."
+kick3 = "Buradaki oplar kimseyi atmiyor..."
+
+words1 = "<b>[:nick]</b> toplam [:words] kelime konusmus!"
+words2 = "[:oldnick]'in sadik takipcisi, <b>[:nick]</b>, fazla konusmayanlardan: [:words] kelime."
+words3 = "Kimse konusmuyor... Ne kadar ilginc bir kanal..."
+
+mono1 = "<b>[:nick]</b> kendi kendine cok konusuyor. Arka arkaya [:monos] kere 5 satir yazdi!"
+mono2 = "<b>[:nick]</b> rekoru zorluyor, [:monos] kere."
+
+wpl1 = "<b>[:nick]</b> satir basina ortalama [:wpl] kelime yaziyor ."
+wpl2 = "Kanal ortalamasi satir basina [:avg] kelime."
+
+long1 = "<b>[:nick]</b> en uzun cümleleri kuruyor, satir basina ortalama [:letters] karakter."
+long2 = "[:channel] ortalamasi satir basina [:avg] karakter ."
+
+short1 = "<b>[:nick]</b> en kisa satirlari yaziyor, her satirda ortalama [:letters] karakter."
+short2 = "<b>[:nick]</b> konusmayanlardan, sadece [:letters] karakter."
+
+foul1 = "<b>[:nick]</b> biraz küfürbaz bir yapiya sahip.Yazdiklarinin [:per]% gibi bir kisminda yasak kelime var."
+foul2 = "<b>[:nick]</b> da yasak kelime kullaniyor. Onun yüzdesi ise: [:per]%"
+foul3 = "[:channel] kanalinda kimse küfür etmiyor!"
+
+smiles1 = "<b>[:nick]</b> mutluluk saciyor. Yazdiklarinin [:per]%'sinde :) var."
+smiles2 = "<b>[:nick]</b> de mutlu bir kisilik, zamaninin [:per]% gibi bir bölümünde gülüyor."
+smiles3 = "[:channel] kanalinda kimse gülmüyor! Canlanin millet biraz haydi hop!"
+
+sad1 = "<b>[:nick]</b> üzgün görünüyor... Yazdiklarinin [:per]%'sinde :( var."
+sad2 = "Ayni zamanda <b>[:nick]</b> üzgün olabilir, zamaninin [:per]%'sini aglamakla geciriyor ."
+sad3 = "[:channel] kanalinda uzgun kimse yok! Ne kadar mutlu bir kanal  :-)"
+
+month = "Ocak Subat Mart Nisan Mayis Haziran Temmuz Agustos Eylul Ekim Kasim Aralik"
+day = "Pazar Pazartesi Sali Carsamba Persembe Cuma Cumartesi"
+
+names1 = "isimler"
+names2 = "isim"
+
+## Topics
+
+bignumtopic = "Rekorlar"
+othernumtopic = "Diger ilginc sayilar"
+latesttopic = "En son kanal basligi"
+activetimestopic = "En aktif zaman araligi "
+activenickstopic = "En aktif rumuzlar"
+mostwordstopic = "En çok soylenen kelime"
+referencetopic = "En çok soylenen rumuz"
+urlstopic = "En çok ugranan Internet Adresleri"
+notopic = "Bu kanala hic baslik konmadi."
+mostnickstopic = "En çok rumuz degistiren kullanicilar"
+bylinetopic = "[:date] degistiren [:nick] zaman [:time]"
+karmatopic = "[:channel] karma"
+smileytopic = "Smileyler :-)"
+chartstopic = "[:channel] Müzik haritalarý"
+activenickbyhourtopic = "En aktif nickler"
+dailyactivitytopic = "Günlük faaliyet (last [:n] days)"
+activegenderstopic = "En aktif cinsiyet"
+
+## Other text
+
+totallines = "Toplam satirlarin sayisi: [:lines]."
+totalnicks = "Bu arada, [:totalnicks] adet baska rumuz vardi."
+totaltopic = "Kanal basligi [:total] defa degistirildi."
+nick = "Rumuz"
+names = "Kullanilan isimler"
+url = "URL"
+numberlines = "Toplam satir"
+randquote = "Rastgele kelime"
+userpic = "Resim"
+nottop = "Listeye giremeyenler:"
+word = "Kelime"
+numberuses = "Toplam kullanim"
+show_words = "Toplam kelime"
+show_time = "Ne zaman?"
+show_wpl = "Her satirdaki kelime"
+show_cpl = "Her satirdaki karakter"
+show_lastseen = "En son görüldügü zaman"
+lastused = "En son kullanan"
+lastseen1 = "[:days] gün önce"
+lastseen2 = "[:days] gün önce"
+today = "Bugun"
+pagetitle1 = "[:network]'te [:channel] istatistikleri. Yonetici: [:maintainer]"
+pagetitle2 = "istatistikler asagidaki zaman dilimini kapsar "
+pagetitle3 = "[:days] gunluk periyotta, toplam <b>[:nicks]</b> farkli rumuz [:channel] kanalinda bulundu." 
+stats_gen_by = "Istatistikler [:pisg_url] v[:version] tarafindan yaratilmistir."
+author = "pisg'i yazan: [:author_url] ve digerleri"
+stats_gen_in = "Istatistikler [:time] icinde yaratildi"
+hours = "saat"
+minutes = "dakika"
+seconds = "saniye"
+and = "ve"
+karma = "Karma"
+goodkarma = "Tarafýndan iyi karma"
+badkarma = "Tarafýndan kötü karma"
+smiley = "Smiley"
+foultext = "<b>Örnegin, bunun gibi:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+gender = "cinsiyet"
+gender_b = "Bot"
+gender_f = "Bayan"
+gender_m = "Bay"
+playedby = "Tarafindan en son calindi"
+numberplayed = "Hangi sýklýkta caldý"
+song = "Þarki"
+
+# Mouse-over titles
+pisghomepage = "pisg web sayfasina git"
+authorhomepage = "Gelistiricilerin web sayfasina git"
+newwindow = "Yeni pencerede ac:"
+mailto = "E-posta"
+</lang>

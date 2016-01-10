@@ -1,0 +1,167 @@
+<lang name="CZ" charset="CP1250">
+mostop1 = "<b>[:nick]</b> dal [:ops] opù na kanále..."
+mostop2 = "<b>[:nick]</b> byl také velice pozornı. Rozdal [:ops]x op."
+mostop3 = "Divné, nikdo nebyl opnut na [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> bránil kanál [:deops] deopnutími."
+mostdeop2 = "<b>[:nick]</b> deopnul [:deops] uivatelù."
+mostdeop3 = "Wow, nikomu nebyl na [:channel] odebran op!"
+
+mosthalfop1 = "[:nick] daroval [:halfops] halfopù na kanále…"
+mosthalfop2 = "[:nick] byl také velmi slušnı: [:halfops] halfopù od [:him:her:]."
+mosthalfop3 = "Zvláštní, ádní halfopové nebyly dáni na kanálu [:channel]!"
+
+mostdehalfop1 = "[:nick] je kanálovı šerif s [:dehalfops] dehalfops."
+mostdehalfop2 = "[:nick] odejmul halfopa [:dehalfops] uivatelùm."
+mostdehalfop3 = "Wow, ádnı halfop nebyl odejmut na [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> dal [:voices]x voice na kanale..."
+mostvoice2 = "<b>[:nick]</b> byl také docela pozornı. Udìlil [:voices]x voice."
+mostvoice3 = "Hmm divné, ádnı voice nebyl na [:channel] udìlen!"
+
+mostdevoice1 = "<b>[:nick]</b> rád bere lidem voice, [:devoices]x devoice."
+mostdevoice2 = "<b>[:nick]</b> je starej despota, sebral voice [:devoices]ti uivatelùm."
+mostdevoice3 = "ádnı voice nebyl odebrán na kanale [:channel]!"
+
+action1 = "<b>[:nick]</b> na sebe vdy práskne co dìlá. [:actions] akcí!"
+action2 = "Také, <b>[:nick]</b> dává na jevo svou èinnost [:actions] akcema."
+action3 = "ádné akce na [:channel]!"
+actiontext = "<b>Jako tohle:</b>&nbsp;[:line]"
+
+question1 = "Je <b>[:nick]</b> hloupı(á), nebo má jen tolik dotazù? [:per]% lajn obsahuje otázku!"
+question2 = "<b>[:nick]</b> na tom je podobnì, moc toho neví. [:per]% z nakecaného obsahuje otázku."
+question3 = "Nikdo se tu na nic neptá; samí geniové ?"
+
+shout1 = "Nejhlasitejsi byl <b>[:nick]</b>, kterej tady zdùrazòoval [:per]% svého casu!"
+shout2 = "Jiná <i>stará mluvka</i> byl <b>[:nick]</b>, kterej tu zdùrazòoval [:per]% své konverzace!"
+shout3 = "Nikdo tu na <b>!</> ani nešáhl, wow."
+
+allcaps1 = "Vypadá to, e <b>[:nick]</b> drel svuj SHIFT [:per]% celeho èasu co psal(a)."
+allcaps2 = "<b>[:nick]</b> pravì zapomel vypnout svùj Caps-Lock. [:Napsal:a:] VELKİM [:per]% of the time."
+allcaps3 = "Kadej mìl svùj shift-key pod kontrolou.  :)"
+allcapstext = "<b>Napriklad:</b>&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> je velmi agresivni osoba. Napadl(a) <b>[:attacks]</b>x ostatní."
+violent2 = "<b>[:nick]</b> neovládá svou agresi. Napadl(a) ostatní <b>[:attacks]</b>x ."
+violent3 = "Tady se teda maj radi, po nikom se tu nevozí :)."
+violenttext = "<b>Jako tohle:</b>&nbsp;[:line]"
+
+attacked1 = "Chudáèek <b>[:nick]</b>, nikdo ho nemá rád. Byl(a) napaden(a) <b>[:attacks]</b>x ."
+attacked2 = "<b>[:nick]</b> vypadá, e také není moc oblíbenı(a). Napadli [:ji:ho:] <b>[:attacks]</b>x ."
+attackedtext = "<b>Jako tohle:</b>&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> není moc populární, Kopli jste ho [:kicks]x !"
+gotkick2 = "<b>[:nick]</b> vypadá jako by jste ho taky nemìli rádi. Dostal [:kicks]x ."
+kicktext = "<b>Jako tohle:</b>&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> ukazoval jak mu to padá (abièka). Joinul se [:joins]x !"
+
+kick1 = "<b>[:nick]</b> je asi pomatenej, nebo je jen spravedlivejší op. Vyhodil celkem [:kicked] lidí!"
+kick2 = "[:oldnick] má zdatného následovnika, a je to <b>[:nick]</b>, kterej vykopl [:kicked] lidi."
+kick3 = "Jsou tady nìjak mìccí opi, nikoho nekopli!"
+
+words1 = "<b>[:nick]</b> promluvil(a) celkem [:words] slov!"
+words2 = "[:oldnick] má zdatného následovnika, a je to <b>[:nick]</b>, promluvil jen: [:words] slov."
+words3 = "Nikdo tady nemluvi ... Nìjakej divnej kanál..."
+
+mono1 = "<b>[:nick]</b> mluvil pro sebe víc ne je zdrávo. Hodil(a) sem po sobì 5 lajn a to [:monos]x po sobì !"
+mono2 = "Další osamìlec je <b>[:nick]</b>, kterej to zvádl jen [:monos]x."
+
+wpl1 = "<b>[:nick]</b> napsal prùmìrnì [:wpl] slov na lajnu."
+wpl2 = "Kanálovı prùmìr je [:avg] slov na lajnu."
+
+long1 = "<b>[:nick]</b> napsal nejdelší lajnu, prùmìrnì [:letters] znakù."
+long2 = "[:channel] prùmìr byl [:avg] znakù na lajnu."
+
+short1 = "<b>[:nick]</b> napsal nejkratsi lajnu, prùmìrnì [:letters] písmen."
+short2 = "<b>[:nick]</b> taky èasto maèkal "enter", prùmìrnì napsal [:letters] znakù."
+
+foul1 = "<b>[:nick]</b> byl(a) celkem neslušnı(á). [:per]% toho co zplodil(a) obsahuje nadávky."
+foul2 = "<b>[:nick]</b> by se mìl stydìt za [:per]% ze zaznamenaného cyklu."
+foul3 = "Nikdo si neoteviral usta na [:channel]! Není to moc?"
+
+smiles1 = "<b>[:nick]</b> je šastnej jako blecha. [:per]% z toho co napsal obsahuje úsmìv. :)"
+smiles2 = "<b>[:nick]</b> nemùe bıt smutná osoba, smìje se [:per]% zaznamenaného cyklu."
+smiles3 = "Nikdo se na [:channel] nesmìje! Chtìlo by to tu trošku rozjet."
+
+sad1 = "<b>[:nick]</b> nevypadá zrovna šastnì. [:per]% z toho co napsal(a) obsahuje smutnı oblièej. :("
+sad2 = "<b>[:nick]</b> je taky nešastná osoba, pláèe [:per]% zaznamenaného cyklu."
+sad3 = "Všeci jsou na [:channel] vysmatí!  Usmìj se taky. :-)"
+
+month = "Ledena Února Bøezna Dubna Kvìtena Èervna Èervence Srpna Záøí Øíjna Listopadu Prosince"
+day = "Pondelí Uterı Støedu Ètvrtek Pátek Sobotu Nedìli"
+
+## Topics
+
+bignumtopic = "Velká èísla"
+othernumtopic = "Další zajímavá èísla"
+latesttopic = "Poslení Topic"
+activetimestopic = "Zatíení kanálu"
+activenickstopic = "Nejvíc uvanìní"
+mostwordstopic = "Nejpouívanìjší slova"
+referencetopic = "Nejpouívanìjší Nicky"
+urlstopic = "Nejpouívanìjší odkazy"
+notopic = "Topic na tomto kanále nebyl ještì zadán."
+mostnickstopic = "Uivatelé s více nicky"
+bylinetopic = "[:date] podle [:nick] na [:time]"
+chartstopic = "[:channel] Hudební hitparáda"
+smileytopic = "Smajlíci :-) "
+dailyactivitytopic = "Denní aktivita (posledních [:n] dnù"
+activegenderstopic = "Nejvíce aktivní pohlaví"
+activenickbyhourtopic = "Nejvíce aktivní nicky podle hodin"
+karmatopic = "[:channel] karma"
+
+## Other text
+
+totallines = "Koneènı poèet stav. [:lines] lajn."
+totalnicks = "By the way, bylo zde [:totalnicks] jinıch nicku."
+totaltopic = "Topic zmìnili celkem [:total]x."
+nick = "Nick"
+names = "Jméno"
+url = "Odkaz"
+numberlines = "poèet lajn"
+randquote = "Náhodná vìta"
+userpic = "Obrázek"
+nottop = "Tihle nebyli dost ukecaní:"
+word = "Slovo"
+numberuses = "Poèet pouití"
+show_words = "Poèet slov"
+show_time = "Kdy?"
+show_wpl = "Slovo na Lajnu"
+show_cpl = "Znaku na Lajnu"
+show_lastseen = "Naposledy viïen"
+lastused = "Naposledy pouil"
+lastseen1 = "[:days] vèera"
+lastseen2 = "[:days] days ago"
+today = "dnes"
+pagetitle1 = "Malá statistika z [:channel] @ [:network] od [:maintainer]"
+pagetitle2 = "Statistiky vygenerovány v "
+pagetitle3 = "Bìhem tohoto [:days]-denního zaznamenaného cyklu, zde([:channel]) bylo celkem <b>[:nicks]</b> rùznıch lidí."
+stats_gen_by = "Stats generated by [:pisg_url] v[:version]"
+author = "pisg by [:author_url] and translate by James (ø)"
+stats_gen_in = "Stats generated in [:time]"
+hours = "hodiny"
+minutes = "minuty"
+seconds = "sekundy"
+and = "a"
+names1 = "Jména"
+names2 = "Jméno"
+karma = "Karma"
+badkarma = "Zlá karma od"
+goodkarma = "Dobrá karma od"
+smiley = "Smajlíci"
+foultext = "Napøíklad, jako toto: [:line]"
+gender = "Pohlaví"
+gender_b = "Bot"
+gender_f = "ena"
+gender_m = "Mu"
+song = "Písen"
+playedby = "Naposledny hrál"
+numberplayed = "Jak èasto pøehráváno"
+
+# Mouse-over titles
+pisghomepage = "Go to the pisg homepage"
+authorhomepage = "Go to the authors homepage"
+newwindow = "Open in new window:"
+mailto = "Mail to"
+</lang>

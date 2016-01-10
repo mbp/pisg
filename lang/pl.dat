@@ -1,0 +1,167 @@
+<lang name="PL" charset="utf-8">
+mostop1 = "<b>[:nick]</b> lubi rozdawać opy robiąc to [:ops] razy..."
+mostop2 = "Kolejnym dobroczyńcą jest <b>[:nick]</b> - zyskuje popularność nadając [:ops] opów."
+mostop3 = "Dziwne, nikt nie dostał opa na [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> jest kanałowym szeryfem odbierając [:deops] opów..."
+mostdeop2 = "<b>[:nick]</b> zdeopował[::a:] [:deops] ircowników."
+mostdeop3 = "Wow, żaden op nie został odebrany na [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> lubi rozdawać voice'y robiąc to [:voices] razy..."
+mostvoice2 = "<b>[:nick]</b> również był[::a:] bardzo uprzejm[:y:a:]: rozdał[::a:] [:voices] voice'ów"
+mostvoice3 = "Dziwne, nikt nie dostał voice'a na [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> lubi zabierać ludziom voice'y, [:devoices] devoice'ów."
+mostdevoice2 = "<b>[:nick]</b> ma prawie taki sam wynik, zabrał[::a:] voice'y [:devoices] ircownikom."
+mostdevoice3 = "Żaden voice nie został odebrany na [:channel]!"
+
+action1 = "<b>[:nick]</b> zawsze mówi nam co robi: [:actions] „akcji”!"
+action2 = "Również <b>[:nick]</b> mówi nam co jest grane. [:actions] „akcji”."
+action3 = "Nie było żadnych „akcji” na kanale [:channel]!"
+actiontext = "<b>Na przykład coś takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+mosthalfop1 = "<b>[:nick]</b> rozdał[::a:] [:halfops] halfopów na kanale..."
+mosthalfop2 = "<b>[:nick]</b> również był[::a:] bardzo uprzejm[:y:a:]: rozdał[::a:] [:halfops] halfopów."
+mosthalfop3 = "Dziwne, nikt nie dostał halfopa na [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> jest kanałowym szeryfem odbierając [:dehalfops] halfopów..."
+mostdehalfop2 = "<b>[:nick]</b> zdeopował[::a:] [:dehalfops] ircowników."
+mostdehalfop3 = "Wow, nikt nikomu nie odebrał halfopa na [:channel]!"
+
+question1 = "<b>[:nick]</b> jest głupi[::a:] albo zadaje zbyt wiele pytań... [:per]% linii zawierało pytania!"
+question2 = "<b>[:nick]</b> też nie wie zbyt wiele, [:per]% linii było pytaniami."
+question3 = "Nikt o nic nie pyta na kanale - czyżby sami geniusze?"
+
+shout1 = "Największym kanałowym krzykaczem jest <b>[:nick]</b>, wykrzykiwał[::a:] przez [:per]% czasu."
+shout2 = "Na dalszej pozycji plasuje się <b>[:nick]</b>, któr[:y:a:] krzyczał[::a:] przez [:per]% czasu."
+shout3 = "Wow, nikt nie krzyczał, wszyscy jacyś tacy spokojni..."
+
+allcaps1 = "Wydawać by się mogło, że <b>[:nick]</b> ma zaciętego shifta, [:per]% czasu używał[::a:] wielkich liter."
+allcaps2 = "<b>[:nick]</b> za to zapomniał[::a:] wyłączyć Caps-Locka, [:per]% czasu używał[::a:] wielkich liter."
+allcaps3 = "Wszyscy posiadają kontrolę nad swoimi shiftami :)"
+allcapstext = "<b>Na przykład coś takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> jest bardzo agresywną osobą, atakował[::a:] około <b>[:attacks]</b> razy."
+violent2 = "<b>[:nick]</b> nie potrafi kontrolować swojej agresji. Zaczepiał[::a:] innych około <b>[:attacks]</b> razy."
+violent3 = "Nikt nikogo nie atakował, wszyscy zachowywali się przyjaźnie."
+violenttext = "<b>Na przykład coś takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Biedn[:y:a:] <b>[:nick]</b>, nikt [:go:jej:] nie lubi. Był[::a:] atakowan[:y:a:] <b>[:attacks]</b> razy."
+attacked2 = "<b>[:nick]</b> wydaje się też nie być zbyt lubian[:y:a:], zaczepiali [:go:ją:] <b>[:attacks]</b> razy."
+attackedtext = "<b>Na przykład coś takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> nie załapał[::a:] o co chodziło opom za pierwszym razem i został[::a:] wykopan[:y:a:] [:kicks] razy!"
+gotkick2 = "<b>[:nick]</b> nie jest tu chyba zbyt lubian[:y:a:] - wylatywał[::a:] [:kicks] razy."
+kicktext = "<b>Na przykład coś takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> nie [:mógł:mogła:] się zdecydować czy zostać, [:joins] razy wchodził[::a:] na kanał!"
+
+kick1 = "<b>[:nick]</b> jest szalony lub stara się być konsekwentny, wykopał[::a:] [:kicked] osob(y)."
+kick2 = "<b>[:nick]</b>, idąc w ślad za [:oldnick], wykopał[::a:] [:kicked] osob(y)."
+kick3 = "Mamy tutaj miłych operatorów, nikt nie został wykopany!"
+
+words1 = "<b>[:nick]</b> powiedział[::a:] łącznie [:words] słów!"
+words2 = "Próbując[:y:a:] go dogonić <b>[:nick]</b>, nie powiedział[::a:] zbyt wiele, tylko [:words] słów."
+words3 = "Nikt nic nie mówi... co za dziwny kanał!"
+
+wpl1 = "<b>[:nick]</b> pisał[::a:] średnio [:wpl] słów na linie."
+wpl2 = "Średnia kanału to [:avg] słów na linie."
+
+mono1 = "<b>[:nick]</b> uwielbia mówić sam[::a:] do siebie albo inni za [:nim:nią:] nie nadążają, pisał[::a:] monologi [:monos] razy!"
+mono2 = "Kolejnym samotnikiem okazał[::a:] się <b>[:nick]</b>, któr[:y:a:] pisał[::a:] bez towarzystwa [:monos] razy"
+
+long1 = "<b>[:nick]</b> pisał[::a:] najdłuższe linie o średniej długości [:letters] liter..."
+long2 = "Średnia dla kanału [:channel] to [:avg] liter w linii."
+
+short1 = "<b>[:nick]</b> starał[::a:] się pisać zwieźle, średnio [:letters] liter w linii..."
+short2 = "[:nick] wybąkiwał[::a:] krótkie wypowiedzi średnio po [:letters] liter."
+
+foul1 = "<b>[:nick]</b> ma niewyparzoną gębę, [:per]% linii zawierało bluzgi!"
+foul2 = "<b>[:nick]</b> klnie jak szewc (albo i gorzej) przez [:per]% czasu."
+foul3 = "Nikt nie klnie na [:channel]! Sami spokojni ludzie."
+foultext = "<b>Na przykład coś takiego:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> usmiechał[::a:] się głupawo albo był[::a:] bardzo szczęśliw[:y:a:], bo [:per]% linii zawierało uśmiechnięte miny :)"
+smiles2 = "<b>[:nick]</b> najwyraźniej miał[::a:] powody do radości śmiejąc się przez [:per]% czasu spędzonego na kanale."
+smiles3 = "Nikt się nie uśmiechał na [:channel]! Proszę o uśmiech Panie i Panowie."
+
+sad1 = "<b>[:nick]</b> wygląda na smutną osobę, [:per]% linii zawierało smutne miny :("
+sad2 = "<b>[:nick]</b> nie czuje się najlepiej na kanale smucąc się przez [:per]% czasu."
+sad3 = "Nikt nie jest smutny na [:channel]! Cóż za szczęśliwy kanał :)"
+
+month = "stycznia lutego marca kwietnia maja czerwca lipca sierpnia września października listopada grudnia"
+day = "niedzielę, poniedziałek, wtorek, środę, czwartek, piątek, sobotę,"
+
+## Topics
+
+bignumtopic = "Wielkie liczby"
+othernumtopic = "Inne interesujące liczby"
+latesttopic = "Ostatnie tematy"
+activetimestopic = "Najaktywniejsze pory dnia"
+activenickstopic = "Najaktywniejsze nicki"
+activenickbyhourtopic = "Najaktywniejsze nicki w przedziałach godzin" 
+mostwordstopic = "Najczęściej używane słowa"
+referencetopic = "Najczęściej wywoływany nick"
+urlstopic = "Najczęściej wywoływany URL"
+notopic = "Żaden temat nie został ustawiony na kanale."
+mostnickstopic = "Ircownicy z największa ilością nicków"
+bylinetopic = "ustawiony [:date] przez [:nick] o [:time]"
+dailyactivitytopic = "Dzienna aktywność (ostatnie [:n] dni)"
+activegenderstopic = "Najbardziej aktywna płeć"
+smileytopic = "Uśmieszki :-)"
+chartstopic = "Lista przebojów kanału [:channel]"
+karmatopic = "Karma kanału [:channel]"
+
+## Other text
+
+totallines = "Całkowita liczba linii: [:lines]"
+totalnicks = "Było również [:totalnicks] innych nicków."
+totaltopic = "Temat był ustawiany [:total] razy."
+nick = "Nick"
+names = "Użyte Nicki"
+url = "URL"
+numberlines = "Liczba linii"
+randquote = "Losowy cytat"
+userpic = "Fotka"
+nottop = "Oni nie dostali się do czołówki:"
+word = "Wyraz"
+numberuses = "Liczba użyć"
+show_words = "Liczba słów"
+show_time = "W jakich porach"
+show_wpl = "Słów na linię"
+show_cpl = "Znaków na linię"
+show_lastseen = "Ostatnio widziany"
+lastused = "Ostatnio używany przez"
+lastseen1 = "[:days] dzień temu"
+lastseen2 = "[:days] dni temu"
+today = "Dzisiaj"
+pagetitle1 = "Statystyki kanału [:channel] @ [:network] by [:maintainer]"
+pagetitle2 = "Statystyka wygenerowana w "
+pagetitle3 = "W przedziale [:days] dni łącznie <b>[:nicks]</b> nicków odwiedziło kanał [:channel]."
+stats_gen_by = "Statystyki wygenerowane przez [:pisg_url] v[:version]"
+author = "pisg by [:author_url] i inni"
+stats_gen_in = "Statystyki wygenerowane w [:time]"
+hours = "godziny"
+minutes = "minuty"
+seconds = "sekundy"
+and = "i"
+names1 = "nicków"
+names2 = "nick"
+karma = "Karma"
+badkarma = "Nie lubią go/jej"
+goodkarma = "Wdzięczni za coś byli jej/mu"
+smiley = "Uśmieszek"
+gender_f = "Kobieta"
+gender_m = "Mężczyzna"
+gender = "Płeć"
+gender_b = "Bot"
+song = "Utwór"
+playedby = "Ostatnio słuchany przez"
+numberplayed = "Ile razy odtwarzany"
+
+# Mouse-over titles
+pisghomepage = "Odwiedź stronę domową programu pisg"
+authorhomepage = "Odwiedź stronę domową autora"
+newwindow = "Otwórz w nowym oknie:"
+mailto = "Wyślij maila do:"
+</lang>

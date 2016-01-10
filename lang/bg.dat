@@ -1,0 +1,169 @@
+<lang name="BG" charset="CP1251">
+mostop1 = "<b>[:nick]</b> даде [:ops] op-а в канала..."
+mostop2 = "<b>[:nick]</b> също беше много [:любезен:любезна:]: [:ops] op-а."
+mostop3 = "Странно, не беше даден op в [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> е шерифа на канала. Deop-на [:deops] пъти."
+mostdeop2 = "<b>[:nick]</b> махна [:deops] op-а."
+mostdeop3 = "Иха, не бе отнет нито един op в [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> даде [:voices] voice-а в канала..."
+mostvoice2 = "<b>[:nick]</b> също е много [:учтив:учтива:]: даде [:voices] voice-а."
+mostvoice3 = "Странно, не са давани voice-ове в [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> обича да взима думата (voice-а) от хората: [:devoices] пъти."
+mostdevoice2 = "<b>[:nick]</b> беше близо до същото: [:devoices] devoice-а."
+mostdevoice3 = "Не бяха отнети voice-ове в [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> дари [:halfops] halfop-а в канала..."
+mosthalfop2 = "<b>[:nick]</b> е [:дал:дала:] само [:halfops] halfop-a."
+mosthalfop3 = "Странно, не е даван halfop в [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> е шерифа на канала. Махна [:dehalfops] halfops."
+mostdehalfop2 = "<b>[:nick]</b> dehalfop-на [:dehalfops] човека."
+mostdehalfop3 = "Иха, не бе отнет нито един halfop в [:channel]!"
+
+action1 = "<b>[:nick]</b>винаги ни уведомява какво прави: [:actions] действия!"
+action2 = "Освен това, <b>[:nick]</b> ни казва какво става с [:actions] действия."
+action3 = "Няма действия в [:channel]!"
+actiontext = "<b>Например така:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "<b>[:nick]</b> [:глупав:глупава:] ли е или просто задава много въпроси? [:per]% oт редовете [:му:й:]  съдържаха въпросителна!"
+question2 = "<b>[:nick]</b> също не знаеше много [:per]% от редовете [:му:й:] бяха въпроси."
+question3 = "Никой не зададе въпрос в тука. Всички са гении ;)"
+
+shout1 = "Най-гръмогласния беше <b>[:nick]</b>, който крещеше през [:per]% от времето!"
+shout2 = "Другия <i>кавгаджия</i> беше <b>[:nick]</b>, който викаше през [:per]% от времето!"
+shout3 = "Никой не е повишавал тон, уау."
+
+allcaps1 = "Изглежда shift-а на <b>[:nick]</b> заяжда: [:per]% от времето писа с ГЛАВНИ БУКВИ."
+allcaps2 = "<b>[:nick]</b> просто забрави да изключи Caps-Lock-а си. [:Той:Тя:] писа с ГЛАВНИ БУКВИ [:per]% от времето."
+allcaps3 = "Всички контролират shift-a си.  :)"
+allcapstext = "<b>Ето например:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> е много агресивна личност. [:Той:Тя:] атакува другите <b>[:attacks]</b> пъти."
+violent2 = "<b>[:nick]</b> също не може да контролира агресията си. Напердаши другите <b>[:attacks]</b> пъти."
+violent3 = "Никой не удари никого. Всички бяха приятелски настроени."
+violenttext = "<b>Ето например:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Горкия <b>[:nick]</b>, никой не [:го:я:] харесваше. Набиха [:го:я:] <b>[:attacks]</b> пъти."
+attacked2 = "<b>[:nick]</b> изглежда също не беше харесван. Напердашиха [:го:я:] <b>[:attacks]</b> пъти."
+attackedtext = "<b>Ето например:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> хич не го обичаха. Ритнаха [:го:я:] [:kicks] пъти!"
+gotkick2 = "<b>[:nick]</b> също го мразеха: [:kicks] изяде ритника."
+kicktext = "<b>Например:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b>Не можа да реши дали ще остане или ще напусне: [:joins] пъти е влизал в канала!"
+
+kick1 = "<b>[:nick]</b> или е полудял(а), или просто беше слаб оператор. Ритна общо [:kicked] човека!"
+kick2 = "<b>[:nick]</b> е [:верен:вярна:] последовател(ка) на [:oldnick], раздаде около [:kicked] ритника."
+kick3 = "Oператорите тука са добри, никой не беше ритнат."
+
+words1 = "<b>[:nick]</b> каза общо [:words] думи!"
+words2 = "Подгласника на [:oldnick] - <b>[:nick]</b>, не говореше толкова много: [:words] думи."
+words3 = "Никой нищо не каза... Какъв странен канал..."
+
+mono1 = "<b>[:nick]</b> говори много на себе си. [:Той:Тя:] написа 5 поредни реда [:monos] пъти!"
+mono2 = "Другия самотен беше <b>[:nick]</b>, който постигна това [:monos] пъти."
+
+wpl1 = "<b>[:nick]</b> писа средно по [:wpl] думи на ред."
+wpl2 = "Средното за [:channel] беше [:avg] думи на ред."
+
+long1 = "<b>[:nick]</b> Писа най-дългите редове - средно с по [:letters] символа."
+long2 = "Средното за [:channel]: [:avg] символа на ред."
+
+short1 = "<b>[:nick]</b> писа най-късите редове - средно с по [:letters] символа."
+short2 = "<b>[:nick]</b> също си пестеше думите - средно с по [:letters] символа на ред."
+
+foul1 = "<b>[:nick]</b> има мръсно (под)съзнание. [:per]% от думите, които каза, бяха мръсни."
+foul2 = "<b>[:nick]</b> накара и каруцарите да се изчервят - през [:per]% от времето."
+foul3 = "В [:channel] всички са културни."
+foultext = "<b>Ето например:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> носи щастие на света. [:per]% от редовете [:му:й:] съдържаха усмивки :)"
+smiles2 = "<b>[:nick]</b> също не е [:тъжен:тъжна:], усмихваше се [:per]% от времето."
+smiles3 = "Никой не се усмихва в [:channel]! Развеселете се момчета и момичета!"
+
+sad1 = "<b>[:nick]</b> изглежда [:тъжен:тъжна:] в момента: [:per]% от редовете му съдържаха гримаси :("
+sad2 = "<b>[:nick]</b> също е [:тъжен:тъжна:], плачеше [:per]% от времето."
+sad3 = "Никой не е тъжен в  [:channel]! Какъв щастлив канал! :)"
+
+month = "Януари Февруари Март Април Май Юни Юли Август Септември Октомври Ноември Декември"
+day = "Неделя Понеделник Вторник Сряда Четвъртък Петък Събота"
+
+## Topics - Заглавия
+
+bignumtopic = "Големи числа"
+othernumtopic = "Други интересни числа"
+latesttopic = "Последни теми"
+activetimestopic = "Кога всъщност приказваме тук?"
+activenickstopic = "Най-активни"
+activenickbyhourtopic = "Най-активни по часове"
+mostwordstopic = "Най-изполвани думи"
+referencetopic = "Най-споменавани псевдоними"
+karmatopic = "[:channel] карма"
+urlstopic = "Най-спомеменавани web-адреси"
+notopic = "Никога не е имало тема в канала"
+mostnickstopic = "Хора с най-много псевдоними"
+bylinetopic = "от [:nick] на [:date] в [:time]"
+dailyactivitytopic = "Активност по дни (последните [:n])"
+activegenderstopic = "По-активен пол"
+acrivegenderstopic = "Най-активен пол"
+smileytopic = "Смайлита :-)"
+chartstopic = "[:channel] Топ листи"
+
+## Other text
+
+smiley = "Смайли"
+numberplayed = "Колко често е изпълнявана"
+song = "Песен"
+playedby = "Полследно изпълнена от"
+totallines = "Общ брой на редовете: [:lines]."
+totalnicks = "Между другото, имало е [:totalnicks] други псевдоними."
+totaltopic = "Темата е сменяна [:total] пъти."
+nick = "Псевдоним"
+names = "Използвани имена"
+url = "URL"
+numberlines = "Брой редове"
+randquote = "Произволна реплика"
+userpic = "Снимка"
+nottop = "Тези не успяха да стигнат по-нагоре"
+word = "Дума"
+numberuses = "Брой използвания"
+show_words = "Брой думи"
+show_time = "Кога?"
+show_wpl = "Думи на ред"
+show_cpl = "Символи на ред"
+show_lastseen = "Последно видян"
+karma = "Карма"
+goodkarma = "Добра карма от"
+badkarma = "Лоша карма от"
+lastused = "Последно използван от"
+lastseen1 = "вчера"
+lastseen2 = "[:days] дена"
+today = "Днес"
+pagetitle1 = "[:channel] @ [:network] статистика от [:maintainer]"
+pagetitle2 = "Статистиката е генерирана в"
+pagetitle3 = "По време на [:days]-дневния период, <b>[:nicks]</b> човека са взели участие в [:channel]."
+stats_gen_by = "Статистиката е генерирана от [:pisg_url] v[:version]"
+author = "pisg от [:author_url] и други"
+stats_gen_in = "Генерирана за [:time]"
+hours = "часа"
+minutes = "минути"
+seconds = "секунди"
+and = "и"
+names1 = "имена"
+names2 = "име"
+gender = "Пол"
+gender_f = "Жена"
+gender_m = "Мъж"
+gender_b = "Бот"
+
+
+# Mouse-over titles
+pisghomepage = "Отидете на сайта на pisg"
+authorhomepage = "Отидете на сайта на авторите"
+newwindow = "Отвори в нов прозорец"
+mailto = "Поща до"
+</lang>

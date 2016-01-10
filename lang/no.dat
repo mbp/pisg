@@ -1,0 +1,169 @@
+<lang name="NO" charset="iso-8859-1">
+mostop1 = "<b>[:nick]</b> donerte [:ops] ops i kanalen.."
+mostop2 = "<b>[:nick]</b> var også veldig hyggelig: [:ops] ops fra [:ham:henne:]."
+mostop3 = "Merkelig, ingen op er delt ut på  [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> er kanalens sheriff med [:deops] deops."
+mostdeop2 = "<b>[:nick]</b> deopet [:deops] brukere."
+mostdeop3 = "Wow, ingen er deopet på [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> donerte [:voices] voicer i kanalen.."
+mostvoice2 = "<b>[:nick]</b> var også veldig hyggelig: [:voices] voicer fra [:ham:henne:]."
+mostvoice3 = "Merkelig, ingen voice er delt ut på  [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> er kanalens sheriff med  [:devoices] devoices."
+mostdevoice2 = "<b>[:nick]</b> devoiced [:devoices] brukere."
+mostdevoice3 = "Wow, ingen er devoicet på  [:channel]!"
+
+mosthalfop1 = "<b>[:nick]</b> donerte [:halfops] halfops i denne kanalen..."
+mosthalfop2 = "<b>[:nick]</b> var også veldig vennlig: [:halfops] halfops fra [:han:henne:]."
+mosthalfop3 = "Rart, ingen halfop-status ble delt ut på [:channel]!"
+
+mostdehalfop1 = "<b>[:nick]</b> er kanalens sheriff med [:dehalfops] dehalfops."
+mostdehalfop2 = "<b>[:nick]</b> dehalfopet [:dehalfops] brukere."
+mostdehalfop3 = "Wow, ingen mistet halfop-status på [:channel]!"
+
+action1 = "<b>[:nick]</b> passer på å fortelle oss hva [:han:hun:] gjør: [:actions] actions!"
+action2 = "<b>[:nick]</b> forteller oss også hva som skjer med [:actions] actions."
+action3 = "Ingen action på [:channel]!"
+actiontext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "Er <b>[:nick]</b> dum, eller stiller [:han:hun:] bare mange spørsmål?  [:per]% linjer med spørsmål!"
+question2 = "<b>[:nick]</b> spør også mye.  [:per]% av [:hans:hennes:] linjer er spørsmål!" 
+question3 = "Ingen på denne kanalen stillte spørsmål. Jøss."
+
+shout1 = "Den mest bråkete er <b>[:nick]</b>, som bråkte [:per]% av tiden!"
+shout2 = "En annen <i>bråkmaker</i> er <b>[:nick]</b>, som skrek [:per]% av tiden!"
+shout3 = "Ingen bråker på denne kanalen."
+
+allcaps1 = "Det ser ut som <b>[:nick]</b>s shift-tast henger:  [:per]% av tiden skrev [:han:hun:]  STORE BOKSTAVER."
+allcaps2 = "<b>[:nick]</b> glemte nok å skru av Caps-Lock.  [:Han:Hun:] skrev STORE BOKSTAVER [:per]% av tiden."
+allcaps3 = "Alle hadde caps lock under kontroll. Kjekt.  :)"
+allcapstext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+
+violent1 = "<b>[:nick]</b> er en aggressiv person.  [:Han:Hun:] angrep andre <b>[:attacks]</b> ganger."
+violent2 = "<b>[:nick]</b> kan heller ikke kontrollere sin aggresjon.  [:Han:Hun:] plaget andre <b>[:attacks]</b> ganger."
+violent3 = "Ingen slår hverandre.  Alle er vennlige."
+violenttext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Stakkars <b>[:nick]</b>, ingen liker [:ham:henne:].  [:Han:Hun:] ble angrepet <b>[:attacks]</b> ganger."
+attacked2 = "<b>[:nick]</b> er heller ikke likt.  [:Han:Hun:] ble banket <b>[:attacks]</b> ganger."
+attackedtext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> er ikke veldig populær og ble kastet ut [:kicks] ganger!"
+gotkick2 = "<b>[:nick]</b> er heller ikke populær:  [:kicks] kicks er notert."
+kicktext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> klarte ikke bestemme seg helt -  [:joins] joins i denne perioden!"
+
+kick1 = "<b>[:nick]</b> er enten kjip eller en real op med totalt [:kicked] kicks på samvittigheten!"
+kick2 = "[:oldnick]s trofaste disippel, <b>[:nick]</b>, kicket omtrent [:kicked] personer."
+kick3 = "Her er det bare snille ops. Ingen er kicket!"
+
+words1 = "<b>[:nick]</b> ytret totalt  [:words] ord!"
+words2 = "[:oldnick] ble tett etterfulgt av <b>[:nick]</b> som ytret [:words] ord."
+words3 = "Ingen har sagt noe som helst!"
+
+mono1 = "<b>[:nick]</b> snakker mye med seg selv. [:Han:Hun:] skrev over 5 linjer på rad [:monos] ganger!"
+mono2 = "En annen ensom sjel var <b>[:nick]</b>, som skrev over 5 linjer på rad [:monos] ganger."
+
+wpl1 = "<b>[:nick]</b> skrev gjennomsnittlig [:wpl] ord pr. linje."
+wpl2 = "Kanalgjennomsnittet er [:avg] ord pr. linje."
+
+long1 = "<b>[:nick]</b> skrev de lengste linjene, gjennomsnittlig [:letters] bokstaver pr. linje."
+long2 = "[:channel]s gjennomsnitt er [:avg] bokstaver pr linje."
+
+short1 = "<b>[:nick]</b> skrev de korteste linjene, gjennomsnittlig [:letters] bokstaver pr. linje."
+short2 = "<b>[:nick]</b> er også en person av få ord - [:letters] bokstaver pr. linje i gjennomsnitt."
+
+foul1 = "<b>[:nick]</b> må snart vaske munnen sin.  [:per]% av linjene inneholdt stygt språk."
+foul2 = "<b>[:nick]</b> er heller ikke svigermors drøm, [:per]% av tiden."
+foul3 = "Ingen prater stygt på [:channel]!?!"
+foultext = "<b>For eksempel slik:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> bringer lykke til verden.  [:per]% av [:hans:hennes:] linjer inneholdt smileansikt. :-)"
+smiles2 = "<b>[:nick]</b> er heller ikke særlig sur.  [:per]% av [:hans:hennes:] linjer inneholdt et smil."
+smiles3 = "Ingen smiler på [:channel]!  :-("
+
+sad1 = "<b>[:nick]</b> er trist for øyeblikket:  [:per]% linjer inneholdt :(!"
+sad2 = "<b>[:nick]</b> er heller ikke særlig blid. [:per]% av tiden."
+sad3 = "Ingen er triste på [:channel]!  For en koselig kanal.  :-)"
+
+month = "januar februar mars april may juni juli august september oktober november desember"
+day = "søndag mandag tirsdag onsdag torsdag fredag lørdag"
+
+names1 = "nicks"
+names2 = "nick" 
+gender = "kjønn"
+gender_f = "hun"
+gender_m = "han"
+gender_b = "bot"
+
+## Topics
+
+smileytopic = "Smileys :-)"
+chartstopic = "Musikk Liste"
+mostnickstopic = "Brukere med flest nicks" 
+bignumtopic = "Store tall"
+othernumtopic = "Andre interessante tall"
+latesttopic = "Siste topics"
+activetimestopic = "Mest aktive tider"
+activenickstopic = "Mest aktive nicks"
+activenickbyhourtopic = "Mest aktive nicks i tidsperioder"
+mostwordstopic = "Mest brukte ord"
+referencetopic = "Mest refererte nick"
+karmatopic = "[:channel] karma"
+urlstopic = "Mest refererte URLer"
+notopic = "Det har ikke  vært satt noen topic på denne kanalen."
+bylinetopic = "[:date] av [:nick] klokken [:time]"
+dailyactivitytopic = "Daglig aktivitet (siste [:n] dager)"
+activegenderstopic = "Mest aktive kjønn"
+
+## Other text
+
+totallines = "Totalt antall linjer: [:lines]."
+totalnicks = "Dessuten var det [:totalnicks] andre nicks."
+totaltopic = "Topicen er satt [:total] ganger."
+nick = "Nick"
+names = "Navn Brukt"
+url = "URL"
+numberlines = "Antall linjer"
+randquote = "Tilfeldig sitat"
+userpic = "Bilde"
+nottop = "Disse nådde ikke toppen:"
+word = "Ord"
+numberuses = "Antall ganger brukt"
+show_words = "Antall ord"
+show_time = "Når?"
+show_wpl = "Ord pr. linje"
+show_cpl = "Tegn pr. linje"
+show_lastseen = "Sist sett"
+lastused = "Sist brukt av"
+karma = "Karma"
+goodkarma = "God karma av"
+badkarma = "Dårlig karma av"
+lastseen1 = "[:days] dag siden"
+lastseen2 = "[:days] dager siden"
+today = "I dag"
+pagetitle1 = "[:channel] @ [:network] stats av [:maintainer]"
+pagetitle2 = "Statistikk generert"
+pagetitle3 = "I løpet av denne [:days]-dagers perioden var totalt <b>[:nicks]</b> forskjellige nick representert på [:channel]."
+stats_gen_by = "Stats generert av [:pisg_url] v[:version]"
+author =  "pisg er skrevet av [:author_url] og andre"
+stats_gen_in = "Statistikken ble generert på [:time]"
+hours = "timer"
+minutes = "minutter"
+seconds = "sekunder"
+and = "og"
+numberplayed = "Hvor ofte spilt"
+song = "Sang"
+playedby = "Sist spilt av"
+smiley = "Smiley"
+
+# Mouse-over titles
+pisghomepage =  "Gå til pisgs hjemmeside"
+authorhomepage = "Gå til utviklerens hjemmeside"
+newwindow = "Åpne i et nytt vindu:"
+mailto = "Mail til"
+</lang>

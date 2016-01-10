@@ -1,0 +1,168 @@
+<lang name="HU" charset="iso-8859-2">
+mostop1 = "<b>[:nick]</b> [:ops] opot adott a csatin..."
+mostop2 = "<b>[:nick]</b> szinten nagylelku: [:ops] opot adomanyozott."
+mostop3 = "Erdekes, senki nem kapott opot a [:channel] csatin!"
+
+mostdeop1 = "<b>[:nick]</b> volt a csati rendore, [:deops] alkalommal deopolt."
+mostdeop2 = "<b>[:nick]</b> deopolt [:deops] emberket."
+mostdeop3 = "Hu, nem vettek el egy opot sem a [:channel]-n!"
+
+mostvoice1 = "<b>[:nick]</b> [:voices] voice-ot adott a csatin..."
+mostvoice2 = "<b>[:nick]</b> szinten nagylelku: [:voices] voice-ot adomanyozott."
+mostvoice3 = "Erdekes, senki nem kapott voice-ot a [:channel] csatin!"
+
+mostdevoice1 = "<b>[:nick]</b> szereti elvenni a voice-ot, [:devoices] alkalommal tette ezt."
+mostdevoice2 = "<b>[:nick]</b> hasonloan [:devoices] embertol vette el a voice-ot."
+mostdevoice3 = "Nem vettek el senkitol voice-ot a [:channel]-n!"
+
+mosthalfop1 = "<b>[:nick]</b> [:halfops] felopot adott a csatin..."
+mosthalfop2 = "<b>[:nick]</b> szinten nagylelku: [:halfops] felopot adomanyozott."
+mosthalfop3 = "Erdekes, senki nem kapott felopot a [:channel] csatin!"
+
+mostdehalfop1 = "<b>[:nick]</b> volt a csati rendore, [:deops] alkalommal vett el felopot."
+mostdehalfop2 = "<b>[:nick]</b> [:dehalfops]-szor fosztott meg valakit a felopjatol."
+mostdehalfop3 = "Nem vettek el egy felopot sem a [:channel]-n!"
+
+action1 = "<b>[:nick]</b> mindig tudatja velunk mit csinal: [:actions] akciot nyomott!"
+action2 = "A masodik <b>[:nick]</b>, aki [:actions] alkalommal mondta el, mi a helyzet vele."
+action3 = "Semmi ekson nem volt a [:channel]-n!"
+actiontext = "<b>Peldaul:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "<b>[:nick]</b> kerdez a legtobbet, a sorainak a [:per]%-a tartalmazott kerdest."
+question2 = "<b>[:nick]</b> se tud sokkal tobbet. O [:per]%-ban tett fel kerdeseket."
+question3 = "Senki sem kerdezett a csatin - csak zsenik jarnak ide?"
+
+shout1 = "A leghangosabb <b>[:nick]</b> volt, [:per]%-ban kiabalt!"
+shout2 = "A masik <i>nagyhangu</i> <b>[:nick]</b> volt, aki [:per]%-ban volt hangos!"
+shout3 = "Senki sem kiabalt."
+
+allcaps1 = "Ugy tunik <b>[:nick]</b> shift-gombja beragadt:  [:per]%-ban NAGY BETUVEL irt."
+allcaps2 = "<b>[:nick]</b> is elfelejtette neha kikapcsoli a Caps-Lockot. [:per]%-ban NAGYBETUZOTT."
+allcaps3 = "Mindenki ugyelt a shiftre."
+allcapstext = "<b>Peldaul:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+
+violent1 = "<b>[:nick]</b> meglehetosen agressziv. <b>[:attacks]</b>-szer/szor bantott masokat."
+violent2 = "<b>[:nick]</b> sem tudott uralkodni magan <b>[:attacks]</b> alkalommal."
+violent3 = "Senki sem bantott senkit."
+violenttext = "<b>Peldaul igy:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Szegeny <b>[:nick]</b>-t nem nagyon szeretik. <b>[:attacks]</b> alkalommal bantottak."
+attacked2 = "<b>[:nick]</b> is sokat bantjak. Ot <b>[:attacks]</b>-szer/szor bantottak."
+attackedtext = "<b>Peldaul:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> nem volt tul nepszeru, [:kicks]-szer/szor kirugodott!"
+gotkick2 = "<b>[:nick]</b> Sem nagy koma, o [:kicks] kicket kapott."
+kicktext = "<b>Peldaul, mint ez:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> jott be a legtobbszor. [:joins] alkalommal a logolas alatt."
+
+kick1 = "<b>[:nick]</b> vagy kocsog, vagy jo op, kirugott [:kicked] embert."
+kick2 = "[:oldnick] lelkes kovetoje, <b>[:nick]</b>, szinten kirugott [:kicked] komat."
+kick3 = "Aranyosak az opok, senkit sem rugtak ki."
+
+words1 = "<b>[:nick]</b> [:words] szot mondott!"
+words2 = "[:oldnick] utan a masodik <b>[:nick]</b> alig [:words] szoval."
+words3 = "Erdekes hely, senki nem mond semmit..."
+
+mono1 = "<b>[:nick]</b> tul sokat beszel magaban. Tobb, mint 5 sort irt le egymas utan [:monos] alkalommal!"
+mono2 = "A masik magaban beszelo <b>[:nick]</b> volt, aki hasonloan tett [:monos]-szer/szor."
+
+wpl1 = "<b>[:nick]</b> atlagosan [:wpl] szot ir soronkent."
+wpl2 = "A csati atlaga [:avg] szo/sor."
+
+long1 = "<b>[:nick]</b> irja a leghosszabb sorokat, atlagosan [:letters] betut soronkent."
+long2 = "[:channel] atlag: [:avg] betu/sor."
+
+short1 = "<b>[:nick]</b> irja a legrovidebb sorokat, atlagosan [:letters] betut soronkent."
+short2 = "[:nick] szinten szukszaju a(z) [:letters] betu/soros atlagaval."
+
+foul1 = "<b>[:nick]</b> csunyan beszel. a sorai [:per]%-a tartalmaz csunya szot."
+foul2 = "<b>[:nick]</b> szinten nem beszel eleg szepen az esetek [:per]%-aban."
+foul3 = "Senki nem beszel csunyan a [:channel]-n!"
+foultext = "<b>Peldaul, mint itt:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+smiles1 = "<b>[:nick]</b> a legvidamabb. A sorai [:per]%-aban mosolyog :)"
+smiles2 = "<b>[:nick]</b> sem egy szomorkas egyen, az ido [:per]%-aban vigyorog."
+smiles3 = "Senki sem mosolygott?!"
+
+sad1 = "<b>[:nick]</b> szomorunak tunik: a sorai [:per]%-a tartalmaz szomorkodast. :("
+sad2 = "<b>[:nick]</b> szinten nem tul vidam, szomoru az esetek [:per]%-aban."
+sad3 = "Itt senki sem szomoru!:)"
+
+month = "Januar Februar Marcius Aprilis Majus Junius Julius Augusztus Szeptember Oktober November December"
+day = "Vasarnap Hetfo Kedd Szerda Csutortok Pentek Szombat"
+
+## Topics
+
+bignumtopic = "Nagy szamok"
+othernumtopic = "Egyeb erdekes szamok"
+latesttopic = "Legutobbi topicok"
+activetimestopic = "Legaktivabb idoszakok"
+activenickstopic = "Legaktivabb nevek"
+activenickbyhourtopic = "Legaktivabb nevek - orakra bontva"
+mostwordstopic = "Legtobbet hasznalt szavak"
+referencetopic = "Legtobbet emlegetett nevek"
+urlstopic = "Legtobbet emlitett URL-ek"
+notopic = "A topic sosem valtozott."
+mostnickstopic = "Legtobb nicknevet hasznalo csetelok"
+bylinetopic = "[:date] [:nick] allitotta be [:time]-kor."
+smileytopic = "Szmájlik"
+chartstopic = "[:channel] Slagerlista"
+karmatopic = "[:channel] karma"
+dailyactivitytopic = "Napi aktivitás (utolsó [:n] nap)"
+activegenderstopic = "Nemek szerinti aktivitas"
+
+## Other text
+
+totallines = "Osszes sorok szama: [:lines]."
+totalnicks = "Mellesleg osszesen [:totalnicks] nick volt a csatin."
+totaltopic = "A topicot [:total]-szer/szor valtoztattak meg."
+nick = "Nick"
+url = "URL"
+numberlines = "Sorok szama"
+randquote = "Veletlen sor"
+userpic = "Kep"
+nottop = "Nem kerultek be a legjobbak koze:"
+word = "Szo"
+numberuses = "Hasznalatok szama"
+show_words = "Szavak szama"
+show_time = "Mikor?"
+show_wpl = "Szo/sor"
+show_cpl = "Betu/sor"
+show_lastseen = "Utoljara itt:"
+lastused = "Utoljara hasznalta:"
+pagetitle1 = "[:channel] @ [:network] statisztika [:maintainer] segitsegevel"
+pagetitle2 = "A statisztika: "
+pagetitle3 = "Ezalatt a [:days] napos idoszak alatt <b>[:nicks]</b> kulonbozo nick-u emberke tevekenykedett a [:channel]-n."
+today = "Ma"
+lastseen1 = "[:days] nappal ezelott"
+lastseen2 = "[:days] nappal ezelott"
+stats_gen_by = "A statisztikat keszitette: [:pisg_url] v[:version]"
+author = "pisg keszitoje: [:author_url] and others"
+stats_gen_in = "A statisztika keszult: [:time]"
+hours = "ora"
+minutes = "perc"
+seconds = "masodperc"
+and = "es"
+names1 = "nevek"
+names2 = "nev"
+names = "Használt nevek"
+karma = "Karma"
+badkarma = "Rossz karma ... miatt/által"
+goodkarma = "Jó karma ... miatt/által"
+smiley = "Szmájli"
+gender = "Neme"
+gender_b = "Robot"
+gender_f = "Nõ"
+gender_m = "Férfi"
+numberplayed = "Milyen gyakran játszott"
+song = "Dal"
+playedby = "Utoljára játszott"
+
+# Mouse-over titles
+pisghomepage = "A pisg honlapja"
+authorhomepage = "A keszito honlapja"
+newwindow = "Uj ablakban nyitas:"
+mailto = "Level kuldese:"
+</lang>

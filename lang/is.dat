@@ -1,0 +1,139 @@
+<lang name="IS" charset="iso-8859-1">
+mostop1 = "<b>[:nick]</b> gaf [:ops] op á rásinni..."
+mostop2 = "<b>[:nick]</b> var líka mjög kurteis: [:ops] op frá [:honum:henni:]."
+mostop3 = "Skrítið, engin op voru gefin á [:channel]!"
+
+mostdeop1 = "<b>[:nick]</b> er varðstjóri rásarinnar með [:deops] deop."
+mostdeop2 = "<b>[:nick]</b> deopaði [:deops] manns."
+mostdeop3 = "Vá, enginn var deopaður á [:channel]!"
+
+mostvoice1 = "<b>[:nick]</b> gaf [:voices] voice á rásinni..."
+mostvoice2 = "<b>[:nick]</b> var líka mjög kurteis: [:voices] voice frá [:honum:henni:]."
+mostvoice3 = "Skrítið, engin voice voru gefin á [:channel]!"
+
+mostdevoice1 = "<b>[:nick]</b> hefur gaman af að devoicea, [:devoices] devoice."
+mostdevoice2 = "<b>[:nick]</b> hafði líka gaman af því, devoiceaði [:devoices] manns."
+mostdevoice3 = "Engin voice voru tekin á [:channel]!"
+
+action1 = "<b>[:nick]</b> lætur okkur alltaf vita hvað [:hann:hún:] er að gera: [:actions] lýsingar!"
+action2 = "<b>[:nick]</b> hefur líka mjög gaman af því, [:actions] lýsingar."
+action3 = "Engar lýsingar á [:channel]!"
+actiontext = "<b>Til dæmis svona:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+question1 = "Er <b>[:nick]</b> heimskur eða bara að spyrja of mikið? [:per]% lína innihéldu spurningu!"
+question2 = "<b>[:nick]</b> vissi ekki mikið heldur. [:per]% af [:hans:hennar:] línum voru spurningar."
+question3 = "Engin spurði spurninga hér, bara snillingar á þessari rás?"
+
+shout1 = "Sá hávaðasamasti var <b>[:nick]</b>, sem öskraði [:per]% af tímanum!"
+shout2 = "Annar <i>öskrari</i> var <b>[:nick]</b>, sem öskraði [:per]% af tímanum!"
+shout3 = "Enginn öskraði á rásinni"
+
+allcaps1 = "Það lítur út fyrir að shift-takkinn hjá <b>[:nick]</b> sé fastur: [:per]% af tímanum skrifaði [:hann:hún:] með HÁSTÖFUM."
+allcaps2 = "<b>[:nick]</b> gleymdi að taka Caps-Lock af hjá sér. [:Hann:Hún:] skrifaði með HÁSTÖFUM [:per]% af tímanum."
+allcaps3 = "Allir höfðu stjórn á shift takkanum sínum."
+allcapstext = "<b>Til dæmis svona:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+violent1 = "<b>[:nick]</b> er mjög árásargjarn.  [:Hann:Hún:] réðst á aðra <b>[:attacks]</b> sinnum."
+violent2 = "<b>[:nick]</b> getur ekki stjórnað árásargirni sinni heldur. [:Hann:Hún:] réðst á aðra <b>[:attacks]</b> sinnum."
+violent3 = "Enginn réðst á neinn, allir voru vinir."
+violenttext = "<b>Til dæmis svona:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+attacked1 = "Aumingja <b>[:nick]</b>, engum líkar við [:hann:hana:]. Ráðist var á [:Hann:Hana:] <b>[:attacks]</b> sinnum."
+attacked2 = "<b>[:nick]</b> lítur út fyrir að vera [:óvinsæll:óvinsæl:] líka. [:Hann:Hana:] var ráðist á <b>[:attacks]</b> sinnum."
+attackedtext = "<b>Til dæmis svona:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+gotkick1 = "<b>[:nick]</b> var ekki mjög [:vinsæll:vinsæl:], [:honum:henni:] var sparkað [:kicks] sinnum af rásinni!"
+gotkick2 = "<b>[:nick]</b> lítur út fyrir að vera hataður líka: [:Hann:Hún:] fékk [:kicks] spörk."
+kicktext = "<b>Til dæmis svona:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:line]"
+
+joins = "<b>[:nick]</b> Gat ekki ákveðið hvort [:hann:hún:] ætti að koma eða fara. [:joins] innkomur á tímabilinu!"
+
+kick1 = "<b>[:nick]</b> er annað hvort [:geðveikur:geðveik:] eða sanngjarn op, sparkaði [:kicked] manns!"
+kick2 = "[:oldnick] á sér harðan fylgismann. <b>[:nick]</b> sparkar ekki jafn mörgum en sparkaði [:kicked] manns."
+kick3 = "Góðir opar hérna, engum var sparkað!"
+
+words1 = "<b>[:nick]</b> sagði í heildina [:words] orð!"
+words2 = "<b>[:nick]</b> reyndi mikið að tala jafn mikið og [:oldnick] en sagði einungis [:words] orð."
+words3 = "Enginn sagði neitt, skrítin rás"
+
+mono1 = "<b>[:nick]</b> talar mikið við [:sjálfan:sjálfa:] sig. [:Hann:Hún:] skrifaði meira en 5 línur í röð [:monos] sinnum!"
+mono2 = "Annar einmanna var <b>[:nick]</b>, sem talaði við [:sjálfan:sjálfa:] sig [:monos] sinnum."
+
+wpl1 = "<b>[:nick]</b> skrifaði að meðaltali [:wpl] orð í hverri línu."
+wpl2 = "Meðaltalið rásarinnar var [:avg] orð í hverri línu."
+
+long1 = "<b>[:nick]</b> skrifaði lengstu línurnar, að meðaltali [:letters] stafi í hverri línu."
+long2 = "[:channel] meðaltalið var [:avg] stafir í hverri línu."
+
+short1 = "<b>[:nick]</b> skrifaði stystu línurnar, að meðaltali [:letters] stafi í hverri línu."
+short2 = "<b>[:nick]</b> var líka stuttorður, að meðaltali [:letters] stafir í hverri línu."
+
+foul1 = "<b>[:nick]</b> kunni öll dónalegu orðin. [:per]% af línum [:hans:hennar:] innihéldu dónaleg orð ."
+foul2 = "<b>[:nick]</b> kann líka fúkyrðin, [:per]% af línum [:hans:hennar:] innhéldu fúkyrði."
+foul3 = "Enginn hefur sagt eitthvað slæmt á [:channel]!"
+
+smiles1 = "<b>[:nick]</b> færir heiminum hamingju. [:per]% af línum [:hans:hennar:] innihéldu broskalla.  :)"
+smiles2 = "<b>[:nick]</b> er heldur ekki fúll, brosandi [:per]% af tímanum."
+smiles3 = "Enginn brosir á [:channel]!  Svona nú allir að fara að brosa."
+
+sad1 = "<b>[:nick]</b> virðist þjást af þunglyndi:  [:per]% af línum [:hans:hennar:] innihéldu fýlukarla.  :("
+sad2 = "<b>[:nick]</b> er líka mjög leiður, fúll [:per]% af tímanum."
+sad3 = "Enginn er fýldur á [:channel]!  En hvað þetta er glaðleg rás.  :-)"
+
+month = "Janúar Febrúar Mars Apríl Maí Júní Júlí Ágúst September Október Nóvember Desember"
++day = "sunnudaginn mánudaginn þriðjudaginn miðvikudaginn fimmtudaginn föstudaginn laugardaginn"
+
+## Topics
+
+bignumtopic = "Stórar tölur"
+othernumtopic = "Aðrar áhugaverðar tölur"
+latesttopic = "Undanfarin umræðuefni"
+activetimestopic = "Virkasti tími sólarhringsins"
+activenickstopic = "Þessir tala mest"
+mostwordstopic = "Mest notuðu orðin"
+referencetopic = "Mest umtöluðu gælunöfnin"
+urlstopic = "Mest umræddu tenglarnir"
+notopic = "Umræðuefni hefur aldrei verið sett á rásinni"
+mostnickstopic = "Þeir með flestu gælunöfnin"
+bylinetopic = "[:date] eftir [:nick] klukkan [:time]"
+
+## Other text
+
+totallines = "Fjöldi lína: [:lines]."
+totalnicks = "Það voru einnig [:totalnicks] aðrir sem sáust."
+totaltopic = "Umræðuefnið var sett [:total] sinnum."
+nick = "Gælunafn"
+names = "Nöfn notuð"
+url = "URL"
+numberlines = "Fjöldi lína"
+randquote = "Tilvitnun af handahófi"
+userpic = "Mynd"
+nottop = "Þessir komust ekki á toppinn:"
+word = "Orð"
+numberuses = "Fjöldi notkuna"
+show_words = "Fjöldi orða"
+show_time = "Hvenær?"
+show_wpl = "Orð í hverri línu"
+show_cpl = "Stafir í hverri línu"
+show_lastseen = "Síðast séður"
+lastused = "Síðast notað af"
+lastseen1 = "[:days] degi síðan"
+lastseen2 = "[:days] dögum síðan"
+today = "Í dag"
+pagetitle1 = "[:channel] @ [:network] tölfræði frá [:maintainer]"
+pagetitle2 = "Tölfræði búin til"
+pagetitle3 = "Á þessu [:days] daga tímabili, sáust <b>[:nicks]</b> mismunandi gælunöfn á [:channel]."
+stats_gen_by = "Tölfræði búin til af [:pisg_url] v[:version]"
+author = "pisg er skrifað af [:author_url] og öðrum"
+stats_gen_in = "Tölfræði búin til á [:time]"
+hours = "klukkustundum"
+minutes = "mínútum"
+seconds = "sekúndum"
+and = "og"
+
+# Mouse-over titles
+pisghomepage = "Fara á heimasíðu pisg"
+authorhomepage = "Fara á heimasíðu höfundar"
+newwindow = "Opna nýjan glugga:"
+mailto = "Senda tölvupóst til"
+</lang>
