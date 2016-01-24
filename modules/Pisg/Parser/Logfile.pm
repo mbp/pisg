@@ -292,6 +292,9 @@ sub _parse_file
     } elsif ($file =~ /.gz$/ && -f $file) {
         open (LOGFILE, "gunzip -c $file |") or
         die("$0: Unable to open logfile($file): $!\n");
+    } elsif ($file =~ /.xz$/ && -f $file) {
+        open (LOGFILE, "unxz -c $file |") or
+        die("$0: Unable to open logfile($file): $!\n");
     } else {
         open (LOGFILE, $file) or
         die("$0: Unable to open logfile($file): $!\n");
