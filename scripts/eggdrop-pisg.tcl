@@ -7,16 +7,16 @@
 # option. If you get the message "an error occured: Pisg v0.67 - perl irc
 # statistics generator" in the channel, you are NOT running silent. Fix it.
 
-set pisgver "0.15"
+set pisgver "0.15.1"
 
 #Location of pisg execuitable perl script
-set pisgexe "/home/nf/pisg/pisg"
+set pisgexe "/home/example/pisg/pisg"
 
 #URL of the generated stats
-set pisgurl "http://stats.nemesisforce.com/"
+set pisgurl "http://stats.example.com/"
 
 #channel that the stats are generated for
-set pisgchan "#nemesisforce"
+set pisgchan "#example"
 
 #Users with these flags can operate this function
 set pisgflags "nm"
